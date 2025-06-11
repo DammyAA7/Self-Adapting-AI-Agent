@@ -9,44 +9,23 @@ os.environ["OPENAI_API_KEY"] = "sk-proj-vx6gBrRK7E_WS5gazQDu7Du1XKaKIPcOttTaC8NM
 python_dir = '/usr/local/bin/python3'
 folder_dir = "/Users/oluwadamilola/Developer/Self Adapting AI Agent/" 
 
-# Define tools for the LLM
-tools = [
-    {
-        "type": "function",
-        "function": {
-            "name": "addition",
-            "description": "Adds two numbers and returns the result.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "a": {"type": "number", "description": "The first addend."},
-                    "b": {"type": "number", "description": "The second addend."}
-                },
-                "required": ["a", "b"]
-            }
-        }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "subtraction",
-            "description": "Subtracts the second number from the first and returns the result.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "a": {"type": "number", "description": "The minuend."},
-                    "b": {"type": "number", "description": "The subtrahend."}
-                },
-                "required": ["a", "b"]
-            }
-        }
-    }
-]
+with open('tools.json', 'r') as f:
+    tool_list = json.load(f)
+# Define the tools that the LLM can use
+tools = tool_list
+
+# Read the new prompt from file
+with open('prompts/prompt.txt', 'r') as f:
+    system_prompt = f.read()
+
+# Read the new prompt from file
+with open('prompts/generator/function.txt', 'r') as f:
+    generator_prompt = f.read()
 
 #Define prompt for the LLM and input messages
 input_messages = [
-    {"role": "system", "content": "You are a calculator bot that can add or subtract numbers."},
-    {"role": "user", "content": "What's 47 minus 21?"}
+    {"role": "system", "content": system_prompt},
+    {"role": "user", "content": "50 remove from 9"}
 ]
 
 # Function to call functions.py using subprocess
@@ -85,7 +64,23 @@ if __name__ == "__main__":
             tools=tools
         )
         print("Final response:", final_response.choices[0].message.content)
+        print(f"Result from functions.py: {output}")
     else:
-        print(response.choices[0].message.content)
-    
-    print(f"Result from functions.py: {output}")
+        function_requirement = response.choices[0].message.content
+        print(function_requirement)
+        # Define the generator prompt for the LLM
+        generator_messages = [
+            {"role": "system", "content": generator_prompt},
+            {"role": "user", "content": function_requirement}
+        ]
+        generator_response = client.chat.completions.create(
+            model="gpt-3.5-turbo-0125",
+            messages=generator_messages
+        )
+        function = generator_response.choices[0].message.content
+        new_function = f"\n\n{function}\n"
+        print("Generated function code:", new_function)
+        with open('functions.py', 'a') as f:
+            f.write(new_function)
+        print("Function code appended to functions.py")
+

@@ -1,0 +1,32 @@
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "addition",
+            "description": "Adds two numbers and returns the result.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "a": {"type": "number", "description": "The first addend."},
+                    "b": {"type": "number", "description": "The second addend."}
+                },
+                "required": ["a", "b"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "subtraction",
+            "description": "Subtracts the second number from the first and returns the result.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "a": {"type": "number", "description": "The minuend."},
+                    "b": {"type": "number", "description": "The subtrahend."}
+                },
+                "required": ["a", "b"]
+            }
+        }
+    }
+]

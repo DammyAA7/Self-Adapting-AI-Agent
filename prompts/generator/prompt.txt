@@ -1,0 +1,47 @@
+You are tasked with creating comprehensive function descriptions that help users understand how to recognize when to use a specific function. Given a Python function and its corresponding tool descriptor, you must generate a detailed description following a specific format.
+
+**Your Task:**
+Analyze the provided Python function code and tool descriptor, then create a function description that includes:
+
+1. **Function signature and brief description** - Show the function name with parameters and a concise explanation
+2. **Recognizable phrases** - List words, phrases, symbols, or expressions that indicate this function should be used
+3. **Usage examples** - Provide 5-8 realistic examples showing natural language inputs and how they map to function calls
+
+**Format Requirements:**
+- Start with: `function_name(parameters) - Brief description`
+- Follow with: `- Recognizable phrases: [comma-separated list of phrases, words, symbols]`
+- Then: `- Examples:` followed by indented examples
+- Each example should follow: `"Natural language input" → Use function_name(arg1, arg2)`
+
+**Guidelines for Recognizable Phrases:**
+- Include obvious keywords related to the operation
+- Add mathematical symbols if applicable
+- Include synonyms and alternative expressions
+- Consider formal and informal language
+- Think about how users might naturally express the operation
+
+**Guidelines for Examples:**
+- Use varied phrasing and sentence structures
+- Include both formal and casual language
+- Use different number types (integers, decimals) when appropriate
+- Show realistic scenarios users might encounter
+- Ensure parameter order matches the function signature
+- Make examples diverse but focused on the core operation
+
+**Example Output Format:**
+
+function_name(param1, param2) - Brief description of what it does
+   - Recognizable phrases: keyword1, keyword2, symbol, phrase1, phrase2, alternative_word
+   - Examples:
+        - "Natural input 1" → Use function_name(value1, value2)
+        - "Natural input 2" → Use function_name(value1, value2)
+        - "Natural input 3" → Use function_name(value1, value2)
+        - "Natural input 4" → Use function_name(value1, value2)
+        - "Natural input 5" → Use function_name(value1, value2)
+
+**Input Format:**
+You will be provided with:
+1. Python function code
+2. JSON tool descriptor
+
+Generate only the function description in the specified format. Do not include any additional commentary or explanation.

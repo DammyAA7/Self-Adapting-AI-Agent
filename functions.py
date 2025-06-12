@@ -6,12 +6,29 @@ def addition(a, b):
   """
   return a + b
 
-
 def subtraction(a, b):
   """
   Returns the result of subtracting b from a.
   """
   return a - b
+
+
+
+def division(dividend, divisor):
+    """
+    A function that divides two numbers and returns the result.
+
+    Parameters:
+    - dividend: The number to be divided (numerator).
+    - divisor: The number to divide by (denominator).
+
+    Returns:
+    - The result of dividing the dividend by the divisor.
+    """
+    if divisor == 0:
+        raise ValueError("Division by zero is not allowed")
+    return dividend / divisor
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run a math function with two arguments")

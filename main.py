@@ -2,6 +2,10 @@ import subprocess
 import os
 from openai import OpenAI
 import json
+from generator import generate_function_code
+from write_to_file import write_to_file
+from toolGenerator import generate_tool_definitions
+from promptGenerator import generateFunctionDescriptor
 
 os.environ["OPENAI_API_KEY"] = "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"
 
@@ -18,14 +22,10 @@ tools = tool_list
 with open('prompts/prompt.txt', 'r') as f:
     system_prompt = f.read()
 
-# Read the new prompt from file
-with open('prompts/generator/function.txt', 'r') as f:
-    generator_prompt = f.read()
-
 #Define prompt for the LLM and input messages
 input_messages = [
     {"role": "system", "content": system_prompt},
-    {"role": "user", "content": "50 remove from 9"}
+    {"role": "user", "content": "50 / 9"}
 ]
 
 # Function to call functions.py using subprocess
@@ -64,23 +64,29 @@ if __name__ == "__main__":
             tools=tools
         )
         print("Final response:", final_response.choices[0].message.content)
-        print(f"Result from functions.py: {output}")
     else:
+        # If the model did not call any tools, generate a function code
         function_requirement = response.choices[0].message.content
-        print(function_requirement)
-        # Define the generator prompt for the LLM
-        generator_messages = [
-            {"role": "system", "content": generator_prompt},
-            {"role": "user", "content": function_requirement}
-        ]
-        generator_response = client.chat.completions.create(
-            model="gpt-3.5-turbo-0125",
-            messages=generator_messages
-        )
-        function = generator_response.choices[0].message.content
-        new_function = f"\n\n{function}\n"
-        print("Generated function code:", new_function)
-        with open('functions.py', 'a') as f:
-            f.write(new_function)
-        print("Function code appended to functions.py")
+        
+        # Generate the function code using the generator module
+        print("Generating function code...")
+        function_code = generate_function_code(client, function_requirement)
+        print("Function code generated successfully.")
+        
+        # Append the generated function code to functions.py
+        print('Writing function code to functions.py...')
+        write_to_file('python', 'functions.py', function_code)
+        print("Function code appended successfully.")
 
+        #Generate tool definitions
+        print("Generating tool definitions...")
+        tools_code = generate_tool_definitions(client, function_code)
+        print("Tool definitions generated successfully.")
+        # Write tool definition
+        print("Writing to tools.json")
+        write_to_file('json', 'tools.json', tools_code)
+        print("Successfully written to file")
+
+        prompt_function_descriptor = generateFunctionDescriptor(client, function_code, tools_code)
+        write_to_file('txt', 'prompts/prompt.txt', prompt_function_descriptor)
+        print(prompt_function_descriptor)

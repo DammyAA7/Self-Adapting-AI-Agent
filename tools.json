@@ -29,4 +29,21 @@
             }
         }
     }
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "division",
+            "description": "A function that divides two numbers and returns the result.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "dividend": {"type": "number", "description": "The number to be divided (numerator)."},
+                    "divisor": {"type": "number", "description": "The number to divide by (denominator)."}
+                },
+                "required": ["dividend", "divisor"]
+            }
+        }
+    }
+
 ]

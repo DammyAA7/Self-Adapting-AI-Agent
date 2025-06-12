@@ -14,20 +14,24 @@ def subtraction(a, b):
 
 
 
-def division(dividend, divisor):
-    """
-    A function that divides two numbers and returns the result.
 
-    Parameters:
-    - dividend: The number to be divided (numerator).
-    - divisor: The number to divide by (denominator).
-
-    Returns:
-    - The result of dividing the dividend by the divisor.
+def division(a, b):
     """
-    if divisor == 0:
-        raise ValueError("Division by zero is not allowed")
-    return dividend / divisor
+    A function that divides the first number by the second and returns the quotient.
+    """
+    if b == 0:
+        raise ZeroDivisionError("Division by zero is not allowed")
+
+    return a / b
+
+
+
+
+def multiplication(a, b):
+    """
+    A function that multiplies two numbers together and returns their product.
+    """
+    return a * b
 
 
 if __name__ == "__main__":

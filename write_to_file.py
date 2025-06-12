@@ -21,7 +21,6 @@ def write_to_file(type, file_path, content):
                 f.writelines(lines)
         
     elif type == 'json':
-        
         with open(file_path, 'r') as f:
             lines = f.readlines()
         last_index = len(lines) - 1

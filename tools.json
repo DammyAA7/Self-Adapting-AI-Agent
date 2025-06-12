@@ -34,14 +34,30 @@
         "type": "function",
         "function": {
             "name": "division",
-            "description": "A function that divides two numbers and returns the result.",
+            "description": "A function that divides the first number by the second and returns the quotient.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "dividend": {"type": "number", "description": "The number to be divided (numerator)."},
-                    "divisor": {"type": "number", "description": "The number to divide by (denominator)."}
+                    "a": {"type": "number", "description": "The dividend."},
+                    "b": {"type": "number", "description": "The divisor."}
                 },
-                "required": ["dividend", "divisor"]
+                "required": ["a", "b"]
+            }
+        }
+    }
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "multiplication",
+            "description": "A function that multiplies two numbers together and returns their product.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "a": {"type": "number", "description": "The first number to be multiplied."},
+                    "b": {"type": "number", "description": "The second number to be multiplied."}
+                },
+                "required": ["a", "b"]
             }
         }
     }

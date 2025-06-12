@@ -13,20 +13,23 @@ os.environ["OPENAI_API_KEY"] = "sk-proj-vx6gBrRK7E_WS5gazQDu7Du1XKaKIPcOttTaC8NM
 python_dir = '/usr/local/bin/python3'
 folder_dir = "/Users/oluwadamilola/Developer/Self Adapting AI Agent/" 
 
-with open('tools.json', 'r') as f:
-    tool_list = json.load(f)
-# Define the tools that the LLM can use
-tools = tool_list
+def setup_variables():
+    with open('tools.json', 'r') as f:
+        tool_list = json.load(f)
+    # Define the tools that the LLM can use
+    tools = tool_list
 
-# Read the new prompt from file
-with open('prompts/prompt.txt', 'r') as f:
-    system_prompt = f.read()
+    # Read the new prompt from file
+    with open('prompts/prompt.txt', 'r') as f:
+        system_prompt = f.read()
 
-#Define prompt for the LLM and input messages
-input_messages = [
-    {"role": "system", "content": system_prompt},
-    {"role": "user", "content": "50 / 9"}
-]
+    #Define prompt for the LLM and input messages
+    input_messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": "multiply 5 by 5"}
+    ]
+
+    return tools, input_messages
 
 # Function to call functions.py using subprocess
 def call_function(func_name, arg1, arg2):
@@ -39,54 +42,63 @@ def call_function(func_name, arg1, arg2):
         return f"Error: {result.stderr.strip()}"
 
 if __name__ == "__main__":
-    # Assign OpenAI API key 
-    api_key = os.getenv("OPENAI_API_KEY")
-    client = OpenAI(api_key=api_key)
-    response = client.chat.completions.create(
-    model="gpt-3.5-turbo-0125",
-    messages=input_messages,
-    tools=tools,
-    tool_choice="auto"
-)
-#check if model wants to use tools
-    if response.choices[0].message.tool_calls:
-        tool_call = response.choices[0].message.tool_calls[0]
-        function_name = tool_call.function.name
-        function_args = json.loads(tool_call.function.arguments)
-        output = call_function(function_name, function_args['a'], function_args['b'])
-        messages_with_result = input_messages + [
-            response.choices[0].message,
-            {"role": "tool", "content": str(output), "tool_call_id": tool_call.id}
-        ]
-        final_response = client.chat.completions.create(
-            model="gpt-3.5-turbo-0125",
-            messages=messages_with_result,
-            tools=tools
+    restart = True
+    while(restart):
+        tools, input_messages = setup_variables()
+        # Assign OpenAI API key 
+        api_key = os.getenv("OPENAI_API_KEY")
+        client = OpenAI(api_key=api_key)
+        response = client.chat.completions.create(
+        model="gpt-3.5-turbo-0125",
+        messages=input_messages,
+        tools=tools,
+        tool_choice="auto"
         )
-        print("Final response:", final_response.choices[0].message.content)
-    else:
-        # If the model did not call any tools, generate a function code
-        function_requirement = response.choices[0].message.content
-        
-        # Generate the function code using the generator module
-        print("Generating function code...")
-        function_code = generate_function_code(client, function_requirement)
-        print("Function code generated successfully.")
-        
-        # Append the generated function code to functions.py
-        print('Writing function code to functions.py...')
-        write_to_file('python', 'functions.py', function_code)
-        print("Function code appended successfully.")
+        #check if model wants to use tools
+        if response.choices[0].message.tool_calls:
+            tool_call = response.choices[0].message.tool_calls[0]
+            function_name = tool_call.function.name
+            function_args = json.loads(tool_call.function.arguments)
+            print(f"Model called tool: {function_name} with arguments: {function_args}")
+            output = call_function(function_name, function_args['a'], function_args['b'])
+            messages_with_result = input_messages + [
+                response.choices[0].message,
+                {"role": "tool", "content": str(output), "tool_call_id": tool_call.id}
+            ]
+            final_response = client.chat.completions.create(
+                model="gpt-3.5-turbo-0125",
+                messages=messages_with_result,
+                tools=tools
+            )
+            print("Final response:", final_response.choices[0].message.content)
+            restart = False
+        else:
+            # If the model did not call any tools, generate a function code
+            function_requirement = response.choices[0].message.content
+            
+            # Generate the function code using the generator module
+            print("Generating function code...")
+            function_code = generate_function_code(client, function_requirement)
+            print("Function code generated successfully.")
+            
+            # Append the generated function code to functions.py
+            print('Writing function code to functions.py...')
+            write_to_file('python', 'functions.py', function_code)
+            print("Function code appended successfully.")
 
-        #Generate tool definitions
-        print("Generating tool definitions...")
-        tools_code = generate_tool_definitions(client, function_code)
-        print("Tool definitions generated successfully.")
-        # Write tool definition
-        print("Writing to tools.json")
-        write_to_file('json', 'tools.json', tools_code)
-        print("Successfully written to file")
+            #Generate tool definitions
+            print("Generating tool definitions...")
+            tools_code = generate_tool_definitions(client, function_code)
+            print("Tool definitions generated successfully.")
+            # Write tool definition
+            print("Writing to tools.json")
+            write_to_file('json', 'tools.json', tools_code)
+            print("Successfully written to file")
 
-        prompt_function_descriptor = generateFunctionDescriptor(client, function_code, tools_code)
-        write_to_file('txt', 'prompts/prompt.txt', prompt_function_descriptor)
-        print(prompt_function_descriptor)
+            # Generate the function descriptor
+            print("Generating function descriptor...")
+            prompt_function_descriptor = generateFunctionDescriptor(client, function_code, tools_code)
+            write_to_file('txt', 'prompts/prompt.txt', prompt_function_descriptor)
+            print("Function descriptor generated and written to prompts/prompt.txt")
+            
+            print("Restarting the process...")

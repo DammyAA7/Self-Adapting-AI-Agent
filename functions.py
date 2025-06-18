@@ -12,28 +12,6 @@ def subtraction(a, b):
   """
   return a - b
 
-
-
-
-def division(a, b):
-    """
-    A function that divides the first number by the second and returns the quotient.
-    """
-    if b == 0:
-        raise ZeroDivisionError("Division by zero is not allowed")
-
-    return a / b
-
-
-
-
-def multiplication(a, b):
-    """
-    A function that multiplies two numbers together and returns their product.
-    """
-    return a * b
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run a math function with two arguments")
     parser.add_argument("function_name", type=str, help="Name of the function to run (e.g., addition or subtraction)")

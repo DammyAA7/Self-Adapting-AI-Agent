@@ -6,6 +6,7 @@ from generator import generate_function_code
 from write_to_file import write_to_file
 from toolGenerator import generate_tool_definitions
 from promptGenerator import generateFunctionDescriptor
+import functions
 
 os.environ["OPENAI_API_KEY"] = "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"
 
@@ -26,7 +27,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "multiply 5 by 5"}
+        {"role": "user", "content": "divide 10 by 2"}
     ]
 
     return tools, input_messages

@@ -7,6 +7,7 @@ from write_to_file import write_to_file
 from toolGenerator import generate_tool_definitions
 from promptGenerator import generateFunctionDescriptor
 import functions
+from performanceTester import performance_subprocess_call
 
 os.environ["OPENAI_API_KEY"] = "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"
 
@@ -27,7 +28,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "divide 10 by 2"}
+        {"role": "user", "content": "2 minus 2 is what?"}
     ]
 
     return tools, input_messages
@@ -61,7 +62,11 @@ if __name__ == "__main__":
             function_name = tool_call.function.name
             function_args = json.loads(tool_call.function.arguments)
             print(f"Model called tool: {function_name} with arguments: {function_args}")
-            output = call_function(function_name, function_args['a'], function_args['b'])
+            #output = call_function(function_name, function_args['a'], function_args['b'])
+            results = performance_subprocess_call(function_name, function_args['a'], function_args['b'], python_dir, folder_dir)
+            output = results['result']
+            print(f"Time: {results['execution_time']:.6f} seconds")
+            print(f"Memory peak: {results['memory_peak']} bytes")
             messages_with_result = input_messages + [
                 response.choices[0].message,
                 {"role": "tool", "content": str(output), "tool_call_id": tool_call.id}

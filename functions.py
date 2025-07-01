@@ -1,16 +1,30 @@
 import argparse
 
-def addition(a, b):
+def addition(*args):
   """
-  Returns the sum of a and b.
+  Returns the sum of all arguments.
   """
-  return a + b
+  return sum(args)
 
-def subtraction(a, b):
+def subtraction(first, *rest):
   """
-  Returns the result of subtracting b from a.
+  Returns the result of subtracting all subsequent arguments from the first.
   """
-  return a - b
+  result = first
+  for num in rest:
+    result -= num
+  return result
+
+
+
+
+
+def multiplication(multiplicand, multiplier):
+    """
+    Returns the product of multiplicand and multiplier.
+    """
+    return multiplicand * multiplier
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run a math function with two arguments")
@@ -19,7 +33,17 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     func_name = args.function_name
-    arg_list = [int(x.strip()) for x in args.args.split(",")]
+    # Try to convert each argument to int first, if that fails use float
+    arg_list = []
+    for x in args.args.split(","):
+      x = x.strip()
+      try:
+        arg_list.append(int(x))
+      except ValueError:
+        try:
+          arg_list.append(float(x))
+        except ValueError:
+          raise ValueError(f"Cannot convert '{x}' to a number")
 
     try:
         # Dynamically call the function
@@ -27,3 +51,5 @@ if __name__ == "__main__":
         print(result)
     except Exception as e:
         print(f"Error: {e}")
+
+

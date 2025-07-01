@@ -3,7 +3,7 @@ import psutil
 import tracemalloc
 from typing import Callable
 
-def performance_function(func: Callable, *args, **kwargs):
+def performance_function(func, *args, **kwargs):
 
     # Initialize result dictionary
     test_result = {
@@ -80,12 +80,12 @@ def performance_function(func: Callable, *args, **kwargs):
     
     return test_result
 
-def performance_subprocess_call(function_name, a, b, python_dir, folder_dir):
+def performance_subprocess_call(function_name, args, python_dir, folder_dir):
     """Profile your subprocess-based call_function"""
     import subprocess
     
     def subprocess_wrapper():
-        cmd = [python_dir, folder_dir + "functions.py", function_name, f"{a},{b}"]
+        cmd = [python_dir, folder_dir + "functions.py", function_name, "--", f"{args}"]
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         if result.returncode == 0:
             return result.stdout.strip()
@@ -93,3 +93,17 @@ def performance_subprocess_call(function_name, a, b, python_dir, folder_dir):
             raise RuntimeError(f"Subprocess error: {result.stderr.strip()}")
     
     return performance_function(subprocess_wrapper)
+
+def performance_execute(function_name, *args):
+    import functions as functions
+    import importlib
+    
+    def execute_wrapper():
+        importlib.reload(functions)
+        if hasattr(functions, function_name):
+            func = getattr(functions, function_name)
+            return func(*args)
+        else:
+            raise ValueError(f"Function '{function_name}' not found")
+    
+    return performance_function(execute_wrapper)

@@ -1,0 +1,65 @@
+[
+    {
+    "type": "function",
+    "function": {
+        "name": "addition",
+        "description": "Adds multiple numbers and returns the sum.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "numbers": {
+                    "type": "array",
+                    "items": {"type": "number"},
+                    "description": "Array of numbers to add together.",
+                    "minItems": 1
+                }
+            },
+            "required": ["numbers"]
+            }
+        }
+    },
+    {
+    "type": "function",
+    "function": {
+        "name": "subtraction",
+        "description": "Subtracts multiple numbers from the first number and returns the result.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "first": {
+                    "type": "number",
+                    "description": "The starting number from which other numbers will be subtracted."
+                },
+                "subtract": {
+                    "type": "array",
+                    "items": {"type": "number"},
+                    "description": "Array of numbers to subtract from the first number.",
+                    "minItems": 1
+                }
+            },
+            "required": ["first", "subtract"]
+            }
+        }
+    }
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "multiplication",
+            "description": "Multiplies multiple numbers and returns the product.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "numbers": {
+                        "type": "array",
+                        "items": {"type": "number"},
+                        "description": "Array of numbers to multiply together.",
+                        "minItems": 1
+                    }
+                },
+                "required": ["numbers"]
+            }
+        }
+    }
+
+]

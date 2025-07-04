@@ -3,7 +3,7 @@ Function that generates Python code based on a prompt using OpenAI's API.
 '''
 
 # Read the new prompt from file
-with open('prompts/generator/function.txt', 'r') as f:
+with open('Function_Gen/function.txt', 'r') as f:
     generator_prompt = f.read()
 
 def generate_function_code(client, function_requirement):

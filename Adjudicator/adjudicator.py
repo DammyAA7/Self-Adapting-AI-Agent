@@ -3,7 +3,7 @@
 """
 
 # Read the new prompt from file
-with open('prompts/adjudicator.txt', 'r') as f:
+with open('Adjudicator/adjudicator.txt', 'r') as f:
     adjudicator_prompt = f.read()
     
 

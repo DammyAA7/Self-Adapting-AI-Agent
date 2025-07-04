@@ -62,4 +62,23 @@
         }
     }
 
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "square_root",
+            "description": "Calculates the square root of a given number.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "num": {
+                        "type": "number",
+                        "description": "The number for which the square root will be calculated."
+                    }
+                },
+                "required": ["num"]
+            }
+        }
+    }
+
 ]

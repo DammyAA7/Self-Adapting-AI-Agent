@@ -4,7 +4,7 @@ import json
 from Function_Gen.generator import generate_function_code
 from Utilities.write_to_file import write_to_file
 from Adjudicator.adjudicator import adjudicate
-from Tool_Gen.toolGenerator import generate_tool_definitions
+from Tool_Descriptor_Gen.toolGenerator import generate_tool_definitions
 from Prompt_Gen.promptGenerator import generateFunctionDescriptor
 from Utilities.performanceTester import performance_subprocess_call, performance_execute
 
@@ -15,19 +15,19 @@ python_dir = '/usr/local/bin/python3'
 folder_dir = "/Users/oluwadamilola/Developer/Self Adapting AI Agent/" 
 
 def setup_variables():
-    with open('tools.json', 'r') as f:
+    with open('Tool_Descriptor_Gen/tools.json', 'r') as f:
         tool_list = json.load(f)
     # Define the tools that the LLM can use
     tools = tool_list
 
     # Read the new prompt from file
-    with open('prompts/prompt.txt', 'r') as f:
+    with open('Core/prompt.txt', 'r') as f:
         system_prompt = f.read()
 
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "what is 5 multiplied by 3.5?"}
+        {"role": "user", "content": "what is the square root of 25?"}
     ]
     return tools, input_messages
     
@@ -75,15 +75,16 @@ def is_safe_function(function_name):
 
 def add_safe_function(name):
     """Add function to safe list"""
+    safe_factions_path = 'Utilities/safeFunctions.json'
     try:
-        with open('safeFunctions.json', 'r') as f:
+        with open(safe_factions_path, 'r') as f:
             data = json.load(f)
     except:
         data = {"safe": []}
     
     if name not in data['safe']:
         data['safe'].append(name)
-        with open('safeFunctions.json', 'w') as f:
+        with open(safe_factions_path, 'w') as f:
             json.dump(data, f, indent=2)
         print(f"Added '{name}' to safe functions")
     else:
@@ -173,7 +174,7 @@ if __name__ == "__main__":
             #Code for adjudicator here
             if adjudication_result.lower() == "true":
                 write_to_file('python', 'functions.py', function_code)
-                write_to_file('json', 'tools.json', tools_code)
-                write_to_file('txt', 'prompts/prompt.txt', prompt_function_descriptor)
+                write_to_file('json', 'Tool_Descriptor_Gen/tools.json', tools_code)
+                write_to_file('txt', 'Core/prompt.txt', prompt_function_descriptor)
             
             print("Restarting the process...")

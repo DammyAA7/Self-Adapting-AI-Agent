@@ -3,7 +3,7 @@ This functions produces a function descriptor with examples that is inserted int
 '''
 
 # Read the new prompt from file
-with open('prompts/generator/prompt.txt', 'r') as f:
+with open('Prompt_Gen/prompt.txt', 'r') as f:
     generator_prompt = f.read()
 
 def generateFunctionDescriptor(client, function, tool_descriptor):

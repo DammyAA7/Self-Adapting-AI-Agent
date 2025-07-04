@@ -2,7 +2,7 @@
 Function that generates tool definitions based on a prompt using OpenAI's API.
 '''
 def generate_tool_definitions(client, function):
-    with open('prompts/generator/tools.txt', 'r') as f:
+    with open('Tool_Descriptor_Gen/tools.txt', 'r') as f:
         generator_prompt = f.read()
     
     generator_messages = [

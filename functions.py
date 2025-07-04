@@ -26,6 +26,17 @@ def multiplication(multiplicand, multiplier):
     return multiplicand * multiplier
 
 
+
+
+def square_root(num):
+    """
+    Returns the square root of the input number.
+    """
+    if num < 0:
+        raise ValueError("Input number must be non-negative for square root calculation")
+    return num ** 0.5
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run a math function with two arguments")
     parser.add_argument("function_name", type=str, help="Name of the function to run (e.g., addition or subtraction)")

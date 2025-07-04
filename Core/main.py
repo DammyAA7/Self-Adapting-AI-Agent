@@ -27,7 +27,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "what is the square root of 25?"}
+        {"role": "user", "content": "what is the square root of 64?"}
     ]
     return tools, input_messages
     
@@ -66,7 +66,7 @@ def extract_numbers_from_args(function_args):
 def is_safe_function(function_name):
     """Check if function is safe to run via module import"""
     try:
-        with open('safeFunctions.json', 'r') as f:
+        with open('Utilities/safeFunctions.json', 'r') as f:
             safe_list = json.load(f)
         return function_name in safe_list['safe']
     except:

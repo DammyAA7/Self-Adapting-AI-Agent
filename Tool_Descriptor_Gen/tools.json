@@ -45,19 +45,23 @@
     {
         "type": "function",
         "function": {
-            "name": "multiplication",
-            "description": "Multiplies multiple numbers and returns the product.",
+            "name": "power",
+            "description": "Raises a base number to the power of multiple exponents and returns the result.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "numbers": {
+                    "base": {
+                        "type": "number",
+                        "description": "Base number."
+                    },
+                    "exponents": {
                         "type": "array",
                         "items": {"type": "number"},
-                        "description": "Array of numbers to multiply together.",
+                        "description": "Array of exponents to raise the base number to.",
                         "minItems": 1
                     }
                 },
-                "required": ["numbers"]
+                "required": ["base", "exponents"]
             }
         }
     }
@@ -66,17 +70,19 @@
     {
         "type": "function",
         "function": {
-            "name": "square_root",
-            "description": "Calculates the square root of a given number.",
+            "name": "cosine",
+            "description": "Calculates the cosine of multiple angles measured in degrees.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "num": {
-                        "type": "number",
-                        "description": "The number for which the square root will be calculated."
+                    "angles": {
+                        "type": "array",
+                        "items": {"type": "number"},
+                        "description": "Array of angles measured in degrees.",
+                        "minItems": 1
                     }
                 },
-                "required": ["num"]
+                "required": ["angles"]
             }
         }
     }

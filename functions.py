@@ -19,22 +19,26 @@ def subtraction(first, *rest):
 
 
 
-def multiplication(multiplicand, multiplier):
+
+def power(base, exponent):
     """
-    Returns the product of multiplicand and multiplier.
+    Raises a base number to the power of an exponent and returns the result.
     """
-    return multiplicand * multiplier
+    try:
+        return base ** exponent
+    except TypeError:
+        raise TypeError("Both base and exponent must be numbers")
 
 
 
 
-def square_root(num):
+import math
+
+def cosine(angle):
     """
-    Returns the square root of the input number.
+    Returns the cosine of an angle measured in degrees.
     """
-    if num < 0:
-        raise ValueError("Input number must be non-negative for square root calculation")
-    return num ** 0.5
+    return math.cos(math.radians(angle))
 
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@ def generate_function_code(client, function_requirement):
     ]
 
     generator_response = client.chat.completions.create(
-            model="gpt-3.5-turbo-0125",
+            model="o4-mini-2025-04-16",
             messages=generator_messages
         )
     

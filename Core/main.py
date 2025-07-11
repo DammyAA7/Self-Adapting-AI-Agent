@@ -7,10 +7,12 @@ from Adjudicator.adjudicator import adjudicate
 from Tool_Descriptor_Gen.toolGenerator import generate_tool_definitions
 from Prompt_Gen.promptGenerator import generateFunctionDescriptor
 from Utilities.performanceTester import performance_subprocess_call, performance_execute
+from Unit_Test.generator import generateTestCases
+from Unit_Test.unitTestHandler import generate_execute_unit_tests
+from dotenv import load_dotenv
+import anthropic
 
-os.environ["OPENAI_API_KEY"] = "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"
 
-# Define directory paths
 python_dir = '/usr/local/bin/python3'
 folder_dir = "/Users/oluwadamilola/Developer/Self Adapting AI Agent/" 
 
@@ -27,7 +29,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "what is the square root of 64?"}
+        {"role": "user", "content": "what is  cos 30 in degrees?"}
     ]
     return tools, input_messages
     
@@ -115,19 +117,28 @@ def execute_function(function_name, args):
 
 
 if __name__ == "__main__":
+    load_dotenv()
     restart = True
+    openai_api_key = os.getenv("OPENAI_API_KEY")
+    anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
+
+    openai_client = OpenAI(api_key=openai_api_key)
+    
+    anthropic_client = anthropic.Anthropic(api_key=anthropic_api_key)
+
+
     while(restart):
         tools, input_messages = setup_variables()
         # Assign OpenAI API key 
-        api_key = os.getenv("OPENAI_API_KEY")
-        client = OpenAI(api_key=api_key)
-        response = client.chat.completions.create(
-        model="gpt-4o",
+        
+        response = openai_client.chat.completions.create(
+        model="o3-2025-04-16",
         messages=input_messages,
         tools=tools,
         tool_choice="auto"
         )
         #check if model wants to use tools
+        reinforced_requirement  = ""
         if response.choices[0].message.tool_calls:
             tool_call = response.choices[0].message.tool_calls[0]
             function_name = tool_call.function.name
@@ -146,7 +157,7 @@ if __name__ == "__main__":
                 {"role": "tool", "content": str(output), "tool_call_id": tool_call.id}
             ]
             
-            final_response = client.chat.completions.create(
+            final_response = openai_client.chat.completions.create(
                 model="gpt-3.5-turbo-0125",
                 messages=messages_with_result,
                 tools=tools
@@ -156,25 +167,37 @@ if __name__ == "__main__":
         elif response.choices[0].message.content:
             # If the model did not call any tools, generate a function code
             function_requirement = response.choices[0].message.content
+            print("FUNCTION REQUIREMENT:", function_requirement)    
             
             # Generate the function code using the generator module
             print("Generating function code...")
-            function_code = generate_function_code(client, function_requirement)
+            function_code = generate_function_code(openai_client, reinforced_requirement + function_requirement)
+            print("Function code", function_code)
 
             #Generate tool definitions
-            tools_code = generate_tool_definitions(client, function_code)
+            tools_code = generate_tool_definitions(openai_client, function_code)
             
             #Generate the function descriptor
-            prompt_function_descriptor = generateFunctionDescriptor(client, function_code, tools_code)
+            prompt_function_descriptor = generateFunctionDescriptor(openai_client, function_code, tools_code)
 
-            adjudication_result = adjudicate(client, input_messages[1]['content'], function_requirement, function_code, tools_code, prompt_function_descriptor)
+            print("Running Unit Tests...")
+            # Generate unit tests using the generator module
+            write_to_file('python_function', 'Unit_Test/functions.py', function_code)
 
-            print("Adjudication Result:", adjudication_result)
+            unit_test_result = generate_execute_unit_tests(anthropic_client, function_requirement, python_dir, folder_dir)
+            
+            print("Results of Unit Tests:", unit_test_result)
+
+            adjudication_result = adjudicate(openai_client, unit_test_result)
+
+            print("Adjudication Result:", adjudication_result.judgement)
+            print("Requirement Suggestion:", adjudication_result.requirement_suggestion)
 
             #Code for adjudicator here
-            if adjudication_result.lower() == "true":
+            if adjudication_result.judgement:
                 write_to_file('python', 'functions.py', function_code)
                 write_to_file('json', 'Tool_Descriptor_Gen/tools.json', tools_code)
                 write_to_file('txt', 'Core/prompt.txt', prompt_function_descriptor)
-            
+            else:
+                reinforced_requirement = adjudication_result.requirement_suggestion
             print("Restarting the process...")

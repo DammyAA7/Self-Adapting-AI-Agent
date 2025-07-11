@@ -2,13 +2,17 @@
 
 """
 
+from pydantic import BaseModel
+
 # Read the new prompt from file
 with open('Adjudicator/adjudicator.txt', 'r') as f:
     adjudicator_prompt = f.read()
     
+class OutputStructure(BaseModel):
+    judgement: bool
+    requirement_suggestion: str
 
-
-def adjudicate(client, user_prompt, function_requirments, function_code, tool_descriptor, prompt_descriptor):
+def adjudicate(client, test_case_results):
     """
     Adjudicates the function code against the requirements and descriptors.
     
@@ -25,14 +29,13 @@ def adjudicate(client, user_prompt, function_requirments, function_code, tool_de
     """
     adjudicator_messages = [
         {"role": "system", "content": adjudicator_prompt},
-        {"role": "user", "content": f"User Prompt: {user_prompt}\n\nFunction Requirements: {function_requirments}\n\nFunction Code:\n{function_code}\n\nTool Descriptor: {tool_descriptor}\n\nPrompt Descriptor: {prompt_descriptor}"}
+        {"role": "user", "content": test_case_results}
     ]
 
-    adjudicator_response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=adjudicator_messages,
-        max_tokens=5,  # Limit tokens to force concise response
-        temperature=0  # Make response deterministic
+    adjudicator_response = client.responses.parse(
+        model="o4-mini-2025-04-16",
+        input=adjudicator_messages, 
+        text_format=OutputStructure
     )
 
-    return adjudicator_response.choices[0].message.content
+    return adjudicator_response.output_parsed

@@ -42,3 +42,16 @@ def write_to_file(type, file_path, content):
             
             with open(file_path, 'w') as f:
                 f.writelines(lines)
+    elif type == 'python_function':
+        with open(file_path, 'a') as f:
+            f.write(content)
+
+def clear_file(file_path):
+    """
+    Clears the content of the specified file.
+    
+    Args:
+        file_path (str): The path to the file to be cleared.
+    """
+    with open(file_path, 'w') as f:
+        f.write('')  # Write an empty string to clear the file

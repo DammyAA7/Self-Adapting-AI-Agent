@@ -87,4 +87,29 @@
         }
     }
 
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "division",
+            "description": "Divides the numerator by each of the subsequent denominators sequentially and returns the result.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "numerator": {
+                        "type": "number",
+                        "description": "The numerator value."
+                    },
+                    "denominators": {
+                        "type": "array",
+                        "items": {"type": "number"},
+                        "description": "Array of denominators to divide the numerator by.",
+                        "minItems": 1
+                    }
+                },
+                "required": ["numerator", "denominators"]
+            }
+        }
+    }
+
 ]

@@ -29,7 +29,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "what is  cos 30 in degrees?"}
+        {"role": "user", "content": "what is  6 divided by 2?"}
     ]
     return tools, input_messages
     

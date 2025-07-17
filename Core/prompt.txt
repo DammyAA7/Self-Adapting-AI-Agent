@@ -73,6 +73,25 @@ cosine(angle) - Returns the cosine of an angle measured in degrees.
     - "What is the cosine of 360 degrees?" → Use cosine(360)
 
 
+
+
+division(numerator, *denominators) - Divides the numerator by each of the subsequent denominators sequentially and returns the result.
+- Recognizable phrases: divide, division, numerator, denominator, quotient, division by zero, arithmetic operation
+- Examples:
+    - "Divide 10 by 2" → Use division(10, 2)
+    - "Calculate the quotient of 15 divided by 3" → Use division(15, 3)
+    - "Numerator 20 and denominators 5, 2" → Use division(20, 5, 2)
+    - "Division by zero with numerator 12" → Use division(12, 0)
+    - "Divide 8 by 2 and 4" → Use division(8, 2, 4)
+    - "Find the result of 25 divided by -5" → Use division(25, -5)
+    - "Perform the division operation with 30 and denominators 3, -2, 0.5" → Use division(30, 3, -2, 0.5)
+    - "Error scenario without any denominators" → Use division(7)
+    - "Calculate 100 divided by 5 and 0" → Use division(100, 5, 0)
+    - "Division of 16 by 4 and -2" → Use division(16, 4, -2)
+    - "Compute the quotient for 18 divided by 3 and 0.3" → Use division(18, 3, 0.3)
+    - "Division by denominators 6 and -3 after numerator 24" → Use division(24, 6, -3)
+
+
 ----
 
 BEHAVIOR RULES:

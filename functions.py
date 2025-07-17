@@ -41,6 +41,26 @@ def cosine(angle):
     return math.cos(math.radians(angle))
 
 
+
+
+def division(numerator, *denominators):
+    """
+    Divides the numerator by each of the subsequent denominators sequentially and returns the result.
+
+    Raises:
+        ValueError: If no denominators are provided.
+        ZeroDivisionError: If any denominator is zero.
+    """
+    if not denominators:
+        raise ValueError("At least one denominator must be provided")
+    result = numerator
+    for d in denominators:
+        if d == 0:
+            raise ZeroDivisionError("Division by zero is not allowed")
+        result /= d
+    return result
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run a math function with two arguments")
     parser.add_argument("function_name", type=str, help="Name of the function to run (e.g., addition or subtraction)")

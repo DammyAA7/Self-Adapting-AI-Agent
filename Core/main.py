@@ -6,9 +6,9 @@ from Utilities.write_to_file import write_to_file
 from Adjudicator.adjudicator import adjudicate
 from Tool_Descriptor_Gen.toolGenerator import generate_tool_definitions
 from Prompt_Gen.promptGenerator import generateFunctionDescriptor
-from Utilities.performanceTester import performance_subprocess_call, performance_execute
 from Unit_Test.generator import generateTestCases
 from Unit_Test.unitTestHandler import generate_execute_unit_tests
+from Utilities.execute_function import execute_function
 from dotenv import load_dotenv
 import anthropic
 
@@ -29,11 +29,11 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "what is  6 divided by 2?"}
+        {"role": "user", "content": "get new tires"}
     ]
     return tools, input_messages
-    
-def extract_numbers_from_args(function_args):
+
+def extract_from_args(function_args):
     """
     Extracts all numbers from function arguments, regardless of structure.
     
@@ -43,10 +43,10 @@ def extract_numbers_from_args(function_args):
     Returns:
         list: A flat list of all numbers found in the arguments
     """
-    numbers = ""
+    val = ""
     
     def extract_from_value(value):
-        nonlocal numbers
+        nonlocal val
         if isinstance(value, (int, float)):
             numbers += str(value) + ","
         elif isinstance(value, list):
@@ -60,61 +60,10 @@ def extract_numbers_from_args(function_args):
         extract_from_value(arg_value)
     
     # Remove trailing comma if it exists
-    if numbers and numbers.endswith(","):
-        numbers = numbers[:-1]
+    if val and val.endswith(","):
+        val = val[:-1]
     
-    return numbers
-
-def is_safe_function(function_name):
-    """Check if function is safe to run via module import"""
-    try:
-        with open('Utilities/safeFunctions.json', 'r') as f:
-            safe_list = json.load(f)
-        return function_name in safe_list['safe']
-    except:
-        # If file doesn't exist or error, default to unsafe
-        return False
-
-def add_safe_function(name):
-    """Add function to safe list"""
-    safe_factions_path = 'Utilities/safeFunctions.json'
-    try:
-        with open(safe_factions_path, 'r') as f:
-            data = json.load(f)
-    except:
-        data = {"safe": []}
-    
-    if name not in data['safe']:
-        data['safe'].append(name)
-        with open(safe_factions_path, 'w') as f:
-            json.dump(data, f, indent=2)
-        print(f"Added '{name}' to safe functions")
-    else:
-        print(f"'{name}' is already safe")
-
-
-def execute_function(function_name, args):
-    """Execute function using safe method (import) or unsafe method (subprocess)"""
-    is_safe = is_safe_function(function_name)
-    
-    if is_safe:
-        print(f"Executing {function_name} via MODULE IMPORT (safe)")
-        # Convert args string to actual arguments
-        arg_list = [float(x.strip()) for x in args.split(',') if x.strip()]
-        results = performance_execute(function_name, *arg_list)
-        return results, "safe"
-    else:
-        print(f"Executing {function_name} via SUBPROCESS (unsafe)")
-        results = performance_subprocess_call(function_name, args, python_dir, folder_dir)
-        
-        # If subprocess execution was successful, promote to safe
-        if results.get('result') is not None and 'Error:' not in str(results.get('result', '')):
-            print(f"Function {function_name} executed successfully via subprocess - promoting to safe")
-            add_safe_function(function_name)
-            return results, "promoted_to_safe"
-        else:
-            return results, "unsafe"
-
+    return val
 
 if __name__ == "__main__":
     load_dotenv()
@@ -143,10 +92,11 @@ if __name__ == "__main__":
             tool_call = response.choices[0].message.tool_calls[0]
             function_name = tool_call.function.name
             function_args = json.loads(tool_call.function.arguments)
-            args = extract_numbers_from_args(function_args)
             print(f"Model called tool: {function_name} with arguments: {function_args}")
+            args = extract_from_args(function_args)
+            print(f"Extracted args: {args}")
             
-            results, safetyType = execute_function(function_name, args)
+            results, safetyType = execute_function(function_name, function_args['todo_text'], tools)
             output = results['result']
             print(f"Output from {function_name}: {output}")
             print(f"Time: {results['execution_time']:.6f} seconds")
@@ -164,6 +114,7 @@ if __name__ == "__main__":
             )
             print("Final response:", final_response.choices[0].message.content)
             restart = False
+        """
         elif response.choices[0].message.content:
             # If the model did not call any tools, generate a function code
             function_requirement = response.choices[0].message.content
@@ -201,3 +152,4 @@ if __name__ == "__main__":
             else:
                 reinforced_requirement = adjudication_result.requirement_suggestion
             print("Restarting the process...")
+            """

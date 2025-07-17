@@ -1,115 +1,20 @@
 [
     {
-    "type": "function",
-    "function": {
-        "name": "addition",
-        "description": "Adds multiple numbers and returns the sum.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "numbers": {
-                    "type": "array",
-                    "items": {"type": "number"},
-                    "description": "Array of numbers to add together.",
-                    "minItems": 1
-                }
-            },
-            "required": ["numbers"]
-            }
-        }
-    },
-    {
-    "type": "function",
-    "function": {
-        "name": "subtraction",
-        "description": "Subtracts multiple numbers from the first number and returns the result.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "first": {
-                    "type": "number",
-                    "description": "The starting number from which other numbers will be subtracted."
-                },
-                "subtract": {
-                    "type": "array",
-                    "items": {"type": "number"},
-                    "description": "Array of numbers to subtract from the first number.",
-                    "minItems": 1
-                }
-            },
-            "required": ["first", "subtract"]
-            }
-        }
-    }
-,
-    {
         "type": "function",
         "function": {
-            "name": "power",
-            "description": "Raises a base number to the power of multiple exponents and returns the result.",
+            "name": "add_todo",
+            "description": "Adds a new todo item to the todo.csv file with auto-generated ID, timestamp, and pending status.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "base": {
-                        "type": "number",
-                        "description": "Base number."
-                    },
-                    "exponents": {
-                        "type": "array",
-                        "items": {"type": "number"},
-                        "description": "Array of exponents to raise the base number to.",
-                        "minItems": 1
+                    "todo_text": {
+                        "type": "string",
+                        "description": "The text content of the todo item to be added.",
+                        "minLength": 1
                     }
                 },
-                "required": ["base", "exponents"]
+                "required": ["todo_text"]
             }
         }
     }
-
-,
-    {
-        "type": "function",
-        "function": {
-            "name": "cosine",
-            "description": "Calculates the cosine of multiple angles measured in degrees.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "angles": {
-                        "type": "array",
-                        "items": {"type": "number"},
-                        "description": "Array of angles measured in degrees.",
-                        "minItems": 1
-                    }
-                },
-                "required": ["angles"]
-            }
-        }
-    }
-
-,
-    {
-        "type": "function",
-        "function": {
-            "name": "division",
-            "description": "Divides the numerator by each of the subsequent denominators sequentially and returns the result.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "numerator": {
-                        "type": "number",
-                        "description": "The numerator value."
-                    },
-                    "denominators": {
-                        "type": "array",
-                        "items": {"type": "number"},
-                        "description": "Array of denominators to divide the numerator by.",
-                        "minItems": 1
-                    }
-                },
-                "required": ["numerator", "denominators"]
-            }
-        }
-    }
-
 ]

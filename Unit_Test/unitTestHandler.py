@@ -8,7 +8,7 @@ def generate_execute_unit_tests(client, function_requirement, python_path, folde
     Executes unit tests for the given function requirement using the OpenAI client.
     
     Args:
-        client: An instance of the OpenAI client.
+        client: An instance of the Anthropic client.
         function_requirement: A string describing the function requirement for which to generate unit tests.
         
     Returns:

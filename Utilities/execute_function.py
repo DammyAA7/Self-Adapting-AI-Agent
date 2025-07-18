@@ -28,14 +28,49 @@ def add_safe_function(name):
     else:
         print(f"'{name}' is already safe")
 
+def extract_from_args(function_args):
+    """
+    Extracts all numbers from function arguments, regardless of structure.
+    
+    Args:
+        function_args (dict): The function arguments dictionary
+        
+    Returns:
+        list: A flat list of all numbers found in the arguments
+    """
+    val = ""
+    
+    def extract_from_value(value):
+        nonlocal val
+        if isinstance(value, (int, float)):
+            val += str(value) + ","
+        elif isinstance(value, list):
+            for item in value:
+                extract_from_value(item)
+        elif isinstance(value, str):
+            val += value + ","
+        elif isinstance(value, dict):
+            for v in value.values():
+                extract_from_value(v)
+    
+    for arg_value in function_args.values():
+        extract_from_value(arg_value)
+    
+    # Remove trailing comma if it exists
+    if val and val.endswith(","):
+        val = val[:-1]
+    
+    return val
 
-def execute_function(function_name, args, function_definitions):
+
+
+def execute_function(function_name, function_args, function_definitions):
 
     python_dir = '/usr/local/bin/python3'
     folder_dir = "/Users/oluwadamilola/Developer/Self Adapting AI Agent/" 
     """Execute function using safe method (import) or unsafe method (subprocess)"""
     is_safe = is_safe_function(function_name)
-    
+    args = extract_from_args(function_args)
     if is_safe:
         print(f"Executing {function_name} via MODULE IMPORT (safe)")
         func_def = None

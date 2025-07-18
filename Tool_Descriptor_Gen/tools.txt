@@ -1,14 +1,18 @@
-You are tasked with converting Python function code into OpenAI function tool descriptors. Given a Python function, you must extract the function name, description, and parameters to create a properly formatted JSON tool descriptor that supports multiple arguments.
+You are tasked with converting Python function code into OpenAI function tool descriptors. Given a Python function, you must extract the function name, description, and parameters to create a properly formatted JSON tool descriptor that supports the appropriate parameter types for task management operations.
 
 Instructions
 1. Extract the function name from the `def` statement
 2. Use the docstring as the function description. If no docstring exists, create a clear, concise description based on the function name and parameters
 3. Analyze the function parameters and their types
-4. For functions that can accept multiple arguments of the same type, use an array parameter instead of individual parameters
+4. For todo management functions, preserve parameter structure that matches the logical operation:
+   - Single string parameters for todo text content
+   - Single numeric parameters for todo IDs
+   - Array parameters only when the function logically processes multiple items
 5. Create parameter descriptions based on parameter names and context
 6. Mark all parameters as required unless they have default values
-7. Use "number" type for numeric parameters, "string" for text, "boolean" for true/false, etc.
+7. Use "number" type for numeric parameters (IDs, counts), "string" for text content, "boolean" for true/false, etc.
 8. For array parameters, include `"minItems": 1` to ensure at least one item is provided
+9. Add appropriate string length constraints for text parameters (e.g., `"minLength": 1` for non-empty strings)
 
 Output Format
 Return a JSON object following this exact structure:
@@ -16,15 +20,14 @@ Return a JSON object following this exact structure:
     "type": "function",
     "function": {
         "name": "function_name",
-        "description": "Clear description of what the function does with multiple arguments.",
+        "description": "Clear description of what the function does.",
         "parameters": {
             "type": "object",
             "properties": {
                 "param_name": {
-                    "type": "array",
-                    "items": {"type": "parameter_type"},
-                    "description": "Description of this parameter array.",
-                    "minItems": 1
+                    "type": "parameter_type",
+                    "description": "Description of this parameter.",
+                    "minLength": 1
                 }
             },
             "required": ["list", "of", "required", "parameters"]
@@ -33,38 +36,50 @@ Return a JSON object following this exact structure:
 }
 
 Example Input
-def addition(a, b):
+def add_todo(todo_text):
     """
-    Returns the sum of a and b.
+    Adds a new todo item to the todo.csv file with auto-generated ID, timestamp, and pending status.
     """
-    return a + b
-
+    # Implementation here
+    pass
 
 Example Output
 {
     "type": "function",
     "function": {
-        "name": "addition",
-        "description": "Adds multiple numbers and returns the sum.",
+        "name": "add_todo",
+        "description": "Adds a new todo item to the todo.csv file with auto-generated ID, timestamp, and pending status.",
         "parameters": {
             "type": "object",
             "properties": {
-                "numbers": {
-                    "type": "array",
-                    "items": {"type": "number"},
-                    "description": "Array of numbers to add together.",
-                    "minItems": 1
+                "todo_text": {
+                    "type": "string",
+                    "description": "The text content of the todo item to be added.",
+                    "minLength": 1
                 }
             },
-            "required": ["numbers"]
+            "required": ["todo_text"]
         }
     }
 }
 
-Special Cases
-- For mathematical operations (addition, subtraction, multiplication, division), always use array parameters to support multiple operands
-- For subtraction, use separate parameters: `first` (the starting number) and `subtract` (array of numbers to subtract)
-- For functions with mixed parameter types, only convert similar parameters to arrays
-- Preserve the original parameter structure for functions that logically require distinct individual parameters
+Special Cases for Todo Functions
+- **add_todo**: Single string parameter for todo text content
+- **complete_todo**: Single numeric parameter for todo ID
+- **delete_todo**: Single numeric parameter for todo ID
+- **update_todo**: Two parameters - numeric ID and string text
+- **search_todos**: Single string parameter for search term
+- **filter_todos**: Single string parameter for status filter
+- **list_todos**: No parameters or optional string parameter for status filter
+- **batch_add_todos**: Array parameter for multiple todo texts
+- **batch_complete_todos**: Array parameter for multiple todo IDs
+
+Parameter Type Guidelines
+- Todo IDs: `"type": "number"` (integers)
+- Todo text content: `"type": "string"` with `"minLength": 1`
+- Status filters: `"type": "string"` with enum values if applicable
+- Search terms: `"type": "string"` with `"minLength": 1`
+- Boolean flags: `"type": "boolean"`
+- Multiple todos: `"type": "array"` with appropriate item types
 
 Return only the JSON tool descriptor, no additional text or explanation.

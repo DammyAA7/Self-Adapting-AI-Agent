@@ -29,41 +29,9 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "get new tires"}
+        {"role": "user", "content": "list all my todos"}
     ]
     return tools, input_messages
-
-def extract_from_args(function_args):
-    """
-    Extracts all numbers from function arguments, regardless of structure.
-    
-    Args:
-        function_args (dict): The function arguments dictionary
-        
-    Returns:
-        list: A flat list of all numbers found in the arguments
-    """
-    val = ""
-    
-    def extract_from_value(value):
-        nonlocal val
-        if isinstance(value, (int, float)):
-            numbers += str(value) + ","
-        elif isinstance(value, list):
-            for item in value:
-                extract_from_value(item)
-        elif isinstance(value, dict):
-            for v in value.values():
-                extract_from_value(v)
-    
-    for arg_value in function_args.values():
-        extract_from_value(arg_value)
-    
-    # Remove trailing comma if it exists
-    if val and val.endswith(","):
-        val = val[:-1]
-    
-    return val
 
 if __name__ == "__main__":
     load_dotenv()
@@ -75,6 +43,7 @@ if __name__ == "__main__":
     
     anthropic_client = anthropic.Anthropic(api_key=anthropic_api_key)
 
+    reinforced_requirement  = ""
 
     while(restart):
         tools, input_messages = setup_variables()
@@ -82,21 +51,19 @@ if __name__ == "__main__":
         
         response = openai_client.chat.completions.create(
         model="o3-2025-04-16",
-        messages=input_messages,
+        messages= input_messages + ([{"role": "user", "content": f"Reinforced requirment: {reinforced_requirement}"}] if reinforced_requirement else []),
         tools=tools,
         tool_choice="auto"
         )
         #check if model wants to use tools
-        reinforced_requirement  = ""
+        
         if response.choices[0].message.tool_calls:
             tool_call = response.choices[0].message.tool_calls[0]
             function_name = tool_call.function.name
             function_args = json.loads(tool_call.function.arguments)
             print(f"Model called tool: {function_name} with arguments: {function_args}")
-            args = extract_from_args(function_args)
-            print(f"Extracted args: {args}")
             
-            results, safetyType = execute_function(function_name, function_args['todo_text'], tools)
+            results, safetyType = execute_function(function_name, function_args, tools)
             output = results['result']
             print(f"Output from {function_name}: {output}")
             print(f"Time: {results['execution_time']:.6f} seconds")
@@ -114,7 +81,6 @@ if __name__ == "__main__":
             )
             print("Final response:", final_response.choices[0].message.content)
             restart = False
-        """
         elif response.choices[0].message.content:
             # If the model did not call any tools, generate a function code
             function_requirement = response.choices[0].message.content
@@ -122,7 +88,7 @@ if __name__ == "__main__":
             
             # Generate the function code using the generator module
             print("Generating function code...")
-            function_code = generate_function_code(openai_client, reinforced_requirement + function_requirement)
+            function_code = generate_function_code(openai_client, function_requirement)
             print("Function code", function_code)
 
             #Generate tool definitions
@@ -130,7 +96,7 @@ if __name__ == "__main__":
             
             #Generate the function descriptor
             prompt_function_descriptor = generateFunctionDescriptor(openai_client, function_code, tools_code)
-
+    
             print("Running Unit Tests...")
             # Generate unit tests using the generator module
             write_to_file('python_function', 'Unit_Test/functions.py', function_code)
@@ -138,7 +104,7 @@ if __name__ == "__main__":
             unit_test_result = generate_execute_unit_tests(anthropic_client, function_requirement, python_dir, folder_dir)
             
             print("Results of Unit Tests:", unit_test_result)
-
+            
             adjudication_result = adjudicate(openai_client, unit_test_result)
 
             print("Adjudication Result:", adjudication_result.judgement)
@@ -152,4 +118,3 @@ if __name__ == "__main__":
             else:
                 reinforced_requirement = adjudication_result.requirement_suggestion
             print("Restarting the process...")
-            """

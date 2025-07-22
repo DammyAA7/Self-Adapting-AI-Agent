@@ -11,6 +11,11 @@
                         "type": "string",
                         "description": "The text content of the todo item to be added.",
                         "minLength": 1
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The file path to the todo.csv file. If not provided, the default path will be used.",
+                        "minLength": 1
                     }
                 },
                 "required": ["todo_text"]
@@ -22,66 +27,21 @@
         "type": "function",
         "function": {
             "name": "complete_todo",
-            "description": "Marks a specific todo item as completed by its ID.",
+            "description": "Marks a specified todo item as completed in the todo.csv file. Returns True on successful update, False if the todo is already completed. Raises ValueError if the todo ID does not exist.",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "todo_id": {
                         "type": "number",
-                        "description": "The ID of the todo item to be marked as completed."
+                        "description": "The ID of the todo item to mark as completed."
                     },
                     "path": {
                         "type": "string",
-                        "description": "The file path to the todo.csv file. If not provided, the default path will be used.",
+                        "description": "Optional path to the todo file. If not provided, defaults to 'todo.csv'.",
                         "minLength": 1
                     }
                 },
                 "required": ["todo_id"]
-            }
-        }
-    }
-
-,
-    {
-        "type": "function",
-        "function": {
-            "name": "delete_todo",
-            "description": "Removes a specific todo item from the todo.csv file by its ID. Returns True if deletion was successful. Raises ValueError if ID not found or invalid, FileNotFoundError if file missing.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "todo_id": {
-                        "type": "number",
-                        "description": "The ID of the todo item to be deleted."
-                    },
-                    "path": {
-                        "type": "string",
-                        "description": "The path to the todo.csv file. If not provided, defaults to the file_path or 'todo.csv'.",
-                        "default": "todo.csv",
-                        "minLength": 1
-                    }
-                },
-                "required": ["todo_id"]
-            }
-        }
-    }
-
-,
-    {
-        "type": "function",
-        "function": {
-            "name": "list_todos",
-            "description": "Returns all todo items from the todo.csv file. Parses the file robustly: IDs as strings, raises FileNotFoundError if missing,  raises exception containing 'malformed' for invalid CSV structure, and ensures no None entries are returned.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "path": {
-                        "type": "string",
-                        "description": "The path to the todo.csv file. If not provided, looks for 'todo.csv' in the current directory.",
-                        "minLength": 1
-                    }
-                },
-                "required": []
             }
         }
     }

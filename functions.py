@@ -48,121 +48,51 @@ def add_todo(todo_text, path=None):
 
 
 
-
 import csv
 import datetime
 import os
 
 def complete_todo(todo_id, path=None):
     """
-    Marks a specific todo item as completed by its ID.
+    Marks a specified todo item as completed in the todo.csv file.
+    Returns True on successful update, False if the todo is already completed.
+    Raises ValueError if the todo ID does not exist.
     """
-    file_path = path if path else globals().get('file_path', 'todo.csv')
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(f"No such file: '{file_path}'")
-    todos = []
-    updated_todo = None
-    with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
-        reader = csv.DictReader(csvfile)
-        fieldnames = reader.fieldnames
-        for row in reader:
-            if not row.get('id') or not row.get('status'):
-                continue
-            try:
-                current_id = int(row['id'])
-            except ValueError:
-                continue
-            if current_id == todo_id:
-                if row['status'] != 'completed':
-                    row['status'] = 'completed'
-                    row['completed_at'] = datetime.datetime.now().isoformat()
-                updated_todo = {
-                    'id': current_id,
-                    'text': row.get('text', ''),
-                    'status': row['status'],
-                    'created_at': row.get('created_at', ''),
-                    'completed_at': row.get('completed_at', '')
-                }
-            todos.append(row)
-    if updated_todo is None:
-        raise ValueError(f"Todo with ID {todo_id} not found.")
-    with open(file_path, mode='w', newline='', encoding='utf-8') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(todos)
-    return updated_todo
-
-
-
-
-import csv
-import os
-
-def delete_todo(todo_id, path=None):
-    """
-    Removes a specific todo item from the todo.csv file by its ID.
-    Returns True if deletion was successful.
-    Raises ValueError if ID not found or invalid, FileNotFoundError if file missing.
-    """
-    file_path = path if path else globals().get('file_path', 'todo.csv')
     if not isinstance(todo_id, int):
         raise ValueError("todo_id must be an integer")
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(f"No todo file found at {file_path}")
-    todos = []
-    deleted = False
-    with open(file_path, newline='', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            try:
-                row_id = int(row.get('id', -1))
-            except ValueError:
-                row_id = None
-            if row_id == todo_id:
-                deleted = True
-                continue
-            todos.append(row)
-    if not deleted:
-        raise ValueError(f"Todo with ID {todo_id} not found")
-    with open(file_path, 'w', newline='', encoding='utf-8') as f:
-        fieldnames = ['id', 'text', 'status', 'created_at', 'completed_at']
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(todos)
-    return True
-
-
-
-
-import csv
-import os
-
-def list_todos(path=None):
-    """
-    Returns all todo items from the todo.csv file.
-
-    Parses the file robustly: IDs as strings, raises FileNotFoundError if missing,
-    raises exception containing 'malformed' for invalid CSV structure,
-    and ensures no None entries are returned.
-    """
     file_path = path if path else globals().get('file_path', 'todo.csv')
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Todo file not found: {file_path}")
     todos = []
+    found = False
+    updated = False
     try:
-        with open(file_path, newline='', encoding='utf-8') as csvfile:
+        with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
-            required_fields = ['id', 'text', 'status', 'created_at', 'completed_at']
-            if reader.fieldnames is None or any(field not in reader.fieldnames for field in required_fields):
-                raise Exception("malformed CSV: missing required columns")
             for row in reader:
-                if any(row.get(field) is None for field in required_fields):
-                    raise Exception("malformed CSV: None entries in row")
-                todo = {field: row[field] for field in required_fields}
-                todos.append(todo)
-    except csv.Error as e:
-        raise Exception("malformed CSV: " + str(e))
-    return todos
+                if row.get('id') == str(todo_id):
+                    found = True
+                    if row.get('status') == 'completed':
+                        return False
+                    row['status'] = 'completed'
+                    row['completed_at'] = datetime.datetime.now().isoformat()
+                    updated = True
+                todos.append(row)
+    except Exception as e:
+        raise IOError(f"Error reading todo file: {e}")
+    if not found:
+        raise ValueError(f"Todo with ID {todo_id} not found")
+    if updated:
+        fieldnames = ['id', 'text', 'status', 'created_at', 'completed_at']
+        try:
+            with open(file_path, mode='w', newline='', encoding='utf-8') as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(todos)
+        except Exception as e:
+            raise IOError(f"Error writing todo file: {e}")
+        return True
+    return False
 
 
 if __name__ == "__main__":

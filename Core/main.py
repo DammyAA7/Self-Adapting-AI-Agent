@@ -1,5 +1,6 @@
 import os
 from openai import OpenAI
+import anthropic
 import json
 from Function_Gen.generator import generate_function_code
 from Utilities.write_to_file import write_to_file
@@ -10,7 +11,8 @@ from Unit_Test.generator import generateTestCases
 from Unit_Test.unitTestHandler import generate_execute_unit_tests
 from Utilities.execute_function import execute_function
 from dotenv import load_dotenv
-import anthropic
+from Impact_Analysis.analyze import analyze
+
 
 
 python_dir = '/usr/local/bin/python3'
@@ -29,7 +31,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "list all my todos"}
+        {"role": "user", "content": "mark todo 1 as done"}
     ]
     return tools, input_messages
 
@@ -84,8 +86,17 @@ if __name__ == "__main__":
         elif response.choices[0].message.content:
             # If the model did not call any tools, generate a function code
             function_requirement = response.choices[0].message.content
-            print("FUNCTION REQUIREMENT:", function_requirement)    
-            
+            print("FUNCTION REQUIREMENT:", function_requirement)
+
+            """
+            analyze_code = analyze(openai_client, function_requirement)     
+            print("Analysis Result:", analyze_code.judgement)
+            print("Function Name:", analyze_code.func_name)
+            print("Function Edit:", analyze_code.function_edit)
+
+            restart = False
+
+            """
             # Generate the function code using the generator module
             print("Generating function code...")
             function_code = generate_function_code(openai_client, function_requirement)

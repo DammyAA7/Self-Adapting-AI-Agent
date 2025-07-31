@@ -25,35 +25,6 @@ add_todo(todo_text) - Adds a new todo item to the todo.csv file with auto-genera
         - "Create task walk the dog" → Use add_todo("walk the dog")
         - "Add: prepare presentation slides" → Use add_todo("prepare presentation slides")
 
-
-
-
-
-
-
-
-
-
-
-
-
-complete_todo(todo_id, path=None) - Marks a specified todo item as completed in the todo.csv file. Returns True on successful update, False if the todo is already completed. Raises ValueError if the todo ID does not exist.
-- Recognizable phrases: mark as completed, todo item, todo.csv file, update, raise ValueError, file not found
-- Examples:
-    - "Mark todo item 5 as completed" → complete_todo(5)
-    - "Complete the task with ID 12" → complete_todo(12)
-    - "Update todo item 3 in the list" → complete_todo(3)
-    - "Mark the to-do as done" → complete_todo(1)
-    - "Indicate task 7 is finished" → complete_todo(7)
-    - "Complete the job noted as 9" → complete_todo(9)
-    - "Mark todo item 2 in the file" → complete_todo(2)
-    - "Mark task 4 as completed in the todo list" → complete_todo(4)
-    - "Try to complete item 10" → complete_todo(10)
-    - "Update the todo with ID 8" → complete_todo(8)
-    - "Complete todo number 6" → complete_todo(6)
-    - "Mark as done the task with ID 15" → complete_todo(15)
-
-
 ----
 
 BEHAVIOR RULES:

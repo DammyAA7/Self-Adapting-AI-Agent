@@ -10,7 +10,8 @@ with open('Adjudicator/adjudicator.txt', 'r') as f:
     
 class OutputStructure(BaseModel):
     judgement: bool
-    requirement_suggestion: str
+    code_requirement_suggestion: str
+    unit_requirement_suggestion: str
 
 def adjudicate(client, test_case_results):
     """
@@ -29,7 +30,8 @@ def adjudicate(client, test_case_results):
     """
     adjudicator_messages = [
         {"role": "system", "content": adjudicator_prompt},
-        {"role": "user", "content": test_case_results}
+        {"role": "user", "content": test_case_results},
+        
     ]
 
     adjudicator_response = client.responses.parse(

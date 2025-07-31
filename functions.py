@@ -2,8 +2,17 @@ import argparse
 import csv
 import os
 import datetime
+from enum import Enum
 
+class Status(Enum):
+    PENDING = "pending"
+    IN_PROGRESS = "in_progress"
+    COMPLETED = "completed"
 
+class Priority(Enum):
+    LOW = "low"
+    MEDIUM = "medium"
+    HIGH = "high"
 
 def add_todo(todo_text, path=None):
   """Add a new todo item to the todo.csv file"""
@@ -13,7 +22,7 @@ def add_todo(todo_text, path=None):
   file_exists = os.path.exists(file_path)
   
   with open(file_path, 'a', newline='', encoding='utf-8') as csvfile:
-    fieldnames = ['id', 'todo', 'status', 'created_at', 'completed_at']
+    fieldnames = ['id', 'todo', 'status', 'priority', 'created_at', 'completed_at']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     
     # Write header if file is new
@@ -38,62 +47,14 @@ def add_todo(todo_text, path=None):
     writer.writerow({
       'id': todo_id,
       'todo': todo_text,
-      'status': 'pending',
+      'status': Status.PENDING.value,
+      'priority': Priority.MEDIUM.value,
       'created_at': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
       'completed_at': ''
     })
   
   print(f"Todo added successfully with ID: {todo_id}")
   return todo_id
-
-
-
-import csv
-import datetime
-import os
-
-def complete_todo(todo_id, path=None):
-    """
-    Marks a specified todo item as completed in the todo.csv file.
-    Returns True on successful update, False if the todo is already completed.
-    Raises ValueError if the todo ID does not exist.
-    """
-    if not isinstance(todo_id, int):
-        raise ValueError("todo_id must be an integer")
-    file_path = path if path else globals().get('file_path', 'todo.csv')
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(f"Todo file not found: {file_path}")
-    todos = []
-    found = False
-    updated = False
-    try:
-        with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                if row.get('id') == str(todo_id):
-                    found = True
-                    if row.get('status') == 'completed':
-                        return False
-                    row['status'] = 'completed'
-                    row['completed_at'] = datetime.datetime.now().isoformat()
-                    updated = True
-                todos.append(row)
-    except Exception as e:
-        raise IOError(f"Error reading todo file: {e}")
-    if not found:
-        raise ValueError(f"Todo with ID {todo_id} not found")
-    if updated:
-        fieldnames = ['id', 'text', 'status', 'created_at', 'completed_at']
-        try:
-            with open(file_path, mode='w', newline='', encoding='utf-8') as csvfile:
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(todos)
-        except Exception as e:
-            raise IOError(f"Error writing todo file: {e}")
-        return True
-    return False
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run any available function dynamically")

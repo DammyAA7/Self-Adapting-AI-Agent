@@ -22,28 +22,4 @@
             }
         }
     }
-,
-    {
-        "type": "function",
-        "function": {
-            "name": "complete_todo",
-            "description": "Marks a specified todo item as completed in the todo.csv file. Returns True on successful update, False if the todo is already completed. Raises ValueError if the todo ID does not exist.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "todo_id": {
-                        "type": "number",
-                        "description": "The ID of the todo item to mark as completed."
-                    },
-                    "path": {
-                        "type": "string",
-                        "description": "Optional path to the todo file. If not provided, defaults to 'todo.csv'.",
-                        "minLength": 1
-                    }
-                },
-                "required": ["todo_id"]
-            }
-        }
-    }
-
 ]

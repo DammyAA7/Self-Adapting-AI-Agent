@@ -96,12 +96,36 @@ def execute_function(function_name, function_args, function_definitions):
                 arg_list = [args]
             elif param_type == "number":
                 # Single number parameter
-                arg_list = [float(args.strip())]
+                stripped_arg = args.strip()
+                # Check if the number is an integer or float
+                if '.' in stripped_arg:
+                    arg_list = [float(stripped_arg)]
+                else:
+                    try:
+                        arg_list = [int(stripped_arg)]
+                    except ValueError:
+                        # Fallback to float if conversion fails
+                        arg_list = [float(stripped_arg)]
             elif param_type == "array":
                 # Array parameter - split by comma and convert based on items type
                 items_type = properties[param_name]["items"]["type"]
                 if items_type == "number":
-                    arg_list = [float(x.strip()) for x in args.split(',') if x.strip()]
+                    # Process each number in the array, handling integers and floats differently
+                    processed_args = []
+                    for x in args.split(','):
+                        if x.strip():
+                            num_str = x.strip()
+                            if '.' in num_str:
+                                # It's a float
+                                processed_args.append(float(num_str))
+                            else:
+                                try:
+                                    # Try to convert to integer
+                                    processed_args.append(int(num_str))
+                                except ValueError:
+                                    # Fallback to float if conversion fails
+                                    processed_args.append(float(num_str))
+                    arg_list = processed_args
                 elif items_type == "string":
                     arg_list = [x.strip() for x in args.split(',') if x.strip()]
         
@@ -118,13 +142,32 @@ def execute_function(function_name, function_args, function_definitions):
                     param_type = properties[param_name]["type"]
                     
                     if param_type == "number" and i < len(raw_args):
-                        arg_list.append(float(raw_args[i]))
+                        num_str = raw_args[i]
+                        if '.' in num_str:
+                            # It's a float
+                            arg_list.append(float(num_str))
+                        else:
+                            try:
+                                # Try to convert to integer
+                                arg_list.append(int(num_str))
+                            except ValueError:
+                                # Fallback to float if conversion fails
+                                arg_list.append(float(num_str))
                     elif param_type == "array" and i < len(raw_args):
                         # Remaining args go to the array parameter
                         remaining_args = raw_args[i:]
                         items_type = properties[param_name]["items"]["type"]
                         if items_type == "number":
-                            arg_list.append([float(x) for x in remaining_args])
+                            processed_args = []
+                            for x in remaining_args:
+                                if '.' in x:
+                                    processed_args.append(float(x))
+                                else:
+                                    try:
+                                        processed_args.append(int(x))
+                                    except ValueError:
+                                        processed_args.append(float(x))
+                            arg_list.append(processed_args)
                         elif items_type == "string":
                             arg_list.append(remaining_args)
                         break
@@ -136,7 +179,16 @@ def execute_function(function_name, function_args, function_definitions):
                 if param_type == "string":
                     arg_list = [args]
                 elif param_type == "number":
-                    arg_list = [float(args.strip())]
+                    stripped_arg = args.strip()
+                    # Check if the number is an integer or float
+                    if '.' in stripped_arg:
+                        arg_list = [float(stripped_arg)]
+                    else:
+                        try:
+                            arg_list = [int(stripped_arg)]
+                        except ValueError:
+                            # Fallback to float if conversion fails
+                            arg_list = [float(stripped_arg)]
         
         results = performance_execute(function_name, *arg_list)
         return results, "safe"
@@ -146,7 +198,6 @@ def execute_function(function_name, function_args, function_definitions):
         
         # If subprocess execution was successful, promote to safe
         if results.get('result') is not None and 'Error:' not in str(results.get('result', '')):
-            print(f"Function {function_name} executed successfully via subprocess - promoting to safe")
             add_safe_function(function_name)
             return results, "promoted_to_safe"
         else:

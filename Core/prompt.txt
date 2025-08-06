@@ -25,6 +25,26 @@ add_todo(todo_text) - Adds a new todo item to the todo.csv file with auto-genera
         - "Create task walk the dog" → Use add_todo("walk the dog")
         - "Add: prepare presentation slides" → Use add_todo("prepare presentation slides")
 
+
+
+
+delete_todo(todo_id, path=None) - Delete a todo item from the CSV file by its ID. Returns True if successful, False otherwise.
+- Recognizable phrases: delete, todo item, CSV file, ID, successful, False, path
+- Examples:
+    - "Delete todo item with ID 5" → delete_todo(5)
+    - "Remove task ID 12 from the list" → delete_todo(12)
+    - "Delete todo with ID 3 from the file" → delete_todo(3)
+    - "Erase item 1 from the CSV" → delete_todo(1)
+    - "Delete task number 8 using default path" → delete_todo(8)
+    - "Try removing item with ID 0" → delete_todo(0)
+    - "Delete to-do item using a custom path" → delete_todo(7, 'custom_todo.csv')
+    - "Remove a task with ID 2 without specifying path" → delete_todo(2)
+    - "Erase item number 6 from the file path provided" → delete_todo(6, 'my_todos.csv')
+    - "Delete task 10 from the todo list with ID" → delete_todo(10)
+    - "Try deleting an item with negative ID" → delete_todo(-3)
+    - "Remove todo with ID 4 and check for success" → delete_todo(4)
+
+
 ----
 
 BEHAVIOR RULES:

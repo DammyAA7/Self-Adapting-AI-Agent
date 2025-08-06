@@ -56,6 +56,87 @@ def add_todo(todo_text, path=None):
   print(f"Todo added successfully with ID: {todo_id}")
   return todo_id
 
+
+
+
+import csv
+import os
+
+def delete_todo(todo_id, path=None):
+    """
+    Delete a todo item from the CSV file by its ID.
+    Returns True if successful, False otherwise.
+    """
+    file_path = path if path else globals().get('file_path', 'todo.csv')
+    
+    # Handle None input
+    if todo_id is None:
+        return False
+    
+    # Try to convert todo_id to integer
+    try:
+        if isinstance(todo_id, str):
+            if todo_id.strip() == "":
+                return False
+            # Handle string float conversion
+            todo_id = int(float(todo_id))
+        elif isinstance(todo_id, float):
+            todo_id = int(todo_id)
+        elif not isinstance(todo_id, int):
+            return False
+    except (ValueError, TypeError):
+        return False
+    
+    # Handle negative or zero IDs
+    if todo_id <= 0:
+        return False
+    
+    # Check if file exists
+    if not os.path.exists(file_path):
+        return False
+    
+    try:
+        # Read all todos
+        todos = []
+        found = False
+        
+        with open(file_path, 'r', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            fieldnames = reader.fieldnames
+            
+            # Check if required fieldnames exist
+            if not fieldnames or 'id' not in fieldnames:
+                return False
+            
+            for row in reader:
+                try:
+                    row_id = int(row['id'])
+                    if row_id == todo_id:
+                        found = True
+                        # Skip this row (delete it)
+                        continue
+                    else:
+                        todos.append(row)
+                except (ValueError, KeyError):
+                    # Keep malformed rows
+                    todos.append(row)
+        
+        if not found:
+            return False
+        
+        # Write back the remaining todos
+        with open(file_path, 'w', newline='', encoding='utf-8') as csvfile:
+            if fieldnames:
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(todos)
+        
+        return True
+        
+    except (IOError, csv.Error):
+        return False
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run any available function dynamically")
     parser.add_argument("function_name", type=str, help="Name of the function to run")

@@ -1,0 +1,90 @@
+import argparse
+
+def addition(*args):
+  """
+  Returns the sum of all arguments.
+  """
+  return sum(args)
+
+def subtraction(first, *rest):
+  """
+  Returns the result of subtracting all subsequent arguments from the first.
+  """
+  result = first
+  for num in rest:
+    result -= num
+  return result
+
+
+
+
+
+
+def power(base, exponent):
+    """
+    Raises a base number to the power of an exponent and returns the result.
+    """
+    try:
+        return base ** exponent
+    except TypeError:
+        raise TypeError("Both base and exponent must be numbers")
+
+
+
+
+import math
+
+def cosine(angle):
+    """
+    Returns the cosine of an angle measured in degrees.
+    """
+    return math.cos(math.radians(angle))
+
+
+
+
+def division(numerator, *denominators):
+    """
+    Divides the numerator by each of the subsequent denominators sequentially and returns the result.
+
+    Raises:
+        ValueError: If no denominators are provided.
+        ZeroDivisionError: If any denominator is zero.
+    """
+    if not denominators:
+        raise ValueError("At least one denominator must be provided")
+    result = numerator
+    for d in denominators:
+        if d == 0:
+            raise ZeroDivisionError("Division by zero is not allowed")
+        result /= d
+    return result
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Run a math function with two arguments")
+    parser.add_argument("function_name", type=str, help="Name of the function to run (e.g., addition or subtraction)")
+    parser.add_argument("args", type=str, help="Comma-separated arguments (e.g., 1,34)")
+
+    args = parser.parse_args()
+    func_name = args.function_name
+    # Try to convert each argument to int first, if that fails use float
+    arg_list = []
+    for x in args.args.split(","):
+      x = x.strip()
+      try:
+        arg_list.append(int(x))
+      except ValueError:
+        try:
+          arg_list.append(float(x))
+        except ValueError:
+          raise ValueError(f"Cannot convert '{x}' to a number")
+
+    try:
+        # Dynamically call the function
+        result = globals()[func_name](*arg_list)
+        print(result)
+    except Exception as e:
+        print(f"Error: {e}")
+
+

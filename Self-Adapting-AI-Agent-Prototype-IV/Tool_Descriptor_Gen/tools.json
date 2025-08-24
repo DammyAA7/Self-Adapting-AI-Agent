@@ -1,0 +1,49 @@
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "add_todo",
+            "description": "Adds a new todo item to the todo.csv file with auto-generated ID, timestamp, and pending status.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "todo_text": {
+                        "type": "string",
+                        "description": "The text content of the todo item to be added.",
+                        "minLength": 1
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The file path to the todo.csv file. If not provided, the default path will be used.",
+                        "minLength": 1
+                    }
+                },
+                "required": ["todo_text"]
+            }
+        }
+    }
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "delete_todo",
+            "description": "Delete a todo item from the CSV file by its ID. Returns True if successful, False otherwise.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "todo_id": {
+                        "type": "number",
+                        "description": "The ID of the todo item to be deleted."
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The path to the CSV file. If not provided, default path 'todo.csv' will be used.",
+                        "default": "todo.csv"
+                    }
+                },
+                "required": ["todo_id"]
+            }
+        }
+    }
+
+]

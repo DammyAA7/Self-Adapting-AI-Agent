@@ -137,6 +137,42 @@ def delete_todo(todo_id, path=None):
         return False
 
 
+
+
+import re
+
+def calculate_expression(expr):
+    """
+    Safely evaluates a simple mathematical expression given as a string.
+    Supports +, -, *, /, parentheses, and decimal numbers.
+    Returns the numeric result or False for invalid input.
+    """
+    # Validate input type
+    if not isinstance(expr, str):
+        return False
+    if expr is None:
+        return False
+    expr = expr.strip()
+    if expr == '':
+        return False
+
+    # Only allow valid characters: digits, operators, whitespace, decimal point, parentheses
+    if not re.fullmatch(r"[0-9\.\+\-\*/\(\) \t\r\n]+", expr):
+        return False
+
+    # Disallow consecutive operators (except for unary minus)
+    # (We allow things like '2+-2' and '-4+7', so we can't just block all consecutive operators)
+    # We'll rely on eval with restricted globals/locals, and catch exceptions
+
+    try:
+        # Evaluate the expression safely
+        result = eval(expr, {'__builtins__': None}, {})
+    except (SyntaxError, NameError, TypeError, ZeroDivisionError):
+        return False
+
+    return result
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run any available function dynamically")
     parser.add_argument("function_name", type=str, help="Name of the function to run")

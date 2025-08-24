@@ -13,10 +13,18 @@ with open('Test_Driven_Development/prompt.txt', 'r') as f:
 with open('functions.py', 'r') as f:
     functions_code = f.read()
 
-with open('Test_Driven_Development/testDrivenCases.py', 'r') as f:
-    test_driven_code = f.read()
+# Don't read at module level - read inside function
+# with open('Test_Driven_Development/testDrivenCases.py', 'r') as f:
+#     test_driven_code = f.read()
 
 def generateTestDrivenCases(client, requirements, reinforced_requirement=None):
+    # Read test_driven_code inside the function
+    try:
+        with open('Test_Driven_Development/testDrivenCases.py', 'r') as f:
+            test_driven_code = f.read()
+    except:
+        test_driven_code = ""
+    
     # Convert to OpenAI format
     user_content = f'''You are given these verified safe functions as reference to assist with test data creation and setup. Available functions from functions.py: {functions_code}
 
@@ -40,8 +48,10 @@ If you are given a reinforced requirement, you must use it to fix the already ge
         messages=generator_messages,
         temperature=0.7
     )
-    clear_file(folder_dir + 'Test_Driven_Development/testDrivenCases.py')
+    # Don't clear and append - just write the complete content
     test_cases = generator_response.choices[0].message.content
-    write_to_file('python_function', folder_dir + 'Test_Driven_Development/testDrivenCases.py', test_cases)
+    # Write complete content, not append
+    with open(folder_dir + 'Test_Driven_Development/testDrivenCases.py', 'w') as f:
+        f.write(test_cases)
      
     return test_cases

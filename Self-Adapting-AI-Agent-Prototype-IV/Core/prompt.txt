@@ -45,6 +45,25 @@ delete_todo(todo_id, path=None) - Delete a todo item from the CSV file by its ID
     - "Remove todo with ID 4 and check for success" → delete_todo(4)
 
 
+
+
+calculate_expression(expr) - Safely evaluates a simple mathematical expression provided as a string. Supports +, -, *, /, parentheses, and decimal numbers. Returns the numeric result or False for invalid or unsafe input.
+- Recognizable phrases: evaluate expression, calculate string expression, compute math from text, solve equation given as string, evaluate "2+2", work out "(3.5 - 1.2) * 4", calculate '5/0', string math, expression result, arithmetic string, "2 + (5 * 3)", solve, get value of, evaluate the following
+- Examples:
+    - "What's the result of '2 + 3 * 4'?" → Use calculate_expression("2 + 3 * 4")
+    - "Calculate the value of '(7.5 - 2.5) / 5'" → Use calculate_expression("(7.5 - 2.5) / 5")
+    - "Evaluate this string expression: '12 / 0'" → Use calculate_expression("12 / 0")
+    - "Compute '3 + 4 - 8'" → Use calculate_expression("3 + 4 - 8")
+    - "What is '-5.1 + 7.3 * 2'?" → Use calculate_expression("-5.1 + 7.3 * 2")
+    - "Give me the result of '((2 + 8) * 3.5) / 7'" → Use calculate_expression("((2 + 8) * 3.5) / 7")
+    - "What's the outcome of '3.14 * 2 - (1/2)'" → Use calculate_expression("3.14 * 2 - (1/2)")
+    - "Find the answer to '100 / (5 - 5)'" → Use calculate_expression("100 / (5 - 5)")
+    - "Solve: '-8 + 0.25 * (10 - 4)'" → Use calculate_expression("-8 + 0.25 * (10 - 4)")
+    - "Evaluate: '4 + (-7.8) / 2'" → Use calculate_expression("4 + (-7.8) / 2")
+    - "How much is '0.33 * -12 + 5'?" → Use calculate_expression("0.33 * -12 + 5")
+    - "Work out '(1 - 1) / 3.14'" → Use calculate_expression("(1 - 1) / 3.14")
+
+
 ----
 
 BEHAVIOR RULES:
@@ -60,6 +79,7 @@ When you CANNOT perform the operation:
 1. DO NOT attempt to call any function that is not in your available tools
 2. DO NOT guess or substitute an existing function to fulfill an unprovided operation (e.g., using add_todo for viewing tasks)
 3. Instead, generate and provide a NEW function definition using the template below:
+4. IMPORTANT: For mathematical calculations or expression evaluation, ALWAYS use the function name "calculate_expression"
 
         "Function Name: [function_name]
         Description: [A short explanation of what the function would do]

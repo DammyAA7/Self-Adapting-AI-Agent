@@ -46,4 +46,24 @@
         }
     }
 
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "calculate_expression",
+            "description": "Safely evaluates a simple mathematical expression given as a string. Supports +, -, *, /, parentheses, and decimal numbers. Returns the numeric result or False for invalid input.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "expr": {
+                        "type": "string",
+                        "description": "A string representing the mathematical expression to evaluate. Supports operators +, -, *, /, parentheses, and decimal numbers.",
+                        "minLength": 1
+                    }
+                },
+                "required": ["expr"]
+            }
+        }
+    }
+
 ]

@@ -3,7 +3,7 @@ import sys
 # Add parent directory to path so imports work correctly
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from openai import AzureOpenAI
+from openai import OpenAI, AzureOpenAI
 # import anthropic  # Not needed - using OpenAI only
 import json
 from Function_Gen.generator import generate_function_code
@@ -34,7 +34,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "delete todo 5"}  # Example user input, 
+        {"role": "user", "content": "What is 2+2"}  # Test input, 
     ]
     return tools, input_messages
 
@@ -49,12 +49,12 @@ if __name__ == "__main__":
     
     # Azure OpenAI Configuration
     # Get credentials from environment variables
-    azure_api_key = os.environ.get("AZURE_OPENAI_API_KEY")
-    azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT", "https://jenly-staging.cognitiveservices.azure.com")
-    azure_api_version = os.environ.get("AZURE_OPENAI_API_VERSION", "2024-12-01-preview")
+    azure_api_key = os.environ.get("AZURE_OPENAI_API_KEY") or os.environ.get("AZURE_API_KEY")
+    azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT") or os.environ.get("AZURE_API_BASE") or "https://jenly-staging.cognitiveservices.azure.com"
+    azure_api_version = os.environ.get("AZURE_OPENAI_API_VERSION") or os.environ.get("AZURE_API_VERSION") or "2024-12-01-preview"
     
     if not azure_api_key:
-        raise ValueError("AZURE_OPENAI_API_KEY environment variable is required")
+        raise ValueError("AZURE_OPENAI_API_KEY or AZURE_API_KEY environment variable is required. Please set it before running.")
     
     # You need to specify your deployment name - replace with your actual deployment
     # Common deployment names are: gpt-35-turbo, gpt-4, etc.
@@ -168,7 +168,7 @@ if __name__ == "__main__":
                             continue
 
                     unit_test_result = generate_execute_unit_tests(openai_client, function_requirement, unit_test_reinforced_requirement)
-                    clear_file('Unit_Test/functions.py')
+                    # Don't clear functions.py here - we need it for the unit tests and adjudication!
 
                     adjudication_result = adjudicate(openai_client, unit_test_result)
 

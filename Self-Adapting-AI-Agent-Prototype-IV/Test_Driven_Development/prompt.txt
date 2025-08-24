@@ -13,11 +13,17 @@ Include all necessary imports at the top
 Ensure test code is immediately executable when saved as a .py file
 
 Required Imports:
-You MUST include these imports in your code:
+You MUST include these imports in your code AT THE VERY TOP:
 
-from Unit_Test.functions import * - For testing the new function being developed
-from functions import * - For accessing existing safe functions available for use
-Standard testing libraries (pytest, tempfile, os, etc.)
+import sys
+import os
+# Add parent directory to Python path for imports to work
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import pytest
+from Unit_Test.functions import *  # For testing the new function being developed
+from functions import *  # For accessing existing safe functions available for use
+# Standard testing libraries (tempfile, etc.) as needed
 
 Test Coverage Requirements:
 Your tests must cover:

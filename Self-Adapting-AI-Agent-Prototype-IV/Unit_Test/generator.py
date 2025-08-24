@@ -2,20 +2,28 @@
 This script generates a prompt for creating unit tests for a function.
 """
 
-# Read the updated prompt from file
-with open('Unit_Test/prompt.txt', 'r') as f:
-    generator_prompt = f.read()
-
-with open('functions.py', 'r') as f:
-    functions_code = f.read()
-
-with open('Unit_Test/unitTest.py', 'r') as f:
-    unit_test_code = f.read()
-
-with open('Test_Driven_Development/testDrivenCases.py', 'r') as f:
-    test_driven_code = f.read()
-
 def generateTestCases(client, requirements, reinforced_requirement=None):
+    # Read files inside the function to avoid import-time errors
+    with open('Unit_Test/prompt.txt', 'r') as f:
+        generator_prompt = f.read()
+    
+    try:
+        with open('functions.py', 'r') as f:
+            functions_code = f.read()
+    except FileNotFoundError:
+        functions_code = "# No functions available yet"
+    
+    try:
+        with open('Unit_Test/unitTest.py', 'r') as f:
+            unit_test_code = f.read()
+    except FileNotFoundError:
+        unit_test_code = ""
+    
+    try:
+        with open('Test_Driven_Development/testDrivenCases.py', 'r') as f:
+            test_driven_code = f.read()
+    except FileNotFoundError:
+        test_driven_code = "# No test driven cases available"
     # Convert to OpenAI format
     user_content = f'''You are given these verified helper functions as reference to assist with test data creation and setup. Available functions from functions.py: {functions_code}
 

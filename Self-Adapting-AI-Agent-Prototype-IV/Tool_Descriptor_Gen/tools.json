@@ -51,13 +51,18 @@
         "type": "function",
         "function": {
             "name": "calculate_expression",
-            "description": "Safely evaluates a simple mathematical expression given as a string. Supports +, -, *, /, parentheses, and decimal numbers. Returns the numeric result or False for invalid input.",
+            "description": "Safely evaluates a simple arithmetic expression in string form. Supports +, -, *, /, %, **, parentheses, floats, and scientific notation. Returns the result if valid, otherwise returns False for invalid or malformed input.",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "expr": {
                         "type": "string",
-                        "description": "A string representing the mathematical expression to evaluate. Supports operators +, -, *, /, parentheses, and decimal numbers.",
+                        "description": "The arithmetic expression to evaluate.",
+                        "minLength": 1
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "Optional path parameter (not used in calculation).",
                         "minLength": 1
                     }
                 },

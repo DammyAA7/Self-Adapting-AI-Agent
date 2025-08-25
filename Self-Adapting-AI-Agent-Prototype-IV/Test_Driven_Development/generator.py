@@ -6,18 +6,27 @@ from Utilities.write_to_file import write_to_file, clear_file
 python_dir = '/usr/bin/python3'
 folder_dir = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/" 
 
-# Read the updated prompt from file
-with open('Test_Driven_Development/prompt.txt', 'r') as f:
-    prompt = f.read()
-
-with open('functions.py', 'r') as f:
-    functions_code = f.read()
-
 # Don't read at module level - read inside function
+# with open('Test_Driven_Development/prompt.txt', 'r') as f:
+#     prompt = f.read()
+
+# with open('functions.py', 'r') as f:
+#     functions_code = f.read()
+
 # with open('Test_Driven_Development/testDrivenCases.py', 'r') as f:
 #     test_driven_code = f.read()
 
 def generateTestDrivenCases(client, requirements, reinforced_requirement=None):
+
+    with open('Test_Driven_Development/prompt.txt', 'r') as f:
+        prompt = f.read()
+    
+    try:
+        with open('functions.py', 'r') as f:
+            functions_code = f.read()
+    except FileNotFoundError:
+        functions_code = "# No functions available yet"
+    
     # Read test_driven_code inside the function
     try:
         with open('Test_Driven_Development/testDrivenCases.py', 'r') as f:

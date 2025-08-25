@@ -34,12 +34,12 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "What is 2+2"}  # Test input, 
+        {"role": "user", "content": "What is 2+2"}  # Critical test prompt
     ]
     return tools, input_messages
 
 if __name__ == "__main__":
-    # load_dotenv()  # Comment out if setting API key directly
+    load_dotenv()  # Load environment variables from .env file
     
     # Initialize logger
     logger = FunctionGenerationLogger()

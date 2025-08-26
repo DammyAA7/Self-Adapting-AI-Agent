@@ -90,8 +90,8 @@ class TodoTester:
     
     def parse_logs_for_metrics(self):
         """Parse function_generation.log for metrics"""
-        log_path = Path("function_generation.log")
-        stats_path = Path("function_generation_stats.json")
+        log_path = Path("../success_run/function_generation.log")
+        stats_path = Path("../success_run/function_generation_stats.json")
         
         iterations = 0
         success = False
@@ -140,7 +140,7 @@ class TodoTester:
         start_time = time.time()
         
         # Clear previous logs
-        log_path = Path("function_generation.log")
+        log_path = Path("../success_run/function_generation.log")
         if log_path.exists():
             os.remove(log_path)
         

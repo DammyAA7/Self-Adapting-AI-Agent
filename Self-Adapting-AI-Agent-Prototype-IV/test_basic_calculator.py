@@ -53,7 +53,7 @@ class CalculatorTester:
     
     def parse_logs_for_metrics(self):
         """Parse function_generation.log for iteration count and success"""
-        log_path = Path("function_generation.log")
+        log_path = Path("../success_run/function_generation.log")
         if not log_path.exists():
             return 0, False, 0
         
@@ -96,7 +96,7 @@ class CalculatorTester:
         start_time = time.time()
         
         # Clear previous logs
-        log_path = Path("function_generation.log")
+        log_path = Path("../success_run/function_generation.log")
         if log_path.exists():
             os.remove(log_path)
         

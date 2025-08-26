@@ -73,6 +73,42 @@ calculate_expression(expr, path=None) - Safely evaluates a simple arithmetic exp
     - "Compute (12 + )" → Use calculate_expression("(12 + )")
 
 
+
+
+factorial(n) - Calculates the factorial of a non-negative integer n, returning the factorial value or False for invalid inputs (negative or non-integer)
+- Recognizable phrases: factorial, “factorial of”, n!, “compute factorial”, “!”, “how many ways to arrange”, permutations, “gamma function”
+- Examples:
+    - "What's the factorial of 5?" → Use factorial(5)
+    - "Compute 7! for me." → Use factorial(7)
+    - "Calculate the factorial of 0." → Use factorial(0)
+    - "How many ways to arrange 4 items (4!)?" → Use factorial(4)
+    - "Find factorial of 10." → Use factorial(10)
+    - "I’d like to know 20! value." → Use factorial(20)
+    - "What’s -3! equal to?" → Use factorial(-3)
+    - "Compute the factorial of 3.5." → Use factorial(3.5)
+    - "In how many ways can 6 objects be ordered?" → Use factorial(6)
+    - "Give me the factorial of 1." → Use factorial(1)
+
+
+
+
+calculate_factorial_expression(expression) - Evaluates an arithmetic expression containing factorials denoted by '!' along with standard operators (+, -, *, /, %, **) and parentheses  
+- Recognizable phrases: factorial, “!”, compute, calculate, evaluate, solve, parentheses, +, -, *, /, %, **  
+- Examples:  
+    - "Compute 5!" → Use calculate_factorial_expression("5!")  
+    - "What is 4! + 3!?" → Use calculate_factorial_expression("4! + 3!")  
+    - "Evaluate 2! * 6" → Use calculate_factorial_expression("2! * 6")  
+    - "Calculate (3!)!" → Use calculate_factorial_expression("(3!)!")  
+    - "Solve 1! + 2! + 3!" → Use calculate_factorial_expression("1! + 2! + 3!")  
+    - "Compute (2 + 3)! - 4 + 5" → Use calculate_factorial_expression("(2 + 3)! - 4 + 5")  
+    - "How much is 6! / 3?" → Use calculate_factorial_expression("6! / 3")  
+    - "Compute 5! % 7" → Use calculate_factorial_expression("5! % 7")  
+    - "What is 3! ** 2?" → Use calculate_factorial_expression("3! ** 2")  
+    - "Compute 0! + 1" → Use calculate_factorial_expression("0! + 1")  
+    - "Calculate 5! / 0" → Use calculate_factorial_expression("5! / 0")  
+    - "Evaluate 3.5! + 2" → Use calculate_factorial_expression("3.5! + 2")
+
+
 ----
 
 BEHAVIOR RULES:

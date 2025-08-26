@@ -34,7 +34,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "What is 2+2"}  # Critical test prompt
+        {"role": "user", "content": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)"}  # Critical test prompt
     ]
     return tools, input_messages
 
@@ -45,7 +45,7 @@ if __name__ == "__main__":
     logger = FunctionGenerationLogger()
     
     restart = True
-    MAX_ITERATIONS = 5  # Maximum number of iterations before terminating
+    MAX_ITERATIONS = 6  # Maximum number of iterations before terminating
     
     # Azure OpenAI Configuration
     # Get credentials from environment variables
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     
     # You need to specify your deployment name - replace with your actual deployment
     # Common deployment names are: gpt-35-turbo, gpt-4, etc.
-    azure_deployment_name = "gpt-4.1"  # CHANGE THIS to your actual deployment name
+    azure_deployment_name = "o4-mini"  # CHANGE THIS to your actual deployment name
     
     # Create Azure OpenAI client
     openai_client = AzureOpenAI(
@@ -145,7 +145,7 @@ if __name__ == "__main__":
                         function_code = generate_function_code(openai_client, test_driven_code)
                         #Generate tool definitions
                         tools_code = generate_tool_definitions(openai_client, function_code)
-                    
+
                         #Generate the function descriptor
                         prompt_function_descriptor = generateFunctionDescriptor(openai_client, function_code, tools_code)
                         clear_file('Unit_Test/functions.py')

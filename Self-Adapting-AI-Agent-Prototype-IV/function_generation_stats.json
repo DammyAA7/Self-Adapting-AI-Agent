@@ -1,1225 +1,13 @@
 [
   {
-    "session_id": "20250825_012248",
-    "start_time": "2025-08-25T01:22:48.534398",
-    "functions": [],
-    "existing_function_calls": [
-      {
-        "function_name": "calculate_expression",
-        "function_args": {
-          "expr": "2+2"
-        },
-        "execution_time": 0.0008285189978778362,
-        "memory_peak": 40998,
-        "result": "4",
-        "timestamp": "2025-08-25T01:22:50.847895",
-        "successful": true
-      }
-    ],
-    "end_time": "2025-08-25T01:22:52.068153",
-    "session_duration_seconds": 3.533755
-  },
-  {
-    "session_id": "20250825_012943",
-    "start_time": "2025-08-25T01:29:43.801010",
-    "functions": [],
-    "existing_function_calls": [
-      {
-        "function_name": "calculate_expression",
-        "function_args": {
-          "expr": "2+2"
-        },
-        "execution_time": 0.0012833220098400488,
-        "memory_peak": 41694,
-        "result": "4",
-        "timestamp": "2025-08-25T01:29:46.092690",
-        "successful": true
-      }
-    ],
-    "end_time": "2025-08-25T01:29:46.894322",
-    "session_duration_seconds": 3.093312
-  },
-  {
-    "session_id": "20250825_014321",
-    "start_time": "2025-08-25T01:43:21.550915",
+    "session_id": "20250826_014420",
+    "start_time": "2025-08-26T01:44:20.188811",
     "functions": [
       {
-        "function_requirement": "Function Name: get_top_products_by_revenue\nDescription: Analyzes a list of sales data dictionaries, where each dictionary contains 'product', 'quantity', and 'price' keys, calculates total revenue for each product, and returns the top 3 products with the highest total revenue.\nParameters: \n- sales_data: A list of dictionaries, each with the keys 'product' (string), 'quantity' (number), and 'price' (number)\nExample: get_top_products_by_revenue([\n    {\"product\": \"A\", \"quantity\": 10, \"price\": 5},\n    {\"product\": \"B\", \"quantity\": 2, \"price\": 100},\n    {\"product\": \"A\", \"quantity\": 3, \"price\": 5},\n    {\"product\": \"C\", \"quantity\": 8, \"price\": 20}\n]) \nThis would return the three products with the highest total revenue calculated as quantity * price.",
-        "user_input": "Create a function that analyzes a list of sales data dictionaries (each with 'product', 'quantity', and 'price' keys) and returns the top 3 products by total revenue",
-        "start_time": "2025-08-25T01:43:25.184471",
-        "iterations": 1,
-        "successful": true,
-        "terminated_early": true,
-        "termination_reason": "Maximum iterations (5) reached",
-        "final_function_name": "unknown_function",
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": true,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T01:54:02.576328"
-          },
-          {
-            "iteration": 2,
-            "judgement": false,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T01:54:08.101462"
-          },
-          {
-            "iteration": 3,
-            "judgement": false,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T01:54:09.637354"
-          },
-          {
-            "iteration": 4,
-            "judgement": false,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T01:54:10.864119"
-          },
-          {
-            "iteration": 5,
-            "judgement": false,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T01:54:12.065255"
-          }
-        ],
-        "adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": true,
-            "code_requirement_suggestion": "",
-            "unit_requirement_suggestion": "",
-            "timestamp": "2025-08-25T01:54:03.498079",
-            "unit_test_summary": "All tests passed"
-          }
-        ],
-        "reinforcement_history": [
-          {
-            "type": "tdd",
-            "iteration": 2,
-            "old_requirement": "",
-            "new_requirement": "",
-            "timestamp": "2025-08-25T01:54:08.101593"
-          },
-          {
-            "type": "tdd",
-            "iteration": 3,
-            "old_requirement": "",
-            "new_requirement": "",
-            "timestamp": "2025-08-25T01:54:09.637487"
-          },
-          {
-            "type": "tdd",
-            "iteration": 4,
-            "old_requirement": "",
-            "new_requirement": "",
-            "timestamp": "2025-08-25T01:54:10.864259"
-          },
-          {
-            "type": "tdd",
-            "iteration": 5,
-            "old_requirement": "",
-            "new_requirement": "",
-            "timestamp": "2025-08-25T01:54:12.065385"
-          }
-        ],
-        "end_time": "2025-08-25T01:54:12.065597",
-        "total_duration_seconds": 646.881126
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T01:54:12.065830",
-    "session_duration_seconds": 650.514915
-  },
-  {
-    "session_id": "20250825_025337",
-    "start_time": "2025-08-25T02:53:37.263864",
-    "functions": [
-      {
-        "function_requirement": "Function Name: get_top_products_by_revenue\nDescription: Returns a list of up to 3 products with the highest total revenue from the given sales data. The function sums the total revenue per product, treats product names as case-sensitive, and ignores invalid or incomplete data entries.\nParameters:\n- sales_data: A list of dictionaries, each containing 'product' (string), 'quantity' (number), and 'price' (number) keys.\nExample: get_top_products_by_revenue([\n    {\"product\": \"Laptop\", \"quantity\": 5, \"price\": 900},\n    {\"product\": \"Phone\", \"quantity\": 12, \"price\": 400},\n    {\"product\": \"Tablet\", \"quantity\": 7, \"price\": 300}\n])",
-        "user_input": "Create a function that analyzes a list of sales data dictionaries (each with 'product', 'quantity', and 'price' keys) and returns the top 3 products by total revenue",
-        "start_time": "2025-08-25T02:53:41.337847",
-        "iterations": 1,
-        "successful": true,
-        "terminated_early": true,
-        "termination_reason": "Maximum iterations (5) reached",
-        "final_function_name": "unknown_function",
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": true,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T02:54:30.786624"
-          },
-          {
-            "iteration": 2,
-            "judgement": false,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T02:55:03.387953"
-          },
-          {
-            "iteration": 3,
-            "judgement": false,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T02:55:04.570837"
-          },
-          {
-            "iteration": 4,
-            "judgement": false,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T02:55:05.651243"
-          },
-          {
-            "iteration": 5,
-            "judgement": false,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T02:55:06.559629"
-          }
-        ],
-        "adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": true,
-            "code_requirement_suggestion": "",
-            "unit_requirement_suggestion": "",
-            "timestamp": "2025-08-25T02:54:59.045935",
-            "unit_test_summary": "All tests passed"
-          }
-        ],
-        "reinforcement_history": [
-          {
-            "type": "tdd",
-            "iteration": 2,
-            "old_requirement": "",
-            "new_requirement": "",
-            "timestamp": "2025-08-25T02:55:03.388087"
-          },
-          {
-            "type": "tdd",
-            "iteration": 3,
-            "old_requirement": "",
-            "new_requirement": "",
-            "timestamp": "2025-08-25T02:55:04.570967"
-          },
-          {
-            "type": "tdd",
-            "iteration": 4,
-            "old_requirement": "",
-            "new_requirement": "",
-            "timestamp": "2025-08-25T02:55:05.651373"
-          },
-          {
-            "type": "tdd",
-            "iteration": 5,
-            "old_requirement": "",
-            "new_requirement": "",
-            "timestamp": "2025-08-25T02:55:06.559747"
-          }
-        ],
-        "end_time": "2025-08-25T02:55:06.559843",
-        "total_duration_seconds": 85.221996
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T02:55:06.559943",
-    "session_duration_seconds": 89.296079
-  },
-  {
-    "session_id": "20250825_030042",
-    "start_time": "2025-08-25T03:00:42.370303",
-    "functions": [
-      {
-        "function_requirement": "Function Name: get_top_products_by_revenue\nDescription: This function takes a list of sales data dictionaries, each containing 'product' (string), 'quantity' (number), and 'price' (number) keys, and calculates the total revenue for each product. It then returns up to the top 3 products by total revenue, combining duplicate product names (case-sensitive) and ignoring invalid entries.\nParameters: \n- sales_data: A list of dictionaries, where each dictionary has:\n  - product: string (the product name)\n  - quantity: number (number of units sold)\n  - price: number (selling price per unit)\nExample: get_top_products_by_revenue([{'product': 'Book', 'quantity': 100, 'price': 2}, {'product': 'Pen', 'quantity': 200, 'price': 1}, {'product': 'Book', 'quantity': 50, 'price': 2}])",
-        "user_input": "Create a function that analyzes a list of sales data dictionaries (each with 'product', 'quantity', and 'price' keys) and returns the top 3 products by total revenue",
-        "start_time": "2025-08-25T03:00:45.860153",
-        "iterations": 5,
-        "successful": true,
-        "terminated_early": true,
-        "termination_reason": "Maximum iterations (5) reached",
-        "final_function_name": "unknown_function",
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle negative and zero quantity or price values, ensuring that products with negative revenue are included when appropriate.",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T03:01:25.787864"
-          },
-          {
-            "iteration": 2,
-            "judgement": true,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "Function should correctly handle negative and zero quantity or price values, ensuring that products with negative revenue are included when appropriate.",
-            "timestamp": "2025-08-25T03:02:12.175453"
-          },
-          {
-            "iteration": 3,
-            "judgement": true,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "Failed to parse adjudication response",
-            "timestamp": "2025-08-25T03:03:28.050311"
-          },
-          {
-            "iteration": 4,
-            "judgement": true,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "Failed to parse adjudication response",
-            "timestamp": "2025-08-25T03:04:34.617010"
-          },
-          {
-            "iteration": 5,
-            "judgement": true,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "Failed to parse adjudication response",
-            "timestamp": "2025-08-25T03:05:34.616977"
-          }
-        ],
-        "adjudication_attempts": [
-          {
-            "iteration": 2,
-            "judgement": false,
-            "code_requirement_suggestion": "Failed to parse adjudication response",
-            "unit_requirement_suggestion": "Please retry with clearer requirements",
-            "timestamp": "2025-08-25T03:02:45.353110",
-            "unit_test_summary": "All tests passed"
-          },
-          {
-            "iteration": 3,
-            "judgement": true,
-            "code_requirement_suggestion": "",
-            "unit_requirement_suggestion": "",
-            "timestamp": "2025-08-25T03:04:03.388683",
-            "unit_test_summary": "All tests passed"
-          },
-          {
-            "iteration": 4,
-            "judgement": false,
-            "code_requirement_suggestion": "Failed to parse adjudication response",
-            "unit_requirement_suggestion": "Please retry with clearer requirements",
-            "timestamp": "2025-08-25T03:04:56.827381",
-            "unit_test_summary": "Mixed results (some passed, some failed)"
-          },
-          {
-            "iteration": 5,
-            "judgement": false,
-            "code_requirement_suggestion": "",
-            "unit_requirement_suggestion": "Define or import the missing 'add_todo' function in the test script before using it in 'test_get_top_products_by_revenue_integration_with_add_todo'.",
-            "timestamp": "2025-08-25T03:06:00.828854",
-            "unit_test_summary": "Mixed results (some passed, some failed)"
-          }
-        ],
-        "reinforcement_history": [
-          {
-            "type": "tdd",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "Function should correctly handle negative and zero quantity or price values, ensuring that products with negative revenue are included when appropriate.",
-            "timestamp": "2025-08-25T03:01:25.787988"
-          },
-          {
-            "type": "code",
-            "iteration": 2,
-            "old_requirement": "Function should correctly handle negative and zero quantity or price values, ensuring that products with negative revenue are included when appropriate.",
-            "new_requirement": "Failed to parse adjudication response",
-            "timestamp": "2025-08-25T03:02:45.353264"
-          },
-          {
-            "type": "unit_test",
-            "iteration": 2,
-            "old_requirement": "",
-            "new_requirement": "Please retry with clearer requirements",
-            "timestamp": "2025-08-25T03:02:45.353298"
-          },
-          {
-            "type": "code",
-            "iteration": 4,
-            "old_requirement": "Failed to parse adjudication response",
-            "new_requirement": "Failed to parse adjudication response",
-            "timestamp": "2025-08-25T03:04:56.827733"
-          },
-          {
-            "type": "unit_test",
-            "iteration": 4,
-            "old_requirement": "Please retry with clearer requirements",
-            "new_requirement": "Please retry with clearer requirements",
-            "timestamp": "2025-08-25T03:04:56.827781"
-          },
-          {
-            "type": "code",
-            "iteration": 5,
-            "old_requirement": "Failed to parse adjudication response",
-            "new_requirement": "",
-            "timestamp": "2025-08-25T03:06:00.829019"
-          },
-          {
-            "type": "unit_test",
-            "iteration": 5,
-            "old_requirement": "Please retry with clearer requirements",
-            "new_requirement": "Define or import the missing 'add_todo' function in the test script before using it in 'test_get_top_products_by_revenue_integration_with_add_todo'.",
-            "timestamp": "2025-08-25T03:06:00.829111"
-          }
-        ],
-        "end_time": "2025-08-25T03:06:00.829341",
-        "total_duration_seconds": 314.969188
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T03:06:00.829566",
-    "session_duration_seconds": 318.459263
-  },
-  {
-    "session_id": "20250825_113039",
-    "start_time": "2025-08-25T11:30:39.552196",
-    "functions": [],
-    "existing_function_calls": [
-      {
-        "function_name": "calculate_expression",
-        "function_args": {
-          "expr": "2+2"
-        },
-        "execution_time": 0.0013251119962660596,
-        "memory_peak": 45407,
-        "result": "4",
-        "timestamp": "2025-08-25T11:30:43.043184",
-        "successful": true
-      }
-    ],
-    "end_time": "2025-08-25T11:30:44.237788",
-    "session_duration_seconds": 4.685592
-  },
-  {
-    "session_id": "20250825_113128",
-    "start_time": "2025-08-25T11:31:28.171323",
-    "functions": [],
-    "existing_function_calls": [
-      {
-        "function_name": "calculate_expression",
-        "function_args": {
-          "expr": "2+2"
-        },
-        "execution_time": 0.0012291350140003487,
-        "memory_peak": 45362,
-        "result": "4",
-        "timestamp": "2025-08-25T11:31:31.351790",
-        "successful": true
-      }
-    ],
-    "end_time": "2025-08-25T11:31:33.078048",
-    "session_duration_seconds": 4.906725
-  },
-  {
-    "session_id": "20250825_114337",
-    "start_time": "2025-08-25T11:43:37.469488",
-    "functions": [
-      {
-        "function_requirement": "Function Name: calculate_expression\nDescription: Evaluates a simple mathematical expression provided as a string and returns the numeric result.\nParameters: One string input representing the math expression, e.g., \"2+2\".\nExample: calculate_expression(\"2+2\")",
-        "user_input": "What is 2+2",
-        "start_time": "2025-08-25T11:43:39.937384",
-        "iterations": 0,
-        "successful": false,
-        "terminated_early": true,
-        "termination_reason": "Maximum iterations (5) reached",
-        "final_function_name": null,
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle disallowed operators, consecutive operators, tab/newline characters, and leading zeroes in expressions according to the expected test outcomes.",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T11:44:11.772847"
-          },
-          {
-            "iteration": 2,
-            "judgement": false,
-            "requirement_suggestion": "Function should return False for expressions containing disallowed operators, consecutive operators, invalid leading zero with decimal, and multiple tabs/spaces as specified by the test cases.",
-            "reinforced_requirement": "Function should correctly handle disallowed operators, consecutive operators, tab/newline characters, and leading zeroes in expressions according to the expected test outcomes.",
-            "timestamp": "2025-08-25T11:44:38.283120"
-          },
-          {
-            "iteration": 3,
-            "judgement": false,
-            "requirement_suggestion": "Function should return False for invalid expressions, including those with disallowed operators, consecutive operators, extra spaces or tabs within numbers or between operators, invalid leading zeros with decimals, and multiple consecutive operators, instead of evaluating and returning a numeric result.",
-            "reinforced_requirement": "Function should return False for expressions containing disallowed operators, consecutive operators, invalid leading zero with decimal, and multiple tabs/spaces as specified by the test cases.",
-            "timestamp": "2025-08-25T11:45:07.984769"
-          },
-          {
-            "iteration": 4,
-            "judgement": false,
-            "requirement_suggestion": "Function should properly validate input expressions and reject invalid formats, such as disallowed operators, consecutive operators, extra spaces or tabs within numbers, leading zeroes with decimals, and other malformed expressions by returning False or raising appropriate exceptions as expected by the tests.",
-            "reinforced_requirement": "Function should return False for invalid expressions, including those with disallowed operators, consecutive operators, extra spaces or tabs within numbers or between operators, invalid leading zeros with decimals, and multiple consecutive operators, instead of evaluating and returning a numeric result.",
-            "timestamp": "2025-08-25T11:46:03.165659"
-          },
-          {
-            "iteration": 5,
-            "judgement": false,
-            "requirement_suggestion": "Function should properly validate and reject invalid mathematical expressions, including disallowed operators, consecutive operators, excessive or misplaced spaces/tabs within numbers or between operators, and invalid number formats (such as leading zero with decimal). The function should return False for these invalid cases as expected by the tests.",
-            "reinforced_requirement": "Function should properly validate input expressions and reject invalid formats, such as disallowed operators, consecutive operators, extra spaces or tabs within numbers, leading zeroes with decimals, and other malformed expressions by returning False or raising appropriate exceptions as expected by the tests.",
-            "timestamp": "2025-08-25T11:46:52.355410"
-          }
-        ],
-        "adjudication_attempts": [],
-        "reinforcement_history": [
-          {
-            "type": "tdd",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "Function should correctly handle disallowed operators, consecutive operators, tab/newline characters, and leading zeroes in expressions according to the expected test outcomes.",
-            "timestamp": "2025-08-25T11:44:11.772988"
-          },
-          {
-            "type": "tdd",
-            "iteration": 2,
-            "old_requirement": "Function should correctly handle disallowed operators, consecutive operators, tab/newline characters, and leading zeroes in expressions according to the expected test outcomes.",
-            "new_requirement": "Function should return False for expressions containing disallowed operators, consecutive operators, invalid leading zero with decimal, and multiple tabs/spaces as specified by the test cases.",
-            "timestamp": "2025-08-25T11:44:38.283358"
-          },
-          {
-            "type": "tdd",
-            "iteration": 3,
-            "old_requirement": "Function should return False for expressions containing disallowed operators, consecutive operators, invalid leading zero with decimal, and multiple tabs/spaces as specified by the test cases.",
-            "new_requirement": "Function should return False for invalid expressions, including those with disallowed operators, consecutive operators, extra spaces or tabs within numbers or between operators, invalid leading zeros with decimals, and multiple consecutive operators, instead of evaluating and returning a numeric result.",
-            "timestamp": "2025-08-25T11:45:07.984934"
-          },
-          {
-            "type": "tdd",
-            "iteration": 4,
-            "old_requirement": "Function should return False for invalid expressions, including those with disallowed operators, consecutive operators, extra spaces or tabs within numbers or between operators, invalid leading zeros with decimals, and multiple consecutive operators, instead of evaluating and returning a numeric result.",
-            "new_requirement": "Function should properly validate input expressions and reject invalid formats, such as disallowed operators, consecutive operators, extra spaces or tabs within numbers, leading zeroes with decimals, and other malformed expressions by returning False or raising appropriate exceptions as expected by the tests.",
-            "timestamp": "2025-08-25T11:46:03.165823"
-          },
-          {
-            "type": "tdd",
-            "iteration": 5,
-            "old_requirement": "Function should properly validate input expressions and reject invalid formats, such as disallowed operators, consecutive operators, extra spaces or tabs within numbers, leading zeroes with decimals, and other malformed expressions by returning False or raising appropriate exceptions as expected by the tests.",
-            "new_requirement": "Function should properly validate and reject invalid mathematical expressions, including disallowed operators, consecutive operators, excessive or misplaced spaces/tabs within numbers or between operators, and invalid number formats (such as leading zero with decimal). The function should return False for these invalid cases as expected by the tests.",
-            "timestamp": "2025-08-25T11:46:52.355527"
-          }
-        ],
-        "end_time": "2025-08-25T11:46:52.355623",
-        "total_duration_seconds": 192.418239
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T11:46:52.355742",
-    "session_duration_seconds": 194.886254
-  },
-  {
-    "session_id": "20250825_120004",
-    "start_time": "2025-08-25T12:00:04.693099",
-    "functions": [
-      {
-        "function_requirement": "Function Name: calculate_expression\nDescription: A function that evaluates a simple mathematical expression given as a string and returns the numeric result.\nParameters: One parameter: expr (string) \u2013 the mathematical expression to evaluate.\nExample: calculate_expression(\"2+2\")",
-        "user_input": "What is 2+2",
-        "start_time": "2025-08-25T12:00:08.459599",
-        "iterations": 0,
-        "successful": false,
-        "terminated_early": true,
-        "termination_reason": "Maximum iterations (5) reached",
-        "final_function_name": null,
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": false,
-            "requirement_suggestion": "Function should return False (or handle errors gracefully) for malformed expressions, consecutive operators, or extra operators instead of returning a numeric result.",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T12:00:46.523341"
-          },
-          {
-            "iteration": 2,
-            "judgement": false,
-            "requirement_suggestion": "Function should properly handle malformed or invalid mathematical expressions and return False (or raise an appropriate exception) instead of evaluating and returning a numeric result.",
-            "reinforced_requirement": "Function should return False (or handle errors gracefully) for malformed expressions, consecutive operators, or extra operators instead of returning a numeric result.",
-            "timestamp": "2025-08-25T12:01:27.382610"
-          },
-          {
-            "iteration": 3,
-            "judgement": false,
-            "requirement_suggestion": "Function should detect malformed expressions and consecutive or extra operators, and return False for invalid expressions as expected by the tests.",
-            "reinforced_requirement": "Function should properly handle malformed or invalid mathematical expressions and return False (or raise an appropriate exception) instead of evaluating and returning a numeric result.",
-            "timestamp": "2025-08-25T12:02:17.840244"
-          },
-          {
-            "iteration": 4,
-            "judgement": false,
-            "requirement_suggestion": "Function should detect and reject malformed expressions with consecutive or extra operators (e.g., '++', '//', '**', malformed parentheses) and return False or raise an appropriate exception instead of evaluating them.",
-            "reinforced_requirement": "Function should detect malformed expressions and consecutive or extra operators, and return False for invalid expressions as expected by the tests.",
-            "timestamp": "2025-08-25T12:03:01.643537"
-          },
-          {
-            "iteration": 5,
-            "judgement": false,
-            "requirement_suggestion": "Function should detect and handle malformed expressions or invalid consecutive operators by returning False instead of evaluating and returning a numeric result.",
-            "reinforced_requirement": "Function should detect and reject malformed expressions with consecutive or extra operators (e.g., '++', '//', '**', malformed parentheses) and return False or raise an appropriate exception instead of evaluating them.",
-            "timestamp": "2025-08-25T12:03:46.870521"
-          }
-        ],
-        "adjudication_attempts": [],
-        "reinforcement_history": [
-          {
-            "type": "tdd",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "Function should return False (or handle errors gracefully) for malformed expressions, consecutive operators, or extra operators instead of returning a numeric result.",
-            "timestamp": "2025-08-25T12:00:46.523494"
-          },
-          {
-            "type": "tdd",
-            "iteration": 2,
-            "old_requirement": "Function should return False (or handle errors gracefully) for malformed expressions, consecutive operators, or extra operators instead of returning a numeric result.",
-            "new_requirement": "Function should properly handle malformed or invalid mathematical expressions and return False (or raise an appropriate exception) instead of evaluating and returning a numeric result.",
-            "timestamp": "2025-08-25T12:01:27.382770"
-          },
-          {
-            "type": "tdd",
-            "iteration": 3,
-            "old_requirement": "Function should properly handle malformed or invalid mathematical expressions and return False (or raise an appropriate exception) instead of evaluating and returning a numeric result.",
-            "new_requirement": "Function should detect malformed expressions and consecutive or extra operators, and return False for invalid expressions as expected by the tests.",
-            "timestamp": "2025-08-25T12:02:17.840413"
-          },
-          {
-            "type": "tdd",
-            "iteration": 4,
-            "old_requirement": "Function should detect malformed expressions and consecutive or extra operators, and return False for invalid expressions as expected by the tests.",
-            "new_requirement": "Function should detect and reject malformed expressions with consecutive or extra operators (e.g., '++', '//', '**', malformed parentheses) and return False or raise an appropriate exception instead of evaluating them.",
-            "timestamp": "2025-08-25T12:03:01.643662"
-          },
-          {
-            "type": "tdd",
-            "iteration": 5,
-            "old_requirement": "Function should detect and reject malformed expressions with consecutive or extra operators (e.g., '++', '//', '**', malformed parentheses) and return False or raise an appropriate exception instead of evaluating them.",
-            "new_requirement": "Function should detect and handle malformed expressions or invalid consecutive operators by returning False instead of evaluating and returning a numeric result.",
-            "timestamp": "2025-08-25T12:03:46.870675"
-          }
-        ],
-        "end_time": "2025-08-25T12:03:46.870861",
-        "total_duration_seconds": 218.411262
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T12:03:46.871093",
-    "session_duration_seconds": 222.177994
-  },
-  {
-    "session_id": "20250825_121143",
-    "start_time": "2025-08-25T12:11:43.074080",
-    "functions": [],
-    "existing_function_calls": [
-      {
-        "function_name": "calculate_expression",
-        "function_args": {
-          "expr": "2+2"
-        },
-        "execution_time": 0.0007192699995357543,
-        "memory_peak": 45407,
-        "result": "4",
-        "timestamp": "2025-08-25T12:11:55.739772",
-        "successful": true
-      }
-    ],
-    "end_time": "2025-08-25T12:11:59.306686",
-    "session_duration_seconds": 16.232606
-  },
-  {
-    "session_id": "20250825_121217",
-    "start_time": "2025-08-25T12:12:17.992686",
-    "functions": [],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T12:12:18.015062",
-    "session_duration_seconds": 0.022376
-  },
-  {
-    "session_id": "20250825_121223",
-    "start_time": "2025-08-25T12:12:23.206211",
-    "functions": [],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T12:12:23.228664",
-    "session_duration_seconds": 0.022453
-  },
-  {
-    "session_id": "20250825_121249",
-    "start_time": "2025-08-25T12:12:49.557385",
-    "functions": [
-      {
-        "function_requirement": "Function Name: calculate_expression\nDescription: A function that evaluates a simple mathematical expression provided as a string and returns the result.\nParameters: One string representing the mathematical expression to evaluate.\nExample: calculate_expression(\"2+2\")",
-        "user_input": "What is 2+2",
-        "start_time": "2025-08-25T12:12:52.868570",
-        "iterations": 0,
-        "successful": false,
-        "terminated_early": true,
-        "termination_reason": "Maximum iterations (5) reached",
-        "final_function_name": null,
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle invalid operator sequences (such as double operators and redundant plus), tabs and newlines in expressions, the pow operator, and leading zeroes according to the expected logic. It should return False or raise appropriate exceptions for invalid expressions as required by the tests.",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T12:13:34.644037"
-          },
-          {
-            "iteration": 2,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle invalid operator sequences (such as double operators, redundant plus signs, mixed invalid operator sequences), disallow or properly process the power operator '**' (including with spaces), and handle leading zeroes in numbers according to the expected behavior. For cases where the input contains tabs, newlines, or other whitespace, the function should parse and evaluate the expression as intended or return the correct error/False value as specified by the test.",
-            "reinforced_requirement": "Function should correctly handle invalid operator sequences (such as double operators and redundant plus), tabs and newlines in expressions, the pow operator, and leading zeroes according to the expected logic. It should return False or raise appropriate exceptions for invalid expressions as required by the tests.",
-            "timestamp": "2025-08-25T12:14:28.637103"
-          },
-          {
-            "iteration": 3,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle invalid operator sequences, redundant operators, expressions with tabs/newlines, power operator (**), and leading zeroes by returning False or raising an appropriate error as expected by the tests.",
-            "reinforced_requirement": "Function should correctly handle invalid operator sequences (such as double operators, redundant plus signs, mixed invalid operator sequences), disallow or properly process the power operator '**' (including with spaces), and handle leading zeroes in numbers according to the expected behavior. For cases where the input contains tabs, newlines, or other whitespace, the function should parse and evaluate the expression as intended or return the correct error/False value as specified by the test.",
-            "timestamp": "2025-08-25T12:15:11.117540"
-          },
-          {
-            "iteration": 4,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle invalid operator sequences, redundant operators, expressions with tabs/newlines, power (**) operator, and leading zeroes according to the expected logic. It should return False for invalid expressions and compute correct results for valid ones, matching the test expectations.",
-            "reinforced_requirement": "Function should correctly handle invalid operator sequences, redundant operators, expressions with tabs/newlines, power operator (**), and leading zeroes by returning False or raising an appropriate error as expected by the tests.",
-            "timestamp": "2025-08-25T12:15:56.986205"
-          },
-          {
-            "iteration": 5,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle expressions with redundant operators, leading zeroes, power (**) operator, tabs/newlines, and operator sequences, returning the expected result or False as appropriate. Ensure the function returns False for invalid or malformed expressions and computes the correct result for valid ones, including those with whitespace and special operators.",
-            "reinforced_requirement": "Function should correctly handle invalid operator sequences, redundant operators, expressions with tabs/newlines, power (**) operator, and leading zeroes according to the expected logic. It should return False for invalid expressions and compute correct results for valid ones, matching the test expectations.",
-            "timestamp": "2025-08-25T12:16:49.295610"
-          }
-        ],
-        "adjudication_attempts": [],
-        "reinforcement_history": [
-          {
-            "type": "tdd",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "Function should correctly handle invalid operator sequences (such as double operators and redundant plus), tabs and newlines in expressions, the pow operator, and leading zeroes according to the expected logic. It should return False or raise appropriate exceptions for invalid expressions as required by the tests.",
-            "timestamp": "2025-08-25T12:13:34.644157"
-          },
-          {
-            "type": "tdd",
-            "iteration": 2,
-            "old_requirement": "Function should correctly handle invalid operator sequences (such as double operators and redundant plus), tabs and newlines in expressions, the pow operator, and leading zeroes according to the expected logic. It should return False or raise appropriate exceptions for invalid expressions as required by the tests.",
-            "new_requirement": "Function should correctly handle invalid operator sequences (such as double operators, redundant plus signs, mixed invalid operator sequences), disallow or properly process the power operator '**' (including with spaces), and handle leading zeroes in numbers according to the expected behavior. For cases where the input contains tabs, newlines, or other whitespace, the function should parse and evaluate the expression as intended or return the correct error/False value as specified by the test.",
-            "timestamp": "2025-08-25T12:14:28.637299"
-          },
-          {
-            "type": "tdd",
-            "iteration": 3,
-            "old_requirement": "Function should correctly handle invalid operator sequences (such as double operators, redundant plus signs, mixed invalid operator sequences), disallow or properly process the power operator '**' (including with spaces), and handle leading zeroes in numbers according to the expected behavior. For cases where the input contains tabs, newlines, or other whitespace, the function should parse and evaluate the expression as intended or return the correct error/False value as specified by the test.",
-            "new_requirement": "Function should correctly handle invalid operator sequences, redundant operators, expressions with tabs/newlines, power operator (**), and leading zeroes by returning False or raising an appropriate error as expected by the tests.",
-            "timestamp": "2025-08-25T12:15:11.117716"
-          },
-          {
-            "type": "tdd",
-            "iteration": 4,
-            "old_requirement": "Function should correctly handle invalid operator sequences, redundant operators, expressions with tabs/newlines, power operator (**), and leading zeroes by returning False or raising an appropriate error as expected by the tests.",
-            "new_requirement": "Function should correctly handle invalid operator sequences, redundant operators, expressions with tabs/newlines, power (**) operator, and leading zeroes according to the expected logic. It should return False for invalid expressions and compute correct results for valid ones, matching the test expectations.",
-            "timestamp": "2025-08-25T12:15:56.986368"
-          },
-          {
-            "type": "tdd",
-            "iteration": 5,
-            "old_requirement": "Function should correctly handle invalid operator sequences, redundant operators, expressions with tabs/newlines, power (**) operator, and leading zeroes according to the expected logic. It should return False for invalid expressions and compute correct results for valid ones, matching the test expectations.",
-            "new_requirement": "Function should correctly handle expressions with redundant operators, leading zeroes, power (**) operator, tabs/newlines, and operator sequences, returning the expected result or False as appropriate. Ensure the function returns False for invalid or malformed expressions and computes the correct result for valid ones, including those with whitespace and special operators.",
-            "timestamp": "2025-08-25T12:16:49.296321"
-          }
-        ],
-        "end_time": "2025-08-25T12:16:49.296765",
-        "total_duration_seconds": 236.428195
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T12:16:49.298139",
-    "session_duration_seconds": 239.740754
-  },
-  {
-    "session_id": "20250825_121906",
-    "start_time": "2025-08-25T12:19:06.712368",
-    "functions": [
-      {
-        "function_requirement": "Function Name: calculate_expression\nDescription: A function that safely evaluates a simple mathematical expression provided as a string and returns the numeric result.\nParameters: One string representing the mathematical expression to evaluate.\nExample: calculate_expression(\"2+2\")",
-        "user_input": "What is 2+2",
-        "start_time": "2025-08-25T12:19:10.120105",
-        "iterations": 0,
-        "successful": false,
-        "terminated_early": true,
-        "termination_reason": "Maximum iterations (5) reached",
-        "final_function_name": null,
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": false,
-            "requirement_suggestion": "Function should return False for invalid or illegal mathematical expressions, such as those with consecutive operators or syntactically incorrect input.",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T12:19:43.402536"
-          },
-          {
-            "iteration": 2,
-            "judgement": false,
-            "requirement_suggestion": "Function should detect and reject invalid mathematical expressions (such as consecutive operators, illegal expressions, and double asterisks) by returning False or raising an appropriate exception instead of evaluating them.",
-            "reinforced_requirement": "Function should return False for invalid or illegal mathematical expressions, such as those with consecutive operators or syntactically incorrect input.",
-            "timestamp": "2025-08-25T12:20:10.431181"
-          },
-          {
-            "iteration": 3,
-            "judgement": false,
-            "requirement_suggestion": "Function should detect and reject invalid or illegal mathematical expressions (such as consecutive operators, illegal double asterisks, illegal floordiv, and malformed expressions) and return False or raise an appropriate exception instead of evaluating and returning a numeric result.",
-            "reinforced_requirement": "Function should detect and reject invalid mathematical expressions (such as consecutive operators, illegal expressions, and double asterisks) by returning False or raising an appropriate exception instead of evaluating them.",
-            "timestamp": "2025-08-25T12:20:45.552862"
-          },
-          {
-            "iteration": 4,
-            "judgement": false,
-            "requirement_suggestion": "Function should detect and handle illegal or consecutive operators in expressions, returning False or raising an appropriate exception for invalid expressions instead of evaluating them.",
-            "reinforced_requirement": "Function should detect and reject invalid or illegal mathematical expressions (such as consecutive operators, illegal double asterisks, illegal floordiv, and malformed expressions) and return False or raise an appropriate exception instead of evaluating and returning a numeric result.",
-            "timestamp": "2025-08-25T12:21:34.216814"
-          },
-          {
-            "iteration": 5,
-            "judgement": false,
-            "requirement_suggestion": "Function should detect and reject invalid or illegal mathematical expressions (such as consecutive operators, illegal operator combinations, or malformed syntax) and return False or raise an appropriate exception instead of evaluating and returning a numeric result.",
-            "reinforced_requirement": "Function should detect and handle illegal or consecutive operators in expressions, returning False or raising an appropriate exception for invalid expressions instead of evaluating them.",
-            "timestamp": "2025-08-25T12:22:30.030515"
-          }
-        ],
-        "adjudication_attempts": [],
-        "reinforcement_history": [
-          {
-            "type": "tdd",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "Function should return False for invalid or illegal mathematical expressions, such as those with consecutive operators or syntactically incorrect input.",
-            "timestamp": "2025-08-25T12:19:43.402669"
-          },
-          {
-            "type": "tdd",
-            "iteration": 2,
-            "old_requirement": "Function should return False for invalid or illegal mathematical expressions, such as those with consecutive operators or syntactically incorrect input.",
-            "new_requirement": "Function should detect and reject invalid mathematical expressions (such as consecutive operators, illegal expressions, and double asterisks) by returning False or raising an appropriate exception instead of evaluating them.",
-            "timestamp": "2025-08-25T12:20:10.431354"
-          },
-          {
-            "type": "tdd",
-            "iteration": 3,
-            "old_requirement": "Function should detect and reject invalid mathematical expressions (such as consecutive operators, illegal expressions, and double asterisks) by returning False or raising an appropriate exception instead of evaluating them.",
-            "new_requirement": "Function should detect and reject invalid or illegal mathematical expressions (such as consecutive operators, illegal double asterisks, illegal floordiv, and malformed expressions) and return False or raise an appropriate exception instead of evaluating and returning a numeric result.",
-            "timestamp": "2025-08-25T12:20:45.553074"
-          },
-          {
-            "type": "tdd",
-            "iteration": 4,
-            "old_requirement": "Function should detect and reject invalid or illegal mathematical expressions (such as consecutive operators, illegal double asterisks, illegal floordiv, and malformed expressions) and return False or raise an appropriate exception instead of evaluating and returning a numeric result.",
-            "new_requirement": "Function should detect and handle illegal or consecutive operators in expressions, returning False or raising an appropriate exception for invalid expressions instead of evaluating them.",
-            "timestamp": "2025-08-25T12:21:34.216915"
-          },
-          {
-            "type": "tdd",
-            "iteration": 5,
-            "old_requirement": "Function should detect and handle illegal or consecutive operators in expressions, returning False or raising an appropriate exception for invalid expressions instead of evaluating them.",
-            "new_requirement": "Function should detect and reject invalid or illegal mathematical expressions (such as consecutive operators, illegal operator combinations, or malformed syntax) and return False or raise an appropriate exception instead of evaluating and returning a numeric result.",
-            "timestamp": "2025-08-25T12:22:30.030673"
-          }
-        ],
-        "end_time": "2025-08-25T12:22:30.030875",
-        "total_duration_seconds": 199.91077
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T12:22:30.031140",
-    "session_duration_seconds": 203.318772
-  },
-  {
-    "session_id": "20250825_123816",
-    "start_time": "2025-08-25T12:38:16.618203",
-    "functions": [
-      {
-        "function_requirement": "Function Name: calculate_expression\nDescription: A function that evaluates a simple mathematical expression provided as a string and returns the numeric result.\nParameters: One string parameter representing the mathematical expression (supports +, -, *, /, parentheses, and decimal numbers)\nExample: calculate_expression(\"2+2\")",
-        "user_input": "What is 2+2",
-        "start_time": "2025-08-25T12:38:20.752132",
-        "iterations": 0,
-        "successful": false,
-        "terminated_early": true,
-        "termination_reason": "User interruption (Ctrl+C)",
-        "final_function_name": null,
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle invalid syntax cases (such as double operators and extra operators) by returning False, and should accurately process expressions with multiple spaces and tabs to return the correct result.",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T12:38:57.704699"
-          }
-        ],
-        "adjudication_attempts": [],
-        "reinforcement_history": [
-          {
-            "type": "tdd",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "Function should correctly handle invalid syntax cases (such as double operators and extra operators) by returning False, and should accurately process expressions with multiple spaces and tabs to return the correct result.",
-            "timestamp": "2025-08-25T12:38:57.704824"
-          }
-        ],
-        "end_time": "2025-08-25T12:39:05.120709"
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T12:39:05.120836",
-    "session_duration_seconds": 48.502633
-  },
-  {
-    "session_id": "20250825_125541",
-    "start_time": "2025-08-25T12:55:41.690203",
-    "functions": [
-      {
-        "function_requirement": "Function Name: calculate\nDescription: A function that performs mathematical calculations such as addition, subtraction, multiplication, and division.\nParameters: \n- expression: A string or mathematical expression to calculate (e.g., \"2+2\", \"5*3\")\nExample: calculate(\"2+2\")",
-        "user_input": "What is 2+2",
-        "start_time": "2025-08-25T12:55:44.773022",
-        "iterations": 0,
-        "successful": false,
-        "terminated_early": true,
-        "termination_reason": "Maximum iterations (5) reached",
-        "final_function_name": null,
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle tab and newline characters in input expressions so that calculations with such whitespace yield the expected result.",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T12:56:16.632502"
-          },
-          {
-            "iteration": 2,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle expressions containing tab and newline characters, ensuring that such whitespace does not cause the function to return False instead of the expected result.",
-            "reinforced_requirement": "Function should correctly handle tab and newline characters in input expressions so that calculations with such whitespace yield the expected result.",
-            "timestamp": "2025-08-25T12:56:59.811081"
-          },
-          {
-            "iteration": 3,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle expressions containing tabs (\\t), newlines (\\n), and mixed whitespace, evaluating them as valid mathematical expressions. The function should also consistently return expected results for expressions with multiple operators and not return False for valid expressions.",
-            "reinforced_requirement": "Function should correctly handle expressions containing tab and newline characters, ensuring that such whitespace does not cause the function to return False instead of the expected result.",
-            "timestamp": "2025-08-25T12:57:39.952559"
-          },
-          {
-            "iteration": 4,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle and evaluate mathematical expressions containing tabs (\\t), newlines (\\n), and mixed whitespace characters, ensuring these do not cause the function to return False or fail.",
-            "reinforced_requirement": "Function should correctly handle expressions containing tabs (\\t), newlines (\\n), and mixed whitespace, evaluating them as valid mathematical expressions. The function should also consistently return expected results for expressions with multiple operators and not return False for valid expressions.",
-            "timestamp": "2025-08-25T12:58:08.321074"
-          },
-          {
-            "iteration": 5,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle and evaluate mathematical expressions containing tab (\\t) and newline (\\n) characters between numbers and operators, treating them as valid whitespace similar to spaces.",
-            "reinforced_requirement": "Function should correctly handle and evaluate mathematical expressions containing tabs (\\t), newlines (\\n), and mixed whitespace characters, ensuring these do not cause the function to return False or fail.",
-            "timestamp": "2025-08-25T12:58:45.188131"
-          }
-        ],
-        "adjudication_attempts": [],
-        "reinforcement_history": [
-          {
-            "type": "tdd",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "Function should correctly handle tab and newline characters in input expressions so that calculations with such whitespace yield the expected result.",
-            "timestamp": "2025-08-25T12:56:16.632636"
-          },
-          {
-            "type": "tdd",
-            "iteration": 2,
-            "old_requirement": "Function should correctly handle tab and newline characters in input expressions so that calculations with such whitespace yield the expected result.",
-            "new_requirement": "Function should correctly handle expressions containing tab and newline characters, ensuring that such whitespace does not cause the function to return False instead of the expected result.",
-            "timestamp": "2025-08-25T12:56:59.811210"
-          },
-          {
-            "type": "tdd",
-            "iteration": 3,
-            "old_requirement": "Function should correctly handle expressions containing tab and newline characters, ensuring that such whitespace does not cause the function to return False instead of the expected result.",
-            "new_requirement": "Function should correctly handle expressions containing tabs (\\t), newlines (\\n), and mixed whitespace, evaluating them as valid mathematical expressions. The function should also consistently return expected results for expressions with multiple operators and not return False for valid expressions.",
-            "timestamp": "2025-08-25T12:57:39.952745"
-          },
-          {
-            "type": "tdd",
-            "iteration": 4,
-            "old_requirement": "Function should correctly handle expressions containing tabs (\\t), newlines (\\n), and mixed whitespace, evaluating them as valid mathematical expressions. The function should also consistently return expected results for expressions with multiple operators and not return False for valid expressions.",
-            "new_requirement": "Function should correctly handle and evaluate mathematical expressions containing tabs (\\t), newlines (\\n), and mixed whitespace characters, ensuring these do not cause the function to return False or fail.",
-            "timestamp": "2025-08-25T12:58:08.321240"
-          },
-          {
-            "type": "tdd",
-            "iteration": 5,
-            "old_requirement": "Function should correctly handle and evaluate mathematical expressions containing tabs (\\t), newlines (\\n), and mixed whitespace characters, ensuring these do not cause the function to return False or fail.",
-            "new_requirement": "Function should correctly handle and evaluate mathematical expressions containing tab (\\t) and newline (\\n) characters between numbers and operators, treating them as valid whitespace similar to spaces.",
-            "timestamp": "2025-08-25T12:58:45.188217"
-          }
-        ],
-        "end_time": "2025-08-25T12:58:45.188305",
-        "total_duration_seconds": 180.415283
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T12:58:45.188433",
-    "session_duration_seconds": 183.49823
-  },
-  {
-    "session_id": "20250825_172722",
-    "start_time": "2025-08-25T17:27:22.249858",
-    "functions": [
-      {
-        "function_requirement": "Function Name: calculate_expression  \nDescription: Evaluates a mathematical expression and returns the result.  \nParameters: One string parameter containing the mathematical expression to be evaluated.  \nExample: calculate_expression(\"2+2\")",
-        "user_input": "What is 2+2",
-        "start_time": "2025-08-25T17:27:24.601586",
-        "iterations": 0,
-        "successful": false,
-        "terminated_early": true,
-        "termination_reason": "Maximum iterations (5) reached",
-        "final_function_name": null,
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle invalid operators by returning False, should return False for unsupported exponentiation operations, and should perform large float division accurately, returning the correct numerical result instead of False.",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T17:27:55.838833"
-          },
-          {
-            "iteration": 2,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly handle invalid or disallowed operators (such as '**' for exponentiation and '//' for floor division) by returning False or raising an appropriate exception, and should not evaluate expressions with these operators. Additionally, function should return the correct result for valid large float division expressions instead of False.",
-            "reinforced_requirement": "Function should correctly handle invalid operators by returning False, should return False for unsupported exponentiation operations, and should perform large float division accurately, returning the correct numerical result instead of False.",
-            "timestamp": "2025-08-25T17:28:29.091855"
-          },
-          {
-            "iteration": 3,
-            "judgement": false,
-            "requirement_suggestion": "Function should reject expressions containing invalid or disallowed operators (such as '**', '//', or combinations thereof) and return False for such cases. It should also correctly handle cases where only valid arithmetic is allowed, and not evaluate expressions with unsupported operators.",
-            "reinforced_requirement": "Function should correctly handle invalid or disallowed operators (such as '**' for exponentiation and '//' for floor division) by returning False or raising an appropriate exception, and should not evaluate expressions with these operators. Additionally, function should return the correct result for valid large float division expressions instead of False.",
-            "timestamp": "2025-08-25T17:29:03.982113"
-          },
-          {
-            "iteration": 4,
-            "judgement": false,
-            "requirement_suggestion": "Function should reject expressions containing invalid or disallowed operators (such as '**' for exponentiation and '//' for floor division) and return False for such cases, as expected by the tests. Ensure that only allowed operators are evaluated and all invalid operator usage is properly detected and handled.",
-            "reinforced_requirement": "Function should reject expressions containing invalid or disallowed operators (such as '**', '//', or combinations thereof) and return False for such cases. It should also correctly handle cases where only valid arithmetic is allowed, and not evaluate expressions with unsupported operators.",
-            "timestamp": "2025-08-25T17:29:40.566883"
-          },
-          {
-            "iteration": 5,
-            "judgement": false,
-            "requirement_suggestion": "Function should reject expressions containing invalid or disallowed operators (such as '**' for exponentiation and '//' for floor division) and return False for such cases, as expected by the tests. The function should also ensure that only permitted operators are evaluated and all invalid operator combinations are handled gracefully.",
-            "reinforced_requirement": "Function should reject expressions containing invalid or disallowed operators (such as '**' for exponentiation and '//' for floor division) and return False for such cases, as expected by the tests. Ensure that only allowed operators are evaluated and all invalid operator usage is properly detected and handled.",
-            "timestamp": "2025-08-25T17:30:35.628367"
-          }
-        ],
-        "adjudication_attempts": [],
-        "reinforcement_history": [
-          {
-            "type": "tdd",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "Function should correctly handle invalid operators by returning False, should return False for unsupported exponentiation operations, and should perform large float division accurately, returning the correct numerical result instead of False.",
-            "timestamp": "2025-08-25T17:27:55.838995"
-          },
-          {
-            "type": "tdd",
-            "iteration": 2,
-            "old_requirement": "Function should correctly handle invalid operators by returning False, should return False for unsupported exponentiation operations, and should perform large float division accurately, returning the correct numerical result instead of False.",
-            "new_requirement": "Function should correctly handle invalid or disallowed operators (such as '**' for exponentiation and '//' for floor division) by returning False or raising an appropriate exception, and should not evaluate expressions with these operators. Additionally, function should return the correct result for valid large float division expressions instead of False.",
-            "timestamp": "2025-08-25T17:28:29.092057"
-          },
-          {
-            "type": "tdd",
-            "iteration": 3,
-            "old_requirement": "Function should correctly handle invalid or disallowed operators (such as '**' for exponentiation and '//' for floor division) by returning False or raising an appropriate exception, and should not evaluate expressions with these operators. Additionally, function should return the correct result for valid large float division expressions instead of False.",
-            "new_requirement": "Function should reject expressions containing invalid or disallowed operators (such as '**', '//', or combinations thereof) and return False for such cases. It should also correctly handle cases where only valid arithmetic is allowed, and not evaluate expressions with unsupported operators.",
-            "timestamp": "2025-08-25T17:29:03.982309"
-          },
-          {
-            "type": "tdd",
-            "iteration": 4,
-            "old_requirement": "Function should reject expressions containing invalid or disallowed operators (such as '**', '//', or combinations thereof) and return False for such cases. It should also correctly handle cases where only valid arithmetic is allowed, and not evaluate expressions with unsupported operators.",
-            "new_requirement": "Function should reject expressions containing invalid or disallowed operators (such as '**' for exponentiation and '//' for floor division) and return False for such cases, as expected by the tests. Ensure that only allowed operators are evaluated and all invalid operator usage is properly detected and handled.",
-            "timestamp": "2025-08-25T17:29:40.567065"
-          },
-          {
-            "type": "tdd",
-            "iteration": 5,
-            "old_requirement": "Function should reject expressions containing invalid or disallowed operators (such as '**' for exponentiation and '//' for floor division) and return False for such cases, as expected by the tests. Ensure that only allowed operators are evaluated and all invalid operator usage is properly detected and handled.",
-            "new_requirement": "Function should reject expressions containing invalid or disallowed operators (such as '**' for exponentiation and '//' for floor division) and return False for such cases, as expected by the tests. The function should also ensure that only permitted operators are evaluated and all invalid operator combinations are handled gracefully.",
-            "timestamp": "2025-08-25T17:30:35.649814"
-          }
-        ],
-        "end_time": "2025-08-25T17:30:35.650042",
-        "total_duration_seconds": 191.048456
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T17:30:35.650290",
-    "session_duration_seconds": 193.400432
-  },
-  {
-    "session_id": "20250825_173144",
-    "start_time": "2025-08-25T17:31:44.422103",
-    "functions": [
-      {
-        "function_requirement": "Function Name: calculate_expression\nDescription: A function that evaluates and returns the result of a mathematical expression provided as text (such as \"2+2\").\nParameters: One string parameter representing the mathematical expression to evaluate.\nExample: calculate_expression(\"2+2\")",
-        "user_input": "What is 2+2",
-        "start_time": "2025-08-25T17:31:46.919982",
-        "iterations": 0,
-        "successful": false,
-        "terminated_early": true,
-        "termination_reason": "Maximum iterations (5) reached",
-        "final_function_name": null,
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": false,
-            "requirement_suggestion": "Function should correctly identify and handle invalid syntax, consecutive operators, and invalid operator sequences in expressions by returning False as expected by the tests. Additionally, ensure that tab and newline characters in expressions are handled consistently with test expectations.",
-            "reinforced_requirement": "",
-            "timestamp": "2025-08-25T17:32:20.290693"
-          },
-          {
-            "iteration": 2,
-            "judgement": false,
-            "requirement_suggestion": "Function should properly detect and handle invalid or malformed expressions by returning False instead of evaluating and returning a numeric result.",
-            "reinforced_requirement": "Function should correctly identify and handle invalid syntax, consecutive operators, and invalid operator sequences in expressions by returning False as expected by the tests. Additionally, ensure that tab and newline characters in expressions are handled consistently with test expectations.",
-            "timestamp": "2025-08-25T17:32:59.303704"
-          },
-          {
-            "iteration": 3,
-            "judgement": false,
-            "requirement_suggestion": "Function should properly detect and handle invalid or malformed expressions by returning False (or the expected error indicator), rather than evaluating and returning a numeric result. Ensure that cases with invalid syntax, consecutive operators, or malformed input are validated before evaluation.",
-            "reinforced_requirement": "Function should properly detect and handle invalid or malformed expressions by returning False instead of evaluating and returning a numeric result.",
-            "timestamp": "2025-08-25T17:33:42.996589"
-          },
-          {
-            "iteration": 4,
-            "judgement": false,
-            "requirement_suggestion": "Function should properly detect and handle invalid or malformed expressions (such as consecutive operators, invalid syntax, and invalid operator sequences) by returning False instead of evaluating them.",
-            "reinforced_requirement": "Function should properly detect and handle invalid or malformed expressions by returning False (or the expected error indicator), rather than evaluating and returning a numeric result. Ensure that cases with invalid syntax, consecutive operators, or malformed input are validated before evaluation.",
-            "timestamp": "2025-08-25T17:34:22.285048"
-          },
-          {
-            "iteration": 5,
-            "judgement": false,
-            "requirement_suggestion": "Function should properly detect and handle invalid or malformed mathematical expressions, returning False (or the expected failure indicator) instead of evaluating and returning a numeric result for invalid input.",
-            "reinforced_requirement": "Function should properly detect and handle invalid or malformed expressions (such as consecutive operators, invalid syntax, and invalid operator sequences) by returning False instead of evaluating them.",
-            "timestamp": "2025-08-25T17:35:09.763717"
-          }
-        ],
-        "adjudication_attempts": [],
-        "reinforcement_history": [
-          {
-            "type": "tdd",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "Function should correctly identify and handle invalid syntax, consecutive operators, and invalid operator sequences in expressions by returning False as expected by the tests. Additionally, ensure that tab and newline characters in expressions are handled consistently with test expectations.",
-            "timestamp": "2025-08-25T17:32:20.290823"
-          },
-          {
-            "type": "tdd",
-            "iteration": 2,
-            "old_requirement": "Function should correctly identify and handle invalid syntax, consecutive operators, and invalid operator sequences in expressions by returning False as expected by the tests. Additionally, ensure that tab and newline characters in expressions are handled consistently with test expectations.",
-            "new_requirement": "Function should properly detect and handle invalid or malformed expressions by returning False instead of evaluating and returning a numeric result.",
-            "timestamp": "2025-08-25T17:32:59.303860"
-          },
-          {
-            "type": "tdd",
-            "iteration": 3,
-            "old_requirement": "Function should properly detect and handle invalid or malformed expressions by returning False instead of evaluating and returning a numeric result.",
-            "new_requirement": "Function should properly detect and handle invalid or malformed expressions by returning False (or the expected error indicator), rather than evaluating and returning a numeric result. Ensure that cases with invalid syntax, consecutive operators, or malformed input are validated before evaluation.",
-            "timestamp": "2025-08-25T17:33:42.996739"
-          },
-          {
-            "type": "tdd",
-            "iteration": 4,
-            "old_requirement": "Function should properly detect and handle invalid or malformed expressions by returning False (or the expected error indicator), rather than evaluating and returning a numeric result. Ensure that cases with invalid syntax, consecutive operators, or malformed input are validated before evaluation.",
-            "new_requirement": "Function should properly detect and handle invalid or malformed expressions (such as consecutive operators, invalid syntax, and invalid operator sequences) by returning False instead of evaluating them.",
-            "timestamp": "2025-08-25T17:34:22.285207"
-          },
-          {
-            "type": "tdd",
-            "iteration": 5,
-            "old_requirement": "Function should properly detect and handle invalid or malformed expressions (such as consecutive operators, invalid syntax, and invalid operator sequences) by returning False instead of evaluating them.",
-            "new_requirement": "Function should properly detect and handle invalid or malformed mathematical expressions, returning False (or the expected failure indicator) instead of evaluating and returning a numeric result for invalid input.",
-            "timestamp": "2025-08-25T17:35:09.763797"
-          }
-        ],
-        "end_time": "2025-08-25T17:35:09.763907",
-        "total_duration_seconds": 202.843925
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T17:35:09.764024",
-    "session_duration_seconds": 205.341921
-  },
-  {
-    "session_id": "20250825_175302",
-    "start_time": "2025-08-25T17:53:02.863402",
-    "functions": [
-      {
-        "function_requirement": "Function Name: calculate_expression  \nDescription: A function that evaluates mathematical expressions and returns the result.  \nParameters: One parameter - the mathematical expression as a string (e.g., \"2+2\")  \nExample: calculate_expression(\"2+2\")",
-        "user_input": "What is 2+2",
-        "start_time": "2025-08-25T17:53:05.962608",
-        "iterations": 0,
-        "successful": false,
-        "terminated_early": true,
-        "termination_reason": "Unexpected error: name 'functions_code' is not defined",
-        "final_function_name": null,
-        "tdd_adjudication_attempts": [],
-        "adjudication_attempts": [],
-        "reinforcement_history": [],
-        "end_time": "2025-08-25T17:53:05.962906"
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T17:53:05.963081",
-    "session_duration_seconds": 3.099679
-  },
-  {
-    "session_id": "20250825_175313",
-    "start_time": "2025-08-25T17:53:13.420024",
-    "functions": [
-      {
-        "function_requirement": "Function Name: calculate_expression\nDescription: A function that evaluates mathematical expressions provided as input and returns the calculated result.\nParameters: One string parameter containing the mathematical expression to evaluate (e.g., \"2+2\").\nExample: calculate_expression(\"2+2\")",
-        "user_input": "What is 2+2",
-        "start_time": "2025-08-25T17:53:16.329044",
-        "iterations": 0,
-        "successful": false,
-        "terminated_early": true,
-        "termination_reason": "Unexpected error: name 'functions_code' is not defined",
-        "final_function_name": null,
-        "tdd_adjudication_attempts": [],
-        "adjudication_attempts": [],
-        "reinforcement_history": [],
-        "end_time": "2025-08-25T17:53:16.329199"
-      }
-    ],
-    "existing_function_calls": [],
-    "end_time": "2025-08-25T17:53:16.329268",
-    "session_duration_seconds": 2.909244
-  },
-  {
-    "session_id": "20250825_180749",
-    "start_time": "2025-08-25T18:07:49.245940",
-    "functions": [
-      {
-        "function_requirement": "Function Name: calculate_expression\nDescription: A function that evaluates mathematical expressions and returns the result.\nParameters: One string representing the mathematical expression to calculate (e.g., \"2+2\", \"5*3\").\nExample: calculate_expression(\"2+2\")",
-        "user_input": "What is 2+2",
-        "start_time": "2025-08-25T18:07:56.479874",
-        "iterations": 4,
+        "function_requirement": "Function Name: factorial  \nDescription: A function that computes the factorial of a non-negative integer n (i.e., n! = n \u00d7 (n\u20131) \u00d7 \u2026 \u00d7 1; with 0! defined as 1).  \nParameters:  \n- n (integer): The non-negative integer whose factorial is to be calculated.  \nExample:  \n- factorial(5) \u2192 returns 120  \n\nAnswer to 2! + 2!:  \n2! = 2 \u00d7 1 = 2  \nSo, 2! + 2! = 2 + 2 = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-26T01:44:55.450904",
+        "iterations": 6,
         "successful": true,
         "terminated_early": false,
         "termination_reason": null,
@@ -1230,119 +18,140 @@
             "judgement": true,
             "requirement_suggestion": "",
             "reinforced_requirement": "",
-            "timestamp": "2025-08-25T18:08:35.269860"
+            "timestamp": "2025-08-26T01:46:01.800067"
           },
           {
             "iteration": 2,
-            "judgement": true,
+            "judgement": false,
             "requirement_suggestion": "",
-            "reinforced_requirement": "Failed to parse adjudication response",
-            "timestamp": "2025-08-25T18:09:40.812775"
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-26T01:47:06.008268"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "No tests were collected. Ensure you have test files named with the pytest conventions (e.g., starting with 'test_') containing functions named 'test_*' so pytest can discover and run them.",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-26T01:47:14.622700"
           },
           {
             "iteration": 4,
             "judgement": true,
             "requirement_suggestion": "",
+            "reinforced_requirement": "No tests were collected. Ensure you have test files named with the pytest conventions (e.g., starting with 'test_') containing functions named 'test_*' so pytest can discover and run them.",
+            "timestamp": "2025-08-26T01:48:53.338709"
+          },
+          {
+            "iteration": 5,
+            "judgement": true,
+            "requirement_suggestion": "",
             "reinforced_requirement": "Failed to parse adjudication response",
-            "timestamp": "2025-08-25T18:11:25.463075"
+            "timestamp": "2025-08-26T01:50:43.378252"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should handle invalid inputs by raising ValueError for empty or malformed expressions, raise ZeroDivisionError for division-by-zero cases, and validate input types to raise TypeError for non-string inputs",
+            "timestamp": "2025-08-26T01:52:35.233700"
           }
         ],
         "adjudication_attempts": [
           {
             "iteration": 1,
-            "judgement": false,
-            "code_requirement_suggestion": "Failed to parse adjudication response",
-            "unit_requirement_suggestion": "Please retry with clearer requirements",
-            "timestamp": "2025-08-25T18:08:56.467588",
-            "unit_test_summary": "Mixed results (some passed, some failed)"
-          },
-          {
-            "iteration": 2,
-            "judgement": false,
+            "judgement": true,
             "code_requirement_suggestion": "",
-            "unit_requirement_suggestion": "Add missing import or definition for 'add_todo' in the test script to ensure it is available in the test scope.",
-            "timestamp": "2025-08-25T18:10:02.318404",
-            "unit_test_summary": "Mixed results (some passed, some failed)"
-          },
-          {
-            "iteration": 3,
-            "judgement": false,
-            "code_requirement_suggestion": "Failed to parse adjudication response",
-            "unit_requirement_suggestion": "Please retry with clearer requirements",
-            "timestamp": "2025-08-25T18:10:26.581739",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-26T01:46:15.930624",
             "unit_test_summary": "All tests passed"
           },
           {
             "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-26T01:49:18.546838",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should handle invalid inputs by raising ValueError for empty or malformed expressions, raise ZeroDivisionError for division-by-zero cases, and validate input types to raise TypeError for non-string inputs",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-26T01:51:06.426259",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 6,
             "judgement": true,
             "code_requirement_suggestion": "",
             "unit_requirement_suggestion": "",
-            "timestamp": "2025-08-25T18:11:52.087696",
+            "timestamp": "2025-08-26T01:52:37.077495",
             "unit_test_summary": "All tests passed"
           }
         ],
         "reinforcement_history": [
           {
-            "type": "code",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "Failed to parse adjudication response",
-            "timestamp": "2025-08-25T18:08:56.467726"
-          },
-          {
-            "type": "unit_test",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "Please retry with clearer requirements",
-            "timestamp": "2025-08-25T18:08:56.467758"
-          },
-          {
-            "type": "code",
+            "type": "tdd",
             "iteration": 2,
-            "old_requirement": "Failed to parse adjudication response",
+            "old_requirement": "",
             "new_requirement": "",
-            "timestamp": "2025-08-25T18:10:02.318515"
+            "timestamp": "2025-08-26T01:47:06.008406"
           },
           {
-            "type": "unit_test",
-            "iteration": 2,
-            "old_requirement": "Please retry with clearer requirements",
-            "new_requirement": "Add missing import or definition for 'add_todo' in the test script to ensure it is available in the test scope.",
-            "timestamp": "2025-08-25T18:10:02.318546"
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "No tests were collected. Ensure you have test files named with the pytest conventions (e.g., starting with 'test_') containing functions named 'test_*' so pytest can discover and run them.",
+            "timestamp": "2025-08-26T01:47:14.622776"
           },
           {
             "type": "code",
-            "iteration": 3,
-            "old_requirement": "",
+            "iteration": 4,
+            "old_requirement": "No tests were collected. Ensure you have test files named with the pytest conventions (e.g., starting with 'test_') containing functions named 'test_*' so pytest can discover and run them.",
             "new_requirement": "Failed to parse adjudication response",
-            "timestamp": "2025-08-25T18:10:26.581819"
+            "timestamp": "2025-08-26T01:49:18.547038"
           },
           {
             "type": "unit_test",
-            "iteration": 3,
-            "old_requirement": "Add missing import or definition for 'add_todo' in the test script to ensure it is available in the test scope.",
+            "iteration": 4,
+            "old_requirement": "",
             "new_requirement": "Please retry with clearer requirements",
-            "timestamp": "2025-08-25T18:10:26.581851"
+            "timestamp": "2025-08-26T01:49:18.547136"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "Failed to parse adjudication response",
+            "new_requirement": "Function should handle invalid inputs by raising ValueError for empty or malformed expressions, raise ZeroDivisionError for division-by-zero cases, and validate input types to raise TypeError for non-string inputs",
+            "timestamp": "2025-08-26T01:51:06.426417"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "Please retry with clearer requirements",
+            "new_requirement": "",
+            "timestamp": "2025-08-26T01:51:06.426506"
           }
         ],
-        "end_time": "2025-08-25T18:11:52.088399",
-        "total_duration_seconds": 235.608525
+        "end_time": "2025-08-26T01:52:37.078142",
+        "total_duration_seconds": 461.627238
       }
     ],
     "existing_function_calls": [
       {
-        "function_name": "calculate_expression",
+        "function_name": "calculate_factorial_expression",
         "function_args": {
-          "expr": "2+2"
+          "expression": "2!+2!"
         },
-        "execution_time": 0.0018153860000893474,
-        "memory_peak": 48790,
-        "result": "4",
-        "timestamp": "2025-08-25T18:11:53.322017",
+        "execution_time": 0.010417585996037815,
+        "memory_peak": 60966,
+        "result": "",
+        "timestamp": "2025-08-26T01:52:53.374849",
         "successful": true
       }
     ],
-    "end_time": "2025-08-25T18:11:54.138485",
-    "session_duration_seconds": 244.892545
+    "end_time": "2025-08-26T01:52:55.206726",
+    "session_duration_seconds": 515.017915
   }
 ]

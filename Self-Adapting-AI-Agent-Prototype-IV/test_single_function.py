@@ -144,7 +144,7 @@ def test_single_request(user_input, verbose=True):
     # Parse logs for detailed metrics
     print("\n### LOG ANALYSIS ###")
     
-    log_path = Path("function_generation.log")
+    log_path = Path("../success_run/function_generation.log")
     if log_path.exists():
         with open(log_path, 'r') as f:
             log_content = f.read()

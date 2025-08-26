@@ -211,3 +211,108 @@ Description: Parses and evaluates a mathematical expression containing non-negat
 2025-08-26 01:52:55,207 - INFO - TDD Adjudication Attempts: 6
 2025-08-26 01:52:55,207 - INFO - Final Adjudication Attempts: 4
 2025-08-26 01:52:55,207 - INFO - Requirement Reinforcements: 6
+2025-08-26 18:19:30,435 - INFO - Retrying request to /chat/completions in 0.454680 seconds
+2025-08-26 18:19:34,604 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:19:34,610 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-26 18:19:34,610 - INFO - Response Content: Function Name: calculate_factorial_expression
+Description: This function evaluates mathematical expressions containing factorials (e.g., 2!+2!, 5! - 3!, 3!*4!) and returns the computed result.
+Paramet...
+2025-08-26 18:19:34,610 - INFO - Initiating function generation process...
+2025-08-26 18:19:34,610 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-26 18:19:34,610 - INFO - User Input: Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)
+2025-08-26 18:19:34,610 - INFO - Function Requirement: Function Name: calculate_factorial_expression
+Description: This function evaluates mathematical expressions containing factorials (e.g., 2!+2!, 5! - 3!, 3!*4!) and returns the computed result.
+Parameters: One string parameter representing the factorial expression to be evaluated (expression: string)
+Example: calculate_factorial_expression("2!+2!")
+2025-08-26 18:19:49,553 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:20:08,792 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:20:11,639 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:20:24,363 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:20:27,665 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:20:27,665 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-26 18:20:27,665 - INFO - TDD Adjudication Passed: False
+2025-08-26 18:20:27,665 - INFO - TDD Requirement Suggestion: Function should correctly compute expressions involving factorials and arithmetic operations, returning the expected numerical results instead of False. Function should handle cases where input is missing a factorial symbol and return False as expected.
+2025-08-26 18:20:27,665 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-26 18:20:27,665 - INFO - Iteration: 1
+2025-08-26 18:20:27,665 - INFO - Previous Requirement: 
+2025-08-26 18:20:27,665 - INFO - New Requirement: Function should correctly compute expressions involving factorials and arithmetic operations, returning the expected numerical results instead of False. Function should handle cases where input is missing a factorial symbol and return False as expected.
+2025-08-26 18:20:49,069 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:21:02,870 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:21:06,760 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:21:16,513 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:21:19,253 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:21:19,254 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-26 18:21:19,254 - INFO - TDD Adjudication Passed: False
+2025-08-26 18:21:19,254 - INFO - TDD Requirement Suggestion: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results, returning the expected arithmetic results instead of False.
+2025-08-26 18:21:19,254 - INFO - Applied Reinforced Requirement: Function should correctly compute expressions involving factorials and arithmetic operations, returning the expected numerical results instead of False. Function should handle cases where input is missing a factorial symbol and return False as expected.
+2025-08-26 18:21:19,254 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-26 18:21:19,254 - INFO - Iteration: 2
+2025-08-26 18:21:19,254 - INFO - Previous Requirement: Function should correctly compute expressions involving factorials and arithmetic operations, returning the expected numerical results instead of False. Function should handle cases where input is missing a factorial symbol and return False as expected.
+2025-08-26 18:21:19,254 - INFO - New Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results, returning the expected arithmetic results instead of False.
+2025-08-26 18:21:29,265 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:21:46,339 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:21:48,542 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:21:59,817 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:22:02,261 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:22:02,261 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-26 18:22:02,261 - INFO - TDD Adjudication Passed: False
+2025-08-26 18:22:02,262 - INFO - TDD Requirement Suggestion: Function should correctly evaluate factorial expressions with parentheses and handle negative results as expected.
+2025-08-26 18:22:02,262 - INFO - Applied Reinforced Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results, returning the expected arithmetic results instead of False.
+2025-08-26 18:22:02,262 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-26 18:22:02,262 - INFO - Iteration: 3
+2025-08-26 18:22:02,262 - INFO - Previous Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results, returning the expected arithmetic results instead of False.
+2025-08-26 18:22:02,262 - INFO - New Requirement: Function should correctly evaluate factorial expressions with parentheses and handle negative results as expected.
+2025-08-26 18:22:24,909 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:22:35,029 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:22:38,305 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:22:45,001 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:22:47,425 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:22:47,426 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-26 18:22:47,426 - INFO - TDD Adjudication Passed: False
+2025-08-26 18:22:47,426 - INFO - TDD Requirement Suggestion: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results. Ensure proper parsing and evaluation of arithmetic expressions with factorials, including nested and combined operations.
+2025-08-26 18:22:47,426 - INFO - Applied Reinforced Requirement: Function should correctly evaluate factorial expressions with parentheses and handle negative results as expected.
+2025-08-26 18:22:47,426 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-26 18:22:47,426 - INFO - Iteration: 4
+2025-08-26 18:22:47,426 - INFO - Previous Requirement: Function should correctly evaluate factorial expressions with parentheses and handle negative results as expected.
+2025-08-26 18:22:47,426 - INFO - New Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results. Ensure proper parsing and evaluation of arithmetic expressions with factorials, including nested and combined operations.
+2025-08-26 18:23:00,936 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:23:20,699 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:23:25,445 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:23:35,239 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:23:38,111 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:23:38,112 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-26 18:23:38,112 - INFO - TDD Adjudication Passed: False
+2025-08-26 18:23:38,112 - INFO - TDD Requirement Suggestion: Function should correctly compute factorial expressions, handle arithmetic operations, and return the expected results for all valid input cases. It should not return False for valid expressions and must properly distinguish between valid and invalid/malformed expressions, returning results or False as appropriate.
+2025-08-26 18:23:38,112 - INFO - Applied Reinforced Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results. Ensure proper parsing and evaluation of arithmetic expressions with factorials, including nested and combined operations.
+2025-08-26 18:23:38,112 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-26 18:23:38,112 - INFO - Iteration: 5
+2025-08-26 18:23:38,112 - INFO - Previous Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results. Ensure proper parsing and evaluation of arithmetic expressions with factorials, including nested and combined operations.
+2025-08-26 18:23:38,112 - INFO - New Requirement: Function should correctly compute factorial expressions, handle arithmetic operations, and return the expected results for all valid input cases. It should not return False for valid expressions and must properly distinguish between valid and invalid/malformed expressions, returning results or False as appropriate.
+2025-08-26 18:23:57,404 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:24:24,388 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:24:26,618 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:24:36,270 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:24:39,136 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-26 18:24:39,137 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-26 18:24:39,137 - INFO - TDD Adjudication Passed: False
+2025-08-26 18:24:39,137 - INFO - TDD Requirement Suggestion: Function should correctly evaluate factorial expressions, including handling of subtraction, mixed operations, parentheses, and nested expressions according to mathematical order of operations. Ensure that the function returns the correct result instead of False for these cases.
+2025-08-26 18:24:39,137 - INFO - Applied Reinforced Requirement: Function should correctly compute factorial expressions, handle arithmetic operations, and return the expected results for all valid input cases. It should not return False for valid expressions and must properly distinguish between valid and invalid/malformed expressions, returning results or False as appropriate.
+2025-08-26 18:24:39,137 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-26 18:24:39,137 - INFO - Iteration: 6
+2025-08-26 18:24:39,137 - INFO - Previous Requirement: Function should correctly compute factorial expressions, handle arithmetic operations, and return the expected results for all valid input cases. It should not return False for valid expressions and must properly distinguish between valid and invalid/malformed expressions, returning results or False as appropriate.
+2025-08-26 18:24:39,137 - INFO - New Requirement: Function should correctly evaluate factorial expressions, including handling of subtraction, mixed operations, parentheses, and nested expressions according to mathematical order of operations. Ensure that the function returns the correct result instead of False for these cases.
+2025-08-26 18:24:39,137 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-26 18:24:39,137 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-26 18:24:39,137 - WARNING - Total Duration: 304.53 seconds
+2025-08-26 18:24:39,138 - WARNING - Final Iteration Count: 0
+2025-08-26 18:24:39,138 - INFO - === SESSION SUMMARY ===
+2025-08-26 18:24:39,138 - INFO - Session Duration: 317.71 seconds
+2025-08-26 18:24:39,138 - INFO - Functions Attempted: 1
+2025-08-26 18:24:39,138 - INFO - Successful Functions: 0
+2025-08-26 18:24:39,138 - INFO - Terminated Early: 1
+2025-08-26 18:24:39,138 - INFO - Total Iterations: 0
+2025-08-26 18:24:39,138 - INFO - Average Iterations per Function: 0.00
+2025-08-26 18:24:39,138 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-26 18:24:39,138 - INFO - TDD Adjudication Attempts: 6
+2025-08-26 18:24:39,138 - INFO - Final Adjudication Attempts: 0
+2025-08-26 18:24:39,138 - INFO - Requirement Reinforcements: 6

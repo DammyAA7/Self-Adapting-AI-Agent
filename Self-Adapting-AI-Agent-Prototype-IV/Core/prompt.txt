@@ -45,6 +45,25 @@ delete_todo(todo_id, path=None) - Deletes a todo item by its ID from a CSV file 
     - "Delete task ID 9 in '/invalid/path/todos.csv'" (invalid path) → Use delete_todo(9, "/invalid/path/todos.csv")
 
 
+
+
+calculate_gcd(numbers) - Calculates the greatest common divisor (GCD) of a list of integers.
+- Recognizable phrases: greatest common divisor, GCD, gcd, common factor, largest divisor, biggest common divisor, highest common factor, compute gcd, find GCD, calculate the GCD, common divisor, "what's the gcd", "what is the greatest common divisor", gcd of, GCD for these numbers, "gcd (", "gcd:", GCD of list, shared divisor
+- Examples:
+    - "What is the greatest common divisor of 48 and 18?" → Use calculate_gcd([48, 18])
+    - "Calculate the GCD for -8 and 12" → Use calculate_gcd([-8, 12])
+    - "Find the largest common divisor of 27, 36, and 45" → Use calculate_gcd([27, 36, 45])
+    - "What's the GCD of these: 105, 35, 70, and 210?" → Use calculate_gcd([105, 35, 70, 210])
+    - "GCD(0, 12)" → Use calculate_gcd([0, 12])
+    - "gcd for 0 and 0 (edge case)" → Use calculate_gcd([0, 0])
+    - "Find gcd for a single value: -15" → Use calculate_gcd([-15])
+    - "Get common divisor of 23 and -46" → Use calculate_gcd([23, -46])
+    - "Calculate GCD: 11, 121, 242, 0" → Use calculate_gcd([11, 121, 242, 0])
+    - "What's the highest common factor of 81, 27, 9?" → Use calculate_gcd([81, 27, 9])
+    - "Compute the GCD for these numbers: 14, 28, 56, 7" → Use calculate_gcd([14, 28, 56, 7])
+    - "Find the GCD for these values: 5.5, 11" (error due to non-integer) → Use calculate_gcd([5.5, 11])
+
+
 ----
 
 BEHAVIOR RULES:

@@ -47,4 +47,27 @@
         }
     }
 
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "calculate_gcd",
+            "description": "Calculates the greatest common divisor (GCD) of a list of integers. Returns the GCD as an integer, or False for invalid input as required by test cases.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "numbers": {
+                        "type": "array",
+                        "description": "A list of integers for which to calculate the GCD.",
+                        "items": {
+                            "type": "number"
+                        },
+                        "minItems": 1
+                    }
+                },
+                "required": ["numbers"]
+            }
+        }
+    }
+
 ]

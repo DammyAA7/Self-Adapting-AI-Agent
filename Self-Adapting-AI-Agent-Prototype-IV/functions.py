@@ -1,47 +1,29 @@
 
 
-import csv
+def calculate_gcd(numbers):
+    """
+    Calculates the greatest common divisor (GCD) of a list of integers.
+    Returns the GCD as an integer, or False for invalid input as required by test cases.
+    """
+    if not isinstance(numbers, list) or not numbers or any(isinstance(n, list) for n in numbers):
+        return False
+    if any(not isinstance(n, int) for n in numbers):
+        return False
+    if len(numbers) == 0:
+        return False
+    # Handle single value
+    if len(numbers) == 1:
+        return abs(numbers[0])
+    def gcd(a, b):
+        a, b = abs(a), abs(b)
+        while b != 0:
+            a, b = b, a % b
+        return a
+    result = abs(numbers[0])
+    for n in numbers[1:]:
+        result = gcd(result, n)
+    return result
 
-def delete_todo(todo_id, path=None):
-    """
-    Deletes a todo item from the todo.csv file by its ID.
-    Returns True if deletion was successful, False otherwise.
-    """
-    file_path = path if path else "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/todo.csv"
-    # Validate todo_id
-    if not isinstance(todo_id, int):
-        return False
-    if todo_id <= 0:
-        return False
-    try:
-        with open(file_path, 'r', newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            rows = list(reader)
-            fieldnames = reader.fieldnames
-    except Exception:
-        return False
-    found = False
-    filtered_rows = []
-    for row in rows:
-        try:
-            current_id = int(row.get('id', ''))
-        except (ValueError, TypeError):
-            continue
-        if current_id == todo_id:
-            found = True
-        else:
-            filtered_rows.append(row)
-    if not found:
-        return False
-    try:
-        with open(file_path, 'w', newline='') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-            for row in filtered_rows:
-                writer.writerow(row)
-    except Exception:
-        return False
-    return True
 
 
 if __name__ == "__main__":

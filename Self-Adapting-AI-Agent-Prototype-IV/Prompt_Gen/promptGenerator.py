@@ -13,7 +13,7 @@ def generateFunctionDescriptor(client, function, tool_descriptor):
     ]
 
     generator_response = client.chat.completions.create(
-            model="o4-mini",  # Azure deployment name
+            model="gpt-4.1",  # Azure deployment name
             messages=generator_messages
         )
     

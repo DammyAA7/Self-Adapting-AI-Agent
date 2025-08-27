@@ -1,70 +1,93 @@
-2025-08-27 12:55:25,797 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 12:55:25,802 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-08-27 12:55:25,802 - INFO - Response Content: Function Name: delete_todo
-Description: A function that removes a todo item from the todo.csv file based on its ID.
-Parameters: One integer representing the ID of the todo to be deleted.
-Example: dele...
-2025-08-27 12:55:25,802 - INFO - Initiating function generation process...
-2025-08-27 12:55:25,802 - INFO - === STARTING FUNCTION GENERATION ===
-2025-08-27 12:55:25,802 - INFO - User Input: delete todo 5
-2025-08-27 12:55:25,802 - INFO - Function Requirement: Function Name: delete_todo
-Description: A function that removes a todo item from the todo.csv file based on its ID.
-Parameters: One integer representing the ID of the todo to be deleted.
-Example: delete_todo(5)
-2025-08-27 12:55:35,200 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 12:55:40,403 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 12:55:42,112 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 12:55:59,569 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 12:56:00,481 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 12:56:00,482 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
-2025-08-27 12:56:00,482 - INFO - TDD Adjudication Passed: True
-2025-08-27 12:56:15,739 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 12:56:17,171 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 12:56:17,172 - INFO - --- ITERATION 1 ---
-2025-08-27 12:56:17,172 - INFO - Unit Test Result Summary: All tests passed
-2025-08-27 12:56:17,172 - INFO - Adjudication Passed: True
-2025-08-27 12:56:17,173 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
-2025-08-27 12:56:17,173 - INFO - Function Name: unknown_function
-2025-08-27 12:56:17,173 - INFO - Total Iterations: 1
-2025-08-27 12:56:17,173 - INFO - Total Duration: 51.37 seconds
-2025-08-27 12:56:17,173 - INFO - TDD Adjudication Attempts: 1
-2025-08-27 12:56:17,173 - INFO - Final Adjudication Attempts: 1
-2025-08-27 12:56:17,173 - INFO - Requirement Reinforcements: 0
-2025-08-27 12:56:17,993 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 12:56:18,014 - INFO - === EXISTING FUNCTION CALLED ===
-2025-08-27 12:56:18,014 - INFO - Function: delete_todo
-2025-08-27 12:56:18,014 - INFO - Arguments: {'todo_id': 5}
-2025-08-27 12:56:18,014 - INFO - Execution Time: 0.018055322987493128 seconds
-2025-08-27 12:56:18,014 - INFO - Memory Peak: 61129 bytes
-2025-08-27 12:56:18,014 - INFO - Success: True
-2025-08-27 12:56:19,017 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 12:56:19,017 - INFO - === SESSION SUMMARY ===
-2025-08-27 12:56:19,018 - INFO - Session Duration: 57.47 seconds
-2025-08-27 12:56:19,018 - INFO - Functions Attempted: 1
-2025-08-27 12:56:19,018 - INFO - Successful Functions: 1
-2025-08-27 12:56:19,018 - INFO - Terminated Early: 0
-2025-08-27 12:56:19,018 - INFO - Total Iterations: 1
-2025-08-27 12:56:19,018 - INFO - Average Iterations per Function: 1.00
-2025-08-27 12:56:19,018 - INFO - Existing Function Calls: 1 (1 successful)
-2025-08-27 12:56:19,019 - INFO - TDD Adjudication Attempts: 1
-2025-08-27 12:56:19,019 - INFO - Final Adjudication Attempts: 1
-2025-08-27 12:56:19,019 - INFO - Requirement Reinforcements: 0
-2025-08-27 13:02:15,396 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 13:02:15,401 - INFO - === EXISTING FUNCTION CALLED ===
-2025-08-27 13:02:15,401 - INFO - Function: delete_todo
-2025-08-27 13:02:15,401 - INFO - Arguments: {'todo_id': 5}
-2025-08-27 13:02:15,401 - INFO - Execution Time: 0.00036042899591848254 seconds
-2025-08-27 13:02:15,401 - INFO - Memory Peak: 143596 bytes
-2025-08-27 13:02:15,401 - INFO - Success: True
-2025-08-27 13:02:16,112 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 13:02:16,113 - INFO - === SESSION SUMMARY ===
-2025-08-27 13:02:16,113 - INFO - Session Duration: 2.50 seconds
-2025-08-27 13:02:16,113 - INFO - Functions Attempted: 0
-2025-08-27 13:02:16,113 - INFO - Successful Functions: 0
-2025-08-27 13:02:16,113 - INFO - Terminated Early: 0
-2025-08-27 13:02:16,113 - INFO - Total Iterations: 0
-2025-08-27 13:02:16,113 - INFO - Average Iterations per Function: 0.00
-2025-08-27 13:02:16,113 - INFO - Existing Function Calls: 1 (1 successful)
-2025-08-27 13:02:16,113 - INFO - TDD Adjudication Attempts: 0
-2025-08-27 13:02:16,113 - INFO - Final Adjudication Attempts: 0
-2025-08-27 13:02:16,113 - INFO - Requirement Reinforcements: 0
+2025-08-27 18:51:09,256 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 18:51:09,265 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 18:51:09,265 - INFO - Function: add_todo
+2025-08-27 18:51:09,265 - INFO - Arguments: {'todo_text': 'delete todo 5'}
+2025-08-27 18:51:09,265 - INFO - Execution Time: 0.00026565601001493633 seconds
+2025-08-27 18:51:09,265 - INFO - Memory Peak: 6676 bytes
+2025-08-27 18:51:09,265 - INFO - Success: False
+2025-08-27 18:51:17,853 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 18:51:17,854 - INFO - === SESSION SUMMARY ===
+2025-08-27 18:51:17,854 - INFO - Session Duration: 18.30 seconds
+2025-08-27 18:51:17,854 - INFO - Functions Attempted: 0
+2025-08-27 18:51:17,854 - INFO - Successful Functions: 0
+2025-08-27 18:51:17,854 - INFO - Terminated Early: 0
+2025-08-27 18:51:17,854 - INFO - Total Iterations: 0
+2025-08-27 18:51:17,854 - INFO - Average Iterations per Function: 0.00
+2025-08-27 18:51:17,854 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-27 18:51:17,854 - INFO - TDD Adjudication Attempts: 0
+2025-08-27 18:51:17,854 - INFO - Final Adjudication Attempts: 0
+2025-08-27 18:51:17,854 - INFO - Requirement Reinforcements: 0
+2025-08-27 19:06:54,500 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:06:54,503 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-27 19:06:54,503 - INFO - Response Content: Function Name: delete_todo
+Description: Removes a todo item from the todo.csv file by its unique ID.
+Parameters:
+  • id (integer): The unique identifier of the todo item to delete.
+Example:
+  delete_t...
+2025-08-27 19:06:54,503 - INFO - Initiating function generation process...
+2025-08-27 19:06:54,503 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-27 19:06:54,503 - INFO - User Input: delete todo 5
+2025-08-27 19:06:54,503 - INFO - Function Requirement: Function Name: delete_todo
+Description: Removes a todo item from the todo.csv file by its unique ID.
+Parameters:
+  • id (integer): The unique identifier of the todo item to delete.
+Example:
+  delete_todo(5)
+2025-08-27 19:07:12,317 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:07:43,958 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:07:52,867 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:08:54,919 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:09:01,684 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:09:01,684 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-27 19:09:01,684 - INFO - TDD Adjudication Passed: True
+2025-08-27 19:09:15,816 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:09:20,118 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:09:20,119 - INFO - --- ITERATION 1 ---
+2025-08-27 19:09:20,119 - INFO - Unit Test Result Summary: All tests passed
+2025-08-27 19:09:20,119 - INFO - Adjudication Passed: True
+2025-08-27 19:09:20,121 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-27 19:09:20,121 - INFO - Function Name: unknown_function
+2025-08-27 19:09:20,121 - INFO - Total Iterations: 1
+2025-08-27 19:09:20,121 - INFO - Total Duration: 145.62 seconds
+2025-08-27 19:09:20,121 - INFO - TDD Adjudication Attempts: 1
+2025-08-27 19:09:20,121 - INFO - Final Adjudication Attempts: 1
+2025-08-27 19:09:20,121 - INFO - Requirement Reinforcements: 0
+2025-08-27 19:09:24,112 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:09:24,133 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 19:09:24,133 - INFO - Function: delete_todo
+2025-08-27 19:09:24,133 - INFO - Arguments: {'todo_id': 5}
+2025-08-27 19:09:24,133 - INFO - Execution Time: 0.018645049014594406 seconds
+2025-08-27 19:09:24,133 - INFO - Memory Peak: 61129 bytes
+2025-08-27 19:09:24,133 - INFO - Success: True
+2025-08-27 19:09:25,648 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:09:25,649 - INFO - === SESSION SUMMARY ===
+2025-08-27 19:09:25,649 - INFO - Session Duration: 158.47 seconds
+2025-08-27 19:09:25,649 - INFO - Functions Attempted: 1
+2025-08-27 19:09:25,649 - INFO - Successful Functions: 1
+2025-08-27 19:09:25,649 - INFO - Terminated Early: 0
+2025-08-27 19:09:25,649 - INFO - Total Iterations: 1
+2025-08-27 19:09:25,649 - INFO - Average Iterations per Function: 1.00
+2025-08-27 19:09:25,649 - INFO - Existing Function Calls: 1 (1 successful)
+2025-08-27 19:09:25,649 - INFO - TDD Adjudication Attempts: 1
+2025-08-27 19:09:25,649 - INFO - Final Adjudication Attempts: 1
+2025-08-27 19:09:25,649 - INFO - Requirement Reinforcements: 0
+2025-08-27 19:10:07,740 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:10:07,746 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 19:10:07,746 - INFO - Function: delete_todo
+2025-08-27 19:10:07,746 - INFO - Arguments: {'todo_id': 5}
+2025-08-27 19:10:07,746 - INFO - Execution Time: 0.00034427098580636084 seconds
+2025-08-27 19:10:07,746 - INFO - Memory Peak: 160699 bytes
+2025-08-27 19:10:07,746 - INFO - Success: True
+2025-08-27 19:10:08,866 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 19:10:08,867 - INFO - === SESSION SUMMARY ===
+2025-08-27 19:10:08,867 - INFO - Session Duration: 11.15 seconds
+2025-08-27 19:10:08,867 - INFO - Functions Attempted: 0
+2025-08-27 19:10:08,867 - INFO - Successful Functions: 0
+2025-08-27 19:10:08,867 - INFO - Terminated Early: 0
+2025-08-27 19:10:08,867 - INFO - Total Iterations: 0
+2025-08-27 19:10:08,867 - INFO - Average Iterations per Function: 0.00
+2025-08-27 19:10:08,867 - INFO - Existing Function Calls: 1 (1 successful)
+2025-08-27 19:10:08,867 - INFO - TDD Adjudication Attempts: 0
+2025-08-27 19:10:08,867 - INFO - Final Adjudication Attempts: 0
+2025-08-27 19:10:08,867 - INFO - Requirement Reinforcements: 0

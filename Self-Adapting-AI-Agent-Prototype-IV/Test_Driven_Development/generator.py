@@ -53,10 +53,10 @@ If you are given a reinforced requirement, you must use it to fix the already ge
 
     # Using Azure OpenAI
     generator_response = client.chat.completions.create(
-        model="gpt-4.1",  # Azure deployment name
-        max_tokens=10000,
-        messages=generator_messages,
-        temperature=0.7
+        model="o4-mini",  # Azure deployment name
+        max_completion_tokens=10000,
+        # temperature=0.7,
+        messages=generator_messages
     )
     # Don't clear and append - just write the complete content
     test_cases = generator_response.choices[0].message.content

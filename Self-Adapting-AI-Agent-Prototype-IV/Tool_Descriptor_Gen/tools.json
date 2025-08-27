@@ -28,17 +28,17 @@
         "type": "function",
         "function": {
             "name": "delete_todo",
-            "description": "Deletes a todo item with the given ID from the todo CSV file. Returns True if the item was deleted, False if not found, invalid, or on any error.",
+            "description": "Deletes a todo item from the todo.csv file by its ID. Returns True if deletion was successful, False otherwise.",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "todo_id": {
                         "type": "number",
-                        "description": "The numeric ID of the todo item to be deleted."
+                        "description": "The ID of the todo item to delete."
                     },
                     "path": {
                         "type": "string",
-                        "description": "Optional file path to the todo CSV file to use.",
+                        "description": "Optional file path to the todo.csv file.",
                         "minLength": 1
                     }
                 },

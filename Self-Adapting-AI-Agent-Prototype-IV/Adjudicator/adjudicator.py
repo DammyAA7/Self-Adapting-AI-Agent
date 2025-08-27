@@ -43,9 +43,9 @@ def adjudicate(client, test_case_results):
     adjudicator_messages[0]["content"] = structured_prompt
     
     adjudicator_response = client.chat.completions.create(
-        model="gpt-4.1",  # Azure deployment name
+        model="o4-mini",  # Azure deployment name
         messages=adjudicator_messages,
-        temperature=0.3,
+        # temperature=0.3,
         response_format={"type": "json_object"}
     )
     

@@ -30,21 +30,19 @@ add_todo(todo_text) - Adds a new todo item to the todo.csv file with auto-genera
 
 
 
-delete_todo(todo_id, path=None) - Deletes a todo item with the given ID from the todo CSV file. Returns True if the item was deleted, False if not found, invalid, or on any error.
-- Recognizable phrases: delete todo, remove task, delete task, remove todo, delete item, clear todo, erase todo, eliminate task, id from todo list, get rid of todo, remove by id, trash task, discard todo, delete entry, task id, todo id, delete from CSV, delete from todo file
+delete_todo(todo_id, path=None) - Deletes a todo item by its ID from a CSV file and returns True if the deletion was successful, False otherwise
+- Recognizable phrases: delete todo, remove todo, erase todo, forget todo, drop todo, delete task, remove task, delete item, remove entry, erase entry, todo ID, task number, todo.csv, in file, from file
 - Examples:
     - "Delete the todo with ID 5" → Use delete_todo(5)
-    - "Remove task number 12 from my list" → Use delete_todo(12)
-    - "Delete the todo item with id -8" → Use delete_todo(-8)
-    - "Erase todo entry 3 in '/tmp/todolist.csv'" → Use delete_todo(3, '/tmp/todolist.csv')
-    - "Get rid of the todo with id 100 using the alternate CSV path '/docs/mytodos.csv'" → Use delete_todo(100, '/docs/mytodos.csv')
-    - "Trash task 0" → Use delete_todo(0)
-    - "Delete my todo with id 2.7" → Use delete_todo(2.7)
-    - "Remove todo id 'abc'" → Use delete_todo('abc')
-    - "Please delete the item with ID 1" → Use delete_todo(1)
-    - "Delete todo ID 15 from '/home/user/tasks.csv'" → Use delete_todo(15, '/home/user/tasks.csv')
-    - "Remove entry with todo id -1" → Use delete_todo(-1)
-    - "Clear task number 25" → Use delete_todo(25)
+    - "Remove task number 12" → Use delete_todo(12)
+    - "Delete todo ID 0" (invalid ID) → Use delete_todo(0)
+    - "Delete the todo with ID -3" (negative ID) → Use delete_todo(-3)
+    - "Delete the item with ID 7 from '/home/user/tasks.csv'" → Use delete_todo(7, "/home/user/tasks.csv")
+    - "Remove entry 42 in the file '/data/todo.csv'" → Use delete_todo(42, "/data/todo.csv")
+    - "Please delete task ID 100" → Use delete_todo(100)
+    - "Erase todo #8" → Use delete_todo(8)
+    - "Forget the todo item eight" (non-integer ID) → Use delete_todo("eight")
+    - "Delete task ID 9 in '/invalid/path/todos.csv'" (invalid path) → Use delete_todo(9, "/invalid/path/todos.csv")
 
 
 ----

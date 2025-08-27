@@ -1,318 +1,70 @@
-2025-08-26 01:15:42,875 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:15:42,879 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-08-26 01:15:42,879 - INFO - Response Content: Function Name: factorial  
-Description: A function that computes the factorial of a non-negative integer n (i.e., n! = 1 × 2 × … × n, with 0! defined as 1).  
-Parameters:  
-- n (integer): The non-nega...
-2025-08-26 01:15:42,879 - INFO - Initiating function generation process...
-2025-08-26 01:15:42,879 - INFO - === STARTING FUNCTION GENERATION ===
-2025-08-26 01:15:42,879 - INFO - User Input: Create a function that can calculate factorial expressions. And answer me what is 2!+2!
-2025-08-26 01:15:42,879 - INFO - Function Requirement: Function Name: factorial  
-Description: A function that computes the factorial of a non-negative integer n (i.e., n! = 1 × 2 × … × n, with 0! defined as 1).  
-Parameters:  
-- n (integer): The non-negative integer whose factorial is to be calculated.  
-Example: factorial(5) → 120  
-
-Answer to your expression:  
-2! + 2! = 2 + 2 = 4
-2025-08-26 01:15:53,413 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:16:05,388 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:16:32,518 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:16:42,423 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:16:48,384 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:16:48,384 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
-2025-08-26 01:16:48,384 - INFO - TDD Adjudication Passed: True
-2025-08-26 01:17:06,195 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:17:09,880 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:17:09,880 - INFO - --- ITERATION 1 ---
-2025-08-26 01:17:09,880 - INFO - Unit Test Result Summary: All tests passed
-2025-08-26 01:17:09,880 - INFO - Adjudication Passed: True
-2025-08-26 01:17:09,881 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
-2025-08-26 01:17:09,881 - INFO - Function Name: unknown_function
-2025-08-26 01:17:09,881 - INFO - Total Iterations: 1
-2025-08-26 01:17:09,881 - INFO - Total Duration: 87.00 seconds
-2025-08-26 01:17:09,881 - INFO - TDD Adjudication Attempts: 1
-2025-08-26 01:17:09,881 - INFO - Final Adjudication Attempts: 1
-2025-08-26 01:17:09,881 - INFO - Requirement Reinforcements: 0
-2025-08-26 01:17:36,904 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:17:36,905 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-08-26 01:17:36,905 - INFO - Response Content: Function Name: calculate_factorial_expression
-Description: Parses and evaluates an expression containing factorial operators (!) and basic arithmetic (+, –, *, /). The function should
-  1. Identify ea...
-2025-08-26 01:17:36,905 - INFO - Initiating function generation process...
-2025-08-26 01:17:36,905 - INFO - === STARTING FUNCTION GENERATION ===
-2025-08-26 01:17:36,905 - INFO - User Input: Create a function that can calculate factorial expressions. And answer me what is 2!+2!
-2025-08-26 01:17:36,905 - INFO - Function Requirement: Function Name: calculate_factorial_expression
-Description: Parses and evaluates an expression containing factorial operators (!) and basic arithmetic (+, –, *, /). The function should
-  1. Identify each integer followed by “!”
-  2. Compute its factorial by calling the existing factorial(n)
-  3. Substitute the computed values back into the expression
-  4. Safely evaluate the resulting arithmetic expression
-Parameters:
-  • expr (string): The factorial expression to evaluate (e.g., "2!+3!*4")
-Example:
-  calculate_factorial_expression("2!+3! * 4")
-    – computes factorial(2) → 2
-    – computes factorial(3) → 6
-    – substitutes to get "2 + 6 * 4"
-    – evaluates to 26
-Answer to your specific question:
-2! = 2, so 2! + 2! = 2 + 2 = 4.
-2025-08-26 01:17:59,630 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:18:35,562 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:18:46,618 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:19:34,222 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:19:42,719 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:19:42,720 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
-2025-08-26 01:19:42,720 - INFO - TDD Adjudication Passed: False
-2025-08-26 01:19:42,720 - INFO - TDD Requirement Suggestion: Function should correctly implement calculate_factorial_expression logic (handling addition, subtraction, multiplication, division and factorials) and define a factorial() function in functions.py so that integration tests can monkeypatch it.
-2025-08-26 01:19:42,720 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
-2025-08-26 01:19:42,720 - INFO - Iteration: 1
-2025-08-26 01:19:42,720 - INFO - Previous Requirement: 
-2025-08-26 01:19:42,720 - INFO - New Requirement: Function should correctly implement calculate_factorial_expression logic (handling addition, subtraction, multiplication, division and factorials) and define a factorial() function in functions.py so that integration tests can monkeypatch it.
-2025-08-26 01:19:58,455 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:44:55,446 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:44:55,450 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-08-26 01:44:55,450 - INFO - Response Content: Function Name: factorial  
-Description: A function that computes the factorial of a non-negative integer n (i.e., n! = n × (n–1) × … × 1; with 0! defined as 1).  
-Parameters:  
-- n (integer): The non-...
-2025-08-26 01:44:55,450 - INFO - Initiating function generation process...
-2025-08-26 01:44:55,450 - INFO - === STARTING FUNCTION GENERATION ===
-2025-08-26 01:44:55,450 - INFO - User Input: Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)
-2025-08-26 01:44:55,450 - INFO - Function Requirement: Function Name: factorial  
-Description: A function that computes the factorial of a non-negative integer n (i.e., n! = n × (n–1) × … × 1; with 0! defined as 1).  
-Parameters:  
-- n (integer): The non-negative integer whose factorial is to be calculated.  
-Example:  
-- factorial(5) → returns 120  
-
-Answer to 2! + 2!:  
-2! = 2 × 1 = 2  
-So, 2! + 2! = 2 + 2 = 4
-2025-08-26 01:45:14,486 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:45:26,165 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:45:38,146 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:45:57,805 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:46:01,799 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:46:01,800 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
-2025-08-26 01:46:01,800 - INFO - TDD Adjudication Passed: True
-2025-08-26 01:46:12,243 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:46:15,930 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:46:15,930 - INFO - --- ITERATION 1 ---
-2025-08-26 01:46:15,930 - INFO - Unit Test Result Summary: All tests passed
-2025-08-26 01:46:15,930 - INFO - Adjudication Passed: True
-2025-08-26 01:46:15,931 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
-2025-08-26 01:46:15,931 - INFO - Function Name: unknown_function
-2025-08-26 01:46:15,931 - INFO - Total Iterations: 1
-2025-08-26 01:46:15,931 - INFO - Total Duration: 80.48 seconds
-2025-08-26 01:46:15,931 - INFO - TDD Adjudication Attempts: 1
-2025-08-26 01:46:15,931 - INFO - Final Adjudication Attempts: 1
-2025-08-26 01:46:15,931 - INFO - Requirement Reinforcements: 0
-2025-08-26 01:46:56,439 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:46:56,440 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-08-26 01:46:56,440 - INFO - Response Content: Function Name: calculate_factorial_expression  
-Description: Parses and evaluates a mathematical expression containing non-negative integer factorials (denoted by “!”) combined with standard arithmeti...
-2025-08-26 01:46:56,440 - INFO - Initiating function generation process...
-2025-08-26 01:47:06,007 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:47:06,008 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
-2025-08-26 01:47:06,008 - INFO - TDD Adjudication Passed: False
-2025-08-26 01:47:06,008 - INFO - TDD Requirement Suggestion: 
-2025-08-26 01:47:06,008 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
-2025-08-26 01:47:06,008 - INFO - Iteration: 2
-2025-08-26 01:47:06,008 - INFO - Previous Requirement: 
-2025-08-26 01:47:06,008 - INFO - New Requirement: 
-2025-08-26 01:47:14,622 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:47:14,622 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
-2025-08-26 01:47:14,622 - INFO - TDD Adjudication Passed: False
-2025-08-26 01:47:14,622 - INFO - TDD Requirement Suggestion: No tests were collected. Ensure you have test files named with the pytest conventions (e.g., starting with 'test_') containing functions named 'test_*' so pytest can discover and run them.
-2025-08-26 01:47:14,622 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
-2025-08-26 01:47:14,622 - INFO - Iteration: 3
-2025-08-26 01:47:14,622 - INFO - Previous Requirement: 
-2025-08-26 01:47:14,622 - INFO - New Requirement: No tests were collected. Ensure you have test files named with the pytest conventions (e.g., starting with 'test_') containing functions named 'test_*' so pytest can discover and run them.
-2025-08-26 01:47:38,308 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:48:09,672 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:48:18,287 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:48:48,726 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:48:53,338 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:48:53,338 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
-2025-08-26 01:48:53,338 - INFO - TDD Adjudication Passed: True
-2025-08-26 01:49:14,242 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:49:18,546 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:49:18,546 - INFO - --- ITERATION 4 ---
-2025-08-26 01:49:18,546 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
-2025-08-26 01:49:18,546 - INFO - Adjudication Passed: False
-2025-08-26 01:49:18,546 - INFO - Code Requirement Suggestion: Failed to parse adjudication response
-2025-08-26 01:49:18,547 - INFO - Unit Requirement Suggestion: Please retry with clearer requirements
-2025-08-26 01:49:18,547 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
-2025-08-26 01:49:18,547 - INFO - Iteration: 4
-2025-08-26 01:49:18,547 - INFO - Previous Requirement: No tests were collected. Ensure you have test files named with the pytest conventions (e.g., starting with 'test_') containing functions named 'test_*' so pytest can discover and run them.
-2025-08-26 01:49:18,547 - INFO - New Requirement: Failed to parse adjudication response
-2025-08-26 01:49:18,547 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
-2025-08-26 01:49:18,547 - INFO - Iteration: 4
-2025-08-26 01:49:18,547 - INFO - Previous Requirement: 
-2025-08-26 01:49:18,547 - INFO - New Requirement: Please retry with clearer requirements
-2025-08-26 01:49:33,912 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:50:08,340 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:50:13,253 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:50:39,712 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:50:43,377 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:50:43,378 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
-2025-08-26 01:50:43,378 - INFO - TDD Adjudication Passed: True
-2025-08-26 01:51:01,196 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:51:06,425 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:51:06,426 - INFO - --- ITERATION 5 ---
-2025-08-26 01:51:06,426 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
-2025-08-26 01:51:06,426 - INFO - Adjudication Passed: False
-2025-08-26 01:51:06,426 - INFO - Code Requirement Suggestion: Function should handle invalid inputs by raising ValueError for empty or malformed expressions, raise ZeroDivisionError for division-by-zero cases, and validate input types to raise TypeError for non-string inputs
-2025-08-26 01:51:06,426 - INFO - Unit Requirement Suggestion: 
-2025-08-26 01:51:06,426 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
-2025-08-26 01:51:06,426 - INFO - Iteration: 5
-2025-08-26 01:51:06,426 - INFO - Previous Requirement: Failed to parse adjudication response
-2025-08-26 01:51:06,426 - INFO - New Requirement: Function should handle invalid inputs by raising ValueError for empty or malformed expressions, raise ZeroDivisionError for division-by-zero cases, and validate input types to raise TypeError for non-string inputs
-2025-08-26 01:51:06,426 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
-2025-08-26 01:51:06,426 - INFO - Iteration: 5
-2025-08-26 01:51:06,426 - INFO - Previous Requirement: Please retry with clearer requirements
-2025-08-26 01:51:06,426 - INFO - New Requirement: 
-2025-08-26 01:51:26,400 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:51:55,286 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:52:10,548 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:52:30,623 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:52:35,233 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:52:35,233 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
-2025-08-26 01:52:35,233 - INFO - TDD Adjudication Passed: True
-2025-08-26 01:52:37,076 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:52:37,077 - INFO - --- ITERATION 6 ---
-2025-08-26 01:52:37,077 - INFO - Unit Test Result Summary: All tests passed
-2025-08-26 01:52:37,077 - INFO - Adjudication Passed: True
-2025-08-26 01:52:37,078 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
-2025-08-26 01:52:37,078 - INFO - Function Name: unknown_function
-2025-08-26 01:52:37,078 - INFO - Total Iterations: 6
-2025-08-26 01:52:37,078 - INFO - Total Duration: 461.63 seconds
-2025-08-26 01:52:37,078 - INFO - TDD Adjudication Attempts: 6
-2025-08-26 01:52:37,078 - INFO - Final Adjudication Attempts: 4
-2025-08-26 01:52:37,078 - INFO - Requirement Reinforcements: 6
-2025-08-26 01:52:53,362 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:52:53,374 - INFO - === EXISTING FUNCTION CALLED ===
-2025-08-26 01:52:53,374 - INFO - Function: calculate_factorial_expression
-2025-08-26 01:52:53,374 - INFO - Arguments: {'expression': '2!+2!'}
-2025-08-26 01:52:53,375 - INFO - Execution Time: 0.010417585996037815 seconds
-2025-08-26 01:52:53,375 - INFO - Memory Peak: 60966 bytes
-2025-08-26 01:52:53,375 - INFO - Success: True
-2025-08-26 01:52:55,206 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 01:52:55,206 - INFO - === SESSION SUMMARY ===
-2025-08-26 01:52:55,206 - INFO - Session Duration: 515.02 seconds
-2025-08-26 01:52:55,206 - INFO - Functions Attempted: 1
-2025-08-26 01:52:55,206 - INFO - Successful Functions: 1
-2025-08-26 01:52:55,206 - INFO - Terminated Early: 0
-2025-08-26 01:52:55,207 - INFO - Total Iterations: 6
-2025-08-26 01:52:55,207 - INFO - Average Iterations per Function: 6.00
-2025-08-26 01:52:55,207 - INFO - Existing Function Calls: 1 (1 successful)
-2025-08-26 01:52:55,207 - INFO - TDD Adjudication Attempts: 6
-2025-08-26 01:52:55,207 - INFO - Final Adjudication Attempts: 4
-2025-08-26 01:52:55,207 - INFO - Requirement Reinforcements: 6
-2025-08-26 18:19:30,435 - INFO - Retrying request to /chat/completions in 0.454680 seconds
-2025-08-26 18:19:34,604 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:19:34,610 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-08-26 18:19:34,610 - INFO - Response Content: Function Name: calculate_factorial_expression
-Description: This function evaluates mathematical expressions containing factorials (e.g., 2!+2!, 5! - 3!, 3!*4!) and returns the computed result.
-Paramet...
-2025-08-26 18:19:34,610 - INFO - Initiating function generation process...
-2025-08-26 18:19:34,610 - INFO - === STARTING FUNCTION GENERATION ===
-2025-08-26 18:19:34,610 - INFO - User Input: Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)
-2025-08-26 18:19:34,610 - INFO - Function Requirement: Function Name: calculate_factorial_expression
-Description: This function evaluates mathematical expressions containing factorials (e.g., 2!+2!, 5! - 3!, 3!*4!) and returns the computed result.
-Parameters: One string parameter representing the factorial expression to be evaluated (expression: string)
-Example: calculate_factorial_expression("2!+2!")
-2025-08-26 18:19:49,553 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:20:08,792 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:20:11,639 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:20:24,363 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:20:27,665 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:20:27,665 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
-2025-08-26 18:20:27,665 - INFO - TDD Adjudication Passed: False
-2025-08-26 18:20:27,665 - INFO - TDD Requirement Suggestion: Function should correctly compute expressions involving factorials and arithmetic operations, returning the expected numerical results instead of False. Function should handle cases where input is missing a factorial symbol and return False as expected.
-2025-08-26 18:20:27,665 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
-2025-08-26 18:20:27,665 - INFO - Iteration: 1
-2025-08-26 18:20:27,665 - INFO - Previous Requirement: 
-2025-08-26 18:20:27,665 - INFO - New Requirement: Function should correctly compute expressions involving factorials and arithmetic operations, returning the expected numerical results instead of False. Function should handle cases where input is missing a factorial symbol and return False as expected.
-2025-08-26 18:20:49,069 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:21:02,870 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:21:06,760 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:21:16,513 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:21:19,253 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:21:19,254 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
-2025-08-26 18:21:19,254 - INFO - TDD Adjudication Passed: False
-2025-08-26 18:21:19,254 - INFO - TDD Requirement Suggestion: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results, returning the expected arithmetic results instead of False.
-2025-08-26 18:21:19,254 - INFO - Applied Reinforced Requirement: Function should correctly compute expressions involving factorials and arithmetic operations, returning the expected numerical results instead of False. Function should handle cases where input is missing a factorial symbol and return False as expected.
-2025-08-26 18:21:19,254 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
-2025-08-26 18:21:19,254 - INFO - Iteration: 2
-2025-08-26 18:21:19,254 - INFO - Previous Requirement: Function should correctly compute expressions involving factorials and arithmetic operations, returning the expected numerical results instead of False. Function should handle cases where input is missing a factorial symbol and return False as expected.
-2025-08-26 18:21:19,254 - INFO - New Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results, returning the expected arithmetic results instead of False.
-2025-08-26 18:21:29,265 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:21:46,339 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:21:48,542 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:21:59,817 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:22:02,261 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:22:02,261 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
-2025-08-26 18:22:02,261 - INFO - TDD Adjudication Passed: False
-2025-08-26 18:22:02,262 - INFO - TDD Requirement Suggestion: Function should correctly evaluate factorial expressions with parentheses and handle negative results as expected.
-2025-08-26 18:22:02,262 - INFO - Applied Reinforced Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results, returning the expected arithmetic results instead of False.
-2025-08-26 18:22:02,262 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
-2025-08-26 18:22:02,262 - INFO - Iteration: 3
-2025-08-26 18:22:02,262 - INFO - Previous Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results, returning the expected arithmetic results instead of False.
-2025-08-26 18:22:02,262 - INFO - New Requirement: Function should correctly evaluate factorial expressions with parentheses and handle negative results as expected.
-2025-08-26 18:22:24,909 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:22:35,029 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:22:38,305 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:22:45,001 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:22:47,425 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:22:47,426 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
-2025-08-26 18:22:47,426 - INFO - TDD Adjudication Passed: False
-2025-08-26 18:22:47,426 - INFO - TDD Requirement Suggestion: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results. Ensure proper parsing and evaluation of arithmetic expressions with factorials, including nested and combined operations.
-2025-08-26 18:22:47,426 - INFO - Applied Reinforced Requirement: Function should correctly evaluate factorial expressions with parentheses and handle negative results as expected.
-2025-08-26 18:22:47,426 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
-2025-08-26 18:22:47,426 - INFO - Iteration: 4
-2025-08-26 18:22:47,426 - INFO - Previous Requirement: Function should correctly evaluate factorial expressions with parentheses and handle negative results as expected.
-2025-08-26 18:22:47,426 - INFO - New Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results. Ensure proper parsing and evaluation of arithmetic expressions with factorials, including nested and combined operations.
-2025-08-26 18:23:00,936 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:23:20,699 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:23:25,445 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:23:35,239 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:23:38,111 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:23:38,112 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
-2025-08-26 18:23:38,112 - INFO - TDD Adjudication Passed: False
-2025-08-26 18:23:38,112 - INFO - TDD Requirement Suggestion: Function should correctly compute factorial expressions, handle arithmetic operations, and return the expected results for all valid input cases. It should not return False for valid expressions and must properly distinguish between valid and invalid/malformed expressions, returning results or False as appropriate.
-2025-08-26 18:23:38,112 - INFO - Applied Reinforced Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results. Ensure proper parsing and evaluation of arithmetic expressions with factorials, including nested and combined operations.
-2025-08-26 18:23:38,112 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
-2025-08-26 18:23:38,112 - INFO - Iteration: 5
-2025-08-26 18:23:38,112 - INFO - Previous Requirement: Function should correctly compute factorial expressions involving subtraction, mixed operations, parentheses, and negative results. Ensure proper parsing and evaluation of arithmetic expressions with factorials, including nested and combined operations.
-2025-08-26 18:23:38,112 - INFO - New Requirement: Function should correctly compute factorial expressions, handle arithmetic operations, and return the expected results for all valid input cases. It should not return False for valid expressions and must properly distinguish between valid and invalid/malformed expressions, returning results or False as appropriate.
-2025-08-26 18:23:57,404 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:24:24,388 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:24:26,618 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:24:36,270 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:24:39,136 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-26 18:24:39,137 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
-2025-08-26 18:24:39,137 - INFO - TDD Adjudication Passed: False
-2025-08-26 18:24:39,137 - INFO - TDD Requirement Suggestion: Function should correctly evaluate factorial expressions, including handling of subtraction, mixed operations, parentheses, and nested expressions according to mathematical order of operations. Ensure that the function returns the correct result instead of False for these cases.
-2025-08-26 18:24:39,137 - INFO - Applied Reinforced Requirement: Function should correctly compute factorial expressions, handle arithmetic operations, and return the expected results for all valid input cases. It should not return False for valid expressions and must properly distinguish between valid and invalid/malformed expressions, returning results or False as appropriate.
-2025-08-26 18:24:39,137 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
-2025-08-26 18:24:39,137 - INFO - Iteration: 6
-2025-08-26 18:24:39,137 - INFO - Previous Requirement: Function should correctly compute factorial expressions, handle arithmetic operations, and return the expected results for all valid input cases. It should not return False for valid expressions and must properly distinguish between valid and invalid/malformed expressions, returning results or False as appropriate.
-2025-08-26 18:24:39,137 - INFO - New Requirement: Function should correctly evaluate factorial expressions, including handling of subtraction, mixed operations, parentheses, and nested expressions according to mathematical order of operations. Ensure that the function returns the correct result instead of False for these cases.
-2025-08-26 18:24:39,137 - WARNING - === MAX ITERATIONS REACHED ===
-2025-08-26 18:24:39,137 - WARNING - Maximum iterations (6) reached without successful function generation.
-2025-08-26 18:24:39,137 - WARNING - Total Duration: 304.53 seconds
-2025-08-26 18:24:39,138 - WARNING - Final Iteration Count: 0
-2025-08-26 18:24:39,138 - INFO - === SESSION SUMMARY ===
-2025-08-26 18:24:39,138 - INFO - Session Duration: 317.71 seconds
-2025-08-26 18:24:39,138 - INFO - Functions Attempted: 1
-2025-08-26 18:24:39,138 - INFO - Successful Functions: 0
-2025-08-26 18:24:39,138 - INFO - Terminated Early: 1
-2025-08-26 18:24:39,138 - INFO - Total Iterations: 0
-2025-08-26 18:24:39,138 - INFO - Average Iterations per Function: 0.00
-2025-08-26 18:24:39,138 - INFO - Existing Function Calls: 0 (0 successful)
-2025-08-26 18:24:39,138 - INFO - TDD Adjudication Attempts: 6
-2025-08-26 18:24:39,138 - INFO - Final Adjudication Attempts: 0
-2025-08-26 18:24:39,138 - INFO - Requirement Reinforcements: 6
+2025-08-27 12:55:25,797 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 12:55:25,802 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-27 12:55:25,802 - INFO - Response Content: Function Name: delete_todo
+Description: A function that removes a todo item from the todo.csv file based on its ID.
+Parameters: One integer representing the ID of the todo to be deleted.
+Example: dele...
+2025-08-27 12:55:25,802 - INFO - Initiating function generation process...
+2025-08-27 12:55:25,802 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-27 12:55:25,802 - INFO - User Input: delete todo 5
+2025-08-27 12:55:25,802 - INFO - Function Requirement: Function Name: delete_todo
+Description: A function that removes a todo item from the todo.csv file based on its ID.
+Parameters: One integer representing the ID of the todo to be deleted.
+Example: delete_todo(5)
+2025-08-27 12:55:35,200 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 12:55:40,403 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 12:55:42,112 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 12:55:59,569 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 12:56:00,481 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 12:56:00,482 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-27 12:56:00,482 - INFO - TDD Adjudication Passed: True
+2025-08-27 12:56:15,739 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 12:56:17,171 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 12:56:17,172 - INFO - --- ITERATION 1 ---
+2025-08-27 12:56:17,172 - INFO - Unit Test Result Summary: All tests passed
+2025-08-27 12:56:17,172 - INFO - Adjudication Passed: True
+2025-08-27 12:56:17,173 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-27 12:56:17,173 - INFO - Function Name: unknown_function
+2025-08-27 12:56:17,173 - INFO - Total Iterations: 1
+2025-08-27 12:56:17,173 - INFO - Total Duration: 51.37 seconds
+2025-08-27 12:56:17,173 - INFO - TDD Adjudication Attempts: 1
+2025-08-27 12:56:17,173 - INFO - Final Adjudication Attempts: 1
+2025-08-27 12:56:17,173 - INFO - Requirement Reinforcements: 0
+2025-08-27 12:56:17,993 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 12:56:18,014 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 12:56:18,014 - INFO - Function: delete_todo
+2025-08-27 12:56:18,014 - INFO - Arguments: {'todo_id': 5}
+2025-08-27 12:56:18,014 - INFO - Execution Time: 0.018055322987493128 seconds
+2025-08-27 12:56:18,014 - INFO - Memory Peak: 61129 bytes
+2025-08-27 12:56:18,014 - INFO - Success: True
+2025-08-27 12:56:19,017 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 12:56:19,017 - INFO - === SESSION SUMMARY ===
+2025-08-27 12:56:19,018 - INFO - Session Duration: 57.47 seconds
+2025-08-27 12:56:19,018 - INFO - Functions Attempted: 1
+2025-08-27 12:56:19,018 - INFO - Successful Functions: 1
+2025-08-27 12:56:19,018 - INFO - Terminated Early: 0
+2025-08-27 12:56:19,018 - INFO - Total Iterations: 1
+2025-08-27 12:56:19,018 - INFO - Average Iterations per Function: 1.00
+2025-08-27 12:56:19,018 - INFO - Existing Function Calls: 1 (1 successful)
+2025-08-27 12:56:19,019 - INFO - TDD Adjudication Attempts: 1
+2025-08-27 12:56:19,019 - INFO - Final Adjudication Attempts: 1
+2025-08-27 12:56:19,019 - INFO - Requirement Reinforcements: 0
+2025-08-27 13:02:15,396 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:02:15,401 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 13:02:15,401 - INFO - Function: delete_todo
+2025-08-27 13:02:15,401 - INFO - Arguments: {'todo_id': 5}
+2025-08-27 13:02:15,401 - INFO - Execution Time: 0.00036042899591848254 seconds
+2025-08-27 13:02:15,401 - INFO - Memory Peak: 143596 bytes
+2025-08-27 13:02:15,401 - INFO - Success: True
+2025-08-27 13:02:16,112 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:02:16,113 - INFO - === SESSION SUMMARY ===
+2025-08-27 13:02:16,113 - INFO - Session Duration: 2.50 seconds
+2025-08-27 13:02:16,113 - INFO - Functions Attempted: 0
+2025-08-27 13:02:16,113 - INFO - Successful Functions: 0
+2025-08-27 13:02:16,113 - INFO - Terminated Early: 0
+2025-08-27 13:02:16,113 - INFO - Total Iterations: 0
+2025-08-27 13:02:16,113 - INFO - Average Iterations per Function: 0.00
+2025-08-27 13:02:16,113 - INFO - Existing Function Calls: 1 (1 successful)
+2025-08-27 13:02:16,113 - INFO - TDD Adjudication Attempts: 0
+2025-08-27 13:02:16,113 - INFO - Final Adjudication Attempts: 0
+2025-08-27 13:02:16,113 - INFO - Requirement Reinforcements: 0

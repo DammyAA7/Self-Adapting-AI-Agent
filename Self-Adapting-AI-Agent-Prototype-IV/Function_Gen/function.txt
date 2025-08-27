@@ -82,7 +82,7 @@ BATCH OPERATIONS (use *args when processing multiple items of same type):
 
 FILE PATH HANDLING:
 - All functions must include `path=None` as the final parameter
-- Inside the function, use: `file_path = path if path else globals().get('file_path', 'todo.csv')`
+- Inside the function, use: `file_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/todo.csv"`
 - This allows unit testing with custom paths while using global file_path in production
 
 TEST-DRIVEN IMPLEMENTATION GUIDELINES:
@@ -121,7 +121,7 @@ REFERENCE EXAMPLES (adapt these patterns to match your functions.py file AND pas
        Adds a new todo item to the todo.csv file with auto-generated ID, timestamp, and pending status.
        Returns True if successful, False otherwise (as expected by test cases).
        """
-       file_path = path if path else globals().get('file_path', 'todo.csv')
+       file_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/todo.csv"
        # Implementation that passes ALL test cases
    ```
 
@@ -135,18 +135,20 @@ REFERENCE EXAMPLES (adapt these patterns to match your functions.py file AND pas
        Updates the text content of an existing todo item by its ID.
        Returns True if successful, False if todo not found (as expected by test cases).
        """
-       file_path = path if path else globals().get('file_path', 'todo.csv')
+       file_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/todo.csv"
        # Implementation that passes ALL test cases
    ```
 
 CSV FILE STRUCTURE:
 Check the functions.py file to understand the exact CSV structure being used. Typically:
 - id: unique identifier (auto-generated)
-- text: todo item text content
+- todo: todo item text content
 - priority: "low", "medium" or "high"
 - status: "pending", "in progress" or "completed"
 - created_at: timestamp when todo was created
 - completed_at: timestamp when todo was completed (optional)
+
+IMPORTANT: When working with the CSV, always use "todo" as the column name for the task text, not "task" or "text".
 
 ERROR HANDLING PATTERNS (TEST-DRIVEN):
 - **FOLLOW TEST CASE REQUIREMENTS FIRST**: If tests expect specific exceptions, implement exactly those
@@ -169,7 +171,7 @@ IMPORTS GUIDANCE:
 PATH HANDLING TEMPLATE:
 Every function should start with:
 
-file_path = path if path else globals().get('file_path', 'todo.csv')
+file_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/todo.csv"
 
 CRITICAL SUCCESS CRITERIA:
 1. **EVERY TEST CASE MUST PASS**: This is the primary measure of success

@@ -42,6 +42,10 @@ def write_to_file(type, file_path, content):
             
             with open(file_path, 'w') as f:
                 f.writelines(lines)
+        else:
+            # If no main block exists or file is empty, append the content with a main block
+            with open(file_path, 'w') as f:
+                f.write(content + '\n\nif __name__ == "__main__":\n    pass\n')
     elif type == 'python_function':
         with open(file_path, 'a') as f:
             f.write(content)

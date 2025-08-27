@@ -2,8 +2,9 @@
 This script generates a prompt for creating unit tests for a function.
 """
 from Utilities.write_to_file import write_to_file, clear_file
+import sys
 
-python_dir = '/usr/bin/python3'
+python_dir = sys.executable
 folder_dir = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/" 
 
 # Don't read at module level - read inside function

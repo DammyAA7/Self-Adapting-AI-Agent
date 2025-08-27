@@ -449,3 +449,43 @@ result = subprocess.run(cmd, capture_output=True, text=True, timeout=30, cwd=fol
 ```
 
 **Reason:** The adjudicator is designed to parse pytest output, not raw Python script output. Using pytest provides structured test results that the adjudicator can properly analyze.
+
+---
+
+## Change 14: Identified CSV Column Name Mismatch Issue
+**File:** `/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/functions.py`
+
+### Issue Discovered:
+The dynamically generated `update_todo` function is looking for a column named `task` in the CSV file (lines 49, 134), but the actual todo.csv file has columns: `id`, `todo`, and `completed_at`.
+
+### Problem:
+```python
+# Generated function looks for 'task' column:
+if row.get('task', None) is not None:
+    row['task'] = new_text
+```
+
+### Actual CSV Structure:
+```csv
+id,todo,completed_at
+5,clean windows,2025-07-31T01:30:36.240198
+```
+
+### Root Cause:
+The function generation prompt in `Function_Gen/function.txt` doesn't specify the actual CSV column structure, causing the LLM to guess column names when generating functions.
+
+### Solution Required:
+Update `Function_Gen/function.txt` (line 142-150) to specify the correct CSV structure:
+```
+CSV FILE STRUCTURE:
+The todo.csv file in this project uses the following columns:
+- id: unique identifier (auto-generated)
+- todo: the todo item text content (NOTE: The column is named "todo", NOT "task" or "text")
+- completed_at: timestamp when todo was completed (optional)
+```
+
+### Commands to Fix:
+1. Clear safe functions list: `echo '{"safe": []}' > Utilities/safeFunctions.json`
+2. Run main.py again: `python Core/main.py`
+
+**Reason:** The LLM-generated function must use the correct column names that match the actual CSV file structure. Without this specification, the generated function fails silently when trying to update non-existent columns.

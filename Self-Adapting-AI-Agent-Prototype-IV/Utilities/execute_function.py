@@ -1,5 +1,6 @@
 from Utilities.performanceTester import performance_subprocess_call, performance_execute
 import json
+import sys
 
 def is_safe_function(function_name):
     """Check if function is safe to run via module import"""
@@ -66,7 +67,7 @@ def extract_from_args(function_args):
 
 def execute_function(function_name, function_args, function_definitions):
 
-    python_dir = '/usr/bin/python3'
+    python_dir = sys.executable
     folder_dir = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/" 
     """Execute function using safe method (import) or unsafe method (subprocess)"""
     is_safe = is_safe_function(function_name)

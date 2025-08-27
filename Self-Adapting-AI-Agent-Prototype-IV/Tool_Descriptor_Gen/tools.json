@@ -22,23 +22,24 @@
             }
         }
     }
+
 ,
     {
         "type": "function",
         "function": {
             "name": "delete_todo",
-            "description": "Delete a todo item from the CSV file by its ID. Returns True if successful, False otherwise.",
+            "description": "Deletes a todo item with the given ID from the todo CSV file. Returns True if the item was deleted, False if not found, invalid, or on any error.",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "todo_id": {
                         "type": "number",
-                        "description": "The ID of the todo item to be deleted."
+                        "description": "The numeric ID of the todo item to be deleted."
                     },
                     "path": {
                         "type": "string",
-                        "description": "The path to the CSV file. If not provided, default path 'todo.csv' will be used.",
-                        "default": "todo.csv"
+                        "description": "Optional file path to the todo CSV file to use.",
+                        "minLength": 1
                     }
                 },
                 "required": ["todo_id"]

@@ -18,7 +18,9 @@ from Utilities.execute_function import execute_function
 from dotenv import load_dotenv
 from Utilities.Logger import FunctionGenerationLogger
 
-python_dir = '/usr/bin/python3'
+
+
+python_dir = sys.executable
 folder_dir = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/" 
 
 def setup_variables():
@@ -34,7 +36,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)"}  # Critical test prompt
+        {"role": "user", "content": "delete todo 5"}  # Critical test prompt
     ]
     return tools, input_messages
 
@@ -94,6 +96,7 @@ if __name__ == "__main__":
                 tool_call = response.choices[0].message.tool_calls[0]
                 function_name = tool_call.function.name
                 function_args = json.loads(tool_call.function.arguments)
+                print(function_args)
                 print(f"Model called tool: {function_name} with arguments: {function_args}")
                 
                 results, safetyType = execute_function(function_name, function_args, tools)
@@ -148,8 +151,10 @@ if __name__ == "__main__":
 
                         #Generate the function descriptor
                         prompt_function_descriptor = generateFunctionDescriptor(openai_client, function_code, tools_code)
-                        clear_file('Unit_Test/functions.py')
-                    
+                        # clear_file('Unit_Test/functions.py')
+
+                    # Always clear and rewrite the functions.py file to avoid duplicates
+                    clear_file('Unit_Test/functions.py')
                     # Generate unit tests using the generator module
                     with open('Unit_Test/enumUtility.txt', 'r') as f:
                         enum_utility = f.read()
@@ -214,9 +219,9 @@ if __name__ == "__main__":
         logger.log_unexpected_error(str(e))  # ADD THIS
         logger.logger.error(f"Unexpected error: {str(e)}")
     finally:
-        clear_file(folder_dir + 'Test_Driven_Development/testDrivenCases.py')
-        clear_file('Unit_Test/unitTest.py')
-        clear_file('Unit_Test/functions.py')
+        # clear_file(folder_dir + 'Test_Driven_Development/testDrivenCases.py')
+        # clear_file('Unit_Test/unitTest.py')
+        # clear_file('Unit_Test/functions.py')
         # Save session statistics and show summary
         logger.save_session_stats()
         logger.get_generation_summary()

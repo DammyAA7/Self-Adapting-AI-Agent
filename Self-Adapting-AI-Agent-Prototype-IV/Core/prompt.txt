@@ -28,21 +28,23 @@ add_todo(todo_text) - Adds a new todo item to the todo.csv file with auto-genera
 
 
 
-delete_todo(todo_id, path=None) - Delete a todo item from the CSV file by its ID. Returns True if successful, False otherwise.
-- Recognizable phrases: delete, todo item, CSV file, ID, successful, False, path
+
+
+delete_todo(todo_id, path=None) - Deletes a todo item with the given ID from the todo CSV file. Returns True if the item was deleted, False if not found, invalid, or on any error.
+- Recognizable phrases: delete todo, remove task, delete task, remove todo, delete item, clear todo, erase todo, eliminate task, id from todo list, get rid of todo, remove by id, trash task, discard todo, delete entry, task id, todo id, delete from CSV, delete from todo file
 - Examples:
-    - "Delete todo item with ID 5" → delete_todo(5)
-    - "Remove task ID 12 from the list" → delete_todo(12)
-    - "Delete todo with ID 3 from the file" → delete_todo(3)
-    - "Erase item 1 from the CSV" → delete_todo(1)
-    - "Delete task number 8 using default path" → delete_todo(8)
-    - "Try removing item with ID 0" → delete_todo(0)
-    - "Delete to-do item using a custom path" → delete_todo(7, 'custom_todo.csv')
-    - "Remove a task with ID 2 without specifying path" → delete_todo(2)
-    - "Erase item number 6 from the file path provided" → delete_todo(6, 'my_todos.csv')
-    - "Delete task 10 from the todo list with ID" → delete_todo(10)
-    - "Try deleting an item with negative ID" → delete_todo(-3)
-    - "Remove todo with ID 4 and check for success" → delete_todo(4)
+    - "Delete the todo with ID 5" → Use delete_todo(5)
+    - "Remove task number 12 from my list" → Use delete_todo(12)
+    - "Delete the todo item with id -8" → Use delete_todo(-8)
+    - "Erase todo entry 3 in '/tmp/todolist.csv'" → Use delete_todo(3, '/tmp/todolist.csv')
+    - "Get rid of the todo with id 100 using the alternate CSV path '/docs/mytodos.csv'" → Use delete_todo(100, '/docs/mytodos.csv')
+    - "Trash task 0" → Use delete_todo(0)
+    - "Delete my todo with id 2.7" → Use delete_todo(2.7)
+    - "Remove todo id 'abc'" → Use delete_todo('abc')
+    - "Please delete the item with ID 1" → Use delete_todo(1)
+    - "Delete todo ID 15 from '/home/user/tasks.csv'" → Use delete_todo(15, '/home/user/tasks.csv')
+    - "Remove entry with todo id -1" → Use delete_todo(-1)
+    - "Clear task number 25" → Use delete_todo(25)
 
 
 ----
@@ -111,16 +113,6 @@ Example: list_todos() or list_todos("pending")
 User: "Mark task 5 as complete"
 Response: Call complete_todo(5)
 
-User: "Delete todo number 3"
-Response: Call delete_todo(3)
-
-User: "Update todo 2 to 'buy organic milk'"
-Response (with reinforced requirement: "All functions must include input validation"):
-Function Name: update_todo
-Description: A function that modifies the text of an existing todo item with input validation to ensure the todo ID exists and the new text is not empty
-Parameters: Two parameters - todo ID (integer) and new todo text (string, must be non-empty)
-Example: update_todo(2, "buy organic milk")
-Reinforced Requirement: All functions must include input validation
 
 User: "Search for todos containing 'milk'"
 Response (with reinforced requirement: "Functions should support case-insensitive search"):

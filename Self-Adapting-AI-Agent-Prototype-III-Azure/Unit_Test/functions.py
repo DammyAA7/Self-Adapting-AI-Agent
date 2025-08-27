@@ -14,37 +14,31 @@ class Priority(Enum):
 import csv
 import os
 
-def delete_todo(todo_id, path=None):
+def delete_column(column_name, path=None):
     """
-    Deletes a todo item by its ID from the todo.csv file.
+    Deletes a specified column from the todo.csv file, updating the file schema accordingly.
     """
-    if not isinstance(todo_id, int):
-        raise TypeError("todo_id must be an integer")
-    file_path = path if path else "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-III-Azure/todo.csv"
+    if not isinstance(column_name, str):
+        raise TypeError("column_name must be a string")
+    file_path = path if path is not None else "todo.csv"
     if not os.path.exists(file_path):
-        raise FileNotFoundError(f"No such file: {file_path}")
-    deleted = False
-    rows = []
+        raise FileNotFoundError(f"CSV file not found: {file_path}")
+    with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        fieldnames = reader.fieldnames
+        if not fieldnames or column_name not in fieldnames:
+            return False
+        new_fieldnames = [fn for fn in fieldnames if fn != column_name]
+        rows = list(reader)
     try:
-        with open(file_path, mode='r', newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            fieldnames = reader.fieldnames
-            for row in reader:
-                if row.get('id') == str(todo_id):
-                    deleted = True
-                    continue
-                rows.append(row)
-    except PermissionError:
-        raise
-    if not deleted:
-        return False
-    try:
-        with open(file_path, mode='w', newline='') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        with open(file_path, mode='w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=new_fieldnames)
             writer.writeheader()
-            writer.writerows(rows)
+            for row in rows:
+                row.pop(column_name, None)
+                writer.writerow(row)
     except PermissionError:
-        raise
+        raise PermissionError(f"Permission denied when writing to file: {file_path}")
     return True
 
 if __name__ == "__main__":

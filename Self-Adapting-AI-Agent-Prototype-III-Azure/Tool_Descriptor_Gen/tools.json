@@ -42,4 +42,29 @@
       }
     }
 
+,
+    {
+      "type": "function",
+      "function": {
+        "name": "delete_column",
+        "description": "Deletes a specified column from the todo.csv file, updating the file schema accordingly.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "column_name": {
+              "type": "string",
+              "description": "The name of the column to delete from the CSV file.",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "description": "The path to the CSV file. Defaults to 'todo.csv' if not provided.",
+              "minLength": 1
+            }
+          },
+          "required": ["column_name"]
+        }
+      }
+    }
+
 ]

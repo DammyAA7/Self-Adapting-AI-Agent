@@ -31,7 +31,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "delete todo 5"}  # Example user input
+        {"role": "user", "content": "delete column named priority"}  # Example user input
     ]
     return tools, input_messages
 

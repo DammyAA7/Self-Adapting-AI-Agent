@@ -44,6 +44,24 @@ delete_todo(todo_id) - Deletes a todo item by its integer ID from the todo.csv f
     - "Remove todo ID 0 (edge case)" → Use delete_todo(0)
 
 
+
+
+delete_column(column_name, path=None) - Deletes a specified column from a CSV file (defaults to "todo.csv" if no path is given)
+- Recognizable phrases: delete column, remove column, drop column, delete field, remove field, drop field, remove header, drop header, delete header
+- Examples:
+    - "Please delete the 'Priority' column" → Use delete_column("Priority")
+    - "Remove the due_date column from tasks.csv" → Use delete_column("due_date", "tasks.csv")
+    - "Drop the 'completed' field" → Use delete_column("completed")
+    - "Please remove the notes column in project_tasks.csv" → Use delete_column("notes", "project_tasks.csv")
+    - "Delete column 'nonexistent' from my todo list" → Use delete_column("nonexistent")
+    - "Remove the 'email' column from /home/user/data/todo.csv" → Use delete_column("email", "/home/user/data/todo.csv")
+    - "Drop column id" → Use delete_column("id")
+    - "Delete the 'status' column in non_existing_file.csv" → Use delete_column("status", "non_existing_file.csv")
+    - "Remove column 'description' in the default file" → Use delete_column("description")
+    - "Drop the column 'timestamp' from data.csv" → Use delete_column("timestamp", "data.csv")
+    - "Delete the column 'deadline' from C:\\tasks\\todo.csv" → Use delete_column("deadline", "C:\\tasks\\todo.csv")
+
+
 ----
 
 BEHAVIOR RULES:

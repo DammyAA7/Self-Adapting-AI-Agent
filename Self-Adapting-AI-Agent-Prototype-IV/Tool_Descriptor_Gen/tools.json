@@ -74,26 +74,17 @@
     {
         "type": "function",
         "function": {
-            "name": "find_helping_todos",
-            "description": "Finds todo items whose task contains any of the given helper verbs as whole words, case-insensitive. Returns a list of matching todo dicts, an empty list if no matches or empty verbs, and False on invalid input or file errors.",
+            "name": "calculate_factorial",
+            "description": "Calculates the factorial of a non-negative integer.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "verbs": {
-                        "type": "array",
-                        "description": "A list of helper verbs to search for in each todo task.",
-                        "items": {
-                            "type": "string",
-                            "minLength": 1
-                        },
-                        "minItems": 1
-                    },
-                    "path": {
-                        "type": "string",
-                        "description": "Optional file path to the todo CSV file. Defaults to the default CSV path if not provided."
+                    "n": {
+                        "type": "integer",
+                        "description": "The non-negative integer for which to calculate the factorial."
                     }
                 },
-                "required": ["verbs"]
+                "required": ["n"]
             }
         }
     }

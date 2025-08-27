@@ -456,6 +456,11 @@ result = subprocess.run(cmd, capture_output=True, text=True, timeout=30, cwd=fol
 **File:** `/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/functions.py`
 
 ### Issue Discovered:
-todo.csv has the column named todo but it is given as task in the prompt, which I fixed to correct name
+- todo.csv has the column named todo but it is given as task in the prompt, which I fixed to correct name.
+- In Self-Adapting-AI-Agent-Prototype-IV/Core/prompt.txt, the prompt repeatedly mentions task instead of todo confusing LLM to think text content column as **task** instead of **todo**.
+- Self-Adapting-AI-Agent-Prototype-IV/Test_Driven_Development/prompt.txt also mentions text content column as **task**.
+
+### Fix:
+Replaced task with todo in all Prompt Files.
 
 **Reason:** The LLM-generated function must use the correct column names that match the actual CSV file structure. Without this specification, the generated function fails silently when trying to update non-existent columns.

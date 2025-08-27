@@ -77,5 +77,425 @@
     ],
     "end_time": "2025-08-27T23:30:21.031130",
     "session_duration_seconds": 121.624154
+  },
+  {
+    "session_id": "20250827_235014",
+    "start_time": "2025-08-27T23:50:14.854820",
+    "functions": [],
+    "existing_function_calls": [
+      {
+        "function_name": "find_helping_todos",
+        "function_args": {
+          "verbs": [
+            "help"
+          ]
+        },
+        "execution_time": 0.0001852919813245535,
+        "memory_peak": 8423,
+        "result": "None",
+        "timestamp": "2025-08-27T23:50:20.639936",
+        "successful": false
+      }
+    ],
+    "end_time": "2025-08-27T23:50:22.719612",
+    "session_duration_seconds": 7.864792
+  },
+  {
+    "session_id": "20250828_001450",
+    "start_time": "2025-08-28T00:14:50.605240",
+    "functions": [],
+    "existing_function_calls": [
+      {
+        "function_name": "find_helping_todos",
+        "function_args": {
+          "verbs": [
+            "helping"
+          ]
+        },
+        "execution_time": 0.00017353097791783512,
+        "memory_peak": 8423,
+        "result": "None",
+        "timestamp": "2025-08-28T00:15:00.161180",
+        "successful": false
+      }
+    ],
+    "end_time": "2025-08-28T00:15:02.618732",
+    "session_duration_seconds": 12.013492
+  },
+  {
+    "session_id": "20250828_001510",
+    "start_time": "2025-08-28T00:15:10.506673",
+    "functions": [],
+    "existing_function_calls": [
+      {
+        "function_name": "find_helping_todos",
+        "function_args": {
+          "verbs": [
+            "help"
+          ]
+        },
+        "execution_time": 0.00017268501687794924,
+        "memory_peak": 8423,
+        "result": "None",
+        "timestamp": "2025-08-28T00:15:18.253514",
+        "successful": false
+      }
+    ],
+    "end_time": "2025-08-28T00:15:20.085948",
+    "session_duration_seconds": 9.579275
+  },
+  {
+    "session_id": "20250828_002456",
+    "start_time": "2025-08-28T00:24:56.294712",
+    "functions": [],
+    "existing_function_calls": [
+      {
+        "function_name": "find_helping_todos",
+        "function_args": {
+          "verbs": [
+            "help",
+            "assist"
+          ]
+        },
+        "execution_time": 0.001098164007999003,
+        "memory_peak": 49288,
+        "result": "[{'id': '1', 'todo': \"Help Robert prepare surprise party decorations for Roberta's birthday at Central Park pavilion\", 'status': 'completed', 'priority': 'high', 'created_at': '2025-01-15 08:30:00', '",
+        "timestamp": "2025-08-28T00:25:06.811881",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-08-28T00:25:24.627047",
+    "session_duration_seconds": 28.332335
+  },
+  {
+    "session_id": "20250828_003253",
+    "start_time": "2025-08-28T00:32:53.711891",
+    "functions": [],
+    "existing_function_calls": [
+      {
+        "function_name": "add_todo",
+        "function_args": {
+          "todo_text": "help with the project"
+        },
+        "execution_time": 0.00015802000416442752,
+        "memory_peak": 6676,
+        "result": "None",
+        "timestamp": "2025-08-28T00:33:12.665920",
+        "successful": false
+      }
+    ],
+    "end_time": "2025-08-28T00:33:18.399022",
+    "session_duration_seconds": 24.687131
+  },
+  {
+    "session_id": "20250828_003411",
+    "start_time": "2025-08-28T00:34:11.939743",
+    "functions": [
+      {
+        "function_requirement": "Function Name: find_helping_todos  \nDescription: A function that searches the todo.csv file for tasks where someone is helping another person. It matches todo text against a list of \u201chelping\u201d keywords or phrases.  \nParameters:  \n- keywords (list of strings): The set of words or phrases to identify helping actions (e.g., [\"help\", \"assist\", \"support\"]).  \n- path (optional string): File path to the todo.csv file; if omitted, a default path is used.  \nExample:  \nfind_helping_todos([\"help\", \"assist\", \"support\"])",
+        "user_input": "Create New Functions if needed and Find todos where someone is helping another person",
+        "start_time": "2025-08-28T00:34:21.882637",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "unknown_function",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T00:36:09.807970"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T00:36:37.144982",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-08-28T00:36:37.145671",
+        "total_duration_seconds": 135.263034
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "find_helping_todos",
+        "function_args": {
+          "keywords": [
+            "help",
+            "assist",
+            "support"
+          ]
+        },
+        "execution_time": 0.020685237977886572,
+        "memory_peak": 61129,
+        "result": "",
+        "timestamp": "2025-08-28T00:37:00.102515",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-08-28T00:37:01.519710",
+    "session_duration_seconds": 169.579967
+  },
+  {
+    "session_id": "20250828_004439",
+    "start_time": "2025-08-28T00:44:39.962119",
+    "functions": [
+      {
+        "function_requirement": "Function Name: search_todos  \nDescription: A function that searches through the todo.csv file for items whose text matches one or more specified keywords (e.g., \u201chelp\u201d, \u201cassist\u201d, \u201caid\u201d), returning all todos where someone is helping another person.  \nParameters:  \n- keywords (array of strings): A list of terms to match against each todo\u2019s text (case-insensitive).  \n- path (string, optional): The file path to the todo.csv file; if omitted, the default file is used.  \nExample:  \nsearch_todos([\"help\", \"assist\", \"aid\"])  \u2192 returns all todos containing any of those keywords.",
+        "user_input": "Create New Functions if needed and Find todos where someone is helping another person",
+        "start_time": "2025-08-28T00:45:07.298728",
+        "iterations": 4,
+        "successful": true,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": "unknown_function",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "requirement_suggestion": "Fix the import error in Test_Driven_Development/testDrivenCases.py: ensure that the function 'search_todos' is defined and exported in functions.py or update the test to import the correct function name and module path.",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T00:46:47.338613"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "Function should handle a missing default todo file by catching FileNotFoundError (or checking path existence) and returning an empty list when no file is provided",
+            "reinforced_requirement": "Fix the import error in Test_Driven_Development/testDrivenCases.py: ensure that the function 'search_todos' is defined and exported in functions.py or update the test to import the correct function name and module path.",
+            "timestamp": "2025-08-28T00:48:17.348248"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should handle a missing default todo file by catching FileNotFoundError (or checking path existence) and returning an empty list when no file is provided",
+            "timestamp": "2025-08-28T00:50:18.178130"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T00:53:18.603140"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "Add a proper import for semantic_search_todos in Test_Driven_Development/testDrivenCases.py so the function is defined before use",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T00:55:40.837015"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "Fix import in Test_Driven_Development/testDrivenCases.py: ensure semantic_search_todos is defined in Unit_Test/functions.py and the module path is correct",
+            "reinforced_requirement": "Add a proper import for semantic_search_todos in Test_Driven_Development/testDrivenCases.py so the function is defined before use",
+            "timestamp": "2025-08-28T00:57:09.925820"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T00:50:40.088544",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T00:53:41.540842",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Fix the import error in Test_Driven_Development/testDrivenCases.py: ensure that the function 'search_todos' is defined and exported in functions.py or update the test to import the correct function name and module path.",
+            "timestamp": "2025-08-28T00:46:47.338749"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "Fix the import error in Test_Driven_Development/testDrivenCases.py: ensure that the function 'search_todos' is defined and exported in functions.py or update the test to import the correct function name and module path.",
+            "new_requirement": "Function should handle a missing default todo file by catching FileNotFoundError (or checking path existence) and returning an empty list when no file is provided",
+            "timestamp": "2025-08-28T00:48:17.348425"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "Function should handle a missing default todo file by catching FileNotFoundError (or checking path existence) and returning an empty list when no file is provided",
+            "new_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T00:50:40.088754"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T00:50:40.088844"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "Failed to parse adjudication response",
+            "new_requirement": "Add a proper import for semantic_search_todos in Test_Driven_Development/testDrivenCases.py so the function is defined before use",
+            "timestamp": "2025-08-28T00:55:40.837166"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "Add a proper import for semantic_search_todos in Test_Driven_Development/testDrivenCases.py so the function is defined before use",
+            "new_requirement": "Fix import in Test_Driven_Development/testDrivenCases.py: ensure semantic_search_todos is defined in Unit_Test/functions.py and the module path is correct",
+            "timestamp": "2025-08-28T00:57:09.925952"
+          }
+        ],
+        "end_time": "2025-08-28T00:57:09.926050",
+        "total_duration_seconds": 722.627322
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T00:57:09.926109",
+    "session_duration_seconds": 749.96399
+  },
+  {
+    "session_id": "20250828_013944",
+    "start_time": "2025-08-28T01:39:44.406540",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: A function that computes the factorial of a non-negative integer n (i.e., n! = n \u00d7 (n\u20131) \u00d7 \u2026 \u00d7 1; 0! = 1)  \nParameters:  \n- n (integer, required): The non-negative integer whose factorial is to be calculated.  \nExample:  \n- calculate_factorial(5)  // returns 120  \n\nAnswer:  \n2! + 2! = 2 + 2 = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T01:40:02.646652",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": "unknown_function",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T01:41:01.412852"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate its input: raise ValueError for negative integers and TypeError for non-integer types",
+            "timestamp": "2025-08-28T01:42:17.926197"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "Function should define or import calculate_factorial so calculate_factorial_expression can call it without raising NameError.",
+            "reinforced_requirement": "Function should validate its input: raise ValueError for negative integers and TypeError for non-integer types",
+            "timestamp": "2025-08-28T01:45:57.532081"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "Fix the test script by importing calculate_factorial_expression from the module under test (e.g., add \u2018from your_module import calculate_factorial_expression\u2019 at the top of testDrivenCases.py)",
+            "reinforced_requirement": "Function should define or import calculate_factorial so calculate_factorial_expression can call it without raising NameError.",
+            "timestamp": "2025-08-28T01:50:32.155706"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that calculate_factorial_expression is correctly defined and exported in Unit_Test/functions.py or correct the function name/path in the test module.",
+            "reinforced_requirement": "Fix the test script by importing calculate_factorial_expression from the module under test (e.g., add \u2018from your_module import calculate_factorial_expression\u2019 at the top of testDrivenCases.py)",
+            "timestamp": "2025-08-28T01:51:59.889667"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "Fix import in Test_Driven_Development/testDrivenCases.py: the test is trying to import 'calculate_factorial_expression' which does not exist in functions.py\u2014either remove or correct that import or define the function in the module.",
+            "reinforced_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that calculate_factorial_expression is correctly defined and exported in Unit_Test/functions.py or correct the function name/path in the test module.",
+            "timestamp": "2025-08-28T01:54:06.971871"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate its input: raise ValueError for negative integers and TypeError for non-integer types",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T01:41:16.679880",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T01:42:23.247996",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should validate its input: raise ValueError for negative integers and TypeError for non-integer types",
+            "timestamp": "2025-08-28T01:41:16.680054"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T01:41:16.680147"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "Function should validate its input: raise ValueError for negative integers and TypeError for non-integer types",
+            "new_requirement": "Function should define or import calculate_factorial so calculate_factorial_expression can call it without raising NameError.",
+            "timestamp": "2025-08-28T01:45:57.532193"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "Function should define or import calculate_factorial so calculate_factorial_expression can call it without raising NameError.",
+            "new_requirement": "Fix the test script by importing calculate_factorial_expression from the module under test (e.g., add \u2018from your_module import calculate_factorial_expression\u2019 at the top of testDrivenCases.py)",
+            "timestamp": "2025-08-28T01:50:32.155866"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "Fix the test script by importing calculate_factorial_expression from the module under test (e.g., add \u2018from your_module import calculate_factorial_expression\u2019 at the top of testDrivenCases.py)",
+            "new_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that calculate_factorial_expression is correctly defined and exported in Unit_Test/functions.py or correct the function name/path in the test module.",
+            "timestamp": "2025-08-28T01:51:59.889833"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that calculate_factorial_expression is correctly defined and exported in Unit_Test/functions.py or correct the function name/path in the test module.",
+            "new_requirement": "Fix import in Test_Driven_Development/testDrivenCases.py: the test is trying to import 'calculate_factorial_expression' which does not exist in functions.py\u2014either remove or correct that import or define the function in the module.",
+            "timestamp": "2025-08-28T01:54:06.972025"
+          }
+        ],
+        "end_time": "2025-08-28T01:54:06.972208",
+        "total_duration_seconds": 844.325556
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T01:54:06.972326",
+    "session_duration_seconds": 862.565786
   }
 ]

@@ -36,7 +36,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "Create New Functions if needed and Find todos where someone is helping another person"}  # Critical test prompt
+        {"role": "user", "content": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)"}  # Critical test prompt
     ]
     return tools, input_messages
 

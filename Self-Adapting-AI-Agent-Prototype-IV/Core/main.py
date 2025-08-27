@@ -36,7 +36,9 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "Create me a new function that can calculate GCD/Greatest Common Divisor expressions. And answer me what is the GCD of 24 and 36 (Print me answer)"}  # Critical test prompt
+        {"role": "user", "content": """Title: "Add email validation function"
+        Description: "We need a function that validates email addresses according to RFC standards"
+        Expected: Single function returning boolean, with proper error handling"""}  # Critical test prompt
     ]
     return tools, input_messages
 

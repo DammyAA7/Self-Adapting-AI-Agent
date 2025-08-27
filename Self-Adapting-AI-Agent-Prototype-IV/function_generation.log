@@ -1,168 +1,106 @@
-2025-08-27 18:51:09,256 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 18:51:09,265 - INFO - === EXISTING FUNCTION CALLED ===
-2025-08-27 18:51:09,265 - INFO - Function: add_todo
-2025-08-27 18:51:09,265 - INFO - Arguments: {'todo_text': 'delete todo 5'}
-2025-08-27 18:51:09,265 - INFO - Execution Time: 0.00026565601001493633 seconds
-2025-08-27 18:51:09,265 - INFO - Memory Peak: 6676 bytes
-2025-08-27 18:51:09,265 - INFO - Success: False
-2025-08-27 18:51:17,853 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 18:51:17,854 - INFO - === SESSION SUMMARY ===
-2025-08-27 18:51:17,854 - INFO - Session Duration: 18.30 seconds
-2025-08-27 18:51:17,854 - INFO - Functions Attempted: 0
-2025-08-27 18:51:17,854 - INFO - Successful Functions: 0
-2025-08-27 18:51:17,854 - INFO - Terminated Early: 0
-2025-08-27 18:51:17,854 - INFO - Total Iterations: 0
-2025-08-27 18:51:17,854 - INFO - Average Iterations per Function: 0.00
-2025-08-27 18:51:17,854 - INFO - Existing Function Calls: 1 (0 successful)
-2025-08-27 18:51:17,854 - INFO - TDD Adjudication Attempts: 0
-2025-08-27 18:51:17,854 - INFO - Final Adjudication Attempts: 0
-2025-08-27 18:51:17,854 - INFO - Requirement Reinforcements: 0
-2025-08-27 19:06:54,500 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:06:54,503 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-08-27 19:06:54,503 - INFO - Response Content: Function Name: delete_todo
-Description: Removes a todo item from the todo.csv file by its unique ID.
-Parameters:
-  • id (integer): The unique identifier of the todo item to delete.
-Example:
-  delete_t...
-2025-08-27 19:06:54,503 - INFO - Initiating function generation process...
-2025-08-27 19:06:54,503 - INFO - === STARTING FUNCTION GENERATION ===
-2025-08-27 19:06:54,503 - INFO - User Input: delete todo 5
-2025-08-27 19:06:54,503 - INFO - Function Requirement: Function Name: delete_todo
-Description: Removes a todo item from the todo.csv file by its unique ID.
-Parameters:
-  • id (integer): The unique identifier of the todo item to delete.
-Example:
-  delete_todo(5)
-2025-08-27 19:07:12,317 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:07:43,958 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:07:52,867 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:08:54,919 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:09:01,684 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:09:01,684 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
-2025-08-27 19:09:01,684 - INFO - TDD Adjudication Passed: True
-2025-08-27 19:09:15,816 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:09:20,118 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:09:20,119 - INFO - --- ITERATION 1 ---
-2025-08-27 19:09:20,119 - INFO - Unit Test Result Summary: All tests passed
-2025-08-27 19:09:20,119 - INFO - Adjudication Passed: True
-2025-08-27 19:09:20,121 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
-2025-08-27 19:09:20,121 - INFO - Function Name: unknown_function
-2025-08-27 19:09:20,121 - INFO - Total Iterations: 1
-2025-08-27 19:09:20,121 - INFO - Total Duration: 145.62 seconds
-2025-08-27 19:09:20,121 - INFO - TDD Adjudication Attempts: 1
-2025-08-27 19:09:20,121 - INFO - Final Adjudication Attempts: 1
-2025-08-27 19:09:20,121 - INFO - Requirement Reinforcements: 0
-2025-08-27 19:09:24,112 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:09:24,133 - INFO - === EXISTING FUNCTION CALLED ===
-2025-08-27 19:09:24,133 - INFO - Function: delete_todo
-2025-08-27 19:09:24,133 - INFO - Arguments: {'todo_id': 5}
-2025-08-27 19:09:24,133 - INFO - Execution Time: 0.018645049014594406 seconds
-2025-08-27 19:09:24,133 - INFO - Memory Peak: 61129 bytes
-2025-08-27 19:09:24,133 - INFO - Success: True
-2025-08-27 19:09:25,648 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:09:25,649 - INFO - === SESSION SUMMARY ===
-2025-08-27 19:09:25,649 - INFO - Session Duration: 158.47 seconds
-2025-08-27 19:09:25,649 - INFO - Functions Attempted: 1
-2025-08-27 19:09:25,649 - INFO - Successful Functions: 1
-2025-08-27 19:09:25,649 - INFO - Terminated Early: 0
-2025-08-27 19:09:25,649 - INFO - Total Iterations: 1
-2025-08-27 19:09:25,649 - INFO - Average Iterations per Function: 1.00
-2025-08-27 19:09:25,649 - INFO - Existing Function Calls: 1 (1 successful)
-2025-08-27 19:09:25,649 - INFO - TDD Adjudication Attempts: 1
-2025-08-27 19:09:25,649 - INFO - Final Adjudication Attempts: 1
-2025-08-27 19:09:25,649 - INFO - Requirement Reinforcements: 0
-2025-08-27 19:10:07,740 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:10:07,746 - INFO - === EXISTING FUNCTION CALLED ===
-2025-08-27 19:10:07,746 - INFO - Function: delete_todo
-2025-08-27 19:10:07,746 - INFO - Arguments: {'todo_id': 5}
-2025-08-27 19:10:07,746 - INFO - Execution Time: 0.00034427098580636084 seconds
-2025-08-27 19:10:07,746 - INFO - Memory Peak: 160699 bytes
-2025-08-27 19:10:07,746 - INFO - Success: True
-2025-08-27 19:10:08,866 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:10:08,867 - INFO - === SESSION SUMMARY ===
-2025-08-27 19:10:08,867 - INFO - Session Duration: 11.15 seconds
-2025-08-27 19:10:08,867 - INFO - Functions Attempted: 0
-2025-08-27 19:10:08,867 - INFO - Successful Functions: 0
-2025-08-27 19:10:08,867 - INFO - Terminated Early: 0
-2025-08-27 19:10:08,867 - INFO - Total Iterations: 0
-2025-08-27 19:10:08,867 - INFO - Average Iterations per Function: 0.00
-2025-08-27 19:10:08,867 - INFO - Existing Function Calls: 1 (1 successful)
-2025-08-27 19:10:08,867 - INFO - TDD Adjudication Attempts: 0
-2025-08-27 19:10:08,867 - INFO - Final Adjudication Attempts: 0
-2025-08-27 19:10:08,867 - INFO - Requirement Reinforcements: 0
-2025-08-27 19:41:32,486 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:41:32,492 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-08-27 19:41:32,493 - INFO - Response Content: Function Name: calculate_gcd
-Description: A function that calculates the Greatest Common Divisor (GCD) of two or more integers using an efficient algorithm such as the Euclidean algorithm.
-Parameters:...
-2025-08-27 19:41:32,493 - INFO - Initiating function generation process...
-2025-08-27 19:41:32,493 - INFO - === STARTING FUNCTION GENERATION ===
-2025-08-27 19:41:32,493 - INFO - User Input: Create me a new function that can calculate GCD/Greatest Common Divisor expressions. And answer me what is the GCD of 24 and 36 (Print me answer)
-2025-08-27 19:41:32,493 - INFO - Function Requirement: Function Name: calculate_gcd
-Description: A function that calculates the Greatest Common Divisor (GCD) of two or more integers using an efficient algorithm such as the Euclidean algorithm.
+2025-08-27 22:20:30,996 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:20:30,999 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-27 22:20:30,999 - INFO - Response Content: Function Name: validate_email
+Description: Validates whether a given email address complies with RFC standards, returning a boolean indicating validity. The function should include proper error handli...
+2025-08-27 22:20:30,999 - INFO - Initiating function generation process...
+2025-08-27 22:20:30,999 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-27 22:20:30,999 - INFO - User Input: Title: "Add email validation function"
+        Description: "We need a function that validates email addresses according to RFC standards"
+        Expected: Single function returning boolean, with proper error handling
+2025-08-27 22:20:30,999 - INFO - Function Requirement: Function Name: validate_email
+Description: Validates whether a given email address complies with RFC standards, returning a boolean indicating validity. The function should include proper error handling for malformed or missing input.
 Parameters: 
-- numbers: An array or list of two or more integers for which the GCD will be calculated.
-Example: calculate_gcd([24, 36])
-
-Since I do not have the calculate_gcd function in my available tools, I cannot perform the calculation directly. However, the GCD of 24 and 36 is 12.
-2025-08-27 19:41:47,846 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:41:51,840 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:41:53,371 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:41:58,291 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:41:59,219 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:41:59,219 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
-2025-08-27 19:41:59,219 - INFO - TDD Adjudication Passed: True
-2025-08-27 19:42:04,566 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:42:07,507 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:42:07,529 - INFO - --- ITERATION 1 ---
-2025-08-27 19:42:07,530 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
-2025-08-27 19:42:07,530 - INFO - Adjudication Passed: False
-2025-08-27 19:42:07,530 - INFO - Code Requirement Suggestion: Failed to parse adjudication response
-2025-08-27 19:42:07,530 - INFO - Unit Requirement Suggestion: Please retry with clearer requirements
-2025-08-27 19:42:07,530 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
-2025-08-27 19:42:07,530 - INFO - Iteration: 1
-2025-08-27 19:42:07,530 - INFO - Previous Requirement: 
-2025-08-27 19:42:07,530 - INFO - New Requirement: Failed to parse adjudication response
-2025-08-27 19:42:07,530 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
-2025-08-27 19:42:07,530 - INFO - Iteration: 1
-2025-08-27 19:42:07,530 - INFO - Previous Requirement: 
-2025-08-27 19:42:07,530 - INFO - New Requirement: Please retry with clearer requirements
-2025-08-27 19:42:22,550 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:42:26,584 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:42:28,090 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:42:33,620 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:42:34,582 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:42:34,583 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
-2025-08-27 19:42:34,584 - INFO - TDD Adjudication Passed: True
-2025-08-27 19:42:40,379 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:42:41,300 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:42:41,300 - INFO - --- ITERATION 2 ---
-2025-08-27 19:42:41,300 - INFO - Unit Test Result Summary: All tests passed
-2025-08-27 19:42:41,300 - INFO - Adjudication Passed: True
-2025-08-27 19:42:41,301 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
-2025-08-27 19:42:41,301 - INFO - Function Name: unknown_function
-2025-08-27 19:42:41,301 - INFO - Total Iterations: 2
-2025-08-27 19:42:41,301 - INFO - Total Duration: 68.81 seconds
-2025-08-27 19:42:41,301 - INFO - TDD Adjudication Attempts: 2
-2025-08-27 19:42:41,301 - INFO - Final Adjudication Attempts: 2
-2025-08-27 19:42:41,301 - INFO - Requirement Reinforcements: 2
-2025-08-27 19:42:42,224 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:42:42,235 - INFO - === EXISTING FUNCTION CALLED ===
-2025-08-27 19:42:42,235 - INFO - Function: calculate_gcd
-2025-08-27 19:42:42,235 - INFO - Arguments: {'numbers': [24, 36]}
-2025-08-27 19:42:42,236 - INFO - Execution Time: 0.009648289007600397 seconds
-2025-08-27 19:42:42,236 - INFO - Memory Peak: 61049 bytes
-2025-08-27 19:42:42,236 - INFO - Success: True
-2025-08-27 19:42:43,451 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-08-27 19:42:43,453 - INFO - === SESSION SUMMARY ===
-2025-08-27 19:42:43,453 - INFO - Session Duration: 74.91 seconds
-2025-08-27 19:42:43,453 - INFO - Functions Attempted: 1
-2025-08-27 19:42:43,453 - INFO - Successful Functions: 1
-2025-08-27 19:42:43,453 - INFO - Terminated Early: 0
-2025-08-27 19:42:43,453 - INFO - Total Iterations: 2
-2025-08-27 19:42:43,453 - INFO - Average Iterations per Function: 2.00
-2025-08-27 19:42:43,453 - INFO - Existing Function Calls: 1 (1 successful)
-2025-08-27 19:42:43,453 - INFO - TDD Adjudication Attempts: 2
-2025-08-27 19:42:43,453 - INFO - Final Adjudication Attempts: 2
-2025-08-27 19:42:43,453 - INFO - Requirement Reinforcements: 2
+- email (string): The email address to be validated.
+Example: validate_email("user@example.com")
+2025-08-27 22:20:44,511 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:20:51,269 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:20:54,341 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:20:58,744 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:21:00,894 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:21:00,895 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-27 22:21:00,895 - INFO - TDD Adjudication Passed: False
+2025-08-27 22:21:00,895 - INFO - TDD Requirement Suggestion: Function should correctly identify and reject email addresses with invalid top-level domains (TLDs), such as excessively long TLDs.
+2025-08-27 22:21:00,895 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-27 22:21:00,895 - INFO - Iteration: 1
+2025-08-27 22:21:00,895 - INFO - Previous Requirement: 
+2025-08-27 22:21:00,895 - INFO - New Requirement: Function should correctly identify and reject email addresses with invalid top-level domains (TLDs), such as excessively long TLDs.
+2025-08-27 22:21:21,372 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:21:31,202 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:21:32,426 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:21:37,956 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:21:39,803 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:21:39,804 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-27 22:21:39,804 - INFO - TDD Adjudication Passed: False
+2025-08-27 22:21:39,804 - INFO - TDD Requirement Suggestion: Function should validate the email's top-level domain (TLD) against a list of real/valid TLDs and return False for invalid or non-existent TLDs.
+2025-08-27 22:21:39,804 - INFO - Applied Reinforced Requirement: Function should correctly identify and reject email addresses with invalid top-level domains (TLDs), such as excessively long TLDs.
+2025-08-27 22:21:39,804 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-27 22:21:39,804 - INFO - Iteration: 2
+2025-08-27 22:21:39,804 - INFO - Previous Requirement: Function should correctly identify and reject email addresses with invalid top-level domains (TLDs), such as excessively long TLDs.
+2025-08-27 22:21:39,804 - INFO - New Requirement: Function should validate the email's top-level domain (TLD) against a list of real/valid TLDs and return False for invalid or non-existent TLDs.
+2025-08-27 22:22:03,457 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:22:16,772 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:22:20,041 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:22:26,187 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:22:27,412 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:22:27,413 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-27 22:22:27,413 - INFO - TDD Adjudication Passed: False
+2025-08-27 22:22:27,413 - INFO - TDD Requirement Suggestion: Function should correctly recognize and validate minimal valid email addresses with valid TLDs, such as 'a@b.cd'.
+2025-08-27 22:22:27,413 - INFO - Applied Reinforced Requirement: Function should validate the email's top-level domain (TLD) against a list of real/valid TLDs and return False for invalid or non-existent TLDs.
+2025-08-27 22:22:27,413 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-27 22:22:27,413 - INFO - Iteration: 3
+2025-08-27 22:22:27,413 - INFO - Previous Requirement: Function should validate the email's top-level domain (TLD) against a list of real/valid TLDs and return False for invalid or non-existent TLDs.
+2025-08-27 22:22:27,413 - INFO - New Requirement: Function should correctly recognize and validate minimal valid email addresses with valid TLDs, such as 'a@b.cd'.
+2025-08-27 22:22:51,069 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:23:04,893 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:23:06,428 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:23:12,572 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:23:14,108 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:23:14,109 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-27 22:23:14,109 - INFO - TDD Adjudication Passed: False
+2025-08-27 22:23:14,109 - INFO - TDD Requirement Suggestion: Function should accept minimal valid emails such as 'a@b.cd' as valid and return True for these cases.
+2025-08-27 22:23:14,109 - INFO - Applied Reinforced Requirement: Function should correctly recognize and validate minimal valid email addresses with valid TLDs, such as 'a@b.cd'.
+2025-08-27 22:23:14,109 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-27 22:23:14,109 - INFO - Iteration: 4
+2025-08-27 22:23:14,109 - INFO - Previous Requirement: Function should correctly recognize and validate minimal valid email addresses with valid TLDs, such as 'a@b.cd'.
+2025-08-27 22:23:14,109 - INFO - New Requirement: Function should accept minimal valid emails such as 'a@b.cd' as valid and return True for these cases.
+2025-08-27 22:23:24,552 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:23:36,839 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:23:38,068 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:23:42,779 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:23:44,211 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:23:44,212 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-27 22:23:44,212 - INFO - TDD Adjudication Passed: False
+2025-08-27 22:23:44,212 - INFO - TDD Requirement Suggestion: Function should accept and return True for minimal valid emails such as 'a@b.cd' with valid TLDs.
+2025-08-27 22:23:44,212 - INFO - Applied Reinforced Requirement: Function should accept minimal valid emails such as 'a@b.cd' as valid and return True for these cases.
+2025-08-27 22:23:44,212 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-27 22:23:44,212 - INFO - Iteration: 5
+2025-08-27 22:23:44,212 - INFO - Previous Requirement: Function should accept minimal valid emails such as 'a@b.cd' as valid and return True for these cases.
+2025-08-27 22:23:44,212 - INFO - New Requirement: Function should accept and return True for minimal valid emails such as 'a@b.cd' with valid TLDs.
+2025-08-27 22:24:09,089 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:24:21,074 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:24:22,610 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:24:29,060 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:24:30,596 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 22:24:30,597 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-27 22:24:30,597 - INFO - TDD Adjudication Passed: False
+2025-08-27 22:24:30,597 - INFO - TDD Requirement Suggestion: Function should accept minimal valid emails such as 'a@b.cd' and handle TLDs in a case-insensitive manner.
+2025-08-27 22:24:30,597 - INFO - Applied Reinforced Requirement: Function should accept and return True for minimal valid emails such as 'a@b.cd' with valid TLDs.
+2025-08-27 22:24:30,597 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-27 22:24:30,597 - INFO - Iteration: 6
+2025-08-27 22:24:30,597 - INFO - Previous Requirement: Function should accept and return True for minimal valid emails such as 'a@b.cd' with valid TLDs.
+2025-08-27 22:24:30,597 - INFO - New Requirement: Function should accept minimal valid emails such as 'a@b.cd' and handle TLDs in a case-insensitive manner.
+2025-08-27 22:24:30,597 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-27 22:24:30,597 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-27 22:24:30,597 - WARNING - Total Duration: 239.60 seconds
+2025-08-27 22:24:30,597 - WARNING - Final Iteration Count: 0
+2025-08-27 22:24:30,597 - INFO - === SESSION SUMMARY ===
+2025-08-27 22:24:30,597 - INFO - Session Duration: 243.04 seconds
+2025-08-27 22:24:30,597 - INFO - Functions Attempted: 1
+2025-08-27 22:24:30,597 - INFO - Successful Functions: 0
+2025-08-27 22:24:30,597 - INFO - Terminated Early: 1
+2025-08-27 22:24:30,597 - INFO - Total Iterations: 0
+2025-08-27 22:24:30,597 - INFO - Average Iterations per Function: 0.00
+2025-08-27 22:24:30,597 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-27 22:24:30,597 - INFO - TDD Adjudication Attempts: 6
+2025-08-27 22:24:30,597 - INFO - Final Adjudication Attempts: 0
+2025-08-27 22:24:30,597 - INFO - Requirement Reinforcements: 6

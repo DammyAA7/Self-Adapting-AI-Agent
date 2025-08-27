@@ -45,21 +45,21 @@ delete_todo(todo_id) - Deletes a todo item by its integer ID from the todo.csv f
 
 
 
-
-delete_column(column_name, path=None) - Deletes a specified column from a CSV file (defaults to "todo.csv" if no path is given)
-- Recognizable phrases: delete column, remove column, drop column, delete field, remove field, drop field, remove header, drop header, delete header
+delete_todo(todo_id, path=None) - Deletes a todo item by its ID from the todo.csv file. Returns True if the todo was deleted, False otherwise. Raises FileNotFoundError if the file does not exist, and TypeError if the todo_id is not a number.
+- Recognizable phrases: delete todo, remove todo, delete item, remove entry, erase todo, eliminate todo, clear todo, delete task, delete by ID, remove by ID, delete entry number, discard todo, remove task, delete from todo list, remove from todo.csv, delete specific todo, delete record, delete row, get rid of todo, get rid of entry
 - Examples:
-    - "Please delete the 'Priority' column" → Use delete_column("Priority")
-    - "Remove the due_date column from tasks.csv" → Use delete_column("due_date", "tasks.csv")
-    - "Drop the 'completed' field" → Use delete_column("completed")
-    - "Please remove the notes column in project_tasks.csv" → Use delete_column("notes", "project_tasks.csv")
-    - "Delete column 'nonexistent' from my todo list" → Use delete_column("nonexistent")
-    - "Remove the 'email' column from /home/user/data/todo.csv" → Use delete_column("email", "/home/user/data/todo.csv")
-    - "Drop column id" → Use delete_column("id")
-    - "Delete the 'status' column in non_existing_file.csv" → Use delete_column("status", "non_existing_file.csv")
-    - "Remove column 'description' in the default file" → Use delete_column("description")
-    - "Drop the column 'timestamp' from data.csv" → Use delete_column("timestamp", "data.csv")
-    - "Delete the column 'deadline' from C:\\tasks\\todo.csv" → Use delete_column("deadline", "C:\\tasks\\todo.csv")
+    - "Delete todo item with ID 5" → Use delete_todo(5)
+    - "Remove the task with ID 12" → Use delete_todo(12)
+    - "Delete the entry number 100 from my todos" → Use delete_todo(100)
+    - "Erase todo with ID -8" → Use delete_todo(-8)
+    - "Remove the item with ID 0" → Use delete_todo(0)
+    - "Delete the todo entry with float ID 2.75" → Use delete_todo(2.75)
+    - "Clear the todo with ID -3.5" → Use delete_todo(-3.5)
+    - "I want to delete the todo with ID 1" → Use delete_todo(1)
+    - "Get rid of the todo task 23" → Use delete_todo(23)
+    - "Delete the todo with ID 0.0 (edge case)" → Use delete_todo(0.0)
+    - "Remove the entry with ID -1 (possible error)" → Use delete_todo(-1)
+    - "Delete todo with ID 200 from custom file location" → Use delete_todo(200, "/some/other/path/todo.csv")
 
 
 ----
@@ -127,15 +127,6 @@ Example: list_todos() or list_todos("pending")
 
 User: "Mark task 5 as complete"
 Response: Call complete_todo(5)
-
-
-User: "Update todo 2 to 'buy organic milk'"
-Response (with reinforced requirement: "All functions must include input validation"):
-Function Name: update_todo
-Description: A function that modifies the text of an existing todo item with input validation to ensure the todo ID exists and the new text is not empty
-Parameters: Two parameters - todo ID (integer) and new todo text (string, must be non-empty)
-Example: update_todo(2, "buy organic milk")
-Reinforced Requirement: All functions must include input validation
 
 User: "Search for todos containing 'milk'"
 Response (with reinforced requirement: "Functions should support case-insensitive search"):

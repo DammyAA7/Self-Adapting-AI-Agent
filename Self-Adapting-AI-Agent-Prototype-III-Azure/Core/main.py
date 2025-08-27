@@ -31,7 +31,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "delete column named priority"}  # Example user input
+        {"role": "user", "content": "delete todo 5"}  # Example user input
     ]
     return tools, input_messages
 
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     
     # You need to specify your deployment name - replace with your actual deployment
     # Common deployment names are: gpt-35-turbo, gpt-4, etc.
-    azure_deployment_name = "o4-mini"  # CHANGE THIS to your actual deployment name
+    azure_deployment_name = "gpt-4.1"  # CHANGE THIS to your actual deployment name
     
     # Create Azure OpenAI client
     openai_client = AzureOpenAI(

@@ -14,32 +14,40 @@ class Priority(Enum):
 import csv
 import os
 
-def delete_column(column_name, path=None):
+def delete_todo(todo_id, path=None):
     """
-    Deletes a specified column from the todo.csv file, updating the file schema accordingly.
+    Deletes a todo item by its ID from the todo.csv file.
+    Returns True if the todo was deleted, False if the ID was not found.
+    Raises FileNotFoundError if the CSV file does not exist.
+    Raises TypeError if the todo_id is not an int or float.
     """
-    if not isinstance(column_name, str):
-        raise TypeError("column_name must be a string")
-    file_path = path if path is not None else "todo.csv"
+    file_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-III-Azure/todo.csv" if path is None else path
+    if not isinstance(todo_id, (int, float)):
+        raise TypeError("todo_id must be an integer or float")
     if not os.path.exists(file_path):
-        raise FileNotFoundError(f"CSV file not found: {file_path}")
-    with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
-        reader = csv.DictReader(csvfile)
+        raise FileNotFoundError("The todo.csv file does not exist")
+    updated_rows = []
+    deleted = False
+    with open(file_path, mode="r", newline="", encoding="utf-8") as infile:
+        reader = csv.DictReader(infile)
         fieldnames = reader.fieldnames
-        if not fieldnames or column_name not in fieldnames:
-            return False
-        new_fieldnames = [fn for fn in fieldnames if fn != column_name]
-        rows = list(reader)
-    try:
-        with open(file_path, mode='w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=new_fieldnames)
+        for row in reader:
+            try:
+                row_id = int(float(row.get("id", -1)))
+            except (ValueError, TypeError):
+                row_id = -1
+            if row_id == int(todo_id):
+                deleted = True
+                continue
+            updated_rows.append(row)
+    if deleted:
+        with open(file_path, mode="w", newline="", encoding="utf-8") as outfile:
+            writer = csv.DictWriter(outfile, fieldnames=fieldnames)
             writer.writeheader()
-            for row in rows:
-                row.pop(column_name, None)
-                writer.writerow(row)
-    except PermissionError:
-        raise PermissionError(f"Permission denied when writing to file: {file_path}")
-    return True
+            writer.writerows(updated_rows)
+        return True
+    return False
 
 if __name__ == "__main__":
     pass
+

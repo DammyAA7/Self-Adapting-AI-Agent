@@ -25,46 +25,21 @@
 
 ,
     {
-      "type": "function",
-      "function": {
-        "name": "delete_todo",
-        "description": "Deletes a todo item by its ID from the todo.csv file.",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "todo_id": {
-              "type": "number",
-              "description": "The ID of the todo item to delete."
+        "type": "function",
+        "function": {
+            "name": "delete_todo",
+            "description": "Deletes a todo item by its ID from the todo.csv file. Returns True if the todo was deleted, False if the ID was not found. Raises FileNotFoundError if the CSV file does not exist. Raises TypeError if the todo_id is not an int or float.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "todo_id": {
+                        "type": "number",
+                        "description": "The ID of the todo item to be deleted."
+                    }
+                },
+                "required": ["todo_id"]
             }
-          },
-          "required": ["todo_id"]
         }
-      }
-    }
-
-,
-    {
-      "type": "function",
-      "function": {
-        "name": "delete_column",
-        "description": "Deletes a specified column from the todo.csv file, updating the file schema accordingly.",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "column_name": {
-              "type": "string",
-              "description": "The name of the column to delete from the CSV file.",
-              "minLength": 1
-            },
-            "path": {
-              "type": "string",
-              "description": "The path to the CSV file. Defaults to 'todo.csv' if not provided.",
-              "minLength": 1
-            }
-          },
-          "required": ["column_name"]
-        }
-      }
     }
 
 ]

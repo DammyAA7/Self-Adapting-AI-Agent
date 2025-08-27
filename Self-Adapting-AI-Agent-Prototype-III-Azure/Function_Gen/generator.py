@@ -30,10 +30,10 @@ def generate_function_code(client, function_requirement, reinforced_requirement=
     # Using Azure OpenAI
     # Note: Azure uses deployment names, not model names
     generator_response = client.chat.completions.create(
-        model="o4-mini",  # Azure deployment name
+        model="gpt-4.1",  # Azure deployment name
         max_completion_tokens=5000,
-        messages=generator_messages
-        # temperature=0.7  # o4-mini only supports default temperature (1)
+        messages=generator_messages,
+        temperature=0.7  # gpt-4.1 only supports default temperature (1)
     )
     
     function = generator_response.choices[0].message.content

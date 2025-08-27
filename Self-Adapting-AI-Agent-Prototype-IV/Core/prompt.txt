@@ -64,6 +64,23 @@ calculate_gcd(numbers) - Calculates the greatest common divisor (GCD) of a list 
     - "Find the GCD for these values: 5.5, 11" (error due to non-integer) → Use calculate_gcd([5.5, 11])
 
 
+
+
+find_helping_todos(verbs, path=None) - Finds todo items whose task contains any of the given helper verbs as whole words, case-insensitive.  
+- Recognizable phrases: find todos, search todos, list tasks, filter tasks by verb, tasks containing, match verbs, helper verbs, case-insensitive search, whole-word search, CSV file, todo list  
+- Examples:  
+    - "Find all tasks containing the verbs fix and update" → Use find_helping_todos(["fix", "update"])  
+    - "Show me todos where the task mentions review" → Use find_helping_todos(["review"])  
+    - "Get items with analyze or design in their description from /tmp/todos.csv" → Use find_helping_todos(["analyze", "design"], "/tmp/todos.csv")  
+    - "List tasks that contain help or assist" → Use find_helping_todos(["help", "assist"])  
+    - "Search my todo list for any entries with deploy" → Use find_helping_todos(["deploy"])  
+    - "Retrieve tasks with an empty verb list" → Use find_helping_todos([])  
+    - "Find todos with the verb compile using wrong path" → Use find_helping_todos(["compile"], "/invalid/path/todo.csv")  
+    - "Get tasks where task has submit, approve or notify" → Use find_helping_todos(["submit", "approve", "notify"])  
+    - "List todos for the verb send" → Use find_helping_todos(["send"])  
+    - "Get tasks with 'help' passed as a string instead of list" → Use find_helping_todos("help")
+
+
 ----
 
 BEHAVIOR RULES:

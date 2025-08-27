@@ -36,9 +36,7 @@ def setup_variables():
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": """Title: "Add email validation function"
-        Description: "We need a function that validates email addresses according to RFC standards"
-        Expected: Single function returning boolean, with proper error handling"""}  # Critical test prompt
+        {"role": "user", "content": "Create New Functions if needed and Find todos where someone is helping another person"}  # Critical test prompt
     ]
     return tools, input_messages
 
@@ -62,7 +60,7 @@ if __name__ == "__main__":
     
     # You need to specify your deployment name - replace with your actual deployment
     # Common deployment names are: gpt-35-turbo, gpt-4, etc.
-    azure_deployment_name = "gpt-4.1"  # CHANGE THIS to your actual deployment name
+    azure_deployment_name = "o4-mini"  # CHANGE THIS to your actual deployment name
     
     # Create Azure OpenAI client
     openai_client = AzureOpenAI(

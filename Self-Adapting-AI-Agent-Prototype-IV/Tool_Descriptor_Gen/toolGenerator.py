@@ -11,7 +11,7 @@ def generate_tool_definitions(client, function):
     ]
 
     generator_response = client.chat.completions.create(
-        model="gpt-4.1",  # Azure deployment name
+        model="o4-mini",  # Azure deployment name
         messages=generator_messages
     )
 

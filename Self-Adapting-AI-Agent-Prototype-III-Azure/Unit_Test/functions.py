@@ -14,46 +14,35 @@ class Priority(Enum):
 import csv
 import os
 
-def add_multiple_rows(table_identifier, column_values, times, path=None):
+def delete_todo(todo_id, path=None):
     """
-    Appends the specified column values as new rows to the given CSV table a specified number of times.
+    Deletes a todo item by its ID from the todo.csv file.
     """
-    if not isinstance(table_identifier, str):
-        raise TypeError("table_identifier must be a string")
-    if not isinstance(column_values, dict):
-        raise TypeError("column_values must be a dict")
-    if not isinstance(times, int):
-        raise TypeError("times must be an integer")
-    if times < 1:
-        return False
-    if path and not isinstance(path, str):
-        raise TypeError("path must be a string")
-    file_path = table_identifier
-    if path:
-        file_path = path
+    if not isinstance(todo_id, int):
+        raise TypeError("todo_id must be an integer")
+    file_path = path if path else "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-III-Azure/todo.csv"
     if not os.path.exists(file_path):
-        raise FileNotFoundError(f"Table file not found: {file_path}")
+        raise FileNotFoundError(f"No such file: {file_path}")
+    deleted = False
+    rows = []
     try:
-        with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
+        with open(file_path, mode='r', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             fieldnames = reader.fieldnames
-            if fieldnames is None:
-                raise ValueError(f"No columns found in table: {file_path}")
+            for row in reader:
+                if row.get('id') == str(todo_id):
+                    deleted = True
+                    continue
+                rows.append(row)
     except PermissionError:
         raise
-    rows_to_add = []
-    for _ in range(times):
-        row = {}
-        for col in fieldnames:
-            if col in column_values:
-                row[col] = column_values[col]
-            else:
-                row[col] = ''
-        rows_to_add.append(row)
+    if not deleted:
+        return False
     try:
-        with open(file_path, mode='a', newline='', encoding='utf-8') as csvfile:
+        with open(file_path, mode='w', newline='') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerows(rows_to_add)
+            writer.writeheader()
+            writer.writerows(rows)
     except PermissionError:
         raise
     return True

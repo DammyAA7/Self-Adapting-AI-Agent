@@ -27,126 +27,21 @@ add_todo(todo_text) - Adds a new todo item to the todo.csv file with auto-genera
 
 
 
-delete_todo(todo_id, path=None) - Deletes a todo item from the todo.csv file based on its unique ID  
-- Recognizable phrases: delete todo, remove todo, delete task, remove task, erase todo, erase task, drop todo, delete item, remove entry, erase record, remove record, todo ID, task number, entry ID, from file, in file  
+delete_todo(todo_id) - Deletes a todo item by its integer ID from the todo.csv file  
+- Recognizable phrases: delete todo, remove todo, erase todo, delete task, remove task, delete item, remove item, erase entry, drop todo, clear todo, delete entry, todo ID  
 - Examples:  
-    - "Remove todo with ID 5" → Use delete_todo(5)  
-    - "Please delete task number 0" → Use delete_todo(0)  
-    - "Delete the todo item 12" → Use delete_todo(12)  
-    - "Remove the reminder with ID -3" → Use delete_todo(-3)  
-    - "Erase the to-do with id 15 using the default list" → Use delete_todo(15)  
-    - "Remove entry 7 from my custom list at /tmp/tasks.csv" → Use delete_todo(7, "/tmp/tasks.csv")  
-    - "Delete to-do 10 in file /home/user/data/todo.csv" → Use delete_todo(10, "/home/user/data/todo.csv")  
-    - "Delete task 'five'" → Use delete_todo("five")  
-    - "Remove item 3 from non_existing.csv" → Use delete_todo(3, "/path/doesnt/exist.csv")  
-    - "Remove todo number 8 from /protected/todo.csv" → Use delete_todo(8, "/protected/todo.csv")
-
-
-
-
-delete_todo(todo_id, path=None) - Deletes a todo item from a specified CSV file by its unique integer ID (defaults to the primary todo.csv)
-- Recognizable phrases: delete todo, remove todo, erase item, delete task, remove entry, record number, todo ID, item ID, CSV file, path
-- Examples:
-    - "Could you delete todo #5?" → Use delete_todo(5)
-    - "Remove the todo with ID 12" → Use delete_todo(12)
-    - "Erase item number 3 from the list" → Use delete_todo(3)
-    - "Delete task 7 in /home/user/tasks.csv" → Use delete_todo(7, "/home/user/tasks.csv")
-    - "Remove entry 42 in my_tasks.csv" → Use delete_todo(42, "my_tasks.csv")
-    - "Delete todo 9999" → Use delete_todo(9999)
-    - "Delete todo 5 from missing.csv" → Use delete_todo(5, "missing.csv")
-    - "Delete todo abc" → Use delete_todo("abc")
-    - "Remove item with ID -1" → Use delete_todo(-1)
-    - "Erase record 10 in backup.csv" → Use delete_todo(10, "backup.csv")
-
-
-
-
-delete_todo_column(column_name, path=None) - Removes a specified column from the todo CSV file, optionally at a custom file path  
-- Recognizable phrases: delete column, remove column, drop column, delete field, remove field, drop field, eliminate column, eliminate field, remove attribute, drop attribute, column removal, field deletion  
-- Examples:  
-    - "Delete the 'status' column from my todo file" → Use delete_todo_column("status")  
-    - "Remove the due_date column" → Use delete_todo_column("due_date")  
-    - "Drop column 'priority' in the default todo list" → Use delete_todo_column("priority")  
-    - "Eliminate the description field from the CSV" → Use delete_todo_column("description")  
-    - "Remove the 'tags' column from /data/todos.csv" → Use delete_todo_column("tags", "/data/todos.csv")  
-    - "Drop the 'assignee' column from file at ./tasks/todo.csv" → Use delete_todo_column("assignee", "./tasks/todo.csv")  
-    - "Remove the column 'budget' (might not exist)" → Use delete_todo_column("budget")  
-    - "Delete the 'start_time' column from C:\\Users\\Me\\todo.csv" → Use delete_todo_column("start_time", "C:\\Users\\Me\\todo.csv")  
-    - "Remove field notes in my CSV at /tmp/todo.csv" → Use delete_todo_column("notes", "/tmp/todo.csv")  
-    - "Drop the 'category' attribute" → Use delete_todo_column("category")  
-    - "Delete column 'location' from the todo list file in /home/data/todo.csv" → Use delete_todo_column("location", "/home/data/todo.csv")
-
-
-
-
-add_table_row(table_identifier, column_values=None, path=None) - Appends a new row of dummy (placeholder) data to a specified CSV table. If column_values is provided, uses those values; otherwise generates sensible dummy data. Optionally accepts a custom file path.
-
-- Recognizable phrases: add row, append row, insert row, add entry, append entry, new record, dummy data, placeholder data, CSV table, CSV file, specify column values, custom path
-
-- Examples:
-    - "Please append a new row to the products table" → Use add_table_row("products.csv")
-    - "Add a dummy record to orders.csv" → Use add_table_row("orders.csv")
-    - "Insert a new row into customers.csv with name 'Alice' and email 'alice@example.com'" → Use add_table_row("customers.csv", {"name":"Alice","email":"alice@example.com"})
-    - "Append a row to inventory.csv located in /data/warehouse" → Use add_table_row("inventory.csv", path="/data/warehouse")
-    - "Add a row to sales.csv in path /mnt/data with total '150' and status 'completed'" → Use add_table_row("sales.csv", {"total":"150","status":"completed"}, path="/mnt/data")
-    - "Append a new entry to users.csv with id '12345' and signup_date '2021-09-01T12:00:00'" → Use add_table_row("users.csv", {"id":"12345","signup_date":"2021-09-01T12:00:00"})
-    - "Add a row to missing_file.csv" → Use add_table_row("missing_file.csv")
-    - "Insert a row to customers.csv with incorrect values argument" → Use add_table_row("customers.csv", ["Alice","Bob"])
-    - "Append a row in logs.csv with custom timestamp '2023-03-15T08:30:00' and level 'ERROR'" → Use add_table_row("logs.csv", {"timestamp":"2023-03-15T08:30:00","level":"ERROR"})
-    - "Add a dummy row to analytics.csv in path '/var/data/analytics.csv'" → Use add_table_row("analytics.csv", path="/var/data/analytics.csv")
-
-
-
-
-add_table_row(table_identifier, column_values=None, path=None) - Appends a new row of dummy (placeholder) data to the specified CSV table. If specific column values are provided, uses them; otherwise generates sensible dummy data.
-- Recognizable phrases: add row, append row, insert row, dummy row, placeholder data, generate dummy data, add dummy entry, append placeholder, new row
-- Examples:
-    - "Please append a blank row to the users.csv file." → Use add_table_row("users.csv")
-    - "Add a dummy entry to the inventory table." → Use add_table_row("inventory.csv")
-    - "Insert a row with name 'Alice' and age '30' into data.csv" → Use add_table_row("data.csv", {"name": "Alice", "age": "30"})
-    - "I want to add a new placeholder row to the sales data located at /tmp/sales.csv" → Use add_table_row("sales.csv", None, "/tmp/sales.csv")
-    - "Add a row to orders.csv with order_id '1234' and status 'pending'" → Use add_table_row("orders.csv", {"order_id": "1234", "status": "pending"})
-    - "Append a dummy row to the log file at /var/log/events.csv" → Use add_table_row("events.csv", None, "/var/log/events.csv")
-    - "Insert a placeholder row into customers.csv setting customer_id to '999' and email to 'test@example.com'" → Use add_table_row("customers.csv", {"customer_id": "999", "email": "test@example.com"})
-    - "Append a new empty row to financial_reports.csv." → Use add_table_row("financial_reports.csv")
-    - "Add dummy row with timestamp override in metrics.csv" → Use add_table_row("metrics.csv", {"timestamp": "2023-01-01T00:00:00"})
-    - "Insert new record in product_list.csv with product 'Widget' at path './data/product_list.csv'" → Use add_table_row("product_list.csv", {"product": "Widget"}, "./data/product_list.csv")
-    - "Try to append a row to non_existent.csv" → Use add_table_row("non_existent.csv")
-    - "Add a row to data.csv but pass column values as a list" → Use add_table_row("data.csv", ["a", "b", "c"])
-
-
-
-
-add_multiple_rows(table_identifier, column_values, times, path=None) - Appends the specified column values as new rows to the given CSV table a specified number of times
-- Recognizable phrases: add rows, append rows, insert rows, add entries, append entries, batch insert, duplicate row, repeat row, new records, add records, insert entries, append records
-- Examples:
-    - "Add 3 new rows to user_data.csv with name 'Alice' and age '30'" → Use add_multiple_rows("user_data.csv", {"name":"Alice", "age":"30"}, 3)
-    - "Append 5 entries to report.csv setting status to 'pending' and reviewer to 'John'" → Use add_multiple_rows("report.csv", {"status":"pending", "reviewer":"John"}, 5)
-    - "Insert two blank records into log.csv" → Use add_multiple_rows("log.csv", {}, 2)
-    - "Add the row {product: 'Book', price: '12.99'} three times to inventory.csv" → Use add_multiple_rows("inventory.csv", {"product":"Book", "price":"12.99"}, 3)
-    - "Repeat the entry {department: 'HR'} 4 times into departments.csv located at /tmp/depts.csv" → Use add_multiple_rows("departments.csv", {"department":"HR"}, 4, "/tmp/depts.csv")
-    - "Append a row with id '1001' and status 'active' twice to members.csv" → Use add_multiple_rows("members.csv", {"id":"1001", "status":"active"}, 2)
-    - "Try to add rows to a missing file" → Use add_multiple_rows("nofile.csv", {"col":"val"}, 1)
-    - "Append 0 rows to data.csv with value 'x'" → Use add_multiple_rows("data.csv", {"value":"x"}, 0)
-    - "Add entries with negative count to data.csv" → Use add_multiple_rows("data.csv", {"value":"x"}, -3)
-    - "Batch insert an address record five times into contacts.csv" → Use add_multiple_rows("contacts.csv", {"name":"Bob", "email":"bob@example.com", "address":"123 Lane"}, 5)
-
-
-
-
-add_multiple_rows(table_identifier, column_values, times, path=None) - Appends the specified column values as new rows to the given CSV table a specified number of times
-- Recognizable phrases: add rows, append rows, insert rows, add entries, append entries, batch insert, duplicate row, repeat row, new records, add records, insert entries, append records
-- Examples:
-    - "Add 3 new rows to user_data.csv with name 'Alice' and age '30'" → Use add_multiple_rows("user_data.csv", {"name":"Alice", "age":"30"}, 3)
-    - "Append 5 entries to report.csv setting status to 'pending' and reviewer to 'John'" → Use add_multiple_rows("report.csv", {"status":"pending", "reviewer":"John"}, 5)
-    - "Insert two blank records into log.csv" → Use add_multiple_rows("log.csv", {}, 2)
-    - "Add the row {product: 'Book', price: '12.99'} three times to inventory.csv" → Use add_multiple_rows("inventory.csv", {"product":"Book", "price":"12.99"}, 3)
-    - "Repeat the entry {department: 'HR'} 4 times into departments.csv located at /tmp/depts.csv" → Use add_multiple_rows("departments.csv", {"department":"HR"}, 4, "/tmp/depts.csv")
-    - "Append a row with id '1001' and status 'active' twice to members.csv" → Use add_multiple_rows("members.csv", {"id":"1001", "status":"active"}, 2)
-    - "Try to add rows to a missing file" → Use add_multiple_rows("nofile.csv", {"col":"val"}, 1)
-    - "Append 0 rows to data.csv with value 'x'" → Use add_multiple_rows("data.csv", {"value":"x"}, 0)
-    - "Add entries with negative count to data.csv" → Use add_multiple_rows("data.csv", {"value":"x"}, -3)
-    - "Batch insert an address record five times into contacts.csv" → Use add_multiple_rows("contacts.csv", {"name":"Bob", "email":"bob@example.com", "address":"123 Lane"}, 5)
+    - "Delete the todo with ID 5" → Use delete_todo(5)  
+    - "Please remove todo number 42" → Use delete_todo(42)  
+    - "Erase the entry with ID 0" → Use delete_todo(0)  
+    - "Remove task ID 100" → Use delete_todo(100)  
+    - "Drop the todo item 7 from the list" → Use delete_todo(7)  
+    - "Delete the to-do with ID -3 (test negative ID)" → Use delete_todo(-3)  
+    - "Remove the todo with ID 2.7" → Use delete_todo(2.7)  
+    - "Delete todo id 9999 (likely not found)" → Use delete_todo(9999)  
+    - "Erase task #8" → Use delete_todo(8)  
+    - "Clear the todo entry 15" → Use delete_todo(15)  
+    - "Delete to-do with ID 3.14" → Use delete_todo(3.14)  
+    - "Remove todo ID 0 (edge case)" → Use delete_todo(0)
 
 
 ----
@@ -215,8 +110,6 @@ Example: list_todos() or list_todos("pending")
 User: "Mark task 5 as complete"
 Response: Call complete_todo(5)
 
-User: "Delete todo number 3"
-Response: Call delete_todo(3)
 
 User: "Update todo 2 to 'buy organic milk'"
 Response (with reinforced requirement: "All functions must include input validation"):

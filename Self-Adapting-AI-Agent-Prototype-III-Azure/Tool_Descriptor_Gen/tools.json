@@ -1,0 +1,207 @@
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "add_todo",
+            "description": "Adds a new todo item to the todo.csv file with auto-generated ID, timestamp, and pending status.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "todo_text": {
+                        "type": "string",
+                        "description": "The text content of the todo item to be added.",
+                        "minLength": 1
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The file path to the todo.csv file. If not provided, the default path will be used.",
+                        "minLength": 1
+                    }
+                },
+                "required": ["todo_text"]
+            }
+        }
+    }
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "delete_todo",
+            "description": "Deletes a todo item from a specified CSV file (defaulting to the primary todo.csv) by its unique ID.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "todo_id": {
+                        "type": "number",
+                        "description": "The unique integer ID of the todo item to delete."
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "Optional path to the todo CSV file. Defaults to the primary todo.csv file.",
+                        "minLength": 1
+                    }
+                },
+                "required": ["todo_id"]
+            }
+        }
+    }
+
+,
+    {
+      "type": "function",
+      "function": {
+        "name": "delete_todo_column",
+        "description": "Removes a specified column from the todo CSV file.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "column_name": {
+              "type": "string",
+              "description": "The name of the column to be removed from the todo CSV file.",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "description": "Optional file path to the todo CSV file; if not provided, the default path is used.",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "column_name"
+          ]
+        }
+      }
+    }
+
+,
+    {
+      "type": "function",
+      "function": {
+        "name": "add_table_row",
+        "description": "Appends a new row of dummy (placeholder) data to the specified CSV table. If specific column values are provided, uses them; otherwise generates sensible dummy data.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "table_identifier": {
+              "type": "string",
+              "description": "The identifier or name of the CSV table file to append a row to.",
+              "minLength": 1
+            },
+            "column_values": {
+              "type": "object",
+              "description": "Optional mapping of column names to values for the new row.",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "path": {
+              "type": "string",
+              "description": "Optional file path or directory containing the CSV table.",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "table_identifier"
+          ]
+        }
+      }
+    }
+
+,
+    {
+      "type": "function",
+      "function": {
+        "name": "add_table_row",
+        "description": "Appends a new row of dummy (placeholder) data to the specified CSV table. If specific column values are provided, uses them; otherwise generates sensible dummy data.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "table_identifier": {
+              "type": "string",
+              "description": "The file path or identifier of the CSV table to which the row will be appended.",
+              "minLength": 1
+            },
+            "column_values": {
+              "type": "object",
+              "description": "Optional mapping of column names to values to override the generated dummy data for the new row."
+            },
+            "path": {
+              "type": "string",
+              "description": "Optional file system path to the CSV table file. Overrides table_identifier if provided.",
+              "minLength": 1
+            }
+          },
+          "required": ["table_identifier"]
+        }
+      }
+    }
+
+,
+    {
+      "type": "function",
+      "function": {
+        "name": "add_multiple_rows",
+        "description": "Appends the specified column values as new rows to the given CSV table a specified number of times.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "table_identifier": {
+              "type": "string",
+              "description": "The identifier or filename of the CSV table file.",
+              "minLength": 1
+            },
+            "column_values": {
+              "type": "object",
+              "description": "Mapping of column names to their respective values for the new rows."
+            },
+            "times": {
+              "type": "number",
+              "description": "The number of times to append the new rows.",
+              "minimum": 1
+            },
+            "path": {
+              "type": "string",
+              "description": "Optional file path to the CSV table; if provided, this overrides table_identifier.",
+              "minLength": 1
+            }
+          },
+          "required": ["table_identifier", "column_values", "times"]
+        }
+      }
+    }
+
+,
+    {
+      "type": "function",
+      "function": {
+        "name": "add_multiple_rows",
+        "description": "Appends the specified column values as new rows to the given CSV table a specified number of times.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "table_identifier": {
+              "type": "string",
+              "description": "The identifier or filename of the CSV table file.",
+              "minLength": 1
+            },
+            "column_values": {
+              "type": "object",
+              "description": "Mapping of column names to their respective values for the new rows."
+            },
+            "times": {
+              "type": "number",
+              "description": "The number of times to append the new rows.",
+              "minimum": 1
+            },
+            "path": {
+              "type": "string",
+              "description": "Optional file path to the CSV table; if provided, this overrides table_identifier.",
+              "minLength": 1
+            }
+          },
+          "required": ["table_identifier", "column_values", "times"]
+        }
+      }
+    }
+
+]

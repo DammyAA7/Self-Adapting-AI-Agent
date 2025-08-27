@@ -1,0 +1,517 @@
+2025-08-27 13:18:02,227 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:18:02,232 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-27 13:18:02,232 - INFO - Response Content: Function Name: delete_todo  
+Description: A function that removes a todo item from the todo.csv file based on its unique ID.  
+Parameters:  
+- todo_id (integer): The ID of the todo item to delete.  
+E...
+2025-08-27 13:18:02,232 - INFO - Initiating function generation process...
+2025-08-27 13:18:02,232 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-27 13:18:02,233 - INFO - User Input: delete todo 5
+2025-08-27 13:18:02,233 - INFO - Function Requirement: Function Name: delete_todo  
+Description: A function that removes a todo item from the todo.csv file based on its unique ID.  
+Parameters:  
+- todo_id (integer): The ID of the todo item to delete.  
+Example:  
+delete_todo(5)
+2025-08-27 13:18:29,028 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:18:39,880 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:18:49,424 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:19:19,682 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:19:30,570 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:19:30,571 - INFO - --- ITERATION 1 ---
+2025-08-27 13:19:30,571 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-27 13:19:30,571 - INFO - Adjudication Passed: False
+2025-08-27 13:19:30,571 - INFO - Code Requirement Suggestion: Function should use csv.DictWriter with proper fieldnames matching the todo dict keys when rewriting rows, return True on a successful delete, and propagate FileNotFoundError and PermissionError instead of swallowing them.
+2025-08-27 13:19:30,571 - INFO - Unit Requirement Suggestion: 
+2025-08-27 13:19:30,571 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-27 13:19:30,571 - INFO - Iteration: 1
+2025-08-27 13:19:30,571 - INFO - Previous Requirement: 
+2025-08-27 13:19:30,571 - INFO - New Requirement: Function should use csv.DictWriter with proper fieldnames matching the todo dict keys when rewriting rows, return True on a successful delete, and propagate FileNotFoundError and PermissionError instead of swallowing them.
+2025-08-27 13:19:30,571 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-27 13:19:30,571 - INFO - Iteration: 1
+2025-08-27 13:19:30,571 - INFO - Previous Requirement: 
+2025-08-27 13:19:30,571 - INFO - New Requirement: 
+2025-08-27 13:20:01,081 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:20:11,119 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:20:30,274 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:20:36,628 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:20:36,628 - INFO - --- ITERATION 2 ---
+2025-08-27 13:20:36,628 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-27 13:20:36,628 - INFO - Adjudication Passed: False
+2025-08-27 13:20:36,628 - INFO - Code Requirement Suggestion: Function should return True for successful deletions (not False), raise FileNotFoundError when the todo file is missing, and raise PermissionError when there are permission issues
+2025-08-27 13:20:36,628 - INFO - Unit Requirement Suggestion: 
+2025-08-27 13:20:36,628 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-27 13:20:36,628 - INFO - Iteration: 2
+2025-08-27 13:20:36,628 - INFO - Previous Requirement: Function should use csv.DictWriter with proper fieldnames matching the todo dict keys when rewriting rows, return True on a successful delete, and propagate FileNotFoundError and PermissionError instead of swallowing them.
+2025-08-27 13:20:36,628 - INFO - New Requirement: Function should return True for successful deletions (not False), raise FileNotFoundError when the todo file is missing, and raise PermissionError when there are permission issues
+2025-08-27 13:20:36,628 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-27 13:20:36,628 - INFO - Iteration: 2
+2025-08-27 13:20:36,628 - INFO - Previous Requirement: 
+2025-08-27 13:20:36,628 - INFO - New Requirement: 
+2025-08-27 13:20:52,802 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:21:01,809 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:21:22,392 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:21:33,863 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:21:33,863 - INFO - --- ITERATION 3 ---
+2025-08-27 13:21:33,864 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-27 13:21:33,864 - INFO - Adjudication Passed: False
+2025-08-27 13:21:33,864 - INFO - Code Requirement Suggestion: Function should return True when a todo is successfully deleted and persist the change; raise TypeError for invalid input types; raise FileNotFoundError if the underlying file is missing; raise PermissionError for file permission issues.
+2025-08-27 13:21:33,864 - INFO - Unit Requirement Suggestion: 
+2025-08-27 13:21:33,864 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-27 13:21:33,864 - INFO - Iteration: 3
+2025-08-27 13:21:33,864 - INFO - Previous Requirement: Function should return True for successful deletions (not False), raise FileNotFoundError when the todo file is missing, and raise PermissionError when there are permission issues
+2025-08-27 13:21:33,864 - INFO - New Requirement: Function should return True when a todo is successfully deleted and persist the change; raise TypeError for invalid input types; raise FileNotFoundError if the underlying file is missing; raise PermissionError for file permission issues.
+2025-08-27 13:21:33,864 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-27 13:21:33,864 - INFO - Iteration: 3
+2025-08-27 13:21:33,864 - INFO - Previous Requirement: 
+2025-08-27 13:21:33,864 - INFO - New Requirement: 
+2025-08-27 13:21:53,242 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:22:08,268 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:22:33,354 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:22:40,627 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:22:40,628 - INFO - --- ITERATION 4 ---
+2025-08-27 13:22:40,628 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-27 13:22:40,628 - INFO - Adjudication Passed: False
+2025-08-27 13:22:40,628 - INFO - Code Requirement Suggestion: The delete_todo function should return True on successful deletion (to satisfy basic functionality and data persistence tests), raise FileNotFoundError when the backing file is missing, and raise PermissionError when file access is blocked. Ensure that after a successful delete the data is correctly written back to the storage file.
+2025-08-27 13:22:40,628 - INFO - Unit Requirement Suggestion: 
+2025-08-27 13:22:40,628 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-27 13:22:40,628 - INFO - Iteration: 4
+2025-08-27 13:22:40,628 - INFO - Previous Requirement: Function should return True when a todo is successfully deleted and persist the change; raise TypeError for invalid input types; raise FileNotFoundError if the underlying file is missing; raise PermissionError for file permission issues.
+2025-08-27 13:22:40,628 - INFO - New Requirement: The delete_todo function should return True on successful deletion (to satisfy basic functionality and data persistence tests), raise FileNotFoundError when the backing file is missing, and raise PermissionError when file access is blocked. Ensure that after a successful delete the data is correctly written back to the storage file.
+2025-08-27 13:22:40,629 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-27 13:22:40,629 - INFO - Iteration: 4
+2025-08-27 13:22:40,629 - INFO - Previous Requirement: 
+2025-08-27 13:22:40,629 - INFO - New Requirement: 
+2025-08-27 13:22:54,862 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:23:06,432 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:23:25,070 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:23:34,797 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:23:34,797 - INFO - --- ITERATION 5 ---
+2025-08-27 13:23:34,797 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-27 13:23:34,797 - INFO - Adjudication Passed: False
+2025-08-27 13:23:34,797 - INFO - Code Requirement Suggestion: Function should return True for successful delete operations; should not swallow filesystem errors but propagate FileNotFoundError when the file is missing and PermissionError for permission issues.
+2025-08-27 13:23:34,797 - INFO - Unit Requirement Suggestion: 
+2025-08-27 13:23:34,797 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-27 13:23:34,797 - INFO - Iteration: 5
+2025-08-27 13:23:34,797 - INFO - Previous Requirement: The delete_todo function should return True on successful deletion (to satisfy basic functionality and data persistence tests), raise FileNotFoundError when the backing file is missing, and raise PermissionError when file access is blocked. Ensure that after a successful delete the data is correctly written back to the storage file.
+2025-08-27 13:23:34,797 - INFO - New Requirement: Function should return True for successful delete operations; should not swallow filesystem errors but propagate FileNotFoundError when the file is missing and PermissionError for permission issues.
+2025-08-27 13:23:34,797 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-27 13:23:34,797 - INFO - Iteration: 5
+2025-08-27 13:23:34,797 - INFO - Previous Requirement: 
+2025-08-27 13:23:34,797 - INFO - New Requirement: 
+2025-08-27 13:23:34,797 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-27 13:23:34,797 - WARNING - Maximum iterations (5) reached without successful function generation.
+2025-08-27 13:23:34,797 - WARNING - Total Duration: 332.56 seconds
+2025-08-27 13:23:34,797 - WARNING - Final Iteration Count: 5
+2025-08-27 13:23:34,798 - INFO - === SESSION SUMMARY ===
+2025-08-27 13:23:34,798 - INFO - Session Duration: 341.76 seconds
+2025-08-27 13:23:34,798 - INFO - Functions Attempted: 1
+2025-08-27 13:23:34,798 - INFO - Successful Functions: 0
+2025-08-27 13:23:34,798 - INFO - Terminated Early: 1
+2025-08-27 13:23:34,798 - INFO - Total Iterations: 5
+2025-08-27 13:23:34,798 - INFO - Average Iterations per Function: 5.00
+2025-08-27 13:23:34,798 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-27 13:23:34,798 - INFO - Final Adjudication Attempts: 5
+2025-08-27 13:23:34,798 - INFO - Requirement Reinforcements: 10
+2025-08-27 13:31:31,696 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:31:31,702 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-27 13:31:31,702 - INFO - Response Content: Function Name: delete_todo  
+Description: A function that removes a todo item from the todo.csv file based on its unique ID.  
+Parameters:  
+- todo_id (integer): The ID of the todo item to delete.  
+E...
+2025-08-27 13:31:31,702 - INFO - Initiating function generation process...
+2025-08-27 13:31:31,702 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-27 13:31:31,702 - INFO - User Input: delete todo 5
+2025-08-27 13:31:31,702 - INFO - Function Requirement: Function Name: delete_todo  
+Description: A function that removes a todo item from the todo.csv file based on its unique ID.  
+Parameters:  
+- todo_id (integer): The ID of the todo item to delete.  
+Example:  
+delete_todo(5)
+2025-08-27 13:31:49,112 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:32:04,467 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:32:22,694 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:33:09,432 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:33:12,344 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:33:12,344 - INFO - --- ITERATION 1 ---
+2025-08-27 13:33:12,344 - INFO - Unit Test Result Summary: All tests passed
+2025-08-27 13:33:12,344 - INFO - Adjudication Passed: True
+2025-08-27 13:33:12,345 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-27 13:33:12,345 - INFO - Function Name: unknown_function
+2025-08-27 13:33:12,345 - INFO - Total Iterations: 1
+2025-08-27 13:33:12,345 - INFO - Total Duration: 100.64 seconds
+2025-08-27 13:33:12,345 - INFO - Final Adjudication Attempts: 1
+2025-08-27 13:33:12,345 - INFO - Requirement Reinforcements: 0
+2025-08-27 13:33:16,978 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:33:17,009 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 13:33:17,009 - INFO - Function: delete_todo
+2025-08-27 13:33:17,009 - INFO - Arguments: {'todo_id': 5}
+2025-08-27 13:33:17,009 - INFO - Execution Time: 0.029057456995360553 seconds
+2025-08-27 13:33:17,009 - INFO - Memory Peak: 61693 bytes
+2025-08-27 13:33:17,009 - INFO - Success: True
+2025-08-27 13:33:18,206 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 13:33:18,207 - INFO - === SESSION SUMMARY ===
+2025-08-27 13:33:18,208 - INFO - Session Duration: 117.40 seconds
+2025-08-27 13:33:18,208 - INFO - Functions Attempted: 1
+2025-08-27 13:33:18,208 - INFO - Successful Functions: 1
+2025-08-27 13:33:18,208 - INFO - Terminated Early: 0
+2025-08-27 13:33:18,208 - INFO - Total Iterations: 1
+2025-08-27 13:33:18,208 - INFO - Average Iterations per Function: 1.00
+2025-08-27 13:33:18,208 - INFO - Existing Function Calls: 1 (1 successful)
+2025-08-27 13:33:18,208 - INFO - Final Adjudication Attempts: 1
+2025-08-27 13:33:18,208 - INFO - Requirement Reinforcements: 0
+2025-08-27 14:39:21,899 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 14:39:21,903 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-27 14:39:21,903 - INFO - Response Content: Function Name: remove_todo_column  
+Description: A function that removes a specified column from the todo.csv file schema.  
+Parameters:  
+- column_name (string): The name of the column to be removed....
+2025-08-27 14:39:21,903 - INFO - Initiating function generation process...
+2025-08-27 14:39:21,903 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-27 14:39:21,903 - INFO - User Input: delete column status
+2025-08-27 14:39:21,903 - INFO - Function Requirement: Function Name: remove_todo_column  
+Description: A function that removes a specified column from the todo.csv file schema.  
+Parameters:  
+- column_name (string): The name of the column to be removed.  
+Example:  
+remove_todo_column("status")
+2025-08-27 14:39:36,742 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 14:39:44,015 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 14:40:19,783 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 14:41:00,478 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 14:41:06,846 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 14:41:06,847 - INFO - --- ITERATION 1 ---
+2025-08-27 14:41:06,847 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-27 14:41:06,847 - INFO - Adjudication Passed: False
+2025-08-27 14:41:06,847 - INFO - Code Requirement Suggestion: 
+2025-08-27 14:41:06,847 - INFO - Unit Requirement Suggestion: Add missing import statements for the functions under test (add_todo, batch_add_todos, complete_todo, delete_todo, filter_by_priority, filter_todos, list_todos, search_todos, update_todo) in Unit_Test/unitTest.py
+2025-08-27 14:41:06,847 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-27 14:41:06,847 - INFO - Iteration: 1
+2025-08-27 14:41:06,847 - INFO - Previous Requirement: 
+2025-08-27 14:41:06,847 - INFO - New Requirement: 
+2025-08-27 14:41:06,847 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-27 14:41:06,847 - INFO - Iteration: 1
+2025-08-27 14:41:06,847 - INFO - Previous Requirement: 
+2025-08-27 14:41:06,847 - INFO - New Requirement: Add missing import statements for the functions under test (add_todo, batch_add_todos, complete_todo, delete_todo, filter_by_priority, filter_todos, list_todos, search_todos, update_todo) in Unit_Test/unitTest.py
+2025-08-27 14:42:06,343 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 14:42:13,968 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 14:42:13,969 - INFO - --- ITERATION 2 ---
+2025-08-27 14:42:13,969 - INFO - Unit Test Result Summary: Tests failed
+2025-08-27 14:42:13,969 - INFO - Adjudication Passed: False
+2025-08-27 14:42:13,969 - INFO - Code Requirement Suggestion: 
+2025-08-27 14:42:13,969 - INFO - Unit Requirement Suggestion: Fix the import in Unit_Test/unitTest.py: ensure that the functions module (Unit_Test/functions.py) defines and exports add_todo (and the other functions), or update the import path to point to the correct module where those functions are implemented.
+2025-08-27 14:42:13,969 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-27 14:42:13,969 - INFO - Iteration: 2
+2025-08-27 14:42:13,969 - INFO - Previous Requirement: 
+2025-08-27 14:42:13,969 - INFO - New Requirement: 
+2025-08-27 14:42:13,969 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-27 14:42:13,969 - INFO - Iteration: 2
+2025-08-27 14:42:13,969 - INFO - Previous Requirement: Add missing import statements for the functions under test (add_todo, batch_add_todos, complete_todo, delete_todo, filter_by_priority, filter_todos, list_todos, search_todos, update_todo) in Unit_Test/unitTest.py
+2025-08-27 14:42:13,969 - INFO - New Requirement: Fix the import in Unit_Test/unitTest.py: ensure that the functions module (Unit_Test/functions.py) defines and exports add_todo (and the other functions), or update the import path to point to the correct module where those functions are implemented.
+2025-08-27 14:43:48,338 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 14:44:00,896 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 14:44:00,896 - INFO - --- ITERATION 3 ---
+2025-08-27 14:44:00,896 - INFO - Unit Test Result Summary: Tests failed
+2025-08-27 14:44:00,896 - INFO - Adjudication Passed: False
+2025-08-27 14:44:00,896 - INFO - Code Requirement Suggestion: 
+2025-08-27 14:44:00,897 - INFO - Unit Requirement Suggestion: The test file is importing from the wrong `functions` module. There is a `Unit_Test/functions.py` shadowing the real one. Rename or remove the stub file, or adjust the import in `Unit_Test/unitTest.py` to point to the actual implementation (e.g. use the correct module path or add the project root to PYTHONPATH).
+2025-08-27 14:44:00,897 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-27 14:44:00,897 - INFO - Iteration: 3
+2025-08-27 14:44:00,897 - INFO - Previous Requirement: 
+2025-08-27 14:44:00,897 - INFO - New Requirement: 
+2025-08-27 14:44:00,897 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-27 14:44:00,897 - INFO - Iteration: 3
+2025-08-27 14:44:00,897 - INFO - Previous Requirement: Fix the import in Unit_Test/unitTest.py: ensure that the functions module (Unit_Test/functions.py) defines and exports add_todo (and the other functions), or update the import path to point to the correct module where those functions are implemented.
+2025-08-27 14:44:00,897 - INFO - New Requirement: The test file is importing from the wrong `functions` module. There is a `Unit_Test/functions.py` shadowing the real one. Rename or remove the stub file, or adjust the import in `Unit_Test/unitTest.py` to point to the actual implementation (e.g. use the correct module path or add the project root to PYTHONPATH).
+2025-08-27 15:27:07,136 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:27:07,146 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 15:27:07,146 - INFO - Function: delete_todo
+2025-08-27 15:27:07,146 - INFO - Arguments: {'todo_id': 1}
+2025-08-27 15:27:07,146 - INFO - Execution Time: 0.003579327982151881 seconds
+2025-08-27 15:27:07,146 - INFO - Memory Peak: 164029 bytes
+2025-08-27 15:27:07,146 - INFO - Success: False
+2025-08-27 15:27:13,274 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:27:13,275 - INFO - === SESSION SUMMARY ===
+2025-08-27 15:27:13,275 - INFO - Session Duration: 12.10 seconds
+2025-08-27 15:27:13,275 - INFO - Functions Attempted: 0
+2025-08-27 15:27:13,275 - INFO - Successful Functions: 0
+2025-08-27 15:27:13,275 - INFO - Terminated Early: 0
+2025-08-27 15:27:13,275 - INFO - Total Iterations: 0
+2025-08-27 15:27:13,275 - INFO - Average Iterations per Function: 0.00
+2025-08-27 15:27:13,275 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-27 15:27:13,275 - INFO - Final Adjudication Attempts: 0
+2025-08-27 15:27:13,275 - INFO - Requirement Reinforcements: 0
+2025-08-27 15:29:49,949 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:29:49,973 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 15:29:49,973 - INFO - Function: add_todo
+2025-08-27 15:29:49,973 - INFO - Arguments: {'todo_text': 'Calculate 6 divided by 2 using division(6,2)'}
+2025-08-27 15:29:49,973 - INFO - Execution Time: 0.016848097002366558 seconds
+2025-08-27 15:29:49,973 - INFO - Memory Peak: 61772 bytes
+2025-08-27 15:29:49,973 - INFO - Success: False
+2025-08-27 15:30:02,378 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:30:02,379 - INFO - === SESSION SUMMARY ===
+2025-08-27 15:30:02,379 - INFO - Session Duration: 28.87 seconds
+2025-08-27 15:30:02,379 - INFO - Functions Attempted: 0
+2025-08-27 15:30:02,379 - INFO - Successful Functions: 0
+2025-08-27 15:30:02,379 - INFO - Terminated Early: 0
+2025-08-27 15:30:02,379 - INFO - Total Iterations: 0
+2025-08-27 15:30:02,379 - INFO - Average Iterations per Function: 0.00
+2025-08-27 15:30:02,379 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-27 15:30:02,379 - INFO - Final Adjudication Attempts: 0
+2025-08-27 15:30:02,379 - INFO - Requirement Reinforcements: 0
+2025-08-27 15:31:36,652 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:31:36,679 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 15:31:36,679 - INFO - Function: add_todo
+2025-08-27 15:31:36,679 - INFO - Arguments: {'todo_text': 'division(6,2)', 'path': ''}
+2025-08-27 15:31:36,679 - INFO - Execution Time: 0.02020410099066794 seconds
+2025-08-27 15:31:36,679 - INFO - Memory Peak: 61742 bytes
+2025-08-27 15:31:36,679 - INFO - Success: False
+2025-08-27 15:31:38,390 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:31:38,391 - INFO - === SESSION SUMMARY ===
+2025-08-27 15:31:38,391 - INFO - Session Duration: 6.49 seconds
+2025-08-27 15:31:38,391 - INFO - Functions Attempted: 0
+2025-08-27 15:31:38,391 - INFO - Successful Functions: 0
+2025-08-27 15:31:38,391 - INFO - Terminated Early: 0
+2025-08-27 15:31:38,391 - INFO - Total Iterations: 0
+2025-08-27 15:31:38,391 - INFO - Average Iterations per Function: 0.00
+2025-08-27 15:31:38,392 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-27 15:31:38,392 - INFO - Final Adjudication Attempts: 0
+2025-08-27 15:31:38,392 - INFO - Requirement Reinforcements: 0
+2025-08-27 15:36:22,056 - ERROR - === UNEXPECTED ERROR ===
+2025-08-27 15:36:22,056 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-27 15:36:22,056 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-27 15:36:22,056 - INFO - === SESSION SUMMARY ===
+2025-08-27 15:36:22,056 - INFO - Session Duration: 0.02 seconds
+2025-08-27 15:36:22,056 - INFO - Functions Attempted: 0
+2025-08-27 15:36:22,056 - INFO - Successful Functions: 0
+2025-08-27 15:36:22,056 - INFO - Terminated Early: 0
+2025-08-27 15:36:22,056 - INFO - Total Iterations: 0
+2025-08-27 15:36:22,056 - INFO - Average Iterations per Function: 0.00
+2025-08-27 15:36:22,056 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-27 15:36:22,056 - INFO - Final Adjudication Attempts: 0
+2025-08-27 15:36:22,056 - INFO - Requirement Reinforcements: 0
+2025-08-27 15:38:32,499 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:38:32,506 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 15:38:32,506 - INFO - Function: division
+2025-08-27 15:38:32,506 - INFO - Arguments: {'numerator': 6, 'denominators': [2]}
+2025-08-27 15:38:32,506 - INFO - Execution Time: 0.0007296210096683353 seconds
+2025-08-27 15:38:32,506 - INFO - Memory Peak: 33018 bytes
+2025-08-27 15:38:32,506 - INFO - Success: False
+2025-08-27 15:38:33,420 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:38:33,421 - INFO - === SESSION SUMMARY ===
+2025-08-27 15:38:33,422 - INFO - Session Duration: 7.09 seconds
+2025-08-27 15:38:33,422 - INFO - Functions Attempted: 0
+2025-08-27 15:38:33,422 - INFO - Successful Functions: 0
+2025-08-27 15:38:33,422 - INFO - Terminated Early: 0
+2025-08-27 15:38:33,422 - INFO - Total Iterations: 0
+2025-08-27 15:38:33,422 - INFO - Average Iterations per Function: 0.00
+2025-08-27 15:38:33,422 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-27 15:38:33,422 - INFO - Final Adjudication Attempts: 0
+2025-08-27 15:38:33,422 - INFO - Requirement Reinforcements: 0
+2025-08-27 15:41:20,026 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:41:20,034 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 15:41:20,034 - INFO - Function: addition
+2025-08-27 15:41:20,034 - INFO - Arguments: {'numbers': [2, 2]}
+2025-08-27 15:41:20,034 - INFO - Execution Time: 0.0011224189947824925 seconds
+2025-08-27 15:41:20,034 - INFO - Memory Peak: 8422 bytes
+2025-08-27 15:41:20,035 - INFO - Success: False
+2025-08-27 15:41:31,832 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:41:31,833 - INFO - === SESSION SUMMARY ===
+2025-08-27 15:41:31,833 - INFO - Session Duration: 28.83 seconds
+2025-08-27 15:41:31,833 - INFO - Functions Attempted: 0
+2025-08-27 15:41:31,833 - INFO - Successful Functions: 0
+2025-08-27 15:41:31,833 - INFO - Terminated Early: 0
+2025-08-27 15:41:31,834 - INFO - Total Iterations: 0
+2025-08-27 15:41:31,834 - INFO - Average Iterations per Function: 0.00
+2025-08-27 15:41:31,834 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-27 15:41:31,834 - INFO - Final Adjudication Attempts: 0
+2025-08-27 15:41:31,834 - INFO - Requirement Reinforcements: 0
+2025-08-27 15:43:03,151 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:43:03,156 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 15:43:03,156 - INFO - Function: addition
+2025-08-27 15:43:03,156 - INFO - Arguments: {'numbers': [2, 2]}
+2025-08-27 15:43:03,156 - INFO - Execution Time: 0.0005888120213057846 seconds
+2025-08-27 15:43:03,156 - INFO - Memory Peak: 8422 bytes
+2025-08-27 15:43:03,156 - INFO - Success: False
+2025-08-27 15:43:16,873 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:43:16,875 - INFO - === SESSION SUMMARY ===
+2025-08-27 15:43:16,875 - INFO - Session Duration: 29.24 seconds
+2025-08-27 15:43:16,875 - INFO - Functions Attempted: 0
+2025-08-27 15:43:16,875 - INFO - Successful Functions: 0
+2025-08-27 15:43:16,875 - INFO - Terminated Early: 0
+2025-08-27 15:43:16,875 - INFO - Total Iterations: 0
+2025-08-27 15:43:16,875 - INFO - Average Iterations per Function: 0.00
+2025-08-27 15:43:16,875 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-27 15:43:16,875 - INFO - Final Adjudication Attempts: 0
+2025-08-27 15:43:16,875 - INFO - Requirement Reinforcements: 0
+2025-08-27 15:50:04,143 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:50:04,151 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 15:50:04,151 - INFO - Function: addition
+2025-08-27 15:50:04,152 - INFO - Arguments: {'numbers': [6, 5040]}
+2025-08-27 15:50:04,152 - INFO - Execution Time: 0.0009998480090871453 seconds
+2025-08-27 15:50:04,152 - INFO - Memory Peak: 8422 bytes
+2025-08-27 15:50:04,152 - INFO - Success: False
+2025-08-27 15:50:07,126 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:50:07,128 - INFO - === SESSION SUMMARY ===
+2025-08-27 15:50:07,128 - INFO - Session Duration: 22.64 seconds
+2025-08-27 15:50:07,128 - INFO - Functions Attempted: 0
+2025-08-27 15:50:07,128 - INFO - Successful Functions: 0
+2025-08-27 15:50:07,128 - INFO - Terminated Early: 0
+2025-08-27 15:50:07,128 - INFO - Total Iterations: 0
+2025-08-27 15:50:07,128 - INFO - Average Iterations per Function: 0.00
+2025-08-27 15:50:07,128 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-27 15:50:07,128 - INFO - Final Adjudication Attempts: 0
+2025-08-27 15:50:07,128 - INFO - Requirement Reinforcements: 0
+2025-08-27 15:54:38,815 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:54:38,821 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-27 15:54:38,822 - INFO - Response Content: Function Name: factorial  
+Description: A function that calculates the factorial of a given non-negative integer n (n!), which is the product of all positive integers less than or equal to n.  
+Parame...
+2025-08-27 15:54:38,822 - INFO - Initiating function generation process...
+2025-08-27 15:54:38,822 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-27 15:54:38,822 - INFO - User Input: Create me a new function that can calculate factorial expressions not other functions. And answer me what is 4!+9! (Print me answer)
+2025-08-27 15:54:38,822 - INFO - Function Requirement: Function Name: factorial  
+Description: A function that calculates the factorial of a given non-negative integer n (n!), which is the product of all positive integers less than or equal to n.  
+Parameters:  
+- n: A non-negative integer whose factorial is to be computed  
+Example: factorial(5) would return 120 (because 5 × 4 × 3 × 2 × 1 = 120)
+
+I cannot compute 4! + 9! directly because a factorial function is not in my available tools.
+2025-08-27 15:54:45,437 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:54:47,891 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:54:52,642 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:55:05,237 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:55:06,261 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:55:06,261 - INFO - --- ITERATION 1 ---
+2025-08-27 15:55:06,261 - INFO - Unit Test Result Summary: All tests passed
+2025-08-27 15:55:06,261 - INFO - Adjudication Passed: True
+2025-08-27 15:55:06,262 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-27 15:55:06,262 - INFO - Function Name: unknown_function
+2025-08-27 15:55:06,262 - INFO - Total Iterations: 1
+2025-08-27 15:55:06,262 - INFO - Total Duration: 27.44 seconds
+2025-08-27 15:55:06,262 - INFO - Final Adjudication Attempts: 1
+2025-08-27 15:55:06,262 - INFO - Requirement Reinforcements: 0
+2025-08-27 15:55:11,486 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 15:55:11,501 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 15:55:11,501 - INFO - Function: factorial
+2025-08-27 15:55:11,501 - INFO - Arguments: {'n': 4}
+2025-08-27 15:55:11,501 - INFO - Execution Time: 0.01315195401548408 seconds
+2025-08-27 15:55:11,501 - INFO - Memory Peak: 61685 bytes
+2025-08-27 15:55:11,501 - INFO - Success: False
+2025-08-27 15:55:12,301 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 400 Bad Request"
+2025-08-27 15:55:12,302 - ERROR - === UNEXPECTED ERROR ===
+2025-08-27 15:55:12,302 - ERROR - Error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_HLtlxqkHwkdaVd68JB3HjwW6", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-08-27 15:55:12,302 - ERROR - Unexpected error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_HLtlxqkHwkdaVd68JB3HjwW6", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-08-27 15:55:12,303 - INFO - === SESSION SUMMARY ===
+2025-08-27 15:55:12,303 - INFO - Session Duration: 39.26 seconds
+2025-08-27 15:55:12,303 - INFO - Functions Attempted: 1
+2025-08-27 15:55:12,303 - INFO - Successful Functions: 1
+2025-08-27 15:55:12,303 - INFO - Terminated Early: 0
+2025-08-27 15:55:12,303 - INFO - Total Iterations: 1
+2025-08-27 15:55:12,303 - INFO - Average Iterations per Function: 1.00
+2025-08-27 15:55:12,303 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-27 15:55:12,303 - INFO - Final Adjudication Attempts: 1
+2025-08-27 15:55:12,303 - INFO - Requirement Reinforcements: 0
+2025-08-27 16:05:04,514 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:05:04,537 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 16:05:04,537 - INFO - Function: factorial
+2025-08-27 16:05:04,537 - INFO - Arguments: {'n': 4}
+2025-08-27 16:05:04,537 - INFO - Execution Time: 0.015644367987988517 seconds
+2025-08-27 16:05:04,537 - INFO - Memory Peak: 61733 bytes
+2025-08-27 16:05:04,537 - INFO - Success: False
+2025-08-27 16:05:05,268 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 400 Bad Request"
+2025-08-27 16:05:05,269 - ERROR - === UNEXPECTED ERROR ===
+2025-08-27 16:05:05,269 - ERROR - Error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_1r3Q3wBWNqXoQGuSaANh4Goh", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-08-27 16:05:05,269 - ERROR - Unexpected error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_1r3Q3wBWNqXoQGuSaANh4Goh", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-08-27 16:05:05,271 - INFO - === SESSION SUMMARY ===
+2025-08-27 16:05:05,271 - INFO - Session Duration: 9.91 seconds
+2025-08-27 16:05:05,271 - INFO - Functions Attempted: 0
+2025-08-27 16:05:05,271 - INFO - Successful Functions: 0
+2025-08-27 16:05:05,271 - INFO - Terminated Early: 0
+2025-08-27 16:05:05,271 - INFO - Total Iterations: 0
+2025-08-27 16:05:05,271 - INFO - Average Iterations per Function: 0.00
+2025-08-27 16:05:05,271 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-27 16:05:05,271 - INFO - Final Adjudication Attempts: 0
+2025-08-27 16:05:05,271 - INFO - Requirement Reinforcements: 0
+2025-08-27 16:13:35,922 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:13:35,929 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-27 16:13:35,929 - INFO - Response Content: Function Name: gcd  
+Description: A function that calculates the Greatest Common Divisor (GCD) of two or more numbers and returns the largest integer that divides all the numbers without leaving a rem...
+2025-08-27 16:13:35,929 - INFO - Initiating function generation process...
+2025-08-27 16:13:35,929 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-27 16:13:35,929 - INFO - User Input: Create me a new function that can calculate GCD/Greatest Common Divisor expressions. And answer me what is the GCD of 24 and 36 (Print me answer)
+2025-08-27 16:13:35,929 - INFO - Function Requirement: Function Name: gcd  
+Description: A function that calculates the Greatest Common Divisor (GCD) of two or more numbers and returns the largest integer that divides all the numbers without leaving a remainder.  
+Parameters:  
+- numbers: An array of two or more integers for which the GCD is to be calculated  
+Example: gcd([24, 36])
+
+I do not have access to a gcd function, so I am unable to compute the GCD of 24 and 36 with my currently available tools.
+2025-08-27 16:13:38,277 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:13:39,503 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:13:45,351 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:16,555 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:18,209 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:18,210 - INFO - --- ITERATION 1 ---
+2025-08-27 16:14:18,210 - INFO - Unit Test Result Summary: Tests failed
+2025-08-27 16:14:18,210 - INFO - Adjudication Passed: False
+2025-08-27 16:14:18,210 - INFO - Code Requirement Suggestion: Function should correctly compute the GCD for a list of two or more integers and should not raise ValueError when at least two integers are provided.
+2025-08-27 16:14:18,210 - INFO - Unit Requirement Suggestion: 
+2025-08-27 16:14:18,210 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-27 16:14:18,210 - INFO - Iteration: 1
+2025-08-27 16:14:18,210 - INFO - Previous Requirement: 
+2025-08-27 16:14:18,210 - INFO - New Requirement: Function should correctly compute the GCD for a list of two or more integers and should not raise ValueError when at least two integers are provided.
+2025-08-27 16:14:18,210 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-27 16:14:18,210 - INFO - Iteration: 1
+2025-08-27 16:14:18,210 - INFO - Previous Requirement: 
+2025-08-27 16:14:18,210 - INFO - New Requirement: 
+2025-08-27 16:14:21,906 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:24,560 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:29,478 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:30,810 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:30,810 - INFO - --- ITERATION 2 ---
+2025-08-27 16:14:30,811 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-27 16:14:30,811 - INFO - Adjudication Passed: False
+2025-08-27 16:14:30,811 - INFO - Code Requirement Suggestion: Function should return abs(a) when a single integer is provided to gcd, instead of raising ValueError.
+2025-08-27 16:14:30,811 - INFO - Unit Requirement Suggestion: 
+2025-08-27 16:14:30,811 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-27 16:14:30,811 - INFO - Iteration: 2
+2025-08-27 16:14:30,811 - INFO - Previous Requirement: Function should correctly compute the GCD for a list of two or more integers and should not raise ValueError when at least two integers are provided.
+2025-08-27 16:14:30,811 - INFO - New Requirement: Function should return abs(a) when a single integer is provided to gcd, instead of raising ValueError.
+2025-08-27 16:14:30,811 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-27 16:14:30,811 - INFO - Iteration: 2
+2025-08-27 16:14:30,811 - INFO - Previous Requirement: 
+2025-08-27 16:14:30,811 - INFO - New Requirement: 
+2025-08-27 16:14:33,312 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:35,535 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:44,432 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:45,244 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:45,245 - INFO - --- ITERATION 3 ---
+2025-08-27 16:14:45,245 - INFO - Unit Test Result Summary: All tests passed
+2025-08-27 16:14:45,245 - INFO - Adjudication Passed: True
+2025-08-27 16:14:45,246 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-27 16:14:45,246 - INFO - Function Name: unknown_function
+2025-08-27 16:14:45,246 - INFO - Total Iterations: 3
+2025-08-27 16:14:45,246 - INFO - Total Duration: 69.32 seconds
+2025-08-27 16:14:45,246 - INFO - Final Adjudication Attempts: 3
+2025-08-27 16:14:45,246 - INFO - Requirement Reinforcements: 4
+2025-08-27 16:14:46,473 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:46,487 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-27 16:14:46,488 - INFO - Function: gcd
+2025-08-27 16:14:46,488 - INFO - Arguments: {'numbers': [24, 36]}
+2025-08-27 16:14:46,488 - INFO - Execution Time: 0.012786317005520687 seconds
+2025-08-27 16:14:46,488 - INFO - Memory Peak: 61649 bytes
+2025-08-27 16:14:46,488 - INFO - Success: False
+2025-08-27 16:14:48,725 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-27 16:14:48,728 - INFO - === SESSION SUMMARY ===
+2025-08-27 16:14:48,728 - INFO - Session Duration: 76.96 seconds
+2025-08-27 16:14:48,728 - INFO - Functions Attempted: 1
+2025-08-27 16:14:48,728 - INFO - Successful Functions: 1
+2025-08-27 16:14:48,728 - INFO - Terminated Early: 0
+2025-08-27 16:14:48,728 - INFO - Total Iterations: 3
+2025-08-27 16:14:48,728 - INFO - Average Iterations per Function: 3.00
+2025-08-27 16:14:48,729 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-27 16:14:48,729 - INFO - Final Adjudication Attempts: 3
+2025-08-27 16:14:48,729 - INFO - Requirement Reinforcements: 4

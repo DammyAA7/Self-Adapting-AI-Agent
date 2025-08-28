@@ -35,10 +35,9 @@ def setup_variables():
 
     #Define prompt for the LLM and input messages
     input_messages = [
-    {"role": "system", "content": system_prompt},
-    {"role": "user", "content": """Title: "Add email validation function"
-    Description: "We need a function that validates email addresses according to RFC standards"
-    Expected: Single function returning boolean, with proper error handling"""}  # Critical test prompt
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)"}  # Critical test prompt
+
     ]
     return tools, input_messages
 

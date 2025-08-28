@@ -497,5 +497,2086 @@
     "existing_function_calls": [],
     "end_time": "2025-08-28T01:54:06.972326",
     "session_duration_seconds": 862.565786
+  },
+  {
+    "session_id": "20250828_025757",
+    "start_time": "2025-08-28T02:57:57.316979",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: Calculates the factorial of a non-negative integer n (i.e., n! = n \u00d7 (n\u20131) \u00d7 \u2026 \u00d7 1, with 0! defined as 1).  \nParameters:  \n- n (integer, required): The non-negative integer whose factorial is to be computed.  \nExample: calculate_factorial(5) \u2192 120  \n\nAnswer: 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T02:58:15.837437",
+        "iterations": 6,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "unknown_function",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "requirement_suggestion": "Fix the import in Test_Driven_Development/testDrivenCases.py: remove or correct the reference to calculate_factorial_expression, which is not defined in functions.py",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T03:00:20.154454"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "The functions.py module does not define or expose calculate_factorial; add and name that function correctly so the test can import it.",
+            "reinforced_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: remove or correct the reference to calculate_factorial_expression, which is not defined in functions.py",
+            "timestamp": "2025-08-28T03:01:18.593051"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "The functions.py module does not define or expose calculate_factorial; add and name that function correctly so the test can import it.",
+            "timestamp": "2025-08-28T03:02:43.321073"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should raise ValueError for negative input values and TypeError for non-integer input types",
+            "timestamp": "2025-08-28T03:04:33.095267"
+          },
+          {
+            "iteration": 5,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T03:05:54.612561"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate input: raise TypeError for non-integer inputs and raise ValueError for negative integers",
+            "timestamp": "2025-08-28T03:07:16.741234"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should raise ValueError for negative input values and TypeError for non-integer input types",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T03:03:06.972253",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T03:04:34.739210",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate input: raise TypeError for non-integer inputs and raise ValueError for negative integers",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T03:06:07.923894",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T03:07:26.575810",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: remove or correct the reference to calculate_factorial_expression, which is not defined in functions.py",
+            "timestamp": "2025-08-28T03:00:20.154537"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: remove or correct the reference to calculate_factorial_expression, which is not defined in functions.py",
+            "new_requirement": "The functions.py module does not define or expose calculate_factorial; add and name that function correctly so the test can import it.",
+            "timestamp": "2025-08-28T03:01:18.593225"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "The functions.py module does not define or expose calculate_factorial; add and name that function correctly so the test can import it.",
+            "new_requirement": "Function should raise ValueError for negative input values and TypeError for non-integer input types",
+            "timestamp": "2025-08-28T03:03:06.972430"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T03:03:06.972555"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "Function should raise ValueError for negative input values and TypeError for non-integer input types",
+            "new_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T03:04:34.739547"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T03:04:34.739704"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "Failed to parse adjudication response",
+            "new_requirement": "Function should validate input: raise TypeError for non-integer inputs and raise ValueError for negative integers",
+            "timestamp": "2025-08-28T03:06:07.924037"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "Please retry with clearer requirements",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T03:06:07.924074"
+          }
+        ],
+        "end_time": "2025-08-28T03:07:26.577217",
+        "total_duration_seconds": 550.73978
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T03:07:26.577440",
+    "session_duration_seconds": 569.260461
+  },
+  {
+    "session_id": "20250828_032626",
+    "start_time": "2025-08-28T03:26:26.976962",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: A function that computes the factorial of a non-negative integer n (n!), where factorial is defined as n! = n \u00d7 (n\u22121) \u00d7 \u2026 \u00d7 1, and 0! = 1.  \nParameters:  \n\u2022 n (integer, required): The non-negative integer for which to calculate the factorial.  \nExample:  \ncalculate_factorial(5) \u2192 120  \n\nAnswer: 2! + 2! = 2 + 2 = 4.",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T03:26:36.125857",
+        "iterations": 3,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "calculate_factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T03:27:35.920219"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T03:29:09.725629"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate its input: if the argument is negative, raise ValueError; if the argument is not an integer (including float, None, list, boolean, etc.), raise TypeError.",
+            "timestamp": "2025-08-28T03:30:13.922250"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T03:28:14.522794",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate its input: if the argument is negative, raise ValueError; if the argument is not an integer (including float, None, list, boolean, etc.), raise TypeError.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T03:29:30.606508",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T03:30:18.827790",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T03:28:14.522963"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T03:28:14.523057"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Failed to parse adjudication response",
+            "new_requirement": "Function should validate its input: if the argument is negative, raise ValueError; if the argument is not an integer (including float, None, list, boolean, etc.), raise TypeError.",
+            "timestamp": "2025-08-28T03:29:30.606686"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "Please retry with clearer requirements",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T03:29:30.606774"
+          }
+        ],
+        "end_time": "2025-08-28T03:30:18.828435",
+        "total_duration_seconds": 222.702578
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T03:30:18.828801",
+    "session_duration_seconds": 231.851839
+  },
+  {
+    "session_id": "20250828_033515",
+    "start_time": "2025-08-28T03:35:15.081592",
+    "functions": [
+      {
+        "function_requirement": "Function Name: factorial  \nDescription: A function that calculates the factorial of a non-negative integer n (i.e., n! = 1 \u00d7 2 \u00d7 \u2026 \u00d7 n).  \nParameters:  \n- n (integer): A non-negative integer whose factorial is to be computed.  \nExample:  \n- factorial(5) would return 120  \n\nAnswer:  \n2! + 2! = 2 + 2 = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T03:35:23.077876",
+        "iterations": 4,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "unknown_function",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "requirement_suggestion": "Define an add function in the functions module so that the integration test can import and use it",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T03:36:17.961966"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "Add an 'add' function to functions.py so that `from functions import add` in the integration test succeeds.",
+            "reinforced_requirement": "Define an add function in the functions module so that the integration test can import and use it",
+            "timestamp": "2025-08-28T03:37:37.321142"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "Fix the import in Test_Driven_Development/testDrivenCases.py: remove or correct the import of 'factorial' (and ensure it matches the functions actually defined in functions.py).",
+            "reinforced_requirement": "Add an 'add' function to functions.py so that `from functions import add` in the integration test succeeds.",
+            "timestamp": "2025-08-28T03:38:58.628958"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: remove or correct the import of 'factorial' (and ensure it matches the functions actually defined in functions.py).",
+            "timestamp": "2025-08-28T03:40:54.857576"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 4,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T03:41:17.283958",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Define an add function in the functions module so that the integration test can import and use it",
+            "timestamp": "2025-08-28T03:36:17.962213"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "Define an add function in the functions module so that the integration test can import and use it",
+            "new_requirement": "Add an 'add' function to functions.py so that `from functions import add` in the integration test succeeds.",
+            "timestamp": "2025-08-28T03:37:37.321284"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "Add an 'add' function to functions.py so that `from functions import add` in the integration test succeeds.",
+            "new_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: remove or correct the import of 'factorial' (and ensure it matches the functions actually defined in functions.py).",
+            "timestamp": "2025-08-28T03:38:58.629120"
+          }
+        ],
+        "end_time": "2025-08-28T03:41:17.286218",
+        "total_duration_seconds": 354.208342
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T03:41:17.286639",
+    "session_duration_seconds": 362.205047
+  },
+  {
+    "session_id": "20250828_035854",
+    "start_time": "2025-08-28T03:58:54.199156",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: A function that computes the factorial of a non-negative integer.  \nParameters:  \n- n (integer): The non-negative integer for which to calculate n!  \nExample: calculate_factorial(5)  # returns 120  \n\nAnswer:  \n2! + 2! = 2 + 2 = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T03:59:11.925225",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": "calculate_factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T04:00:04.248989"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "No tests were collected; please fix the test script. Ensure your test files are named test_*.py or *_test.py and contain at least one properly named test function.",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T04:00:49.817132"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "Add a missing import for evaluate_factorial_expression in Test_Driven_Development/testDrivenCases.py (e.g., from your module import evaluate_factorial_expression)",
+            "reinforced_requirement": "No tests were collected; please fix the test script. Ensure your test files are named test_*.py or *_test.py and contain at least one properly named test function.",
+            "timestamp": "2025-08-28T04:02:55.984931"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "Define the function 'evaluate_factorial_expression' in functions.py so it can be imported and tested.",
+            "reinforced_requirement": "Add a missing import for evaluate_factorial_expression in Test_Driven_Development/testDrivenCases.py (e.g., from your module import evaluate_factorial_expression)",
+            "timestamp": "2025-08-28T04:05:18.632695"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that functions.py defines 'evaluate_factorial_expression' or update the test to import the correct function name and module path.",
+            "reinforced_requirement": "Define the function 'evaluate_factorial_expression' in functions.py so it can be imported and tested.",
+            "timestamp": "2025-08-28T04:06:37.173570"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that the function evaluate_factorial_expression is defined and exposed in Unit_Test/functions.py or correct the import path/name to match the actual implementation.",
+            "reinforced_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that functions.py defines 'evaluate_factorial_expression' or update the test to import the correct function name and module path.",
+            "timestamp": "2025-08-28T04:07:59.609956"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T04:00:22.070931",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "No tests were collected; please fix the test script. Ensure your test files are named test_*.py or *_test.py and contain at least one properly named test function.",
+            "timestamp": "2025-08-28T04:00:49.817264"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "No tests were collected; please fix the test script. Ensure your test files are named test_*.py or *_test.py and contain at least one properly named test function.",
+            "new_requirement": "Add a missing import for evaluate_factorial_expression in Test_Driven_Development/testDrivenCases.py (e.g., from your module import evaluate_factorial_expression)",
+            "timestamp": "2025-08-28T04:02:55.985057"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "Add a missing import for evaluate_factorial_expression in Test_Driven_Development/testDrivenCases.py (e.g., from your module import evaluate_factorial_expression)",
+            "new_requirement": "Define the function 'evaluate_factorial_expression' in functions.py so it can be imported and tested.",
+            "timestamp": "2025-08-28T04:05:18.632850"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "Define the function 'evaluate_factorial_expression' in functions.py so it can be imported and tested.",
+            "new_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that functions.py defines 'evaluate_factorial_expression' or update the test to import the correct function name and module path.",
+            "timestamp": "2025-08-28T04:06:37.173817"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that functions.py defines 'evaluate_factorial_expression' or update the test to import the correct function name and module path.",
+            "new_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that the function evaluate_factorial_expression is defined and exposed in Unit_Test/functions.py or correct the import path/name to match the actual implementation.",
+            "timestamp": "2025-08-28T04:07:59.610126"
+          }
+        ],
+        "end_time": "2025-08-28T04:07:59.610305",
+        "total_duration_seconds": 527.68508
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T04:07:59.610424",
+    "session_duration_seconds": 545.411268
+  },
+  {
+    "session_id": "20250828_042802",
+    "start_time": "2025-08-28T04:28:02.362660",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: A function that computes the factorial of a non-negative integer n (i.e., n! = n \u00d7 (n\u20131) \u00d7 \u2026 \u00d7 1, with 0! defined as 1).  \nParameters:  \n- n (integer): The non-negative integer whose factorial is to be calculated.  \nExample:  \n- calculate_factorial(5)  # returns 120  \n\nAnswer:  \n2! + 2! = 2 + 2 = 4.",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T04:28:12.981201",
+        "iterations": 6,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "evaluate_factorial_expression",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T04:29:14.104806"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T04:30:45.240102"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "Function should correctly evaluate factorial expressions and return integer results (e.g., '5!' returns 120), handling operator precedence, mixed operations, zero factorial, and no-space token parsing instead of returning False.",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T04:34:29.082237"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "Add an import for evaluate_factorial_expression in the test file (e.g. `from your_module import evaluate_factorial_expression`) so the function is defined when tests run",
+            "reinforced_requirement": "Function should correctly evaluate factorial expressions and return integer results (e.g., '5!' returns 120), handling operator precedence, mixed operations, zero factorial, and no-space token parsing instead of returning False.",
+            "timestamp": "2025-08-28T04:35:51.006206"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that the function evaluate_factorial_expression is defined and exported in Unit_Test/functions.py, or update the test to import the correct function name.",
+            "reinforced_requirement": "Add an import for evaluate_factorial_expression in the test file (e.g. `from your_module import evaluate_factorial_expression`) so the function is defined when tests run",
+            "timestamp": "2025-08-28T04:38:25.116544"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that the function evaluate_factorial_expression is defined and exported in Unit_Test/functions.py, or update the test to import the correct function name.",
+            "timestamp": "2025-08-28T04:39:57.070703"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T04:29:25.573853",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T04:30:59.882431",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T04:52:09.097666",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T04:29:25.574023"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T04:29:25.574115"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "Failed to parse adjudication response",
+            "new_requirement": "Function should correctly evaluate factorial expressions and return integer results (e.g., '5!' returns 120), handling operator precedence, mixed operations, zero factorial, and no-space token parsing instead of returning False.",
+            "timestamp": "2025-08-28T04:34:29.082402"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "Function should correctly evaluate factorial expressions and return integer results (e.g., '5!' returns 120), handling operator precedence, mixed operations, zero factorial, and no-space token parsing instead of returning False.",
+            "new_requirement": "Add an import for evaluate_factorial_expression in the test file (e.g. `from your_module import evaluate_factorial_expression`) so the function is defined when tests run",
+            "timestamp": "2025-08-28T04:35:51.006357"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "Add an import for evaluate_factorial_expression in the test file (e.g. `from your_module import evaluate_factorial_expression`) so the function is defined when tests run",
+            "new_requirement": "Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that the function evaluate_factorial_expression is defined and exported in Unit_Test/functions.py, or update the test to import the correct function name.",
+            "timestamp": "2025-08-28T04:38:25.116699"
+          }
+        ],
+        "end_time": "2025-08-28T04:52:09.099136",
+        "total_duration_seconds": 1436.117935
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "evaluate_factorial_expression",
+        "function_args": {
+          "expression": "2!+2!"
+        },
+        "execution_time": 0.01736052701016888,
+        "memory_peak": 61001,
+        "result": "",
+        "timestamp": "2025-08-28T04:52:28.781213",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-08-28T04:52:42.275033",
+    "session_duration_seconds": 1479.912373
+  },
+  {
+    "session_id": "20250828_050743",
+    "start_time": "2025-08-28T05:07:43.014906",
+    "functions": [],
+    "existing_function_calls": [
+      {
+        "function_name": "evaluate_factorial_expression",
+        "function_args": {
+          "expression": "2!+2!"
+        },
+        "execution_time": 0.0007296620169654489,
+        "memory_peak": 31782,
+        "result": "4",
+        "timestamp": "2025-08-28T05:07:54.592244",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-08-28T05:07:56.118899",
+    "session_duration_seconds": 13.103993
+  },
+  {
+    "session_id": "20250828_050924",
+    "start_time": "2025-08-28T05:09:24.779729",
+    "functions": [],
+    "existing_function_calls": [
+      {
+        "function_name": "evaluate_factorial_expression",
+        "function_args": {
+          "expression": "2!+2!"
+        },
+        "execution_time": 0.0006202069926075637,
+        "memory_peak": 31782,
+        "result": "4",
+        "timestamp": "2025-08-28T05:09:32.998218",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-08-28T05:09:34.116697",
+    "session_duration_seconds": 9.336968
+  },
+  {
+    "session_id": "20250828_051110",
+    "start_time": "2025-08-28T05:11:10.860965",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: A function that computes the factorial of a non-negative integer n (i.e., n! = n \u00d7 (n-1) \u00d7 \u2026 \u00d7 1, with 0! defined as 1).  \nParameters:  \n\u2022 n (integer): The value for which to calculate the factorial. Must be \u2265 0.  \nExample:  \n\u2022 calculate_factorial(5) \u2192 120  \n\u2022 calculate_factorial(0) \u2192 1  \n\nAnswer:  \n2! + 2! = 2 + 2 = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T05:11:54.623431",
+        "iterations": 1,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T05:13:11.518798"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "Function evaluate_factorial_expression should correctly parse and evaluate expressions with parentheses and mixed arithmetic operations, returning the expected integer result (e.g., 20 for '(5! + 2!) / 3!') instead of False.",
+            "reinforced_requirement": "Define and correctly implement calculate_factorial in the module under test, and update evaluate_factorial_expression so that it actually uses calculate_factorial (instead of swallowing errors and returning False) to compute and return the correct numeric result for valid expressions.",
+            "timestamp": "2025-08-28T05:15:43.074454"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "Function should correctly parse and evaluate expressions with parentheses and mixed operations, returning the expected numeric result for cases like \u201c(5! + 2!) / 3!\u201d.",
+            "reinforced_requirement": "Function evaluate_factorial_expression should correctly parse and evaluate expressions with parentheses and mixed arithmetic operations, returning the expected integer result (e.g., 20 for '(5! + 2!) / 3!') instead of False.",
+            "timestamp": "2025-08-28T05:17:23.607393"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "Function `evaluate_factorial_expression` should correctly parse and compute expressions with parentheses and mixed operators (including division) and return numeric results as floats rather than returning False.",
+            "reinforced_requirement": "Function should correctly parse and evaluate expressions with parentheses and mixed operations, returning the expected numeric result for cases like \u201c(5! + 2!) / 3!\u201d.",
+            "timestamp": "2025-08-28T05:19:46.052591"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "Function evaluate_factorial_expression should correctly parse and compute expressions with parentheses, mixed operations and division, returning numeric (float) results for fractional outputs instead of False.",
+            "reinforced_requirement": "Function `evaluate_factorial_expression` should correctly parse and compute expressions with parentheses and mixed operators (including division) and return numeric results as floats rather than returning False.",
+            "timestamp": "2025-08-28T05:21:52.537187"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "Function evaluate_factorial_expression should correctly evaluate expressions with parentheses and mixed operations (including division) and return floating-point results instead of False.",
+            "reinforced_requirement": "Function evaluate_factorial_expression should correctly parse and compute expressions with parentheses, mixed operations and division, returning numeric (float) results for fractional outputs instead of False.",
+            "timestamp": "2025-08-28T05:23:49.692686"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Define and correctly implement calculate_factorial in the module under test, and update evaluate_factorial_expression so that it actually uses calculate_factorial (instead of swallowing errors and returning False) to compute and return the correct numeric result for valid expressions.",
+            "unit_requirement_suggestion": "In Unit_Test/unitTest.py, add or correct the import for calculate_factorial so that the test can find it (e.g. `from your_module_name import calculate_factorial`).",
+            "timestamp": "2025-08-28T05:14:06.815560",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Define and correctly implement calculate_factorial in the module under test, and update evaluate_factorial_expression so that it actually uses calculate_factorial (instead of swallowing errors and returning False) to compute and return the correct numeric result for valid expressions.",
+            "timestamp": "2025-08-28T05:14:06.815724"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "In Unit_Test/unitTest.py, add or correct the import for calculate_factorial so that the test can find it (e.g. `from your_module_name import calculate_factorial`).",
+            "timestamp": "2025-08-28T05:14:06.815819"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "Define and correctly implement calculate_factorial in the module under test, and update evaluate_factorial_expression so that it actually uses calculate_factorial (instead of swallowing errors and returning False) to compute and return the correct numeric result for valid expressions.",
+            "new_requirement": "Function evaluate_factorial_expression should correctly parse and evaluate expressions with parentheses and mixed arithmetic operations, returning the expected integer result (e.g., 20 for '(5! + 2!) / 3!') instead of False.",
+            "timestamp": "2025-08-28T05:15:43.074628"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "Function evaluate_factorial_expression should correctly parse and evaluate expressions with parentheses and mixed arithmetic operations, returning the expected integer result (e.g., 20 for '(5! + 2!) / 3!') instead of False.",
+            "new_requirement": "Function should correctly parse and evaluate expressions with parentheses and mixed operations, returning the expected numeric result for cases like \u201c(5! + 2!) / 3!\u201d.",
+            "timestamp": "2025-08-28T05:17:23.607568"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "Function should correctly parse and evaluate expressions with parentheses and mixed operations, returning the expected numeric result for cases like \u201c(5! + 2!) / 3!\u201d.",
+            "new_requirement": "Function `evaluate_factorial_expression` should correctly parse and compute expressions with parentheses and mixed operators (including division) and return numeric results as floats rather than returning False.",
+            "timestamp": "2025-08-28T05:19:46.052738"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "Function `evaluate_factorial_expression` should correctly parse and compute expressions with parentheses and mixed operators (including division) and return numeric results as floats rather than returning False.",
+            "new_requirement": "Function evaluate_factorial_expression should correctly parse and compute expressions with parentheses, mixed operations and division, returning numeric (float) results for fractional outputs instead of False.",
+            "timestamp": "2025-08-28T05:21:52.537351"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "Function evaluate_factorial_expression should correctly parse and compute expressions with parentheses, mixed operations and division, returning numeric (float) results for fractional outputs instead of False.",
+            "new_requirement": "Function evaluate_factorial_expression should correctly evaluate expressions with parentheses and mixed operations (including division) and return floating-point results instead of False.",
+            "timestamp": "2025-08-28T05:23:49.692846"
+          }
+        ],
+        "end_time": "2025-08-28T05:23:49.693074",
+        "total_duration_seconds": 715.069643
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T05:23:49.693219",
+    "session_duration_seconds": 758.832254
+  },
+  {
+    "session_id": "20250828_054418",
+    "start_time": "2025-08-28T05:44:18.781949",
+    "functions": [
+      {
+        "function_requirement": "Function Name: factorial  \nDescription: A function that calculates the factorial of a non-negative integer n (denoted n!), which is the product of all positive integers up to n.  \nParameters:  \n- n (integer): The non-negative integer for which to compute the factorial.  \nExample:  \n- factorial(5) \u2192 120  \n\nAnswer to your expression:  \n2! + 2! = 2 + 2 = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T05:44:27.587599",
+        "iterations": 6,
+        "successful": true,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": "factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T05:45:42.376632"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T05:47:08.586434"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "The factorial function should validate its input types and return False for invalid inputs (e.g., string, float, None, list) instead of returning an error string.",
+            "timestamp": "2025-08-28T05:48:44.941514"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "The factorial function should validate its input types and return False for invalid inputs (e.g., string, float, None, list) instead of returning an error string.",
+            "timestamp": "2025-08-28T05:52:25.526994"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "The test file is referencing evaluate_factorial_expression but it isn\u2019t imported or defined. Add the correct import statement (e.g. from your module import evaluate_factorial_expression) at the top of Test_Driven_Development/testDrivenCases.py.",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T05:52:33.192498"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "The test file is referencing evaluate_factorial_expression but it isn\u2019t imported or defined. Add the correct import statement (e.g. from your module import evaluate_factorial_expression) at the top of Test_Driven_Development/testDrivenCases.py.",
+            "timestamp": "2025-08-28T05:54:02.489920"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T05:45:55.569027",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "The factorial function should validate its input types and return False for invalid inputs (e.g., string, float, None, list) instead of returning an error string.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T05:47:29.173831",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T05:48:46.684286",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T05:54:26.244789",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T05:45:55.569134"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T05:45:55.569172"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Failed to parse adjudication response",
+            "new_requirement": "The factorial function should validate its input types and return False for invalid inputs (e.g., string, float, None, list) instead of returning an error string.",
+            "timestamp": "2025-08-28T05:47:29.174006"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "Please retry with clearer requirements",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T05:47:29.174106"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "The factorial function should validate its input types and return False for invalid inputs (e.g., string, float, None, list) instead of returning an error string.",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T05:52:25.527172"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "The test file is referencing evaluate_factorial_expression but it isn\u2019t imported or defined. Add the correct import statement (e.g. from your module import evaluate_factorial_expression) at the top of Test_Driven_Development/testDrivenCases.py.",
+            "timestamp": "2025-08-28T05:52:33.192614"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "The test file is referencing evaluate_factorial_expression but it isn\u2019t imported or defined. Add the correct import statement (e.g. from your module import evaluate_factorial_expression) at the top of Test_Driven_Development/testDrivenCases.py.",
+            "new_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T05:54:26.244973"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T05:54:26.245086"
+          }
+        ],
+        "end_time": "2025-08-28T05:54:26.245272",
+        "total_duration_seconds": 598.657673
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T05:54:26.245378",
+    "session_duration_seconds": 607.463429
+  },
+  {
+    "session_id": "20250828_061003",
+    "start_time": "2025-08-28T06:10:03.489119",
+    "functions": [
+      {
+        "function_requirement": "Function Name: factorial  \nDescription: Calculates the factorial of a non-negative integer n (i.e., n! = n \u00d7 (n\u22121) \u00d7 \u2026 \u00d7 1, with 0! defined as 1).  \nParameters:  \n- n (integer): The non-negative integer whose factorial is to be computed.  \nExample: factorial(5) \u2192 120  \n\nAnswer: 2! + 2! = 2 + 2 = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T06:10:13.356203",
+        "iterations": 3,
+        "successful": true,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": "factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T06:11:10.759833"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T06:12:48.033252"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "The factorial function should validate its input and raise a ValueError for negative integers and a TypeError for non-integer inputs (e.g., strings, floats, None).",
+            "timestamp": "2025-08-28T06:14:42.677502"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "The evaluate_factorial_expression function should be updated to correctly parse and compute expressions containing factorials alongside arithmetic operations (addition, subtraction, multiplication, division) with proper operator precedence, returning the actual numeric result rather than False.",
+            "reinforced_requirement": "The factorial function should validate its input and raise a ValueError for negative integers and a TypeError for non-integer inputs (e.g., strings, floats, None).",
+            "timestamp": "2025-08-28T06:16:58.284271"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "Function should correctly evaluate factorial expressions with arithmetic operations, respecting operator precedence and handling zero, one, negative values, floats, and large inputs, returning the expected numeric results instead of False.",
+            "reinforced_requirement": "The evaluate_factorial_expression function should be updated to correctly parse and compute expressions containing factorials alongside arithmetic operations (addition, subtraction, multiplication, division) with proper operator precedence, returning the actual numeric result rather than False.",
+            "timestamp": "2025-08-28T06:19:55.046210"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should correctly evaluate factorial expressions with arithmetic operations, respecting operator precedence and handling zero, one, negative values, floats, and large inputs, returning the expected numeric results instead of False.",
+            "timestamp": "2025-08-28T06:21:54.340652"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T06:11:51.003355",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "The factorial function should validate its input and raise a ValueError for negative integers and a TypeError for non-integer inputs (e.g., strings, floats, None).",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T06:13:16.706546",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T06:14:50.867871",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T06:11:51.003529"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T06:11:51.003631"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Failed to parse adjudication response",
+            "new_requirement": "The factorial function should validate its input and raise a ValueError for negative integers and a TypeError for non-integer inputs (e.g., strings, floats, None).",
+            "timestamp": "2025-08-28T06:13:16.706766"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "Please retry with clearer requirements",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T06:13:16.706883"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "The factorial function should validate its input and raise a ValueError for negative integers and a TypeError for non-integer inputs (e.g., strings, floats, None).",
+            "new_requirement": "The evaluate_factorial_expression function should be updated to correctly parse and compute expressions containing factorials alongside arithmetic operations (addition, subtraction, multiplication, division) with proper operator precedence, returning the actual numeric result rather than False.",
+            "timestamp": "2025-08-28T06:16:58.284429"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "The evaluate_factorial_expression function should be updated to correctly parse and compute expressions containing factorials alongside arithmetic operations (addition, subtraction, multiplication, division) with proper operator precedence, returning the actual numeric result rather than False.",
+            "new_requirement": "Function should correctly evaluate factorial expressions with arithmetic operations, respecting operator precedence and handling zero, one, negative values, floats, and large inputs, returning the expected numeric results instead of False.",
+            "timestamp": "2025-08-28T06:19:55.046407"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "Function should correctly evaluate factorial expressions with arithmetic operations, respecting operator precedence and handling zero, one, negative values, floats, and large inputs, returning the expected numeric results instead of False.",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T06:21:54.340832"
+          }
+        ],
+        "end_time": "2025-08-28T06:21:54.341259",
+        "total_duration_seconds": 700.985056
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T06:21:54.341451",
+    "session_duration_seconds": 710.852332
+  },
+  {
+    "session_id": "20250828_081535",
+    "start_time": "2025-08-28T08:15:35.334079",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T08:15:50.124180",
+    "session_duration_seconds": 14.790101
+  },
+  {
+    "session_id": "20250828_081700",
+    "start_time": "2025-08-28T08:17:00.769285",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial\nDescription: A function that computes the factorial of a non-negative integer n (n!).  \nParameters:  \n- n (integer): the number for which to calculate the factorial. Must be \u2265 0.  \nExample:  \n- calculate_factorial(5) \u2192 120  \n\nAnswer: 2! + 2! = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T08:17:10.526241",
+        "iterations": 5,
+        "successful": true,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": "calculate_factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T08:17:57.728579"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T08:19:23.455810"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T08:20:33.104061"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T08:21:46.830022"
+          },
+          {
+            "iteration": 5,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T08:23:04.246300"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "Add missing import statements for evaluate_factorial_expression (and calculate_factorial) in the test file",
+            "reinforced_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T08:25:10.521083"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T08:18:15.347073",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T08:19:39.414825",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T08:20:48.080083",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "Failed to parse adjudication response",
+            "unit_requirement_suggestion": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T08:22:10.383476",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 5,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T08:23:28.006977",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T08:18:15.347255"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T08:18:15.347345"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Failed to parse adjudication response",
+            "new_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T08:19:39.414955"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "Please retry with clearer requirements",
+            "new_requirement": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T08:19:39.414987"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "Failed to parse adjudication response",
+            "new_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T08:20:48.080242"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "Please retry with clearer requirements",
+            "new_requirement": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T08:20:48.080334"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "Failed to parse adjudication response",
+            "new_requirement": "Failed to parse adjudication response",
+            "timestamp": "2025-08-28T08:22:10.383666"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "Please retry with clearer requirements",
+            "new_requirement": "Please retry with clearer requirements",
+            "timestamp": "2025-08-28T08:22:10.383758"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "Failed to parse adjudication response",
+            "new_requirement": "Add missing import statements for evaluate_factorial_expression (and calculate_factorial) in the test file",
+            "timestamp": "2025-08-28T08:25:10.521232"
+          }
+        ],
+        "end_time": "2025-08-28T08:25:10.521412",
+        "total_duration_seconds": 479.995171
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T08:25:10.521546",
+    "session_duration_seconds": 489.752261
+  },
+  {
+    "session_id": "20250828_083412",
+    "start_time": "2025-08-28T08:34:12.819846",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: A function that calculates the factorial of a given non-negative integer n (n!).  \nParameters:  \n- n (integer): A non-negative integer for which to compute the factorial.  \nExample: calculate_factorial(5) \u2192 returns 120  \n\n2! + 2! = 2 + 2 = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T08:34:20.434466",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T08:35:26.278121"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T08:37:30.185904"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T08:38:53.027709"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T08:40:12.285236"
+          },
+          {
+            "iteration": 5,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T08:41:35.653602"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T08:43:06.207960"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure function implements all required behavior correctly",
+            "unit_requirement_suggestion": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T08:35:50.341244",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure function implements all required behavior correctly",
+            "unit_requirement_suggestion": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T08:37:51.379427",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure function implements all required behavior correctly",
+            "unit_requirement_suggestion": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T08:39:14.335458",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure function implements all required behavior correctly",
+            "unit_requirement_suggestion": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T08:40:26.725210",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure function implements all required behavior correctly",
+            "unit_requirement_suggestion": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T08:41:58.201772",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate input: it must be a non-negative integer; raise ValueError for negative integers and TypeError for any non-int input",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T08:43:42.430790",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T08:35:50.341331"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T08:35:50.341363"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Ensure function implements all required behavior correctly",
+            "new_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T08:37:51.379611"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "Ensure all test cases pass with expected behavior",
+            "new_requirement": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T08:37:51.379720"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "Ensure function implements all required behavior correctly",
+            "new_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T08:39:14.335627"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "Ensure all test cases pass with expected behavior",
+            "new_requirement": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T08:39:14.335730"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "Ensure function implements all required behavior correctly",
+            "new_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T08:40:26.725291"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "Ensure all test cases pass with expected behavior",
+            "new_requirement": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T08:40:26.725323"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "Ensure function implements all required behavior correctly",
+            "new_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T08:41:58.201946"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "Ensure all test cases pass with expected behavior",
+            "new_requirement": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T08:41:58.202052"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "Ensure function implements all required behavior correctly",
+            "new_requirement": "Function should validate input: it must be a non-negative integer; raise ValueError for negative integers and TypeError for any non-int input",
+            "timestamp": "2025-08-28T08:43:42.430893"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "Ensure all test cases pass with expected behavior",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T08:43:42.430926"
+          }
+        ],
+        "end_time": "2025-08-28T08:43:42.431021",
+        "total_duration_seconds": 561.996555
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T08:43:42.431070",
+    "session_duration_seconds": 569.611224
+  },
+  {
+    "session_id": "20250828_084951",
+    "start_time": "2025-08-28T08:49:51.255152",
+    "functions": [
+      {
+        "function_requirement": "Function Name: factorial\nDescription: A function that calculates the factorial of a non-negative integer n (i.e., n! = n \u00d7 (n-1) \u00d7 \u2026 \u00d7 1; 0! = 1).\nParameters:\n- n (integer): The non-negative integer whose factorial is to be computed.\nExample:\n- factorial(5) \u2192 120\n\nAnswer: 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T08:49:58.203309",
+        "iterations": 3,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T08:51:43.753058"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate its input parameters: raise ValueError for negative integers and TypeError for non\u2010integer (including str, float) or None inputs",
+            "timestamp": "2025-08-28T08:53:17.157042"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate its input parameters: raise ValueError for negative integers and TypeError for non\u2010integer (including str, float) or None inputs",
+            "timestamp": "2025-08-28T08:56:10.873115"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate its input parameters: raise ValueError for negative integers and TypeError for non\u2010integer (including str, float) or None inputs",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T08:52:12.494187",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T08:53:20.286994",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T08:56:14.184936",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should validate its input parameters: raise ValueError for negative integers and TypeError for non\u2010integer (including str, float) or None inputs",
+            "timestamp": "2025-08-28T08:52:12.494278"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T08:52:12.494311"
+          }
+        ],
+        "end_time": "2025-08-28T08:56:14.185496",
+        "total_duration_seconds": 375.982187
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T08:56:15.915175",
+    "session_duration_seconds": 384.660023
+  },
+  {
+    "session_id": "20250828_090152",
+    "start_time": "2025-08-28T09:01:52.757297",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial\nDescription: A function that computes the factorial of a non-negative integer n (denoted n!), multiplying all positive integers up to n.\nParameters:\n  - n (integer): The non-negative integer for which to calculate the factorial.\nExample: calculate_factorial(5)  // Returns 120\n\nAnswer: 2! + 2! = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T09:02:02.810827",
+        "iterations": 6,
+        "successful": true,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": "calculate_factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:03:55.037489"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:04:27.704547"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:05:03.749917"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:05:26.835849"
+          },
+          {
+            "iteration": 5,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:05:50.264658"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:06:15.745897"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:04:13.074184",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:04:31.720634",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:05:06.715307",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:05:28.994303",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 5,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:05:54.040755",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:06:18.096759",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-08-28T09:06:30.389008",
+        "total_duration_seconds": 267.578181
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T09:06:30.389070",
+    "session_duration_seconds": 277.631773
+  },
+  {
+    "session_id": "20250828_092045",
+    "start_time": "2025-08-28T09:20:45.804247",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: A function that computes the factorial of a non-negative integer n (i.e., n! = 1\u00d72\u00d7\u2026\u00d7n, with 0! defined as 1).  \nParameters:  \n- n (integer): The non-negative integer whose factorial is to be calculated.  \nExample:  \ncalculate_factorial(5)  \u2192  120  \n\nAnswer:  \n2! + 2! = 2 + 2 = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T09:21:12.037697",
+        "iterations": 6,
+        "successful": true,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": "calculate_factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:21:59.003903"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:22:34.313794"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:23:04.747635"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:23:21.251867"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "Function should handle invalid syntax in expression strings and return False for malformed expressions instead of computing a result",
+            "reinforced_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T09:24:43.736104"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should handle invalid syntax in expression strings and return False for malformed expressions instead of computing a result",
+            "timestamp": "2025-08-28T09:27:40.075599"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:22:17.309677",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:22:38.410184",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:23:06.478491",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure function implements all required behavior correctly",
+            "unit_requirement_suggestion": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T09:23:23.111232",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:28:04.562416",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T09:23:23.111309"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T09:23:23.111342"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "Ensure function implements all required behavior correctly",
+            "new_requirement": "Function should handle invalid syntax in expression strings and return False for malformed expressions instead of computing a result",
+            "timestamp": "2025-08-28T09:24:43.736256"
+          }
+        ],
+        "end_time": "2025-08-28T09:28:25.840405",
+        "total_duration_seconds": 433.802708
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T09:28:25.840554",
+    "session_duration_seconds": 460.036307
+  },
+  {
+    "session_id": "20250828_093754",
+    "start_time": "2025-08-28T09:37:54.195000",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: A function that computes the factorial of a non-negative integer n (i.e., n! = n \u00d7 (n\u22121) \u00d7 \u2026 \u00d7 1; with 0! defined as 1).  \nParameters:  \n- n (integer): The non-negative integer for which to compute the factorial.  \nExample: calculate_factorial(5)  \u2192 returns 120  \n\nAnswer:  \n2! = 2  \nSo, 2! + 2! = 2 + 2 = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T09:38:21.688759",
+        "iterations": 2,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "User interruption (Ctrl+C)",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:39:14.510503"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T09:40:39.947905"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure function implements all required behavior correctly",
+            "unit_requirement_suggestion": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T09:39:40.599020",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate its input in calculate_factorial: raise ValueError for negative integers and TypeError for non-integer types.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:41:07.539859",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T09:39:40.599207"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T09:39:40.599319"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Ensure function implements all required behavior correctly",
+            "new_requirement": "Function should validate its input in calculate_factorial: raise ValueError for negative integers and TypeError for non-integer types.",
+            "timestamp": "2025-08-28T09:41:07.539982"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "Ensure all test cases pass with expected behavior",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T09:41:07.540015"
+          }
+        ],
+        "end_time": "2025-08-28T09:50:27.948044"
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T09:50:27.948095",
+    "session_duration_seconds": 753.753095
+  },
+  {
+    "session_id": "20250828_095052",
+    "start_time": "2025-08-28T09:50:52.150978",
+    "functions": [
+      {
+        "function_requirement": "Function Name: evaluate_factorial_expression  \nDescription: A function that parses a mathematical expression containing factorial operations (denoted by \u201c!\u201d) and basic arithmetic operators (e.g., +, -, *, /) and returns the computed result.  \nParameters:  \n- expression (string): The input expression to evaluate. Must allow non-negative integers followed by \u201c!\u201d and standard arithmetic operators.  \nExample:  \n- evaluate_factorial_expression(\"2!+3!\") \u2192 8  \n\nAnswer to your expression:  \n2! = 2  \nSo, 2! + 2! = 2 + 2 = 4",
+        "user_input": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)",
+        "start_time": "2025-08-28T09:51:04.467962",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "evaluate_factorial_expression",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:52:45.299665"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:52:59.452213",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-08-28T09:52:59.452672",
+        "total_duration_seconds": 114.98471
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "evaluate_factorial_expression",
+        "function_args": {
+          "expression": "2!+2!"
+        },
+        "execution_time": 0.017417510000086622,
+        "memory_peak": 61049,
+        "result": "",
+        "timestamp": "2025-08-28T09:53:10.704163",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-08-28T09:53:14.363102",
+    "session_duration_seconds": 142.212124
+  },
+  {
+    "session_id": "20250828_095648",
+    "start_time": "2025-08-28T09:56:48.787186",
+    "functions": [
+      {
+        "function_requirement": "Function Name: validate_email  \nDescription: A function that checks whether a given email address conforms to RFC 5322 (and related) standards. Returns a boolean (true if the email is valid, false otherwise) and handles malformed inputs or unexpected errors gracefully.  \nParameters:  \n  \u2022 email_address (string): The email address to validate.  \nExample:  \n  validate_email(\"user.name+tag@example.co.uk\")  \u2192 true  \nReinforced Requirement: Single function returning boolean, with proper error handling.",
+        "user_input": "Title: \"Add email validation function\"\n    Description: \"We need a function that validates email addresses according to RFC standards\"\n    Expected: Single function returning boolean, with proper error handling",
+        "start_time": "2025-08-28T09:57:01.201865",
+        "iterations": 6,
+        "successful": true,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": "validate_email",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:58:29.366618"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-28T09:58:48.402499"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T10:00:21.495710"
+          },
+          {
+            "iteration": 5,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T10:03:24.177933"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-28T09:58:33.360324",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure function implements all required behavior correctly",
+            "unit_requirement_suggestion": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T09:58:50.870866",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "No tests were collected. Ensure your test files and test functions are named with the 'test_' prefix and follow pytest\u2019s naming conventions so they will be discovered.",
+            "timestamp": "2025-08-28T10:01:12.465756",
+            "unit_test_summary": "Unit tests executed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure function implements all required behavior correctly",
+            "unit_requirement_suggestion": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T10:01:46.590839",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "No tests were collected. Ensure your test files are named using the pytest conventions (e.g., test_*.py) and contain test functions or methods prefixed with 'test_' so pytest can discover them.",
+            "timestamp": "2025-08-28T10:04:21.114169",
+            "unit_test_summary": "Unit tests executed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure function implements all required behavior correctly",
+            "unit_requirement_suggestion": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T10:05:00.641391",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T09:58:50.871031"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T09:58:50.871124"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "Ensure function implements all required behavior correctly",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T10:01:12.466017"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "Ensure all test cases pass with expected behavior",
+            "new_requirement": "No tests were collected. Ensure your test files and test functions are named with the 'test_' prefix and follow pytest\u2019s naming conventions so they will be discovered.",
+            "timestamp": "2025-08-28T10:01:12.466062"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T10:01:46.590948"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "No tests were collected. Ensure your test files and test functions are named with the 'test_' prefix and follow pytest\u2019s naming conventions so they will be discovered.",
+            "new_requirement": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T10:01:46.590981"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "Ensure function implements all required behavior correctly",
+            "new_requirement": "",
+            "timestamp": "2025-08-28T10:04:21.114277"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "Ensure all test cases pass with expected behavior",
+            "new_requirement": "No tests were collected. Ensure your test files are named using the pytest conventions (e.g., test_*.py) and contain test functions or methods prefixed with 'test_' so pytest can discover them.",
+            "timestamp": "2025-08-28T10:04:21.114307"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "Ensure function implements all required behavior correctly",
+            "timestamp": "2025-08-28T10:05:00.641691"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "No tests were collected. Ensure your test files are named using the pytest conventions (e.g., test_*.py) and contain test functions or methods prefixed with 'test_' so pytest can discover them.",
+            "new_requirement": "Ensure all test cases pass with expected behavior",
+            "timestamp": "2025-08-28T10:05:00.641806"
+          }
+        ],
+        "end_time": "2025-08-28T10:05:00.642102",
+        "total_duration_seconds": 479.440237
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-28T10:05:00.642272",
+    "session_duration_seconds": 491.855086
   }
 ]

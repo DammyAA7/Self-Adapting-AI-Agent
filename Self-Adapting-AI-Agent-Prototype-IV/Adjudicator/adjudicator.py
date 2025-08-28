@@ -57,6 +57,6 @@ def adjudicate(client, test_case_results):
         # Fallback if JSON parsing fails
         return OutputStructure(
             judgement=False,
-            code_requirement_suggestion="Failed to parse adjudication response",
-            unit_requirement_suggestion="Please retry with clearer requirements"
+            code_requirement_suggestion="Ensure function implements all required behavior correctly",
+            unit_requirement_suggestion="Ensure all test cases pass with expected behavior"
         )

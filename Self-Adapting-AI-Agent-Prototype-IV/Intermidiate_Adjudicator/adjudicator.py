@@ -92,5 +92,5 @@ def intermidiate_adjudicate(client):
         print(f"Adjudication parsing error: {e}")
         return OutputStructure(
             judgement=False,
-            requirement_suggestion="Failed to parse TDD adjudication response"
+            requirement_suggestion="Ensure function correctly implements the required behavior and passes all test cases"
         )

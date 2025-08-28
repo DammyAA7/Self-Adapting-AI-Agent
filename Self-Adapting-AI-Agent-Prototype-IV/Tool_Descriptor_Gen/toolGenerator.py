@@ -16,7 +16,5 @@ def generate_tool_definitions(client, function):
     )
 
     tools_code = generator_response.choices[0].message.content
-    # Split the code by lines, add tab indentation to each line, and rejoin
-    formatted_lines = ["    " + line for line in tools_code.strip().split("\n")]
-    formatted_tools_code = "\n" + "\n".join(formatted_lines) + "\n"
-    return formatted_tools_code
+    # Return the raw JSON directly without adding indentation
+    return tools_code

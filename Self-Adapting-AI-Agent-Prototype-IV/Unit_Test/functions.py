@@ -11,42 +11,37 @@ class Priority(Enum):
     HIGH = "high"
 
 
-def calculate_factorial(n):
+import re
+import math
+
+def evaluate_factorial_expression(expression):
     """
-    Calculates the factorial of a non-negative integer n.
-    Raises ValueError for negative n and TypeError for non-integer n.
+    Evaluates expressions containing factorials and arithmetic operators.
+    Returns the result or False for invalid expressions.
     """
-    if not isinstance(n, int):
-        raise TypeError("n must be an integer")
-    if n < 0:
-        raise ValueError("n must be non-negative")
-    result = 1
-    for i in range(2, n + 1):
-        result *= i
+    if not isinstance(expression, str):
+        return False
+    expr = expression.strip()
+    if not expr:
+        return False
+    # Validate characters
+    for ch in expr:
+        if ch not in "0123456789+-*/! ":
+            return False
+    if "!!" in expr:
+        return False
+    # Replace factorials
+    try:
+        expr_replaced = re.sub(r'(\d+)!', lambda m: str(math.factorial(int(m.group(1)))), expr)
+    except Exception:
+        return False
+    # Evaluate expression
+    try:
+        result = eval(expr_replaced)
+    except ZeroDivisionError:
+        return False
+    except Exception:
+        return False
     return result
 
-def calculate_factorial_expression(expr):
-    """
-    Calculates the sum of factorials in a factorial expression string like "2!+3!".
-    """
-    if not isinstance(expr, str):
-        raise TypeError("Expression must be a string")
-    expr_stripped = expr.strip()
-    if not expr_stripped:
-        raise ValueError("Expression cannot be empty")
-    total = 0
-    terms = expr.split("+")
-    for term in terms:
-        term_stripped = term.strip()
-        if not term_stripped:
-            raise ValueError("Invalid term in expression")
-        if term_stripped.count("!") != 1 or not term_stripped.endswith("!"):
-            raise ValueError(f"Invalid term format: {term_stripped}")
-        operand_str = term_stripped[:-1]
-        if operand_str.startswith("-") and operand_str[1:].isdigit():
-            raise ValueError("Negative operand in factorial expression")
-        if not operand_str.isdigit():
-            raise TypeError("Operand must be an integer")
-        n = int(operand_str)
-        total += calculate_factorial(n)
-    return total
+

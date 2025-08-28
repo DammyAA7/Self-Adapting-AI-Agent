@@ -18,12 +18,12 @@
                         "minLength": 1
                     }
                 },
-                "required": ["todo_text"]
+                "required": [
+                    "todo_text"
+                ]
             }
         }
-    }
-
-,
+    },
     {
         "type": "function",
         "function": {
@@ -42,12 +42,12 @@
                         "minLength": 1
                     }
                 },
-                "required": ["todo_id"]
+                "required": [
+                    "todo_id"
+                ]
             }
         }
-    }
-
-,
+    },
     {
         "type": "function",
         "function": {
@@ -65,28 +65,30 @@
                         "minItems": 1
                     }
                 },
-                "required": ["numbers"]
+                "required": [
+                    "numbers"
+                ]
             }
         }
-    }
-
-,
+    },
     {
         "type": "function",
         "function": {
-            "name": "calculate_factorial",
-            "description": "Calculates the factorial of a non-negative integer.",
+            "name": "evaluate_factorial_expression",
+            "description": "Evaluates expressions containing factorials and arithmetic operators and returns the result or False for invalid expressions.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "n": {
-                        "type": "integer",
-                        "description": "The non-negative integer for which to calculate the factorial."
+                    "expression": {
+                        "type": "string",
+                        "description": "The expression string to evaluate, which may include numbers, arithmetic operators, and factorials.",
+                        "minLength": 1
                     }
                 },
-                "required": ["n"]
+                "required": [
+                    "expression"
+                ]
             }
         }
     }
-
 ]

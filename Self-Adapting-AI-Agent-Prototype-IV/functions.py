@@ -1,21 +1,35 @@
 
 
-def calculate_factorial(n):
+import re
+import math
+
+def evaluate_factorial_expression(expression):
     """
-    Calculates the factorial of a non-negative integer.
-    Raises TypeError if the input is not an integer.
-    Raises ValueError if the input is negative.
-    Returns the factorial value.
+    Evaluates expressions containing factorials and arithmetic operators.
+    Returns the result or False for invalid expressions.
     """
-    if not isinstance(n, int):
-        raise TypeError("Input must be an integer")
-    if n < 0:
-        raise ValueError("Input must be non-negative")
-    result = 1
-    for i in range(2, n + 1):
-        result *= i
+    if not isinstance(expression, str):
+        return False
+    expr = expression.strip()
+    if not expr:
+        return False
+    # Validate characters
+    for ch in expr:
+        if ch not in "0123456789+-*/! ":
+            return False
+    if "!!" in expr:
+        return False
+    # Replace factorials
+    try:
+        expr_replaced = re.sub(r'(\d+)!', lambda m: str(math.factorial(int(m.group(1)))), expr)
+    except Exception:
+        return False
+    # Evaluate expression
+    try:
+        result = eval(expr_replaced)
+    except ZeroDivisionError:
+        return False
+    except Exception:
+        return False
     return result
 
-
-if __name__ == "__main__":
-    pass

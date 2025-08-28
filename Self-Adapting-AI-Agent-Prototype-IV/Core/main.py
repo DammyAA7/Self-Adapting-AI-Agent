@@ -35,8 +35,10 @@ def setup_variables():
 
     #Define prompt for the LLM and input messages
     input_messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)"}  # Critical test prompt
+    {"role": "system", "content": system_prompt},
+    {"role": "user", "content": """Title: "Add email validation function"
+    Description: "We need a function that validates email addresses according to RFC standards"
+    Expected: Single function returning boolean, with proper error handling"""}  # Critical test prompt
     ]
     return tools, input_messages
 
@@ -153,12 +155,31 @@ if __name__ == "__main__":
                         prompt_function_descriptor = generateFunctionDescriptor(openai_client, function_code, tools_code)
                         # clear_file('Unit_Test/functions.py')
 
-                    # Always clear and rewrite the functions.py file to avoid duplicates
-                    clear_file('Unit_Test/functions.py')
-                    # Generate unit tests using the generator module
+                    # Append to Unit_Test/functions.py instead of overwriting
+                    # Read enum utility (only needed once)
                     with open('Unit_Test/enumUtility.txt', 'r') as f:
                         enum_utility = f.read()
-                    write_to_file('python_function', 'Unit_Test/functions.py', enum_utility + "\n" + function_code)
+                    
+                    # Check if file exists and has content
+                    try:
+                        with open('Unit_Test/functions.py', 'r') as f:
+                            existing_content = f.read()
+                        # If enum utility is already there, don't add it again
+                        if enum_utility in existing_content:
+                            # Just append the new function
+                            if not existing_content.endswith('\n'):
+                                existing_content += '\n'
+                            combined_content = existing_content + '\n' + function_code
+                        else:
+                            # Add enum utility and function
+                            combined_content = enum_utility + "\n" + function_code
+                    except FileNotFoundError:
+                        # File doesn't exist, create with enum utility and function
+                        combined_content = enum_utility + "\n" + function_code
+                    
+                    # Write the combined content
+                    with open('Unit_Test/functions.py', 'w') as f:
+                        f.write(combined_content)
 
                     if not unit_test_reinforced_requirement or reinforced_requirement: 
                         #Check test driven code
@@ -186,21 +207,117 @@ if __name__ == "__main__":
                     if adjudication_result.judgement:
                         adjudicator = True
                         #clear files after successful adjudication
-                        clear_file(folder_dir + 'Test_Driven_Development/testDrivenCases.py')
-                        clear_file('Unit_Test/unitTest.py')
-                        write_to_file('python', 'functions.py', function_code)
-                        write_to_file('json', 'Tool_Descriptor_Gen/tools.json', tools_code)
+                        # Don't clear test files - preserve tests for all functions
+                        # clear_file(folder_dir + 'Test_Driven_Development/testDrivenCases.py')
+                        # clear_file('Unit_Test/unitTest.py')
+                        
+                        # Append to functions.py instead of overwriting
+                        try:
+                            with open('functions.py', 'r') as f:
+                                existing_code = f.read()
+                        except FileNotFoundError:
+                            existing_code = ""
+                        
+                        # Append new function to existing code
+                        if existing_code and not existing_code.endswith('\n'):
+                            existing_code += '\n'
+                        combined_code = existing_code + function_code
+                        
+                        with open('functions.py', 'w') as f:
+                            f.write(combined_code)
+                        
+                        # Properly handle JSON tools - don't use write_to_file for JSON
+                        # as it just inserts text and creates malformed JSON
+                        try:
+                            # Read existing tools
+                            with open('Tool_Descriptor_Gen/tools.json', 'r') as f:
+                                existing_tools = json.load(f)
+                            if not isinstance(existing_tools, list):
+                                existing_tools = []
+                        except (FileNotFoundError, json.JSONDecodeError):
+                            # File doesn't exist or is malformed, start fresh
+                            existing_tools = []
+                        
+                        # Parse the new tool
+                        if isinstance(tools_code, str):
+                            new_tool_data = json.loads(tools_code)
+                        else:
+                            new_tool_data = tools_code
+                        
+                        # Handle if new_tool_data is an array
+                        if isinstance(new_tool_data, list) and len(new_tool_data) > 0:
+                            # If it's an array, extract the first item
+                            new_tool = new_tool_data[0]
+                        else:
+                            # If it's already a dict, use as-is
+                            new_tool = new_tool_data
+                        
+                        # Add the new tool to the array
+                        existing_tools.append(new_tool)
+                        
+                        # Write back the updated array with proper formatting
+                        with open('Tool_Descriptor_Gen/tools.json', 'w') as f:
+                            json.dump(existing_tools, f, indent=4)
+                        
                         write_to_file('txt', 'Core/prompt.txt', prompt_function_descriptor)
                         
                         # Extract function name from tools_code for logging
                         try:
+                            # Parse the JSON
                             tools_data = json.loads(tools_code) if isinstance(tools_code, str) else tools_code
-                            function_name = tools_data[0]['function']['name'] if tools_data else "unknown_function"
-                        except (json.JSONDecodeError, KeyError, IndexError):
+                            
+                            # Handle both single object and array formats
+                            if isinstance(tools_data, dict):
+                                # Single object format: {"type": "function", "function": {...}}
+                                function_name = tools_data['function']['name']
+                            elif isinstance(tools_data, list) and len(tools_data) > 0:
+                                # Array format: [{"type": "function", "function": {...}}]
+                                function_name = tools_data[0]['function']['name']
+                            else:
+                                function_name = "unknown_function"
+                                
+                        except (json.JSONDecodeError, KeyError, IndexError) as e:
+                            print(f"Warning: Could not extract function name from tools_code: {e}")
                             function_name = "unknown_function"
                         
                         # Log successful function generation
                         logger.log_function_success(function_name)
+                        
+                        # Add successful generation to conversation history
+                        input_messages.append({
+                            "role": "assistant",
+                            "content": f"Successfully created function: {function_name}."
+                        })
+                        
+                        # Reload tools to include the newly created function (preserve conversation history)
+                        with open('Tool_Descriptor_Gen/tools.json', 'r') as f:
+                            tools = json.load(f)
+                        
+                        # Get list of available function names
+                        available_functions = [tool['function']['name'] for tool in tools if 'function' in tool]
+                        
+                        # Let LLM decide what to do next dynamically
+                        input_messages.append({
+                            "role": "system",
+                            "content": f"""Function '{function_name}' has been successfully created and added to your available tools.
+Available functions: {available_functions}
+
+Analyze the original user request and determine the next action:
+- If you now have all necessary functions to complete the user's request, use them to provide the answer
+- If additional functions are still needed, describe what function should be created next
+- Focus on completing the user's actual goal"""
+                        })
+                        
+                        # Add the original request context for the LLM to decide
+                        input_messages.append({
+                            "role": "user",
+                            "content": f"Original request: {user_input}\n\nProceed with the most appropriate action using available functions or indicate if more functions are needed."
+                        })
+                        
+                        # Continue the loop to let LLM decide whether to execute or create more
+                        adjudicator = True  # Exit the inner loop
+                        # Continue the outer loop to get a new LLM response with updated tools
+                        continue
                     else:
                         old_code_req = reinforced_requirement
                         old_unit_req = unit_test_reinforced_requirement

@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import pytest
 from Unit_Test.functions import *  # For testing the new function being developed
 from functions import *  # For accessing existing safe functions available for use
-# Standard testing libraries (tempfile, etc.) as needed
+# Additional imports based on function requirements (tempfile, mock, etc.)
 
 Test Coverage Requirements:
 Your tests must cover:
@@ -32,201 +32,84 @@ Happy path scenarios - Normal, expected usage
 Edge cases - Boundary conditions and limits
 Input validation - Invalid inputs handled gracefully with return values
 Graceful handling - Operations on already completed states, duplicate actions
-Data persistence (if applicable) - File operations, data integrity
+Resource handling (if applicable) - File operations, network calls, data integrity
 Integration testing - How the function works with existing functions
 
-CRITICAL FILE HANDLING RULES:
+CRITICAL RESOURCE HANDLING RULES:
 
-NEVER read from, write to, or modify todo.csv or any existing production CSV files
-ALWAYS use temporary files for testing (create them in your test code)
-Use tempfile module to create temporary test files
-Create any needed test data files yourself within the test functions
-Clean up temporary files after tests complete
+File Operations: Use temporary test files (tempfile module)
+Network Operations: Mock external services (unittest.mock)
+Database Operations: Use in-memory databases or mocks
+System Resources: Mock system calls and environment variables
+Pure Functions: Test directly without mocks
+Clean up all test resources after completion
 
 GRACEFUL HANDLING PHILOSOPHY:
-Functions should handle ALL edge cases and invalid inputs gracefully with return values, never raising exceptions or errors:
+Functions should handle edge cases and errors gracefully:
 
-If updating a todo that doesn't exist, return False or appropriate status indicator
-If deleting an already-deleted item, return success status without error
-If marking a completed todo as complete, return success without error
-If adding a duplicate item, handle appropriately (merge, skip, or indicate status)
-Always return meaningful status indicators, never raise exceptions for ANY case
-Handle duplications or repetitions gracefully without raising exceptions or errors
-When dealing with duplicate data or repeated operations, function should return appropriate status codes or boolean values
-Invalid inputs (wrong types, malformed data) should return error status codes, not raise exceptions
+Non-existent resources → Return appropriate error indicator
+Failed operations → Return False or None
+Duplicate operations → Handle idempotently
+Invalid inputs → Return error status codes
+Always return meaningful status indicators based on function type
+Handle all scenarios gracefully without raising exceptions unless tests explicitly expect them
 
-NO EXCEPTION TESTING:
-NEVER create tests that expect functions to raise exceptions, errors, or ValueError
-ALL functions should handle invalid inputs gracefully and return status indicators
-Use assert statements to check return values, never use pytest.raises()
-Functions should validate inputs internally and return appropriate error codes instead of raising exceptions
+EXCEPTION TESTING GUIDELINES:
+Most functions should handle errors gracefully (return False/None/status)
+Only test for exceptions if the function specification explicitly requires them
+Use pytest.raises() ONLY when the function is designed to raise exceptions
+Default assumption: Functions return error indicators rather than raising exceptions
 
 Code Structure:
 # Import statements
-import pytest
-import tempfile
+import sys
 import os
-import csv
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import pytest
 from Unit_Test.functions import *
 from functions import *
 
-# Test setup/teardown helpers
+# Additional imports based on function type
+# For file operations: import tempfile, csv, json
+# For network operations: from unittest.mock import patch, MagicMock
+# For async operations: import asyncio
+# For date/time operations: from datetime import datetime
+
+# Test fixtures based on function requirements
 @pytest.fixture
-def temp_csv_file():
-    # Create temporary CSV file for testing
-    with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.csv') as f:
-        # Setup test data
-        pass
-    yield f.name
-    os.unlink(f.name)
+def test_resource():
+    # Setup test resource
+    yield resource
+    # Cleanup
 
-# Test functions only - NO implementation
-def test_function_name_normal_case(temp_csv_file):
-    # Test normal functionality using temporary file
+# Test functions
+def test_function_name_normal_case():
+    # Test normal functionality
     result = function_name(valid_params)
-    assert result is not None  # Should return status, not raise error
+    assert result == expected_value
 
-def test_function_name_edge_cases(temp_csv_file):
+def test_function_name_edge_cases():
     # Test boundary conditions
     pass
 
-def test_function_name_already_completed_operation():
-    # Test operations on already-completed states
-    result = function_name(already_completed_params)
-    assert result is not None  # Should handle gracefully, not raise error
-
-def test_function_name_duplicate_operations():
-    # Test duplicate or repeated operations
-    result = function_name(duplicate_params)
-    assert result is not None  # Should handle duplicates gracefully, not raise error
-
-def test_function_name_invalid_input_handling():
-    # Test invalid inputs - should return error status, NOT raise exceptions
+def test_function_name_error_handling():
+    # Test error scenarios
     result = function_name(invalid_params)
-    assert result == False  # Or appropriate error status indicator
-
-def test_function_name_wrong_type_handling():
-    # Test wrong input types - should return error status, NOT raise exceptions
-    result = function_name(wrong_type_params)
-    assert result == False  # Or appropriate error status indicator
-
-def test_function_name_integration():
-    # Test integration with existing functions from the safe functions list
-    pass
+    assert result == error_indicator  # Usually False or None
 
 # Test execution
 if __name__ == "__main__":
     pytest.main([__file__])
 
-Examples:
-Example 1: Todo Update Function
-Requirement: "Update todo 2 to 'buy organic milk'. Handle non-existent todos and duplicates gracefully."
-Expected Output Structure:
-import pytest
-import tempfile
-import csv
-import os
-from Unit_Test.functions import *
-from functions import *
+ADAPTIVE TEST GENERATION:
+Analyze the function type and adapt your testing approach:
 
-@pytest.fixture
-def temp_todo_file():
-    with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.csv') as f:
-        writer = csv.writer(f)
-        writer.writerow(['id', 'task', 'status'])
-        writer.writerow([1, 'buy milk', 'pending'])
-        writer.writerow([2, 'walk dog', 'pending'])
-        writer.writerow([3, 'finish project', 'completed'])
-    yield f.name
-    os.unlink(f.name)
-
-def test_update_todo_normal_case(temp_todo_file):
-    result = update_todo(2, "buy organic milk", temp_todo_file)
-    assert result == True
-    # Verify todo was updated by reading file
-
-def test_update_todo_nonexistent_id(temp_todo_file):
-    result = update_todo(999, "new task", temp_todo_file)
-    assert result == False  # Should return False, not raise error
-
-def test_update_todo_duplicate_content(temp_todo_file):
-    result = update_todo(1, "buy milk", temp_todo_file)  # Same content as existing
-    assert result in [True, False]  # Should handle duplicates gracefully
-
-def test_update_todo_repeated_updates(temp_todo_file):
-    update_todo(2, "buy organic milk", temp_todo_file)  # First update
-    result = update_todo(2, "buy organic milk", temp_todo_file)  # Repeat same update
-    assert result in [True, False]  # Should handle repetition gracefully
-
-def test_update_todo_empty_text_handling(temp_todo_file):
-    result = update_todo(1, "", temp_todo_file)
-    assert result == False  # Should handle gracefully, not raise error
-
-def test_update_todo_invalid_id_type_handling(temp_todo_file):
-    result = update_todo("invalid", "task", temp_todo_file)
-    assert result == False  # Should return error status, not raise exception
-
-def test_update_todo_invalid_file_path():
-    result = update_todo(1, "task", "nonexistent/path/file.csv")
-    assert result == False  # Should handle gracefully, not raise error
-
-def test_update_todo_already_completed(temp_todo_file):
-    result = update_todo(3, "updated completed task", temp_todo_file)
-    assert result in [True, False]  # Should handle gracefully
-
-if __name__ == "__main__":
-    pytest.main([__file__])
-
-Example 2: Delete Todo Function
-Requirement: "Delete a todo item. Handle already-deleted items and duplicate deletion requests gracefully."
-Expected Output Structure:
-import pytest
-import tempfile
-import csv
-import os
-from Unit_Test.functions import *
-from functions import *
-
-@pytest.fixture
-def temp_todo_file():
-    with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.csv') as f:
-        writer = csv.writer(f)
-        writer.writerow(['id', 'task', 'status'])
-        writer.writerow([1, 'buy milk', 'pending'])
-        writer.writerow([2, 'walk dog', 'completed'])
-    yield f.name
-    os.unlink(f.name)
-
-def test_delete_todo_existing_item(temp_todo_file):
-    result = delete_todo(1, temp_todo_file)
-    assert result == True
-
-def test_delete_todo_nonexistent_item(temp_todo_file):
-    result = delete_todo(999, temp_todo_file)
-    assert result == False  # Should return False, not raise error
-
-def test_delete_todo_already_deleted_item(temp_todo_file):
-    delete_todo(1, temp_todo_file)  # Delete first time
-    result = delete_todo(1, temp_todo_file)  # Try to delete again
-    assert result == False  # Should handle gracefully
-
-def test_delete_todo_multiple_deletion_requests(temp_todo_file):
-    delete_todo(2, temp_todo_file)  # Delete first time
-    result1 = delete_todo(2, temp_todo_file)  # Second deletion request
-    result2 = delete_todo(2, temp_todo_file)  # Third deletion request
-    assert result1 == False  # Should handle multiple requests gracefully
-    assert result2 == False  # Should handle multiple requests gracefully
-
-def test_delete_todo_invalid_id_type_handling(temp_todo_file):
-    result = delete_todo("invalid", temp_todo_file)
-    assert result == False  # Should return error status, not raise exception
-
-def test_delete_todo_invalid_file_path():
-    result = delete_todo(1, "nonexistent/path/file.csv")
-    assert result == False  # Should handle gracefully, not raise error
-
-if __name__ == "__main__":
-    pytest.main([__file__])
+1. File-based functions → Use tempfile fixtures
+2. Network-based functions → Mock external services
+3. Calculation functions → Test directly with various inputs
+4. Validation functions → Test with valid/invalid data
+5. State management → Test state transitions
 
 Response Format:
 
@@ -237,7 +120,64 @@ No markdown formatting or code blocks
 No commentary outside of code comments
 Code must be ready to save as .py file and run immediately
 Tests should call the functions being tested but NOT define them
-Tests should expect graceful handling (return values) for ALL cases, never exceptions
-NEVER use pytest.raises() - all functions should handle errors gracefully with return values
-Use safe functions from the provided list as needed in your test scenarios
-Handle all duplications, repetitions, edge cases, and invalid inputs gracefully without expecting exceptions
+Adapt test approach based on function type
+Use appropriate mocking/fixtures for the function being tested
+
+# FEW-SHOT EXAMPLE PATTERN
+"""
+Learn from these examples how to generate tests for different function types:
+
+EXAMPLE 1: File Operation Function (Todo Management)
+Requirement: "Update todo item by ID in CSV file"
+
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import pytest
+import tempfile
+import csv
+from Unit_Test.functions import *
+from functions import *
+
+@pytest.fixture
+def temp_todo_file():
+    with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.csv') as f:
+        writer = csv.writer(f)
+        writer.writerow(['id', 'todo', 'status', 'priority'])
+        writer.writerow([1, 'buy milk', 'pending', 'high'])
+        writer.writerow([2, 'walk dog', 'pending', 'medium'])
+    yield f.name
+    os.unlink(f.name)
+
+def test_update_todo_success(temp_todo_file):
+    result = update_todo(1, "buy organic milk", temp_todo_file)
+    assert result == True
+    # Verify update
+    with open(temp_todo_file, 'r') as f:
+        reader = csv.DictReader(f)
+        todos = list(reader)
+        assert todos[0]['todo'] == "buy organic milk"
+
+def test_update_todo_nonexistent(temp_todo_file):
+    result = update_todo(999, "task", temp_todo_file)
+    assert result == False
+
+def test_update_todo_invalid_type(temp_todo_file):
+    result = update_todo("not_a_number", "task", temp_todo_file)
+    assert result == False
+
+PATTERN TO LEARN:
+- Use tempfile for file operations
+- Create fixtures for test data
+- Test success and failure cases
+- Verify side effects (file changes)
+- Handle invalid inputs gracefully
+
+Apply this pattern to ANY function by:
+1. Identifying resource requirements (files, network, etc.)
+2. Creating appropriate fixtures/mocks
+3. Testing normal cases
+4. Testing edge cases
+5. Verifying expected behavior
+"""

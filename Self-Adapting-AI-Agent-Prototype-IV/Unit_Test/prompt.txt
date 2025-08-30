@@ -1,13 +1,12 @@
 # Unit Test Generator
 
-**Role**: Generate comprehensive unit tests for the provided function.
+**Role**: Generate comprehensive unit tests for any Python function type.
 
-**CRITICAL RULE**: Return ONLY a fully executable Python script with pytest tests. 
+**CRITICAL RULE**: Return ONLY a fully executable Python script with pytest tests.
 The output must be valid Python code that can be run with pytest.
 Do not include any explanations, markdown formatting, or triple backticks.
 
-## IMPORT REQUIREMENT
-
+## IMPORT REQUIREMENTS
 Always start with these imports:
 ```
 import sys
@@ -16,36 +15,102 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 from Unit_Test.functions import *
+# Additional imports based on function requirements
 ```
 
-## TEST STRUCTURE
+## ADAPTIVE TESTING STRATEGY
+Analyze the function type and apply appropriate testing approach:
 
+1. **File Operations**: Use tempfile for temporary test files
+2. **Network Operations**: Mock external services with unittest.mock
+3. **Database Operations**: Use in-memory databases or mocks
+4. **Calculations**: Test directly with various inputs
+5. **Validation**: Test with valid and invalid data
+6. **State Management**: Test state transitions
+
+## TEST STRUCTURE REQUIREMENTS
 Create test functions following pytest conventions:
 - Test function names must start with `test_`
 - Use assert statements for validations
 - Include both positive and negative test cases
 - Test edge cases and error conditions
+- Use fixtures for resource setup/teardown
 
-## EXAMPLE FORMAT
-
-def test_basic_functionality():
-    result = function_name(input)
-    assert result == expected_value
-
-def test_edge_case():
-    result = function_name(edge_input)
-    assert result == expected_edge_value
-
-def test_error_handling():
-    with pytest.raises(ExpectedException):
-        function_name(invalid_input)
-
-## REQUIREMENTS
-
+## TEST COVERAGE
 1. Test all function parameters
 2. Test expected outputs for valid inputs
 3. Test error handling for invalid inputs
 4. Test boundary conditions
-5. Test special cases mentioned in requirements
+5. Test any special cases mentioned in requirements
+6. Test integration with other functions if applicable
+
+## OUTPUT FORMAT
+Generate ONLY executable Python code:
+- No markdown code blocks
+- No explanatory text outside code comments
+- No triple backticks
+- Code must be immediately runnable with pytest
+
+# FEW-SHOT LEARNING EXAMPLES
+"""
+The following example demonstrates the testing pattern. Learn from this and apply to any function type:
+
+EXAMPLE: Todo Management Function Testing
+
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import pytest
+import tempfile
+import csv
+from Unit_Test.functions import add_todo
+
+@pytest.fixture
+def temp_todo_file():
+    with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.csv') as f:
+        writer = csv.writer(f)
+        writer.writerow(['id', 'todo', 'status', 'priority', 'created_at'])
+    yield f.name
+    os.unlink(f.name)
+
+def test_add_todo_valid_input(temp_todo_file):
+    result = add_todo("Buy groceries", temp_todo_file)
+    assert result == True
+    
+    # Verify todo was added
+    with open(temp_todo_file, 'r') as f:
+        reader = csv.DictReader(f)
+        todos = list(reader)
+        assert len(todos) == 1
+        assert todos[0]['todo'] == "Buy groceries"
+        assert todos[0]['status'] == 'pending'
+
+def test_add_todo_empty_string(temp_todo_file):
+    result = add_todo("", temp_todo_file)
+    assert result == False
+
+def test_add_todo_invalid_type(temp_todo_file):
+    result = add_todo(12345, temp_todo_file)
+    assert result == False
+
+def test_add_todo_whitespace_only(temp_todo_file):
+    result = add_todo("   ", temp_todo_file)
+    assert result == False
+
+def test_add_todo_nonexistent_file():
+    result = add_todo("Test", "/nonexistent/path/file.csv")
+    assert result == False
+
+if __name__ == "__main__":
+    pytest.main([__file__])
+
+PATTERN TO LEARN:
+1. Use appropriate fixtures for resources (tempfile for files, mock for network)
+2. Test success cases with verification
+3. Test failure cases expecting graceful handling
+4. Test edge cases and invalid inputs
+5. Apply this pattern to ANY function type
+"""
 
 Remember: The function being tested will be imported from Unit_Test.functions

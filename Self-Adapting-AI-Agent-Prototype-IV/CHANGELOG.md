@@ -1207,7 +1207,7 @@ if project_context:
 
 ### Change 30: Main Loop Context Propagation
 **Date:** 2025-08-29
-**File:** `/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/Core/main.py`
+**File:** `/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/Function_Gen/function.txt`
 
 ### Context Flow Through Pipeline:
 ```python
@@ -1221,15 +1221,20 @@ function_code = generate_function_code(openai_client, test_driven_code, project_
 unit_test_result = generate_execute_unit_tests(openai_client, requirement, reinforced_requirement, project_context)
 ```
 
-**Why This Matters:**
-- Every stage of generation is context-aware
-- Consistent project knowledge throughout pipeline
-- Better coordination between components
-- Higher quality, more relevant output
+---
+
+### Change 31: Removed hardcoded file prompts
+**Date:** 2025-08-29
+**File:** `/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/Core/main.py`
+
+**Change:**
+
+- Removed hardcoded file paths and file structure prompt to test Analyzer robustness
+
 
 ---
 
-## Summary of Phase 1 Implementation
+## Summary of Implementation
 
 ### What Was Achieved:
 1. **Complete Project Visibility:** LLM sees every line of every file
@@ -1267,7 +1272,92 @@ This implementation is perfect for research because:
 - **Context Utilization:** Can analyze how much context LLMs actually use
 
 ### Performance Considerations:
-- Max file size: 500KB per file (configurable)
+- Max file size: 100KB per file (configurable)
 - Skips binary files and common ignore patterns
 - Token usage will be high with large projects
 - Suitable for research, may need optimization for production
+
+---
+
+### Change 31: Enhanced FileAnalyzer to Include Full File Paths in Context
+**Date:** 2025-08-30
+**File:** `/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/FileAnalyzer/analyzer.py`
+
+### Issue Discovered:
+The LLM was receiving file contents but not the actual file paths, making it impossible to generate functions that reference specific files from the analyzed project.
+
+### Before:
+```python
+context += f"\n{'='*60}\nFILE: {filepath} (CSV - {file_data.get('line_count', 0)} lines)\n{'='*60}\n"
+```
+Only showed relative filepath without full path information.
+
+### After:
+```python
+# Added full path information for each file
+full_path = os.path.join(self.project_path, filepath)
+context += f"\n{'='*60}\nFILE: {filepath} (CSV - {file_data.get('line_count', 0)} lines)\nFULL PATH: {full_path}\n{'='*60}\n"
+```
+
+### Key Enhancements:
+
+1. **File Path Summary Section:**
+   Added a dedicated section listing all available file paths by type:
+   ```
+   FILE PATHS AVAILABLE IN PROJECT:
+   ================================
+   CSV FILE: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/sales_data.csv
+   JSON FILE: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/config.json
+   PYTHON FILE: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/utils.py
+   ```
+
+2. **Full Path with Each File:**
+   Every file section now includes its complete path:
+   ```
+   FILE: data.csv (CSV - 100 lines)
+   FULL PATH: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/data.csv
+   ```
+
+3. **Path Organization by Type:**
+   Files are categorized and their paths listed by type (CSV, JSON, Python, Text/Config) for easy reference.
+
+### Impact:
+- **LLM Can Reference Exact Paths:** Generated functions can now use actual file paths from the project
+- **Better Integration:** Functions work with real project structure instead of placeholders
+- **Context Clarity:** LLM understands file locations and relationships
+- **Practical Code Generation:** Generated code can directly access project files
+
+### Example Generated Code After Fix:
+```python
+# Before: Generic placeholder
+def process_data():
+    file_path = "File path as a string"  # Placeholder!
+    
+# After: Actual project path
+def process_data():
+    file_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/sales_data.csv"
+    # Can now actually read and process the specific file
+```
+
+### Why This Matters:
+- Functions can now work with actual project files immediately
+- No need to manually update file paths after generation
+- LLM understands the complete project structure including locations
+- Enables true project-aware code generation
+
+---
+
+### Change 32: Fixed Max File Size Setting in FileAnalyzer
+**Date:** 2025-08-30
+**File:** `/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/FileAnalyzer/analyzer.py`
+
+### Note:
+The max file size was initially documented as 500KB but was actually set to 10KB in the code (line 25). This has been left at 10KB for testing purposes but can be adjusted based on needs:
+
+```python
+self.max_file_size = 10000  # 10KB max per file to avoid huge files
+# Can be changed to:
+# self.max_file_size = 500000  # 500KB for larger files
+```
+
+This is configurable based on research requirements and token limits.

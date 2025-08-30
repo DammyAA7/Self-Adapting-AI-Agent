@@ -22,7 +22,7 @@ class SimpleAnalyzer:
         self.all_files_content = {}
         self.ignore_dirs = {'.git', '__pycache__', '.venv', 'venv', 'env', 
                            'node_modules', '.pytest_cache', '.idea', '.vscode'}
-        self.max_file_size = 500000  # 500KB max per file to avoid huge files
+        self.max_file_size = 100000  # 100KB max per file to avoid huge files
         
     def read_all_files(self) -> Dict[str, Any]:
         """
@@ -219,14 +219,30 @@ Total Lines of Code/Data: {summary['total_lines']}
 FILE STRUCTURE:
 {chr(10).join('- ' + f for f in summary['file_list'])}
 
-COMPLETE FILE CONTENTS BELOW:
-==============================
+FILE PATHS AVAILABLE IN PROJECT:
+================================
 """
+        
+        # Add full paths for each file type
+        for filepath, file_data in self.all_files_content.items():
+            full_path = os.path.join(self.project_path, filepath)
+            file_type = file_data.get('type', 'unknown')
+            if file_type == 'csv':
+                context += f"CSV FILE: {full_path}\n"
+            elif file_type == 'json':
+                context += f"JSON FILE: {full_path}\n"
+            elif file_type == 'python':
+                context += f"PYTHON FILE: {full_path}\n"
+            elif file_type == 'text':
+                context += f"TEXT/CONFIG FILE: {full_path}\n"
+        
+        context += "\nCOMPLETE FILE CONTENTS BELOW:\n==============================\n"""
         
         # Add all Python files with FULL content
         for filepath, file_data in self.all_files_content.items():
             if file_data.get('type') == 'python' and 'content' in file_data:
-                context += f"\n{'='*60}\nFILE: {filepath} (Python - {file_data.get('line_count', 0)} lines)\n{'='*60}\n"
+                full_path = os.path.join(self.project_path, filepath)
+                context += f"\n{'='*60}\nFILE: {filepath} (Python - {file_data.get('line_count', 0)} lines)\nFULL PATH: {full_path}\n{'='*60}\n"
                 
                 # Add function summary if available
                 if file_data.get('functions'):
@@ -242,7 +258,8 @@ COMPLETE FILE CONTENTS BELOW:
         # Add CSV files with FULL content
         for filepath, file_data in self.all_files_content.items():
             if file_data.get('type') == 'csv' and 'content' in file_data:
-                context += f"\n{'='*60}\nFILE: {filepath} (CSV - {file_data.get('line_count', 0)} lines)\n{'='*60}\n"
+                full_path = os.path.join(self.project_path, filepath)
+                context += f"\n{'='*60}\nFILE: {filepath} (CSV - {file_data.get('line_count', 0)} lines)\nFULL PATH: {full_path}\n{'='*60}\n"
                 context += f"Headers: {file_data.get('headers', 'Unknown')}\n\n"
                 context += "COMPLETE CSV CONTENT:\n"
                 context += file_data['content']  # ALL LINES
@@ -251,7 +268,8 @@ COMPLETE FILE CONTENTS BELOW:
         # Add JSON files with FULL content
         for filepath, file_data in self.all_files_content.items():
             if file_data.get('type') == 'json' and 'content' in file_data:
-                context += f"\n{'='*60}\nFILE: {filepath} (JSON)\n{'='*60}\n"
+                full_path = os.path.join(self.project_path, filepath)
+                context += f"\n{'='*60}\nFILE: {filepath} (JSON)\nFULL PATH: {full_path}\n{'='*60}\n"
                 context += f"Structure: {file_data.get('structure', 'Unknown')}\n\n"
                 context += "COMPLETE JSON CONTENT:\n"
                 context += file_data['content']  # FULL JSON
@@ -260,7 +278,8 @@ COMPLETE FILE CONTENTS BELOW:
         # Add text/config files with FULL content
         for filepath, file_data in self.all_files_content.items():
             if file_data.get('type') == 'text' and 'content' in file_data:
-                context += f"\n{'='*60}\nFILE: {filepath} (Text/Config - {file_data.get('line_count', 0)} lines)\n{'='*60}\n"
+                full_path = os.path.join(self.project_path, filepath)
+                context += f"\n{'='*60}\nFILE: {filepath} (Text/Config - {file_data.get('line_count', 0)} lines)\nFULL PATH: {full_path}\n{'='*60}\n"
                 context += file_data['content']  # FULL CONTENT
                 context += "\n\n"
         

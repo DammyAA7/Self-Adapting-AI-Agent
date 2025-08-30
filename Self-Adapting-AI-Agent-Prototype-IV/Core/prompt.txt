@@ -64,6 +64,25 @@ calculate_gcd(numbers) - Calculates the greatest common divisor (GCD) of a list 
     - "Find the GCD for these values: 5.5, 11" (error due to non-integer) → Use calculate_gcd([5.5, 11])
 
 
+
+
+filter_todos_by_status_and_priority(status, priority, path=None) - Filters todos from a CSV file by both status and priority, returning matching items as a list of dictionaries. Optionally specify the CSV file path.
+- Recognizable phrases: filter todos, show tasks, list todos, filter by status and priority, tasks with status, todos with priority, completed and high priority, pending tasks with low priority, find todos, select todos, get tasks by status, tasks with priority, todos from file, search todos, show all tasks with, tasks of status, todos with specific priority, list tasks by status and priority
+- Examples:
+    - "Show all todos that are completed and high priority" → Use filter_todos_by_status_and_priority('completed', 'high')
+    - "List all pending tasks with medium priority" → Use filter_todos_by_status_and_priority('pending', 'medium')
+    - "Get all in-progress todos with low priority" → Use filter_todos_by_status_and_priority('in-progress', 'low')
+    - "Find todos marked as canceled and set to urgent priority" → Use filter_todos_by_status_and_priority('canceled', 'urgent')
+    - "Which tasks are completed and of low priority?" → Use filter_todos_by_status_and_priority('completed', 'low')
+    - "Filter all tasks that are started and have high priority from /home/user/data/mytasks.csv" → Use filter_todos_by_status_and_priority('started', 'high', '/home/user/data/mytasks.csv')
+    - "Show tasks with a pending status and medium priority in the custom file path ./data/todo_entries.csv" → Use filter_todos_by_status_and_priority('pending', 'medium', './data/todo_entries.csv')
+    - "List todos with in-progress status and low priority" → Use filter_todos_by_status_and_priority('in-progress', 'low')
+    - "Show all tasks that are done and have priority top" → Use filter_todos_by_status_and_priority('done', 'top')
+    - "Get todos that are pending and marked high in the file './tasks.csv'" → Use filter_todos_by_status_and_priority('pending', 'high', './tasks.csv')
+    - "What pending todos are high priority in /nonexistent/file.csv? (error-prone: likely file not found)" → Use filter_todos_by_status_and_priority('pending', 'high', '/nonexistent/file.csv')
+    - "Show todos with status 0 and priority high (error-prone: status is not a valid string)" → Use filter_todos_by_status_and_priority(0, 'high')
+
+
 ----
 
 BEHAVIOR RULES:

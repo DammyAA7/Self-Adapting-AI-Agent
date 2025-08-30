@@ -7,7 +7,7 @@ import os
 python_path = sys.executable  # Use current Python interpreter
 folder_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/"
 
-def generate_execute_unit_tests(client, function_requirement, unit_test_reinforced_requirement=None):
+def generate_execute_unit_tests(client, function_requirement, unit_test_reinforced_requirement=None, project_context=None):
     """
     Executes unit tests for the given function requirement using the OpenAI client.
     
@@ -15,7 +15,8 @@ def generate_execute_unit_tests(client, function_requirement, unit_test_reinforc
         client: An instance of the OpenAI client.
         function_requirement: A string describing the function requirement for which to generate unit tests.
         unit_test_reinforced_requirement: Optional reinforced requirements for test generation.
-        
+        project_context: Optional project context for context-aware test generation.
+
     Returns:
         The test execution results as a string.
     """
@@ -25,7 +26,7 @@ def generate_execute_unit_tests(client, function_requirement, unit_test_reinforc
 
     if not file_unit_test_code or unit_test_reinforced_requirement:
         print("Generating unit test cases...")
-        unit_test_code = generateTestCases(client, function_requirement, unit_test_reinforced_requirement)
+        unit_test_code = generateTestCases(client, function_requirement, unit_test_reinforced_requirement, project_context)
         clear_file('Unit_Test/unitTest.py')
         write_to_file('python_function', folder_path + 'Unit_Test/unitTest.py', unit_test_code)
 

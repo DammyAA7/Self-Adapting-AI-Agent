@@ -70,4 +70,33 @@
         }
     }
 
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "filter_todos_by_status_and_priority",
+            "description": "Filters todos by status and priority from the todo CSV file. Returns a list of matching todo items as dictionaries, or False for invalid input or file errors.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "description": "The status to filter todos by (e.g., pending, completed).",
+                        "minLength": 1
+                    },
+                    "priority": {
+                        "type": "string",
+                        "description": "The priority to filter todos by (e.g., high, medium, low).",
+                        "minLength": 1
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "Optional path to the todo CSV file."
+                    }
+                },
+                "required": ["status", "priority"]
+            }
+        }
+    }
+
 ]

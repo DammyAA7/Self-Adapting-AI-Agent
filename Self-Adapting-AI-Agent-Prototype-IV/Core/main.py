@@ -17,26 +17,77 @@ from Unit_Test.unitTestHandler import generate_execute_unit_tests
 from Utilities.execute_function import execute_function
 from dotenv import load_dotenv
 from Utilities.Logger import FunctionGenerationLogger
-
+from FileAnalyzer.analyzer import SimpleAnalyzer
+import argparse
 
 
 python_dir = sys.executable
 folder_dir = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/" 
 
-def setup_variables():
+def get_user_input():
+    """Get user request dynamically from various sources"""
+    parser = argparse.ArgumentParser(description='Self-Adapting AI Agent with Project Analysis')
+    parser.add_argument('--request', type=str, help='Direct request string')
+    parser.add_argument('--file', type=str, help='Path to file containing request')
+    parser.add_argument('--analyze', type=str, help='Path to project to analyze')
+    parser.add_argument('--interactive', action='store_true', help='Interactive mode')
+
+    args = parser.parse_args()
+
+    # Interactive mode (default if no arguments)
+    if args.interactive or (not args.request and not args.file):
+        print("\n" + "="*60)
+        print("Self-Adapting AI Agent - Interactive Mode")
+        print("="*60)
+        analyze_path = input("Project path to analyze (press Enter to skip): ").strip()
+        request = input("What would you like me to help with? > ").strip()
+        return request, analyze_path if analyze_path else None
+
+    # File mode
+    elif args.file:
+        with open(args.file, 'r') as f:
+            request = f.read().strip()
+        return request, args.analyze
+
+    # Direct request mode
+    elif args.request:
+        return args.request, args.analyze
+
+    return None, None
+
+def setup_variables(user_request=None, project_context=""):
     with open('Tool_Descriptor_Gen/tools.json', 'r') as f:
         tool_list = json.load(f)
     # Define the tools that the LLM can use
     tools = tool_list
 
-    # Read the new prompt from file
+    # Read the base prompt from file
     with open('Core/prompt.txt', 'r') as f:
         system_prompt = f.read()
+
+    # Add project context to system prompt if available
+    if project_context:
+        system_prompt = f"""{system_prompt}
+
+PROJECT CONTEXT:
+================
+{project_context}
+
+IMPORTANT: You have full visibility of the project above. Use this knowledge to:
+- Reuse existing functions when appropriate
+- Follow the same coding patterns and style
+- Work with the actual data structures present in the project
+- Generate code that integrates well with the existing codebase
+"""
+
+    # Use dynamic user request or fallback to default
+    if not user_request:
+        user_request = "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)"
 
     #Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": "Create me a new function that can calculate GCD/Greatest Common Divisor expressions. And answer me what is the GCD of 24 and 36 (Print me answer)"}  # Critical test prompt
+        {"role": "user", "content": user_request}
     ]
     return tools, input_messages
 
@@ -46,6 +97,34 @@ if __name__ == "__main__":
     # Initialize logger
     logger = FunctionGenerationLogger()
     
+    # Get user input and analyze path
+    user_request, analyze_path = get_user_input()
+    if not user_request:
+        print("No request provided. Exiting.")
+        sys.exit(0)
+
+    # Analyze project if path provided
+    project_context = ""
+    if analyze_path:
+        print(f"\nAnalyzing project at: {analyze_path}")
+        print("This may take a moment...\n")
+
+        analyzer = SimpleAnalyzer(analyze_path)
+        analyzer.read_all_files()
+        summary = analyzer.get_project_summary()
+
+        print(f"Analysis complete!")
+        print(f"Found {summary['total_files']} files:")
+        print(f"  - Python: {summary['python_files']} files ({summary['total_functions']} functions, {summary['total_classes']} classes)")
+        print(f"  - CSV: {summary['csv_files']} files")
+        print(f"  - JSON: {summary['json_files']} files")
+        print(f"  - Text/Config: {summary['text_files']} files")
+        print(f"  - Total lines: {summary['total_lines']}")
+        print(f"\nProceeding with your request...\n")
+
+        # Get formatted context for LLM
+        project_context = analyzer.format_context_for_llm()
+
     restart = True
     MAX_ITERATIONS = 6  # Maximum number of iterations before terminating
     
@@ -60,7 +139,7 @@ if __name__ == "__main__":
     
     # You need to specify your deployment name - replace with your actual deployment
     # Common deployment names are: gpt-35-turbo, gpt-4, etc.
-    azure_deployment_name = "gpt-4.1"  # CHANGE THIS to your actual deployment name
+    azure_deployment_name = "o4-mini"  # CHANGE THIS to your actual deployment name
     
     # Create Azure OpenAI client
     openai_client = AzureOpenAI(
@@ -81,8 +160,8 @@ if __name__ == "__main__":
 
     try:
         while(restart):
-            tools, input_messages = setup_variables()
-            user_input = input_messages[-1]["content"]  # Get the user input
+            tools, input_messages = setup_variables(user_request, project_context)
+            user_input = user_request  # Use the dynamic user input
             
             response = openai_client.chat.completions.create(
                 model=azure_deployment_name,  # Use Azure deployment name
@@ -144,8 +223,8 @@ if __name__ == "__main__":
                     if not function_code or reinforced_requirement:
                         # Generate the function code using the generator module
                         print("Generating function code...")
-                        test_driven_code = generateTestDrivenCases(openai_client, function_requirement, reinforced_requirement)
-                        function_code = generate_function_code(openai_client, test_driven_code)
+                        test_driven_code = generateTestDrivenCases(openai_client, function_requirement, reinforced_requirement, project_context)
+                        function_code = generate_function_code(openai_client, test_driven_code, project_context)
                         #Generate tool definitions
                         tools_code = generate_tool_definitions(openai_client, function_code)
 
@@ -194,9 +273,21 @@ if __name__ == "__main__":
                         
                         # Extract function name from tools_code for logging
                         try:
+                            # Parse the JSON
                             tools_data = json.loads(tools_code) if isinstance(tools_code, str) else tools_code
-                            function_name = tools_data[0]['function']['name'] if tools_data else "unknown_function"
-                        except (json.JSONDecodeError, KeyError, IndexError):
+
+                            # Handle both single object and array formats
+                            if isinstance(tools_data, dict):
+                                # Single object format: {"type": "function", "function": {...}}
+                                function_name = tools_data['function']['name']
+                            elif isinstance(tools_data, list) and len(tools_data) > 0:
+                                # Array format: [{"type": "function", "function": {...}}]
+                                function_name = tools_data[0]['function']['name']
+                            else:
+                                function_name = "unknown_function"
+
+                        except (json.JSONDecodeError, KeyError, IndexError) as e:
+                            print(f"Warning: Could not extract function name from tools_code: {e}")
                             function_name = "unknown_function"
                         
                         # Log successful function generation

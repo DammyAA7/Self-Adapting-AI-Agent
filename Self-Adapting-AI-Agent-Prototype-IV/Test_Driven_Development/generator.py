@@ -17,7 +17,7 @@ folder_dir = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting
 # with open('Test_Driven_Development/testDrivenCases.py', 'r') as f:
 #     test_driven_code = f.read()
 
-def generateTestDrivenCases(client, requirements, reinforced_requirement=None):
+def generateTestDrivenCases(client, requirements, reinforced_requirement=None, project_context=None):
 
     with open('Test_Driven_Development/prompt.txt', 'r') as f:
         prompt = f.read()
@@ -38,7 +38,23 @@ def generateTestDrivenCases(client, requirements, reinforced_requirement=None):
     # Convert to OpenAI format
     user_content = f'''You are given these verified safe functions as reference to assist with test data creation and setup. Available functions from functions.py: {functions_code}
 
-Requirements: {requirements}
+'''
+
+    # Add project context if available
+    if project_context:
+        user_content += f'''PROJECT KNOWLEDGE:
+================
+{project_context}
+
+You have full visibility of the project above. When generating test cases:
+- Test with actual data structures from the project (CSV columns, JSON keys, etc.)
+- Follow testing patterns you see in the project
+- Create tests that verify integration with existing code
+- Use realistic test data based on what you see in the project files
+
+'''
+
+    user_content += f'''Requirements: {requirements}
 
 Test driven code already generated: {test_driven_code if test_driven_code else "Not available"}
 
@@ -53,9 +69,9 @@ If you are given a reinforced requirement, you must use it to fix the already ge
 
     # Using Azure OpenAI
     generator_response = client.chat.completions.create(
-        model="gpt-4.1",  # Azure deployment name
-        max_tokens=10000,
-        temperature=0.7,
+        model="o4-mini",  # Azure deployment name
+        max_completion_tokens=10000,
+        # temperature=0.7,
         messages=generator_messages
     )
     # Don't clear and append - just write the complete content

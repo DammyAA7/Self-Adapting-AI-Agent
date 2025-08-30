@@ -2,7 +2,7 @@
 This script generates a prompt for creating unit tests for a function.
 """
 
-def generateTestCases(client, requirements, reinforced_requirement=None):
+def generateTestCases(client, requirements, reinforced_requirement=None, project_context=None):
     # Read files inside the function to avoid import-time errors
     with open('Unit_Test/prompt.txt', 'r') as f:
         generator_prompt = f.read()
@@ -27,7 +27,23 @@ def generateTestCases(client, requirements, reinforced_requirement=None):
     # Convert to OpenAI format
     user_content = f'''You are given these verified helper functions as reference to assist with test data creation and setup. Available functions from functions.py: {functions_code}
 
-Requirements: {requirements}
+'''
+
+    # Add project context if available
+    if project_context:
+        user_content += f'''PROJECT KNOWLEDGE:
+================
+{project_context}
+
+You have full visibility of the project above. When generating unit tests:
+- Test with actual data structures from the project (CSV columns, JSON keys, etc.)
+- Follow unit testing patterns you see in the project
+- Create tests that verify integration with existing code
+- Use realistic test data based on what you see in the project files
+
+'''
+
+    user_content += f'''Requirements: {requirements}
 
 These are the test driven code already generated: {test_driven_code}
 
@@ -44,9 +60,9 @@ Unit test code: {unit_test_code if unit_test_code else "Not available"}'''
 
     # Using Azure OpenAI
     generator_response = client.chat.completions.create(
-        model="gpt-4.1",  # Azure deployment name
-        max_tokens=5000,
-        temperature=0.7,
+        model="o4-mini",  # Azure deployment name
+        max_completion_tokens=5000,
+        # temperature=0.7,
         messages=generator_messages
     )
      

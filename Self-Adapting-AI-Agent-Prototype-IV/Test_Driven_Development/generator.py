@@ -3,9 +3,10 @@ This script generates a prompt for creating unit tests for a function.
 """
 from Utilities.write_to_file import write_to_file, clear_file
 import sys
+import os
 
 python_dir = sys.executable
-folder_dir = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/" 
+folder_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/" 
 
 # Don't read at module level - read inside function
 # with open('Test_Driven_Development/prompt.txt', 'r') as f:

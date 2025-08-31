@@ -21,8 +21,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
-from Unit_Test.functions import *  # For testing the new function being developed
-from functions import *  # For accessing existing safe functions available for use
+from Unit_Test.functions import *  # Import the function being tested from Unit_Test/functions.py
 # Additional imports based on function requirements (tempfile, mock, etc.)
 
 Test Coverage Requirements:
@@ -68,7 +67,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 from Unit_Test.functions import *
-from functions import *
 
 # Additional imports based on function type
 # For file operations: import tempfile, csv, json
@@ -123,12 +121,12 @@ Tests should call the functions being tested but NOT define them
 Adapt test approach based on function type
 Use appropriate mocking/fixtures for the function being tested
 
-# FEW-SHOT EXAMPLE PATTERN
+# FEW-SHOT EXAMPLE PATTERNS
 """
-Learn from these examples how to generate tests for different function types:
+Learn from these examples how to generate tests for different function types across various domains:
 
-EXAMPLE 1: File Operation Function (Todo Management)
-Requirement: "Update todo item by ID in CSV file"
+EXAMPLE 1: Data Management Function (E-commerce Product)
+Requirement: "Update product inventory by SKU"
 
 import sys
 import os
@@ -136,48 +134,125 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 import tempfile
-import csv
+import json
 from Unit_Test.functions import *
 from functions import *
 
 @pytest.fixture
-def temp_todo_file():
-    with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.csv') as f:
-        writer = csv.writer(f)
-        writer.writerow(['id', 'todo', 'status', 'priority'])
-        writer.writerow([1, 'buy milk', 'pending', 'high'])
-        writer.writerow([2, 'walk dog', 'pending', 'medium'])
+def temp_inventory_file():
+    with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.json') as f:
+        inventory = [
+            {'sku': 'PROD001', 'name': 'Widget', 'quantity': 10, 'price': 29.99},
+            {'sku': 'PROD002', 'name': 'Gadget', 'quantity': 5, 'price': 49.99}
+        ]
+        json.dump(inventory, f)
     yield f.name
     os.unlink(f.name)
 
-def test_update_todo_success(temp_todo_file):
-    result = update_todo(1, "buy organic milk", temp_todo_file)
+def test_update_inventory_success(temp_inventory_file):
+    result = update_inventory('PROD001', 15, temp_inventory_file)
     assert result == True
     # Verify update
-    with open(temp_todo_file, 'r') as f:
-        reader = csv.DictReader(f)
-        todos = list(reader)
-        assert todos[0]['todo'] == "buy organic milk"
+    with open(temp_inventory_file, 'r') as f:
+        inventory = json.load(f)
+        product = next(p for p in inventory if p['sku'] == 'PROD001')
+        assert product['quantity'] == 15
 
-def test_update_todo_nonexistent(temp_todo_file):
-    result = update_todo(999, "task", temp_todo_file)
+def test_update_inventory_nonexistent_sku(temp_inventory_file):
+    result = update_inventory('PROD999', 10, temp_inventory_file)
     assert result == False
 
-def test_update_todo_invalid_type(temp_todo_file):
-    result = update_todo("not_a_number", "task", temp_todo_file)
+def test_update_inventory_negative_quantity(temp_inventory_file):
+    result = update_inventory('PROD001', -5, temp_inventory_file)
     assert result == False
 
-PATTERN TO LEARN:
-- Use tempfile for file operations
-- Create fixtures for test data
-- Test success and failure cases
-- Verify side effects (file changes)
-- Handle invalid inputs gracefully
+EXAMPLE 2: Calculation Function (Financial Analytics)
+Requirement: "Calculate compound interest"
 
-Apply this pattern to ANY function by:
-1. Identifying resource requirements (files, network, etc.)
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import pytest
+from Unit_Test.functions import *
+from functions import *
+
+def test_compound_interest_normal():
+    result = calculate_compound_interest(1000, 0.05, 12, 10)
+    assert abs(result - 1647.01) < 0.01  # Account for floating point
+
+def test_compound_interest_zero_principal():
+    result = calculate_compound_interest(0, 0.05, 12, 10)
+    assert result == 0
+
+def test_compound_interest_invalid_rate():
+    result = calculate_compound_interest(1000, -0.05, 12, 10)
+    assert result is None  # Negative rate invalid
+
+def test_compound_interest_edge_cases():
+    # Test with very high values
+    result = calculate_compound_interest(1000000, 0.10, 365, 30)
+    assert result > 1000000  # Should grow
+
+EXAMPLE 3: Service Integration Function (Weather API)
+Requirement: "Fetch weather data for a city"
+
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import pytest
+from unittest.mock import patch, MagicMock
+from Unit_Test.functions import *
+from functions import *
+
+@pytest.fixture
+def mock_weather_response():
+    return {
+        'city': 'London',
+        'temperature': 15.5,
+        'conditions': 'Partly Cloudy',
+        'humidity': 65
+    }
+
+def test_fetch_weather_success(mock_weather_response):
+    with patch('requests.get') as mock_get:
+        mock_get.return_value.json.return_value = mock_weather_response
+        mock_get.return_value.status_code = 200
+        
+        result = fetch_weather('London')
+        assert result['city'] == 'London'
+        assert result['temperature'] == 15.5
+
+def test_fetch_weather_invalid_city():
+    with patch('requests.get') as mock_get:
+        mock_get.return_value.status_code = 404
+        
+        result = fetch_weather('InvalidCity123')
+        assert result is None
+
+def test_fetch_weather_api_failure():
+    with patch('requests.get') as mock_get:
+        mock_get.side_effect = Exception("Network error")
+        
+        result = fetch_weather('London')
+        assert result is None
+
+PATTERNS TO LEARN:
+1. Data Management: Use temp files with JSON/CSV fixtures
+2. Calculations: Test with various numeric inputs and edge cases
+3. Service Integration: Mock external API calls
+4. Each test pattern includes:
+   - Proper fixtures for test data
+   - Success case testing
+   - Failure case testing
+   - Edge case validation
+   - Appropriate mocking for external dependencies
+
+Apply these patterns to ANY domain by:
+1. Identifying the function type (data, calculation, service)
 2. Creating appropriate fixtures/mocks
-3. Testing normal cases
-4. Testing edge cases
+3. Testing normal operation
+4. Testing error conditions
 5. Verifying expected behavior
 """

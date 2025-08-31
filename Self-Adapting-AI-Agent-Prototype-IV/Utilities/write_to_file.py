@@ -21,12 +21,58 @@ def write_to_file(type, file_path, content):
                 f.writelines(lines)
         
     elif type == 'json':
+        import json as json_module
+        
+        # Read existing content
         with open(file_path, 'r') as f:
-            lines = f.readlines()
-        last_index = len(lines) - 1
-        lines.insert(last_index, "," + content + '\n')
-        with open(file_path, 'w') as f:
-                f.writelines(lines)
+            existing_content = f.read().strip()
+        
+        # Handle different cases
+        if not existing_content or existing_content == '[]':
+            # Empty file or empty array - create new array with the content
+            if content.strip().startswith('['):
+                # Content is already an array
+                with open(file_path, 'w') as f:
+                    f.write(content + '\n')
+            else:
+                # Content is a single object, wrap it in an array
+                with open(file_path, 'w') as f:
+                    f.write('[\n' + content + '\n]\n')
+        else:
+            # File has existing array content - append to it
+            try:
+                # Parse existing JSON array
+                existing_data = json_module.loads(existing_content)
+                
+                # Parse new content
+                if content.strip().startswith('['):
+                    new_data = json_module.loads(content)
+                    if isinstance(new_data, list):
+                        existing_data.extend(new_data)
+                    else:
+                        existing_data.append(new_data)
+                else:
+                    # Try to parse as JSON object
+                    try:
+                        new_obj = json_module.loads(content)
+                        existing_data.append(new_obj)
+                    except:
+                        # If not valid JSON, treat as raw text (shouldn't happen)
+                        pass
+                
+                # Write back as formatted JSON
+                with open(file_path, 'w') as f:
+                    json_module.dump(existing_data, f, indent=4)
+                    f.write('\n')
+                    
+            except json_module.JSONDecodeError:
+                # Fallback to old behavior if JSON parsing fails
+                with open(file_path, 'r') as f:
+                    lines = f.readlines()
+                last_index = len(lines) - 1
+                lines.insert(last_index, "," + content + '\n')
+                with open(file_path, 'w') as f:
+                    f.writelines(lines)
     elif type == 'python':
         with open(file_path, 'r') as f:
             lines = f.readlines()

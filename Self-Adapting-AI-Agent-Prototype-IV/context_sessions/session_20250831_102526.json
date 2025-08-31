@@ -1,0 +1,42 @@
+{
+  "session_data": {
+    "created_at": "2025-08-31T10:24:00.939793",
+    "functions": {
+      "check_prime": {
+        "code": "\n\nimport math\n\ndef check_prime(n):\n    \"\"\"Check if a number is prime.\n    Raises:\n        TypeError: if n is not an integer.\n        ValueError: if n is negative.\n    Returns:\n        bool: True if n is prime, False otherwise.\n    \"\"\"\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n < 2:\n        return False\n    if n == 2:\n        return True\n    if n % 2 == 0:\n        return False\n    limit = int(math.sqrt(n))\n    for i in range(3, limit + 1, 2):\n        if n % i == 0:\n            return False\n    return True\n",
+        "info": {
+          "requirement": "Function Name: check_prime  \nDescription: Determines whether a given integer is a prime number.  \nParameters:  \n- n (integer): The number to check for primality. Should be a non-negative integer.  \nExample:  \ncheck_prime(17)  // Returns true, since 17 is prime  \ncheck_prime(18)  // Returns false, since 18 is not prime",
+          "iterations": 2
+        },
+        "added_at": "2025-08-31T10:25:26.371852",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-08-31T10:25:26.371747",
+        "code": "\n\nimport math\n\ndef check_prime(n):\n    \"\"\"Check if a number is prime.\n    Raises:\n        TypeError: if n is not an integer.\n        ValueError: if n is negative.\n    Returns:\n        bool: True if n is prime, False otherwise.\n    \"\"\"\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n < 2:\n        return False\n    if n == 2:\n        return True\n    if n % 2 == 0:\n        return False\n    limit = int(math.sqrt(n))\n    for i in range(3, limit + 1, 2):\n        if n % i == 0:\n            return False\n    return True\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 88344,
+      "defined_variables": [
+        "check_prime"
+      ],
+      "execution_count": 2
+    }
+  },
+  "saved_at": "2025-08-31T10:25:26.377146"
+}

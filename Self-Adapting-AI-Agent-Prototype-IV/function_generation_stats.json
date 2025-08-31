@@ -231,5 +231,2394 @@
     ],
     "end_time": "2025-08-30T01:18:27.639963",
     "session_duration_seconds": 103.597843
+  },
+  {
+    "session_id": "20250831_042413",
+    "start_time": "2025-08-31T04:24:13.299383",
+    "functions": [
+      {
+        "function_requirement": "Function Name: analyze_sentiment  \nDescription: Analyzes the sentiment of a given text string and classifies it as \u201cpositive,\u201d \u201cnegative,\u201d or \u201cneutral.\u201d  \nParameters:  \n- text (string): The text whose sentiment should be analyzed.  \n\nExample:  \nanalyze_sentiment(\"This product is amazing!\")  \u2192 \"positive\"",
+        "user_input": "Create a function that can analyze sentiment of text and tell me if 'This product is amazing\\!' is positive or negative",
+        "start_time": "2025-08-31T04:24:18.766391",
+        "iterations": 0,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Unexpected error: [Errno 2] No such file or directory: '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/Test_Driven_Development/testDrivenCases.py'",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [],
+        "adjudication_attempts": [],
+        "reinforcement_history": [],
+        "end_time": "2025-08-31T04:24:28.848799"
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T04:24:28.849881",
+    "session_duration_seconds": 15.550498
+  },
+  {
+    "session_id": "20250831_042518",
+    "start_time": "2025-08-31T04:25:18.624143",
+    "functions": [
+      {
+        "function_requirement": "Function Name: compress_files  \nDescription: Compresses one or more files into a ZIP archive.  \nParameters:  \n- input_files (list of strings): Paths to the file(s) to be compressed.  \n- output_zip (string): Desired name and path of the resulting ZIP archive.  \n- compression_level (integer, optional): Level of compression from 0 (no compression) to 9 (maximum). Default is 6.  \n\nExample Usage:  \ncompress_files(  \n  input_files=[\"report.pdf\"],  \n  output_zip=\"report.zip\",  \n  compression_level=6  \n)  \n\nThis function would take your \u201creport.pdf\u201d (and any other files you specify) and bundle them into a \u201creport.zip\u201d archive using the ZIP compression format.",
+        "user_input": "Create a function that can compress files using zip and compress report.pdf for me",
+        "start_time": "2025-08-31T04:25:25.986116",
+        "iterations": 0,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Unexpected error: [Errno 2] No such file or directory: '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/Test_Driven_Development/testDrivenCases.py'",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [],
+        "adjudication_attempts": [],
+        "reinforcement_history": [],
+        "end_time": "2025-08-31T04:25:43.711782"
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T04:25:43.712273",
+    "session_duration_seconds": 25.08813
+  },
+  {
+    "session_id": "20250831_042716",
+    "start_time": "2025-08-31T04:27:16.742458",
+    "functions": [
+      {
+        "function_requirement": "Function Name: fetch_weather  \nDescription: Fetches current weather data for a specified city by calling an external weather API (e.g., OpenWeatherMap). Returns key information such as temperature, humidity, and weather conditions.  \nParameters:  \n- city (string): Name of the city to retrieve weather for.  \n- api_key (string): Your API key for the weather service.  \n- units (string, optional): Units system for temperature (\u201cmetric\u201d for \u00b0C, \u201cimperial\u201d for \u00b0F). Defaults to \u201cmetric\u201d.  \n\nExample:  \n```\nfetch_weather(\n  city=\"London\",\n  api_key=\"YOUR_OPENWEATHERMAP_API_KEY\",\n  units=\"metric\"\n)\n```  \n\nUsage example response (mocked):  \n```\n{\n  \"city\": \"London\",\n  \"temperature\": \"15\u00b0C\",\n  \"humidity\": \"72%\",\n  \"condition\": \"Light rain\"\n}\n```",
+        "user_input": "Create a function to fetch current weather data for any city and tell me the weather in London",
+        "start_time": "2025-08-31T04:27:26.115471",
+        "iterations": 0,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Unexpected error: [Errno 2] No such file or directory: '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/'",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [],
+        "adjudication_attempts": [],
+        "reinforcement_history": [],
+        "end_time": "2025-08-31T04:28:25.895571"
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T04:28:25.897127",
+    "session_duration_seconds": 69.154669
+  },
+  {
+    "session_id": "20250831_043035",
+    "start_time": "2025-08-31T04:30:35.775285",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_compound_interest  \nDescription: Calculates the compound interest (or final amount) on a principal over a given number of years, with a specified annual interest rate and compounding frequency.  \nParameters:  \n- principal (number): The initial amount of money.  \n- annual_rate (number): The annual interest rate as a decimal (e.g., 0.05 for 5%).  \n- times_per_year (number, optional): How many times the interest is compounded per year. Defaults to 1 (annual compounding).  \n- years (number): The total number of years the money is invested or borrowed for.  \n\nExample Usage:  \n```  \n# To get the final amount after compounding:\nfinal_amount = calculate_compound_interest(principal=1000, annual_rate=0.05, times_per_year=1, years=10)  \n# final_amount would be approximately 1628.89  \n\n# To get just the interest earned:\ninterest_earned = final_amount - principal  # \u2248 628.89  \n```  \n\nConcrete Calculation for the user\u2019s scenario:  \n- Principal: \\$1,000  \n- Annual Rate: 5% (0.05)  \n- Compounded once per year  \n- Duration: 10 years  \n\nFinal amount = 1000 \u00d7 (1 + 0.05/1)^(1\u00d710) \u2248 \\$1,628.89  \nInterest earned = \\$1,628.89 \u2013 \\$1,000 = \\$628.89",
+        "user_input": "Create a function to calculate compound interest for financial applications and calculate the interest on 1000 dollars at 5% annual rate for 10 years",
+        "start_time": "2025-08-31T04:30:49.684686",
+        "iterations": 0,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T04:31:41.389804"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T04:31:46.363632"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T04:31:49.646046"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T04:31:52.054320"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T04:31:54.437152"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T04:31:56.731420"
+          }
+        ],
+        "adjudication_attempts": [],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T04:31:41.395275"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T04:31:46.372577"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T04:31:49.648628"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T04:31:52.057050"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T04:31:54.439521"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T04:31:56.734012"
+          }
+        ],
+        "end_time": "2025-08-31T04:31:56.746476",
+        "total_duration_seconds": 67.06179
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T04:31:56.749498",
+    "session_duration_seconds": 80.974213
+  },
+  {
+    "session_id": "20250831_050254",
+    "start_time": "2025-08-31T05:02:54.429281",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_compound_interest  \nDescription: Calculates the future value of a principal amount after compounding interest.  \nParameters:  \n- principal (number): The initial amount of money.  \n- annual_rate (number): The nominal annual interest rate (as a decimal, e.g., 0.05 for 5%).  \n- times_compounded_per_year (integer): How many times the interest is compounded per year (e.g., 12 for monthly).  \n- years (number): The number of years the money is invested or borrowed for.  \nExample:  \ncalculate_compound_interest(1000, 0.05, 12, 10)  \n\u2013> Returns 1647.00949769028 (i.e., $1,647.01)\n\n---\n\nFunction Name: calculate_total_returns  \nDescription: Uses calculate_compound_interest to compute and sum the returns for multiple investments.  \nParameters:  \n- investments (list of objects): Each object in the list represents one investment and must contain:  \n  \u2022 principal (number)  \n  \u2022 annual_rate (number, decimal)  \n  \u2022 times_compounded_per_year (integer)  \n  \u2022 years (number)  \nExample:  \nlet portfolio = [  \n  { principal: 1000, annual_rate: 0.05, times_compounded_per_year: 12, years: 10 },  \n  { principal: 2000, annual_rate: 0.04, times_compounded_per_year: 4, years: 5 },  \n  { principal: 1500, annual_rate: 0.06, times_compounded_per_year: 1, years: 3 }  \n];  \ncalculate_total_returns(portfolio)  \n\u2013> Returns 1000\u21921647.01 + 2000\u21922433.00 + 1500\u21921785.08 = 5865.09",
+        "user_input": "Create a function that calculates compound interest. Then create another function that uses the compound interest function to calculate total returns for multiple investments.",
+        "start_time": "2025-08-31T05:03:02.400443",
+        "iterations": 0,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:03:55.745372"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:03:57.904846"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:04:00.201408"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:04:02.365216"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:04:04.481576"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:04:06.551266"
+          }
+        ],
+        "adjudication_attempts": [],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:03:55.747163"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:03:57.906146"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:04:00.210115"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:04:02.367252"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:04:04.483206"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:04:06.552029"
+          }
+        ],
+        "end_time": "2025-08-31T05:04:06.554803",
+        "total_duration_seconds": 64.15436
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T05:04:06.558914",
+    "session_duration_seconds": 72.129633
+  },
+  {
+    "session_id": "20250831_050421",
+    "start_time": "2025-08-31T05:04:21.799947",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: Calculates the factorial of a non-negative integer and prints the result.  \nParameters:  \n- n (integer): The number for which to compute the factorial. Must be \u2265 0.  \nExample of usage:  \n```python\ncalculate_factorial(5)\n# Output: 120\n```  \nPython implementation example:  \n```python\ndef calculate_factorial(n):\n    \"\"\"\n    Calculates the factorial of n and prints the result.\n\n    Parameters:\n    n (int): Non-negative integer whose factorial is to be computed.\n\n    Returns:\n    None\n    \"\"\"\n    if n < 0:\n        print(\"Error: Factorial is not defined for negative numbers.\")\n        return\n    result = 1\n    for i in range(1, n + 1):\n        result *= i\n    print(result)\n```",
+        "user_input": "Create a function that calculates the factorial of a number and prints the result",
+        "start_time": "2025-08-31T05:04:26.786342",
+        "iterations": 0,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:05:22.370245"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:05:24.665211"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:05:26.785644"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:05:28.934300"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:05:31.165008"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:05:33.260373"
+          }
+        ],
+        "adjudication_attempts": [],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:05:22.371969"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:05:24.667965"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:05:26.787061"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:05:28.936448"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:05:31.166709"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:05:33.262501"
+          }
+        ],
+        "end_time": "2025-08-31T05:05:33.272514",
+        "total_duration_seconds": 66.486172
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T05:05:33.280968",
+    "session_duration_seconds": 71.481021
+  },
+  {
+    "session_id": "20250831_051021",
+    "start_time": "2025-08-31T05:10:21.964005",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: Computes the factorial of a non-negative integer n (n!) and prints the result.  \nParameters:  \n- n (integer): The number for which to calculate the factorial. Must be \u2265 0.  \n\nExample:  \n```\ncalculate_factorial(5)\n```  \nThis will compute 5! = 120 and print:  \n```\nThe factorial of 5 is 120\n```",
+        "user_input": "Create a function that calculates the factorial of a number and prints the result",
+        "start_time": "2025-08-31T05:10:27.356700",
+        "iterations": 0,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:11:29.402873"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:11:31.336151"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:11:32.951398"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:11:34.643847"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:11:36.489890"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:11:38.247714"
+          }
+        ],
+        "adjudication_attempts": [],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:11:29.410331"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:11:31.338962"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:11:32.952619"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:11:34.646041"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:11:36.493665"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:11:38.251114"
+          }
+        ],
+        "end_time": "2025-08-31T05:11:38.260526",
+        "total_duration_seconds": 70.903826
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T05:11:38.270205",
+    "session_duration_seconds": 76.3062
+  },
+  {
+    "session_id": "20250831_051739",
+    "start_time": "2025-08-31T05:17:39.199743",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: Calculates the factorial of a non-negative integer and prints the result.  \nParameters:  \n- n (integer): The non-negative integer for which to compute the factorial. Must be \u2265 0.  \nExample:  \n```\ncalculate_factorial(5)\n// Output: 120\n```",
+        "user_input": "Create a function that calculates the factorial of a number and prints the result",
+        "start_time": "2025-08-31T05:17:47.132278",
+        "iterations": 0,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:19:04.847737"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:19:08.721151"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:19:12.405670"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:19:14.803161"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:19:17.104782"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:19:19.328210"
+          }
+        ],
+        "adjudication_attempts": [],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:19:04.859039"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:19:08.725431"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:19:12.410894"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:19:14.804374"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:19:17.106966"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:19:19.331121"
+          }
+        ],
+        "end_time": "2025-08-31T05:19:19.340268",
+        "total_duration_seconds": 92.20799
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T05:19:19.350412",
+    "session_duration_seconds": 100.150669
+  },
+  {
+    "session_id": "20250831_052006",
+    "start_time": "2025-08-31T05:20:06.591969",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: Calculates the factorial of a non-negative integer and prints the result.  \nParameters:  \n- n (integer): The non-negative integer for which to compute the factorial.  \nExample:  \n```  \ncalculate_factorial(5)  # This will compute 5! = 120 and print:  \n# 120  \n```",
+        "user_input": "Create a function that calculates the factorial of a number and prints the result. For example, factorial(5) should print 120",
+        "start_time": "2025-08-31T05:20:11.331175",
+        "iterations": 0,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:20:39.390762"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:20:44.215683"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:20:49.213068"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:20:51.665646"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:20:53.847942"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:20:56.064140"
+          }
+        ],
+        "adjudication_attempts": [],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:20:39.399238"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:20:44.221820"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:20:49.215027"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:20:51.667903"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:20:53.850106"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:20:56.066871"
+          }
+        ],
+        "end_time": "2025-08-31T05:20:56.076068",
+        "total_duration_seconds": 44.744893
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T05:20:56.082522",
+    "session_duration_seconds": 49.490553
+  },
+  {
+    "session_id": "20250831_052318",
+    "start_time": "2025-08-31T05:23:18.182179",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: Calculates and prints the factorial of a non-negative integer n.  \nParameters:  \n- n (integer): The number for which to compute the factorial. Must be \u2265 0.  \nExample Usage:  \n```python\n# Define the function\ndef calculate_factorial(n):\n    if n < 0:\n        print(\"Error: factorial is not defined for negative numbers.\")\n        return\n    result = 1\n    for i in range(1, n + 1):\n        result *= i\n    print(result)\n\n# Example call\ncalculate_factorial(5)  # Output: 120\n```",
+        "user_input": "Create a simple function called calculate_factorial that takes an integer n and prints the factorial result",
+        "start_time": "2025-08-31T05:23:24.067428",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:23:47.983715"
+          },
+          {
+            "iteration": 5,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:25:40.848809"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "The test is trying to import filter_todos_by_status_and_priority from Unit_Test/functions but it does not exist. Either define that function in Unit_Test/functions.py or correct/remove the incorrect import in unitTest.py.",
+            "timestamp": "2025-08-31T05:24:24.504950",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the import in Unit_Test/unitTest.py: ensure that the function filter_todos_by_status_and_priority is defined in Unit_Test/functions.py or update the test to import the correct function name",
+            "timestamp": "2025-08-31T05:24:49.530585",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix import error in Unit_Test/unitTest.py: ensure that 'filter_todos_by_status_and_priority' is defined in Unit_Test/functions.py or correct the import to match the actual function name.",
+            "timestamp": "2025-08-31T05:25:13.812517",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T05:25:38.845664",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "The test is importing filter_todos_by_status_and_priority from Unit_Test/functions but this name does not exist. Either define that function in Unit_Test/functions.py or correct the import in Unit_Test/unitTest.py to match the actual function name/path.",
+            "timestamp": "2025-08-31T05:25:44.652238",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "Add and properly export the function `filter_todos_by_status_and_priority` in your `Unit_Test/functions.py` module so that the import in the test can succeed.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T05:26:16.229575",
+            "unit_test_summary": "Tests failed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:24:24.509915"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "The test is trying to import filter_todos_by_status_and_priority from Unit_Test/functions but it does not exist. Either define that function in Unit_Test/functions.py or correct/remove the incorrect import in unitTest.py.",
+            "timestamp": "2025-08-31T05:24:24.512847"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:24:49.534005"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "The test is trying to import filter_todos_by_status_and_priority from Unit_Test/functions but it does not exist. Either define that function in Unit_Test/functions.py or correct/remove the incorrect import in unitTest.py.",
+            "new_requirement": "Fix the import in Unit_Test/unitTest.py: ensure that the function filter_todos_by_status_and_priority is defined in Unit_Test/functions.py or update the test to import the correct function name",
+            "timestamp": "2025-08-31T05:24:49.536805"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:25:13.815351"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "Fix the import in Unit_Test/unitTest.py: ensure that the function filter_todos_by_status_and_priority is defined in Unit_Test/functions.py or update the test to import the correct function name",
+            "new_requirement": "Fix import error in Unit_Test/unitTest.py: ensure that 'filter_todos_by_status_and_priority' is defined in Unit_Test/functions.py or correct the import to match the actual function name.",
+            "timestamp": "2025-08-31T05:25:13.817901"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:25:38.864572"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "Fix import error in Unit_Test/unitTest.py: ensure that 'filter_todos_by_status_and_priority' is defined in Unit_Test/functions.py or correct the import to match the actual function name.",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:25:38.867656"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:25:44.659449"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "The test is importing filter_todos_by_status_and_priority from Unit_Test/functions but this name does not exist. Either define that function in Unit_Test/functions.py or correct the import in Unit_Test/unitTest.py to match the actual function name/path.",
+            "timestamp": "2025-08-31T05:25:44.661804"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "Add and properly export the function `filter_todos_by_status_and_priority` in your `Unit_Test/functions.py` module so that the import in the test can succeed.",
+            "timestamp": "2025-08-31T05:26:16.232604"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "The test is importing filter_todos_by_status_and_priority from Unit_Test/functions but this name does not exist. Either define that function in Unit_Test/functions.py or correct the import in Unit_Test/unitTest.py to match the actual function name/path.",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:26:16.234588"
+          }
+        ],
+        "end_time": "2025-08-31T05:26:16.241463",
+        "total_duration_seconds": 172.174035
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T05:26:16.250548",
+    "session_duration_seconds": 178.068369
+  },
+  {
+    "session_id": "20250831_052657",
+    "start_time": "2025-08-31T05:26:57.112981",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: Calculates the factorial of a non-negative integer and prints the result.  \nParameters:  \n- n (integer): The number to calculate the factorial for. Must be \u2265 0.  \nExample Usage:  \ncalculate_factorial(5)  # Prints: 120",
+        "user_input": "Create a function that calculates the factorial of a number and prints the result",
+        "start_time": "2025-08-31T05:27:01.036405",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": "calculate_factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:27:35.388976"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:28:03.696820"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:28:05.093373"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:28:07.148163"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:28:10.133564"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:28:13.409703"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T05:27:55.673517",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:28:03.698887"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:28:05.095615"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:28:07.152192"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:28:10.139822"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T05:28:13.411886"
+          }
+        ],
+        "end_time": "2025-08-31T05:28:13.418856",
+        "total_duration_seconds": 72.382451
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T05:28:13.468030",
+    "session_duration_seconds": 76.355049
+  },
+  {
+    "session_id": "20250831_053238",
+    "start_time": "2025-08-31T05:32:38.500386",
+    "functions": [
+      {
+        "function_requirement": "Function Name: add_numbers  \nDescription: Adds two numeric values and returns their sum.  \nParameters:  \n- num1 (number): The first addend.  \n- num2 (number): The second addend.  \nExample:  \n```  \nadd_numbers(3, 5)  // returns 8  \n```",
+        "user_input": "Create a function that adds two numbers and returns the sum",
+        "start_time": "2025-08-31T05:32:43.234735",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "add_numbers",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T05:33:05.424784"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T05:33:26.444977",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-08-31T05:33:26.587967",
+        "total_duration_seconds": 43.353232
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T05:33:26.603617",
+    "session_duration_seconds": 48.103231
+  },
+  {
+    "session_id": "20250831_082828",
+    "start_time": "2025-08-31T08:28:28.212351",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T08:28:29.734550",
+    "session_duration_seconds": 1.522199
+  },
+  {
+    "session_id": "20250831_082901",
+    "start_time": "2025-08-31T08:29:01.457743",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T08:29:03.147907",
+    "session_duration_seconds": 1.690164
+  },
+  {
+    "session_id": "20250831_084140",
+    "start_time": "2025-08-31T08:41:40.533217",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T08:41:42.243616",
+    "session_duration_seconds": 1.710399
+  },
+  {
+    "session_id": "20250831_084602",
+    "start_time": "2025-08-31T08:46:02.210005",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial_and_print  \nDescription: Calculates the factorial of a non-negative integer n and prints the result.  \nParameters:  \n- n (integer): The non-negative number whose factorial is to be computed.  \n\nExample:  \n```\ncalculate_factorial_and_print(5)\n// Expected output: 120\n```",
+        "user_input": "Create a function that calculates the factorial of a number and prints the result",
+        "start_time": "2025-08-31T08:46:07.088563",
+        "iterations": 4,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "calculate_factorial_and_print",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T08:46:33.708279"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T08:46:57.296505"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should return the computed factorial value for valid inputs instead of returning None",
+            "timestamp": "2025-08-31T08:47:35.122469"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T08:47:41.626522"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T08:46:55.859700",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should return the computed factorial value for valid inputs instead of returning None",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T08:47:01.952251",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T08:47:38.196402",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T08:47:45.999632",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T08:46:55.864231"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T08:46:55.867270"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "Function should return the computed factorial value for valid inputs instead of returning None",
+            "timestamp": "2025-08-31T08:47:01.955416"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T08:47:01.956694"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "Function should return the computed factorial value for valid inputs instead of returning None",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T08:47:38.208611"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T08:47:38.220710"
+          }
+        ],
+        "end_time": "2025-08-31T08:47:46.098692",
+        "total_duration_seconds": 99.010129
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T08:47:46.123290",
+    "session_duration_seconds": 103.913285
+  },
+  {
+    "session_id": "20250831_085019",
+    "start_time": "2025-08-31T08:50:19.489119",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T08:50:19.561970",
+    "session_duration_seconds": 0.072851
+  },
+  {
+    "session_id": "20250831_085627",
+    "start_time": "2025-08-31T08:56:27.607216",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T08:56:27.977679",
+    "session_duration_seconds": 0.370463
+  },
+  {
+    "session_id": "20250831_085954",
+    "start_time": "2025-08-31T08:59:54.927375",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: Calculates the factorial of a given non-negative integer and prints the result.  \nParameters:  \n- number (integer): The non-negative integer for which to calculate the factorial.  \n\nExample:  \ncalculate_factorial(5)  \n# Expected output:  \n# \u201cFactorial of 5 is 120\u201d",
+        "user_input": "Create a function that calculates the factorial of a number and prints the result",
+        "start_time": "2025-08-31T08:59:59.636018",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "calculate_factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T09:00:28.970484"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate that the input is a non-negative integer, raising ValueError for negative numbers and TypeError for non-integer types",
+            "timestamp": "2025-08-31T09:01:08.097802"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate that the input is a non-negative integer, raising ValueError for negative numbers and TypeError for non-integer types",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T09:00:43.267207",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T09:01:11.743154",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should validate that the input is a non-negative integer, raising ValueError for negative numbers and TypeError for non-integer types",
+            "timestamp": "2025-08-31T09:00:43.270497"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T09:00:43.273511"
+          }
+        ],
+        "end_time": "2025-08-31T09:01:11.941243",
+        "total_duration_seconds": 72.305225
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T09:01:11.965051",
+    "session_duration_seconds": 77.037676
+  },
+  {
+    "session_id": "20250831_090631",
+    "start_time": "2025-08-31T09:06:31.504399",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T09:06:31.767350",
+    "session_duration_seconds": 0.262951
+  },
+  {
+    "session_id": "20250831_090849",
+    "start_time": "2025-08-31T09:08:49.390171",
+    "functions": [
+      {
+        "function_requirement": "Function Name: add_one  \nDescription: Takes a numeric input and returns the value plus one.  \nParameters:  \n- number (integer or float): The number to be incremented by one.  \nExample:  \nadd_one(5)  \u2192  6  \nadd_one(3.14)  \u2192  4.14",
+        "user_input": "Create a function that adds 1 to a number",
+        "start_time": "2025-08-31T09:08:54.098149",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "unknown_function",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T09:09:21.462667"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T09:09:36.833763",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-08-31T09:09:37.136089",
+        "total_duration_seconds": 43.03794
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T09:09:37.174157",
+    "session_duration_seconds": 47.783986
+  },
+  {
+    "session_id": "20250831_090959",
+    "start_time": "2025-08-31T09:09:59.348727",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T09:09:59.432977",
+    "session_duration_seconds": 0.08425
+  },
+  {
+    "session_id": "20250831_091015",
+    "start_time": "2025-08-31T09:10:15.384625",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T09:10:15.487068",
+    "session_duration_seconds": 0.102443
+  },
+  {
+    "session_id": "20250831_091029",
+    "start_time": "2025-08-31T09:10:29.238661",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T09:10:29.369449",
+    "session_duration_seconds": 0.130788
+  },
+  {
+    "session_id": "20250831_100503",
+    "start_time": "2025-08-31T10:05:03.998585",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial  \nDescription: Computes the factorial of a non-negative integer n (i.e., n! = n \u00d7 (n\u22121) \u00d7 \u2026 \u00d7 1; by convention 0! = 1).  \nParameters:  \n- n (integer): The non-negative integer whose factorial is to be calculated.  \nExample:  \ncalculate_factorial(5)  // returns 120",
+        "user_input": "factorial",
+        "start_time": "2025-08-31T10:05:09.841598",
+        "iterations": 4,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "calculate_factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:05:31.708836"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate its input and raise ValueError for negative numbers and TypeError for non-integer types",
+            "timestamp": "2025-08-31T10:06:05.569786"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:06:10.383327"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:06:15.312772"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate its input and raise ValueError for negative numbers and TypeError for non-integer types",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:05:42.692497",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:06:08.483059",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:06:13.146468",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:06:19.408833",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should validate its input and raise ValueError for negative numbers and TypeError for non-integer types",
+            "timestamp": "2025-08-31T10:05:42.695741"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:05:42.698109"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Function should validate its input and raise ValueError for negative numbers and TypeError for non-integer types",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:06:08.485045"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:06:08.486649"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:06:13.154713"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:06:13.158878"
+          }
+        ],
+        "end_time": "2025-08-31T10:06:19.629467",
+        "total_duration_seconds": 69.787869
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:06:19.655668",
+    "session_duration_seconds": 75.657083
+  },
+  {
+    "session_id": "20250831_100649",
+    "start_time": "2025-08-31T10:06:49.650263",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:06:49.761606",
+    "session_duration_seconds": 0.111343
+  },
+  {
+    "session_id": "20250831_100710",
+    "start_time": "2025-08-31T10:07:10.543873",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:07:10.707003",
+    "session_duration_seconds": 0.16313
+  },
+  {
+    "session_id": "20250831_100740",
+    "start_time": "2025-08-31T10:07:40.351990",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:07:40.442395",
+    "session_duration_seconds": 0.090405
+  },
+  {
+    "session_id": "20250831_101318",
+    "start_time": "2025-08-31T10:13:18.775053",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial\nDescription: Calculates the factorial of a non-negative integer.\nParameters:\n- n (integer): The number for which to compute the factorial. Must be \u2265 0.\nExample:\n  calculate_factorial(5)\n  // Returns 120 (because 5! = 5 \u00d7 4 \u00d7 3 \u00d7 2 \u00d7 1)",
+        "user_input": "factorial",
+        "start_time": "2025-08-31T10:13:25.202730",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "calculate_factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:13:48.910231"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate its input: raise ValueError for negative input and TypeError for non-integer input",
+            "timestamp": "2025-08-31T10:14:28.988293"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate its input: raise ValueError for negative input and TypeError for non-integer input",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:14:08.973348",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:14:31.850138",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should validate its input: raise ValueError for negative input and TypeError for non-integer input",
+            "timestamp": "2025-08-31T10:14:08.978052"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:14:08.983281"
+          }
+        ],
+        "end_time": "2025-08-31T10:14:31.974144",
+        "total_duration_seconds": 66.771414
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:14:32.000207",
+    "session_duration_seconds": 73.225154
+  },
+  {
+    "session_id": "20250831_101519",
+    "start_time": "2025-08-31T10:15:19.904505",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:15:20.007107",
+    "session_duration_seconds": 0.102602
+  },
+  {
+    "session_id": "20250831_101531",
+    "start_time": "2025-08-31T10:15:31.831289",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:15:31.975577",
+    "session_duration_seconds": 0.144288
+  },
+  {
+    "session_id": "20250831_101933",
+    "start_time": "2025-08-31T10:19:33.998456",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:19:34.125055",
+    "session_duration_seconds": 0.126599
+  },
+  {
+    "session_id": "20250831_102046",
+    "start_time": "2025-08-31T10:20:46.097941",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:20:46.374771",
+    "session_duration_seconds": 0.27683
+  },
+  {
+    "session_id": "20250831_102113",
+    "start_time": "2025-08-31T10:21:13.381041",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_factorial\nDescription: Calculates the factorial of a non-negative integer n (n! = 1 \u00d7 2 \u00d7 \u2026 \u00d7 n).\nParameters:\n- n (integer): The non-negative integer for which to compute the factorial.\n\nExample:\ncalculate_factorial(5)  # returns 120",
+        "user_input": "calculate factorial",
+        "start_time": "2025-08-31T10:21:18.023450",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "calculate_factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:21:41.196017"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate input parameters: raise ValueError for negative values and TypeError for non-integer inputs",
+            "timestamp": "2025-08-31T10:22:17.698986"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate input parameters: raise ValueError for negative values and TypeError for non-integer inputs",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:21:55.608034",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:22:22.152524",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should validate input parameters: raise ValueError for negative values and TypeError for non-integer inputs",
+            "timestamp": "2025-08-31T10:21:55.610192"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:21:55.611679"
+          }
+        ],
+        "end_time": "2025-08-31T10:22:22.319049",
+        "total_duration_seconds": 64.295599
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:22:22.340337",
+    "session_duration_seconds": 68.959296
+  },
+  {
+    "session_id": "20250831_102238",
+    "start_time": "2025-08-31T10:22:38.063769",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:22:38.148163",
+    "session_duration_seconds": 0.084394
+  },
+  {
+    "session_id": "20250831_102400",
+    "start_time": "2025-08-31T10:24:00.939781",
+    "functions": [
+      {
+        "function_requirement": "Function Name: check_prime  \nDescription: Determines whether a given integer is a prime number.  \nParameters:  \n- n (integer): The number to check for primality. Should be a non-negative integer.  \nExample:  \ncheck_prime(17)  // Returns true, since 17 is prime  \ncheck_prime(18)  // Returns false, since 18 is not prime",
+        "user_input": "check if a number is prime",
+        "start_time": "2025-08-31T10:24:06.108917",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "check_prime",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:24:31.071488"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate inputs: raise ValueError for negative numbers and raise TypeError for non-integer inputs",
+            "timestamp": "2025-08-31T10:25:22.136372"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate inputs: raise ValueError for negative numbers and raise TypeError for non-integer inputs",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:24:53.072273",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:25:26.124387",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should validate inputs: raise ValueError for negative numbers and raise TypeError for non-integer inputs",
+            "timestamp": "2025-08-31T10:24:53.076428"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:24:53.079284"
+          }
+        ],
+        "end_time": "2025-08-31T10:25:26.371882",
+        "total_duration_seconds": 80.262965
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:25:26.395266",
+    "session_duration_seconds": 85.455485
+  },
+  {
+    "session_id": "20250831_102659",
+    "start_time": "2025-08-31T10:26:59.836892",
+    "functions": [
+      {
+        "function_requirement": "Function Name: convert_celsius_to_fahrenheit  \nDescription: Converts a temperature from degrees Celsius to degrees Fahrenheit using the formula F = C \u00d7 9/5 + 32.  \nParameters:  \n- celsius (number): The temperature in degrees Celsius.  \n\nExample:  \nconvert_celsius_to_fahrenheit(25)  \n// Returns: 77  ",
+        "user_input": "convert celsius to fahrenheit",
+        "start_time": "2025-08-31T10:27:05.161307",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "convert_celsius_to_fahrenheit",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:27:31.530987"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:27:42.353583",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-08-31T10:27:42.462229",
+        "total_duration_seconds": 37.300922
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:27:42.484865",
+    "session_duration_seconds": 42.647973
+  },
+  {
+    "session_id": "20250831_102858",
+    "start_time": "2025-08-31T10:28:58.269070",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_fibonacci  \nDescription: Calculates the n-th number in the Fibonacci sequence, where F(0)=0, F(1)=1, and F(n)=F(n\u20131)+F(n\u20132).  \nParameters:  \n- n (integer): The zero-based index of the Fibonacci sequence to compute. Must be a non-negative integer.  \nExample:  \ncalculate_fibonacci(10)  // returns 55",
+        "user_input": "find fibonacci number",
+        "start_time": "2025-08-31T10:29:01.637083",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "calculate_fibonacci",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:29:27.278120"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:29:49.213521",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-08-31T10:29:49.342904",
+        "total_duration_seconds": 47.705821
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:29:49.371069",
+    "session_duration_seconds": 51.101999
+  },
+  {
+    "session_id": "20250831_104236",
+    "start_time": "2025-08-31T10:42:36.871747",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:42:37.096197",
+    "session_duration_seconds": 0.22445
+  },
+  {
+    "session_id": "20250831_104422",
+    "start_time": "2025-08-31T10:44:22.323253",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:44:22.486019",
+    "session_duration_seconds": 0.162766
+  },
+  {
+    "session_id": "20250831_104450",
+    "start_time": "2025-08-31T10:44:50.052081",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:44:50.163088",
+    "session_duration_seconds": 0.111007
+  },
+  {
+    "session_id": "20250831_104738",
+    "start_time": "2025-08-31T10:47:38.641117",
+    "functions": [
+      {
+        "function_requirement": "Sure! What number would you like me to calculate the factorial for?",
+        "user_input": "calculate factorial",
+        "start_time": "2025-08-31T10:47:42.395347",
+        "iterations": 3,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "factorial",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:48:28.154775"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the test case 'test_factorial_invalid_inputs' by removing or properly defining the 'invalid_input' parameter; ensure the test function signature matches an existing fixture or parameter.",
+            "timestamp": "2025-08-31T10:48:53.349364",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the test calls to factorial() by providing the required argument \u2018n\u2019 (e.g., use factorial(5) instead of factorial()).",
+            "timestamp": "2025-08-31T10:49:09.041580",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:49:23.244352",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:48:53.353166"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Fix the test case 'test_factorial_invalid_inputs' by removing or properly defining the 'invalid_input' parameter; ensure the test function signature matches an existing fixture or parameter.",
+            "timestamp": "2025-08-31T10:48:53.355281"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:49:09.045420"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "Fix the test case 'test_factorial_invalid_inputs' by removing or properly defining the 'invalid_input' parameter; ensure the test function signature matches an existing fixture or parameter.",
+            "new_requirement": "Fix the test calls to factorial() by providing the required argument \u2018n\u2019 (e.g., use factorial(5) instead of factorial()).",
+            "timestamp": "2025-08-31T10:49:09.048525"
+          }
+        ],
+        "end_time": "2025-08-31T10:49:23.395682",
+        "total_duration_seconds": 101.000335
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:49:23.411798",
+    "session_duration_seconds": 104.770681
+  },
+  {
+    "session_id": "20250831_105036",
+    "start_time": "2025-08-31T10:50:36.012886",
+    "functions": [
+      {
+        "function_requirement": "Function Name: reverse_string  \nDescription: Reverses the given input string and returns the result.  \nParameters:  \n- text (string): The string to reverse.  \nExample:  \nreverse_string(\"hello\")  \u2192  \"olleh\"",
+        "user_input": "reverse a string",
+        "start_time": "2025-08-31T10:50:39.920563",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "reverse_string",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:50:58.506114"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should raise TypeError for invalid input types",
+            "timestamp": "2025-08-31T10:51:38.334283"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should raise TypeError for invalid input types",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:51:15.313860",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:51:43.726758",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should raise TypeError for invalid input types",
+            "timestamp": "2025-08-31T10:51:15.317985"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:51:15.321948"
+          }
+        ],
+        "end_time": "2025-08-31T10:51:43.905369",
+        "total_duration_seconds": 63.984806
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:51:43.927527",
+    "session_duration_seconds": 67.914641
+  },
+  {
+    "session_id": "20250831_105253",
+    "start_time": "2025-08-31T10:52:53.528094",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_fibonacci  \nDescription: Calculates the nth Fibonacci number (with Fibonacci(0) = 0, Fibonacci(1) = 1).  \nParameters:  \n- n (integer): The position in the Fibonacci sequence for which to compute the value. Must be a non-negative integer.  \nExample:  \ncalculate_fibonacci(10)  // Returns 55",
+        "user_input": "find fibonacci number",
+        "start_time": "2025-08-31T10:52:58.537066",
+        "iterations": 3,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "calculate_fibonacci",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:53:30.576337"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:53:41.969362"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:53:45.440240"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:53:40.639458",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:53:44.043921",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:53:47.858423",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:53:40.644130"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:53:40.647323"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:53:44.048300"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:53:44.051555"
+          }
+        ],
+        "end_time": "2025-08-31T10:53:48.029939",
+        "total_duration_seconds": 49.492873
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:53:48.054423",
+    "session_duration_seconds": 54.526329
+  },
+  {
+    "session_id": "20250831_105645",
+    "start_time": "2025-08-31T10:56:45.744376",
+    "functions": [
+      {
+        "function_requirement": "Function Name: add_numbers  \nDescription: Calculates the sum of two numeric values.  \nParameters:  \n- num1 (number): The first addend.  \n- num2 (number): The second addend.  \nExample:  \nadd_numbers(5, 7)  // Returns 12",
+        "user_input": "add two numbers",
+        "start_time": "2025-08-31T10:56:51.769514",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "add_numbers",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:57:13.848506"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:57:41.247301"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:57:37.365342",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:57:45.778222",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:57:37.376053"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:57:37.385139"
+          }
+        ],
+        "end_time": "2025-08-31T10:57:46.210858",
+        "total_duration_seconds": 54.441344
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:57:46.238733",
+    "session_duration_seconds": 60.494357
+  },
+  {
+    "session_id": "20250831_105849",
+    "start_time": "2025-08-31T10:58:49.581418",
+    "functions": [
+      {
+        "function_requirement": "Function Name: add_numbers  \nDescription: Adds two numeric values and returns their sum.  \nParameters:  \n- number1 (number): The first number to add.  \n- number2 (number): The second number to add.  \nExample:  \nadd_numbers(4, 7)  // Returns 11",
+        "user_input": "add two numbers",
+        "start_time": "2025-08-31T10:58:54.265802",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "add_numbers",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T10:59:15.536936"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate input types and raise TypeError for non-numeric inputs",
+            "timestamp": "2025-08-31T10:59:55.405729"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate input types and raise TypeError for non-numeric inputs",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:59:32.649960",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T10:59:58.124582",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should validate input types and raise TypeError for non-numeric inputs",
+            "timestamp": "2025-08-31T10:59:32.654926"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T10:59:32.657564"
+          }
+        ],
+        "end_time": "2025-08-31T10:59:58.281011",
+        "total_duration_seconds": 64.015209
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T10:59:58.308806",
+    "session_duration_seconds": 68.727388
+  },
+  {
+    "session_id": "20250831_110106",
+    "start_time": "2025-08-31T11:01:06.682127",
+    "functions": [
+      {
+        "function_requirement": "Function Name: generate_python_snake_game  \nDescription: Generates complete, ready-to-run Python source code for the classic \u201cSnake\u201d game using the Pygame library. The generated code will handle window setup, game loop, snake movement, food spawning, collision detection, scoring, and game-over conditions.  \nParameters:  \n- width (integer): Width of the game window in pixels.  \n- height (integer): Height of the game window in pixels.  \n- snake_block (integer): Size of each segment of the snake in pixels.  \n- snake_speed (integer): Initial speed of the snake (frames per second).  \n- background_color (tuple of three ints): RGB color for the game background, e.g., (0, 0, 0) for black.  \n- snake_color (tuple of three ints): RGB color of the snake, e.g., (0, 255, 0) for green.  \n- food_color (tuple of three ints): RGB color of the food item, e.g., (255, 0, 0) for red.  \n\nExample Usage:  \ngenerate_python_snake_game(600, 400, 20, 10, (0, 0, 0), (0, 255, 0), (255, 0, 0))  \n\nThis function would return a multi-line string containing a fully functional Python script that you can save (e.g., snake_game.py) and run directly, assuming Pygame is installed.",
+        "user_input": "python snack game",
+        "start_time": "2025-08-31T11:01:15.039351",
+        "iterations": 0,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T11:02:13.445074"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T11:02:17.066595"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T11:02:20.058396"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T11:02:23.250625"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T11:02:25.991851"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T11:02:28.890138"
+          }
+        ],
+        "adjudication_attempts": [],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T11:02:13.450318"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T11:02:17.069749"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T11:02:20.067205"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T11:02:23.256550"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T11:02:25.998630"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T11:02:28.900123"
+          }
+        ],
+        "end_time": "2025-08-31T11:02:28.936774",
+        "total_duration_seconds": 73.897423
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T11:02:28.975448",
+    "session_duration_seconds": 82.293321
   }
 ]

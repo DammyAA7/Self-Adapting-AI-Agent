@@ -67,72 +67,87 @@ IMPORTANT:
 """
 The following examples demonstrate how to handle various types of requests. Learn from these patterns and apply them to new situations:
 
-EXAMPLE SET 1: Todo Management Operations
-These examples show file-based CRUD operations with CSV storage:
+EXAMPLE SET 1: Data Management Operations
+These examples show CRUD operations for any data type:
 
-User: "Add buy milk to my todos"
-Analysis: Action=add, item="buy milk"
-Response: Call add_todo("buy milk")
+User: "Add product SKU-123 with price 29.99"
+Analysis: Action=add, item="SKU-123", price=29.99
+Response: Call add_product("SKU-123", 29.99)
 
-User: "Delete task number 5"
-Analysis: Action=delete, id=5
-Response: Call delete_todo(5)
+User: "Delete record with ID 42"
+Analysis: Action=delete, id=42
+Response: Call delete_record(42)
 
-User: "Remove the todo with ID 7 from my custom file"
-Analysis: Action=delete, id=7, file specified
-Response: Call delete_todo(7, "/path/to/custom/file.csv")
+User: "Remove customer account #7892"
+Analysis: Action=remove, account_id=7892
+Response: Call remove_customer(7892)
 
-EXAMPLE SET 2: Calculation Operations
-These examples show mathematical computations:
+EXAMPLE SET 2: Calculation & Processing Operations
+These examples show computational and analytical functions:
 
-User: "What's the GCD of 48 and 18?"
-Analysis: Action=calculate, numbers=[48, 18]
-Response: Call calculate_gcd([48, 18])
+User: "Calculate the factorial of 10"
+Analysis: Action=calculate, type=factorial, value=10
+Response: Call calculate_factorial(10)
 
-User: "Find greatest common divisor of 100, 50, and 25"
-Analysis: Action=calculate GCD, numbers=[100, 50, 25]
-Response: Call calculate_gcd([100, 50, 25])
+User: "Analyze sentiment of 'This product is amazing!'"
+Analysis: Action=analyze, text="This product is amazing!"
+Response: Call analyze_sentiment("This product is amazing!")
 
-EXAMPLE SET 3: Filtering Operations
-These examples show data filtering with multiple criteria:
+User: "Compress file report.pdf using zip"
+Analysis: Action=compress, file="report.pdf", method="zip"
+Response: Call compress_file("report.pdf", "zip")
 
-User: "Show all completed high priority tasks"
-Analysis: Action=filter, status="completed", priority="high"
-Response: Call filter_todos_by_status_and_priority("completed", "high")
+EXAMPLE SET 3: Search & Filter Operations
+These examples show data querying with multiple criteria:
 
-User: "List pending medium priority todos from my work file"
-Analysis: Action=filter, status="pending", priority="medium", file specified
-Response: Call filter_todos_by_status_and_priority("pending", "medium", "/work/todos.csv")
+User: "Find all orders above $100 from last month"
+Analysis: Action=filter, amount_gt=100, period="last_month"
+Response: Call filter_orders(amount_gt=100, period="last_month")
 
-EXAMPLE SET 4: Missing Function Handling
+User: "Search for users with verified email in California"
+Analysis: Action=search, verified=True, location="California"
+Response: Call search_users(verified=True, location="California")
+
+EXAMPLE SET 4: Integration & Service Operations
+These examples show external service interactions:
+
+User: "Post message to Slack channel #general"
+Analysis: Action=post, channel="#general", service="slack"
+Response: Call post_to_slack("#general", message)
+
+User: "Fetch weather for London"
+Analysis: Action=fetch, data_type="weather", location="London"
+Response: Call fetch_weather("London")
+
+EXAMPLE SET 5: Missing Function Handling
 These examples show how to handle requests for unavailable functions:
 
-User: "Send an email to john@example.com"
-Analysis: No email function available
+User: "Generate QR code for this URL"
+Analysis: No QR generation function available
 Response:
-Function Name: send_email
-Description: Sends an email to specified recipients
+Function Name: generate_qr_code
+Description: Generates a QR code image for given data
 Parameters: 
-- to_address: Email address of recipient
-- subject: Email subject line
-- body: Email message content
-Example: send_email("john@example.com", "Subject", "Message body")
+- data: Text or URL to encode
+- size: Size of QR code in pixels
+- format: Output format (png, svg, etc.)
+Example: generate_qr_code("https://example.com", 256, "png")
 
-User: "Update todo 3 to 'buy organic milk'"
-Analysis: No update function available
+User: "Translate 'Hello' to Spanish"
+Analysis: No translation function available
 Response:
-Function Name: update_todo
-Description: Updates the text of an existing todo item
+Function Name: translate_text
+Description: Translates text between languages
 Parameters:
-- todo_id: ID of the todo to update
-- new_text: New text content for the todo
-- path: Optional file path (default: todo.csv)
-Example: update_todo(3, "buy organic milk")
+- text: Text to translate
+- source_lang: Source language code
+- target_lang: Target language code
+Example: translate_text("Hello", "en", "es")
 
 PATTERN TO LEARN:
-1. Identify the action verb (add, delete, calculate, filter, etc.)
+1. Identify the action verb (add, delete, calculate, search, fetch, etc.)
 2. Extract all parameters from the request
 3. Match to available functions
 4. If no match, define what function would be needed
-5. Apply this pattern to ANY request type
+5. Apply this pattern to ANY domain or request type
 """

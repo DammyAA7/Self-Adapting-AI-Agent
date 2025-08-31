@@ -1,0 +1,42 @@
+{
+  "session_data": {
+    "created_at": "2025-08-31T10:05:03.998600",
+    "functions": {
+      "calculate_factorial": {
+        "code": "\n\ndef calculate_factorial(n):\n    '''Calculates the factorial of a non-negative integer.\n    Returns the factorial as an integer.\n    \n    Raises:\n        TypeError: If n is not an integer.\n        ValueError: If n is negative.\n    '''\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n",
+        "info": {
+          "requirement": "Function Name: calculate_factorial  \nDescription: Computes the factorial of a non-negative integer n (i.e., n! = n \u00d7 (n\u22121) \u00d7 \u2026 \u00d7 1; by convention 0! = 1).  \nParameters:  \n- n (integer): The non-negative integer whose factorial is to be calculated.  \nExample:  \ncalculate_factorial(5)  // returns 120",
+          "iterations": 4
+        },
+        "added_at": "2025-08-31T10:06:19.629435",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-08-31T10:06:19.629343",
+        "code": "\n\ndef calculate_factorial(n):\n    '''Calculates the factorial of a non-negative integer.\n    Returns the factorial as an integer.\n    \n    Raises:\n        TypeError: If n is not an integer.\n        ValueError: If n is negative.\n    '''\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 87519,
+      "defined_variables": [
+        "calculate_factorial"
+      ],
+      "execution_count": 2
+    }
+  },
+  "saved_at": "2025-08-31T10:06:19.637926"
+}

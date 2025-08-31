@@ -1,7 +1,7 @@
 import time
 import psutil
 import tracemalloc
-from typing import Callable
+from typing import Callable, Dict, Any
 
 def performance_function(func, *args, **kwargs):
 
@@ -108,3 +108,91 @@ def performance_execute(function_name, *args):
             raise ValueError(f"Function '{function_name}' not found")
     
     return performance_function(execute_wrapper)
+
+def performance_terminal_execute(context_manager, code: str) -> Dict[str, Any]:
+    """
+    Execute code in persistent terminal context with performance monitoring.
+    
+    Args:
+        context_manager: The ContextManager instance
+        code: Code to execute in the terminal
+        
+    Returns:
+        Dictionary with performance metrics and execution results
+    """
+    # Initialize result dictionary
+    test_result = {
+        'result': None,
+        'output': '',
+        'error': '',
+        'execution_time': 0.0,
+        'memory_peak': 0,
+        'memory_current': 0,
+        'success': False,
+        'context_preserved': True
+    }
+    
+    # Get initial memory state
+    process = psutil.Process()
+    initial_memory = process.memory_info().rss
+    
+    # Start memory tracing
+    tracemalloc.start()
+    
+    try:
+        # Record start time
+        start_time = time.perf_counter()
+        
+        # Execute code in terminal context
+        exec_result = context_manager.execute_in_context(code)
+        
+        # Record end time
+        end_time = time.perf_counter()
+        execution_time = end_time - start_time
+        
+        # Get memory usage
+        current_memory, peak_memory = tracemalloc.get_traced_memory()
+        final_memory = process.memory_info().rss
+        memory_delta = final_memory - initial_memory
+        
+        # Update result dictionary
+        test_result.update({
+            'result': exec_result.get('output', ''),
+            'output': exec_result.get('output', ''),
+            'error': exec_result.get('error', ''),
+            'execution_time': execution_time,
+            'memory_peak': peak_memory,
+            'memory_current': memory_delta,
+            'success': exec_result.get('success', False),
+            'context_preserved': exec_result.get('context_preserved', True)
+        })
+        
+    except Exception as e:
+        # Handle any errors during execution
+        end_time = time.perf_counter()
+        execution_time = end_time - start_time if 'start_time' in locals() else 0.0
+        
+        try:
+            current_memory, peak_memory = tracemalloc.get_traced_memory()
+        except:
+            peak_memory = 0
+            
+        final_memory = process.memory_info().rss
+        memory_delta = final_memory - initial_memory
+        
+        test_result.update({
+            'result': None,
+            'output': '',
+            'error': str(e),
+            'execution_time': execution_time,
+            'memory_peak': peak_memory,
+            'memory_current': memory_delta,
+            'success': False,
+            'context_preserved': False
+        })
+        
+    finally:
+        # Stop memory tracing
+        tracemalloc.stop()
+    
+    return test_result

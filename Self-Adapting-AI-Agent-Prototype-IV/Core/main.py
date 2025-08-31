@@ -18,11 +18,20 @@ from Utilities.execute_function import execute_function
 from dotenv import load_dotenv
 from Utilities.Logger import FunctionGenerationLogger
 from FileAnalyzer.analyzer import SimpleAnalyzer
+from Utilities.cleanup import reset_for_new_run, full_cleanup
 import argparse
+
+# Import terminal context if available
+try:
+    from Terminal_Context.context_manager import get_context_manager
+    TERMINAL_CONTEXT_AVAILABLE = True
+except ImportError:
+    TERMINAL_CONTEXT_AVAILABLE = False
+    print("Terminal Context not available - functions won't persist between generations")
 
 
 python_dir = sys.executable
-folder_dir = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/" 
+folder_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/" 
 
 def get_user_input():
     """Get user request dynamically from various sources"""
@@ -31,8 +40,23 @@ def get_user_input():
     parser.add_argument('--file', type=str, help='Path to file containing request')
     parser.add_argument('--analyze', type=str, help='Path to project to analyze')
     parser.add_argument('--interactive', action='store_true', help='Interactive mode')
+    parser.add_argument('--clean', action='store_true', help='Clean test files before running')
+    parser.add_argument('--clean-all', action='store_true', help='Clean all files including generated functions')
+    parser.add_argument('--no-clean', action='store_true', help='Skip automatic cleanup of test files before running')
 
     args = parser.parse_args()
+    
+    # Handle cleanup options first
+    if args.clean_all:
+        full_cleanup(verbose=True)
+        if not args.request and not args.file and not args.interactive:
+            print("Cleanup complete. Specify a request to generate a function.")
+            return None, None, args
+    elif args.clean:
+        reset_for_new_run(clear_generated=False, verbose=True)
+        if not args.request and not args.file and not args.interactive:
+            print("Cleanup complete. Specify a request to generate a function.")
+            return None, None, args
 
     # Interactive mode (default if no arguments)
     if args.interactive or (not args.request and not args.file):
@@ -41,19 +65,19 @@ def get_user_input():
         print("="*60)
         analyze_path = input("Project path to analyze (press Enter to skip): ").strip()
         request = input("What would you like me to help with? > ").strip()
-        return request, analyze_path if analyze_path else None
+        return request, analyze_path if analyze_path else None, args
 
     # File mode
     elif args.file:
         with open(args.file, 'r') as f:
             request = f.read().strip()
-        return request, args.analyze
+        return request, args.analyze, args
 
     # Direct request mode
     elif args.request:
-        return args.request, args.analyze
+        return args.request, args.analyze, args
 
-    return None, None
+    return None, None, args
 
 def setup_variables(user_request=None, project_context=""):
     with open('Tool_Descriptor_Gen/tools.json', 'r') as f:
@@ -97,11 +121,20 @@ if __name__ == "__main__":
     # Initialize logger
     logger = FunctionGenerationLogger()
     
-    # Get user input and analyze path
-    user_request, analyze_path = get_user_input()
+    # Initialize terminal context if available
+    context_manager = None
+    if TERMINAL_CONTEXT_AVAILABLE:
+        context_manager = get_context_manager()
+        print("Terminal Context initialized - functions will persist across generations")
+    
+    # Get user input, analyze path, and command-line args
+    user_request, analyze_path, cmd_args = get_user_input()
     if not user_request:
         print("No request provided. Exiting.")
         sys.exit(0)
+    
+    # Note: Cleanup is already handled in get_user_input() if flags are set
+    # No need to repeat it here
 
     # Analyze project if path provided
     project_context = ""
@@ -202,6 +235,13 @@ if __name__ == "__main__":
                 function_requirement = response.choices[0].message.content
                 logger.log_model_response_without_tools(function_requirement)
                 adjudicator = False
+                
+                # Clean test files before starting generation (unless disabled)
+                if not hasattr(cmd_args, 'no_clean') or not cmd_args.no_clean:
+                    print("Cleaning test files for fresh generation...")
+                    reset_for_new_run(clear_generated=False, verbose=False)
+                else:
+                    print("Skipping automatic cleanup (--no-clean specified)")
 
                 while not adjudicator:
                     # Start logging for this function generation
@@ -271,6 +311,27 @@ if __name__ == "__main__":
                         write_to_file('json', 'Tool_Descriptor_Gen/tools.json', tools_code)
                         write_to_file('txt', 'Core/prompt.txt', prompt_function_descriptor)
                         
+                        # Add function to terminal context if available
+                        if context_manager and function_code:
+                            try:
+                                # Extract function name from tools_code for context tracking
+                                tools_data = json.loads(tools_code) if isinstance(tools_code, str) else tools_code
+                                if isinstance(tools_data, dict):
+                                    func_name = tools_data['function']['name']
+                                elif isinstance(tools_data, list) and len(tools_data) > 0:
+                                    func_name = tools_data[0]['function']['name']
+                                else:
+                                    func_name = "unknown_function"
+                                
+                                # Add the function to the persistent context
+                                context_manager.add_generated_function(func_name, function_code, {
+                                    'requirement': function_requirement,
+                                    'iterations': iteration_count
+                                })
+                                print(f"Function '{func_name}' added to persistent context")
+                            except Exception as e:
+                                print(f"Warning: Could not add function to context: {e}")
+                        
                         # Extract function name from tools_code for logging
                         try:
                             # Parse the JSON
@@ -292,6 +353,7 @@ if __name__ == "__main__":
                         
                         # Log successful function generation
                         logger.log_function_success(function_name)
+                        restart = False  # Exit outer loop after successful generation
                     else:
                         old_code_req = reinforced_requirement
                         old_unit_req = unit_test_reinforced_requirement
@@ -313,6 +375,22 @@ if __name__ == "__main__":
         # clear_file(folder_dir + 'Test_Driven_Development/testDrivenCases.py')
         # clear_file('Unit_Test/unitTest.py')
         # clear_file('Unit_Test/functions.py')
+        
+        # Save terminal context session if available
+        if context_manager:
+            try:
+                session_file = context_manager.save_session()
+                print(f"Terminal context saved: {session_file}")
+                
+                # Print summary of available functions
+                functions = context_manager.list_available_functions()
+                if functions:
+                    print(f"\nFunctions available in persistent context:")
+                    for func in functions:
+                        print(f"  - {func}")
+            except Exception as e:
+                print(f"Warning: Could not save terminal context: {e}")
+        
         # Save session statistics and show summary
         logger.save_session_stats()
         logger.get_generation_summary()

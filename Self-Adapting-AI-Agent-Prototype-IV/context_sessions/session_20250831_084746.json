@@ -1,0 +1,42 @@
+{
+  "session_data": {
+    "created_at": "2025-08-31T08:46:02.210023",
+    "functions": {
+      "calculate_factorial_and_print": {
+        "code": "\n\nimport math\n\ndef calculate_factorial_and_print(n):\n    \"\"\"Calculates the factorial of a non-negative integer n, prints the result, and returns it.\n    Returns None for invalid (negative or non-integer) inputs.\"\"\"\n    try:\n        result = math.factorial(n)\n    except (ValueError, TypeError):\n        return None\n    print(result)\n    return result\n",
+        "info": {
+          "requirement": "Function Name: calculate_factorial_and_print  \nDescription: Calculates the factorial of a non-negative integer n and prints the result.  \nParameters:  \n- n (integer): The non-negative number whose factorial is to be computed.  \n\nExample:  \n```\ncalculate_factorial_and_print(5)\n// Expected output: 120\n```",
+          "iterations": 4
+        },
+        "added_at": "2025-08-31T08:47:46.098589",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-08-31T08:47:46.098463",
+        "code": "\n\nimport math\n\ndef calculate_factorial_and_print(n):\n    \"\"\"Calculates the factorial of a non-negative integer n, prints the result, and returns it.\n    Returns None for invalid (negative or non-integer) inputs.\"\"\"\n    try:\n        result = math.factorial(n)\n    except (ValueError, TypeError):\n        return None\n    print(result)\n    return result\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 86047,
+      "defined_variables": [
+        "calculate_factorial_and_print"
+      ],
+      "execution_count": 2
+    }
+  },
+  "saved_at": "2025-08-31T08:47:46.104099"
+}

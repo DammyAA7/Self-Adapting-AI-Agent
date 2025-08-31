@@ -1,9 +1,10 @@
 import subprocess
 import sys
+import os
 
 # Use the current Python interpreter (which has pytest installed)
 python_path = sys.executable
-folder_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/"
+folder_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"
 
 def execute():
     print("Running Test driven code...")

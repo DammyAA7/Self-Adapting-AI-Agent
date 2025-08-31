@@ -157,72 +157,133 @@ CRITICAL REMINDER:
 5. Return raw Python code only - no markdown formatting or code blocks
 6. Your function's success is measured by one thing only: **DOES IT PASS ALL THE PROVIDED TEST CASES?**
 
-# FEW-SHOT EXAMPLE PATTERN
+# FEW-SHOT EXAMPLE PATTERNS
 """
-Learn from this concrete example how to generate functions:
+Learn from these concrete examples how to generate functions for different domains:
 
-EXAMPLE: Todo Management Function
-Requirements: "Add a new todo item to a CSV file"
+EXAMPLE 1: Data Management Pattern (E-commerce Product)
+Requirements: "Add a new product to inventory database"
 
 Generated Pattern:
-import csv
+import json
 import datetime
 import os
 
-def add_todo(todo_text, path=None):
-    '''Adds a new todo item to the CSV file with auto-generated ID and timestamp.
-    Returns True if successful, False otherwise.'''
-    file_path = path if path else "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/todo.csv"
+def add_product(sku, name, price, quantity=0, path=None):
+    '''Adds a new product to the inventory database.
+    Returns product ID if successful, None otherwise.'''
+    file_path = path if path else "inventory.json"
     
-    # Validate input
-    if not isinstance(todo_text, str) or not todo_text.strip():
-        return False
+    # Validate inputs
+    if not sku or not name or price < 0:
+        return None
     
     try:
-        # Read existing todos to get next ID
-        todos = []
-        max_id = 0
+        # Load existing inventory
+        inventory = []
         if os.path.exists(file_path):
-            with open(file_path, 'r', newline='') as f:
-                reader = csv.DictReader(f)
-                for row in reader:
-                    todos.append(row)
-                    if 'id' in row and row['id'].isdigit():
-                        max_id = max(max_id, int(row['id']))
+            with open(file_path, 'r') as f:
+                inventory = json.load(f)
         
-        # Create new todo
-        new_todo = {
-            'id': str(max_id + 1),
-            'todo': todo_text.strip(),
-            'status': 'pending',
-            'priority': 'medium',
+        # Check for duplicate SKU
+        if any(p['sku'] == sku for p in inventory):
+            return None
+        
+        # Create new product
+        new_product = {
+            'id': len(inventory) + 1,
+            'sku': sku,
+            'name': name,
+            'price': price,
+            'quantity': quantity,
             'created_at': datetime.datetime.now().isoformat()
         }
-        todos.append(new_todo)
+        inventory.append(new_product)
         
-        # Write back to file
-        fieldnames = ['id', 'todo', 'status', 'priority', 'created_at']
-        with open(file_path, 'w', newline='') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(todos)
+        # Save to file
+        with open(file_path, 'w') as f:
+            json.dump(inventory, f, indent=2)
         
-        return True
-    except (IOError, OSError, PermissionError):
-        return False
+        return new_product['id']
     except Exception:
-        return False
+        return None
 
-PATTERN TO LEARN:
-- Single main parameter + optional path for file operations
-- Validate inputs before processing
-- Handle file operations gracefully with try/except
-- Return True/False for success/failure
-- Use appropriate imports for the task
-- Apply this pattern to ANY function type by:
-  1. Identifying the core operation (file, network, calculation, etc.)
-  2. Determining parameters needed
-  3. Adding proper validation
-  4. Implementing with graceful error handling
-  5. Returning appropriate status/result
+EXAMPLE 2: Calculation Pattern (Scientific Computing)
+Requirements: "Calculate standard deviation of a dataset"
+
+Generated Pattern:
+import math
+
+def calculate_std_deviation(data):
+    '''Calculates the standard deviation of a numeric dataset.
+    Returns the standard deviation or None for invalid input.'''
+    
+    # Validate input
+    if not data or len(data) < 2:
+        return None
+    
+    try:
+        # Calculate mean
+        n = len(data)
+        mean = sum(data) / n
+        
+        # Calculate variance
+        variance = sum((x - mean) ** 2 for x in data) / (n - 1)
+        
+        # Return standard deviation
+        return math.sqrt(variance)
+    except (TypeError, ValueError):
+        return None
+
+EXAMPLE 3: Service Integration Pattern (Web API)
+Requirements: "Fetch current exchange rate between currencies"
+
+Generated Pattern:
+import requests
+import json
+
+def fetch_exchange_rate(from_currency, to_currency, amount=1.0):
+    '''Fetches current exchange rate and converts amount.
+    Returns converted amount or None if request fails.'''
+    
+    # Validate inputs
+    if not from_currency or not to_currency or amount <= 0:
+        return None
+    
+    try:
+        # Mock API endpoint (would be real in production)
+        api_url = f"https://api.exchangerate.com/v1/convert"
+        params = {
+            'from': from_currency.upper(),
+            'to': to_currency.upper(),
+            'amount': amount
+        }
+        
+        # Make API request (mocked for example)
+        # In real implementation: response = requests.get(api_url, params=params)
+        # For this example, simulate response
+        rate = 1.2  # Example rate
+        converted = amount * rate
+        
+        return {
+            'from': from_currency,
+            'to': to_currency,
+            'amount': amount,
+            'converted': converted,
+            'rate': rate
+        }
+    except Exception:
+        return None
+
+PATTERNS TO LEARN:
+1. Data Management: CRUD operations with file/database persistence
+2. Calculation: Mathematical/analytical operations with validation
+3. Service Integration: External API/service interactions
+4. Each pattern includes:
+   - Input validation
+   - Error handling (return None/False on failure)
+   - Appropriate imports for the domain
+   - Clear return values
+   - Graceful failure handling
+5. Apply these patterns to ANY domain by adapting the core operation
 """

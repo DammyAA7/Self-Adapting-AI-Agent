@@ -221,3 +221,2352 @@ filter_todos_by_status_and_priority("completed", "medium")
 2025-08-30 01:18:27,640 - INFO - TDD Adjudication Attempts: 1
 2025-08-30 01:18:27,640 - INFO - Final Adjudication Attempts: 1
 2025-08-30 01:18:27,640 - INFO - Requirement Reinforcements: 0
+2025-08-31 04:24:18,758 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:24:18,763 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 04:24:18,764 - INFO - Response Content: Function Name: analyze_sentiment  
+Description: Analyzes the sentiment of a given text string and classifies it as “positive,” “negative,” or “neutral.”  
+Parameters:  
+- text (string): The text whose...
+2025-08-31 04:24:18,765 - INFO - Initiating function generation process...
+2025-08-31 04:24:18,766 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 04:24:18,767 - INFO - User Input: Create a function that can analyze sentiment of text and tell me if 'This product is amazing\!' is positive or negative
+2025-08-31 04:24:18,768 - INFO - Function Requirement: Function Name: analyze_sentiment  
+Description: Analyzes the sentiment of a given text string and classifies it as “positive,” “negative,” or “neutral.”  
+Parameters:  
+- text (string): The text whose sentiment should be analyzed.  
+
+Example:  
+analyze_sentiment("This product is amazing!")  → "positive"
+2025-08-31 04:24:28,845 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:24:28,847 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 04:24:28,848 - ERROR - Error: [Errno 2] No such file or directory: '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/Test_Driven_Development/testDrivenCases.py'
+2025-08-31 04:24:28,848 - ERROR - Unexpected error: [Errno 2] No such file or directory: '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/Test_Driven_Development/testDrivenCases.py'
+2025-08-31 04:24:28,895 - INFO - === SESSION SUMMARY ===
+2025-08-31 04:24:28,895 - INFO - Session Duration: 15.55 seconds
+2025-08-31 04:24:28,896 - INFO - Functions Attempted: 1
+2025-08-31 04:24:28,896 - INFO - Successful Functions: 0
+2025-08-31 04:24:28,896 - INFO - Terminated Early: 1
+2025-08-31 04:24:28,897 - INFO - Total Iterations: 0
+2025-08-31 04:24:28,897 - INFO - Average Iterations per Function: 0.00
+2025-08-31 04:24:28,897 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 04:24:28,898 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 04:24:28,898 - INFO - Final Adjudication Attempts: 0
+2025-08-31 04:24:28,899 - INFO - Requirement Reinforcements: 0
+2025-08-31 04:25:25,973 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:25:25,976 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 04:25:25,977 - INFO - Response Content: Function Name: compress_files  
+Description: Compresses one or more files into a ZIP archive.  
+Parameters:  
+- input_files (list of strings): Paths to the file(s) to be compressed.  
+- output_zip (st...
+2025-08-31 04:25:25,981 - INFO - Initiating function generation process...
+2025-08-31 04:25:25,986 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 04:25:25,987 - INFO - User Input: Create a function that can compress files using zip and compress report.pdf for me
+2025-08-31 04:25:25,988 - INFO - Function Requirement: Function Name: compress_files  
+Description: Compresses one or more files into a ZIP archive.  
+Parameters:  
+- input_files (list of strings): Paths to the file(s) to be compressed.  
+- output_zip (string): Desired name and path of the resulting ZIP archive.  
+- compression_level (integer, optional): Level of compression from 0 (no compression) to 9 (maximum). Default is 6.  
+
+Example Usage:  
+compress_files(  
+  input_files=["report.pdf"],  
+  output_zip="report.zip",  
+  compression_level=6  
+)  
+
+This function would take your “report.pdf” (and any other files you specify) and bundle them into a “report.zip” archive using the ZIP compression format.
+2025-08-31 04:25:43,709 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:25:43,710 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 04:25:43,711 - ERROR - Error: [Errno 2] No such file or directory: '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/Test_Driven_Development/testDrivenCases.py'
+2025-08-31 04:25:43,711 - ERROR - Unexpected error: [Errno 2] No such file or directory: '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/Test_Driven_Development/testDrivenCases.py'
+2025-08-31 04:25:43,727 - INFO - === SESSION SUMMARY ===
+2025-08-31 04:25:43,727 - INFO - Session Duration: 25.09 seconds
+2025-08-31 04:25:43,728 - INFO - Functions Attempted: 1
+2025-08-31 04:25:43,728 - INFO - Successful Functions: 0
+2025-08-31 04:25:43,729 - INFO - Terminated Early: 1
+2025-08-31 04:25:43,729 - INFO - Total Iterations: 0
+2025-08-31 04:25:43,730 - INFO - Average Iterations per Function: 0.00
+2025-08-31 04:25:43,730 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 04:25:43,731 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 04:25:43,732 - INFO - Final Adjudication Attempts: 0
+2025-08-31 04:25:43,732 - INFO - Requirement Reinforcements: 0
+2025-08-31 04:27:26,108 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:27:26,113 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 04:27:26,113 - INFO - Response Content: Function Name: fetch_weather  
+Description: Fetches current weather data for a specified city by calling an external weather API (e.g., OpenWeatherMap). Returns key information such as temperature, hu...
+2025-08-31 04:27:26,114 - INFO - Initiating function generation process...
+2025-08-31 04:27:26,115 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 04:27:26,116 - INFO - User Input: Create a function to fetch current weather data for any city and tell me the weather in London
+2025-08-31 04:27:26,117 - INFO - Function Requirement: Function Name: fetch_weather  
+Description: Fetches current weather data for a specified city by calling an external weather API (e.g., OpenWeatherMap). Returns key information such as temperature, humidity, and weather conditions.  
+Parameters:  
+- city (string): Name of the city to retrieve weather for.  
+- api_key (string): Your API key for the weather service.  
+- units (string, optional): Units system for temperature (“metric” for °C, “imperial” for °F). Defaults to “metric”.  
+
+Example:  
+```
+fetch_weather(
+  city="London",
+  api_key="YOUR_OPENWEATHERMAP_API_KEY",
+  units="metric"
+)
+```  
+
+Usage example response (mocked):  
+```
+{
+  "city": "London",
+  "temperature": "15°C",
+  "humidity": "72%",
+  "condition": "Light rain"
+}
+```
+2025-08-31 04:27:57,930 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:28:19,554 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:28:21,522 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:28:25,784 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:28:25,892 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 04:28:25,893 - ERROR - Error: [Errno 2] No such file or directory: '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/'
+2025-08-31 04:28:25,895 - ERROR - Unexpected error: [Errno 2] No such file or directory: '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/'
+2025-08-31 04:28:25,926 - INFO - === SESSION SUMMARY ===
+2025-08-31 04:28:25,929 - INFO - Session Duration: 69.15 seconds
+2025-08-31 04:28:25,931 - INFO - Functions Attempted: 1
+2025-08-31 04:28:25,933 - INFO - Successful Functions: 0
+2025-08-31 04:28:25,935 - INFO - Terminated Early: 1
+2025-08-31 04:28:25,937 - INFO - Total Iterations: 0
+2025-08-31 04:28:25,938 - INFO - Average Iterations per Function: 0.00
+2025-08-31 04:28:25,939 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 04:28:25,941 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 04:28:25,943 - INFO - Final Adjudication Attempts: 0
+2025-08-31 04:28:25,944 - INFO - Requirement Reinforcements: 0
+2025-08-31 04:30:49,679 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:30:49,682 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 04:30:49,683 - INFO - Response Content: Function Name: calculate_compound_interest  
+Description: Calculates the compound interest (or final amount) on a principal over a given number of years, with a specified annual interest rate and comp...
+2025-08-31 04:30:49,684 - INFO - Initiating function generation process...
+2025-08-31 04:30:49,684 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 04:30:49,685 - INFO - User Input: Create a function to calculate compound interest for financial applications and calculate the interest on 1000 dollars at 5% annual rate for 10 years
+2025-08-31 04:30:49,686 - INFO - Function Requirement: Function Name: calculate_compound_interest  
+Description: Calculates the compound interest (or final amount) on a principal over a given number of years, with a specified annual interest rate and compounding frequency.  
+Parameters:  
+- principal (number): The initial amount of money.  
+- annual_rate (number): The annual interest rate as a decimal (e.g., 0.05 for 5%).  
+- times_per_year (number, optional): How many times the interest is compounded per year. Defaults to 1 (annual compounding).  
+- years (number): The total number of years the money is invested or borrowed for.  
+
+Example Usage:  
+```  
+# To get the final amount after compounding:
+final_amount = calculate_compound_interest(principal=1000, annual_rate=0.05, times_per_year=1, years=10)  
+# final_amount would be approximately 1628.89  
+
+# To get just the interest earned:
+interest_earned = final_amount - principal  # ≈ 628.89  
+```  
+
+Concrete Calculation for the user’s scenario:  
+- Principal: \$1,000  
+- Annual Rate: 5% (0.05)  
+- Compounded once per year  
+- Duration: 10 years  
+
+Final amount = 1000 × (1 + 0.05/1)^(1×10) ≈ \$1,628.89  
+Interest earned = \$1,628.89 – \$1,000 = \$628.89
+2025-08-31 04:31:04,515 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:31:34,791 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:31:35,834 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:31:36,628 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:31:41,386 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:31:41,389 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 04:31:41,390 - INFO - TDD Adjudication Passed: False
+2025-08-31 04:31:41,393 - INFO - TDD Requirement Suggestion: 
+2025-08-31 04:31:41,395 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 04:31:41,396 - INFO - Iteration: 1
+2025-08-31 04:31:41,397 - INFO - Previous Requirement: 
+2025-08-31 04:31:41,399 - INFO - New Requirement: 
+2025-08-31 04:31:46,361 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:31:46,363 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 04:31:46,366 - INFO - TDD Adjudication Passed: False
+2025-08-31 04:31:46,370 - INFO - TDD Requirement Suggestion: 
+2025-08-31 04:31:46,372 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 04:31:46,374 - INFO - Iteration: 2
+2025-08-31 04:31:46,376 - INFO - Previous Requirement: 
+2025-08-31 04:31:46,378 - INFO - New Requirement: 
+2025-08-31 04:31:49,644 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:31:49,646 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 04:31:49,647 - INFO - TDD Adjudication Passed: False
+2025-08-31 04:31:49,647 - INFO - TDD Requirement Suggestion: 
+2025-08-31 04:31:49,648 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 04:31:49,649 - INFO - Iteration: 3
+2025-08-31 04:31:49,650 - INFO - Previous Requirement: 
+2025-08-31 04:31:49,651 - INFO - New Requirement: 
+2025-08-31 04:31:52,052 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:31:52,054 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 04:31:52,055 - INFO - TDD Adjudication Passed: False
+2025-08-31 04:31:52,056 - INFO - TDD Requirement Suggestion: 
+2025-08-31 04:31:52,057 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 04:31:52,058 - INFO - Iteration: 4
+2025-08-31 04:31:52,058 - INFO - Previous Requirement: 
+2025-08-31 04:31:52,059 - INFO - New Requirement: 
+2025-08-31 04:31:54,434 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:31:54,437 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 04:31:54,437 - INFO - TDD Adjudication Passed: False
+2025-08-31 04:31:54,438 - INFO - TDD Requirement Suggestion: 
+2025-08-31 04:31:54,439 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 04:31:54,440 - INFO - Iteration: 5
+2025-08-31 04:31:54,441 - INFO - Previous Requirement: 
+2025-08-31 04:31:54,442 - INFO - New Requirement: 
+2025-08-31 04:31:56,728 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 04:31:56,731 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 04:31:56,732 - INFO - TDD Adjudication Passed: False
+2025-08-31 04:31:56,733 - INFO - TDD Requirement Suggestion: 
+2025-08-31 04:31:56,734 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 04:31:56,734 - INFO - Iteration: 6
+2025-08-31 04:31:56,735 - INFO - Previous Requirement: 
+2025-08-31 04:31:56,736 - INFO - New Requirement: 
+2025-08-31 04:31:56,746 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 04:31:56,747 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 04:31:56,748 - WARNING - Total Duration: 67.06 seconds
+2025-08-31 04:31:56,748 - WARNING - Final Iteration Count: 0
+2025-08-31 04:31:56,764 - INFO - === SESSION SUMMARY ===
+2025-08-31 04:31:56,764 - INFO - Session Duration: 80.97 seconds
+2025-08-31 04:31:56,765 - INFO - Functions Attempted: 1
+2025-08-31 04:31:56,772 - INFO - Successful Functions: 0
+2025-08-31 04:31:56,773 - INFO - Terminated Early: 1
+2025-08-31 04:31:56,774 - INFO - Total Iterations: 0
+2025-08-31 04:31:56,781 - INFO - Average Iterations per Function: 0.00
+2025-08-31 04:31:56,782 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 04:31:56,783 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 04:31:56,784 - INFO - Final Adjudication Attempts: 0
+2025-08-31 04:31:56,792 - INFO - Requirement Reinforcements: 6
+2025-08-31 05:03:02,386 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:03:02,392 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 05:03:02,396 - INFO - Response Content: Function Name: calculate_compound_interest  
+Description: Calculates the future value of a principal amount after compounding interest.  
+Parameters:  
+- principal (number): The initial amount of mone...
+2025-08-31 05:03:02,399 - INFO - Initiating function generation process...
+2025-08-31 05:03:02,400 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 05:03:02,403 - INFO - User Input: Create a function that calculates compound interest. Then create another function that uses the compound interest function to calculate total returns for multiple investments.
+2025-08-31 05:03:02,405 - INFO - Function Requirement: Function Name: calculate_compound_interest  
+Description: Calculates the future value of a principal amount after compounding interest.  
+Parameters:  
+- principal (number): The initial amount of money.  
+- annual_rate (number): The nominal annual interest rate (as a decimal, e.g., 0.05 for 5%).  
+- times_compounded_per_year (integer): How many times the interest is compounded per year (e.g., 12 for monthly).  
+- years (number): The number of years the money is invested or borrowed for.  
+Example:  
+calculate_compound_interest(1000, 0.05, 12, 10)  
+–> Returns 1647.00949769028 (i.e., $1,647.01)
+
+---
+
+Function Name: calculate_total_returns  
+Description: Uses calculate_compound_interest to compute and sum the returns for multiple investments.  
+Parameters:  
+- investments (list of objects): Each object in the list represents one investment and must contain:  
+  • principal (number)  
+  • annual_rate (number, decimal)  
+  • times_compounded_per_year (integer)  
+  • years (number)  
+Example:  
+let portfolio = [  
+  { principal: 1000, annual_rate: 0.05, times_compounded_per_year: 12, years: 10 },  
+  { principal: 2000, annual_rate: 0.04, times_compounded_per_year: 4, years: 5 },  
+  { principal: 1500, annual_rate: 0.06, times_compounded_per_year: 1, years: 3 }  
+];  
+calculate_total_returns(portfolio)  
+–> Returns 1000→1647.01 + 2000→2433.00 + 1500→1785.08 = 5865.09
+2025-08-31 05:03:20,260 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:03:49,963 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:03:50,976 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:03:53,025 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:03:55,743 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:03:55,745 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 05:03:55,746 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:03:55,746 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:03:55,747 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:03:55,747 - INFO - Iteration: 1
+2025-08-31 05:03:55,748 - INFO - Previous Requirement: 
+2025-08-31 05:03:55,749 - INFO - New Requirement: 
+2025-08-31 05:03:57,903 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:03:57,904 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 05:03:57,905 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:03:57,905 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:03:57,906 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:03:57,906 - INFO - Iteration: 2
+2025-08-31 05:03:57,906 - INFO - Previous Requirement: 
+2025-08-31 05:03:57,907 - INFO - New Requirement: 
+2025-08-31 05:04:00,195 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:04:00,201 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 05:04:00,205 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:04:00,209 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:04:00,210 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:04:00,210 - INFO - Iteration: 3
+2025-08-31 05:04:00,211 - INFO - Previous Requirement: 
+2025-08-31 05:04:00,211 - INFO - New Requirement: 
+2025-08-31 05:04:02,362 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:04:02,365 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 05:04:02,366 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:04:02,366 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:04:02,367 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:04:02,367 - INFO - Iteration: 4
+2025-08-31 05:04:02,368 - INFO - Previous Requirement: 
+2025-08-31 05:04:02,369 - INFO - New Requirement: 
+2025-08-31 05:04:04,479 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:04:04,481 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 05:04:04,482 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:04:04,482 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:04:04,483 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:04:04,483 - INFO - Iteration: 5
+2025-08-31 05:04:04,483 - INFO - Previous Requirement: 
+2025-08-31 05:04:04,484 - INFO - New Requirement: 
+2025-08-31 05:04:06,550 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:04:06,551 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 05:04:06,551 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:04:06,551 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:04:06,552 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:04:06,552 - INFO - Iteration: 6
+2025-08-31 05:04:06,552 - INFO - Previous Requirement: 
+2025-08-31 05:04:06,552 - INFO - New Requirement: 
+2025-08-31 05:04:06,554 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 05:04:06,555 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 05:04:06,555 - WARNING - Total Duration: 64.15 seconds
+2025-08-31 05:04:06,555 - WARNING - Final Iteration Count: 0
+2025-08-31 05:04:06,600 - INFO - === SESSION SUMMARY ===
+2025-08-31 05:04:06,600 - INFO - Session Duration: 72.13 seconds
+2025-08-31 05:04:06,601 - INFO - Functions Attempted: 1
+2025-08-31 05:04:06,601 - INFO - Successful Functions: 0
+2025-08-31 05:04:06,602 - INFO - Terminated Early: 1
+2025-08-31 05:04:06,602 - INFO - Total Iterations: 0
+2025-08-31 05:04:06,603 - INFO - Average Iterations per Function: 0.00
+2025-08-31 05:04:06,603 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 05:04:06,604 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 05:04:06,605 - INFO - Final Adjudication Attempts: 0
+2025-08-31 05:04:06,605 - INFO - Requirement Reinforcements: 6
+2025-08-31 05:04:26,771 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:04:26,775 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 05:04:26,778 - INFO - Response Content: Function Name: calculate_factorial  
+Description: Calculates the factorial of a non-negative integer and prints the result.  
+Parameters:  
+- n (integer): The number for which to compute the factorial...
+2025-08-31 05:04:26,782 - INFO - Initiating function generation process...
+2025-08-31 05:04:26,786 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 05:04:26,791 - INFO - User Input: Create a function that calculates the factorial of a number and prints the result
+2025-08-31 05:04:26,791 - INFO - Function Requirement: Function Name: calculate_factorial  
+Description: Calculates the factorial of a non-negative integer and prints the result.  
+Parameters:  
+- n (integer): The number for which to compute the factorial. Must be ≥ 0.  
+Example of usage:  
+```python
+calculate_factorial(5)
+# Output: 120
+```  
+Python implementation example:  
+```python
+def calculate_factorial(n):
+    """
+    Calculates the factorial of n and prints the result.
+
+    Parameters:
+    n (int): Non-negative integer whose factorial is to be computed.
+
+    Returns:
+    None
+    """
+    if n < 0:
+        print("Error: Factorial is not defined for negative numbers.")
+        return
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    print(result)
+```
+2025-08-31 05:04:44,557 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:05:16,702 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:05:17,720 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:05:19,851 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:05:22,368 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:05:22,370 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 05:05:22,370 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:05:22,371 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:05:22,372 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:05:22,372 - INFO - Iteration: 1
+2025-08-31 05:05:22,373 - INFO - Previous Requirement: 
+2025-08-31 05:05:22,373 - INFO - New Requirement: 
+2025-08-31 05:05:24,663 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:05:24,665 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 05:05:24,665 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:05:24,666 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:05:24,668 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:05:24,668 - INFO - Iteration: 2
+2025-08-31 05:05:24,669 - INFO - Previous Requirement: 
+2025-08-31 05:05:24,669 - INFO - New Requirement: 
+2025-08-31 05:05:26,784 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:05:26,785 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 05:05:26,786 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:05:26,786 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:05:26,787 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:05:26,787 - INFO - Iteration: 3
+2025-08-31 05:05:26,787 - INFO - Previous Requirement: 
+2025-08-31 05:05:26,788 - INFO - New Requirement: 
+2025-08-31 05:05:28,932 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:05:28,934 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 05:05:28,935 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:05:28,935 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:05:28,936 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:05:28,937 - INFO - Iteration: 4
+2025-08-31 05:05:28,937 - INFO - Previous Requirement: 
+2025-08-31 05:05:28,938 - INFO - New Requirement: 
+2025-08-31 05:05:31,163 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:05:31,165 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 05:05:31,165 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:05:31,166 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:05:31,166 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:05:31,167 - INFO - Iteration: 5
+2025-08-31 05:05:31,167 - INFO - Previous Requirement: 
+2025-08-31 05:05:31,168 - INFO - New Requirement: 
+2025-08-31 05:05:33,258 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:05:33,260 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 05:05:33,261 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:05:33,261 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:05:33,262 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:05:33,263 - INFO - Iteration: 6
+2025-08-31 05:05:33,263 - INFO - Previous Requirement: 
+2025-08-31 05:05:33,264 - INFO - New Requirement: 
+2025-08-31 05:05:33,272 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 05:05:33,273 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 05:05:33,273 - WARNING - Total Duration: 66.49 seconds
+2025-08-31 05:05:33,274 - WARNING - Final Iteration Count: 0
+2025-08-31 05:05:33,296 - INFO - === SESSION SUMMARY ===
+2025-08-31 05:05:33,296 - INFO - Session Duration: 71.48 seconds
+2025-08-31 05:05:33,297 - INFO - Functions Attempted: 1
+2025-08-31 05:05:33,297 - INFO - Successful Functions: 0
+2025-08-31 05:05:33,298 - INFO - Terminated Early: 1
+2025-08-31 05:05:33,298 - INFO - Total Iterations: 0
+2025-08-31 05:05:33,299 - INFO - Average Iterations per Function: 0.00
+2025-08-31 05:05:33,299 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 05:05:33,300 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 05:05:33,300 - INFO - Final Adjudication Attempts: 0
+2025-08-31 05:05:33,301 - INFO - Requirement Reinforcements: 6
+2025-08-31 05:10:27,340 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:10:27,352 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 05:10:27,354 - INFO - Response Content: Function Name: calculate_factorial  
+Description: Computes the factorial of a non-negative integer n (n!) and prints the result.  
+Parameters:  
+- n (integer): The number for which to calculate the fa...
+2025-08-31 05:10:27,355 - INFO - Initiating function generation process...
+2025-08-31 05:10:27,356 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 05:10:27,357 - INFO - User Input: Create a function that calculates the factorial of a number and prints the result
+2025-08-31 05:10:27,359 - INFO - Function Requirement: Function Name: calculate_factorial  
+Description: Computes the factorial of a non-negative integer n (n!) and prints the result.  
+Parameters:  
+- n (integer): The number for which to calculate the factorial. Must be ≥ 0.  
+
+Example:  
+```
+calculate_factorial(5)
+```  
+This will compute 5! = 120 and print:  
+```
+The factorial of 5 is 120
+```
+2025-08-31 05:10:53,721 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:11:24,860 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:11:25,920 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:11:26,744 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:11:29,400 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:11:29,402 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 05:11:29,404 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:11:29,406 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:11:29,410 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:11:29,411 - INFO - Iteration: 1
+2025-08-31 05:11:29,412 - INFO - Previous Requirement: 
+2025-08-31 05:11:29,414 - INFO - New Requirement: 
+2025-08-31 05:11:31,334 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:11:31,336 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 05:11:31,337 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:11:31,337 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:11:31,338 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:11:31,339 - INFO - Iteration: 2
+2025-08-31 05:11:31,340 - INFO - Previous Requirement: 
+2025-08-31 05:11:31,341 - INFO - New Requirement: 
+2025-08-31 05:11:32,950 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:11:32,951 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 05:11:32,951 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:11:32,952 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:11:32,952 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:11:32,953 - INFO - Iteration: 3
+2025-08-31 05:11:32,953 - INFO - Previous Requirement: 
+2025-08-31 05:11:32,954 - INFO - New Requirement: 
+2025-08-31 05:11:34,641 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:11:34,643 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 05:11:34,644 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:11:34,645 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:11:34,646 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:11:34,646 - INFO - Iteration: 4
+2025-08-31 05:11:34,647 - INFO - Previous Requirement: 
+2025-08-31 05:11:34,648 - INFO - New Requirement: 
+2025-08-31 05:11:36,487 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:11:36,489 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 05:11:36,491 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:11:36,492 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:11:36,493 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:11:36,494 - INFO - Iteration: 5
+2025-08-31 05:11:36,495 - INFO - Previous Requirement: 
+2025-08-31 05:11:36,496 - INFO - New Requirement: 
+2025-08-31 05:11:38,243 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:11:38,247 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 05:11:38,249 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:11:38,250 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:11:38,251 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:11:38,252 - INFO - Iteration: 6
+2025-08-31 05:11:38,252 - INFO - Previous Requirement: 
+2025-08-31 05:11:38,253 - INFO - New Requirement: 
+2025-08-31 05:11:38,260 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 05:11:38,261 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 05:11:38,262 - WARNING - Total Duration: 70.90 seconds
+2025-08-31 05:11:38,262 - WARNING - Final Iteration Count: 0
+2025-08-31 05:11:38,286 - INFO - === SESSION SUMMARY ===
+2025-08-31 05:11:38,291 - INFO - Session Duration: 76.31 seconds
+2025-08-31 05:11:38,293 - INFO - Functions Attempted: 1
+2025-08-31 05:11:38,294 - INFO - Successful Functions: 0
+2025-08-31 05:11:38,299 - INFO - Terminated Early: 1
+2025-08-31 05:11:38,302 - INFO - Total Iterations: 0
+2025-08-31 05:11:38,304 - INFO - Average Iterations per Function: 0.00
+2025-08-31 05:11:38,306 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 05:11:38,308 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 05:11:38,310 - INFO - Final Adjudication Attempts: 0
+2025-08-31 05:11:38,312 - INFO - Requirement Reinforcements: 6
+2025-08-31 05:17:47,125 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:17:47,130 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 05:17:47,131 - INFO - Response Content: Function Name: calculate_factorial  
+Description: Calculates the factorial of a non-negative integer and prints the result.  
+Parameters:  
+- n (integer): The non-negative integer for which to compute...
+2025-08-31 05:17:47,131 - INFO - Initiating function generation process...
+2025-08-31 05:17:47,132 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 05:17:47,132 - INFO - User Input: Create a function that calculates the factorial of a number and prints the result
+2025-08-31 05:17:47,133 - INFO - Function Requirement: Function Name: calculate_factorial  
+Description: Calculates the factorial of a non-negative integer and prints the result.  
+Parameters:  
+- n (integer): The non-negative integer for which to compute the factorial. Must be ≥ 0.  
+Example:  
+```
+calculate_factorial(5)
+// Output: 120
+```
+2025-08-31 05:18:25,090 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:19:00,065 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:19:01,066 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:19:01,626 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:19:04,845 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:19:04,847 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 05:19:04,850 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:19:04,855 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:19:04,859 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:19:04,863 - INFO - Iteration: 1
+2025-08-31 05:19:04,863 - INFO - Previous Requirement: 
+2025-08-31 05:19:04,865 - INFO - New Requirement: 
+2025-08-31 05:19:08,720 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:19:08,721 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 05:19:08,723 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:19:08,724 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:19:08,725 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:19:08,725 - INFO - Iteration: 2
+2025-08-31 05:19:08,726 - INFO - Previous Requirement: 
+2025-08-31 05:19:08,727 - INFO - New Requirement: 
+2025-08-31 05:19:12,403 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:19:12,405 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 05:19:12,407 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:19:12,408 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:19:12,410 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:19:12,413 - INFO - Iteration: 3
+2025-08-31 05:19:12,415 - INFO - Previous Requirement: 
+2025-08-31 05:19:12,417 - INFO - New Requirement: 
+2025-08-31 05:19:14,802 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:19:14,803 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 05:19:14,803 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:19:14,803 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:19:14,804 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:19:14,804 - INFO - Iteration: 4
+2025-08-31 05:19:14,804 - INFO - Previous Requirement: 
+2025-08-31 05:19:14,805 - INFO - New Requirement: 
+2025-08-31 05:19:17,102 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:19:17,104 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 05:19:17,105 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:19:17,106 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:19:17,106 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:19:17,107 - INFO - Iteration: 5
+2025-08-31 05:19:17,107 - INFO - Previous Requirement: 
+2025-08-31 05:19:17,108 - INFO - New Requirement: 
+2025-08-31 05:19:19,326 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:19:19,328 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 05:19:19,329 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:19:19,330 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:19:19,331 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:19:19,331 - INFO - Iteration: 6
+2025-08-31 05:19:19,332 - INFO - Previous Requirement: 
+2025-08-31 05:19:19,333 - INFO - New Requirement: 
+2025-08-31 05:19:19,340 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 05:19:19,340 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 05:19:19,341 - WARNING - Total Duration: 92.21 seconds
+2025-08-31 05:19:19,342 - WARNING - Final Iteration Count: 0
+2025-08-31 05:19:19,368 - INFO - === SESSION SUMMARY ===
+2025-08-31 05:19:19,369 - INFO - Session Duration: 100.15 seconds
+2025-08-31 05:19:19,369 - INFO - Functions Attempted: 1
+2025-08-31 05:19:19,370 - INFO - Successful Functions: 0
+2025-08-31 05:19:19,371 - INFO - Terminated Early: 1
+2025-08-31 05:19:19,371 - INFO - Total Iterations: 0
+2025-08-31 05:19:19,371 - INFO - Average Iterations per Function: 0.00
+2025-08-31 05:19:19,371 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 05:19:19,372 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 05:19:19,372 - INFO - Final Adjudication Attempts: 0
+2025-08-31 05:19:19,372 - INFO - Requirement Reinforcements: 6
+2025-08-31 05:20:11,322 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:20:11,327 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 05:20:11,329 - INFO - Response Content: Function Name: calculate_factorial  
+Description: Calculates the factorial of a non-negative integer and prints the result.  
+Parameters:  
+- n (integer): The non-negative integer for which to compute...
+2025-08-31 05:20:11,330 - INFO - Initiating function generation process...
+2025-08-31 05:20:11,331 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 05:20:11,332 - INFO - User Input: Create a function that calculates the factorial of a number and prints the result. For example, factorial(5) should print 120
+2025-08-31 05:20:11,333 - INFO - Function Requirement: Function Name: calculate_factorial  
+Description: Calculates the factorial of a non-negative integer and prints the result.  
+Parameters:  
+- n (integer): The non-negative integer for which to compute the factorial.  
+Example:  
+```  
+calculate_factorial(5)  # This will compute 5! = 120 and print:  
+# 120  
+```
+2025-08-31 05:20:21,425 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:20:30,843 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:20:31,935 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:20:34,522 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:20:39,388 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:20:39,390 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 05:20:39,393 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:20:39,397 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:20:39,399 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:20:39,402 - INFO - Iteration: 1
+2025-08-31 05:20:39,404 - INFO - Previous Requirement: 
+2025-08-31 05:20:39,407 - INFO - New Requirement: 
+2025-08-31 05:20:44,212 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:20:44,215 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 05:20:44,217 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:20:44,220 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:20:44,221 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:20:44,222 - INFO - Iteration: 2
+2025-08-31 05:20:44,226 - INFO - Previous Requirement: 
+2025-08-31 05:20:44,230 - INFO - New Requirement: 
+2025-08-31 05:20:49,211 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:20:49,213 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 05:20:49,213 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:20:49,214 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:20:49,215 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:20:49,215 - INFO - Iteration: 3
+2025-08-31 05:20:49,216 - INFO - Previous Requirement: 
+2025-08-31 05:20:49,217 - INFO - New Requirement: 
+2025-08-31 05:20:51,664 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:20:51,665 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 05:20:51,666 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:20:51,667 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:20:51,667 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:20:51,668 - INFO - Iteration: 4
+2025-08-31 05:20:51,669 - INFO - Previous Requirement: 
+2025-08-31 05:20:51,670 - INFO - New Requirement: 
+2025-08-31 05:20:53,845 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:20:53,847 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 05:20:53,848 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:20:53,849 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:20:53,850 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:20:53,850 - INFO - Iteration: 5
+2025-08-31 05:20:53,851 - INFO - Previous Requirement: 
+2025-08-31 05:20:53,852 - INFO - New Requirement: 
+2025-08-31 05:20:56,062 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:20:56,064 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 05:20:56,065 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:20:56,066 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:20:56,066 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:20:56,067 - INFO - Iteration: 6
+2025-08-31 05:20:56,068 - INFO - Previous Requirement: 
+2025-08-31 05:20:56,069 - INFO - New Requirement: 
+2025-08-31 05:20:56,076 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 05:20:56,076 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 05:20:56,076 - WARNING - Total Duration: 44.74 seconds
+2025-08-31 05:20:56,077 - WARNING - Final Iteration Count: 0
+2025-08-31 05:20:56,090 - INFO - === SESSION SUMMARY ===
+2025-08-31 05:20:56,091 - INFO - Session Duration: 49.49 seconds
+2025-08-31 05:20:56,092 - INFO - Functions Attempted: 1
+2025-08-31 05:20:56,094 - INFO - Successful Functions: 0
+2025-08-31 05:20:56,123 - INFO - Terminated Early: 1
+2025-08-31 05:20:56,124 - INFO - Total Iterations: 0
+2025-08-31 05:20:56,127 - INFO - Average Iterations per Function: 0.00
+2025-08-31 05:20:56,127 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 05:20:56,129 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 05:20:56,130 - INFO - Final Adjudication Attempts: 0
+2025-08-31 05:20:56,130 - INFO - Requirement Reinforcements: 6
+2025-08-31 05:23:24,049 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:23:24,059 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 05:23:24,060 - INFO - Response Content: Function Name: calculate_factorial  
+Description: Calculates and prints the factorial of a non-negative integer n.  
+Parameters:  
+- n (integer): The number for which to compute the factorial. Must be...
+2025-08-31 05:23:24,062 - INFO - Initiating function generation process...
+2025-08-31 05:23:24,067 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 05:23:24,073 - INFO - User Input: Create a simple function called calculate_factorial that takes an integer n and prints the factorial result
+2025-08-31 05:23:24,079 - INFO - Function Requirement: Function Name: calculate_factorial  
+Description: Calculates and prints the factorial of a non-negative integer n.  
+Parameters:  
+- n (integer): The number for which to compute the factorial. Must be ≥ 0.  
+Example Usage:  
+```python
+# Define the function
+def calculate_factorial(n):
+    if n < 0:
+        print("Error: factorial is not defined for negative numbers.")
+        return
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    print(result)
+
+# Example call
+calculate_factorial(5)  # Output: 120
+```
+2025-08-31 05:23:31,969 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:23:40,478 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:23:41,819 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:23:44,499 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:23:47,979 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:23:47,983 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 05:23:47,986 - INFO - TDD Adjudication Passed: True
+2025-08-31 05:24:15,508 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:24:24,503 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:24:24,504 - INFO - --- ITERATION 1 ---
+2025-08-31 05:24:24,506 - INFO - Unit Test Result Summary: Tests failed
+2025-08-31 05:24:24,507 - INFO - Adjudication Passed: False
+2025-08-31 05:24:24,508 - INFO - Code Requirement Suggestion: 
+2025-08-31 05:24:24,509 - INFO - Unit Requirement Suggestion: The test is trying to import filter_todos_by_status_and_priority from Unit_Test/functions but it does not exist. Either define that function in Unit_Test/functions.py or correct/remove the incorrect import in unitTest.py.
+2025-08-31 05:24:24,509 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 05:24:24,510 - INFO - Iteration: 1
+2025-08-31 05:24:24,511 - INFO - Previous Requirement: 
+2025-08-31 05:24:24,512 - INFO - New Requirement: 
+2025-08-31 05:24:24,512 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 05:24:24,513 - INFO - Iteration: 1
+2025-08-31 05:24:24,513 - INFO - Previous Requirement: 
+2025-08-31 05:24:24,514 - INFO - New Requirement: The test is trying to import filter_todos_by_status_and_priority from Unit_Test/functions but it does not exist. Either define that function in Unit_Test/functions.py or correct/remove the incorrect import in unitTest.py.
+2025-08-31 05:24:41,221 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:24:49,528 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:24:49,530 - INFO - --- ITERATION 2 ---
+2025-08-31 05:24:49,531 - INFO - Unit Test Result Summary: Tests failed
+2025-08-31 05:24:49,532 - INFO - Adjudication Passed: False
+2025-08-31 05:24:49,532 - INFO - Code Requirement Suggestion: 
+2025-08-31 05:24:49,533 - INFO - Unit Requirement Suggestion: Fix the import in Unit_Test/unitTest.py: ensure that the function filter_todos_by_status_and_priority is defined in Unit_Test/functions.py or update the test to import the correct function name
+2025-08-31 05:24:49,534 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 05:24:49,534 - INFO - Iteration: 2
+2025-08-31 05:24:49,535 - INFO - Previous Requirement: 
+2025-08-31 05:24:49,535 - INFO - New Requirement: 
+2025-08-31 05:24:49,536 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 05:24:49,537 - INFO - Iteration: 2
+2025-08-31 05:24:49,538 - INFO - Previous Requirement: The test is trying to import filter_todos_by_status_and_priority from Unit_Test/functions but it does not exist. Either define that function in Unit_Test/functions.py or correct/remove the incorrect import in unitTest.py.
+2025-08-31 05:24:49,538 - INFO - New Requirement: Fix the import in Unit_Test/unitTest.py: ensure that the function filter_todos_by_status_and_priority is defined in Unit_Test/functions.py or update the test to import the correct function name
+2025-08-31 05:25:04,587 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:25:13,811 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:25:13,812 - INFO - --- ITERATION 3 ---
+2025-08-31 05:25:13,813 - INFO - Unit Test Result Summary: Tests failed
+2025-08-31 05:25:13,813 - INFO - Adjudication Passed: False
+2025-08-31 05:25:13,814 - INFO - Code Requirement Suggestion: 
+2025-08-31 05:25:13,814 - INFO - Unit Requirement Suggestion: Fix import error in Unit_Test/unitTest.py: ensure that 'filter_todos_by_status_and_priority' is defined in Unit_Test/functions.py or correct the import to match the actual function name.
+2025-08-31 05:25:13,815 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 05:25:13,816 - INFO - Iteration: 3
+2025-08-31 05:25:13,816 - INFO - Previous Requirement: 
+2025-08-31 05:25:13,817 - INFO - New Requirement: 
+2025-08-31 05:25:13,817 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 05:25:13,818 - INFO - Iteration: 3
+2025-08-31 05:25:13,819 - INFO - Previous Requirement: Fix the import in Unit_Test/unitTest.py: ensure that the function filter_todos_by_status_and_priority is defined in Unit_Test/functions.py or update the test to import the correct function name
+2025-08-31 05:25:13,819 - INFO - New Requirement: Fix import error in Unit_Test/unitTest.py: ensure that 'filter_todos_by_status_and_priority' is defined in Unit_Test/functions.py or correct the import to match the actual function name.
+2025-08-31 05:25:34,399 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:25:38,842 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:25:38,845 - INFO - --- ITERATION 4 ---
+2025-08-31 05:25:38,848 - INFO - Unit Test Result Summary: Tests failed
+2025-08-31 05:25:38,855 - INFO - Adjudication Passed: False
+2025-08-31 05:25:38,861 - INFO - Code Requirement Suggestion: 
+2025-08-31 05:25:38,862 - INFO - Unit Requirement Suggestion: 
+2025-08-31 05:25:38,864 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 05:25:38,865 - INFO - Iteration: 4
+2025-08-31 05:25:38,866 - INFO - Previous Requirement: 
+2025-08-31 05:25:38,866 - INFO - New Requirement: 
+2025-08-31 05:25:38,867 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 05:25:38,868 - INFO - Iteration: 4
+2025-08-31 05:25:38,868 - INFO - Previous Requirement: Fix import error in Unit_Test/unitTest.py: ensure that 'filter_todos_by_status_and_priority' is defined in Unit_Test/functions.py or correct the import to match the actual function name.
+2025-08-31 05:25:38,869 - INFO - New Requirement: 
+2025-08-31 05:25:40,846 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:25:40,848 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 05:25:40,849 - INFO - TDD Adjudication Passed: True
+2025-08-31 05:25:44,649 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:25:44,652 - INFO - --- ITERATION 5 ---
+2025-08-31 05:25:44,653 - INFO - Unit Test Result Summary: Tests failed
+2025-08-31 05:25:44,655 - INFO - Adjudication Passed: False
+2025-08-31 05:25:44,658 - INFO - Code Requirement Suggestion: 
+2025-08-31 05:25:44,658 - INFO - Unit Requirement Suggestion: The test is importing filter_todos_by_status_and_priority from Unit_Test/functions but this name does not exist. Either define that function in Unit_Test/functions.py or correct the import in Unit_Test/unitTest.py to match the actual function name/path.
+2025-08-31 05:25:44,659 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 05:25:44,660 - INFO - Iteration: 5
+2025-08-31 05:25:44,660 - INFO - Previous Requirement: 
+2025-08-31 05:25:44,661 - INFO - New Requirement: 
+2025-08-31 05:25:44,661 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 05:25:44,663 - INFO - Iteration: 5
+2025-08-31 05:25:44,663 - INFO - Previous Requirement: 
+2025-08-31 05:25:44,664 - INFO - New Requirement: The test is importing filter_todos_by_status_and_priority from Unit_Test/functions but this name does not exist. Either define that function in Unit_Test/functions.py or correct the import in Unit_Test/unitTest.py to match the actual function name/path.
+2025-08-31 05:26:10,526 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:26:16,228 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:26:16,229 - INFO - --- ITERATION 6 ---
+2025-08-31 05:26:16,230 - INFO - Unit Test Result Summary: Tests failed
+2025-08-31 05:26:16,230 - INFO - Adjudication Passed: False
+2025-08-31 05:26:16,231 - INFO - Code Requirement Suggestion: Add and properly export the function `filter_todos_by_status_and_priority` in your `Unit_Test/functions.py` module so that the import in the test can succeed.
+2025-08-31 05:26:16,232 - INFO - Unit Requirement Suggestion: 
+2025-08-31 05:26:16,232 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 05:26:16,233 - INFO - Iteration: 6
+2025-08-31 05:26:16,233 - INFO - Previous Requirement: 
+2025-08-31 05:26:16,234 - INFO - New Requirement: Add and properly export the function `filter_todos_by_status_and_priority` in your `Unit_Test/functions.py` module so that the import in the test can succeed.
+2025-08-31 05:26:16,234 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 05:26:16,235 - INFO - Iteration: 6
+2025-08-31 05:26:16,235 - INFO - Previous Requirement: The test is importing filter_todos_by_status_and_priority from Unit_Test/functions but this name does not exist. Either define that function in Unit_Test/functions.py or correct the import in Unit_Test/unitTest.py to match the actual function name/path.
+2025-08-31 05:26:16,235 - INFO - New Requirement: 
+2025-08-31 05:26:16,241 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 05:26:16,242 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 05:26:16,242 - WARNING - Total Duration: 172.17 seconds
+2025-08-31 05:26:16,243 - WARNING - Final Iteration Count: 6
+2025-08-31 05:26:16,267 - INFO - === SESSION SUMMARY ===
+2025-08-31 05:26:16,267 - INFO - Session Duration: 178.07 seconds
+2025-08-31 05:26:16,268 - INFO - Functions Attempted: 1
+2025-08-31 05:26:16,268 - INFO - Successful Functions: 0
+2025-08-31 05:26:16,269 - INFO - Terminated Early: 1
+2025-08-31 05:26:16,269 - INFO - Total Iterations: 6
+2025-08-31 05:26:16,270 - INFO - Average Iterations per Function: 6.00
+2025-08-31 05:26:16,270 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 05:26:16,271 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 05:26:16,271 - INFO - Final Adjudication Attempts: 6
+2025-08-31 05:26:16,272 - INFO - Requirement Reinforcements: 12
+2025-08-31 05:27:01,020 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:27:01,030 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 05:27:01,032 - INFO - Response Content: Function Name: calculate_factorial  
+Description: Calculates the factorial of a non-negative integer and prints the result.  
+Parameters:  
+- n (integer): The number to calculate the factorial for. Mu...
+2025-08-31 05:27:01,034 - INFO - Initiating function generation process...
+2025-08-31 05:27:01,036 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 05:27:01,038 - INFO - User Input: Create a function that calculates the factorial of a number and prints the result
+2025-08-31 05:27:01,039 - INFO - Function Requirement: Function Name: calculate_factorial  
+Description: Calculates the factorial of a non-negative integer and prints the result.  
+Parameters:  
+- n (integer): The number to calculate the factorial for. Must be ≥ 0.  
+Example Usage:  
+calculate_factorial(5)  # Prints: 120
+2025-08-31 05:27:17,728 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:27:30,155 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:27:31,350 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:27:33,883 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:27:35,386 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:27:35,389 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 05:27:35,389 - INFO - TDD Adjudication Passed: True
+2025-08-31 05:27:52,209 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:27:55,664 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:27:55,673 - INFO - --- ITERATION 1 ---
+2025-08-31 05:27:55,673 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 05:27:55,674 - INFO - Adjudication Passed: True
+2025-08-31 05:27:55,825 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 05:27:55,826 - INFO - Function Name: calculate_factorial
+2025-08-31 05:27:55,826 - INFO - Total Iterations: 1
+2025-08-31 05:27:55,827 - INFO - Total Duration: 54.79 seconds
+2025-08-31 05:27:55,828 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 05:27:55,829 - INFO - Final Adjudication Attempts: 1
+2025-08-31 05:27:55,830 - INFO - Requirement Reinforcements: 0
+2025-08-31 05:28:02,023 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:28:02,025 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 05:28:02,025 - INFO - Response Content: Here’s a simple Python function that computes the factorial of a non-negative integer and prints the result:
+
+```python
+def factorial_and_print(n):
+    """
+    Calculates the factorial of n and prints...
+2025-08-31 05:28:02,026 - INFO - Initiating function generation process...
+2025-08-31 05:28:03,694 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:28:03,696 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 05:28:03,697 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:28:03,698 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:28:03,698 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:28:03,699 - INFO - Iteration: 2
+2025-08-31 05:28:03,700 - INFO - Previous Requirement: 
+2025-08-31 05:28:03,700 - INFO - New Requirement: 
+2025-08-31 05:28:05,090 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:28:05,093 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 05:28:05,094 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:28:05,095 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:28:05,095 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:28:05,096 - INFO - Iteration: 3
+2025-08-31 05:28:05,097 - INFO - Previous Requirement: 
+2025-08-31 05:28:05,098 - INFO - New Requirement: 
+2025-08-31 05:28:07,146 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:28:07,148 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 05:28:07,149 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:28:07,151 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:28:07,152 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:28:07,154 - INFO - Iteration: 4
+2025-08-31 05:28:07,158 - INFO - Previous Requirement: 
+2025-08-31 05:28:07,159 - INFO - New Requirement: 
+2025-08-31 05:28:10,131 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:28:10,133 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 05:28:10,136 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:28:10,137 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:28:10,139 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:28:10,141 - INFO - Iteration: 5
+2025-08-31 05:28:10,142 - INFO - Previous Requirement: 
+2025-08-31 05:28:10,145 - INFO - New Requirement: 
+2025-08-31 05:28:13,406 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:28:13,409 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 05:28:13,410 - INFO - TDD Adjudication Passed: False
+2025-08-31 05:28:13,411 - INFO - TDD Requirement Suggestion: 
+2025-08-31 05:28:13,411 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 05:28:13,412 - INFO - Iteration: 6
+2025-08-31 05:28:13,412 - INFO - Previous Requirement: 
+2025-08-31 05:28:13,413 - INFO - New Requirement: 
+2025-08-31 05:28:13,418 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 05:28:13,419 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 05:28:13,420 - WARNING - Total Duration: 72.38 seconds
+2025-08-31 05:28:13,421 - WARNING - Final Iteration Count: 1
+2025-08-31 05:28:13,549 - INFO - === SESSION SUMMARY ===
+2025-08-31 05:28:13,551 - INFO - Session Duration: 76.36 seconds
+2025-08-31 05:28:13,554 - INFO - Functions Attempted: 1
+2025-08-31 05:28:13,555 - INFO - Successful Functions: 1
+2025-08-31 05:28:13,557 - INFO - Terminated Early: 1
+2025-08-31 05:28:13,559 - INFO - Total Iterations: 1
+2025-08-31 05:28:13,561 - INFO - Average Iterations per Function: 1.00
+2025-08-31 05:28:13,563 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 05:28:13,565 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 05:28:13,567 - INFO - Final Adjudication Attempts: 1
+2025-08-31 05:28:13,571 - INFO - Requirement Reinforcements: 5
+2025-08-31 05:32:43,226 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:32:43,231 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 05:32:43,232 - INFO - Response Content: Function Name: add_numbers  
+Description: Adds two numeric values and returns their sum.  
+Parameters:  
+- num1 (number): The first addend.  
+- num2 (number): The second addend.  
+Example:  
+```  
+add...
+2025-08-31 05:32:43,233 - INFO - Initiating function generation process...
+2025-08-31 05:32:43,234 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 05:32:43,235 - INFO - User Input: Create a function that adds two numbers and returns the sum
+2025-08-31 05:32:43,236 - INFO - Function Requirement: Function Name: add_numbers  
+Description: Adds two numeric values and returns their sum.  
+Parameters:  
+- num1 (number): The first addend.  
+- num2 (number): The second addend.  
+Example:  
+```  
+add_numbers(3, 5)  // returns 8  
+```
+2025-08-31 05:32:50,418 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:32:57,924 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:32:59,369 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:33:02,070 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:33:05,420 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:33:05,424 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 05:33:05,427 - INFO - TDD Adjudication Passed: True
+2025-08-31 05:33:20,879 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:33:26,443 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 05:33:26,445 - INFO - --- ITERATION 1 ---
+2025-08-31 05:33:26,445 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 05:33:26,445 - INFO - Adjudication Passed: True
+2025-08-31 05:33:26,587 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 05:33:26,588 - INFO - Function Name: add_numbers
+2025-08-31 05:33:26,588 - INFO - Total Iterations: 1
+2025-08-31 05:33:26,589 - INFO - Total Duration: 43.35 seconds
+2025-08-31 05:33:26,589 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 05:33:26,589 - INFO - Final Adjudication Attempts: 1
+2025-08-31 05:33:26,589 - INFO - Requirement Reinforcements: 0
+2025-08-31 05:33:26,653 - INFO - === SESSION SUMMARY ===
+2025-08-31 05:33:26,654 - INFO - Session Duration: 48.10 seconds
+2025-08-31 05:33:26,655 - INFO - Functions Attempted: 1
+2025-08-31 05:33:26,656 - INFO - Successful Functions: 1
+2025-08-31 05:33:26,657 - INFO - Terminated Early: 0
+2025-08-31 05:33:26,658 - INFO - Total Iterations: 1
+2025-08-31 05:33:26,659 - INFO - Average Iterations per Function: 1.00
+2025-08-31 05:33:26,660 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 05:33:26,660 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 05:33:26,664 - INFO - Final Adjudication Attempts: 1
+2025-08-31 05:33:26,680 - INFO - Requirement Reinforcements: 0
+2025-08-31 08:28:28,548 - INFO - Retrying request to /chat/completions in 0.408104 seconds
+2025-08-31 08:28:28,957 - INFO - Retrying request to /chat/completions in 0.764334 seconds
+2025-08-31 08:28:29,724 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 08:28:29,725 - ERROR - Error: Connection error.
+2025-08-31 08:28:29,725 - ERROR - Unexpected error: Connection error.
+2025-08-31 08:28:29,863 - INFO - === SESSION SUMMARY ===
+2025-08-31 08:28:29,864 - INFO - Session Duration: 1.52 seconds
+2025-08-31 08:28:29,865 - INFO - Functions Attempted: 0
+2025-08-31 08:28:29,866 - INFO - Successful Functions: 0
+2025-08-31 08:28:29,867 - INFO - Terminated Early: 0
+2025-08-31 08:28:29,867 - INFO - Total Iterations: 0
+2025-08-31 08:28:29,868 - INFO - Average Iterations per Function: 0.00
+2025-08-31 08:28:29,869 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 08:28:29,877 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 08:28:29,881 - INFO - Final Adjudication Attempts: 0
+2025-08-31 08:28:29,885 - INFO - Requirement Reinforcements: 0
+2025-08-31 08:29:01,706 - INFO - Retrying request to /chat/completions in 0.421356 seconds
+2025-08-31 08:29:02,130 - INFO - Retrying request to /chat/completions in 0.997507 seconds
+2025-08-31 08:29:03,131 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 08:29:03,133 - ERROR - Error: Connection error.
+2025-08-31 08:29:03,133 - ERROR - Unexpected error: Connection error.
+2025-08-31 08:29:03,196 - INFO - === SESSION SUMMARY ===
+2025-08-31 08:29:03,200 - INFO - Session Duration: 1.69 seconds
+2025-08-31 08:29:03,202 - INFO - Functions Attempted: 0
+2025-08-31 08:29:03,204 - INFO - Successful Functions: 0
+2025-08-31 08:29:03,206 - INFO - Terminated Early: 0
+2025-08-31 08:29:03,208 - INFO - Total Iterations: 0
+2025-08-31 08:29:03,210 - INFO - Average Iterations per Function: 0.00
+2025-08-31 08:29:03,212 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 08:29:03,214 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 08:29:03,218 - INFO - Final Adjudication Attempts: 0
+2025-08-31 08:29:03,220 - INFO - Requirement Reinforcements: 0
+2025-08-31 08:41:41,026 - INFO - Retrying request to /chat/completions in 0.407208 seconds
+2025-08-31 08:41:41,436 - INFO - Retrying request to /chat/completions in 0.781880 seconds
+2025-08-31 08:41:42,221 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 08:41:42,223 - ERROR - Error: Connection error.
+2025-08-31 08:41:42,226 - ERROR - Unexpected error: Connection error.
+2025-08-31 08:41:42,332 - INFO - === SESSION SUMMARY ===
+2025-08-31 08:41:42,334 - INFO - Session Duration: 1.71 seconds
+2025-08-31 08:41:42,337 - INFO - Functions Attempted: 0
+2025-08-31 08:41:42,339 - INFO - Successful Functions: 0
+2025-08-31 08:41:42,341 - INFO - Terminated Early: 0
+2025-08-31 08:41:42,343 - INFO - Total Iterations: 0
+2025-08-31 08:41:42,347 - INFO - Average Iterations per Function: 0.00
+2025-08-31 08:41:42,349 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 08:41:42,351 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 08:41:42,355 - INFO - Final Adjudication Attempts: 0
+2025-08-31 08:41:42,357 - INFO - Requirement Reinforcements: 0
+2025-08-31 08:46:07,070 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:46:07,083 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 08:46:07,084 - INFO - Response Content: Function Name: calculate_factorial_and_print  
+Description: Calculates the factorial of a non-negative integer n and prints the result.  
+Parameters:  
+- n (integer): The non-negative number whose fac...
+2025-08-31 08:46:07,086 - INFO - Initiating function generation process...
+2025-08-31 08:46:07,088 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 08:46:07,090 - INFO - User Input: Create a function that calculates the factorial of a number and prints the result
+2025-08-31 08:46:07,092 - INFO - Function Requirement: Function Name: calculate_factorial_and_print  
+Description: Calculates the factorial of a non-negative integer n and prints the result.  
+Parameters:  
+- n (integer): The non-negative number whose factorial is to be computed.  
+
+Example:  
+```
+calculate_factorial_and_print(5)
+// Expected output: 120
+```
+2025-08-31 08:46:14,350 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:46:27,537 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:46:28,897 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:46:32,073 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:46:33,705 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:46:33,708 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 08:46:33,709 - INFO - TDD Adjudication Passed: True
+2025-08-31 08:46:50,902 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:46:55,844 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:46:55,859 - INFO - --- ITERATION 1 ---
+2025-08-31 08:46:55,860 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 08:46:55,861 - INFO - Adjudication Passed: False
+2025-08-31 08:46:55,862 - INFO - Code Requirement Suggestion: 
+2025-08-31 08:46:55,863 - INFO - Unit Requirement Suggestion: 
+2025-08-31 08:46:55,864 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 08:46:55,864 - INFO - Iteration: 1
+2025-08-31 08:46:55,865 - INFO - Previous Requirement: 
+2025-08-31 08:46:55,866 - INFO - New Requirement: 
+2025-08-31 08:46:55,867 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 08:46:55,867 - INFO - Iteration: 1
+2025-08-31 08:46:55,868 - INFO - Previous Requirement: 
+2025-08-31 08:46:55,868 - INFO - New Requirement: 
+2025-08-31 08:46:57,293 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:46:57,296 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 08:46:57,297 - INFO - TDD Adjudication Passed: True
+2025-08-31 08:47:01,949 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:47:01,952 - INFO - --- ITERATION 2 ---
+2025-08-31 08:47:01,953 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 08:47:01,953 - INFO - Adjudication Passed: False
+2025-08-31 08:47:01,954 - INFO - Code Requirement Suggestion: Function should return the computed factorial value for valid inputs instead of returning None
+2025-08-31 08:47:01,955 - INFO - Unit Requirement Suggestion: 
+2025-08-31 08:47:01,955 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 08:47:01,955 - INFO - Iteration: 2
+2025-08-31 08:47:01,956 - INFO - Previous Requirement: 
+2025-08-31 08:47:01,956 - INFO - New Requirement: Function should return the computed factorial value for valid inputs instead of returning None
+2025-08-31 08:47:01,956 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 08:47:01,957 - INFO - Iteration: 2
+2025-08-31 08:47:01,957 - INFO - Previous Requirement: 
+2025-08-31 08:47:01,957 - INFO - New Requirement: 
+2025-08-31 08:47:18,194 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:47:26,890 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:47:28,060 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:47:31,212 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:47:35,120 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:47:35,122 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 08:47:35,123 - INFO - TDD Adjudication Passed: True
+2025-08-31 08:47:38,192 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:47:38,196 - INFO - --- ITERATION 3 ---
+2025-08-31 08:47:38,198 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 08:47:38,200 - INFO - Adjudication Passed: False
+2025-08-31 08:47:38,202 - INFO - Code Requirement Suggestion: 
+2025-08-31 08:47:38,204 - INFO - Unit Requirement Suggestion: 
+2025-08-31 08:47:38,208 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 08:47:38,210 - INFO - Iteration: 3
+2025-08-31 08:47:38,212 - INFO - Previous Requirement: Function should return the computed factorial value for valid inputs instead of returning None
+2025-08-31 08:47:38,216 - INFO - New Requirement: 
+2025-08-31 08:47:38,220 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 08:47:38,222 - INFO - Iteration: 3
+2025-08-31 08:47:38,224 - INFO - Previous Requirement: 
+2025-08-31 08:47:38,227 - INFO - New Requirement: 
+2025-08-31 08:47:41,624 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:47:41,626 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 08:47:41,627 - INFO - TDD Adjudication Passed: True
+2025-08-31 08:47:45,998 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:47:45,999 - INFO - --- ITERATION 4 ---
+2025-08-31 08:47:46,000 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 08:47:46,000 - INFO - Adjudication Passed: True
+2025-08-31 08:47:46,098 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 08:47:46,099 - INFO - Function Name: calculate_factorial_and_print
+2025-08-31 08:47:46,100 - INFO - Total Iterations: 4
+2025-08-31 08:47:46,100 - INFO - Total Duration: 99.01 seconds
+2025-08-31 08:47:46,101 - INFO - TDD Adjudication Attempts: 4
+2025-08-31 08:47:46,102 - INFO - Final Adjudication Attempts: 4
+2025-08-31 08:47:46,103 - INFO - Requirement Reinforcements: 6
+2025-08-31 08:47:46,158 - INFO - === SESSION SUMMARY ===
+2025-08-31 08:47:46,159 - INFO - Session Duration: 103.91 seconds
+2025-08-31 08:47:46,160 - INFO - Functions Attempted: 1
+2025-08-31 08:47:46,160 - INFO - Successful Functions: 1
+2025-08-31 08:47:46,161 - INFO - Terminated Early: 0
+2025-08-31 08:47:46,162 - INFO - Total Iterations: 4
+2025-08-31 08:47:46,162 - INFO - Average Iterations per Function: 4.00
+2025-08-31 08:47:46,163 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 08:47:46,164 - INFO - TDD Adjudication Attempts: 4
+2025-08-31 08:47:46,165 - INFO - Final Adjudication Attempts: 4
+2025-08-31 08:47:46,165 - INFO - Requirement Reinforcements: 6
+2025-08-31 08:50:19,557 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 08:50:19,558 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 08:50:19,558 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 08:50:19,572 - INFO - === SESSION SUMMARY ===
+2025-08-31 08:50:19,573 - INFO - Session Duration: 0.07 seconds
+2025-08-31 08:50:19,573 - INFO - Functions Attempted: 0
+2025-08-31 08:50:19,573 - INFO - Successful Functions: 0
+2025-08-31 08:50:19,574 - INFO - Terminated Early: 0
+2025-08-31 08:50:19,574 - INFO - Total Iterations: 0
+2025-08-31 08:50:19,574 - INFO - Average Iterations per Function: 0.00
+2025-08-31 08:50:19,574 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 08:50:19,574 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 08:50:19,575 - INFO - Final Adjudication Attempts: 0
+2025-08-31 08:50:19,575 - INFO - Requirement Reinforcements: 0
+2025-08-31 08:56:27,972 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 08:56:27,973 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 08:56:27,973 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 08:56:27,993 - INFO - === SESSION SUMMARY ===
+2025-08-31 08:56:28,002 - INFO - Session Duration: 0.37 seconds
+2025-08-31 08:56:28,006 - INFO - Functions Attempted: 0
+2025-08-31 08:56:28,015 - INFO - Successful Functions: 0
+2025-08-31 08:56:28,026 - INFO - Terminated Early: 0
+2025-08-31 08:56:28,027 - INFO - Total Iterations: 0
+2025-08-31 08:56:28,027 - INFO - Average Iterations per Function: 0.00
+2025-08-31 08:56:28,028 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 08:56:28,029 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 08:56:28,029 - INFO - Final Adjudication Attempts: 0
+2025-08-31 08:56:28,032 - INFO - Requirement Reinforcements: 0
+2025-08-31 08:59:59,606 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 08:59:59,611 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 08:59:59,612 - INFO - Response Content: Function Name: calculate_factorial  
+Description: Calculates the factorial of a given non-negative integer and prints the result.  
+Parameters:  
+- number (integer): The non-negative integer for which...
+2025-08-31 08:59:59,613 - INFO - Initiating function generation process...
+2025-08-31 08:59:59,636 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 08:59:59,637 - INFO - User Input: Create a function that calculates the factorial of a number and prints the result
+2025-08-31 08:59:59,637 - INFO - Function Requirement: Function Name: calculate_factorial  
+Description: Calculates the factorial of a given non-negative integer and prints the result.  
+Parameters:  
+- number (integer): The non-negative integer for which to calculate the factorial.  
+
+Example:  
+calculate_factorial(5)  
+# Expected output:  
+# “Factorial of 5 is 120”
+2025-08-31 09:00:10,861 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:00:20,154 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:00:21,574 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:00:24,613 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:00:28,968 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:00:28,970 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 09:00:28,971 - INFO - TDD Adjudication Passed: True
+2025-08-31 09:00:38,198 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:00:43,265 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:00:43,267 - INFO - --- ITERATION 1 ---
+2025-08-31 09:00:43,267 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 09:00:43,268 - INFO - Adjudication Passed: False
+2025-08-31 09:00:43,269 - INFO - Code Requirement Suggestion: Function should validate that the input is a non-negative integer, raising ValueError for negative numbers and TypeError for non-integer types
+2025-08-31 09:00:43,269 - INFO - Unit Requirement Suggestion: 
+2025-08-31 09:00:43,270 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 09:00:43,271 - INFO - Iteration: 1
+2025-08-31 09:00:43,271 - INFO - Previous Requirement: 
+2025-08-31 09:00:43,272 - INFO - New Requirement: Function should validate that the input is a non-negative integer, raising ValueError for negative numbers and TypeError for non-integer types
+2025-08-31 09:00:43,273 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 09:00:43,274 - INFO - Iteration: 1
+2025-08-31 09:00:43,274 - INFO - Previous Requirement: 
+2025-08-31 09:00:43,275 - INFO - New Requirement: 
+2025-08-31 09:00:50,024 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:01:01,986 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:01:03,277 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:01:06,080 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:01:08,095 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:01:08,097 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 09:01:08,099 - INFO - TDD Adjudication Passed: True
+2025-08-31 09:01:11,740 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:01:11,743 - INFO - --- ITERATION 2 ---
+2025-08-31 09:01:11,744 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 09:01:11,745 - INFO - Adjudication Passed: True
+2025-08-31 09:01:11,941 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 09:01:11,942 - INFO - Function Name: calculate_factorial
+2025-08-31 09:01:11,942 - INFO - Total Iterations: 2
+2025-08-31 09:01:11,943 - INFO - Total Duration: 72.31 seconds
+2025-08-31 09:01:11,944 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 09:01:11,944 - INFO - Final Adjudication Attempts: 2
+2025-08-31 09:01:11,945 - INFO - Requirement Reinforcements: 2
+2025-08-31 09:01:11,993 - INFO - === SESSION SUMMARY ===
+2025-08-31 09:01:12,004 - INFO - Session Duration: 77.04 seconds
+2025-08-31 09:01:12,004 - INFO - Functions Attempted: 1
+2025-08-31 09:01:12,006 - INFO - Successful Functions: 1
+2025-08-31 09:01:12,008 - INFO - Terminated Early: 0
+2025-08-31 09:01:12,010 - INFO - Total Iterations: 2
+2025-08-31 09:01:12,016 - INFO - Average Iterations per Function: 2.00
+2025-08-31 09:01:12,018 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 09:01:12,020 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 09:01:12,022 - INFO - Final Adjudication Attempts: 2
+2025-08-31 09:01:12,024 - INFO - Requirement Reinforcements: 2
+2025-08-31 09:06:31,734 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 09:06:31,736 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 09:06:31,738 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 09:06:31,824 - INFO - === SESSION SUMMARY ===
+2025-08-31 09:06:31,825 - INFO - Session Duration: 0.26 seconds
+2025-08-31 09:06:31,826 - INFO - Functions Attempted: 0
+2025-08-31 09:06:31,828 - INFO - Successful Functions: 0
+2025-08-31 09:06:31,829 - INFO - Terminated Early: 0
+2025-08-31 09:06:31,830 - INFO - Total Iterations: 0
+2025-08-31 09:06:31,831 - INFO - Average Iterations per Function: 0.00
+2025-08-31 09:06:31,832 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 09:06:31,834 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 09:06:31,835 - INFO - Final Adjudication Attempts: 0
+2025-08-31 09:06:31,838 - INFO - Requirement Reinforcements: 0
+2025-08-31 09:07:39,962 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:07:39,965 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 09:07:39,966 - INFO - Response Content: Function Name: multiply_numbers  
+Description: Multiplies two numbers and returns the product.  
+Parameters:  
+- a (number): The first number.  
+- b (number): The second number.  
+Example:  
+multiply_...
+2025-08-31 09:07:39,966 - INFO - Initiating function generation process...
+2025-08-31 09:07:39,967 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 09:07:39,968 - INFO - User Input: Create a function that multiplies two numbers
+2025-08-31 09:07:39,969 - INFO - Function Requirement: Function Name: multiply_numbers  
+Description: Multiplies two numbers and returns the product.  
+Parameters:  
+- a (number): The first number.  
+- b (number): The second number.  
+Example:  
+multiply_numbers(3, 4)  // returns 12
+2025-08-31 09:07:45,943 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:07:51,153 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:07:52,436 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:07:55,491 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:07:59,957 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:07:59,960 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 09:07:59,962 - INFO - TDD Adjudication Passed: True
+2025-08-31 09:08:54,091 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:08:54,096 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 09:08:54,097 - INFO - Response Content: Function Name: add_one  
+Description: Takes a numeric input and returns the value plus one.  
+Parameters:  
+- number (integer or float): The number to be incremented by one.  
+Example:  
+add_one(5)  →...
+2025-08-31 09:08:54,097 - INFO - Initiating function generation process...
+2025-08-31 09:08:54,098 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 09:08:54,098 - INFO - User Input: Create a function that adds 1 to a number
+2025-08-31 09:08:54,099 - INFO - Function Requirement: Function Name: add_one  
+Description: Takes a numeric input and returns the value plus one.  
+Parameters:  
+- number (integer or float): The number to be incremented by one.  
+Example:  
+add_one(5)  →  6  
+add_one(3.14)  →  4.14
+2025-08-31 09:09:03,893 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:09:12,394 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:09:14,141 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:09:19,239 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:09:21,460 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:09:21,462 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 09:09:21,464 - INFO - TDD Adjudication Passed: True
+2025-08-31 09:09:31,606 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:09:36,829 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 09:09:36,833 - INFO - --- ITERATION 1 ---
+2025-08-31 09:09:36,836 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 09:09:36,838 - INFO - Adjudication Passed: True
+2025-08-31 09:09:37,136 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 09:09:37,137 - INFO - Function Name: unknown_function
+2025-08-31 09:09:37,138 - INFO - Total Iterations: 1
+2025-08-31 09:09:37,140 - INFO - Total Duration: 43.04 seconds
+2025-08-31 09:09:37,142 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 09:09:37,144 - INFO - Final Adjudication Attempts: 1
+2025-08-31 09:09:37,146 - INFO - Requirement Reinforcements: 0
+2025-08-31 09:09:37,277 - INFO - === SESSION SUMMARY ===
+2025-08-31 09:09:37,279 - INFO - Session Duration: 47.78 seconds
+2025-08-31 09:09:37,280 - INFO - Functions Attempted: 1
+2025-08-31 09:09:37,281 - INFO - Successful Functions: 1
+2025-08-31 09:09:37,294 - INFO - Terminated Early: 0
+2025-08-31 09:09:37,295 - INFO - Total Iterations: 1
+2025-08-31 09:09:37,296 - INFO - Average Iterations per Function: 1.00
+2025-08-31 09:09:37,299 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 09:09:37,301 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 09:09:37,303 - INFO - Final Adjudication Attempts: 1
+2025-08-31 09:09:37,305 - INFO - Requirement Reinforcements: 0
+2025-08-31 09:09:59,427 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 09:09:59,427 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 09:09:59,428 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 09:09:59,455 - INFO - === SESSION SUMMARY ===
+2025-08-31 09:09:59,455 - INFO - Session Duration: 0.08 seconds
+2025-08-31 09:09:59,457 - INFO - Functions Attempted: 0
+2025-08-31 09:09:59,459 - INFO - Successful Functions: 0
+2025-08-31 09:09:59,460 - INFO - Terminated Early: 0
+2025-08-31 09:09:59,460 - INFO - Total Iterations: 0
+2025-08-31 09:09:59,462 - INFO - Average Iterations per Function: 0.00
+2025-08-31 09:09:59,464 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 09:09:59,468 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 09:09:59,475 - INFO - Final Adjudication Attempts: 0
+2025-08-31 09:09:59,476 - INFO - Requirement Reinforcements: 0
+2025-08-31 09:10:15,470 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 09:10:15,471 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 09:10:15,471 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 09:10:15,539 - INFO - === SESSION SUMMARY ===
+2025-08-31 09:10:15,540 - INFO - Session Duration: 0.10 seconds
+2025-08-31 09:10:15,541 - INFO - Functions Attempted: 0
+2025-08-31 09:10:15,542 - INFO - Successful Functions: 0
+2025-08-31 09:10:15,542 - INFO - Terminated Early: 0
+2025-08-31 09:10:15,543 - INFO - Total Iterations: 0
+2025-08-31 09:10:15,543 - INFO - Average Iterations per Function: 0.00
+2025-08-31 09:10:15,543 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 09:10:15,544 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 09:10:15,544 - INFO - Final Adjudication Attempts: 0
+2025-08-31 09:10:15,544 - INFO - Requirement Reinforcements: 0
+2025-08-31 09:10:29,364 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 09:10:29,364 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 09:10:29,365 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 09:10:29,416 - INFO - === SESSION SUMMARY ===
+2025-08-31 09:10:29,417 - INFO - Session Duration: 0.13 seconds
+2025-08-31 09:10:29,418 - INFO - Functions Attempted: 0
+2025-08-31 09:10:29,418 - INFO - Successful Functions: 0
+2025-08-31 09:10:29,419 - INFO - Terminated Early: 0
+2025-08-31 09:10:29,420 - INFO - Total Iterations: 0
+2025-08-31 09:10:29,421 - INFO - Average Iterations per Function: 0.00
+2025-08-31 09:10:29,422 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 09:10:29,423 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 09:10:29,425 - INFO - Final Adjudication Attempts: 0
+2025-08-31 09:10:29,430 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:05:09,791 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:05:09,795 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 10:05:09,797 - INFO - Response Content: Function Name: calculate_factorial  
+Description: Computes the factorial of a non-negative integer n (i.e., n! = n × (n−1) × … × 1; by convention 0! = 1).  
+Parameters:  
+- n (integer): The non-negati...
+2025-08-31 10:05:09,797 - INFO - Initiating function generation process...
+2025-08-31 10:05:09,841 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 10:05:09,842 - INFO - User Input: factorial
+2025-08-31 10:05:09,842 - INFO - Function Requirement: Function Name: calculate_factorial  
+Description: Computes the factorial of a non-negative integer n (i.e., n! = n × (n−1) × … × 1; by convention 0! = 1).  
+Parameters:  
+- n (integer): The non-negative integer whose factorial is to be calculated.  
+Example:  
+calculate_factorial(5)  // returns 120
+2025-08-31 10:05:18,090 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:05:25,277 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:05:26,514 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:05:29,444 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:05:31,707 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:05:31,708 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 10:05:31,709 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:05:38,423 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:05:42,691 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:05:42,692 - INFO - --- ITERATION 1 ---
+2025-08-31 10:05:42,693 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 10:05:42,693 - INFO - Adjudication Passed: False
+2025-08-31 10:05:42,694 - INFO - Code Requirement Suggestion: Function should validate its input and raise ValueError for negative numbers and TypeError for non-integer types
+2025-08-31 10:05:42,694 - INFO - Unit Requirement Suggestion: 
+2025-08-31 10:05:42,695 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:05:42,696 - INFO - Iteration: 1
+2025-08-31 10:05:42,696 - INFO - Previous Requirement: 
+2025-08-31 10:05:42,697 - INFO - New Requirement: Function should validate its input and raise ValueError for negative numbers and TypeError for non-integer types
+2025-08-31 10:05:42,698 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:05:42,698 - INFO - Iteration: 1
+2025-08-31 10:05:42,699 - INFO - Previous Requirement: 
+2025-08-31 10:05:42,700 - INFO - New Requirement: 
+2025-08-31 10:05:48,758 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:05:59,180 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:06:00,600 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:06:03,494 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:06:05,567 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:06:05,569 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 10:06:05,570 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:06:08,481 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:06:08,483 - INFO - --- ITERATION 2 ---
+2025-08-31 10:06:08,483 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:06:08,484 - INFO - Adjudication Passed: False
+2025-08-31 10:06:08,484 - INFO - Code Requirement Suggestion: 
+2025-08-31 10:06:08,484 - INFO - Unit Requirement Suggestion: 
+2025-08-31 10:06:08,485 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:06:08,485 - INFO - Iteration: 2
+2025-08-31 10:06:08,486 - INFO - Previous Requirement: Function should validate its input and raise ValueError for negative numbers and TypeError for non-integer types
+2025-08-31 10:06:08,486 - INFO - New Requirement: 
+2025-08-31 10:06:08,486 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:06:08,487 - INFO - Iteration: 2
+2025-08-31 10:06:08,487 - INFO - Previous Requirement: 
+2025-08-31 10:06:08,487 - INFO - New Requirement: 
+2025-08-31 10:06:10,381 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:06:10,383 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 10:06:10,384 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:06:13,144 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:06:13,146 - INFO - --- ITERATION 3 ---
+2025-08-31 10:06:13,148 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:06:13,148 - INFO - Adjudication Passed: False
+2025-08-31 10:06:13,151 - INFO - Code Requirement Suggestion: 
+2025-08-31 10:06:13,152 - INFO - Unit Requirement Suggestion: 
+2025-08-31 10:06:13,154 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:06:13,155 - INFO - Iteration: 3
+2025-08-31 10:06:13,155 - INFO - Previous Requirement: 
+2025-08-31 10:06:13,158 - INFO - New Requirement: 
+2025-08-31 10:06:13,158 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:06:13,160 - INFO - Iteration: 3
+2025-08-31 10:06:13,162 - INFO - Previous Requirement: 
+2025-08-31 10:06:13,163 - INFO - New Requirement: 
+2025-08-31 10:06:15,311 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:06:15,312 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 10:06:15,313 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:06:19,405 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:06:19,408 - INFO - --- ITERATION 4 ---
+2025-08-31 10:06:19,409 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:06:19,410 - INFO - Adjudication Passed: True
+2025-08-31 10:06:19,629 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 10:06:19,630 - INFO - Function Name: calculate_factorial
+2025-08-31 10:06:19,634 - INFO - Total Iterations: 4
+2025-08-31 10:06:19,635 - INFO - Total Duration: 69.79 seconds
+2025-08-31 10:06:19,636 - INFO - TDD Adjudication Attempts: 4
+2025-08-31 10:06:19,636 - INFO - Final Adjudication Attempts: 4
+2025-08-31 10:06:19,637 - INFO - Requirement Reinforcements: 6
+2025-08-31 10:06:19,743 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:06:19,744 - INFO - Session Duration: 75.66 seconds
+2025-08-31 10:06:19,744 - INFO - Functions Attempted: 1
+2025-08-31 10:06:19,747 - INFO - Successful Functions: 1
+2025-08-31 10:06:19,749 - INFO - Terminated Early: 0
+2025-08-31 10:06:19,750 - INFO - Total Iterations: 4
+2025-08-31 10:06:19,752 - INFO - Average Iterations per Function: 4.00
+2025-08-31 10:06:19,754 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:06:19,756 - INFO - TDD Adjudication Attempts: 4
+2025-08-31 10:06:19,756 - INFO - Final Adjudication Attempts: 4
+2025-08-31 10:06:19,757 - INFO - Requirement Reinforcements: 6
+2025-08-31 10:06:49,750 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 10:06:49,751 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:06:49,751 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:06:49,780 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:06:49,781 - INFO - Session Duration: 0.11 seconds
+2025-08-31 10:06:49,781 - INFO - Functions Attempted: 0
+2025-08-31 10:06:49,782 - INFO - Successful Functions: 0
+2025-08-31 10:06:49,782 - INFO - Terminated Early: 0
+2025-08-31 10:06:49,783 - INFO - Total Iterations: 0
+2025-08-31 10:06:49,783 - INFO - Average Iterations per Function: 0.00
+2025-08-31 10:06:49,783 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:06:49,784 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 10:06:49,784 - INFO - Final Adjudication Attempts: 0
+2025-08-31 10:06:49,784 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:07:10,701 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 10:07:10,702 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:07:10,703 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:07:10,742 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:07:10,742 - INFO - Session Duration: 0.16 seconds
+2025-08-31 10:07:10,742 - INFO - Functions Attempted: 0
+2025-08-31 10:07:10,742 - INFO - Successful Functions: 0
+2025-08-31 10:07:10,743 - INFO - Terminated Early: 0
+2025-08-31 10:07:10,743 - INFO - Total Iterations: 0
+2025-08-31 10:07:10,743 - INFO - Average Iterations per Function: 0.00
+2025-08-31 10:07:10,743 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:07:10,743 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 10:07:10,744 - INFO - Final Adjudication Attempts: 0
+2025-08-31 10:07:10,744 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:07:40,436 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 10:07:40,437 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:07:40,437 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:07:40,487 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:07:40,488 - INFO - Session Duration: 0.09 seconds
+2025-08-31 10:07:40,488 - INFO - Functions Attempted: 0
+2025-08-31 10:07:40,489 - INFO - Successful Functions: 0
+2025-08-31 10:07:40,489 - INFO - Terminated Early: 0
+2025-08-31 10:07:40,490 - INFO - Total Iterations: 0
+2025-08-31 10:07:40,490 - INFO - Average Iterations per Function: 0.00
+2025-08-31 10:07:40,490 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:07:40,491 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 10:07:40,491 - INFO - Final Adjudication Attempts: 0
+2025-08-31 10:07:40,491 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:13:25,139 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:13:25,146 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 10:13:25,147 - INFO - Response Content: Function Name: calculate_factorial
+Description: Calculates the factorial of a non-negative integer.
+Parameters:
+- n (integer): The number for which to compute the factorial. Must be ≥ 0.
+Example:
+  ca...
+2025-08-31 10:13:25,147 - INFO - Initiating function generation process...
+2025-08-31 10:13:25,202 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 10:13:25,203 - INFO - User Input: factorial
+2025-08-31 10:13:25,204 - INFO - Function Requirement: Function Name: calculate_factorial
+Description: Calculates the factorial of a non-negative integer.
+Parameters:
+- n (integer): The number for which to compute the factorial. Must be ≥ 0.
+Example:
+  calculate_factorial(5)
+  // Returns 120 (because 5! = 5 × 4 × 3 × 2 × 1)
+2025-08-31 10:13:32,778 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:13:42,755 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:13:44,105 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:13:46,906 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:13:48,908 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:13:48,910 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 10:13:48,911 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:14:04,399 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:14:08,971 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:14:08,973 - INFO - --- ITERATION 1 ---
+2025-08-31 10:14:08,974 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 10:14:08,975 - INFO - Adjudication Passed: False
+2025-08-31 10:14:08,976 - INFO - Code Requirement Suggestion: Function should validate its input: raise ValueError for negative input and TypeError for non-integer input
+2025-08-31 10:14:08,977 - INFO - Unit Requirement Suggestion: 
+2025-08-31 10:14:08,978 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:14:08,979 - INFO - Iteration: 1
+2025-08-31 10:14:08,980 - INFO - Previous Requirement: 
+2025-08-31 10:14:08,981 - INFO - New Requirement: Function should validate its input: raise ValueError for negative input and TypeError for non-integer input
+2025-08-31 10:14:08,983 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:14:08,984 - INFO - Iteration: 1
+2025-08-31 10:14:08,985 - INFO - Previous Requirement: 
+2025-08-31 10:14:08,986 - INFO - New Requirement: 
+2025-08-31 10:14:14,610 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:14:23,209 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:14:24,355 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:14:27,236 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:14:28,985 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:14:28,988 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 10:14:28,989 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:14:31,848 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:14:31,850 - INFO - --- ITERATION 2 ---
+2025-08-31 10:14:31,850 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:14:31,851 - INFO - Adjudication Passed: True
+2025-08-31 10:14:31,974 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 10:14:31,975 - INFO - Function Name: calculate_factorial
+2025-08-31 10:14:31,975 - INFO - Total Iterations: 2
+2025-08-31 10:14:31,977 - INFO - Total Duration: 66.77 seconds
+2025-08-31 10:14:31,977 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:14:31,978 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:14:31,979 - INFO - Requirement Reinforcements: 2
+2025-08-31 10:14:32,080 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:14:32,081 - INFO - Session Duration: 73.23 seconds
+2025-08-31 10:14:32,081 - INFO - Functions Attempted: 1
+2025-08-31 10:14:32,082 - INFO - Successful Functions: 1
+2025-08-31 10:14:32,084 - INFO - Terminated Early: 0
+2025-08-31 10:14:32,084 - INFO - Total Iterations: 2
+2025-08-31 10:14:32,086 - INFO - Average Iterations per Function: 2.00
+2025-08-31 10:14:32,087 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:14:32,088 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:14:32,088 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:14:32,089 - INFO - Requirement Reinforcements: 2
+2025-08-31 10:15:19,999 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 10:15:20,000 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:15:20,001 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:15:20,033 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:15:20,034 - INFO - Session Duration: 0.10 seconds
+2025-08-31 10:15:20,034 - INFO - Functions Attempted: 0
+2025-08-31 10:15:20,035 - INFO - Successful Functions: 0
+2025-08-31 10:15:20,035 - INFO - Terminated Early: 0
+2025-08-31 10:15:20,036 - INFO - Total Iterations: 0
+2025-08-31 10:15:20,036 - INFO - Average Iterations per Function: 0.00
+2025-08-31 10:15:20,037 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:15:20,038 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 10:15:20,038 - INFO - Final Adjudication Attempts: 0
+2025-08-31 10:15:20,039 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:15:31,964 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 10:15:31,965 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:15:31,966 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:15:31,996 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:15:31,996 - INFO - Session Duration: 0.14 seconds
+2025-08-31 10:15:31,997 - INFO - Functions Attempted: 0
+2025-08-31 10:15:31,998 - INFO - Successful Functions: 0
+2025-08-31 10:15:31,998 - INFO - Terminated Early: 0
+2025-08-31 10:15:31,999 - INFO - Total Iterations: 0
+2025-08-31 10:15:32,000 - INFO - Average Iterations per Function: 0.00
+2025-08-31 10:15:32,001 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:15:32,001 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 10:15:32,002 - INFO - Final Adjudication Attempts: 0
+2025-08-31 10:15:32,003 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:19:34,119 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 10:19:34,119 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:19:34,120 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:19:34,151 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:19:34,152 - INFO - Session Duration: 0.13 seconds
+2025-08-31 10:19:34,152 - INFO - Functions Attempted: 0
+2025-08-31 10:19:34,153 - INFO - Successful Functions: 0
+2025-08-31 10:19:34,154 - INFO - Terminated Early: 0
+2025-08-31 10:19:34,154 - INFO - Total Iterations: 0
+2025-08-31 10:19:34,155 - INFO - Average Iterations per Function: 0.00
+2025-08-31 10:19:34,155 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:19:34,156 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 10:19:34,156 - INFO - Final Adjudication Attempts: 0
+2025-08-31 10:19:34,157 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:20:46,363 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 10:20:46,364 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:20:46,365 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:20:46,395 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:20:46,396 - INFO - Session Duration: 0.28 seconds
+2025-08-31 10:20:46,397 - INFO - Functions Attempted: 0
+2025-08-31 10:20:46,397 - INFO - Successful Functions: 0
+2025-08-31 10:20:46,398 - INFO - Terminated Early: 0
+2025-08-31 10:20:46,398 - INFO - Total Iterations: 0
+2025-08-31 10:20:46,399 - INFO - Average Iterations per Function: 0.00
+2025-08-31 10:20:46,399 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:20:46,400 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 10:20:46,401 - INFO - Final Adjudication Attempts: 0
+2025-08-31 10:20:46,401 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:21:17,972 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:21:17,976 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 10:21:17,977 - INFO - Response Content: Function Name: calculate_factorial
+Description: Calculates the factorial of a non-negative integer n (n! = 1 × 2 × … × n).
+Parameters:
+- n (integer): The non-negative integer for which to compute the ...
+2025-08-31 10:21:17,977 - INFO - Initiating function generation process...
+2025-08-31 10:21:18,023 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 10:21:18,024 - INFO - User Input: calculate factorial
+2025-08-31 10:21:18,024 - INFO - Function Requirement: Function Name: calculate_factorial
+Description: Calculates the factorial of a non-negative integer n (n! = 1 × 2 × … × n).
+Parameters:
+- n (integer): The non-negative integer for which to compute the factorial.
+
+Example:
+calculate_factorial(5)  # returns 120
+2025-08-31 10:21:24,306 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:21:34,522 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:21:35,824 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:21:38,445 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:21:41,194 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:21:41,196 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 10:21:41,196 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:21:51,199 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:21:55,606 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:21:55,608 - INFO - --- ITERATION 1 ---
+2025-08-31 10:21:55,608 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 10:21:55,608 - INFO - Adjudication Passed: False
+2025-08-31 10:21:55,609 - INFO - Code Requirement Suggestion: Function should validate input parameters: raise ValueError for negative values and TypeError for non-integer inputs
+2025-08-31 10:21:55,609 - INFO - Unit Requirement Suggestion: 
+2025-08-31 10:21:55,610 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:21:55,610 - INFO - Iteration: 1
+2025-08-31 10:21:55,610 - INFO - Previous Requirement: 
+2025-08-31 10:21:55,611 - INFO - New Requirement: Function should validate input parameters: raise ValueError for negative values and TypeError for non-integer inputs
+2025-08-31 10:21:55,611 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:21:55,612 - INFO - Iteration: 1
+2025-08-31 10:21:55,612 - INFO - Previous Requirement: 
+2025-08-31 10:21:55,612 - INFO - New Requirement: 
+2025-08-31 10:22:01,672 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:22:11,751 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:22:12,986 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:22:15,685 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:22:17,697 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:22:17,699 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 10:22:17,699 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:22:22,151 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:22:22,152 - INFO - --- ITERATION 2 ---
+2025-08-31 10:22:22,152 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:22:22,153 - INFO - Adjudication Passed: True
+2025-08-31 10:22:22,319 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 10:22:22,319 - INFO - Function Name: calculate_factorial
+2025-08-31 10:22:22,320 - INFO - Total Iterations: 2
+2025-08-31 10:22:22,320 - INFO - Total Duration: 64.30 seconds
+2025-08-31 10:22:22,321 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:22:22,322 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:22:22,322 - INFO - Requirement Reinforcements: 2
+2025-08-31 10:22:22,377 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:22:22,377 - INFO - Session Duration: 68.96 seconds
+2025-08-31 10:22:22,377 - INFO - Functions Attempted: 1
+2025-08-31 10:22:22,378 - INFO - Successful Functions: 1
+2025-08-31 10:22:22,378 - INFO - Terminated Early: 0
+2025-08-31 10:22:22,378 - INFO - Total Iterations: 2
+2025-08-31 10:22:22,378 - INFO - Average Iterations per Function: 2.00
+2025-08-31 10:22:22,379 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:22:22,379 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:22:22,379 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:22:22,379 - INFO - Requirement Reinforcements: 2
+2025-08-31 10:22:38,141 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 10:22:38,141 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:22:38,142 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:22:38,182 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:22:38,183 - INFO - Session Duration: 0.08 seconds
+2025-08-31 10:22:38,184 - INFO - Functions Attempted: 0
+2025-08-31 10:22:38,184 - INFO - Successful Functions: 0
+2025-08-31 10:22:38,184 - INFO - Terminated Early: 0
+2025-08-31 10:22:38,185 - INFO - Total Iterations: 0
+2025-08-31 10:22:38,186 - INFO - Average Iterations per Function: 0.00
+2025-08-31 10:22:38,186 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:22:38,187 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 10:22:38,187 - INFO - Final Adjudication Attempts: 0
+2025-08-31 10:22:38,187 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:24:06,062 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:24:06,066 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 10:24:06,068 - INFO - Response Content: Function Name: check_prime  
+Description: Determines whether a given integer is a prime number.  
+Parameters:  
+- n (integer): The number to check for primality. Should be a non-negative integer.  
+Ex...
+2025-08-31 10:24:06,068 - INFO - Initiating function generation process...
+2025-08-31 10:24:06,108 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 10:24:06,109 - INFO - User Input: check if a number is prime
+2025-08-31 10:24:06,110 - INFO - Function Requirement: Function Name: check_prime  
+Description: Determines whether a given integer is a prime number.  
+Parameters:  
+- n (integer): The number to check for primality. Should be a non-negative integer.  
+Example:  
+check_prime(17)  // Returns true, since 17 is prime  
+check_prime(18)  // Returns false, since 18 is not prime
+2025-08-31 10:24:15,352 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:24:24,955 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:24:25,971 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:24:28,637 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:24:31,070 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:24:31,071 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 10:24:31,072 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:24:43,826 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:24:53,070 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:24:53,072 - INFO - --- ITERATION 1 ---
+2025-08-31 10:24:53,073 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 10:24:53,073 - INFO - Adjudication Passed: False
+2025-08-31 10:24:53,074 - INFO - Code Requirement Suggestion: Function should validate inputs: raise ValueError for negative numbers and raise TypeError for non-integer inputs
+2025-08-31 10:24:53,075 - INFO - Unit Requirement Suggestion: 
+2025-08-31 10:24:53,076 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:24:53,077 - INFO - Iteration: 1
+2025-08-31 10:24:53,078 - INFO - Previous Requirement: 
+2025-08-31 10:24:53,078 - INFO - New Requirement: Function should validate inputs: raise ValueError for negative numbers and raise TypeError for non-integer inputs
+2025-08-31 10:24:53,079 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:24:53,079 - INFO - Iteration: 1
+2025-08-31 10:24:53,080 - INFO - Previous Requirement: 
+2025-08-31 10:24:53,081 - INFO - New Requirement: 
+2025-08-31 10:24:57,995 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:25:13,436 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:25:16,830 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:25:19,548 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:25:22,134 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:25:22,136 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 10:25:22,137 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:25:26,122 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:25:26,124 - INFO - --- ITERATION 2 ---
+2025-08-31 10:25:26,125 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:25:26,126 - INFO - Adjudication Passed: True
+2025-08-31 10:25:26,371 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 10:25:26,372 - INFO - Function Name: check_prime
+2025-08-31 10:25:26,373 - INFO - Total Iterations: 2
+2025-08-31 10:25:26,374 - INFO - Total Duration: 80.26 seconds
+2025-08-31 10:25:26,375 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:25:26,376 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:25:26,376 - INFO - Requirement Reinforcements: 2
+2025-08-31 10:25:26,463 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:25:26,464 - INFO - Session Duration: 85.46 seconds
+2025-08-31 10:25:26,465 - INFO - Functions Attempted: 1
+2025-08-31 10:25:26,465 - INFO - Successful Functions: 1
+2025-08-31 10:25:26,465 - INFO - Terminated Early: 0
+2025-08-31 10:25:26,466 - INFO - Total Iterations: 2
+2025-08-31 10:25:26,466 - INFO - Average Iterations per Function: 2.00
+2025-08-31 10:25:26,467 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:25:26,468 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:25:26,468 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:25:26,469 - INFO - Requirement Reinforcements: 2
+2025-08-31 10:27:05,116 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:27:05,124 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 10:27:05,125 - INFO - Response Content: Function Name: convert_celsius_to_fahrenheit  
+Description: Converts a temperature from degrees Celsius to degrees Fahrenheit using the formula F = C × 9/5 + 32.  
+Parameters:  
+- celsius (number): Th...
+2025-08-31 10:27:05,126 - INFO - Initiating function generation process...
+2025-08-31 10:27:05,161 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 10:27:05,162 - INFO - User Input: convert celsius to fahrenheit
+2025-08-31 10:27:05,162 - INFO - Function Requirement: Function Name: convert_celsius_to_fahrenheit  
+Description: Converts a temperature from degrees Celsius to degrees Fahrenheit using the formula F = C × 9/5 + 32.  
+Parameters:  
+- celsius (number): The temperature in degrees Celsius.  
+
+Example:  
+convert_celsius_to_fahrenheit(25)  
+// Returns: 77  
+2025-08-31 10:27:16,309 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:27:24,838 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:27:25,849 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:27:29,376 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:27:31,529 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:27:31,531 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 10:27:31,531 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:27:39,908 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:27:42,351 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:27:42,353 - INFO - --- ITERATION 1 ---
+2025-08-31 10:27:42,354 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:27:42,355 - INFO - Adjudication Passed: True
+2025-08-31 10:27:42,462 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 10:27:42,462 - INFO - Function Name: convert_celsius_to_fahrenheit
+2025-08-31 10:27:42,463 - INFO - Total Iterations: 1
+2025-08-31 10:27:42,463 - INFO - Total Duration: 37.30 seconds
+2025-08-31 10:27:42,464 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 10:27:42,464 - INFO - Final Adjudication Attempts: 1
+2025-08-31 10:27:42,465 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:27:42,507 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:27:42,507 - INFO - Session Duration: 42.65 seconds
+2025-08-31 10:27:42,508 - INFO - Functions Attempted: 1
+2025-08-31 10:27:42,508 - INFO - Successful Functions: 1
+2025-08-31 10:27:42,509 - INFO - Terminated Early: 0
+2025-08-31 10:27:42,509 - INFO - Total Iterations: 1
+2025-08-31 10:27:42,510 - INFO - Average Iterations per Function: 1.00
+2025-08-31 10:27:42,510 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:27:42,511 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 10:27:42,511 - INFO - Final Adjudication Attempts: 1
+2025-08-31 10:27:42,512 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:29:01,589 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:29:01,597 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 10:29:01,598 - INFO - Response Content: Function Name: calculate_fibonacci  
+Description: Calculates the n-th number in the Fibonacci sequence, where F(0)=0, F(1)=1, and F(n)=F(n–1)+F(n–2).  
+Parameters:  
+- n (integer): The zero-based inde...
+2025-08-31 10:29:01,599 - INFO - Initiating function generation process...
+2025-08-31 10:29:01,637 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 10:29:01,637 - INFO - User Input: find fibonacci number
+2025-08-31 10:29:01,638 - INFO - Function Requirement: Function Name: calculate_fibonacci  
+Description: Calculates the n-th number in the Fibonacci sequence, where F(0)=0, F(1)=1, and F(n)=F(n–1)+F(n–2).  
+Parameters:  
+- n (integer): The zero-based index of the Fibonacci sequence to compute. Must be a non-negative integer.  
+Example:  
+calculate_fibonacci(10)  // returns 55
+2025-08-31 10:29:13,045 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:29:21,279 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:29:22,395 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:29:25,583 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:29:27,276 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:29:27,278 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 10:29:27,278 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:29:46,832 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:29:49,211 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:29:49,213 - INFO - --- ITERATION 1 ---
+2025-08-31 10:29:49,214 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:29:49,214 - INFO - Adjudication Passed: True
+2025-08-31 10:29:49,343 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 10:29:49,344 - INFO - Function Name: calculate_fibonacci
+2025-08-31 10:29:49,345 - INFO - Total Iterations: 1
+2025-08-31 10:29:49,346 - INFO - Total Duration: 47.71 seconds
+2025-08-31 10:29:49,347 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 10:29:49,348 - INFO - Final Adjudication Attempts: 1
+2025-08-31 10:29:49,349 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:29:49,401 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:29:49,402 - INFO - Session Duration: 51.10 seconds
+2025-08-31 10:29:49,402 - INFO - Functions Attempted: 1
+2025-08-31 10:29:49,403 - INFO - Successful Functions: 1
+2025-08-31 10:29:49,404 - INFO - Terminated Early: 0
+2025-08-31 10:29:49,404 - INFO - Total Iterations: 1
+2025-08-31 10:29:49,405 - INFO - Average Iterations per Function: 1.00
+2025-08-31 10:29:49,406 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:29:49,406 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 10:29:49,407 - INFO - Final Adjudication Attempts: 1
+2025-08-31 10:29:49,407 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:42:37,088 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 10:42:37,088 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:42:37,089 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:42:37,157 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:42:37,157 - INFO - Session Duration: 0.22 seconds
+2025-08-31 10:42:37,158 - INFO - Functions Attempted: 0
+2025-08-31 10:42:37,158 - INFO - Successful Functions: 0
+2025-08-31 10:42:37,158 - INFO - Terminated Early: 0
+2025-08-31 10:42:37,158 - INFO - Total Iterations: 0
+2025-08-31 10:42:37,159 - INFO - Average Iterations per Function: 0.00
+2025-08-31 10:42:37,159 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:42:37,159 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 10:42:37,159 - INFO - Final Adjudication Attempts: 0
+2025-08-31 10:42:37,160 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:44:22,478 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 10:44:22,478 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:44:22,479 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:44:22,534 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:44:22,534 - INFO - Session Duration: 0.16 seconds
+2025-08-31 10:44:22,534 - INFO - Functions Attempted: 0
+2025-08-31 10:44:22,535 - INFO - Successful Functions: 0
+2025-08-31 10:44:22,536 - INFO - Terminated Early: 0
+2025-08-31 10:44:22,536 - INFO - Total Iterations: 0
+2025-08-31 10:44:22,537 - INFO - Average Iterations per Function: 0.00
+2025-08-31 10:44:22,537 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:44:22,538 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 10:44:22,538 - INFO - Final Adjudication Attempts: 0
+2025-08-31 10:44:22,538 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:44:50,155 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 10:44:50,155 - ERROR - Error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:44:50,156 - ERROR - Unexpected error: Expecting value: line 1 column 1 (char 0)
+2025-08-31 10:44:50,194 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:44:50,196 - INFO - Session Duration: 0.11 seconds
+2025-08-31 10:44:50,197 - INFO - Functions Attempted: 0
+2025-08-31 10:44:50,197 - INFO - Successful Functions: 0
+2025-08-31 10:44:50,198 - INFO - Terminated Early: 0
+2025-08-31 10:44:50,199 - INFO - Total Iterations: 0
+2025-08-31 10:44:50,199 - INFO - Average Iterations per Function: 0.00
+2025-08-31 10:44:50,200 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:44:50,201 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 10:44:50,202 - INFO - Final Adjudication Attempts: 0
+2025-08-31 10:44:50,202 - INFO - Requirement Reinforcements: 0
+2025-08-31 10:47:42,356 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:47:42,360 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 10:47:42,360 - INFO - Response Content: Sure! What number would you like me to calculate the factorial for?
+2025-08-31 10:47:42,361 - INFO - Initiating function generation process...
+2025-08-31 10:47:42,395 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 10:47:42,395 - INFO - User Input: calculate factorial
+2025-08-31 10:47:42,396 - INFO - Function Requirement: Sure! What number would you like me to calculate the factorial for?
+2025-08-31 10:48:12,438 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:48:21,089 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:48:22,470 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:48:25,289 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:48:28,151 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:48:28,154 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 10:48:28,155 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:48:47,559 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:48:53,347 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:48:53,349 - INFO - --- ITERATION 1 ---
+2025-08-31 10:48:53,350 - INFO - Unit Test Result Summary: Tests failed
+2025-08-31 10:48:53,351 - INFO - Adjudication Passed: False
+2025-08-31 10:48:53,351 - INFO - Code Requirement Suggestion: 
+2025-08-31 10:48:53,352 - INFO - Unit Requirement Suggestion: Fix the test case 'test_factorial_invalid_inputs' by removing or properly defining the 'invalid_input' parameter; ensure the test function signature matches an existing fixture or parameter.
+2025-08-31 10:48:53,353 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:48:53,353 - INFO - Iteration: 1
+2025-08-31 10:48:53,354 - INFO - Previous Requirement: 
+2025-08-31 10:48:53,354 - INFO - New Requirement: 
+2025-08-31 10:48:53,355 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:48:53,355 - INFO - Iteration: 1
+2025-08-31 10:48:53,356 - INFO - Previous Requirement: 
+2025-08-31 10:48:53,356 - INFO - New Requirement: Fix the test case 'test_factorial_invalid_inputs' by removing or properly defining the 'invalid_input' parameter; ensure the test function signature matches an existing fixture or parameter.
+2025-08-31 10:49:02,970 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:49:09,039 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:49:09,041 - INFO - --- ITERATION 2 ---
+2025-08-31 10:49:09,042 - INFO - Unit Test Result Summary: Tests failed
+2025-08-31 10:49:09,043 - INFO - Adjudication Passed: False
+2025-08-31 10:49:09,043 - INFO - Code Requirement Suggestion: 
+2025-08-31 10:49:09,044 - INFO - Unit Requirement Suggestion: Fix the test calls to factorial() by providing the required argument ‘n’ (e.g., use factorial(5) instead of factorial()).
+2025-08-31 10:49:09,045 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:49:09,046 - INFO - Iteration: 2
+2025-08-31 10:49:09,047 - INFO - Previous Requirement: 
+2025-08-31 10:49:09,047 - INFO - New Requirement: 
+2025-08-31 10:49:09,048 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:49:09,049 - INFO - Iteration: 2
+2025-08-31 10:49:09,050 - INFO - Previous Requirement: Fix the test case 'test_factorial_invalid_inputs' by removing or properly defining the 'invalid_input' parameter; ensure the test function signature matches an existing fixture or parameter.
+2025-08-31 10:49:09,050 - INFO - New Requirement: Fix the test calls to factorial() by providing the required argument ‘n’ (e.g., use factorial(5) instead of factorial()).
+2025-08-31 10:49:19,275 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:49:23,242 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:49:23,244 - INFO - --- ITERATION 3 ---
+2025-08-31 10:49:23,244 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:49:23,245 - INFO - Adjudication Passed: True
+2025-08-31 10:49:23,395 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 10:49:23,396 - INFO - Function Name: factorial
+2025-08-31 10:49:23,396 - INFO - Total Iterations: 3
+2025-08-31 10:49:23,396 - INFO - Total Duration: 101.00 seconds
+2025-08-31 10:49:23,397 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 10:49:23,397 - INFO - Final Adjudication Attempts: 3
+2025-08-31 10:49:23,397 - INFO - Requirement Reinforcements: 4
+2025-08-31 10:49:23,440 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:49:23,440 - INFO - Session Duration: 104.77 seconds
+2025-08-31 10:49:23,440 - INFO - Functions Attempted: 1
+2025-08-31 10:49:23,441 - INFO - Successful Functions: 1
+2025-08-31 10:49:23,441 - INFO - Terminated Early: 0
+2025-08-31 10:49:23,441 - INFO - Total Iterations: 3
+2025-08-31 10:49:23,441 - INFO - Average Iterations per Function: 3.00
+2025-08-31 10:49:23,441 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:49:23,442 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 10:49:23,442 - INFO - Final Adjudication Attempts: 3
+2025-08-31 10:49:23,442 - INFO - Requirement Reinforcements: 4
+2025-08-31 10:50:39,891 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:50:39,895 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 10:50:39,896 - INFO - Response Content: Function Name: reverse_string  
+Description: Reverses the given input string and returns the result.  
+Parameters:  
+- text (string): The string to reverse.  
+Example:  
+reverse_string("hello")  →  "o...
+2025-08-31 10:50:39,897 - INFO - Initiating function generation process...
+2025-08-31 10:50:39,920 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 10:50:39,921 - INFO - User Input: reverse a string
+2025-08-31 10:50:39,921 - INFO - Function Requirement: Function Name: reverse_string  
+Description: Reverses the given input string and returns the result.  
+Parameters:  
+- text (string): The string to reverse.  
+Example:  
+reverse_string("hello")  →  "olleh"
+2025-08-31 10:50:46,837 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:50:52,206 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:50:53,457 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:50:56,383 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:50:58,503 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:50:58,506 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 10:50:58,506 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:51:09,156 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:51:15,312 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:51:15,313 - INFO - --- ITERATION 1 ---
+2025-08-31 10:51:15,314 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 10:51:15,315 - INFO - Adjudication Passed: False
+2025-08-31 10:51:15,316 - INFO - Code Requirement Suggestion: Function should raise TypeError for invalid input types
+2025-08-31 10:51:15,317 - INFO - Unit Requirement Suggestion: 
+2025-08-31 10:51:15,318 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:51:15,318 - INFO - Iteration: 1
+2025-08-31 10:51:15,320 - INFO - Previous Requirement: 
+2025-08-31 10:51:15,320 - INFO - New Requirement: Function should raise TypeError for invalid input types
+2025-08-31 10:51:15,321 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:51:15,323 - INFO - Iteration: 1
+2025-08-31 10:51:15,324 - INFO - Previous Requirement: 
+2025-08-31 10:51:15,324 - INFO - New Requirement: 
+2025-08-31 10:51:20,739 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:51:30,677 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:51:32,111 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:51:35,405 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:51:38,332 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:51:38,334 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 10:51:38,334 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:51:43,723 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:51:43,726 - INFO - --- ITERATION 2 ---
+2025-08-31 10:51:43,727 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:51:43,729 - INFO - Adjudication Passed: True
+2025-08-31 10:51:43,905 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 10:51:43,906 - INFO - Function Name: reverse_string
+2025-08-31 10:51:43,906 - INFO - Total Iterations: 2
+2025-08-31 10:51:43,907 - INFO - Total Duration: 63.98 seconds
+2025-08-31 10:51:43,907 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:51:43,908 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:51:43,908 - INFO - Requirement Reinforcements: 2
+2025-08-31 10:51:43,946 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:51:43,946 - INFO - Session Duration: 67.91 seconds
+2025-08-31 10:51:43,947 - INFO - Functions Attempted: 1
+2025-08-31 10:51:43,947 - INFO - Successful Functions: 1
+2025-08-31 10:51:43,948 - INFO - Terminated Early: 0
+2025-08-31 10:51:43,948 - INFO - Total Iterations: 2
+2025-08-31 10:51:43,948 - INFO - Average Iterations per Function: 2.00
+2025-08-31 10:51:43,949 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:51:43,949 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:51:43,949 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:51:43,950 - INFO - Requirement Reinforcements: 2
+2025-08-31 10:52:58,369 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:52:58,381 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 10:52:58,383 - INFO - Response Content: Function Name: calculate_fibonacci  
+Description: Calculates the nth Fibonacci number (with Fibonacci(0) = 0, Fibonacci(1) = 1).  
+Parameters:  
+- n (integer): The position in the Fibonacci sequence f...
+2025-08-31 10:52:58,385 - INFO - Initiating function generation process...
+2025-08-31 10:52:58,537 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 10:52:58,539 - INFO - User Input: find fibonacci number
+2025-08-31 10:52:58,541 - INFO - Function Requirement: Function Name: calculate_fibonacci  
+Description: Calculates the nth Fibonacci number (with Fibonacci(0) = 0, Fibonacci(1) = 1).  
+Parameters:  
+- n (integer): The position in the Fibonacci sequence for which to compute the value. Must be a non-negative integer.  
+Example:  
+calculate_fibonacci(10)  // Returns 55
+2025-08-31 10:53:16,523 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:53:24,441 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:53:25,722 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:53:29,160 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:53:30,573 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:53:30,576 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 10:53:30,577 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:53:38,215 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:53:40,636 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:53:40,639 - INFO - --- ITERATION 1 ---
+2025-08-31 10:53:40,640 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:53:40,641 - INFO - Adjudication Passed: False
+2025-08-31 10:53:40,642 - INFO - Code Requirement Suggestion: 
+2025-08-31 10:53:40,643 - INFO - Unit Requirement Suggestion: 
+2025-08-31 10:53:40,644 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:53:40,645 - INFO - Iteration: 1
+2025-08-31 10:53:40,645 - INFO - Previous Requirement: 
+2025-08-31 10:53:40,646 - INFO - New Requirement: 
+2025-08-31 10:53:40,647 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:53:40,648 - INFO - Iteration: 1
+2025-08-31 10:53:40,648 - INFO - Previous Requirement: 
+2025-08-31 10:53:40,649 - INFO - New Requirement: 
+2025-08-31 10:53:41,967 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:53:41,969 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 10:53:41,970 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:53:44,040 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:53:44,043 - INFO - --- ITERATION 2 ---
+2025-08-31 10:53:44,045 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:53:44,046 - INFO - Adjudication Passed: False
+2025-08-31 10:53:44,047 - INFO - Code Requirement Suggestion: 
+2025-08-31 10:53:44,047 - INFO - Unit Requirement Suggestion: 
+2025-08-31 10:53:44,048 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:53:44,049 - INFO - Iteration: 2
+2025-08-31 10:53:44,049 - INFO - Previous Requirement: 
+2025-08-31 10:53:44,050 - INFO - New Requirement: 
+2025-08-31 10:53:44,051 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:53:44,052 - INFO - Iteration: 2
+2025-08-31 10:53:44,053 - INFO - Previous Requirement: 
+2025-08-31 10:53:44,054 - INFO - New Requirement: 
+2025-08-31 10:53:45,437 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:53:45,440 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 10:53:45,441 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:53:47,855 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:53:47,858 - INFO - --- ITERATION 3 ---
+2025-08-31 10:53:47,859 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:53:47,860 - INFO - Adjudication Passed: True
+2025-08-31 10:53:48,030 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 10:53:48,030 - INFO - Function Name: calculate_fibonacci
+2025-08-31 10:53:48,032 - INFO - Total Iterations: 3
+2025-08-31 10:53:48,033 - INFO - Total Duration: 49.49 seconds
+2025-08-31 10:53:48,033 - INFO - TDD Adjudication Attempts: 3
+2025-08-31 10:53:48,034 - INFO - Final Adjudication Attempts: 3
+2025-08-31 10:53:48,035 - INFO - Requirement Reinforcements: 4
+2025-08-31 10:53:48,100 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:53:48,101 - INFO - Session Duration: 54.53 seconds
+2025-08-31 10:53:48,102 - INFO - Functions Attempted: 1
+2025-08-31 10:53:48,102 - INFO - Successful Functions: 1
+2025-08-31 10:53:48,103 - INFO - Terminated Early: 0
+2025-08-31 10:53:48,104 - INFO - Total Iterations: 3
+2025-08-31 10:53:48,104 - INFO - Average Iterations per Function: 3.00
+2025-08-31 10:53:48,105 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:53:48,106 - INFO - TDD Adjudication Attempts: 3
+2025-08-31 10:53:48,106 - INFO - Final Adjudication Attempts: 3
+2025-08-31 10:53:48,107 - INFO - Requirement Reinforcements: 4
+2025-08-31 10:56:51,727 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:56:51,731 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 10:56:51,732 - INFO - Response Content: Function Name: add_numbers  
+Description: Calculates the sum of two numeric values.  
+Parameters:  
+- num1 (number): The first addend.  
+- num2 (number): The second addend.  
+Example:  
+add_numbers(5,...
+2025-08-31 10:56:51,733 - INFO - Initiating function generation process...
+2025-08-31 10:56:51,769 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 10:56:51,770 - INFO - User Input: add two numbers
+2025-08-31 10:56:51,770 - INFO - Function Requirement: Function Name: add_numbers  
+Description: Calculates the sum of two numeric values.  
+Parameters:  
+- num1 (number): The first addend.  
+- num2 (number): The second addend.  
+Example:  
+add_numbers(5, 7)  // Returns 12
+2025-08-31 10:56:59,070 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:57:07,439 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:57:08,853 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:57:11,820 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:57:13,847 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:57:13,848 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 10:57:13,849 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:57:32,197 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:57:37,361 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:57:37,365 - INFO - --- ITERATION 1 ---
+2025-08-31 10:57:37,367 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:57:37,369 - INFO - Adjudication Passed: False
+2025-08-31 10:57:37,371 - INFO - Code Requirement Suggestion: 
+2025-08-31 10:57:37,373 - INFO - Unit Requirement Suggestion: 
+2025-08-31 10:57:37,376 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:57:37,378 - INFO - Iteration: 1
+2025-08-31 10:57:37,379 - INFO - Previous Requirement: 
+2025-08-31 10:57:37,382 - INFO - New Requirement: 
+2025-08-31 10:57:37,385 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:57:37,389 - INFO - Iteration: 1
+2025-08-31 10:57:37,391 - INFO - Previous Requirement: 
+2025-08-31 10:57:37,393 - INFO - New Requirement: 
+2025-08-31 10:57:41,245 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:57:41,247 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 10:57:41,248 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:57:45,774 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:57:45,778 - INFO - --- ITERATION 2 ---
+2025-08-31 10:57:45,779 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:57:45,781 - INFO - Adjudication Passed: True
+2025-08-31 10:57:46,210 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 10:57:46,213 - INFO - Function Name: add_numbers
+2025-08-31 10:57:46,213 - INFO - Total Iterations: 2
+2025-08-31 10:57:46,214 - INFO - Total Duration: 54.44 seconds
+2025-08-31 10:57:46,215 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:57:46,216 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:57:46,217 - INFO - Requirement Reinforcements: 2
+2025-08-31 10:57:46,275 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:57:46,276 - INFO - Session Duration: 60.49 seconds
+2025-08-31 10:57:46,276 - INFO - Functions Attempted: 1
+2025-08-31 10:57:46,277 - INFO - Successful Functions: 1
+2025-08-31 10:57:46,277 - INFO - Terminated Early: 0
+2025-08-31 10:57:46,278 - INFO - Total Iterations: 2
+2025-08-31 10:57:46,278 - INFO - Average Iterations per Function: 2.00
+2025-08-31 10:57:46,279 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:57:46,279 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:57:46,281 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:57:46,283 - INFO - Requirement Reinforcements: 2
+2025-08-31 10:58:54,201 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:58:54,213 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 10:58:54,214 - INFO - Response Content: Function Name: add_numbers  
+Description: Adds two numeric values and returns their sum.  
+Parameters:  
+- number1 (number): The first number to add.  
+- number2 (number): The second number to add.  
+...
+2025-08-31 10:58:54,215 - INFO - Initiating function generation process...
+2025-08-31 10:58:54,265 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 10:58:54,266 - INFO - User Input: add two numbers
+2025-08-31 10:58:54,267 - INFO - Function Requirement: Function Name: add_numbers  
+Description: Adds two numeric values and returns their sum.  
+Parameters:  
+- number1 (number): The first number to add.  
+- number2 (number): The second number to add.  
+Example:  
+add_numbers(4, 7)  // Returns 11
+2025-08-31 10:59:02,438 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:07,165 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:08,722 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:11,940 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:15,532 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:15,537 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 10:59:15,539 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:59:23,014 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:32,647 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:32,650 - INFO - --- ITERATION 1 ---
+2025-08-31 10:59:32,650 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 10:59:32,651 - INFO - Adjudication Passed: False
+2025-08-31 10:59:32,652 - INFO - Code Requirement Suggestion: Function should validate input types and raise TypeError for non-numeric inputs
+2025-08-31 10:59:32,653 - INFO - Unit Requirement Suggestion: 
+2025-08-31 10:59:32,654 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 10:59:32,655 - INFO - Iteration: 1
+2025-08-31 10:59:32,656 - INFO - Previous Requirement: 
+2025-08-31 10:59:32,656 - INFO - New Requirement: Function should validate input types and raise TypeError for non-numeric inputs
+2025-08-31 10:59:32,657 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 10:59:32,658 - INFO - Iteration: 1
+2025-08-31 10:59:32,658 - INFO - Previous Requirement: 
+2025-08-31 10:59:32,660 - INFO - New Requirement: 
+2025-08-31 10:59:37,401 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:49,213 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:50,663 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:53,925 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:55,403 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:55,405 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 10:59:55,406 - INFO - TDD Adjudication Passed: True
+2025-08-31 10:59:58,122 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 10:59:58,124 - INFO - --- ITERATION 2 ---
+2025-08-31 10:59:58,125 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 10:59:58,126 - INFO - Adjudication Passed: True
+2025-08-31 10:59:58,281 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 10:59:58,281 - INFO - Function Name: add_numbers
+2025-08-31 10:59:58,282 - INFO - Total Iterations: 2
+2025-08-31 10:59:58,282 - INFO - Total Duration: 64.02 seconds
+2025-08-31 10:59:58,283 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:59:58,283 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:59:58,283 - INFO - Requirement Reinforcements: 2
+2025-08-31 10:59:58,368 - INFO - === SESSION SUMMARY ===
+2025-08-31 10:59:58,368 - INFO - Session Duration: 68.73 seconds
+2025-08-31 10:59:58,369 - INFO - Functions Attempted: 1
+2025-08-31 10:59:58,370 - INFO - Successful Functions: 1
+2025-08-31 10:59:58,371 - INFO - Terminated Early: 0
+2025-08-31 10:59:58,372 - INFO - Total Iterations: 2
+2025-08-31 10:59:58,373 - INFO - Average Iterations per Function: 2.00
+2025-08-31 10:59:58,374 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 10:59:58,375 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 10:59:58,376 - INFO - Final Adjudication Attempts: 2
+2025-08-31 10:59:58,376 - INFO - Requirement Reinforcements: 2
+2025-08-31 11:01:15,000 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 11:01:15,011 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 11:01:15,012 - INFO - Response Content: Function Name: generate_python_snake_game  
+Description: Generates complete, ready-to-run Python source code for the classic “Snake” game using the Pygame library. The generated code will handle windo...
+2025-08-31 11:01:15,013 - INFO - Initiating function generation process...
+2025-08-31 11:01:15,039 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 11:01:15,039 - INFO - User Input: python snack game
+2025-08-31 11:01:15,040 - INFO - Function Requirement: Function Name: generate_python_snake_game  
+Description: Generates complete, ready-to-run Python source code for the classic “Snake” game using the Pygame library. The generated code will handle window setup, game loop, snake movement, food spawning, collision detection, scoring, and game-over conditions.  
+Parameters:  
+- width (integer): Width of the game window in pixels.  
+- height (integer): Height of the game window in pixels.  
+- snake_block (integer): Size of each segment of the snake in pixels.  
+- snake_speed (integer): Initial speed of the snake (frames per second).  
+- background_color (tuple of three ints): RGB color for the game background, e.g., (0, 0, 0) for black.  
+- snake_color (tuple of three ints): RGB color of the snake, e.g., (0, 255, 0) for green.  
+- food_color (tuple of three ints): RGB color of the food item, e.g., (255, 0, 0) for red.  
+
+Example Usage:  
+generate_python_snake_game(600, 400, 20, 10, (0, 0, 0), (0, 255, 0), (255, 0, 0))  
+
+This function would return a multi-line string containing a fully functional Python script that you can save (e.g., snake_game.py) and run directly, assuming Pygame is installed.
+2025-08-31 11:01:34,092 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 11:02:07,879 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 11:02:08,821 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 11:02:09,824 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 11:02:13,441 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 11:02:13,445 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 11:02:13,447 - INFO - TDD Adjudication Passed: False
+2025-08-31 11:02:13,448 - INFO - TDD Requirement Suggestion: 
+2025-08-31 11:02:13,450 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 11:02:13,451 - INFO - Iteration: 1
+2025-08-31 11:02:13,453 - INFO - Previous Requirement: 
+2025-08-31 11:02:13,454 - INFO - New Requirement: 
+2025-08-31 11:02:17,064 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 11:02:17,066 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 11:02:17,067 - INFO - TDD Adjudication Passed: False
+2025-08-31 11:02:17,068 - INFO - TDD Requirement Suggestion: 
+2025-08-31 11:02:17,069 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 11:02:17,070 - INFO - Iteration: 2
+2025-08-31 11:02:17,071 - INFO - Previous Requirement: 
+2025-08-31 11:02:17,072 - INFO - New Requirement: 
+2025-08-31 11:02:20,055 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 11:02:20,058 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 11:02:20,061 - INFO - TDD Adjudication Passed: False
+2025-08-31 11:02:20,063 - INFO - TDD Requirement Suggestion: 
+2025-08-31 11:02:20,067 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 11:02:20,069 - INFO - Iteration: 3
+2025-08-31 11:02:20,071 - INFO - Previous Requirement: 
+2025-08-31 11:02:20,072 - INFO - New Requirement: 
+2025-08-31 11:02:23,246 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 11:02:23,250 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 11:02:23,252 - INFO - TDD Adjudication Passed: False
+2025-08-31 11:02:23,254 - INFO - TDD Requirement Suggestion: 
+2025-08-31 11:02:23,256 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 11:02:23,258 - INFO - Iteration: 4
+2025-08-31 11:02:23,260 - INFO - Previous Requirement: 
+2025-08-31 11:02:23,262 - INFO - New Requirement: 
+2025-08-31 11:02:25,987 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 11:02:25,991 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 11:02:25,994 - INFO - TDD Adjudication Passed: False
+2025-08-31 11:02:25,996 - INFO - TDD Requirement Suggestion: 
+2025-08-31 11:02:25,998 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 11:02:26,000 - INFO - Iteration: 5
+2025-08-31 11:02:26,003 - INFO - Previous Requirement: 
+2025-08-31 11:02:26,005 - INFO - New Requirement: 
+2025-08-31 11:02:28,887 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview "HTTP/1.1 200 OK"
+2025-08-31 11:02:28,890 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 11:02:28,892 - INFO - TDD Adjudication Passed: False
+2025-08-31 11:02:28,896 - INFO - TDD Requirement Suggestion: 
+2025-08-31 11:02:28,900 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 11:02:28,901 - INFO - Iteration: 6
+2025-08-31 11:02:28,904 - INFO - Previous Requirement: 
+2025-08-31 11:02:28,905 - INFO - New Requirement: 
+2025-08-31 11:02:28,936 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 11:02:28,939 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 11:02:28,941 - WARNING - Total Duration: 73.90 seconds
+2025-08-31 11:02:28,943 - WARNING - Final Iteration Count: 0
+2025-08-31 11:02:29,063 - INFO - === SESSION SUMMARY ===
+2025-08-31 11:02:29,064 - INFO - Session Duration: 82.29 seconds
+2025-08-31 11:02:29,065 - INFO - Functions Attempted: 1
+2025-08-31 11:02:29,066 - INFO - Successful Functions: 0
+2025-08-31 11:02:29,066 - INFO - Terminated Early: 1
+2025-08-31 11:02:29,067 - INFO - Total Iterations: 0
+2025-08-31 11:02:29,068 - INFO - Average Iterations per Function: 0.00
+2025-08-31 11:02:29,068 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 11:02:29,069 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 11:02:29,070 - INFO - Final Adjudication Attempts: 0
+2025-08-31 11:02:29,070 - INFO - Requirement Reinforcements: 6

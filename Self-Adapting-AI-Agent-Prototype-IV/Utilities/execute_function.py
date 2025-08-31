@@ -1,6 +1,15 @@
-from Utilities.performanceTester import performance_subprocess_call, performance_execute
+from Utilities.performanceTester import performance_subprocess_call, performance_execute, performance_terminal_execute
 import json
 import sys
+import os
+
+# Import terminal context management
+try:
+    from Terminal_Context.context_manager import get_context_manager
+    TERMINAL_CONTEXT_AVAILABLE = True
+except ImportError:
+    TERMINAL_CONTEXT_AVAILABLE = False
+    print("Warning: Terminal Context not available. Using traditional subprocess execution.")
 
 def is_safe_function(function_name):
     """Check if function is safe to run via module import"""
@@ -65,11 +74,18 @@ def extract_from_args(function_args):
 
 
 
-def execute_function(function_name, function_args, function_definitions):
-
+def execute_function(function_name, function_args, function_definitions, use_terminal_context=True):
+    """
+    Execute function using safe method (import), terminal context, or subprocess.
+    
+    Args:
+        function_name: Name of the function to execute
+        function_args: Arguments for the function
+        function_definitions: List of function definitions
+        use_terminal_context: Whether to use persistent terminal for unsafe functions
+    """
     python_dir = sys.executable
-    folder_dir = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/Self-Adapting-AI-Agent-Prototype-IV/" 
-    """Execute function using safe method (import) or unsafe method (subprocess)"""
+    folder_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"
     is_safe = is_safe_function(function_name)
     args = extract_from_args(function_args)
     if is_safe:
@@ -194,13 +210,36 @@ def execute_function(function_name, function_args, function_definitions):
         results = performance_execute(function_name, *arg_list)
         return results, "safe"
     else:
-        print(f"Executing {function_name} via SUBPROCESS (unsafe)")
-        results = performance_subprocess_call(function_name, args, python_dir, folder_dir)
-        
-        # If subprocess execution was successful, promote to safe
-        if results.get('result') is not None and 'Error:' not in str(results.get('result', '')):
-            add_safe_function(function_name)
-            return results, "promoted_to_safe"
+        # Try to use terminal context for better state preservation
+        if use_terminal_context and TERMINAL_CONTEXT_AVAILABLE:
+            print(f"Executing {function_name} via TERMINAL CONTEXT (persistent)")
+            
+            # Get the context manager
+            context_manager = get_context_manager()
+            
+            # Prepare the function call code
+            if isinstance(args, str):
+                call_code = f"result = {function_name}({args})\nprint(result)"
+            else:
+                call_code = f"result = {function_name}(*{args})\nprint(result)"
+            
+            # Execute in terminal context with performance monitoring
+            results = performance_terminal_execute(context_manager, call_code)
+            
+            # If execution was successful, promote to safe
+            if results.get('success', False):
+                add_safe_function(function_name)
+                return results, "promoted_to_safe_via_terminal"
+            else:
+                return results, "unsafe_terminal"
         else:
-            return results, "unsafe"
+            print(f"Executing {function_name} via SUBPROCESS (unsafe)")
+            results = performance_subprocess_call(function_name, args, python_dir, folder_dir)
+            
+            # If subprocess execution was successful, promote to safe
+            if results.get('result') is not None and 'Error:' not in str(results.get('result', '')):
+                add_safe_function(function_name)
+                return results, "promoted_to_safe"
+            else:
+                return results, "unsafe"
 

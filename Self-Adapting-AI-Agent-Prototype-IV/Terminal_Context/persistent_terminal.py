@@ -155,17 +155,32 @@ print("Python terminal initialized with context preservation")
         
         # Send code to the process
         try:
-            # Add newline if not present
-            if not code.endswith('\n'):
-                code += '\n'
-            
-            # For Python, add a marker to know when execution is done
+            # For Python, handle multi-line code blocks specially
             if self.shell_type == "python":
-                # Use exec() to capture completion
                 marker = "__EXECUTION_COMPLETE__"
-                code += f"\nprint('{marker}')\n"
+                
+                # Check if this is a multi-line code block (function definition, class, etc.)
+                is_multiline = any(keyword in code for keyword in ['def ', 'class ', 'for ', 'while ', 'with ', 'if ', 'try:', 'except'])
+                
+                if is_multiline and '\n' in code.strip():
+                    # Wrap multi-line code in exec() to execute as a complete block
+                    # Escape any existing triple quotes in the code
+                    escaped_code = code.replace('"""', '\\"\\"\\"').replace("'''", "\\'\\'\\'")
+                    exec_code = f'exec("""{escaped_code}""")\nprint("{marker}")\n'
+                else:
+                    # Single line or simple statement - execute directly
+                    exec_code = code
+                    if not exec_code.endswith('\n'):
+                        exec_code += '\n'
+                    exec_code += f"print('{marker}')\n"
+                
+                self.process.stdin.write(exec_code)
+            else:
+                # Non-Python shells - execute as before
+                if not code.endswith('\n'):
+                    code += '\n'
+                self.process.stdin.write(code)
             
-            self.process.stdin.write(code)
             self.process.stdin.flush()
             
             # Collect output

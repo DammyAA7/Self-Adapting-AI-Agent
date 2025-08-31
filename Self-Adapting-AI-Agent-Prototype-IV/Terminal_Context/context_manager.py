@@ -140,6 +140,15 @@ class ContextManager:
             function_code: Complete function code
             function_info: Additional information about the function
         """
+        # Validate function code before execution
+        if not function_code.strip():
+            print(f"Failed to add function '{function_name}': Empty function code")
+            return False
+        
+        # Check if function_name appears in the code (basic validation)
+        if f"def {function_name}" not in function_code:
+            print(f"Warning: Function name '{function_name}' not found in function code")
+        
         # Execute the function code in the active terminal
         result = self.execute_in_context(function_code)
         
@@ -151,10 +160,16 @@ class ContextManager:
                 'added_at': datetime.now().isoformat(),
                 'execution_result': result
             }
-            print(f"Function '{function_name}' added to context successfully")
+            print(f"Function '{function_name}' added to persistent context")
             return True
         else:
-            print(f"Failed to add function '{function_name}': {result['error']}")
+            error_msg = result.get('error', 'Unknown error')
+            print(f"Failed to add function '{function_name}': {error_msg}")
+            # Print the function code for debugging if there's an error
+            if error_msg and 'IndentationError' in error_msg:
+                print("Function code that caused the error:")
+                for i, line in enumerate(function_code.split('\n'), 1):
+                    print(f"{i:3d}: {line}")
             return False
     
     def list_available_functions(self) -> List[str]:

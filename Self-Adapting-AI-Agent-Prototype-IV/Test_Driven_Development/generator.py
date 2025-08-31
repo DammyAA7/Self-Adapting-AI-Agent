@@ -18,7 +18,7 @@ folder_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"
 # with open('Test_Driven_Development/testDrivenCases.py', 'r') as f:
 #     test_driven_code = f.read()
 
-def generateTestDrivenCases(client, requirements, reinforced_requirement=None, project_context=None):
+def generateTestDrivenCases(client, function_code, reinforced_requirement=None, project_context=None):
 
     with open('Test_Driven_Development/prompt.txt', 'r') as f:
         prompt = f.read()
@@ -36,7 +36,7 @@ def generateTestDrivenCases(client, requirements, reinforced_requirement=None, p
     except:
         test_driven_code = ""
     
-    # Convert to OpenAI format
+    # Convert to OpenAI format  
     user_content = f'''You are given these verified safe functions as reference to assist with test data creation and setup. Available functions from functions.py: {functions_code}
 
 '''
@@ -55,7 +55,12 @@ You have full visibility of the project above. When generating test cases:
 
 '''
 
-    user_content += f'''Requirements: {requirements}
+    user_content += f'''FUNCTION CODE TO TEST:
+======================
+{function_code}
+
+IMPORTANT: Generate test cases for the EXACT function signatures shown above. 
+Use the actual parameter names and types from the function definitions.
 
 Test driven code already generated: {test_driven_code if test_driven_code else "Not available"}
 

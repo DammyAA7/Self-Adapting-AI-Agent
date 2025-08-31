@@ -310,10 +310,11 @@ if __name__ == "__main__":
                 
                     # If function code is not available or reinforced requirement is provided 
                     if not function_code or reinforced_requirement:
-                        # Generate the function code using the generator module
+                        # Generate the function code using the generator module (FUNCTION-FIRST approach)
                         print("Generating function code...")
-                        test_driven_code = generateTestDrivenCases(openai_client, function_requirement, reinforced_requirement, project_context)
-                        function_code = generate_function_code(openai_client, test_driven_code, project_context)
+                        function_code = generate_function_code(openai_client, function_requirement, reinforced_requirement, project_context)
+                        print("Generating TDD tests based on function code...")
+                        test_driven_code = generateTestDrivenCases(openai_client, function_code, reinforced_requirement, project_context)
                         #Generate tool definitions
                         tools_code = generate_tool_definitions(openai_client, function_code)
 

@@ -6,11 +6,14 @@ Function that generates Python code based on a prompt using OpenAI's API.
 with open('Function_Gen/function.txt', 'r') as f:
     generator_prompt = f.read()
 
-#Read available functions from file
-with open('functions.py', 'r') as f:
-    functions_code = f.read()
-
-def generate_function_code(client, test_driven_code, project_context=None):
+def generate_function_code(client, function_requirement, reinforced_requirement=None, project_context=None):
+    # Read existing functions to avoid conflicts and enable reuse
+    try:
+        with open('functions.py', 'r') as f:
+            functions_code = f.read()
+    except FileNotFoundError:
+        functions_code = "# No existing functions"
+    
     # Build user content with optional project context
     user_content = f'These are the functions already being used. You\'re given this as reference to help you generate a new function. Function.py : {functions_code}\n\n'
 
@@ -28,7 +31,12 @@ You have full visibility of the project above. When generating the function:
 
 '''
 
-    user_content += f'Generate a Python function based on the following Test driven code: {test_driven_code}'
+    user_content += f'Function Requirement: {function_requirement}\n\n'
+    
+    if reinforced_requirement:
+        user_content += f'Reinforced Requirement (must be followed): {reinforced_requirement}\n\n'
+    
+    user_content += 'Generate a Python function that fulfills the above requirement.'
 
     # Convert messages for OpenAI format
     generator_messages = [

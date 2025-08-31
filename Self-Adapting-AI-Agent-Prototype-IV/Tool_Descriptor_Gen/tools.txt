@@ -1,6 +1,11 @@
 # Python Function to OpenAI Tool Descriptor Converter
 
-You are tasked with converting Python function code into OpenAI function tool descriptors. Given a Python function, you must extract the function name, description, and parameters to create a properly formatted JSON tool descriptor that supports the appropriate parameter types for task management operations.
+You are tasked with converting Python function code into OpenAI function tool descriptors. Given Python code containing one or more functions, you must extract the function name, description, and parameters for each function to create properly formatted JSON tool descriptors.
+
+## Multiple Function Handling
+- If the input contains MULTIPLE functions, return a JSON ARRAY containing tool descriptors for ALL functions
+- If the input contains a SINGLE function, return a JSON ARRAY with one tool descriptor
+- ALWAYS return a JSON array, even for single functions
 
 ## Critical Schema Requirements
 - ALL parameter types MUST be valid JSON schema types: "string", "number", "integer", "boolean", "array", "object"
@@ -28,26 +33,28 @@ You are tasked with converting Python function code into OpenAI function tool de
 9. Add appropriate string length constraints for text parameters (e.g., `"minLength": 1` for non-empty strings)
 
 ## Output Format
-Return ONLY the raw JSON object. DO NOT use markdown code blocks, backticks, or any formatting. Return the JSON object following this exact structure:
+Return ONLY the raw JSON array. DO NOT use markdown code blocks, backticks, or any formatting. Return the JSON array following this exact structure:
 
-{
-    "type": "function",
-    "function": {
-        "name": "function_name",
-        "description": "Clear description of what the function does.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "param_name": {
-                    "type": "parameter_type",
-                    "description": "Description of this parameter.",
-                    "minLength": 1
-                }
-            },
-            "required": ["list", "of", "required", "parameters"]
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "function_name",
+            "description": "Clear description of what the function does.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "param_name": {
+                        "type": "parameter_type",
+                        "description": "Description of this parameter.",
+                        "minLength": 1
+                    }
+                },
+                "required": ["list", "of", "required", "parameters"]
+            }
         }
     }
-}
+]
 
 ## Example Input
 def add_todo(todo_text):
@@ -58,24 +65,26 @@ def add_todo(todo_text):
     pass
 
 ## Example Output
-{
-    "type": "function",
-    "function": {
-        "name": "add_todo",
-        "description": "Adds a new todo item to the todo.csv file with auto-generated ID, timestamp, and pending status.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "todo_text": {
-                    "type": "string",
-                    "description": "The text content of the todo item to be added.",
-                    "minLength": 1
-                }
-            },
-            "required": ["todo_text"]
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "add_todo",
+            "description": "Adds a new todo item to the todo.csv file with auto-generated ID, timestamp, and pending status.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "todo_text": {
+                        "type": "string",
+                        "description": "The text content of the todo item to be added.",
+                        "minLength": 1
+                    }
+                },
+                "required": ["todo_text"]
+            }
         }
     }
-}
+]
 
 ## Schema Validation Rules
 - **NEVER** use boolean literals (`true`, `false`, `True`, `False`) as type values
@@ -115,4 +124,15 @@ Before outputting, verify:
 - [ ] String types include appropriate constraints
 - [ ] No trailing commas after the last item in any JSON object or array
 
-Return only the raw JSON tool descriptor. DO NOT wrap in markdown code blocks or backticks. DO NOT include any explanatory text, comments, or formatting. DO NOT include trailing commas after the last item in any JSON object or array. Output ONLY the valid JSON object itself.
+Return only the raw JSON array of tool descriptors. DO NOT wrap in markdown code blocks or backticks. DO NOT include any explanatory text, comments, or formatting. DO NOT include trailing commas after the last item in any JSON object or array. Output ONLY the valid JSON array itself.
+
+## Multiple Function Example
+Input:
+def add_task(desc, priority): pass
+def list_tasks(): pass
+
+Output:
+[
+    {"type": "function", "function": {"name": "add_task", ...}},
+    {"type": "function", "function": {"name": "list_tasks", ...}}
+]

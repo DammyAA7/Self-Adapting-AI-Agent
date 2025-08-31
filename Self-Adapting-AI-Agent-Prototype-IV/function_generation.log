@@ -2570,3 +2570,975 @@ This function would return a multi-line string containing a fully functional Pyt
 2025-08-31 11:02:29,069 - INFO - TDD Adjudication Attempts: 6
 2025-08-31 11:02:29,070 - INFO - Final Adjudication Attempts: 0
 2025-08-31 11:02:29,070 - INFO - Requirement Reinforcements: 6
+2025-08-31 12:37:51,217 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:37:51,220 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 12:37:51,220 - INFO - Response Content: Function Name: send_email_smtp  
+Description: Sends an email over SMTP with HTML content and optional file attachments.  
+
+Parameters:  
+- smtp_server (string): Hostname or IP of the SMTP server (e.g....
+2025-08-31 12:37:51,220 - INFO - Initiating function generation process...
+2025-08-31 12:37:51,220 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 12:37:51,220 - INFO - User Input: Create a function that sends emails with HTML content and file attachments using SMTP
+2025-08-31 12:37:51,220 - INFO - Function Requirement: Function Name: send_email_smtp  
+Description: Sends an email over SMTP with HTML content and optional file attachments.  
+
+Parameters:  
+- smtp_server (string): Hostname or IP of the SMTP server (e.g., "smtp.gmail.com").  
+- port (integer): Port number to connect to on the SMTP server (e.g., 587).  
+- use_tls (boolean): Whether to secure the connection with STARTTLS (true/false).  
+- username (string): Username or login ID for the SMTP server.  
+- password (string): Password or app‐specific token for authentication.  
+- from_address (string): The “From” email address (e.g., "sender@example.com").  
+- to_addresses (list of strings): One or more recipient email addresses.  
+- cc_addresses (optional, list of strings): One or more CC recipient addresses.  
+- bcc_addresses (optional, list of strings): One or more BCC recipient addresses.  
+- subject (string): Subject line of the email.  
+- html_body (string): The HTML content to include in the body of the email.  
+- attachments (optional, list of file paths or file‐objects): Files to attach to the email.  
+
+Example:  
+send_email_smtp(  
+  smtp_server="smtp.gmail.com",  
+  port=587,  
+  use_tls=true,  
+  username="your.username@gmail.com",  
+  password="yourAppPassword",  
+  from_address="your.username@gmail.com",  
+  to_addresses=["recipient1@example.com", "recipient2@example.com"],  
+  cc_addresses=["manager@example.com"],  
+  bcc_addresses=[],  
+  subject="Monthly Report",  
+  html_body="<h1>Here is the report</h1><p>Please see attached files.</p>",  
+  attachments=["/path/to/report.pdf", "/path/to/chart.png"]  
+)
+2025-08-31 12:38:22,202 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:38:53,882 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:38:58,924 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:39:15,453 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:39:16,713 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:39:16,715 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 12:39:16,715 - INFO - TDD Adjudication Passed: True
+2025-08-31 12:39:45,867 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:39:47,736 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:39:47,737 - INFO - --- ITERATION 1 ---
+2025-08-31 12:39:47,737 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 12:39:47,737 - INFO - Adjudication Passed: True
+2025-08-31 12:39:47,790 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 12:39:47,790 - INFO - Function Name: send_email_smtp
+2025-08-31 12:39:47,790 - INFO - Total Iterations: 1
+2025-08-31 12:39:47,790 - INFO - Total Duration: 116.57 seconds
+2025-08-31 12:39:47,790 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 12:39:47,790 - INFO - Final Adjudication Attempts: 1
+2025-08-31 12:39:47,790 - INFO - Requirement Reinforcements: 0
+2025-08-31 12:39:47,804 - INFO - === SESSION SUMMARY ===
+2025-08-31 12:39:47,804 - INFO - Session Duration: 124.67 seconds
+2025-08-31 12:39:47,804 - INFO - Functions Attempted: 1
+2025-08-31 12:39:47,804 - INFO - Successful Functions: 1
+2025-08-31 12:39:47,804 - INFO - Terminated Early: 0
+2025-08-31 12:39:47,804 - INFO - Total Iterations: 1
+2025-08-31 12:39:47,804 - INFO - Average Iterations per Function: 1.00
+2025-08-31 12:39:47,804 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 12:39:47,804 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 12:39:47,804 - INFO - Final Adjudication Attempts: 1
+2025-08-31 12:39:47,804 - INFO - Requirement Reinforcements: 0
+2025-08-31 12:41:11,340 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:41:11,342 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 12:41:11,342 - INFO - Response Content: Function Name: send_email_smtp  
+Description: Sends an email via an SMTP server, supporting HTML body content and multiple file attachments.  
+Parameters:  
+- smtp_server (string): Hostname or IP addr...
+2025-08-31 12:41:11,342 - INFO - Initiating function generation process...
+2025-08-31 12:41:11,343 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 12:41:11,343 - INFO - User Input: Create a function that sends emails with HTML content and file attachments using SMTP
+2025-08-31 12:41:11,343 - INFO - Function Requirement: Function Name: send_email_smtp  
+Description: Sends an email via an SMTP server, supporting HTML body content and multiple file attachments.  
+Parameters:  
+- smtp_server (string): Hostname or IP address of the SMTP server.  
+- smtp_port (integer): Port number to connect to (e.g. 587 for TLS).  
+- username (string): SMTP authentication username.  
+- password (string): SMTP authentication password.  
+- from_address (string): Email address of the sender.  
+- to_addresses (list of strings): One or more recipient email addresses.  
+- subject (string): Subject line of the email.  
+- html_content (string): HTML-formatted string for the email body.  
+- attachments (list of strings): File paths to attach to the email.  
+
+Example:  
+```python
+send_email_smtp(
+    smtp_server="smtp.example.com",
+    smtp_port=587,
+    username="user@example.com",
+    password="securepassword",
+    from_address="user@example.com",
+    to_addresses=["recipient1@example.com", "recipient2@example.com"],
+    subject="Monthly Report",
+    html_content="""
+        <html>
+          <body>
+            <h1>Dear Team,</h1>
+            <p>Please find attached the monthly report.</p>
+          </body>
+        </html>
+    """,
+    attachments=["/path/to/report.pdf", "/path/to/image.png"]
+)
+```
+2025-08-31 12:41:41,862 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:42:15,580 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:42:18,992 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:42:30,712 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:42:31,777 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:42:31,778 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 12:42:31,778 - INFO - TDD Adjudication Passed: True
+2025-08-31 12:43:10,299 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:43:12,502 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:43:12,504 - INFO - --- ITERATION 1 ---
+2025-08-31 12:43:12,504 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 12:43:12,504 - INFO - Adjudication Passed: False
+2025-08-31 12:43:12,504 - INFO - Code Requirement Suggestion: 
+2025-08-31 12:43:12,504 - INFO - Unit Requirement Suggestion: 
+2025-08-31 12:43:12,504 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 12:43:12,504 - INFO - Iteration: 1
+2025-08-31 12:43:12,504 - INFO - Previous Requirement: 
+2025-08-31 12:43:12,504 - INFO - New Requirement: 
+2025-08-31 12:43:12,504 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 12:43:12,504 - INFO - Iteration: 1
+2025-08-31 12:43:12,504 - INFO - Previous Requirement: 
+2025-08-31 12:43:12,504 - INFO - New Requirement: 
+2025-08-31 12:43:13,591 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:43:13,592 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 12:43:13,592 - INFO - TDD Adjudication Passed: True
+2025-08-31 12:43:16,711 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:43:16,711 - INFO - --- ITERATION 2 ---
+2025-08-31 12:43:16,711 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 12:43:16,711 - INFO - Adjudication Passed: True
+2025-08-31 12:43:16,766 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 12:43:16,766 - INFO - Function Name: send_email_smtp
+2025-08-31 12:43:16,766 - INFO - Total Iterations: 2
+2025-08-31 12:43:16,766 - INFO - Total Duration: 125.42 seconds
+2025-08-31 12:43:16,766 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 12:43:16,766 - INFO - Final Adjudication Attempts: 2
+2025-08-31 12:43:16,766 - INFO - Requirement Reinforcements: 2
+2025-08-31 12:43:16,779 - INFO - === SESSION SUMMARY ===
+2025-08-31 12:43:16,779 - INFO - Session Duration: 132.37 seconds
+2025-08-31 12:43:16,779 - INFO - Functions Attempted: 1
+2025-08-31 12:43:16,779 - INFO - Successful Functions: 1
+2025-08-31 12:43:16,779 - INFO - Terminated Early: 0
+2025-08-31 12:43:16,779 - INFO - Total Iterations: 2
+2025-08-31 12:43:16,779 - INFO - Average Iterations per Function: 2.00
+2025-08-31 12:43:16,779 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 12:43:16,779 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 12:43:16,779 - INFO - Final Adjudication Attempts: 2
+2025-08-31 12:43:16,779 - INFO - Requirement Reinforcements: 2
+2025-08-31 12:53:46,811 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:53:46,813 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 12:53:46,813 - INFO - Response Content: Function Name: send_email_smtp  
+Description: Sends an email via SMTP with HTML content and optional file attachments.  
+Parameters:  
+- smtp_server (string): Hostname or IP address of the SMTP server...
+2025-08-31 12:53:46,813 - INFO - Initiating function generation process...
+2025-08-31 12:53:46,813 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 12:53:46,813 - INFO - User Input: Create a function that sends emails with HTML content and file attachments using SMTP
+2025-08-31 12:53:46,813 - INFO - Function Requirement: Function Name: send_email_smtp  
+Description: Sends an email via SMTP with HTML content and optional file attachments.  
+Parameters:  
+- smtp_server (string): Hostname or IP address of the SMTP server.  
+- port (integer): Port number for the SMTP service (e.g., 587 for TLS, 465 for SSL).  
+- username (string): Username for SMTP authentication.  
+- password (string): Password for SMTP authentication.  
+- from_addr (string): The sender’s email address.  
+- to_addrs (list of strings): A list of recipient email addresses.  
+- subject (string): The subject line of the email.  
+- html_content (string): The HTML body of the email.  
+- attachments (list of strings, optional): File paths for any files to attach.  
+
+Example:  
+```
+send_email_smtp(
+  smtp_server="smtp.example.com",
+  port=587,
+  username="user@example.com",
+  password="securepassword123",
+  from_addr="user@example.com",
+  to_addrs=["alice@example.com", "bob@example.com"],
+  subject="Monthly Report",
+  html_content="<h1>Report</h1><p>Please see attached.</p>",
+  attachments=["/path/to/report.pdf", "/path/to/chart.png"]
+)
+```
+2025-08-31 12:54:03,601 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:54:49,050 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:54:50,170 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:54:52,530 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:54:54,200 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:54:54,201 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 12:54:54,201 - INFO - TDD Adjudication Passed: False
+2025-08-31 12:54:54,201 - INFO - TDD Requirement Suggestion: 
+2025-08-31 12:54:54,201 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 12:54:54,201 - INFO - Iteration: 1
+2025-08-31 12:54:54,201 - INFO - Previous Requirement: 
+2025-08-31 12:54:54,201 - INFO - New Requirement: 
+2025-08-31 12:54:56,112 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:54:56,113 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 12:54:56,113 - INFO - TDD Adjudication Passed: False
+2025-08-31 12:54:56,113 - INFO - TDD Requirement Suggestion: 
+2025-08-31 12:54:56,113 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 12:54:56,113 - INFO - Iteration: 2
+2025-08-31 12:54:56,113 - INFO - Previous Requirement: 
+2025-08-31 12:54:56,113 - INFO - New Requirement: 
+2025-08-31 12:54:57,673 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:54:57,674 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 12:54:57,674 - INFO - TDD Adjudication Passed: False
+2025-08-31 12:54:57,674 - INFO - TDD Requirement Suggestion: 
+2025-08-31 12:54:57,674 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 12:54:57,674 - INFO - Iteration: 3
+2025-08-31 12:54:57,674 - INFO - Previous Requirement: 
+2025-08-31 12:54:57,674 - INFO - New Requirement: 
+2025-08-31 12:54:59,384 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:54:59,385 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 12:54:59,385 - INFO - TDD Adjudication Passed: False
+2025-08-31 12:54:59,385 - INFO - TDD Requirement Suggestion: 
+2025-08-31 12:54:59,385 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 12:54:59,385 - INFO - Iteration: 4
+2025-08-31 12:54:59,385 - INFO - Previous Requirement: 
+2025-08-31 12:54:59,385 - INFO - New Requirement: 
+2025-08-31 12:55:01,032 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:55:01,033 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 12:55:01,033 - INFO - TDD Adjudication Passed: False
+2025-08-31 12:55:01,033 - INFO - TDD Requirement Suggestion: 
+2025-08-31 12:55:01,033 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 12:55:01,033 - INFO - Iteration: 5
+2025-08-31 12:55:01,033 - INFO - Previous Requirement: 
+2025-08-31 12:55:01,033 - INFO - New Requirement: 
+2025-08-31 12:55:02,568 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 12:55:02,569 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 12:55:02,569 - INFO - TDD Adjudication Passed: False
+2025-08-31 12:55:02,569 - INFO - TDD Requirement Suggestion: 
+2025-08-31 12:55:02,569 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 12:55:02,569 - INFO - Iteration: 6
+2025-08-31 12:55:02,569 - INFO - Previous Requirement: 
+2025-08-31 12:55:02,569 - INFO - New Requirement: 
+2025-08-31 12:55:02,569 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 12:55:02,569 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 12:55:02,569 - WARNING - Total Duration: 75.76 seconds
+2025-08-31 12:55:02,569 - WARNING - Final Iteration Count: 0
+2025-08-31 12:55:02,571 - INFO - === SESSION SUMMARY ===
+2025-08-31 12:55:02,571 - INFO - Session Duration: 83.13 seconds
+2025-08-31 12:55:02,571 - INFO - Functions Attempted: 1
+2025-08-31 12:55:02,571 - INFO - Successful Functions: 0
+2025-08-31 12:55:02,571 - INFO - Terminated Early: 1
+2025-08-31 12:55:02,571 - INFO - Total Iterations: 0
+2025-08-31 12:55:02,571 - INFO - Average Iterations per Function: 0.00
+2025-08-31 12:55:02,571 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 12:55:02,571 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 12:55:02,572 - INFO - Final Adjudication Attempts: 0
+2025-08-31 12:55:02,572 - INFO - Requirement Reinforcements: 6
+2025-08-31 16:05:13,859 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 16:05:13,863 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 16:05:13,863 - INFO - Response Content: Function Name: reverse_words  
+Description: Reverses the order of words in the provided sentence.  
+Parameters:  
+- sentence (string): The input sentence whose words will be reversed.  
+
+Example:  
+In...
+2025-08-31 16:05:13,863 - INFO - Initiating function generation process...
+2025-08-31 16:05:13,863 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 16:05:13,863 - INFO - User Input: Create a function to reverse words in a sentence. Reverse the words: The quick brown fox jumps over the lazy dog
+2025-08-31 16:05:13,863 - INFO - Function Requirement: Function Name: reverse_words  
+Description: Reverses the order of words in the provided sentence.  
+Parameters:  
+- sentence (string): The input sentence whose words will be reversed.  
+
+Example:  
+Input:  
+  "The quick brown fox jumps over the lazy dog"  
+
+Usage:  
+  reverse_words("The quick brown fox jumps over the lazy dog")  
+
+Output:  
+  "dog lazy the over jumps fox brown quick The"
+2025-08-31 16:05:24,656 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 16:05:35,024 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 16:05:36,218 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 16:05:40,996 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 16:05:42,325 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 16:05:42,326 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 16:05:42,326 - INFO - TDD Adjudication Passed: True
+2025-08-31 16:05:56,251 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 16:05:58,301 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 16:05:58,301 - INFO - --- ITERATION 1 ---
+2025-08-31 16:05:58,302 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 16:05:58,302 - INFO - Adjudication Passed: True
+2025-08-31 16:05:58,346 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 16:05:58,346 - INFO - Function Name: reverse_words
+2025-08-31 16:05:58,346 - INFO - Total Iterations: 1
+2025-08-31 16:05:58,346 - INFO - Total Duration: 44.48 seconds
+2025-08-31 16:05:58,346 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 16:05:58,346 - INFO - Final Adjudication Attempts: 1
+2025-08-31 16:05:58,346 - INFO - Requirement Reinforcements: 0
+2025-08-31 16:06:01,478 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 16:06:01,491 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-31 16:06:01,491 - INFO - Function: reverse_words
+2025-08-31 16:06:01,491 - INFO - Arguments: {'sentence': 'The quick brown fox jumps over the lazy dog'}
+2025-08-31 16:06:01,491 - INFO - Execution Time: 0.010291907994542271 seconds
+2025-08-31 16:06:01,491 - INFO - Memory Peak: 18604 bytes
+2025-08-31 16:06:01,491 - INFO - Success: False
+2025-08-31 16:06:02,433 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 16:06:02,448 - INFO - === SESSION SUMMARY ===
+2025-08-31 16:06:02,448 - INFO - Session Duration: 59.51 seconds
+2025-08-31 16:06:02,448 - INFO - Functions Attempted: 1
+2025-08-31 16:06:02,448 - INFO - Successful Functions: 1
+2025-08-31 16:06:02,448 - INFO - Terminated Early: 0
+2025-08-31 16:06:02,448 - INFO - Total Iterations: 1
+2025-08-31 16:06:02,448 - INFO - Average Iterations per Function: 1.00
+2025-08-31 16:06:02,448 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-31 16:06:02,448 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 16:06:02,448 - INFO - Final Adjudication Attempts: 1
+2025-08-31 16:06:02,448 - INFO - Requirement Reinforcements: 0
+2025-08-31 17:48:28,314 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:48:28,317 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 17:48:28,317 - INFO - Response Content: Function Name: validate_us_phone_number  
+Description: Validates whether a given string is a valid US phone number. Supports formats such as  
+  - (555) 123-4567  
+  - 555-123-4567  
+  - 1234567890  
+...
+2025-08-31 17:48:28,317 - INFO - Initiating function generation process...
+2025-08-31 17:48:33,949 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:48:33,950 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 17:48:33,950 - INFO - User Input: Create a phone number validation function for US numbers. Validate these numbers: (555) 123-4567, 555-123-4567, 1234567890
+2025-08-31 17:48:33,950 - INFO - Function Requirement: Function Name: validate_us_phone_number  
+Description: Validates whether a given string is a valid US phone number. Supports formats such as  
+  - (555) 123-4567  
+  - 555-123-4567  
+  - 1234567890  
+Parameters:  
+  - number (string): The phone number to validate.  
+Returns:  
+  - boolean: true if the number is a valid US phone number, false otherwise.  
+Example Implementation (JavaScript):  
+```javascript
+function validate_us_phone_number(number) {
+  // US phone number regex:
+  // Optional parentheses around area code, optional separators (space or hyphen)
+  const regex = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
+  return regex.test(number);
+}
+
+// Example validations:
+console.log(validate_us_phone_number("(555) 123-4567")); // true
+console.log(validate_us_phone_number("555-123-4567"));   // true
+console.log(validate_us_phone_number("1234567890"));     // true
+console.log(validate_us_phone_number("555123456"));      // false
+```
+2025-08-31 17:48:45,927 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:49:05,349 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:49:06,437 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:49:12,545 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:49:15,623 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:49:15,625 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 17:49:15,625 - INFO - TDD Adjudication Passed: True
+2025-08-31 17:49:38,970 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:49:42,862 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:49:42,862 - INFO - --- ITERATION 1 ---
+2025-08-31 17:49:42,862 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 17:49:42,863 - INFO - Adjudication Passed: True
+2025-08-31 17:49:42,905 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 17:49:42,906 - INFO - Function Name: validate_us_phone_number
+2025-08-31 17:49:42,906 - INFO - Total Iterations: 1
+2025-08-31 17:49:42,906 - INFO - Total Duration: 68.96 seconds
+2025-08-31 17:49:42,906 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 17:49:42,906 - INFO - Final Adjudication Attempts: 1
+2025-08-31 17:49:42,906 - INFO - Requirement Reinforcements: 0
+2025-08-31 17:49:55,969 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:49:55,983 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-31 17:49:55,983 - INFO - Function: validate_us_phone_number
+2025-08-31 17:49:55,983 - INFO - Arguments: {'number': '(555) 123-4567'}
+2025-08-31 17:49:55,983 - INFO - Execution Time: 0.010279436013661325 seconds
+2025-08-31 17:49:55,983 - INFO - Memory Peak: 18488 bytes
+2025-08-31 17:49:55,983 - INFO - Success: False
+2025-08-31 17:49:56,993 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:49:57,008 - INFO - === SESSION SUMMARY ===
+2025-08-31 17:49:57,008 - INFO - Session Duration: 98.75 seconds
+2025-08-31 17:49:57,008 - INFO - Functions Attempted: 1
+2025-08-31 17:49:57,008 - INFO - Successful Functions: 1
+2025-08-31 17:49:57,008 - INFO - Terminated Early: 0
+2025-08-31 17:49:57,008 - INFO - Total Iterations: 1
+2025-08-31 17:49:57,008 - INFO - Average Iterations per Function: 1.00
+2025-08-31 17:49:57,008 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-31 17:49:57,008 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 17:49:57,008 - INFO - Final Adjudication Attempts: 1
+2025-08-31 17:49:57,008 - INFO - Requirement Reinforcements: 0
+2025-08-31 17:53:55,123 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:53:55,124 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 17:53:55,124 - INFO - Response Content: Function Name: validate_emails  
+Description: Checks whether each email address in a list is syntactically valid according to standard email-format rules (e.g., local@domain.tld).  
+Parameters:
+- emai...
+2025-08-31 17:53:55,124 - INFO - Initiating function generation process...
+2025-08-31 17:54:00,305 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:54:00,307 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 17:54:00,307 - INFO - User Input: Create an email validation function. Validate these emails: test@example.com, invalid-email, user@domain.co.uk
+2025-08-31 17:54:00,307 - INFO - Function Requirement: Function Name: validate_emails  
+Description: Checks whether each email address in a list is syntactically valid according to standard email-format rules (e.g., local@domain.tld).  
+Parameters:
+- emails: A list of email address strings to validate.  
+
+Example:
+```
+validate_emails([
+  "test@example.com",
+  "invalid-email",
+  "user@domain.co.uk"
+])
+```
+2025-08-31 17:54:24,233 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:55:09,615 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:55:10,719 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:55:13,380 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:55:15,223 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:55:15,224 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 17:55:15,224 - INFO - TDD Adjudication Passed: False
+2025-08-31 17:55:15,224 - INFO - TDD Requirement Suggestion: 
+2025-08-31 17:55:15,224 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 17:55:15,224 - INFO - Iteration: 1
+2025-08-31 17:55:15,224 - INFO - Previous Requirement: 
+2025-08-31 17:55:15,224 - INFO - New Requirement: 
+2025-08-31 17:55:17,323 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:55:17,323 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 17:55:17,323 - INFO - TDD Adjudication Passed: False
+2025-08-31 17:55:17,323 - INFO - TDD Requirement Suggestion: 
+2025-08-31 17:55:17,323 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 17:55:17,323 - INFO - Iteration: 2
+2025-08-31 17:55:17,324 - INFO - Previous Requirement: 
+2025-08-31 17:55:17,324 - INFO - New Requirement: 
+2025-08-31 17:55:19,522 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:55:19,523 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 17:55:19,523 - INFO - TDD Adjudication Passed: False
+2025-08-31 17:55:19,523 - INFO - TDD Requirement Suggestion: 
+2025-08-31 17:55:19,523 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 17:55:19,523 - INFO - Iteration: 3
+2025-08-31 17:55:19,523 - INFO - Previous Requirement: 
+2025-08-31 17:55:19,523 - INFO - New Requirement: 
+2025-08-31 17:55:21,317 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:55:21,318 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 17:55:21,318 - INFO - TDD Adjudication Passed: False
+2025-08-31 17:55:21,318 - INFO - TDD Requirement Suggestion: 
+2025-08-31 17:55:21,318 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 17:55:21,318 - INFO - Iteration: 4
+2025-08-31 17:55:21,318 - INFO - Previous Requirement: 
+2025-08-31 17:55:21,318 - INFO - New Requirement: 
+2025-08-31 17:55:22,924 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:55:22,925 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 17:55:22,925 - INFO - TDD Adjudication Passed: False
+2025-08-31 17:55:22,925 - INFO - TDD Requirement Suggestion: 
+2025-08-31 17:55:22,925 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 17:55:22,925 - INFO - Iteration: 5
+2025-08-31 17:55:22,925 - INFO - Previous Requirement: 
+2025-08-31 17:55:22,925 - INFO - New Requirement: 
+2025-08-31 17:55:24,645 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 17:55:24,646 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 17:55:24,646 - INFO - TDD Adjudication Passed: False
+2025-08-31 17:55:24,646 - INFO - TDD Requirement Suggestion: 
+2025-08-31 17:55:24,646 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 17:55:24,646 - INFO - Iteration: 6
+2025-08-31 17:55:24,646 - INFO - Previous Requirement: 
+2025-08-31 17:55:24,646 - INFO - New Requirement: 
+2025-08-31 17:55:24,646 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 17:55:24,646 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 17:55:24,646 - WARNING - Total Duration: 84.34 seconds
+2025-08-31 17:55:24,646 - WARNING - Final Iteration Count: 0
+2025-08-31 17:55:24,650 - INFO - === SESSION SUMMARY ===
+2025-08-31 17:55:24,651 - INFO - Session Duration: 96.12 seconds
+2025-08-31 17:55:24,651 - INFO - Functions Attempted: 1
+2025-08-31 17:55:24,651 - INFO - Successful Functions: 0
+2025-08-31 17:55:24,651 - INFO - Terminated Early: 1
+2025-08-31 17:55:24,651 - INFO - Total Iterations: 0
+2025-08-31 17:55:24,651 - INFO - Average Iterations per Function: 0.00
+2025-08-31 17:55:24,651 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 17:55:24,651 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 17:55:24,651 - INFO - Final Adjudication Attempts: 0
+2025-08-31 17:55:24,651 - INFO - Requirement Reinforcements: 6
+2025-08-31 18:13:14,888 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:13:14,890 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 18:13:14,890 - INFO - Response Content: Function Name: check_password_strength  
+Description: Evaluates the strength of a given password by checking its length, use of uppercase and lowercase letters, digits, special characters, and common ...
+2025-08-31 18:13:14,890 - INFO - Initiating function generation process...
+2025-08-31 18:13:25,536 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:13:25,537 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 18:13:25,537 - INFO - User Input: Create a password strength checker function. Check strength of passwords: MyP@ssw0rd123 and password
+2025-08-31 18:13:25,537 - INFO - Function Requirement: Function Name: check_password_strength  
+Description: Evaluates the strength of a given password by checking its length, use of uppercase and lowercase letters, digits, special characters, and common patterns. Returns a classification such as “Weak,” “Medium,” or “Strong.”  
+Parameters:  
+- password (string): The password to evaluate.  
+
+Example:  
+1. check_password_strength("MyP@ssw0rd123") → "Strong"  
+2. check_password_strength("password") → "Weak"
+2025-08-31 18:13:45,194 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:14:29,732 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:14:31,072 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:14:31,801 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:14:33,519 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:14:33,519 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 18:14:33,519 - INFO - TDD Adjudication Passed: False
+2025-08-31 18:14:33,519 - INFO - TDD Requirement Suggestion: 
+2025-08-31 18:14:33,519 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 18:14:33,519 - INFO - Iteration: 1
+2025-08-31 18:14:33,519 - INFO - Previous Requirement: 
+2025-08-31 18:14:33,519 - INFO - New Requirement: 
+2025-08-31 18:14:35,450 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:14:35,451 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 18:14:35,451 - INFO - TDD Adjudication Passed: False
+2025-08-31 18:14:35,451 - INFO - TDD Requirement Suggestion: 
+2025-08-31 18:14:35,451 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 18:14:35,451 - INFO - Iteration: 2
+2025-08-31 18:14:35,451 - INFO - Previous Requirement: 
+2025-08-31 18:14:35,451 - INFO - New Requirement: 
+2025-08-31 18:14:37,322 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:14:37,323 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 18:14:37,323 - INFO - TDD Adjudication Passed: False
+2025-08-31 18:14:37,323 - INFO - TDD Requirement Suggestion: 
+2025-08-31 18:14:37,323 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 18:14:37,323 - INFO - Iteration: 3
+2025-08-31 18:14:37,323 - INFO - Previous Requirement: 
+2025-08-31 18:14:37,323 - INFO - New Requirement: 
+2025-08-31 18:14:38,708 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:14:38,708 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 18:14:38,708 - INFO - TDD Adjudication Passed: False
+2025-08-31 18:14:38,708 - INFO - TDD Requirement Suggestion: 
+2025-08-31 18:14:38,708 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 18:14:38,708 - INFO - Iteration: 4
+2025-08-31 18:14:38,708 - INFO - Previous Requirement: 
+2025-08-31 18:14:38,708 - INFO - New Requirement: 
+2025-08-31 18:14:40,490 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:14:40,491 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 18:14:40,491 - INFO - TDD Adjudication Passed: False
+2025-08-31 18:14:40,491 - INFO - TDD Requirement Suggestion: 
+2025-08-31 18:14:40,491 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 18:14:40,491 - INFO - Iteration: 5
+2025-08-31 18:14:40,491 - INFO - Previous Requirement: 
+2025-08-31 18:14:40,491 - INFO - New Requirement: 
+2025-08-31 18:14:42,540 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:14:42,540 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 18:14:42,540 - INFO - TDD Adjudication Passed: False
+2025-08-31 18:14:42,540 - INFO - TDD Requirement Suggestion: 
+2025-08-31 18:14:42,540 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 18:14:42,540 - INFO - Iteration: 6
+2025-08-31 18:14:42,540 - INFO - Previous Requirement: 
+2025-08-31 18:14:42,540 - INFO - New Requirement: 
+2025-08-31 18:14:42,541 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 18:14:42,541 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 18:14:42,541 - WARNING - Total Duration: 77.00 seconds
+2025-08-31 18:14:42,541 - WARNING - Final Iteration Count: 0
+2025-08-31 18:14:42,544 - INFO - === SESSION SUMMARY ===
+2025-08-31 18:14:42,544 - INFO - Session Duration: 102.20 seconds
+2025-08-31 18:14:42,544 - INFO - Functions Attempted: 1
+2025-08-31 18:14:42,544 - INFO - Successful Functions: 0
+2025-08-31 18:14:42,544 - INFO - Terminated Early: 1
+2025-08-31 18:14:42,544 - INFO - Total Iterations: 0
+2025-08-31 18:14:42,544 - INFO - Average Iterations per Function: 0.00
+2025-08-31 18:14:42,544 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 18:14:42,544 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 18:14:42,544 - INFO - Final Adjudication Attempts: 0
+2025-08-31 18:14:42,544 - INFO - Requirement Reinforcements: 6
+2025-08-31 18:19:04,125 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:19:04,128 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 18:19:04,128 - INFO - Response Content: Function Name: check_password_strength  
+Description: Evaluates the strength of a given password by checking for minimum length, presence of uppercase and lowercase letters, digits, and special charac...
+2025-08-31 18:19:04,128 - INFO - Initiating function generation process...
+2025-08-31 18:19:04,128 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 18:19:04,129 - INFO - User Input: Create a password strength checker function. Check strength of passwords: MyP@ssw0rd123 and password
+2025-08-31 18:19:04,129 - INFO - Function Requirement: Function Name: check_password_strength  
+Description: Evaluates the strength of a given password by checking for minimum length, presence of uppercase and lowercase letters, digits, and special characters. Returns a strength rating (e.g., “Very Weak”, “Weak”, “Moderate”, “Strong”, “Very Strong”).  
+Parameters:  
+- password (string): The password to evaluate.  
+
+Example Usage:  
+– check_password_strength("MyP@ssw0rd123")  
+– check_password_strength("password")  
+
+Example Output:  
+– check_password_strength("MyP@ssw0rd123") → "Strong"  
+– check_password_strength("password") → "Very Weak"
+2025-08-31 18:19:17,533 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:20:10,625 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:20:11,856 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:20:25,369 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:20:25,371 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 18:20:25,371 - INFO - Response Content: Function Name: check_password_strength  
+Description: Evaluates the strength of a given password based on length, use of uppercase and lowercase letters, digits, and special characters.  
+Parameters: ...
+2025-08-31 18:20:25,371 - INFO - Initiating function generation process...
+2025-08-31 18:20:25,372 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 18:20:25,372 - INFO - User Input: Create a password strength checker function. Check strength of passwords: MyP@ssw0rd123 and password
+2025-08-31 18:20:25,372 - INFO - Function Requirement: Function Name: check_password_strength  
+Description: Evaluates the strength of a given password based on length, use of uppercase and lowercase letters, digits, and special characters.  
+Parameters:  
+- password (string): The password to evaluate.  
+
+Returns:  
+- A strength rating as a string, e.g. "Very Weak", "Weak", "Moderate", "Strong", or "Very Strong".  
+
+Example Usage:  
+- check_password_strength("MyP@ssw0rd123") → "Strong"  
+- check_password_strength("password") → "Very Weak"
+2025-08-31 18:20:35,818 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:21:08,581 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:21:10,427 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:21:17,462 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:21:19,066 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:21:19,067 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 18:21:19,067 - INFO - TDD Adjudication Passed: True
+2025-08-31 18:21:53,594 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:21:57,938 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:21:57,939 - INFO - --- ITERATION 1 ---
+2025-08-31 18:21:57,939 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 18:21:57,939 - INFO - Adjudication Passed: False
+2025-08-31 18:21:57,939 - INFO - Code Requirement Suggestion: 
+2025-08-31 18:21:57,939 - INFO - Unit Requirement Suggestion: 
+2025-08-31 18:21:57,939 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 18:21:57,939 - INFO - Iteration: 1
+2025-08-31 18:21:57,939 - INFO - Previous Requirement: 
+2025-08-31 18:21:57,939 - INFO - New Requirement: 
+2025-08-31 18:21:57,939 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 18:21:57,939 - INFO - Iteration: 1
+2025-08-31 18:21:57,939 - INFO - Previous Requirement: 
+2025-08-31 18:21:57,939 - INFO - New Requirement: 
+2025-08-31 18:21:59,163 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:21:59,163 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 18:21:59,163 - INFO - TDD Adjudication Passed: True
+2025-08-31 18:22:02,553 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:22:02,554 - INFO - --- ITERATION 2 ---
+2025-08-31 18:22:02,554 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 18:22:02,554 - INFO - Adjudication Passed: False
+2025-08-31 18:22:02,554 - INFO - Code Requirement Suggestion: Function should validate input types and raise TypeError for non-string inputs
+2025-08-31 18:22:02,554 - INFO - Unit Requirement Suggestion: 
+2025-08-31 18:22:02,554 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 18:22:02,554 - INFO - Iteration: 2
+2025-08-31 18:22:02,554 - INFO - Previous Requirement: 
+2025-08-31 18:22:02,554 - INFO - New Requirement: Function should validate input types and raise TypeError for non-string inputs
+2025-08-31 18:22:02,554 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 18:22:02,554 - INFO - Iteration: 2
+2025-08-31 18:22:02,554 - INFO - Previous Requirement: 
+2025-08-31 18:22:02,554 - INFO - New Requirement: 
+2025-08-31 18:22:11,253 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:22:50,815 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:23:03,315 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:23:09,762 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:23:10,920 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:23:10,920 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 18:23:10,920 - INFO - TDD Adjudication Passed: True
+2025-08-31 18:23:12,850 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:23:12,851 - INFO - --- ITERATION 3 ---
+2025-08-31 18:23:12,851 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 18:23:12,851 - INFO - Adjudication Passed: False
+2025-08-31 18:23:12,851 - INFO - Code Requirement Suggestion: 
+2025-08-31 18:23:12,851 - INFO - Unit Requirement Suggestion: 
+2025-08-31 18:23:12,851 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 18:23:12,851 - INFO - Iteration: 3
+2025-08-31 18:23:12,851 - INFO - Previous Requirement: Function should validate input types and raise TypeError for non-string inputs
+2025-08-31 18:23:12,851 - INFO - New Requirement: 
+2025-08-31 18:23:12,851 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 18:23:12,851 - INFO - Iteration: 3
+2025-08-31 18:23:12,851 - INFO - Previous Requirement: 
+2025-08-31 18:23:12,851 - INFO - New Requirement: 
+2025-08-31 18:23:13,947 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:23:13,948 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 18:23:13,948 - INFO - TDD Adjudication Passed: True
+2025-08-31 18:23:16,075 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:23:16,076 - INFO - --- ITERATION 4 ---
+2025-08-31 18:23:16,076 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 18:23:16,076 - INFO - Adjudication Passed: False
+2025-08-31 18:23:16,076 - INFO - Code Requirement Suggestion: 
+2025-08-31 18:23:16,076 - INFO - Unit Requirement Suggestion: 
+2025-08-31 18:23:16,076 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 18:23:16,076 - INFO - Iteration: 4
+2025-08-31 18:23:16,076 - INFO - Previous Requirement: 
+2025-08-31 18:23:16,076 - INFO - New Requirement: 
+2025-08-31 18:23:16,076 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 18:23:16,076 - INFO - Iteration: 4
+2025-08-31 18:23:16,076 - INFO - Previous Requirement: 
+2025-08-31 18:23:16,076 - INFO - New Requirement: 
+2025-08-31 18:23:17,266 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:23:17,267 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 18:23:17,267 - INFO - TDD Adjudication Passed: True
+2025-08-31 18:23:19,264 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:23:19,265 - INFO - --- ITERATION 5 ---
+2025-08-31 18:23:19,266 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 18:23:19,266 - INFO - Adjudication Passed: False
+2025-08-31 18:23:19,266 - INFO - Code Requirement Suggestion: 
+2025-08-31 18:23:19,266 - INFO - Unit Requirement Suggestion: 
+2025-08-31 18:23:19,266 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 18:23:19,266 - INFO - Iteration: 5
+2025-08-31 18:23:19,266 - INFO - Previous Requirement: 
+2025-08-31 18:23:19,266 - INFO - New Requirement: 
+2025-08-31 18:23:19,266 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 18:23:19,266 - INFO - Iteration: 5
+2025-08-31 18:23:19,266 - INFO - Previous Requirement: 
+2025-08-31 18:23:19,266 - INFO - New Requirement: 
+2025-08-31 18:23:20,360 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:23:20,360 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 18:23:20,360 - INFO - TDD Adjudication Passed: True
+2025-08-31 18:23:22,898 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:23:22,899 - INFO - --- ITERATION 6 ---
+2025-08-31 18:23:22,899 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 18:23:22,899 - INFO - Adjudication Passed: False
+2025-08-31 18:23:22,899 - INFO - Code Requirement Suggestion: 
+2025-08-31 18:23:22,899 - INFO - Unit Requirement Suggestion: 
+2025-08-31 18:23:22,899 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 18:23:22,899 - INFO - Iteration: 6
+2025-08-31 18:23:22,899 - INFO - Previous Requirement: 
+2025-08-31 18:23:22,899 - INFO - New Requirement: 
+2025-08-31 18:23:22,899 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 18:23:22,899 - INFO - Iteration: 6
+2025-08-31 18:23:22,899 - INFO - Previous Requirement: 
+2025-08-31 18:23:22,899 - INFO - New Requirement: 
+2025-08-31 18:23:22,899 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 18:23:22,899 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 18:23:22,899 - WARNING - Total Duration: 177.53 seconds
+2025-08-31 18:23:22,900 - WARNING - Final Iteration Count: 6
+2025-08-31 18:23:22,904 - INFO - === SESSION SUMMARY ===
+2025-08-31 18:23:22,904 - INFO - Session Duration: 187.24 seconds
+2025-08-31 18:23:22,904 - INFO - Functions Attempted: 1
+2025-08-31 18:23:22,904 - INFO - Successful Functions: 0
+2025-08-31 18:23:22,904 - INFO - Terminated Early: 1
+2025-08-31 18:23:22,904 - INFO - Total Iterations: 6
+2025-08-31 18:23:22,904 - INFO - Average Iterations per Function: 6.00
+2025-08-31 18:23:22,904 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 18:23:22,904 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 18:23:22,904 - INFO - Final Adjudication Attempts: 6
+2025-08-31 18:23:22,904 - INFO - Requirement Reinforcements: 12
+2025-08-31 18:24:02,290 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:24:02,291 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 18:24:02,292 - INFO - Response Content: Function Name: check_password_strength
+Description: Evaluates the strength of a given password based on length, use of uppercase and lowercase letters, digits, symbols, and avoidance of common diction...
+2025-08-31 18:24:02,292 - INFO - Initiating function generation process...
+2025-08-31 18:24:02,292 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 18:24:02,292 - INFO - User Input: Create a password strength checker function. Check strength of passwords: MyP@ssw0rd123 and password
+2025-08-31 18:24:02,292 - INFO - Function Requirement: Function Name: check_password_strength
+Description: Evaluates the strength of a given password based on length, use of uppercase and lowercase letters, digits, symbols, and avoidance of common dictionary words. Returns a strength rating such as “Very Weak,” “Weak,” “Moderate,” or “Strong.”
+Parameters:
+- password (string): The password to evaluate.
+Example Usage:
+- check_password_strength("MyP@ssw0rd123")  → "Strong"
+- check_password_strength("password")       → "Very Weak"
+2025-08-31 18:24:12,485 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:24:54,270 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:24:55,902 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:25:00,592 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:25:02,297 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:25:02,298 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 18:25:02,298 - INFO - TDD Adjudication Passed: True
+2025-08-31 18:25:19,258 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:25:26,012 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:25:26,013 - INFO - --- ITERATION 1 ---
+2025-08-31 18:25:26,013 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 18:25:26,013 - INFO - Adjudication Passed: True
+2025-08-31 18:25:26,055 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 18:25:26,055 - INFO - Function Name: check_password_strength
+2025-08-31 18:25:26,056 - INFO - Total Iterations: 1
+2025-08-31 18:25:26,056 - INFO - Total Duration: 83.76 seconds
+2025-08-31 18:25:26,056 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 18:25:26,056 - INFO - Final Adjudication Attempts: 1
+2025-08-31 18:25:26,056 - INFO - Requirement Reinforcements: 0
+2025-08-31 18:25:32,566 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:25:32,600 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-31 18:25:32,600 - INFO - Function: check_password_strength
+2025-08-31 18:25:32,600 - INFO - Arguments: {'password': 'MyP@ssw0rd123'}
+2025-08-31 18:25:32,600 - INFO - Execution Time: 0.010673638986190781 seconds
+2025-08-31 18:25:32,600 - INFO - Memory Peak: 18567 bytes
+2025-08-31 18:25:32,600 - INFO - Success: False
+2025-08-31 18:25:34,362 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:25:34,377 - INFO - === SESSION SUMMARY ===
+2025-08-31 18:25:34,378 - INFO - Session Duration: 105.32 seconds
+2025-08-31 18:25:34,378 - INFO - Functions Attempted: 1
+2025-08-31 18:25:34,378 - INFO - Successful Functions: 1
+2025-08-31 18:25:34,378 - INFO - Terminated Early: 0
+2025-08-31 18:25:34,378 - INFO - Total Iterations: 1
+2025-08-31 18:25:34,378 - INFO - Average Iterations per Function: 1.00
+2025-08-31 18:25:34,378 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-31 18:25:34,378 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 18:25:34,378 - INFO - Final Adjudication Attempts: 1
+2025-08-31 18:25:34,378 - INFO - Requirement Reinforcements: 0
+2025-08-31 18:46:28,165 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:46:28,170 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 18:46:28,170 - INFO - Response Content: Function Name: solve_ode_numerical  
+Description: Numerically solves a first-order ordinary differential equation dy/dx = f(x, y) using the classical fourth-order Runge–Kutta method.  
+Parameters:  
+-...
+2025-08-31 18:46:28,170 - INFO - Initiating function generation process...
+2025-08-31 18:46:28,170 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 18:46:28,170 - INFO - User Input: Create a function to solve differential equations numerically. Solve dy/dx = x^2 + y with initial condition y(0) = 1 from x=0 to x=2
+2025-08-31 18:46:28,170 - INFO - Function Requirement: Function Name: solve_ode_numerical  
+Description: Numerically solves a first-order ordinary differential equation dy/dx = f(x, y) using the classical fourth-order Runge–Kutta method.  
+Parameters:  
+- f (function): The right-hand side of the ODE, a function of two variables f(x, y).  
+- x0 (float): The initial x-value.  
+- y0 (float): The initial y-value (i.e., y(x0) = y0).  
+- x_end (float): The x-value at which to stop the integration.  
+- steps (integer): The number of equal subintervals to use between x0 and x_end (higher → more accurate).  
+
+Example:  
+```python
+# Define the ODE dy/dx = x^2 + y
+def f(x, y):
+    return x**2 + y
+
+# Numerically integrate from x=0, y=1 to x=2 using 1000 steps
+xs, ys = solve_ode_numerical(f, x0=0.0, y0=1.0, x_end=2.0, steps=1000)
+
+# xs will be a list of 1001 x-values from 0.0 to 2.0
+# ys will be the corresponding numerical solution y(x)
+```
+2025-08-31 18:53:48,639 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:53:48,641 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 18:53:48,641 - INFO - Response Content: Function Name: solve_ode_numerically  
+Description: Numerically integrates an ordinary differential equation dy/dx = f(x, y) over a specified interval using a chosen stepwise method (e.g., Euler’s met...
+2025-08-31 18:53:48,641 - INFO - Initiating function generation process...
+2025-08-31 18:53:48,641 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 18:53:48,641 - INFO - User Input: Create a function to solve differential equations numerically. Solve dy/dx = x^2 + y with initial condition y(0) = 1 from x=0 to x=2
+2025-08-31 18:53:48,642 - INFO - Function Requirement: Function Name: solve_ode_numerically  
+Description: Numerically integrates an ordinary differential equation dy/dx = f(x, y) over a specified interval using a chosen stepwise method (e.g., Euler’s method, Runge–Kutta 4th order).  
+Parameters:  
+- f: A function handle or callable that computes dy/dx given (x, y).  
+- x0: The initial value of the independent variable x (float).  
+- y0: The initial value of the dependent variable y at x0 (float).  
+- x_end: The end value of x up to which the equation should be solved (float).  
+- step_size: The integration step size Δx (float).  
+- method: String specifying the numerical method to use (e.g., "euler", "rk4").  
+Example:  
+To solve  
+  dy/dx = x² + y,  
+  y(0) = 1  
+from x = 0 to x = 2 with RK4 and step size 0.01, you would call:  
+solve_ode_numerically(  
+  lambda x, y: x**2 + y,  
+  x0=0,  
+  y0=1,  
+  x_end=2,  
+  step_size=0.01,  
+  method="rk4"  
+)
+2025-08-31 18:54:09,988 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:54:40,087 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:54:43,568 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:54:55,447 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:54:56,675 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:54:56,676 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 18:54:56,676 - INFO - TDD Adjudication Passed: True
+2025-08-31 18:55:11,837 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:55:16,336 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:55:16,337 - INFO - --- ITERATION 1 ---
+2025-08-31 18:55:16,337 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 18:55:16,337 - INFO - Adjudication Passed: True
+2025-08-31 18:55:16,379 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 18:55:16,380 - INFO - Function Name: solve_ode_numerically
+2025-08-31 18:55:16,380 - INFO - Total Iterations: 1
+2025-08-31 18:55:16,380 - INFO - Total Duration: 87.74 seconds
+2025-08-31 18:55:16,380 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 18:55:16,380 - INFO - Final Adjudication Attempts: 1
+2025-08-31 18:55:16,380 - INFO - Requirement Reinforcements: 0
+2025-08-31 18:55:20,486 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:55:20,487 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 18:55:20,487 - INFO - Response Content: To proceed with the numerical solution, I need two more pieces of information:
+
+1. The integration step size h (a positive number, e.g. 0.1)  
+2. The numerical method to use: either “euler” or “rk4”  ...
+2025-08-31 18:55:20,487 - INFO - Initiating function generation process...
+2025-08-31 18:55:25,347 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:55:25,361 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-31 18:55:25,361 - INFO - Function: solve_ode_numerically
+2025-08-31 18:55:25,361 - INFO - Arguments: {'f': 'x**2 + y', 'x0': 0, 'y0': 1, 'x_end': 2, 'h': 0.1, 'method': 'rk4'}
+2025-08-31 18:55:25,361 - INFO - Execution Time: 0.010393813019618392 seconds
+2025-08-31 18:55:25,361 - INFO - Memory Peak: 18560 bytes
+2025-08-31 18:55:25,361 - INFO - Success: False
+2025-08-31 18:55:28,726 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 18:55:28,742 - INFO - === SESSION SUMMARY ===
+2025-08-31 18:55:28,742 - INFO - Session Duration: 110.23 seconds
+2025-08-31 18:55:28,742 - INFO - Functions Attempted: 1
+2025-08-31 18:55:28,742 - INFO - Successful Functions: 1
+2025-08-31 18:55:28,742 - INFO - Terminated Early: 0
+2025-08-31 18:55:28,742 - INFO - Total Iterations: 1
+2025-08-31 18:55:28,742 - INFO - Average Iterations per Function: 1.00
+2025-08-31 18:55:28,742 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-31 18:55:28,742 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 18:55:28,742 - INFO - Final Adjudication Attempts: 1
+2025-08-31 18:55:28,742 - INFO - Requirement Reinforcements: 0
+2025-08-31 19:16:34,726 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 19:16:34,729 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 19:16:34,729 - INFO - Response Content: Function Name: solve_ode_runge_kutta  
+Description: Numerically solves a first-order ordinary differential equation dy/dx = f(x, y) over a specified interval using the classic 4th-order Runge–Kutta me...
+2025-08-31 19:16:34,729 - INFO - Initiating function generation process...
+2025-08-31 19:16:34,729 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 19:16:34,729 - INFO - User Input: Create a function to solve differential equations numerically. Solve dy/dx = x^2 + y with initial condition y(0) = 1 from x=0 to x=2
+2025-08-31 19:16:34,729 - INFO - Function Requirement: Function Name: solve_ode_runge_kutta  
+Description: Numerically solves a first-order ordinary differential equation dy/dx = f(x, y) over a specified interval using the classic 4th-order Runge–Kutta method.  
+Parameters:  
+- f: A function f(x, y) that computes dy/dx.  
+- x0: The initial value of the independent variable x.  
+- y0: The initial value of the dependent variable y at x = x0.  
+- x_end: The final value of x where the solution should stop.  
+- step: The integration step size (Δx).  
+Returns:  
+- A tuple (xs, ys) where xs is a list of x values from x0 to x_end (inclusive) and ys is the corresponding list of y values.  
+
+Example:  
+Suppose we want to solve dy/dx = x^2 + y with initial condition y(0) = 1 from x = 0 to x = 2 using a step size of 0.01.  
+Usage:  
+```python
+def f(x, y):
+    return x*x + y
+
+xs, ys = solve_ode_runge_kutta(f, x0=0, y0=1, x_end=2, step=0.01)
+# xs will be [0.0, 0.01, 0.02, ..., 2.0]
+# ys will contain the numerically computed solution at each xs[i]
+```
+2025-08-31 19:16:51,123 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 19:17:14,611 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 19:17:17,174 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 19:17:26,183 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 19:17:27,814 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 19:17:27,815 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 19:17:27,815 - INFO - TDD Adjudication Passed: True
+2025-08-31 19:17:51,101 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 19:17:55,880 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 19:17:55,881 - INFO - --- ITERATION 1 ---
+2025-08-31 19:17:55,881 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 19:17:55,881 - INFO - Adjudication Passed: True
+2025-08-31 19:17:55,923 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 19:17:55,923 - INFO - Function Name: solve_ode_runge_kutta
+2025-08-31 19:17:55,923 - INFO - Total Iterations: 1
+2025-08-31 19:17:55,923 - INFO - Total Duration: 81.19 seconds
+2025-08-31 19:17:55,923 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 19:17:55,923 - INFO - Final Adjudication Attempts: 1
+2025-08-31 19:17:55,923 - INFO - Requirement Reinforcements: 0
+2025-08-31 19:18:06,106 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 19:18:06,107 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 19:18:06,107 - INFO - Response Content: To proceed with the Runge–Kutta solution using our built-in solver, I just need one more piece of information:
+
+What step size (Δx) would you like to use for the integration from x = 0 to x = 2? For e...
+2025-08-31 19:18:06,107 - INFO - Initiating function generation process...
+2025-08-31 19:18:12,470 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 19:18:12,483 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-31 19:18:12,483 - INFO - Function: solve_ode_runge_kutta
+2025-08-31 19:18:12,483 - INFO - Arguments: {'x0': 0, 'y0': 1, 'x_end': 2, 'step': 0.1}
+2025-08-31 19:18:12,483 - INFO - Execution Time: 0.010210113017819822 seconds
+2025-08-31 19:18:12,483 - INFO - Memory Peak: 18646 bytes
+2025-08-31 19:18:12,483 - INFO - Success: False
+2025-08-31 19:18:14,312 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 19:18:14,327 - INFO - === SESSION SUMMARY ===
+2025-08-31 19:18:14,327 - INFO - Session Duration: 111.31 seconds
+2025-08-31 19:18:14,327 - INFO - Functions Attempted: 1
+2025-08-31 19:18:14,327 - INFO - Successful Functions: 1
+2025-08-31 19:18:14,327 - INFO - Terminated Early: 0
+2025-08-31 19:18:14,327 - INFO - Total Iterations: 1
+2025-08-31 19:18:14,327 - INFO - Average Iterations per Function: 1.00
+2025-08-31 19:18:14,327 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-31 19:18:14,327 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 19:18:14,327 - INFO - Final Adjudication Attempts: 1
+2025-08-31 19:18:14,327 - INFO - Requirement Reinforcements: 0

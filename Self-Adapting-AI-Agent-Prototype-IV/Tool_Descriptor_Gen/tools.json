@@ -1,1 +1,36 @@
-[]
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "solve_ode_runge_kutta",
+            "description": "Numerically solves a first-order ordinary differential equation dy/dx = f(x, y) over the interval [x0, x_end] using the classic 4th-order Runge\u2013Kutta method.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "x0": {
+                        "type": "number",
+                        "description": "Initial value of the independent variable x."
+                    },
+                    "y0": {
+                        "type": "number",
+                        "description": "Initial value of the dependent variable y at x = x0."
+                    },
+                    "x_end": {
+                        "type": "number",
+                        "description": "Final value of x where the solution should stop."
+                    },
+                    "step": {
+                        "type": "number",
+                        "description": "Integration step size (\u0394x)."
+                    }
+                },
+                "required": [
+                    "x0",
+                    "y0",
+                    "x_end",
+                    "step"
+                ]
+            }
+        }
+    }
+]

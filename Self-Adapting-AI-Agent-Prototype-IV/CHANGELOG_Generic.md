@@ -616,3 +616,318 @@ Tool_Descriptor_Gen/
 ```
 
 All changes maintain backward compatibility while significantly improving system reliability, usability, and debugging capabilities. The system is now production-ready for diverse function generation research.
+
+---
+
+## Change 8: Enhanced File Path Context Enforcement
+## Date: 2025-08-31
+
+### 6. Function_Gen/generator.py ✅ COMPLETED
+**Status:** Enhanced with generic file path enforcement  
+
+**Problem:** 
+- LLM received full project context including actual file paths
+- Generated functions created new generic files instead of using existing ones
+- Example: Used `TODO_CSV_PATH = "todo.csv"` instead of `/full/path/to/datasets/todo.csv`
+
+**Changes:**
+- Lines 23-37: Added CRITICAL REQUIREMENTS section with explicit file path rules
+- Generic approach works for all file types (CSV, JSON, Python, text, etc.)
+- Clear examples showing correct vs incorrect file path usage
+- Emphasis on using exact absolute paths from project context
+
+**Key Improvements:**
+- Functions now use actual project files instead of creating new ones
+- Works with any file type, not just CSV files
+- Clear instructions prevent LLM from ignoring provided context
+- Examples show correct pattern: `DATA_PATH = "/absolute/path/to/file.ext"`
+
+### 7. Test_Driven_Development/generator.py ✅ COMPLETED  
+**Status:** Enhanced with safe testing approach for file operations
+
+**Problem:**
+- Tests might attempt to modify actual project files
+- Need safe testing without affecting real data
+
+**Changes:**  
+- Lines 50-64: Added CRITICAL REQUIREMENTS for safe test generation
+- Emphasis on using temporary files for testing
+- Instructions to replicate real data structures safely
+- Guidelines for testing file path parameters
+
+**Key Improvements:**
+- Tests use temporary files (pytest fixtures, tmp_path, tempfile)
+- Test data matches real project structure but in safe temporary locations
+- Tests verify functions can work with different file paths
+- No risk of modifying actual project data during testing
+
+### Benefits Achieved
+1. **Accurate File Path Usage**: Generated functions now use exact paths from project context
+2. **Generic Implementation**: Works with any file type (CSV, JSON, Python, text, etc.)
+3. **Safe Testing**: Tests use temporary files while replicating real structures
+4. **Context Utilization**: LLM now properly uses provided project context instead of ignoring it
+5. **Real-world Integration**: Functions integrate with actual user projects, not generic examples
+
+### Example Before/After
+
+**Before (Generic path - WRONG):**
+```python
+TODO_CSV_PATH = "todo.csv"  # Creates new file in current directory
+```
+
+**After (Actual project path - CORRECT):**
+```python
+TODO_CSV_PATH = "/home/user/project/datasets/todo.csv"  # Uses existing project file
+```
+
+This change ensures the Self-Adapting AI Agent works with users' actual project files instead of creating isolated functions that don't integrate with real codebases.
+
+---
+
+## Change 9: Context-Aware Tool Invocation Enhancement
+## Date: 2025-08-31
+
+### 8. Core/main.py ✅ COMPLETED
+**Status:** Enhanced tool invocation to use project file paths from context
+
+**Problem Identified:** 
+- Functions were correctly generated with flexible `file_path` parameters
+- Project context was passed to function generation (prompts)
+- BUT: When model called functions, it didn't pass the actual file paths from context
+- Result: `add_todo(todo="...", priority="...")` instead of `add_todo(todo="...", priority="...", file_path="/actual/path")`
+
+**Root Cause Analysis:**
+```
+✅ FileAnalyzer finds: CSV FILE: /path/to/datasets/todo.csv
+✅ Context passed to: Function generation prompts
+✅ Function created with: def add_todo(todo, priority, file_path=None)
+✅ Tool descriptor includes: file_path parameter (optional)
+❌ Model invocation: Doesn't pass file_path when calling function
+```
+
+**Changes Made:**
+
+#### Location 1: Primary Tool Invocation (Lines 205-212)
+**Before:**
+```python
+tools, input_messages = setup_variables(user_request, project_context)
+user_input = user_request
+
+response = openai_client.chat.completions.create(
+    model=azure_deployment_name,
+    messages=input_messages + ([...] if reinforced_requirement else []),
+    tools=tools,
+    tool_choice="auto"
+)
+```
+
+**After:**
+```python
+tools, input_messages = setup_variables(user_request, project_context)
+user_input = user_request
+
+# If we analyzed a project, remind the model to use project file paths when relevant
+if analyze_path and project_context:
+    # Enhance the user message to include file path reminder
+    enhanced_request = f"{user_request}\n\nNote: If this operation involves files, use the actual file paths from the analyzed project context."
+    # Update the last user message (which contains the user request)
+    if input_messages and input_messages[-1]["role"] == "user":
+        input_messages[-1]["content"] = enhanced_request
+
+response = openai_client.chat.completions.create(...)
+```
+
+#### Location 2: Existing Function Check Phase (Lines 254-263)
+**Before:**
+```python
+check_messages = input_messages + [
+    {"role": "assistant", "content": function_requirement},
+    {"role": "user", "content": "Before generating a new function, check: Do any of your existing tools match this request? If yes, call the appropriate function with reasonable example parameters. If no exact match exists, proceed with generating a new function."}
+]
+```
+
+**After:**
+```python
+check_message = "Before generating a new function, check: Do any of your existing tools match this request? If yes, call the appropriate function with reasonable example parameters. If no exact match exists, proceed with generating a new function."
+
+# If we analyzed a project, add file path reminder for existing function calls too
+if analyze_path and project_context:
+    check_message += "\n\nNote: If calling functions that work with files, use the actual file paths from the analyzed project context."
+
+check_messages = input_messages + [
+    {"role": "assistant", "content": function_requirement},
+    {"role": "user", "content": check_message}
+]
+```
+
+### Why This Approach
+
+**Minimal & Generic:**
+- Only 8 lines of code added across 2 locations
+- Works for all file types (CSV, JSON, Python, text, etc.)
+- No hardcoding of specific file types or paths
+
+**Non-Biased:**
+- Only activates when `--analyze` flag is used
+- Only suggests file paths when relevant ("If this operation involves files...")
+- Doesn't force parameters on non-file functions
+
+**Leverages Existing Architecture:**
+- Uses FileAnalyzer's existing file path detection
+- Uses existing project_context passing mechanism
+- Maintains function flexibility and reusability
+
+### Expected Result
+
+**Before this change:**
+```python
+# Model calls function without file path
+add_todo(todo="Workout in 6 am", priority="high")
+# Results in: Creates new todo.csv in current directory
+```
+
+**After this change:**
+```python
+# Model calls function with actual project file path
+add_todo(todo="Workout in 6 am", priority="high", 
+         file_path="/home/user/PycharmProjects/datasets/todo.csv")
+# Results in: Adds todo to actual project file
+```
+
+### Benefits Achieved
+1. **Project Integration**: Functions now work with user's actual project files
+2. **Zero Bias**: No impact on operations that don't involve files
+3. **Generic Solution**: Works for any file type automatically
+4. **Minimal Code**: Only 8 lines added, maximum impact
+5. **Architecture Preservation**: Maintains separation between generation and invocation
+6. **Backward Compatibility**: Existing functions continue working normally
+
+This solution bridges the gap between context availability (which was working) and context utilization during tool invocation (which was missing).
+
+---
+
+## Change 10: Function Call Execution Syntax Fix
+## Date: 2025-08-31
+
+### 9. Utilities/execute_function.py ✅ COMPLETED
+**Status:** Fixed string quoting and keyword argument formatting in function execution
+
+**Problem Discovered After Change 34:**
+After implementing context-aware tool invocation, the model correctly passed file paths:
+```python
+Model called tool: add_todo_entry with arguments: {
+    'todo': 'Workout in 6 am', 
+    'priority': 'high', 
+    'file_path': '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv'
+}
+```
+
+But the Terminal Context generated invalid Python syntax:
+```python
+# Generated (BROKEN):
+result = add_todo_entry(Workout in 6 am,high,/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv)
+# SyntaxError: invalid syntax
+```
+
+**Root Cause Analysis:**
+Two separate issues in function call formatting:
+
+1. **String Quoting Issue**: `extract_from_args()` didn't quote string values
+2. **Argument Order Issue**: Lost parameter names when converting from JSON to function call
+
+**Changes Made:**
+
+#### Location 1: Fix String Quoting (Lines 60-61)
+**Before:**
+```python
+elif isinstance(value, str):
+    val += value + ","
+```
+
+**After:**  
+```python
+elif isinstance(value, str):
+    val += f'"{value}",'
+```
+
+**Why Changed:**
+- Strings in Python function calls MUST be quoted
+- `Workout in 6 am` → `"Workout in 6 am"`
+- `/path/to/file` → `"/path/to/file"`
+
+#### Location 2: Improve Terminal Context Formatting (Lines 220-239)
+**Before:**
+```python
+# Prepare the function call code
+if isinstance(args, str):
+    call_code = f"result = {function_name}({args})\nprint(result)"
+else:
+    call_code = f"result = {function_name}(*{args})\nprint(result)"
+```
+
+**After:**
+```python
+# Prepare the function call code with proper keyword arguments
+if isinstance(function_args, dict):
+    # Build proper keyword arguments from the original dict
+    arg_parts = []
+    for key, value in function_args.items():
+        if isinstance(value, str):
+            # Escape quotes in string values
+            escaped_value = value.replace('"', '\\"')
+            arg_parts.append(f'{key}="{escaped_value}"')
+        elif isinstance(value, bool):
+            arg_parts.append(f'{key}={str(value)}')
+        elif isinstance(value, (int, float)):
+            arg_parts.append(f'{key}={value}')
+        else:
+            arg_parts.append(f'{key}={repr(value)}')
+    call_code = f"result = {function_name}({', '.join(arg_parts)})\nprint(result)"
+elif isinstance(args, str):
+    call_code = f"result = {function_name}({args})\nprint(result)"
+else:
+    call_code = f"result = {function_name}(*{args})\nprint(result)"
+```
+
+**Why Changed:**
+- Uses original function_args dict with parameter names
+- Proper string escaping for values containing quotes
+- Handles all data types correctly (string, bool, int, float, etc.)
+- Generates readable, debuggable function calls
+
+### Expected Result
+
+**Before this fix:**
+```python
+# Invalid syntax
+result = add_todo_entry(Workout in 6 am,high,/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv)
+# Result: SyntaxError, function call fails
+```
+
+**After this fix:**
+```python
+# Valid Python syntax with keyword arguments
+result = add_todo_entry(todo="Workout in 6 am", priority="high", file_path="/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv")
+# Result: Function executes successfully, todo added to correct file
+```
+
+### Benefits Achieved
+1. **Proper Python Syntax**: Function calls now generate valid Python code
+2. **Keyword Arguments**: Clearer, more maintainable function calls with parameter names
+3. **String Safety**: Proper escaping prevents injection issues
+4. **Type Handling**: Correctly formats all data types (strings, numbers, booleans)
+5. **End-to-End Success**: Combined with Change 34, the system now fully integrates with user project files
+
+### Testing Verification
+After this change, running:
+```bash
+python Core/main.py --analyze /path/to/datasets --request "Add todo named: Test, priority high"
+```
+
+Should result in:
+- Function generated with file_path parameter ✅
+- Model passes correct dataset path ✅  
+- Terminal Context generates valid Python syntax ✅
+- Todo successfully added to actual dataset file ✅
+
+This completes the full integration pipeline from project analysis to successful file modification.

@@ -47,11 +47,20 @@ def generateTestDrivenCases(client, requirements, reinforced_requirement=None, p
 ================
 {project_context}
 
-You have full visibility of the project above. When generating test cases:
-- Test with actual data structures from the project (CSV columns, JSON keys, etc.)
-- Follow testing patterns you see in the project
-- Create tests that verify integration with existing code
-- Use realistic test data based on what you see in the project files
+CRITICAL REQUIREMENTS - You MUST follow these rules when generating test cases:
+1. **USE TEMPORARY FILES FOR TESTS**: Create temporary files for testing, never modify actual project files. Use pytest fixtures, tempfile module, or tmp_path for safe testing.
+
+2. **REPLICATE REAL DATA STRUCTURES**: Your test data should match the exact structure (columns, keys, formats) of the actual project files shown above, but in temporary test files.
+
+3. **TEST FILE PATH PARAMETERS**: Ensure your tests verify that functions can accept file paths as parameters and work with different locations.
+
+4. **FOLLOW PROJECT PATTERNS**: Match testing patterns, fixtures, and assertions you see in existing test files.
+
+EXAMPLES FOR SAFE TESTING:
+- If context shows CSV with columns "id,todo,status,priority" → Create temp CSV with same structure
+- If context shows JSON with keys "name", "config" → Create temp JSON with same keys  
+- Use: @pytest.fixture, tmp_path, tempfile.NamedTemporaryFile(), etc.
+- Test that functions work with various file paths, not just hardcoded ones
 
 '''
 

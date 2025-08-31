@@ -3647,3 +3647,597 @@ Description: Validates a list of email addresses, returning a mapping of each ad
 2025-08-31 20:01:31,443 - INFO - TDD Adjudication Attempts: 2
 2025-08-31 20:01:31,443 - INFO - Final Adjudication Attempts: 2
 2025-08-31 20:01:31,443 - INFO - Requirement Reinforcements: 2
+2025-08-31 20:50:48,994 - INFO - Retrying request to /chat/completions in 0.411919 seconds
+2025-08-31 20:50:49,408 - INFO - Retrying request to /chat/completions in 0.989387 seconds
+2025-08-31 20:50:50,399 - ERROR - === UNEXPECTED ERROR ===
+2025-08-31 20:50:50,400 - ERROR - Error: Connection error.
+2025-08-31 20:50:50,400 - ERROR - Unexpected error: Connection error.
+2025-08-31 20:50:50,405 - INFO - === SESSION SUMMARY ===
+2025-08-31 20:50:50,405 - INFO - Session Duration: 7.03 seconds
+2025-08-31 20:50:50,405 - INFO - Functions Attempted: 0
+2025-08-31 20:50:50,405 - INFO - Successful Functions: 0
+2025-08-31 20:50:50,405 - INFO - Terminated Early: 0
+2025-08-31 20:50:50,405 - INFO - Total Iterations: 0
+2025-08-31 20:50:50,405 - INFO - Average Iterations per Function: 0.00
+2025-08-31 20:50:50,405 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 20:50:50,405 - INFO - TDD Adjudication Attempts: 0
+2025-08-31 20:50:50,405 - INFO - Final Adjudication Attempts: 0
+2025-08-31 20:50:50,405 - INFO - Requirement Reinforcements: 0
+2025-08-31 20:51:39,878 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:51:39,882 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 20:51:39,882 - INFO - Response Content: Function Name: add_todo  
+Description: Adds a new to-do item to the todo list.  
+Parameters:  
+- todo (string): Description of the task to be done.  
+- priority (string): Priority level of the task (e...
+2025-08-31 20:51:39,882 - INFO - Initiating function generation process...
+2025-08-31 20:51:39,883 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 20:51:39,883 - INFO - User Input: Add todo named: Workout in 6 am, priority high
+2025-08-31 20:51:39,883 - INFO - Function Requirement: Function Name: add_todo  
+Description: Adds a new to-do item to the todo list.  
+Parameters:  
+- todo (string): Description of the task to be done.  
+- priority (string): Priority level of the task (e.g., low, medium, high, critical).  
+- status (string, optional): Current status of the task (default: “pending”).  
+- created_at (string, optional): Timestamp when the task was created (default: current datetime).  
+- completed_at (string, optional): Timestamp when the task was completed (default: empty/unset).  
+
+Example:  
+add_todo(  
+  todo="Workout in 6 am",  
+  priority="high",  
+  status="pending",  
+  created_at="2025-05-01 07:00:00",  
+  completed_at=""  
+)
+2025-08-31 20:52:19,373 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:53:17,206 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:53:17,208 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 20:53:17,208 - INFO - Response Content: Function Name: add_todo_item  
+Description: Adds a new to-do entry to the todo.csv dataset. Automatically assigns the next available id, sets status to “pending,” records the current timestamp as crea...
+2025-08-31 20:53:17,208 - INFO - Initiating function generation process...
+2025-08-31 20:53:17,208 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 20:53:17,208 - INFO - User Input: Add todo named: Workout in 6 am, priority high
+2025-08-31 20:53:17,208 - INFO - Function Requirement: Function Name: add_todo_item  
+Description: Adds a new to-do entry to the todo.csv dataset. Automatically assigns the next available id, sets status to “pending,” records the current timestamp as created_at, and leaves completed_at blank unless specified.  
+Parameters:  
+- todo (string): The description of the task to be performed.  
+- priority (string): The priority level of the task (e.g., low, medium, high, critical).  
+
+Example:  
+```  
+add_todo_item(
+  todo="Workout in 6 am",
+  priority="high"
+)  
+```
+2025-08-31 20:53:48,561 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:56:11,612 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:56:15,339 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:56:19,646 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:56:21,774 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:56:21,774 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 20:56:21,774 - INFO - TDD Adjudication Passed: False
+2025-08-31 20:56:21,774 - INFO - TDD Requirement Suggestion: 
+2025-08-31 20:56:21,774 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 20:56:21,774 - INFO - Iteration: 1
+2025-08-31 20:56:21,774 - INFO - Previous Requirement: 
+2025-08-31 20:56:21,774 - INFO - New Requirement: 
+2025-08-31 20:56:43,355 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:56:43,356 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 20:56:43,357 - INFO - TDD Adjudication Passed: False
+2025-08-31 20:56:43,357 - INFO - TDD Requirement Suggestion: 
+2025-08-31 20:56:43,357 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 20:56:43,357 - INFO - Iteration: 2
+2025-08-31 20:56:43,357 - INFO - Previous Requirement: 
+2025-08-31 20:56:43,357 - INFO - New Requirement: 
+2025-08-31 20:57:00,187 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:57:00,188 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 20:57:00,188 - INFO - TDD Adjudication Passed: False
+2025-08-31 20:57:00,188 - INFO - TDD Requirement Suggestion: 
+2025-08-31 20:57:00,188 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 20:57:00,188 - INFO - Iteration: 3
+2025-08-31 20:57:00,188 - INFO - Previous Requirement: 
+2025-08-31 20:57:00,188 - INFO - New Requirement: 
+2025-08-31 20:57:04,377 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:57:04,377 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 20:57:04,377 - INFO - TDD Adjudication Passed: False
+2025-08-31 20:57:04,377 - INFO - TDD Requirement Suggestion: 
+2025-08-31 20:57:04,377 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 20:57:04,377 - INFO - Iteration: 4
+2025-08-31 20:57:04,377 - INFO - Previous Requirement: 
+2025-08-31 20:57:04,377 - INFO - New Requirement: 
+2025-08-31 20:57:06,497 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:57:06,498 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-08-31 20:57:06,498 - INFO - TDD Adjudication Passed: False
+2025-08-31 20:57:06,498 - INFO - TDD Requirement Suggestion: 
+2025-08-31 20:57:06,498 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 20:57:06,498 - INFO - Iteration: 5
+2025-08-31 20:57:06,498 - INFO - Previous Requirement: 
+2025-08-31 20:57:06,498 - INFO - New Requirement: 
+2025-08-31 20:57:09,365 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 20:57:09,365 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-08-31 20:57:09,365 - INFO - TDD Adjudication Passed: False
+2025-08-31 20:57:09,365 - INFO - TDD Requirement Suggestion: 
+2025-08-31 20:57:09,365 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-08-31 20:57:09,365 - INFO - Iteration: 6
+2025-08-31 20:57:09,365 - INFO - Previous Requirement: 
+2025-08-31 20:57:09,365 - INFO - New Requirement: 
+2025-08-31 20:57:09,366 - WARNING - === MAX ITERATIONS REACHED ===
+2025-08-31 20:57:09,366 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-08-31 20:57:09,366 - WARNING - Total Duration: 232.16 seconds
+2025-08-31 20:57:09,366 - WARNING - Final Iteration Count: 0
+2025-08-31 20:57:09,371 - INFO - === SESSION SUMMARY ===
+2025-08-31 20:57:09,371 - INFO - Session Duration: 246.88 seconds
+2025-08-31 20:57:09,371 - INFO - Functions Attempted: 1
+2025-08-31 20:57:09,371 - INFO - Successful Functions: 0
+2025-08-31 20:57:09,371 - INFO - Terminated Early: 1
+2025-08-31 20:57:09,371 - INFO - Total Iterations: 0
+2025-08-31 20:57:09,371 - INFO - Average Iterations per Function: 0.00
+2025-08-31 20:57:09,371 - INFO - Existing Function Calls: 0 (0 successful)
+2025-08-31 20:57:09,371 - INFO - TDD Adjudication Attempts: 6
+2025-08-31 20:57:09,371 - INFO - Final Adjudication Attempts: 0
+2025-08-31 20:57:09,371 - INFO - Requirement Reinforcements: 6
+2025-08-31 21:00:12,482 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:00:12,484 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 21:00:12,485 - INFO - Response Content: Function Name: add_todo_item  
+Description: Adds a new to-do entry to the todo.csv dataset with the given description and priority. Automatically sets status to “pending” and records the creation time...
+2025-08-31 21:00:12,485 - INFO - Initiating function generation process...
+2025-08-31 21:00:12,485 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 21:00:12,485 - INFO - User Input: Add todo named: Workout in 6 am, priority high
+2025-08-31 21:00:12,485 - INFO - Function Requirement: Function Name: add_todo_item  
+Description: Adds a new to-do entry to the todo.csv dataset with the given description and priority. Automatically sets status to “pending” and records the creation timestamp.  
+Parameters:  
+- description (string): The text of the to-do item.  
+- priority (string): Priority level; one of “low”, “medium”, “high”, or “critical”.  
+Example:  
+add_todo_item(  
+  description="Workout in 6 am",  
+  priority="high"  
+)
+2025-08-31 21:04:02,790 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:04:02,792 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 21:04:02,792 - INFO - Response Content: Function Name: add_todo  
+Description: Adds a new to‐do item to the todo.csv file. Automatically assigns a unique id, sets status to “pending” by default, records the current timestamp as created_at, ...
+2025-08-31 21:04:02,792 - INFO - Initiating function generation process...
+2025-08-31 21:04:02,792 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 21:04:02,792 - INFO - User Input: Add todo named: Workout in 6 am, priority high
+2025-08-31 21:04:02,792 - INFO - Function Requirement: Function Name: add_todo  
+Description: Adds a new to‐do item to the todo.csv file. Automatically assigns a unique id, sets status to “pending” by default, records the current timestamp as created_at, and leaves completed_at empty.  
+Parameters:  
+- description (string): The text of the to‐do item.  
+- priority (string): Priority level of the to‐do (e.g., low, medium, high, critical).  
+- status (string, optional): The status of the to‐do (default “pending”).  
+- created_at (string, optional): Timestamp for when the to‐do was created (default: current time in YYYY-MM-DD HH:MM:SS format).  
+- completed_at (string, optional): Timestamp for when the to‐do was completed (default: empty).  
+Example:  
+add_todo(  
+  description="Workout in 6 am",  
+  priority="high"  
+)
+2025-08-31 21:04:38,895 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:05:28,306 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:05:31,764 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:05:39,513 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:05:40,741 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:05:40,742 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 21:05:40,742 - INFO - TDD Adjudication Passed: True
+2025-08-31 21:06:09,618 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:06:11,972 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:06:11,973 - INFO - --- ITERATION 1 ---
+2025-08-31 21:06:11,973 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 21:06:11,973 - INFO - Adjudication Passed: True
+2025-08-31 21:06:12,015 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 21:06:12,015 - INFO - Function Name: add_todo
+2025-08-31 21:06:12,015 - INFO - Total Iterations: 1
+2025-08-31 21:06:12,015 - INFO - Total Duration: 129.22 seconds
+2025-08-31 21:06:12,016 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 21:06:12,016 - INFO - Final Adjudication Attempts: 1
+2025-08-31 21:06:12,016 - INFO - Requirement Reinforcements: 0
+2025-08-31 21:06:15,672 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:06:15,684 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-31 21:06:15,684 - INFO - Function: add_todo
+2025-08-31 21:06:15,684 - INFO - Arguments: {'description': 'Workout in 6 am', 'priority': 'high'}
+2025-08-31 21:06:15,684 - INFO - Execution Time: 0.010254074004478753 seconds
+2025-08-31 21:06:15,684 - INFO - Memory Peak: 18661 bytes
+2025-08-31 21:06:15,684 - INFO - Success: False
+2025-08-31 21:06:17,165 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:06:17,178 - INFO - === SESSION SUMMARY ===
+2025-08-31 21:06:17,179 - INFO - Session Duration: 149.60 seconds
+2025-08-31 21:06:17,179 - INFO - Functions Attempted: 1
+2025-08-31 21:06:17,179 - INFO - Successful Functions: 1
+2025-08-31 21:06:17,179 - INFO - Terminated Early: 0
+2025-08-31 21:06:17,179 - INFO - Total Iterations: 1
+2025-08-31 21:06:17,179 - INFO - Average Iterations per Function: 1.00
+2025-08-31 21:06:17,179 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-31 21:06:17,179 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 21:06:17,179 - INFO - Final Adjudication Attempts: 1
+2025-08-31 21:06:17,179 - INFO - Requirement Reinforcements: 0
+2025-08-31 21:39:48,927 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:39:48,929 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 21:39:48,929 - INFO - Response Content: Function Name: list_pending_todos  
+Description: Reads the todo.csv file and returns all todo entries whose status is "pending".  
+Parameters:  
+- file_path (string): Path to the CSV file containing t...
+2025-08-31 21:39:48,929 - INFO - Initiating function generation process...
+2025-08-31 21:39:48,930 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 21:39:48,930 - INFO - User Input: Create a function to list all pending todos
+2025-08-31 21:39:48,930 - INFO - Function Requirement: Function Name: list_pending_todos  
+Description: Reads the todo.csv file and returns all todo entries whose status is "pending".  
+Parameters:  
+- file_path (string): Path to the CSV file containing todos (e.g., "/home/aifahim/.../datasets/todo.csv")  
+
+Example implementation in Python:
+
+```python
+import csv
+
+def list_pending_todos(file_path):
+    """
+    Reads the CSV at file_path and returns a list of all todo rows
+    where the status is 'pending'.
+    Each row is returned as a dict with keys matching the CSV headers.
+    """
+    pending = []
+    with open(file_path, newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row.get('status', '').strip().lower() == 'pending':
+                pending.append(row)
+    return pending
+
+# Example usage:
+if __name__ == "__main__":
+    csv_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv"
+    pending_tasks = list_pending_todos(csv_path)
+    for task in pending_tasks:
+        print(f"ID: {task['id']}, Todo: {task['todo']}, Priority: {task['priority']}, Created: {task['created_at']}")
+```
+2025-08-31 21:40:04,893 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:40:28,798 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:40:32,693 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:40:43,947 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:40:55,012 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:40:55,012 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 21:40:55,012 - INFO - TDD Adjudication Passed: True
+2025-08-31 21:41:31,134 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:41:34,399 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:41:34,401 - INFO - --- ITERATION 1 ---
+2025-08-31 21:41:34,401 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 21:41:34,401 - INFO - Adjudication Passed: False
+2025-08-31 21:41:34,401 - INFO - Code Requirement Suggestion: 
+2025-08-31 21:41:34,401 - INFO - Unit Requirement Suggestion: 
+2025-08-31 21:41:34,401 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 21:41:34,401 - INFO - Iteration: 1
+2025-08-31 21:41:34,401 - INFO - Previous Requirement: 
+2025-08-31 21:41:34,401 - INFO - New Requirement: 
+2025-08-31 21:41:34,401 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 21:41:34,401 - INFO - Iteration: 1
+2025-08-31 21:41:34,401 - INFO - Previous Requirement: 
+2025-08-31 21:41:34,401 - INFO - New Requirement: 
+2025-08-31 21:41:36,791 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:41:36,791 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 21:41:36,791 - INFO - TDD Adjudication Passed: True
+2025-08-31 21:41:41,613 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:41:41,614 - INFO - --- ITERATION 2 ---
+2025-08-31 21:41:41,614 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 21:41:41,614 - INFO - Adjudication Passed: True
+2025-08-31 21:41:41,646 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 21:41:41,646 - INFO - Function Name: list_pending_todos
+2025-08-31 21:41:41,646 - INFO - Total Iterations: 2
+2025-08-31 21:41:41,646 - INFO - Total Duration: 112.72 seconds
+2025-08-31 21:41:41,646 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 21:41:41,646 - INFO - Final Adjudication Attempts: 2
+2025-08-31 21:41:41,646 - INFO - Requirement Reinforcements: 2
+2025-08-31 21:41:47,146 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:41:47,158 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-31 21:41:47,158 - INFO - Function: list_pending_todos
+2025-08-31 21:41:47,158 - INFO - Arguments: {'file_path': '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv'}
+2025-08-31 21:41:47,158 - INFO - Execution Time: 0.010298810986569151 seconds
+2025-08-31 21:41:47,158 - INFO - Memory Peak: 18640 bytes
+2025-08-31 21:41:47,158 - INFO - Success: False
+2025-08-31 21:42:12,636 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:42:12,653 - INFO - === SESSION SUMMARY ===
+2025-08-31 21:42:12,653 - INFO - Session Duration: 152.65 seconds
+2025-08-31 21:42:12,653 - INFO - Functions Attempted: 1
+2025-08-31 21:42:12,653 - INFO - Successful Functions: 1
+2025-08-31 21:42:12,653 - INFO - Terminated Early: 0
+2025-08-31 21:42:12,653 - INFO - Total Iterations: 2
+2025-08-31 21:42:12,653 - INFO - Average Iterations per Function: 2.00
+2025-08-31 21:42:12,653 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-31 21:42:12,653 - INFO - TDD Adjudication Attempts: 2
+2025-08-31 21:42:12,653 - INFO - Final Adjudication Attempts: 2
+2025-08-31 21:42:12,653 - INFO - Requirement Reinforcements: 2
+2025-08-31 21:44:18,730 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:44:18,731 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 21:44:18,732 - INFO - Response Content: Function Name: add_todo  
+Description: Adds a new todo entry to the `todo.csv` dataset with the given description and priority. Automatically sets status to “pending”, assigns a new unique `id`, and r...
+2025-08-31 21:44:18,732 - INFO - Initiating function generation process...
+2025-08-31 21:44:18,732 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 21:44:18,732 - INFO - User Input: Add todo named: Workout in 6 am, priority high
+2025-08-31 21:44:18,732 - INFO - Function Requirement: Function Name: add_todo  
+Description: Adds a new todo entry to the `todo.csv` dataset with the given description and priority. Automatically sets status to “pending”, assigns a new unique `id`, and records the current timestamp in `created_at`.  
+Parameters:  
+- todo (string): The description of the todo item.  
+- priority (string): The priority level of the todo item (e.g., “low”, “medium”, “high”, “critical”).  
+Example:  
+add_todo(  
+  todo="Workout in 6 am",  
+  priority="high"  
+)
+2025-08-31 21:44:46,142 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:45:43,605 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:45:49,403 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:46:01,020 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:46:07,335 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:46:07,335 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 21:46:07,336 - INFO - TDD Adjudication Passed: True
+2025-08-31 21:46:31,782 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:46:38,669 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:46:38,670 - INFO - --- ITERATION 1 ---
+2025-08-31 21:46:38,670 - INFO - Unit Test Result Summary: Tests failed
+2025-08-31 21:46:38,670 - INFO - Adjudication Passed: False
+2025-08-31 21:46:38,670 - INFO - Code Requirement Suggestion: 
+2025-08-31 21:46:38,670 - INFO - Unit Requirement Suggestion: 
+2025-08-31 21:46:38,670 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 21:46:38,670 - INFO - Iteration: 1
+2025-08-31 21:46:38,670 - INFO - Previous Requirement: 
+2025-08-31 21:46:38,670 - INFO - New Requirement: 
+2025-08-31 21:46:38,670 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 21:46:38,670 - INFO - Iteration: 1
+2025-08-31 21:46:38,670 - INFO - Previous Requirement: 
+2025-08-31 21:46:38,670 - INFO - New Requirement: 
+2025-08-31 21:46:40,926 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:46:40,926 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 21:46:40,926 - INFO - TDD Adjudication Passed: True
+2025-08-31 21:46:53,415 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:46:53,416 - INFO - --- ITERATION 2 ---
+2025-08-31 21:46:53,416 - INFO - Unit Test Result Summary: Tests failed
+2025-08-31 21:46:53,416 - INFO - Adjudication Passed: False
+2025-08-31 21:46:53,416 - INFO - Code Requirement Suggestion: Update the add_todo function signature so that file_path is optional (e.g. give file_path a sensible default like 'todo.csv') to match tests calling add_todo(description, priority) without a file_path argument.
+2025-08-31 21:46:53,416 - INFO - Unit Requirement Suggestion: 
+2025-08-31 21:46:53,416 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 21:46:53,416 - INFO - Iteration: 2
+2025-08-31 21:46:53,416 - INFO - Previous Requirement: 
+2025-08-31 21:46:53,416 - INFO - New Requirement: Update the add_todo function signature so that file_path is optional (e.g. give file_path a sensible default like 'todo.csv') to match tests calling add_todo(description, priority) without a file_path argument.
+2025-08-31 21:46:53,416 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 21:46:53,416 - INFO - Iteration: 2
+2025-08-31 21:46:53,416 - INFO - Previous Requirement: 
+2025-08-31 21:46:53,416 - INFO - New Requirement: 
+2025-08-31 21:47:21,885 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:48:04,254 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:48:08,786 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:48:15,153 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:48:21,447 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:48:21,448 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 21:48:21,448 - INFO - TDD Adjudication Passed: True
+2025-08-31 21:48:25,229 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:48:25,230 - INFO - --- ITERATION 3 ---
+2025-08-31 21:48:25,230 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 21:48:25,230 - INFO - Adjudication Passed: True
+2025-08-31 21:48:25,273 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 21:48:25,273 - INFO - Function Name: add_todo
+2025-08-31 21:48:25,273 - INFO - Total Iterations: 3
+2025-08-31 21:48:25,273 - INFO - Total Duration: 246.54 seconds
+2025-08-31 21:48:25,273 - INFO - TDD Adjudication Attempts: 3
+2025-08-31 21:48:25,273 - INFO - Final Adjudication Attempts: 3
+2025-08-31 21:48:25,273 - INFO - Requirement Reinforcements: 4
+2025-08-31 21:48:38,074 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:48:38,085 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-31 21:48:38,085 - INFO - Function: add_todo
+2025-08-31 21:48:38,085 - INFO - Arguments: {'todo': 'Workout in 6 am', 'priority': 'high'}
+2025-08-31 21:48:38,085 - INFO - Execution Time: 0.010163870989345014 seconds
+2025-08-31 21:48:38,085 - INFO - Memory Peak: 18720 bytes
+2025-08-31 21:48:38,085 - INFO - Success: False
+2025-08-31 21:48:40,731 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 21:48:40,750 - INFO - === SESSION SUMMARY ===
+2025-08-31 21:48:40,750 - INFO - Session Duration: 270.26 seconds
+2025-08-31 21:48:40,750 - INFO - Functions Attempted: 1
+2025-08-31 21:48:40,750 - INFO - Successful Functions: 1
+2025-08-31 21:48:40,750 - INFO - Terminated Early: 0
+2025-08-31 21:48:40,750 - INFO - Total Iterations: 3
+2025-08-31 21:48:40,750 - INFO - Average Iterations per Function: 3.00
+2025-08-31 21:48:40,750 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-31 21:48:40,750 - INFO - TDD Adjudication Attempts: 3
+2025-08-31 21:48:40,750 - INFO - Final Adjudication Attempts: 3
+2025-08-31 21:48:40,750 - INFO - Requirement Reinforcements: 4
+2025-08-31 22:18:04,103 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:18:04,105 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 22:18:04,105 - INFO - Response Content: Function Name: add_todo_entry  
+Description: Appends a new todo item as a row to the existing CSV file of todos. The function will:
+- Read the CSV at the given path  
+- Determine the next available in...
+2025-08-31 22:18:04,105 - INFO - Initiating function generation process...
+2025-08-31 22:18:04,105 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 22:18:04,105 - INFO - User Input: Add todo named: Test the fix, priority medium
+2025-08-31 22:18:04,105 - INFO - Function Requirement: Function Name: add_todo_entry  
+Description: Appends a new todo item as a row to the existing CSV file of todos. The function will:
+- Read the CSV at the given path  
+- Determine the next available integer ID  
+- Use “pending” as the default status  
+- Use the current timestamp as the `created_at` field  
+- Leave `completed_at` blank  
+Parameters:  
+- file_path (string): Full path to the todo CSV file.  
+- todo (string): Description of the todo item.  
+- priority (string): Priority level for the todo (e.g., low, medium, high, critical).  
+Example:  
+add_todo_entry(  
+    "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv",  
+    "Test the fix",  
+    "medium"  
+)
+2025-08-31 22:20:03,365 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:20:03,367 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 22:20:03,367 - INFO - Response Content: Function Name: add_todo_entry  
+Description: Appends a new todo item to the existing CSV file of todos. It will add a row with the given todo text, priority, and optional status into the file located ...
+2025-08-31 22:20:03,367 - INFO - Initiating function generation process...
+2025-08-31 22:20:03,367 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 22:20:03,367 - INFO - User Input: Add todo named: Workout in 6 am, priority high
+2025-08-31 22:20:03,367 - INFO - Function Requirement: Function Name: add_todo_entry  
+Description: Appends a new todo item to the existing CSV file of todos. It will add a row with the given todo text, priority, and optional status into the file located at `/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv`.  
+Parameters:  
+- todo (string): The description of the task to add.  
+- priority (string): The priority level of the task (e.g., low, medium, high, critical).  
+- status (string, optional): The current status of the task. Defaults to "pending".  
+- file_path (string): Path to the CSV file where the todo should be appended.  
+
+Example:  
+add_todo_entry(  
+  todo="Workout in 6 am",  
+  priority="high",  
+  status="pending",  
+  file_path="/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv"  
+)
+2025-08-31 22:20:27,250 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:21:01,835 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:21:05,934 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:21:13,915 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:21:14,998 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:21:14,999 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 22:21:14,999 - INFO - TDD Adjudication Passed: True
+2025-08-31 22:21:51,807 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:21:57,380 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:21:57,381 - INFO - --- ITERATION 1 ---
+2025-08-31 22:21:57,381 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-08-31 22:21:57,381 - INFO - Adjudication Passed: False
+2025-08-31 22:21:57,381 - INFO - Code Requirement Suggestion: Function should validate that the task description is not empty or whitespace-only and that the priority string matches the expected format (e.g., 'low', 'medium', 'high'); return False for invalid inputs such as '   ' or '-low'.
+2025-08-31 22:21:57,381 - INFO - Unit Requirement Suggestion: 
+2025-08-31 22:21:57,381 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 22:21:57,381 - INFO - Iteration: 1
+2025-08-31 22:21:57,381 - INFO - Previous Requirement: 
+2025-08-31 22:21:57,381 - INFO - New Requirement: Function should validate that the task description is not empty or whitespace-only and that the priority string matches the expected format (e.g., 'low', 'medium', 'high'); return False for invalid inputs such as '   ' or '-low'.
+2025-08-31 22:21:57,381 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 22:21:57,381 - INFO - Iteration: 1
+2025-08-31 22:21:57,381 - INFO - Previous Requirement: 
+2025-08-31 22:21:57,381 - INFO - New Requirement: 
+2025-08-31 22:22:17,245 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:22:48,945 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:22:52,673 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:22:59,396 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:23:00,674 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:23:00,675 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-08-31 22:23:00,675 - INFO - TDD Adjudication Passed: True
+2025-08-31 22:23:04,044 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:23:04,046 - INFO - --- ITERATION 2 ---
+2025-08-31 22:23:04,046 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 22:23:04,046 - INFO - Adjudication Passed: False
+2025-08-31 22:23:04,046 - INFO - Code Requirement Suggestion: 
+2025-08-31 22:23:04,046 - INFO - Unit Requirement Suggestion: 
+2025-08-31 22:23:04,046 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 22:23:04,046 - INFO - Iteration: 2
+2025-08-31 22:23:04,046 - INFO - Previous Requirement: Function should validate that the task description is not empty or whitespace-only and that the priority string matches the expected format (e.g., 'low', 'medium', 'high'); return False for invalid inputs such as '   ' or '-low'.
+2025-08-31 22:23:04,046 - INFO - New Requirement: 
+2025-08-31 22:23:04,046 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 22:23:04,046 - INFO - Iteration: 2
+2025-08-31 22:23:04,046 - INFO - Previous Requirement: 
+2025-08-31 22:23:04,046 - INFO - New Requirement: 
+2025-08-31 22:23:05,157 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:23:05,157 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-08-31 22:23:05,157 - INFO - TDD Adjudication Passed: True
+2025-08-31 22:23:07,702 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:23:07,702 - INFO - --- ITERATION 3 ---
+2025-08-31 22:23:07,702 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 22:23:07,702 - INFO - Adjudication Passed: False
+2025-08-31 22:23:07,702 - INFO - Code Requirement Suggestion: 
+2025-08-31 22:23:07,702 - INFO - Unit Requirement Suggestion: 
+2025-08-31 22:23:07,702 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-08-31 22:23:07,702 - INFO - Iteration: 3
+2025-08-31 22:23:07,703 - INFO - Previous Requirement: 
+2025-08-31 22:23:07,703 - INFO - New Requirement: 
+2025-08-31 22:23:07,703 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-08-31 22:23:07,703 - INFO - Iteration: 3
+2025-08-31 22:23:07,703 - INFO - Previous Requirement: 
+2025-08-31 22:23:07,703 - INFO - New Requirement: 
+2025-08-31 22:23:08,815 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:23:08,816 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-08-31 22:23:08,816 - INFO - TDD Adjudication Passed: True
+2025-08-31 22:23:10,696 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:23:10,696 - INFO - --- ITERATION 4 ---
+2025-08-31 22:23:10,696 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 22:23:10,696 - INFO - Adjudication Passed: True
+2025-08-31 22:23:10,729 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 22:23:10,729 - INFO - Function Name: add_todo_entry
+2025-08-31 22:23:10,729 - INFO - Total Iterations: 4
+2025-08-31 22:23:10,729 - INFO - Total Duration: 187.36 seconds
+2025-08-31 22:23:10,729 - INFO - TDD Adjudication Attempts: 4
+2025-08-31 22:23:10,729 - INFO - Final Adjudication Attempts: 4
+2025-08-31 22:23:10,729 - INFO - Requirement Reinforcements: 6
+2025-08-31 22:23:14,107 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:23:14,120 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-31 22:23:14,120 - INFO - Function: add_todo_entry
+2025-08-31 22:23:14,120 - INFO - Arguments: {'todo': 'Workout in 6 am', 'priority': 'high', 'file_path': '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv'}
+2025-08-31 22:23:14,120 - INFO - Execution Time: 0.010413101990707219 seconds
+2025-08-31 22:23:14,120 - INFO - Memory Peak: 18861 bytes
+2025-08-31 22:23:14,120 - INFO - Success: False
+2025-08-31 22:23:15,423 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 22:23:15,441 - INFO - === SESSION SUMMARY ===
+2025-08-31 22:23:15,441 - INFO - Session Duration: 200.72 seconds
+2025-08-31 22:23:15,441 - INFO - Functions Attempted: 1
+2025-08-31 22:23:15,441 - INFO - Successful Functions: 1
+2025-08-31 22:23:15,441 - INFO - Terminated Early: 0
+2025-08-31 22:23:15,441 - INFO - Total Iterations: 4
+2025-08-31 22:23:15,441 - INFO - Average Iterations per Function: 4.00
+2025-08-31 22:23:15,441 - INFO - Existing Function Calls: 1 (0 successful)
+2025-08-31 22:23:15,441 - INFO - TDD Adjudication Attempts: 4
+2025-08-31 22:23:15,441 - INFO - Final Adjudication Attempts: 4
+2025-08-31 22:23:15,441 - INFO - Requirement Reinforcements: 6
+2025-08-31 23:26:21,192 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 23:26:21,193 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-08-31 23:26:21,193 - INFO - Response Content: Function Name: add_todo  
+Description: Adds a new todo item to the todo.csv file in the datasets directory. The new entry will include an auto-assigned ID, the todo description, status (defaulting to ...
+2025-08-31 23:26:21,193 - INFO - Initiating function generation process...
+2025-08-31 23:26:21,194 - INFO - === STARTING FUNCTION GENERATION ===
+2025-08-31 23:26:21,194 - INFO - User Input: Add todo named: Workout in 6 am, priority high
+2025-08-31 23:26:21,194 - INFO - Function Requirement: Function Name: add_todo  
+Description: Adds a new todo item to the todo.csv file in the datasets directory. The new entry will include an auto-assigned ID, the todo description, status (defaulting to "pending"), priority, created timestamp (defaulting to current time), and an empty completed_at.  
+Parameters:  
+- todo (string): The text description of the todo item.  
+- priority (string): The priority level for the todo (e.g., "low", "medium", "high", "critical").  
+- status (string, optional): The current status of the todo. Defaults to "pending".  
+- created_at (string, optional): Timestamp when the todo is created. Defaults to the current system time in "YYYY-MM-DD HH:MM:SS" format.  
+- completed_at (string, optional): Timestamp when the todo is completed. Defaults to an empty string.  
+
+Example:  
+add_todo(  
+  todo="Workout in 6 am",  
+  priority="high"  
+)
+2025-08-31 23:26:49,232 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 23:27:18,434 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 23:27:21,814 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 23:27:30,520 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 23:27:33,026 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 23:27:33,027 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-08-31 23:27:33,027 - INFO - TDD Adjudication Passed: True
+2025-08-31 23:27:57,967 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 23:28:02,140 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 23:28:02,141 - INFO - --- ITERATION 1 ---
+2025-08-31 23:28:02,141 - INFO - Unit Test Result Summary: All tests passed
+2025-08-31 23:28:02,141 - INFO - Adjudication Passed: True
+2025-08-31 23:28:02,173 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-08-31 23:28:02,173 - INFO - Function Name: add_todo
+2025-08-31 23:28:02,173 - INFO - Total Iterations: 1
+2025-08-31 23:28:02,173 - INFO - Total Duration: 100.98 seconds
+2025-08-31 23:28:02,173 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 23:28:02,173 - INFO - Final Adjudication Attempts: 1
+2025-08-31 23:28:02,173 - INFO - Requirement Reinforcements: 0
+2025-08-31 23:28:05,642 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 23:28:05,654 - INFO - === EXISTING FUNCTION CALLED ===
+2025-08-31 23:28:05,654 - INFO - Function: add_todo
+2025-08-31 23:28:05,654 - INFO - Arguments: {'todo': 'Workout in 6 am', 'priority': 'high', 'file_path': '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv'}
+2025-08-31 23:28:05,654 - INFO - Execution Time: 0.01032387898885645 seconds
+2025-08-31 23:28:05,654 - INFO - Memory Peak: 17827 bytes
+2025-08-31 23:28:05,654 - INFO - Success: True
+2025-08-31 23:28:07,300 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-08-31 23:28:07,315 - INFO - === SESSION SUMMARY ===
+2025-08-31 23:28:07,315 - INFO - Session Duration: 118.77 seconds
+2025-08-31 23:28:07,315 - INFO - Functions Attempted: 1
+2025-08-31 23:28:07,315 - INFO - Successful Functions: 1
+2025-08-31 23:28:07,315 - INFO - Terminated Early: 0
+2025-08-31 23:28:07,315 - INFO - Total Iterations: 1
+2025-08-31 23:28:07,315 - INFO - Average Iterations per Function: 1.00
+2025-08-31 23:28:07,315 - INFO - Existing Function Calls: 1 (1 successful)
+2025-08-31 23:28:07,315 - INFO - TDD Adjudication Attempts: 1
+2025-08-31 23:28:07,315 - INFO - Final Adjudication Attempts: 1
+2025-08-31 23:28:07,315 - INFO - Requirement Reinforcements: 0

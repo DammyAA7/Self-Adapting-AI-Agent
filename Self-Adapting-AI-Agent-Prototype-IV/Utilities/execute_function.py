@@ -58,7 +58,7 @@ def extract_from_args(function_args):
             for item in value:
                 extract_from_value(item)
         elif isinstance(value, str):
-            val += value + ","
+            val += f'"{value}",'
         elif isinstance(value, dict):
             for v in value.values():
                 extract_from_value(v)
@@ -217,8 +217,23 @@ def execute_function(function_name, function_args, function_definitions, use_ter
             # Get the context manager
             context_manager = get_context_manager()
             
-            # Prepare the function call code
-            if isinstance(args, str):
+            # Prepare the function call code with proper keyword arguments
+            if isinstance(function_args, dict):
+                # Build proper keyword arguments from the original dict
+                arg_parts = []
+                for key, value in function_args.items():
+                    if isinstance(value, str):
+                        # Escape quotes in string values
+                        escaped_value = value.replace('"', '\\"')
+                        arg_parts.append(f'{key}="{escaped_value}"')
+                    elif isinstance(value, bool):
+                        arg_parts.append(f'{key}={str(value)}')
+                    elif isinstance(value, (int, float)):
+                        arg_parts.append(f'{key}={value}')
+                    else:
+                        arg_parts.append(f'{key}={repr(value)}')
+                call_code = f"result = {function_name}({', '.join(arg_parts)})\nprint(result)"
+            elif isinstance(args, str):
                 call_code = f"result = {function_name}({args})\nprint(result)"
             else:
                 call_code = f"result = {function_name}(*{args})\nprint(result)"

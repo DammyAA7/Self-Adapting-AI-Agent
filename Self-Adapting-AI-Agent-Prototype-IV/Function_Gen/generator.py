@@ -20,11 +20,20 @@ def generate_function_code(client, test_driven_code, project_context=None):
 ================
 {project_context}
 
-You have full visibility of the project above. When generating the function:
-- Reuse existing functions from the project when appropriate
-- Follow the same coding patterns and style you see in the project
-- Use the actual data structures (CSV columns, JSON keys) present in the project
-- Ensure compatibility with the existing codebase
+CRITICAL REQUIREMENTS - You MUST follow these rules:
+1. **USE EXACT FILE PATHS**: When you see any file paths in the project context above (e.g., "CSV FILE: /path/to/data.csv", "JSON FILE: /path/to/config.json", "PYTHON FILE: /path/to/module.py"), you MUST use the complete absolute paths in your code, NOT relative paths or generic filenames.
+
+2. **NO NEW FILES**: Work with existing files shown in the project context. Do not create new files unless explicitly requested by the user.
+
+3. **REUSE EXISTING DATA**: All data files (CSV, JSON, text, etc.) shown above contain real project data - use their exact paths and existing structures.
+
+4. **FOLLOW PROJECT PATTERNS**: Match the coding style, imports, and patterns you see in existing project files.
+
+EXAMPLES:
+- If context shows "CSV FILE: /home/user/project/data.csv" → Use: DATA_PATH = "/home/user/project/data.csv"
+- If context shows "JSON FILE: /home/user/config/settings.json" → Use: CONFIG_PATH = "/home/user/config/settings.json"  
+- If context shows "PYTHON FILE: /home/user/utils/helpers.py" → Import from exact path or use existing functions shown
+- NOT: DATA_PATH = "data.csv" or CONFIG_PATH = "settings.json" (these are WRONG)
 
 '''
 

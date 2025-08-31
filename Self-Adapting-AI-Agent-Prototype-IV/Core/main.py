@@ -202,6 +202,14 @@ if __name__ == "__main__":
             tools, input_messages = setup_variables(user_request, project_context)
             user_input = user_request  # Use the dynamic user input
             
+            # If we analyzed a project, remind the model to use project file paths when relevant
+            if analyze_path and project_context:
+                # Enhance the user message to include file path reminder
+                enhanced_request = f"{user_request}\n\nNote: If this operation involves files, use the actual file paths from the analyzed project context."
+                # Update the last user message (which contains the user request)
+                if input_messages and input_messages[-1]["role"] == "user":
+                    input_messages[-1]["content"] = enhanced_request
+            
             response = openai_client.chat.completions.create(
                 model=azure_deployment_name,  # Use Azure deployment name
                 messages= input_messages + ([{"role": "user", "content": f"Reinforced requirment: {reinforced_requirement}"}] if reinforced_requirement else []),
@@ -243,9 +251,15 @@ if __name__ == "__main__":
                 
                 # Two-phase approach: Check if existing functions can handle the request
                 if tools:  # Only check if we have existing tools
+                    check_message = "Before generating a new function, check: Do any of your existing tools match this request? If yes, call the appropriate function with reasonable example parameters. If no exact match exists, proceed with generating a new function."
+                    
+                    # If we analyzed a project, add file path reminder for existing function calls too
+                    if analyze_path and project_context:
+                        check_message += "\n\nNote: If calling functions that work with files, use the actual file paths from the analyzed project context."
+                    
                     check_messages = input_messages + [
                         {"role": "assistant", "content": function_requirement},
-                        {"role": "user", "content": "Before generating a new function, check: Do any of your existing tools match this request? If yes, call the appropriate function with reasonable example parameters. If no exact match exists, proceed with generating a new function."}
+                        {"role": "user", "content": check_message}
                     ]
                     
                     check_response = openai_client.chat.completions.create(

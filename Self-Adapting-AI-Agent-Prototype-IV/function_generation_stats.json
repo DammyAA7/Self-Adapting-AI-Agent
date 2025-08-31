@@ -3623,5 +3623,571 @@
     ],
     "end_time": "2025-08-31T20:01:31.438670",
     "session_duration_seconds": 332.055758
+  },
+  {
+    "session_id": "20250831_205043",
+    "start_time": "2025-08-31T20:50:43.374191",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T20:50:50.400324",
+    "session_duration_seconds": 7.026133
+  },
+  {
+    "session_id": "20250831_205302",
+    "start_time": "2025-08-31T20:53:02.488494",
+    "functions": [
+      {
+        "function_requirement": "Function Name: add_todo_item  \nDescription: Adds a new to-do entry to the todo.csv dataset. Automatically assigns the next available id, sets status to \u201cpending,\u201d records the current timestamp as created_at, and leaves completed_at blank unless specified.  \nParameters:  \n- todo (string): The description of the task to be performed.  \n- priority (string): The priority level of the task (e.g., low, medium, high, critical).  \n\nExample:  \n```  \nadd_todo_item(\n  todo=\"Workout in 6 am\",\n  priority=\"high\"\n)  \n```",
+        "user_input": "Add todo named: Workout in 6 am, priority high",
+        "start_time": "2025-08-31T20:53:17.208390",
+        "iterations": 0,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T20:56:21.774848"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T20:56:43.356088"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T20:57:00.188135"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T20:57:04.377747"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T20:57:06.498341"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T20:57:09.365746"
+          }
+        ],
+        "adjudication_attempts": [],
+        "reinforcement_history": [
+          {
+            "type": "tdd",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T20:56:21.774926"
+          },
+          {
+            "type": "tdd",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T20:56:43.357519"
+          },
+          {
+            "type": "tdd",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T20:57:00.188377"
+          },
+          {
+            "type": "tdd",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T20:57:04.377878"
+          },
+          {
+            "type": "tdd",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T20:57:06.498474"
+          },
+          {
+            "type": "tdd",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T20:57:09.365878"
+          }
+        ],
+        "end_time": "2025-08-31T20:57:09.366073",
+        "total_duration_seconds": 232.157683
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-08-31T20:57:09.366352",
+    "session_duration_seconds": 246.877858
+  },
+  {
+    "session_id": "20250831_210347",
+    "start_time": "2025-08-31T21:03:47.578998",
+    "functions": [
+      {
+        "function_requirement": "Function Name: add_todo  \nDescription: Adds a new to\u2010do item to the todo.csv file. Automatically assigns a unique id, sets status to \u201cpending\u201d by default, records the current timestamp as created_at, and leaves completed_at empty.  \nParameters:  \n- description (string): The text of the to\u2010do item.  \n- priority (string): Priority level of the to\u2010do (e.g., low, medium, high, critical).  \n- status (string, optional): The status of the to\u2010do (default \u201cpending\u201d).  \n- created_at (string, optional): Timestamp for when the to\u2010do was created (default: current time in YYYY-MM-DD HH:MM:SS format).  \n- completed_at (string, optional): Timestamp for when the to\u2010do was completed (default: empty).  \nExample:  \nadd_todo(  \n  description=\"Workout in 6 am\",  \n  priority=\"high\"  \n)",
+        "user_input": "Add todo named: Workout in 6 am, priority high",
+        "start_time": "2025-08-31T21:04:02.792527",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "add_todo",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T21:05:40.742102"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T21:06:11.973415",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-08-31T21:06:12.015884",
+        "total_duration_seconds": 129.223357
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "add_todo",
+        "function_args": {
+          "description": "Workout in 6 am",
+          "priority": "high"
+        },
+        "execution_time": 0.010254074004478753,
+        "memory_peak": 18661,
+        "result": "",
+        "timestamp": "2025-08-31T21:06:15.684691",
+        "successful": false
+      }
+    ],
+    "end_time": "2025-08-31T21:06:17.176260",
+    "session_duration_seconds": 149.597262
+  },
+  {
+    "session_id": "20250831_213940",
+    "start_time": "2025-08-31T21:39:40.000501",
+    "functions": [
+      {
+        "function_requirement": "Function Name: list_pending_todos  \nDescription: Reads the todo.csv file and returns all todo entries whose status is \"pending\".  \nParameters:  \n- file_path (string): Path to the CSV file containing todos (e.g., \"/home/aifahim/.../datasets/todo.csv\")  \n\nExample implementation in Python:\n\n```python\nimport csv\n\ndef list_pending_todos(file_path):\n    \"\"\"\n    Reads the CSV at file_path and returns a list of all todo rows\n    where the status is 'pending'.\n    Each row is returned as a dict with keys matching the CSV headers.\n    \"\"\"\n    pending = []\n    with open(file_path, newline='', encoding='utf-8') as csvfile:\n        reader = csv.DictReader(csvfile)\n        for row in reader:\n            if row.get('status', '').strip().lower() == 'pending':\n                pending.append(row)\n    return pending\n\n# Example usage:\nif __name__ == \"__main__\":\n    csv_path = \"/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv\"\n    pending_tasks = list_pending_todos(csv_path)\n    for task in pending_tasks:\n        print(f\"ID: {task['id']}, Todo: {task['todo']}, Priority: {task['priority']}, Created: {task['created_at']}\")\n```",
+        "user_input": "Create a function to list all pending todos",
+        "start_time": "2025-08-31T21:39:48.930026",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "list_pending_todos",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T21:40:55.012514"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T21:41:36.791780"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T21:41:34.401466",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T21:41:41.613989",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T21:41:34.401691"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T21:41:34.401778"
+          }
+        ],
+        "end_time": "2025-08-31T21:41:41.646742",
+        "total_duration_seconds": 112.716716
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "list_pending_todos",
+        "function_args": {
+          "file_path": "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv"
+        },
+        "execution_time": 0.010298810986569151,
+        "memory_peak": 18640,
+        "result": "",
+        "timestamp": "2025-08-31T21:41:47.158623",
+        "successful": false
+      }
+    ],
+    "end_time": "2025-08-31T21:42:12.648175",
+    "session_duration_seconds": 152.647674
+  },
+  {
+    "session_id": "20250831_214410",
+    "start_time": "2025-08-31T21:44:10.484448",
+    "functions": [
+      {
+        "function_requirement": "Function Name: add_todo  \nDescription: Adds a new todo entry to the `todo.csv` dataset with the given description and priority. Automatically sets status to \u201cpending\u201d, assigns a new unique `id`, and records the current timestamp in `created_at`.  \nParameters:  \n- todo (string): The description of the todo item.  \n- priority (string): The priority level of the todo item (e.g., \u201clow\u201d, \u201cmedium\u201d, \u201chigh\u201d, \u201ccritical\u201d).  \nExample:  \nadd_todo(  \n  todo=\"Workout in 6 am\",  \n  priority=\"high\"  \n)",
+        "user_input": "Add todo named: Workout in 6 am, priority high",
+        "start_time": "2025-08-31T21:44:18.732202",
+        "iterations": 3,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "add_todo",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T21:46:07.335935"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T21:46:40.926871"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Update the add_todo function signature so that file_path is optional (e.g. give file_path a sensible default like 'todo.csv') to match tests calling add_todo(description, priority) without a file_path argument.",
+            "timestamp": "2025-08-31T21:48:21.448148"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T21:46:38.670001",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Update the add_todo function signature so that file_path is optional (e.g. give file_path a sensible default like 'todo.csv') to match tests calling add_todo(description, priority) without a file_path argument.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T21:46:53.416093",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T21:48:25.230508",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T21:46:38.670103"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T21:46:38.670135"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "Update the add_todo function signature so that file_path is optional (e.g. give file_path a sensible default like 'todo.csv') to match tests calling add_todo(description, priority) without a file_path argument.",
+            "timestamp": "2025-08-31T21:46:53.416173"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T21:46:53.416204"
+          }
+        ],
+        "end_time": "2025-08-31T21:48:25.273416",
+        "total_duration_seconds": 246.541214
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "add_todo",
+        "function_args": {
+          "todo": "Workout in 6 am",
+          "priority": "high"
+        },
+        "execution_time": 0.010163870989345014,
+        "memory_peak": 18720,
+        "result": "",
+        "timestamp": "2025-08-31T21:48:38.085800",
+        "successful": false
+      }
+    ],
+    "end_time": "2025-08-31T21:48:40.745501",
+    "session_duration_seconds": 270.261053
+  },
+  {
+    "session_id": "20250831_221954",
+    "start_time": "2025-08-31T22:19:54.709875",
+    "functions": [
+      {
+        "function_requirement": "Function Name: add_todo_entry  \nDescription: Appends a new todo item to the existing CSV file of todos. It will add a row with the given todo text, priority, and optional status into the file located at `/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv`.  \nParameters:  \n- todo (string): The description of the task to add.  \n- priority (string): The priority level of the task (e.g., low, medium, high, critical).  \n- status (string, optional): The current status of the task. Defaults to \"pending\".  \n- file_path (string): Path to the CSV file where the todo should be appended.  \n\nExample:  \nadd_todo_entry(  \n  todo=\"Workout in 6 am\",  \n  priority=\"high\",  \n  status=\"pending\",  \n  file_path=\"/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv\"  \n)",
+        "user_input": "Add todo named: Workout in 6 am, priority high",
+        "start_time": "2025-08-31T22:20:03.367560",
+        "iterations": 4,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "add_todo_entry",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T22:21:14.999055"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "Function should validate that the task description is not empty or whitespace-only and that the priority string matches the expected format (e.g., 'low', 'medium', 'high'); return False for invalid inputs such as '   ' or '-low'.",
+            "timestamp": "2025-08-31T22:23:00.675258"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T22:23:05.157797"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T22:23:08.816286"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate that the task description is not empty or whitespace-only and that the priority string matches the expected format (e.g., 'low', 'medium', 'high'); return False for invalid inputs such as '   ' or '-low'.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T22:21:57.381008",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T22:23:04.046158",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T22:23:07.702790",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T22:23:10.696628",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should validate that the task description is not empty or whitespace-only and that the priority string matches the expected format (e.g., 'low', 'medium', 'high'); return False for invalid inputs such as '   ' or '-low'.",
+            "timestamp": "2025-08-31T22:21:57.381114"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T22:21:57.381147"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Function should validate that the task description is not empty or whitespace-only and that the priority string matches the expected format (e.g., 'low', 'medium', 'high'); return False for invalid inputs such as '   ' or '-low'.",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T22:23:04.046354"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T22:23:04.046457"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T22:23:07.702954"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-08-31T22:23:07.703044"
+          }
+        ],
+        "end_time": "2025-08-31T22:23:10.729440",
+        "total_duration_seconds": 187.36188
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "add_todo_entry",
+        "function_args": {
+          "todo": "Workout in 6 am",
+          "priority": "high",
+          "file_path": "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv"
+        },
+        "execution_time": 0.010413101990707219,
+        "memory_peak": 18861,
+        "result": "",
+        "timestamp": "2025-08-31T22:23:14.120784",
+        "successful": false
+      }
+    ],
+    "end_time": "2025-08-31T22:23:15.434834",
+    "session_duration_seconds": 200.724959
+  },
+  {
+    "session_id": "20250831_232608",
+    "start_time": "2025-08-31T23:26:08.541239",
+    "functions": [
+      {
+        "function_requirement": "Function Name: add_todo  \nDescription: Adds a new todo item to the todo.csv file in the datasets directory. The new entry will include an auto-assigned ID, the todo description, status (defaulting to \"pending\"), priority, created timestamp (defaulting to current time), and an empty completed_at.  \nParameters:  \n- todo (string): The text description of the todo item.  \n- priority (string): The priority level for the todo (e.g., \"low\", \"medium\", \"high\", \"critical\").  \n- status (string, optional): The current status of the todo. Defaults to \"pending\".  \n- created_at (string, optional): Timestamp when the todo is created. Defaults to the current system time in \"YYYY-MM-DD HH:MM:SS\" format.  \n- completed_at (string, optional): Timestamp when the todo is completed. Defaults to an empty string.  \n\nExample:  \nadd_todo(  \n  todo=\"Workout in 6 am\",  \n  priority=\"high\"  \n)",
+        "user_input": "Add todo named: Workout in 6 am, priority high",
+        "start_time": "2025-08-31T23:26:21.194038",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "add_todo",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-08-31T23:27:33.027138"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-08-31T23:28:02.141035",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-08-31T23:28:02.173600",
+        "total_duration_seconds": 100.979562
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "add_todo",
+        "function_args": {
+          "todo": "Workout in 6 am",
+          "priority": "high",
+          "file_path": "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv"
+        },
+        "execution_time": 0.01032387898885645,
+        "memory_peak": 17827,
+        "result": "True",
+        "timestamp": "2025-08-31T23:28:05.654721",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-08-31T23:28:07.311733",
+    "session_duration_seconds": 118.770494
   }
 ]

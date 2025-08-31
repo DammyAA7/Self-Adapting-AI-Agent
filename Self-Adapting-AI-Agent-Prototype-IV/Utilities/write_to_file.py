@@ -48,14 +48,27 @@ def write_to_file(type, file_path, content):
                 if content.strip().startswith('['):
                     new_data = json_module.loads(content)
                     if isinstance(new_data, list):
-                        existing_data.extend(new_data)
+                        # Handle duplicate prevention for tools.json
+                        if file_path.endswith('tools.json'):
+                            for item in new_data:
+                                if not any(existing_item.get('function', {}).get('name') == item.get('function', {}).get('name') 
+                                         for existing_item in existing_data):
+                                    existing_data.append(item)
+                        else:
+                            existing_data.extend(new_data)
                     else:
                         existing_data.append(new_data)
                 else:
                     # Try to parse as JSON object
                     try:
                         new_obj = json_module.loads(content)
-                        existing_data.append(new_obj)
+                        # Handle duplicate prevention for tools.json
+                        if file_path.endswith('tools.json'):
+                            if not any(existing_item.get('function', {}).get('name') == new_obj.get('function', {}).get('name') 
+                                     for existing_item in existing_data):
+                                existing_data.append(new_obj)
+                        else:
+                            existing_data.append(new_obj)
                     except:
                         # If not valid JSON, treat as raw text (shouldn't happen)
                         pass

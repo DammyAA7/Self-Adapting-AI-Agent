@@ -190,9 +190,15 @@ if __name__ == "__main__":
     reinforced_requirement = ""
     unit_test_reinforced_requirement = ""
     iteration_count = 0
+    just_generated = False  # Track if we just generated a function
 
     try:
         while(restart):
+            # If we just generated a function, skip generation check and go to execution
+            if just_generated:
+                just_generated = False
+                print("Function was just generated, proceeding to execution...")
+            
             tools, input_messages = setup_variables(user_request, project_context)
             user_input = user_request  # Use the dynamic user input
             
@@ -231,9 +237,52 @@ if __name__ == "__main__":
                 restart = False
                 
             elif response.choices[0].message.content:
-                # If the model did not call any tools, generate a function code
+                # If the model did not call any tools, check if existing functions can handle this first
                 function_requirement = response.choices[0].message.content
                 logger.log_model_response_without_tools(function_requirement)
+                
+                # Two-phase approach: Check if existing functions can handle the request
+                if tools:  # Only check if we have existing tools
+                    check_messages = input_messages + [
+                        {"role": "assistant", "content": function_requirement},
+                        {"role": "user", "content": "Before generating a new function, check: Do any of your existing tools match this request? If yes, call the appropriate function with reasonable example parameters. If no exact match exists, proceed with generating a new function."}
+                    ]
+                    
+                    check_response = openai_client.chat.completions.create(
+                        model=azure_deployment_name,
+                        messages=check_messages,
+                        tools=tools,
+                        tool_choice="auto"
+                    )
+                    
+                    # If the check response wants to use an existing tool, handle it
+                    if check_response.choices[0].message.tool_calls:
+                        print("Found existing function that can handle this request!")
+                        tool_call = check_response.choices[0].message.tool_calls[0]
+                        function_name = tool_call.function.name
+                        function_args = json.loads(tool_call.function.arguments)
+                        print(f"Using existing function: {function_name} with arguments: {function_args}")
+                        
+                        results, safetyType = execute_function(function_name, function_args, tools)
+                        output = results['result']
+                        
+                        # Log existing function call
+                        logger.log_existing_function_call(function_name, function_args, results)
+                        
+                        messages_with_result = input_messages + [
+                            check_response.choices[0].message,
+                            {"role": "tool", "content": str(output), "tool_call_id": tool_call.id}
+                        ]
+                        
+                        final_response = openai_client.chat.completions.create(
+                            model=azure_deployment_name,
+                            messages=messages_with_result,
+                            tools=tools
+                        )
+                        print("Final response:", final_response.choices[0].message.content)
+                        restart = False
+                        continue  # Skip function generation entirely
+                
                 adjudicator = False
                 
                 # Clean test files before starting generation (unless disabled)
@@ -353,7 +402,10 @@ if __name__ == "__main__":
                         
                         # Log successful function generation
                         logger.log_function_success(function_name)
-                        restart = False  # Exit outer loop after successful generation
+                        # Set flag to indicate we just generated a function
+                        just_generated = True
+                        iteration_count = 0  # Reset for next function
+                        # Don't set restart = False here - need to loop back to execute the function!
                     else:
                         old_code_req = reinforced_requirement
                         old_unit_req = unit_test_reinforced_requirement

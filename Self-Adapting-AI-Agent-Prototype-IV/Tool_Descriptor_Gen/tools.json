@@ -3,38 +3,18 @@
     {
         "type": "function",
         "function": {
-            "name": "add_todo",
-            "description": "Adds a new todo item to the specified CSV file.",
+            "name": "list_help_todos",
+            "description": "List todos containing 'help' case-insensitive from a CSV file. Reads the CSV at file_path and prints each row where the 'todo' field includes 'help' (case-insensitive). Returns True if any such todos are printed, False otherwise. Returns False if the file cannot be found.",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "file_path": {
                         "type": "string",
-                        "description": "Path to the CSV file where the todo will be added.",
-                        "minLength": 1
-                    },
-                    "todo": {
-                        "type": "string",
-                        "description": "The text content of the todo item to be added.",
-                        "minLength": 1
-                    },
-                    "priority": {
-                        "type": "string",
-                        "description": "Priority level for the todo item. Valid values: low, medium, high, critical.",
-                        "enum": ["low", "medium", "high", "critical"]
-                    },
-                    "status": {
-                        "type": "string",
-                        "description": "Status of the todo item. Default is 'pending'.",
-                        "minLength": 1
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "description": "Optional creation timestamp for the todo item in YYYY-MM-DD HH:MM:SS format.",
+                        "description": "The path to the CSV file containing todos.",
                         "minLength": 1
                     }
                 },
-                "required": ["file_path", "todo", "priority"]
+                "required": ["file_path"]
             }
         }
     }

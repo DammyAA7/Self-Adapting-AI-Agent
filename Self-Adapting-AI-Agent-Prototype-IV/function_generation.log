@@ -5340,3 +5340,138 @@ add_todo(
 2025-09-01 14:30:06,440 - INFO - TDD Adjudication Attempts: 1
 2025-09-01 14:30:06,440 - INFO - Final Adjudication Attempts: 1
 2025-09-01 14:30:06,440 - INFO - Requirement Reinforcements: 0
+2025-09-01 16:06:32,151 - INFO - Retrying request to /chat/completions in 0.476797 seconds
+2025-09-01 16:06:32,630 - INFO - Retrying request to /chat/completions in 0.955501 seconds
+2025-09-01 16:06:33,587 - ERROR - === UNEXPECTED ERROR ===
+2025-09-01 16:06:33,587 - ERROR - Error: Connection error.
+2025-09-01 16:06:33,587 - ERROR - Unexpected error: Connection error.
+2025-09-01 16:06:33,593 - INFO - === SESSION SUMMARY ===
+2025-09-01 16:06:33,593 - INFO - Session Duration: 1.55 seconds
+2025-09-01 16:06:33,593 - INFO - Functions Attempted: 0
+2025-09-01 16:06:33,593 - INFO - Successful Functions: 0
+2025-09-01 16:06:33,593 - INFO - Terminated Early: 0
+2025-09-01 16:06:33,593 - INFO - Total Iterations: 0
+2025-09-01 16:06:33,593 - INFO - Average Iterations per Function: 0.00
+2025-09-01 16:06:33,593 - INFO - Existing Function Calls: 0 (0 successful)
+2025-09-01 16:06:33,593 - INFO - TDD Adjudication Attempts: 0
+2025-09-01 16:06:33,593 - INFO - Final Adjudication Attempts: 0
+2025-09-01 16:06:33,593 - INFO - Requirement Reinforcements: 0
+2025-09-01 16:14:37,144 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:14:37,146 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-01 16:14:37,146 - INFO - Response Content: Function Name: list_help_todos  
+Description: Reads the todo.csv file, filters for any to-do entries where one person is helping another (i.e., the description starts with or contains the word “Help”)...
+2025-09-01 16:14:37,146 - INFO - Initiating function generation process...
+2025-09-01 16:14:37,146 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-01 16:14:37,146 - INFO - User Input: Find, listout and print all todos where one person is helping another
+2025-09-01 16:14:37,146 - INFO - Function Requirement: Function Name: list_help_todos  
+Description: Reads the todo.csv file, filters for any to-do entries where one person is helping another (i.e., the description starts with or contains the word “Help”), and prints out each matching record in a user-friendly format.  
+Parameters:  
+- file_path (string): Full path to the todo.csv file to read and filter.  
+
+Example:  
+list_help_todos(  
+    file_path="/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv"  
+)  
+
+This function would open the specified CSV, scan the “todo” column for the keyword “Help”, and output the matching rows (including id, todo text, status, priority, created_at, completed_at).
+2025-09-01 16:16:18,111 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:16:55,392 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:16:56,565 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:17:01,741 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:17:03,793 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:17:03,793 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-01 16:17:03,793 - INFO - TDD Adjudication Passed: False
+2025-09-01 16:17:03,793 - INFO - TDD Requirement Suggestion: Function should not include items containing '2' in the output for the normal case; ensure that filtering logic is implemented correctly.
+2025-09-01 16:17:03,793 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-01 16:17:03,793 - INFO - Iteration: 1
+2025-09-01 16:17:03,793 - INFO - Previous Requirement: 
+2025-09-01 16:17:03,793 - INFO - New Requirement: Function should not include items containing '2' in the output for the normal case; ensure that filtering logic is implemented correctly.
+2025-09-01 16:17:43,318 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:19:02,580 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:19:03,809 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:19:08,724 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:19:10,265 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:19:10,266 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-09-01 16:19:10,266 - INFO - TDD Adjudication Passed: True
+2025-09-01 16:21:07,720 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:21:27,583 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:21:27,583 - INFO - --- ITERATION 2 ---
+2025-09-01 16:21:27,583 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-09-01 16:21:27,583 - INFO - Adjudication Passed: False
+2025-09-01 16:21:27,583 - INFO - Code Requirement Suggestion: Function should correctly filter and format tasks containing the keyword 'help', ensuring that the task with id 3 ('help Charlie at the office') is included in the output
+2025-09-01 16:21:27,583 - INFO - Unit Requirement Suggestion: 
+2025-09-01 16:21:27,583 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-09-01 16:21:27,583 - INFO - Iteration: 2
+2025-09-01 16:21:27,583 - INFO - Previous Requirement: Function should not include items containing '2' in the output for the normal case; ensure that filtering logic is implemented correctly.
+2025-09-01 16:21:27,583 - INFO - New Requirement: Function should correctly filter and format tasks containing the keyword 'help', ensuring that the task with id 3 ('help Charlie at the office') is included in the output
+2025-09-01 16:21:27,584 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-09-01 16:21:27,584 - INFO - Iteration: 2
+2025-09-01 16:21:27,584 - INFO - Previous Requirement: 
+2025-09-01 16:21:27,584 - INFO - New Requirement: 
+2025-09-01 16:21:51,551 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:23:27,258 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:23:28,663 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:23:33,286 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:23:34,778 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:23:34,778 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-09-01 16:23:34,778 - INFO - TDD Adjudication Passed: False
+2025-09-01 16:23:34,778 - INFO - TDD Requirement Suggestion: Function should return a line containing '3' and 'help Charlie at the office' (case-insensitive) when listing help todos in the normal case.
+2025-09-01 16:23:34,778 - INFO - Applied Reinforced Requirement: Function should correctly filter and format tasks containing the keyword 'help', ensuring that the task with id 3 ('help Charlie at the office') is included in the output
+2025-09-01 16:23:34,778 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-01 16:23:34,778 - INFO - Iteration: 3
+2025-09-01 16:23:34,778 - INFO - Previous Requirement: Function should correctly filter and format tasks containing the keyword 'help', ensuring that the task with id 3 ('help Charlie at the office') is included in the output
+2025-09-01 16:23:34,778 - INFO - New Requirement: Function should return a line containing '3' and 'help Charlie at the office' (case-insensitive) when listing help todos in the normal case.
+2025-09-01 16:24:12,252 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:25:49,132 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:25:50,566 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:25:56,915 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:25:58,583 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:25:58,583 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-09-01 16:25:58,583 - INFO - TDD Adjudication Passed: True
+2025-09-01 16:26:00,807 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:26:00,807 - INFO - --- ITERATION 4 ---
+2025-09-01 16:26:00,807 - INFO - Unit Test Result Summary: All tests passed
+2025-09-01 16:26:00,807 - INFO - Adjudication Passed: False
+2025-09-01 16:26:00,807 - INFO - Code Requirement Suggestion: 
+2025-09-01 16:26:00,807 - INFO - Unit Requirement Suggestion: 
+2025-09-01 16:26:00,808 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-09-01 16:26:00,808 - INFO - Iteration: 4
+2025-09-01 16:26:00,808 - INFO - Previous Requirement: Function should return a line containing '3' and 'help Charlie at the office' (case-insensitive) when listing help todos in the normal case.
+2025-09-01 16:26:00,808 - INFO - New Requirement: 
+2025-09-01 16:26:00,808 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-09-01 16:26:00,808 - INFO - Iteration: 4
+2025-09-01 16:26:00,808 - INFO - Previous Requirement: 
+2025-09-01 16:26:00,808 - INFO - New Requirement: 
+2025-09-01 16:26:02,753 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:26:02,754 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-09-01 16:26:02,754 - INFO - TDD Adjudication Passed: True
+2025-09-01 16:26:08,794 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:26:08,795 - INFO - --- ITERATION 5 ---
+2025-09-01 16:26:08,795 - INFO - Unit Test Result Summary: All tests passed
+2025-09-01 16:26:08,795 - INFO - Adjudication Passed: True
+2025-09-01 16:26:08,838 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-09-01 16:26:08,838 - INFO - Function Name: list_help_todos
+2025-09-01 16:26:08,838 - INFO - Total Iterations: 5
+2025-09-01 16:26:08,838 - INFO - Total Duration: 691.69 seconds
+2025-09-01 16:26:08,838 - INFO - TDD Adjudication Attempts: 5
+2025-09-01 16:26:08,838 - INFO - Final Adjudication Attempts: 3
+2025-09-01 16:26:08,838 - INFO - Requirement Reinforcements: 6
+2025-09-01 16:26:22,605 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:26:22,617 - INFO - === EXISTING FUNCTION CALLED ===
+2025-09-01 16:26:22,617 - INFO - Function: list_help_todos
+2025-09-01 16:26:22,617 - INFO - Arguments: {'file_path': '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv'}
+2025-09-01 16:26:22,617 - INFO - Execution Time: 0.010338521038647741 seconds
+2025-09-01 16:26:22,617 - INFO - Memory Peak: 23161 bytes
+2025-09-01 16:26:22,617 - INFO - Success: True
+2025-09-01 16:26:37,051 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-01 16:26:37,066 - INFO - === SESSION SUMMARY ===
+2025-09-01 16:26:37,066 - INFO - Session Duration: 751.48 seconds
+2025-09-01 16:26:37,066 - INFO - Functions Attempted: 1
+2025-09-01 16:26:37,066 - INFO - Successful Functions: 1
+2025-09-01 16:26:37,066 - INFO - Terminated Early: 0
+2025-09-01 16:26:37,066 - INFO - Total Iterations: 5
+2025-09-01 16:26:37,066 - INFO - Average Iterations per Function: 5.00
+2025-09-01 16:26:37,066 - INFO - Existing Function Calls: 1 (1 successful)
+2025-09-01 16:26:37,066 - INFO - TDD Adjudication Attempts: 5
+2025-09-01 16:26:37,066 - INFO - Final Adjudication Attempts: 3
+2025-09-01 16:26:37,066 - INFO - Requirement Reinforcements: 6

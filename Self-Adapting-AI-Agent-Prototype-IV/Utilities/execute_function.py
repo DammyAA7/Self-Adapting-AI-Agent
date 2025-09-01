@@ -1,4 +1,4 @@
-from Utilities.performanceTester import performance_subprocess_call, performance_execute, performance_terminal_execute
+from Utilities.performanceTester import performance_subprocess_call, performance_execute, performance_execute_kwargs, performance_terminal_execute
 import json
 import sys
 import os
@@ -207,7 +207,11 @@ def execute_function(function_name, function_args, function_definitions, use_ter
                             # Fallback to float if conversion fails
                             arg_list = [float(stripped_arg)]
         
-        results = performance_execute(function_name, *arg_list)
+        # Use keyword arguments from original function_args dict for better parameter matching
+        if isinstance(function_args, dict):
+            results = performance_execute_kwargs(function_name, function_args)
+        else:
+            results = performance_execute(function_name, *arg_list)
         return results, "safe"
     else:
         # Try to use terminal context for better state preservation

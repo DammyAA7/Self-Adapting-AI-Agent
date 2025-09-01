@@ -286,4 +286,15 @@ PATTERNS TO LEARN:
    - Clear return values
    - Graceful failure handling
 5. Apply these patterns to ANY domain by adapting the core operation
+
+## FILE HANDLING BEST PRACTICES
+
+When appending to any text-based file:
+- Consider whether the file format requires line separation
+- Use appropriate newline handling based on the file type and context
+- For structured formats (CSV, JSON, etc.), maintain proper formatting
+- Check existing file structure and maintain consistency
+- Handle edge cases like empty files or missing trailing newlines appropriately
+
+Let the file type and context guide your implementation - no special handling needed for specific formats.
 """

@@ -931,3 +931,182 @@ Should result in:
 - Todo successfully added to actual dataset file ✅
 
 This completes the full integration pipeline from project analysis to successful file modification.
+
+---
+
+## Change 11: File Formatting and Best Practices Enhancement
+## Date: 2025-08-31
+
+### Problem Identified After Testing
+After successful end-to-end integration, discovered a minor file formatting issue:
+- CSV file lacked trailing newline, causing append operations to merge with the last line
+- Need generic file handling guidance without creating format-specific bias
+
+### Solution: Two-Part Approach
+
+#### Part 1: Fix Source Data Quality
+**Action:** Added trailing newline to datasets CSV file
+```bash
+echo "" >> /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/datasets/todo.csv
+```
+
+**Why:**
+- Malformed CSV files (missing trailing newlines) cause append issues
+- This is a data quality problem, not a system problem
+- One-time fix that prevents future formatting issues
+- No system changes required
+
+#### Part 2: Add Generic File Handling Guidance
+**File:** `/Function_Gen/function.txt` (lines 290-299)
+
+**Added:**
+```
+## FILE HANDLING BEST PRACTICES
+
+When appending to any text-based file:
+- Consider whether the file format requires line separation
+- Use appropriate newline handling based on the file type and context
+- For structured formats (CSV, JSON, etc.), maintain proper formatting
+- Check existing file structure and maintain consistency
+- Handle edge cases like empty files or missing trailing newlines appropriately
+
+Let the file type and context guide your implementation - no special handling needed for specific formats.
+```
+
+### Why This Approach
+
+**Non-Biased:**
+- No CSV-specific or format-specific instructions
+- Generic guidance that applies to all file types
+- LLM decides based on context, not forced behavior
+
+**Maintains Architecture:**
+- No changes to core system logic
+- Preserves generic, adaptable design
+- Uses existing prompt engineering approach
+
+**Addresses Root Cause:**
+- Fixes the immediate data quality issue
+- Provides guidance for future similar scenarios
+- Prevents bias while improving robustness
+
+### Expected Results
+
+**Immediate:**
+- CSV append operations will now format correctly
+- No more merged lines when adding new entries
+
+**Long-term:**
+- Future generated functions will consider file format requirements
+- Better handling of various text-based file types
+- Maintained system neutrality and adaptability
+
+### Benefits Achieved
+1. **Data Quality Fixed**: CSV file now properly formatted for append operations
+2. **Generic Guidance**: File handling improvements without format bias
+3. **System Integrity**: No architectural changes, maintains flexibility
+4. **Future-Proof**: Better file handling for all future generated functions
+5. **Complete Integration**: System now handles end-to-end workflow with proper formatting
+
+This change ensures both immediate functionality and long-term robustness while preserving the system's generic, unbiased design principles.
+
+---
+
+## Change 12: MODULE IMPORT Keyword Arguments Fix
+## Date: 2025-09-01
+
+### Problem Identified During Testing
+After implementing Changes 8-11, discovered that functions marked as "safe" were not working correctly:
+- Functions like `add_todo` were added to `safeFunctions.json` and executed via MODULE IMPORT path
+- MODULE IMPORT execution used positional arguments instead of keyword arguments
+- Result: Function parameters were passed in wrong order, causing execution failures
+
+### Root Cause Analysis
+**The Issue:**
+```python
+# Function signature:
+def add_todo(todo, priority, status="pending", created_at=None, file_path=None)
+
+# JSON arguments from model:
+{'todo': 'Workout in 6 am', 'priority': 'high', 'file_path': '/path/to/file.csv'}
+
+# MODULE IMPORT execution (BROKEN):
+performance_execute('add_todo', "Workout in 6 am", "high", "/path/to/file.csv")
+# This puts file_path in the status parameter!
+
+# Should be (CORRECT):  
+performance_execute_kwargs('add_todo', {'todo': 'Workout in 6 am', 'priority': 'high', 'file_path': '/path/to/file.csv'})
+```
+
+### Changes Made
+
+#### Location 1: Enhanced execute_function.py (Lines 210-215)
+**Before:**
+```python
+results = performance_execute(function_name, *arg_list)
+return results, "safe"
+```
+
+**After:**
+```python
+# Use keyword arguments from original function_args dict for better parameter matching
+if isinstance(function_args, dict):
+    results = performance_execute_kwargs(function_name, function_args)
+else:
+    results = performance_execute(function_name, *arg_list)
+return results, "safe"
+```
+
+#### Location 2: Added performance_execute_kwargs in performanceTester.py (Lines 112-125)
+**New Function:**
+```python
+def performance_execute_kwargs(function_name, function_kwargs):
+    """Execute function with keyword arguments and performance monitoring"""
+    import functions as functions
+    import importlib
+    
+    def execute_wrapper():
+        importlib.reload(functions)
+        if hasattr(functions, function_name):
+            func = getattr(functions, function_name)
+            return func(**function_kwargs)
+        else:
+            raise ValueError(f"Function '{function_name}' not found")
+    
+    return performance_function(execute_wrapper)
+```
+
+#### Location 3: Updated imports in execute_function.py (Line 1)
+```python
+from Utilities.performanceTester import performance_subprocess_call, performance_execute, performance_execute_kwargs, performance_terminal_execute
+```
+
+### Why This Fix Was Necessary
+1. **Parameter Order Matters**: Modern functions use multiple parameters with defaults
+2. **JSON Preserves Structure**: The original `function_args` dict has correct parameter names
+3. **Keyword Arguments Are Safer**: No risk of parameter position mismatches
+4. **Consistency**: Both MODULE IMPORT and TERMINAL CONTEXT now use keyword arguments
+
+### Expected Result
+**Before this fix:**
+```python
+# Wrong parameter mapping
+add_todo("Workout in 6 am", "high", "/path/to/file.csv")
+# file_path goes to status parameter → function fails
+```
+
+**After this fix:**
+```python
+# Correct parameter mapping  
+add_todo(todo="Workout in 6 am", priority="high", file_path="/path/to/file.csv")
+# All parameters in correct positions → function succeeds
+```
+
+### Benefits Achieved
+1. **Safe Function Execution**: MODULE IMPORT path now works correctly with multi-parameter functions
+2. **Parameter Safety**: Keyword arguments eliminate position-dependent errors  
+3. **Execution Path Consistency**: Both safe and unsafe execution use similar argument handling
+4. **Backward Compatibility**: Still falls back to positional arguments for non-dict inputs
+5. **Complete Integration**: System now works end-to-end regardless of execution path
+
+This completes the full execution pipeline fix, ensuring functions work correctly whether they're executed via MODULE IMPORT (safe) or TERMINAL CONTEXT (persistent).

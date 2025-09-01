@@ -109,6 +109,21 @@ def performance_execute(function_name, *args):
     
     return performance_function(execute_wrapper)
 
+def performance_execute_kwargs(function_name, function_kwargs):
+    """Execute function with keyword arguments and performance monitoring"""
+    import functions as functions
+    import importlib
+    
+    def execute_wrapper():
+        importlib.reload(functions)
+        if hasattr(functions, function_name):
+            func = getattr(functions, function_name)
+            return func(**function_kwargs)
+        else:
+            raise ValueError(f"Function '{function_name}' not found")
+    
+    return performance_function(execute_wrapper)
+
 def performance_terminal_execute(context_manager, code: str) -> Dict[str, Any]:
     """
     Execute code in persistent terminal context with performance monitoring.

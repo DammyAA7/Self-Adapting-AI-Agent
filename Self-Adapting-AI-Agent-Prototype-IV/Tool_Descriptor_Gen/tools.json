@@ -4,41 +4,37 @@
         "type": "function",
         "function": {
             "name": "add_todo",
-            "description": "Add a new todo entry to the CSV file at file_path. Returns True if the entry was added successfully, False otherwise.",
+            "description": "Adds a new todo item to the specified CSV file.",
             "parameters": {
                 "type": "object",
                 "properties": {
+                    "file_path": {
+                        "type": "string",
+                        "description": "Path to the CSV file where the todo will be added.",
+                        "minLength": 1
+                    },
                     "todo": {
                         "type": "string",
-                        "description": "The text description of the todo item.",
+                        "description": "The text content of the todo item to be added.",
                         "minLength": 1
                     },
                     "priority": {
                         "type": "string",
-                        "description": "Priority of the todo item. Must be one of: low, medium, high, critical.",
-                        "enum": ["low", "medium", "high", "critical"],
-                        "minLength": 1
+                        "description": "Priority level for the todo item. Valid values: low, medium, high, critical.",
+                        "enum": ["low", "medium", "high", "critical"]
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of the todo item. If not provided, defaults to pending.",
+                        "description": "Status of the todo item. Default is 'pending'.",
                         "minLength": 1
                     },
                     "created_at": {
                         "type": "string",
-                        "description": "Timestamp for when the todo was created, in YYYY-MM-DD HH:MM:SS format."
-                    },
-                    "completed_at": {
-                        "type": "string",
-                        "description": "Timestamp for when the todo was completed, in YYYY-MM-DD HH:MM:SS format."
-                    },
-                    "file_path": {
-                        "type": "string",
-                        "description": "Path to the CSV file where the todo item will be added.",
+                        "description": "Optional creation timestamp for the todo item in YYYY-MM-DD HH:MM:SS format.",
                         "minLength": 1
                     }
                 },
-                "required": ["todo", "priority", "file_path"]
+                "required": ["file_path", "todo", "priority"]
             }
         }
     }

@@ -3,35 +3,13 @@
     {
         "type": "function",
         "function": {
-            "name": "advanced_matrix_ops",
-            "description": "Performs advanced matrix operations with optional caching. Validates that the matrix is a non-empty square numeric matrix. If caching is enabled, caches the result using a provided key or an implicit key.",
+            "name": "salary_analyzer",
+            "description": "Calculate average salary from the employee database.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "matrix": {
-                        "type": "array",
-                        "description": "A non-empty square numeric matrix represented as an array of arrays of numbers.",
-                        "minItems": 1,
-                        "items": {
-                            "type": "array",
-                            "minItems": 1,
-                            "items": {
-                                "type": "number",
-                                "description": "A numeric value in the matrix."
-                            }
-                        }
-                    },
-                    "use_cache": {
-                        "type": "boolean",
-                        "description": "Flag to indicate whether to use (and populate) the result cache for this computation."
-                    },
-                    "cache_key": {
-                        "type": "string",
-                        "description": "Custom cache key for storing or retrieving the matrix operation result.",
-                        "minLength": 1
-                    }
                 },
-                "required": ["matrix"]
+                "required": []
             }
         }
     }

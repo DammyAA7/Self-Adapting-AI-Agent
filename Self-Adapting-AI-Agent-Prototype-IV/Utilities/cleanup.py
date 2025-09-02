@@ -90,6 +90,47 @@ if __name__ == "__main__":
         return False
 
 
+def reset_for_context_mode(verbose=True):
+    """
+    Reset only test files while preserving function context.
+    Used when --context-memory is enabled to maintain long-horizon task state.
+    
+    Args:
+        verbose (bool): If True, print status messages
+        
+    Returns:
+        bool: True if cleanup was successful, False otherwise
+    """
+    try:
+        if verbose:
+            print("🧹 Context mode cleanup (preserving functions)...")
+        
+        # Clear ONLY test files - preserve function context
+        clear_file('Test_Driven_Development/testDrivenCases.py')
+        if verbose:
+            print("  ✓ Cleared TDD test cases")
+        
+        clear_file('Unit_Test/unitTest.py')
+        if verbose:
+            print("  ✓ Cleared unit tests")
+        
+        # DO NOT clear these files in context mode:
+        # - Unit_Test/functions.py (contains loaded functions)
+        # - functions.py (main function repository)  
+        # - Tool_Descriptor_Gen/tools.json (function metadata)
+        
+        if verbose:
+            print("  ✓ Preserved function definitions")
+            print("✅ Context mode cleanup complete! Function context preserved.")
+        
+        return True
+        
+    except Exception as e:
+        if verbose:
+            print(f"❌ Context mode cleanup failed: {e}")
+        return False
+
+
 def cleanup_terminal_context(verbose=True):
     """
     Additional cleanup for terminal context if needed.

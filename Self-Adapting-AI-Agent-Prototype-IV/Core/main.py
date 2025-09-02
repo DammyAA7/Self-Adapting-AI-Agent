@@ -8,7 +8,7 @@ from openai import OpenAI, AzureOpenAI
 import json
 from Function_Gen.generator import generate_function_code
 from Test_Driven_Development.generator import generateTestDrivenCases
-from Utilities.write_to_file import write_to_file, clear_file
+from Utilities.write_to_file import write_to_file, clear_file, replace_function_in_file
 from Adjudicator.adjudicator import adjudicate
 from Intermidiate_Adjudicator.adjudicator import intermidiate_adjudicate
 from Tool_Descriptor_Gen.toolGenerator import generate_tool_definitions
@@ -18,7 +18,7 @@ from Utilities.execute_function import execute_function
 from dotenv import load_dotenv
 from Utilities.Logger import FunctionGenerationLogger
 from FileAnalyzer.analyzer import SimpleAnalyzer
-from Utilities.cleanup import reset_for_new_run, full_cleanup
+from Utilities.cleanup import reset_for_new_run, full_cleanup, reset_for_context_mode
 import argparse
 
 # Import terminal context if available
@@ -43,6 +43,8 @@ def get_user_input():
     parser.add_argument('--clean', action='store_true', help='Clean test files before running')
     parser.add_argument('--clean-all', action='store_true', help='Clean all files including generated functions')
     parser.add_argument('--no-clean', action='store_true', help='Skip automatic cleanup of test files before running')
+    parser.add_argument('--context-memory', action='store_true', help='Enable context memory mode - restore previous sessions and preserve function context')
+    parser.add_argument('--session', type=str, help='Direct path to specific session file to load (requires --context-memory)')
 
     args = parser.parse_args()
     
@@ -78,6 +80,130 @@ def get_user_input():
         return args.request, args.analyze, args
 
     return None, None, args
+
+def select_context_session(context_manager, auto_session=None):
+    """
+    Interactive session selection for context memory mode.
+    
+    Args:
+        context_manager: ContextManager instance
+        auto_session: Direct path to session file (optional)
+    
+    Returns:
+        (loaded_successfully, session_file_path) tuple
+    """
+    import json
+    from datetime import datetime
+    import os
+    
+    if auto_session:
+        # Direct session file provided via --session argument
+        print(f"📂 Loading specified session: {auto_session}")
+        if not os.path.exists(auto_session):
+            print(f"❌ Session file not found: {auto_session}")
+            return False, None
+        success = context_manager.load_session(auto_session)
+        if success:
+            print("✅ Session loaded successfully!")
+        return success, auto_session
+    
+    # List available sessions
+    session_dir = "context_sessions"
+    if not os.path.exists(session_dir):
+        print("📁 No context sessions directory found. Starting fresh.")
+        return False, None
+    
+    sessions = []
+    for filename in os.listdir(session_dir):
+        if filename.endswith('.json'):
+            filepath = os.path.join(session_dir, filename)
+            try:
+                with open(filepath, 'r') as f:
+                    data = json.load(f)
+                    sessions.append({
+                        'filename': filename,
+                        'filepath': filepath,
+                        'created': data['session_data'].get('created_at', 'Unknown'),
+                        'functions': list(data['session_data'].get('functions', {}).keys()),
+                        'saved_at': data.get('saved_at', 'Unknown')
+                    })
+            except Exception as e:
+                print(f"⚠ Warning: Could not read session {filename}: {e}")
+                continue
+    
+    if not sessions:
+        print("📁 No valid session files found. Starting fresh.")
+        return False, None
+    
+    # Sort by saved_at timestamp (most recent first)
+    sessions.sort(key=lambda x: x['saved_at'], reverse=True)
+    
+    print("\n" + "="*60)
+    print("Context Memory Mode - Session Selection")
+    print("="*60)
+    print("\n📂 Available Context Sessions:")
+    
+    for idx, session in enumerate(sessions[:10], 1):
+        # Parse timestamp for display
+        try:
+            timestamp = datetime.fromisoformat(session['saved_at'].replace('Z', '+00:00'))
+            date_str = timestamp.strftime("%b %d, %H:%M")
+        except:
+            date_str = 'Unknown date'
+        
+        func_count = len(session['functions'])
+        func_names = ', '.join(session['functions'][:3])
+        if len(session['functions']) > 3:
+            func_names += f", +{len(session['functions'])-3} more"
+        
+        print(f"{idx}. {session['filename']} ({date_str})")
+        print(f"   Functions ({func_count}): {func_names if func_names else 'None'}")
+        print()
+    
+    # Get user selection
+    print("Options:")
+    print(f"  - Enter 1-{len(sessions[:10])} to select a session")
+    print("  - Enter full path to custom session file")
+    print("  - Enter 'new' to start fresh with context memory")
+    print("  - Press Enter to use most recent session")
+    
+    selection = input("\nYour choice: > ").strip()
+    
+    # Process selection
+    selected_file = None
+    if not selection and sessions:
+        # Use most recent
+        selected_file = sessions[0]['filepath']
+        print(f"🎯 Using most recent session: {sessions[0]['filename']}")
+    elif selection.lower() == 'new':
+        print("🆕 Starting fresh session with context memory enabled")
+        return False, None
+    elif selection.isdigit() and 1 <= int(selection) <= len(sessions[:10]):
+        selected_file = sessions[int(selection)-1]['filepath']
+        print(f"🎯 Selected: {sessions[int(selection)-1]['filename']}")
+    elif os.path.exists(selection):
+        selected_file = selection
+        print(f"🎯 Loading custom path: {selection}")
+    else:
+        print(f"❌ Invalid selection: {selection}")
+        print("Starting fresh session...")
+        return False, None
+    
+    # Load selected session
+    print(f"\n📂 Loading session: {selected_file}")
+    success = context_manager.load_session(selected_file)
+    
+    if success:
+        print("✅ Session loaded successfully!")
+        functions = context_manager.list_available_functions()
+        if functions:
+            print(f"📋 Available functions: {', '.join(functions)}")
+        else:
+            print("📋 No functions found in session")
+    else:
+        print("❌ Failed to load session")
+    
+    return success, selected_file
 
 def setup_variables(user_request=None, project_context=""):
     with open('Tool_Descriptor_Gen/tools.json', 'r') as f:
@@ -132,6 +258,89 @@ if __name__ == "__main__":
     if not user_request:
         print("No request provided. Exiting.")
         sys.exit(0)
+    
+    # Handle context memory mode
+    context_memory_mode = False
+    loaded = False  # Track whether functions were loaded from session
+    if hasattr(cmd_args, 'context_memory') and cmd_args.context_memory:
+        context_memory_mode = True
+        if not TERMINAL_CONTEXT_AVAILABLE:
+            print("❌ Context memory mode requires Terminal Context module, but it's not available.")
+            sys.exit(1)
+        
+        print("\n" + "="*60)
+        print("Context Memory Mode Activated")
+        print("="*60)
+        
+        # Load previous session
+        auto_session = cmd_args.session if hasattr(cmd_args, 'session') and cmd_args.session else None
+        loaded, session_path = select_context_session(context_manager, auto_session)
+        
+        if loaded:
+            # Re-populate Unit_Test/functions.py from loaded context
+            print("\n🔄 Restoring function definitions to Unit_Test/functions.py...")
+            
+            # Debug: Check if session data is accessible
+            if hasattr(context_manager, 'session_data') and context_manager.session_data:
+                print(f"🔍 Debug: context_manager.session_data keys: {list(context_manager.session_data.keys())}")
+                if 'functions' in context_manager.session_data:
+                    print(f"🔍 Debug: functions key contains: {list(context_manager.session_data['functions'].keys())}")
+                else:
+                    print("⚠ Warning: No 'functions' key in session_data")
+            else:
+                print("⚠ Warning: context_manager.session_data is empty or not accessible")
+            
+            # Read enum content first
+            with open('Unit_Test/enumUtility.txt', 'r') as f:
+                enum_utility = f.read()
+            
+            # Clear and start with enums in BOTH files for synchronization
+            clear_file('Unit_Test/functions.py')
+            clear_file('functions.py')
+            write_to_file('python_function', 'Unit_Test/functions.py', enum_utility)
+            # Also write to root functions.py (without enums, just comment and cache)
+            write_to_file('python', 'functions.py', "# Dynamically generated functions will be added here\n\ncomputation_cache = {}\n")
+            
+            # Add each function from the loaded session to BOTH files
+            restored_count = 0
+            for func_name, func_data in context_manager.session_data['functions'].items():
+                if 'code' in func_data:
+                    # Add newline for proper separation and ensure clean code
+                    clean_code = func_data['code'].strip()
+                    # Write to BOTH files to maintain synchronization
+                    write_to_file('python_function', 'Unit_Test/functions.py', "\n" + clean_code + "\n")
+                    write_to_file('python', 'functions.py', "\n" + clean_code + "\n")
+                    print(f"  ✓ Restored function: {func_name}")
+                    restored_count += 1
+                else:
+                    print(f"  ⚠ Skipped function '{func_name}' (incomplete data)")
+            
+            print(f"📋 Restored {restored_count} function(s) to Unit_Test/functions.py")
+            
+            # Verify functions were actually restored
+            try:
+                with open('Unit_Test/functions.py', 'r') as f:
+                    content = f.read()
+                
+                missing_functions = []
+                for func_name in context_manager.session_data['functions'].keys():
+                    if 'code' in context_manager.session_data['functions'][func_name]:
+                        if f"def {func_name}" not in content:
+                            missing_functions.append(func_name)
+                
+                if missing_functions:
+                    print(f"⚠ Warning: Functions not found in functions.py: {missing_functions}")
+                else:
+                    print("✅ All session functions verified in functions.py")
+                    
+            except Exception as e:
+                print(f"⚠ Warning: Could not verify function restoration: {e}")
+            
+            print("✅ Function definitions restored!")
+        else:
+            print("🆕 Starting fresh session with context memory enabled")
+        
+        print("="*60 + "\n")
     
     # Note: Cleanup is already handled in get_user_input() if flags are set
     # No need to repeat it here
@@ -301,8 +510,14 @@ if __name__ == "__main__":
                 
                 # Clean test files before starting generation (unless disabled)
                 if not hasattr(cmd_args, 'no_clean') or not cmd_args.no_clean:
-                    print("Cleaning test files for fresh generation...")
-                    reset_for_new_run(clear_generated=False, verbose=False)
+                    if context_memory_mode and loaded:
+                        print("Context mode: Skipping cleanup (functions just restored)")
+                    elif context_memory_mode:
+                        print("Context mode: Cleaning test files only (preserving functions)...")
+                        reset_for_context_mode(verbose=False)
+                    else:
+                        print("Cleaning test files for fresh generation...")
+                        reset_for_new_run(clear_generated=False, verbose=False)
                 else:
                     print("Skipping automatic cleanup (--no-clean specified)")
 
@@ -335,12 +550,37 @@ if __name__ == "__main__":
                         prompt_function_descriptor = generateFunctionDescriptor(openai_client, function_code, tools_code)
                         # clear_file('Unit_Test/functions.py')
 
-                    # Always clear and rewrite the functions.py file to avoid duplicates
-                    clear_file('Unit_Test/functions.py')
-                    # Generate unit tests using the generator module
-                    with open('Unit_Test/enumUtility.txt', 'r') as f:
-                        enum_utility = f.read()
-                    write_to_file('python_function', 'Unit_Test/functions.py', enum_utility + "\n" + function_code)
+                    # Handle functions.py based on context mode
+                    if not context_memory_mode:
+                        # Normal mode: clear and rewrite functions.py to avoid duplicates
+                        clear_file('Unit_Test/functions.py')
+                        # Generate unit tests using the generator module
+                        with open('Unit_Test/enumUtility.txt', 'r') as f:
+                            enum_utility = f.read()
+                        write_to_file('python_function', 'Unit_Test/functions.py', enum_utility + "\n" + function_code)
+                    else:
+                        # Context mode: replace/add function while preserving existing ones
+                        # Extract function name for replacement
+                        import re
+                        func_match = re.search(r'def\s+(\w+)\s*\(', function_code)
+                        if func_match:
+                            current_func_name = func_match.group(1)
+                            # Replace in BOTH files to maintain synchronization
+                            replaced_unit = replace_function_in_file('Unit_Test/functions.py', current_func_name, function_code)
+                            replaced_root = replace_function_in_file('functions.py', current_func_name, function_code)
+                            
+                            if replaced_unit or replaced_root:
+                                print(f"Context mode: Replaced function '{current_func_name}' in both files (iteration {iteration_count})")
+                            else:
+                                # If not replaced, append to both files
+                                write_to_file('python_function', 'Unit_Test/functions.py', "\n" + function_code)
+                                write_to_file('python', 'functions.py', "\n" + function_code)
+                                print(f"Context mode: Added new function '{current_func_name}' to both files")
+                        else:
+                            # Fallback if function name extraction fails
+                            print("Context mode: Appending function to both files (could not extract name)")
+                            write_to_file('python_function', 'Unit_Test/functions.py', "\n" + function_code)
+                            write_to_file('python', 'functions.py', "\n" + function_code)
 
                     if not unit_test_reinforced_requirement or reinforced_requirement: 
                         #Check test driven code

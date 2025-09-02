@@ -124,6 +124,13 @@ class ContextManager:
         matches = re.findall(function_pattern, code)
         
         for func_name, params in matches:
+            # Preserve existing function data if it has complete 'code' key
+            # This protects loaded session data from being overwritten with snippets
+            if (func_name in self.session_data['functions'] and 
+                'code' in self.session_data['functions'][func_name]):
+                continue  # Skip overwriting complete function data
+                
+            # Only track with snippet if no complete data exists
             self.session_data['functions'][func_name] = {
                 'parameters': params,
                 'defined_at': datetime.now().isoformat(),

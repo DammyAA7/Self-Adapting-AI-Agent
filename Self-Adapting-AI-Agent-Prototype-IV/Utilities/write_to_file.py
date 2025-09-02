@@ -109,6 +109,51 @@ def write_to_file(type, file_path, content):
         with open(file_path, 'a') as f:
             f.write(content)
 
+def replace_function_in_file(file_path, function_name, new_function_code):
+    """
+    Replace or add a function in a Python file while preserving other functions.
+    Used in context memory mode to handle iterative refinement properly.
+    
+    Args:
+        file_path (str): Path to the Python file
+        function_name (str): Name of the function to replace/add
+        new_function_code (str): New function code to insert
+        
+    Returns:
+        bool: True if function was replaced, False if appended as new
+    """
+    import re
+    
+    try:
+        with open(file_path, 'r') as f:
+            content = f.read()
+        
+        # Pattern to find the function definition and its body
+        # Matches: def function_name(...): followed by all indented lines
+        pattern = rf'^(def\s+{re.escape(function_name)}\s*\([^)]*\):.*?)(?=^(?:def\s+\w+|class\s+\w+|\w+\s*=|\s*$)|\Z)'
+        
+        # Search for existing function
+        match = re.search(pattern, content, re.MULTILINE | re.DOTALL)
+        
+        if match:
+            # Function exists - replace it
+            new_content = content[:match.start()] + new_function_code + content[match.end():]
+            with open(file_path, 'w') as f:
+                f.write(new_content)
+            return True
+        else:
+            # Function doesn't exist - append it
+            with open(file_path, 'a') as f:
+                f.write('\n' + new_function_code)
+            return False
+            
+    except Exception as e:
+        print(f"Warning: Could not replace function {function_name}: {e}")
+        # Fallback to append
+        with open(file_path, 'a') as f:
+            f.write('\n' + new_function_code)
+        return False
+
 def clear_file(file_path):
     """
     Clears the content of the specified file.

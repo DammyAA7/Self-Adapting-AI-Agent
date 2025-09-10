@@ -1,0 +1,42 @@
+{
+  "session_data": {
+    "created_at": "2025-09-04T23:28:19.482422",
+    "functions": {
+      "is_equal_to_sum_even": {
+        "code": "\n\ndef is_equal_to_sum_even(n):\n    \"\"\"Determines if a given integer is even and at least 8.\n    Returns True if n is even and >=8, False otherwise.\n    Raises TypeError for non-integer input.\"\"\"\n    if not isinstance(n, int):\n        raise TypeError\n    if n < 8 or n % 2 != 0:\n        return False\n    return True\n",
+        "info": {
+          "requirement": "Function Name: is_equal_to_sum_even  \nDescription: Determines whether a given integer n can be written as the sum of exactly four positive even numbers.  \nParameters:  \n- n (integer): The number to test. Must be a positive integer.  \n\nExample:  \n- is_equal_to_sum_even(8)  \u2192 true   (2 + 2 + 2 + 2 = 8)  \n- is_equal_to_sum_even(10) \u2192 true   (2 + 2 + 2 + 4 = 10)  \n- is_equal_to_sum_even(7)  \u2192 false  (odd or less than 8, cannot be expressed)",
+          "iterations": 2
+        },
+        "added_at": "2025-09-04T23:33:04.157392",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-04T23:33:04.157295",
+        "code": "\n\ndef is_equal_to_sum_even(n):\n    \"\"\"Determines if a given integer is even and at least 8.\n    Returns True if n is even and >=8, False otherwise.\n    Raises TypeError for non-integer input.\"\"\"\n    if not isinstance(n, int):\n        raise TypeError\n    if n < 8 or n % 2 != 0:\n        return False\n    return True\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 322238,
+      "defined_variables": [
+        "is_equal_to_sum_even"
+      ],
+      "execution_count": 2
+    }
+  },
+  "saved_at": "2025-09-04T23:34:34.824945"
+}

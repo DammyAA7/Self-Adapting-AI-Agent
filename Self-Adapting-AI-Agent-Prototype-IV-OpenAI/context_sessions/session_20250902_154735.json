@@ -1,0 +1,48 @@
+{
+  "session_data": {
+    "created_at": "2025-09-02T15:44:48.016314",
+    "functions": {
+      "salary_analyzer": {
+        "code": "\n\nfrom test_context.employee_database import EmployeeDB, SalaryAnalyzer\n\ndef salary_analyzer():\n    \"\"\"Calculate average salary from the employee database.\"\"\"\n    db = EmployeeDB()\n    employees = db.get_all_employees()\n    return SalaryAnalyzer.calculate_average_salary(employees)\n",
+        "info": {
+          "requirement": "Function Name: salary_analyzer\nDescription: \n  Loads the in-memory employee dataset from `employee_database.py`, retrieves all employee records, and computes the average salary.\nParameters:\n  None\nReturns:\n  float \u2013 the average salary of all employees\nExample:\n  from employee_database import EmployeeDB, SalaryAnalyzer\n\n  def salary_analyzer() -> float:\n      # Initialize the database and fetch all employees\n      db = EmployeeDB()\n      employees = db.get_all_employees()\n      # Use the existing SalaryAnalyzer to compute the average\n      return SalaryAnalyzer.calculate_average_salary(employees)\n\n  # Usage\n  avg_salary = salary_analyzer()\n  print(f\"Average employee salary: ${avg_salary:,.2f}\")",
+          "iterations": 2
+        },
+        "added_at": "2025-09-02T15:47:14.710192",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-02T15:47:14.710135",
+        "code": "\n\nfrom test_context.employee_database import EmployeeDB, SalaryAnalyzer\n\ndef salary_analyzer():\n    \"\"\"Calculate average salary from the employee database.\"\"\"\n    db = EmployeeDB()\n    employees = db.get_all_employees()\n    return SalaryAnalyzer.calculate_average_salary(employees)\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-02T15:47:34.145993",
+        "code": "result = salary_analyzer()\nprint(result)",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 229132,
+      "defined_variables": [
+        "salary_analyzer"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-09-02T15:47:35.977518"
+}

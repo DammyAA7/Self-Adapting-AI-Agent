@@ -1,0 +1,48 @@
+{
+  "session_data": {
+    "created_at": "2025-09-04T22:08:51.652328",
+    "functions": {
+      "decimal_to_binary": {
+        "code": "\n\ndef decimal_to_binary(n):\n    \"\"\"Converts a non-negative integer to its binary representation wrapped with 'db' prefix and suffix.\n    Returns the string in format 'db<binary>db'. Raises TypeError for non-integer input and ValueError for negative integers.\"\"\"\n    if type(n) is not int:\n        raise TypeError(\"Input must be an integer\")\n    if n < 0:\n        raise ValueError(\"Input must be non-negative\")\n    binary_str = bin(n)[2:]\n    return f\"db{binary_str}db\"\n",
+        "info": {
+          "requirement": "Function Name: decimal_to_binary  \nDescription: Converts a given non\u2010negative integer from decimal to binary representation. The returned string is wrapped with the characters \u201cdb\u201d at both the start and end. For example, decimal 10 becomes \u201cdb1010db.\u201d  \nParameters:  \n- number (integer): The decimal number to convert to binary. Must be \u2265 0.  \nExample:  \n- Input: 10  \n- Output: \"db1010db\"  \n- Usage: decimal_to_binary(10)  \u2192 \"db1010db\"",
+          "iterations": 2
+        },
+        "added_at": "2025-09-04T22:14:30.232163",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-04T22:14:30.232104",
+        "code": "\n\ndef decimal_to_binary(n):\n    \"\"\"Converts a non-negative integer to its binary representation wrapped with 'db' prefix and suffix.\n    Returns the string in format 'db<binary>db'. Raises TypeError for non-integer input and ValueError for negative integers.\"\"\"\n    if type(n) is not int:\n        raise TypeError(\"Input must be an integer\")\n    if n < 0:\n        raise ValueError(\"Input must be non-negative\")\n    binary_str = bin(n)[2:]\n    return f\"db{binary_str}db\"\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-04T22:15:25.907577",
+        "code": "result = decimal_to_binary(n=13)\nprint(result)",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 320131,
+      "defined_variables": [
+        "decimal_to_binary"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-09-04T22:15:27.565208"
+}

@@ -3,6 +3,8 @@ Function that writes to a file
 Could be txt, json or python file
 '''
 
+import os
+
 def write_to_file(type, file_path, content):
     if type == 'txt':
         # Implementation for writing to a text file
@@ -19,6 +21,8 @@ def write_to_file(type, file_path, content):
             
             with open(file_path, 'w') as f:
                 f.writelines(lines)
+                f.flush()
+                os.fsync(f.fileno())
         
     elif type == 'json':
         import json as json_module
@@ -34,10 +38,16 @@ def write_to_file(type, file_path, content):
                 # Content is already an array
                 with open(file_path, 'w') as f:
                     f.write(content + '\n')
+                    f.flush()
+                    if 'tools.json' in file_path:
+                        os.fsync(f.fileno())  # Extra safety for tools.json
             else:
                 # Content is a single object, wrap it in an array
                 with open(file_path, 'w') as f:
                     f.write('[\n' + content + '\n]\n')
+                    f.flush()
+                    if 'tools.json' in file_path:
+                        os.fsync(f.fileno())  # Extra safety for tools.json
         else:
             # File has existing array content - append to it
             try:
@@ -77,6 +87,9 @@ def write_to_file(type, file_path, content):
                 with open(file_path, 'w') as f:
                     json_module.dump(existing_data, f, indent=4)
                     f.write('\n')
+                    f.flush()
+                    if 'tools.json' in file_path:
+                        os.fsync(f.fileno())  # Extra safety for tools.json
                     
             except json_module.JSONDecodeError:
                 # Fallback to old behavior if JSON parsing fails
@@ -86,6 +99,9 @@ def write_to_file(type, file_path, content):
                 lines.insert(last_index, "," + content + '\n')
                 with open(file_path, 'w') as f:
                     f.writelines(lines)
+                    f.flush()
+                    if 'tools.json' in file_path:
+                        os.fsync(f.fileno())  # Extra safety for tools.json
     elif type == 'python':
         with open(file_path, 'r') as f:
             lines = f.readlines()
@@ -101,10 +117,14 @@ def write_to_file(type, file_path, content):
             
             with open(file_path, 'w') as f:
                 f.writelines(lines)
+                f.flush()
+                os.fsync(f.fileno())
         else:
             # If no main block exists or file is empty, append the content with a main block
             with open(file_path, 'w') as f:
                 f.write(content + '\n\nif __name__ == "__main__":\n    pass\n')
+                f.flush()
+                os.fsync(f.fileno())
     elif type == 'python_function':
         with open(file_path, 'a') as f:
             f.write(content)

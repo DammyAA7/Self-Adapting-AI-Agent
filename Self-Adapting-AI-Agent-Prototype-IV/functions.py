@@ -2,13 +2,20 @@
 
 
 
-from test_context.employee_database import EmployeeDB, SalaryAnalyzer
-
-def salary_analyzer():
-    """Calculate average salary from the employee database."""
-    db = EmployeeDB()
-    employees = db.get_all_employees()
-    return SalaryAnalyzer.calculate_average_salary(employees)
+def count_up_to(n):
+    '''Returns a list of prime numbers less than n.
+    Raises TypeError for non-integer inputs.'''
+    if not isinstance(n, int):
+        raise TypeError("Input must be an integer")
+    if n <= 2:
+        return []
+    sieve = [True] * n
+    sieve[0:2] = [False, False]
+    for i in range(2, int(n**0.5) + 1):
+        if sieve[i]:
+            for j in range(i * i, n, i):
+                sieve[j] = False
+    return [i for i, is_prime in enumerate(sieve) if is_prime]
 
 
 if __name__ == "__main__":

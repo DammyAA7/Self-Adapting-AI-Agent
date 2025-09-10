@@ -3,13 +3,17 @@
     {
         "type": "function",
         "function": {
-            "name": "salary_analyzer",
-            "description": "Calculate average salary from the employee database.",
+            "name": "count_up_to",
+            "description": "Returns a list of prime numbers less than n. Raises TypeError for non-integer inputs.",
             "parameters": {
                 "type": "object",
                 "properties": {
+                    "n": {
+                        "type": "number",
+                        "description": "The exclusive upper bound. Returns all primes less than this integer."
+                    }
                 },
-                "required": []
+                "required": ["n"]
             }
         }
     }

@@ -1,0 +1,54 @@
+{
+  "session_data": {
+    "created_at": "2025-09-05T18:57:56.013419",
+    "functions": {
+      "match_parens": {
+        "code": "\n\ndef match_parens(lst):\n    '''Returns \"Yes\" if either order of concatenation of the two strings forms a balanced parentheses sequence; otherwise returns \"No\". Raises ValueError if list length is not 2, and TypeError if elements are not strings.'''\n    n = len(lst)\n    if n != 2:\n        raise ValueError(\"List must have exactly two elements\")\n    s1, s2 = lst[0], lst[1]\n    if not isinstance(s1, str) or not isinstance(s2, str):\n        raise TypeError(\"Elements must be strings\")\n    total_length = len(s1) + len(s2)\n    if total_length % 2 != 0:\n        return \"No\"\n    def is_balanced(s):\n        count = 0\n        for c in s:\n            if c == '(':\n                count += 1\n            elif c == ')':\n                count -= 1\n                if count < 0:\n                    return False\n        return count == 0\n    if is_balanced(s1 + s2) or is_balanced(s2 + s1):\n        return \"Yes\"\n    return \"No\"\n",
+        "info": {
+          "requirement": "Here\u2019s one way to implement `match_parens` in Python by checking both concatenation orders and verifying balanced parentheses:\n\n```python\ndef match_parens(lst):\n    '''\n    You are given a list of two strings, both strings consist of open\n    parentheses '(' or close parentheses ')' only.\n    Your job is to check if it is possible to concatenate the two strings in\n    some order, that the resulting string will be good.\n    A string S is considered to be good if and only if all parentheses in S\n    are balanced. For example: the string '(())()' is good, while the string\n    '())' is not.\n    Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.\n    '''\n    def is_good(s):\n        balance = 0\n        for ch in s:\n            if ch == '(':\n                balance += 1\n            else:  # ch == ')'\n                balance -= 1\n            if balance < 0:\n                return False\n        return balance == 0\n\n    s1, s2 = lst\n    # Check both possible concatenations\n    if is_good(s1 + s2) or is_good(s2 + s1):\n        return 'Yes'\n    return 'No'\n```\n\nExplanation:\n1. **is_good(s)** scans through the string, keeping a running `balance` (increment on `'('`, decrement on `')'`), and immediately rejects if `balance` dips below zero. At the end it checks that `balance` is zero.\n2. In `match_parens`, we simply test `s1 + s2` and `s2 + s1`\u2014if either forms a good (balanced) string, we return `\"Yes\"`, otherwise `\"No\"`.",
+          "iterations": 1
+        },
+        "added_at": "2025-09-05T19:00:41.693597",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      },
+      "is_balanced": {
+        "parameters": "s",
+        "defined_at": "2025-09-05T19:00:41.693594",
+        "code_snippet": "\n\ndef match_parens(lst):\n    '''Returns \"Yes\" if either order of concatenation of the two strings forms a balanced parentheses sequence; otherwise returns \"No\". Raises ValueError if list length is not"
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-05T19:00:41.693499",
+        "code": "\n\ndef match_parens(lst):\n    '''Returns \"Yes\" if either order of concatenation of the two strings forms a balanced parentheses sequence; otherwise returns \"No\". Raises ValueError if list length is not 2, and TypeError if elements are not strings.'''\n    n = len(lst)\n    if n != 2:\n        raise ValueError(\"List must have exactly two elements\")\n    s1, s2 = lst[0], lst[1]\n    if not isinstance(s1, str) or not isinstance(s2, str):\n        raise TypeError(\"Elements must be strings\")\n    total_length = len(s1) + len(s2)\n    if total_length % 2 != 0:\n        return \"No\"\n    def is_balanced(s):\n        count = 0\n        for c in s:\n            if c == '(':\n                count += 1\n            elif c == ')':\n                count -= 1\n                if count < 0:\n                    return False\n        return count == 0\n    if is_balanced(s1 + s2) or is_balanced(s2 + s1):\n        return \"Yes\"\n    return \"No\"\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-05T19:01:06.653075",
+        "code": "result = match_parens(lst=['(())', '()'])\nprint(result)",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 342458,
+      "defined_variables": [
+        "match_parens",
+        "is_balanced"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-09-05T19:01:07.869592"
+}

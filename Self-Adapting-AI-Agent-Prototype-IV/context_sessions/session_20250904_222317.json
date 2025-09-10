@@ -1,0 +1,42 @@
+{
+  "session_data": {
+    "created_at": "2025-09-04T22:15:28.963908",
+    "functions": {
+      "decimal_to_binary": {
+        "code": "\n\ndef decimal_to_binary(n):\n    \"\"\"Converts a non-negative integer to its binary representation wrapped with 'db' prefix and suffix.\n    Returns the string in format 'db<binary>db'. Raises ValueError for invalid input.\"\"\"\n    if not isinstance(n, int):\n        raise ValueError(\"Input must be a non-negative integer\")\n    if n < 0:\n        raise ValueError(\"Input must be non-negative\")\n    binary_str = bin(n)[2:]\n    return f\"db{binary_str}db\"\n",
+        "info": {
+          "requirement": "Function Name: decimal_to_binary  \nDescription: Converts a non-negative integer from decimal to its binary representation, wrapping the result with the prefix and suffix \u201cdb\u201d.  \nParameters:  \n- number (integer): The decimal number to convert to binary. Must be 0 or positive.  \nReturns:  \n- A string of the form \u201cdb<binary_digits>db\u201d, where `<binary_digits>` is the binary representation of the input number (each character is '0' or '1').  \n\nExample:  \n- decimal_to_binary(5) \u2192 \"db101db\"  \n- decimal_to_binary(0) \u2192 \"db0db\"  \n- decimal_to_binary(13) \u2192 \"db1101db\"",
+          "iterations": 5
+        },
+        "added_at": "2025-09-04T22:22:16.179507",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-04T22:22:16.179402",
+        "code": "\n\ndef decimal_to_binary(n):\n    \"\"\"Converts a non-negative integer to its binary representation wrapped with 'db' prefix and suffix.\n    Returns the string in format 'db<binary>db'. Raises ValueError for invalid input.\"\"\"\n    if not isinstance(n, int):\n        raise ValueError(\"Input must be a non-negative integer\")\n    if n < 0:\n        raise ValueError(\"Input must be non-negative\")\n    binary_str = bin(n)[2:]\n    return f\"db{binary_str}db\"\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 320306,
+      "defined_variables": [
+        "decimal_to_binary"
+      ],
+      "execution_count": 2
+    }
+  },
+  "saved_at": "2025-09-04T22:23:17.781855"
+}

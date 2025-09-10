@@ -45,6 +45,7 @@ def get_user_input():
     parser.add_argument('--no-clean', action='store_true', help='Skip automatic cleanup of test files before running')
     parser.add_argument('--context-memory', action='store_true', help='Enable context memory mode - restore previous sessions and preserve function context')
     parser.add_argument('--session', type=str, help='Direct path to specific session file to load (requires --context-memory)')
+    parser.add_argument('--debug', action='store_true', help='Enable debug output for troubleshooting')
 
     args = parser.parse_args()
     
@@ -411,6 +412,23 @@ if __name__ == "__main__":
             tools, input_messages = setup_variables(user_request, project_context)
             user_input = user_request  # Use the dynamic user input
             
+            # Debug logging for Pass@k evaluation
+            if cmd_args.debug:
+                print(f"DEBUG: Number of tools loaded: {len(tools)}")
+                if tools:
+                    tool_names = [t.get('function', {}).get('name', 'unknown') for t in tools]
+                    print(f"DEBUG: Available tools: {tool_names}")
+                else:
+                    print("DEBUG: No tools loaded - this explains the failure!")
+                    
+                # Also show tools.json file content
+                try:
+                    with open('Tool_Descriptor_Gen/tools.json', 'r') as f:
+                        content = f.read()
+                    print(f"DEBUG: tools.json content: {content[:200]}...")
+                except Exception as e:
+                    print(f"DEBUG: Error reading tools.json: {e}")
+            
             # If we analyzed a project, remind the model to use project file paths when relevant
             if analyze_path and project_context:
                 # Enhance the user message to include file path reminder
@@ -562,7 +580,15 @@ if __name__ == "__main__":
                         # Context mode: replace/add function while preserving existing ones
                         # Extract function name for replacement
                         import re
-                        func_match = re.search(r'def\s+(\w+)\s*\(', function_code)
+                        # Improved regex pattern to handle complex function names
+                        func_match = re.search(r'def\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(', function_code)
+                        
+                        # Debug information for function name extraction
+                        if not func_match:
+                            first_lines = '\n'.join(function_code.split('\n')[:3])
+                            print(f"🔍 Debug: Could not extract function name from:\n{first_lines}")
+                            all_defs = re.findall(r'def\s+[^(]+\(', function_code)
+                            print(f"🔍 All 'def' patterns found: {all_defs}")
                         if func_match:
                             current_func_name = func_match.group(1)
                             # Replace in BOTH files to maintain synchronization

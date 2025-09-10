@@ -1,0 +1,48 @@
+{
+  "session_data": {
+    "created_at": "2025-09-05T19:02:44.246697",
+    "functions": {
+      "rounded_avg": {
+        "code": "\n\ndef rounded_avg(n, m):\n    '''Returns the rounded average of two positive integers as a binary string. Rounds .5 up. Returns -1 for invalid inputs.'''\n    if n <= 0 or m <= 0 or n > m:\n        return -1\n    total = n + m\n    if total % 2 == 0:\n        avg = total // 2\n    else:\n        avg = total // 2 + 1\n    return format(avg, 'b')\n",
+        "info": {
+          "requirement": "Here\u2019s a Python implementation of `rounded_avg` that follows your specification:\n\n```python\ndef rounded_avg(n, m):\n    \"\"\"\n    You are given two positive integers n and m, and your task is to compute the\n    average of the integers from n through m (including n and m). \n    Round the answer to the nearest integer and convert that to binary.\n    If n is greater than m, return -1.\n    \"\"\"\n    if n > m:\n        return -1\n\n    # The average of an arithmetic sequence from n to m is (n + m) / 2\n    avg = (n + m) / 2.0\n\n    # Round to nearest integer (with .5 rounding up)\n    rounded = int(avg + 0.5)\n\n    # Convert to binary (without the '0b' prefix)\n    return bin(rounded)[2:]\n```\n\nExample usage:\n\n- `rounded_avg(2, 5)`  \n  The numbers are 2, 3, 4, 5; average = (2 + 5) / 2 = 3.5 \u2192 rounded to 4 \u2192 binary `'100'`.\n\n- `rounded_avg(7, 7)`  \n  Only one number (7); average = 7 \u2192 binary `'111'`.\n\n- `rounded_avg(10, 3)`  \n  Since 10 > 3, returns `-1`.",
+          "iterations": 4
+        },
+        "added_at": "2025-09-05T19:09:47.858693",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-05T19:09:47.858597",
+        "code": "\n\ndef rounded_avg(n, m):\n    '''Returns the rounded average of two positive integers as a binary string. Rounds .5 up. Returns -1 for invalid inputs.'''\n    if n <= 0 or m <= 0 or n > m:\n        return -1\n    total = n + m\n    if total % 2 == 0:\n        avg = total // 2\n    else:\n        avg = total // 2 + 1\n    return format(avg, 'b')\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-05T19:10:26.128977",
+        "code": "result = rounded_avg(n=2, m=5)\nprint(result)",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 343103,
+      "defined_variables": [
+        "rounded_avg"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-09-05T19:10:27.243029"
+}

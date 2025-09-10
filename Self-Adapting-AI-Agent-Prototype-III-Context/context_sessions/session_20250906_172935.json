@@ -1,0 +1,42 @@
+{
+  "session_data": {
+    "created_at": "2025-09-06T17:28:14.124263",
+    "functions": {
+      "decimal_to_binary": {
+        "code": "\n\ndef decimal_to_binary(decimal):\n    \"\"\"\n    You will be given a number in decimal form and your task is to convert it to\n    binary format. The function should return a string, with each character representing a binary\n    number. Each character in the string will be '0' or '1'.\n\n    There will be an extra couple of characters 'db' at the beginning and at the end of the string.\n    The extra characters are there to help with the format.\n    For negative numbers, use 'dbb' as the prefix (omit the '-' sign) and 'db' as the suffix.\n    \"\"\"\n    if not isinstance(decimal, int):\n        raise TypeError(\"Input must be an integer\")\n    # Convert to binary string without sign and without '0b' prefix\n    binary_str = bin(abs(decimal))[2:]\n    # Determine prefix based on sign\n    prefix = 'db' if decimal >= 0 else 'dbb'\n    return f\"{prefix}{binary_str}db\"\n",
+        "info": {
+          "requirement": "Here\u2019s an implementation that uses Python\u2019s built-in binary conversion and wraps the result with the required \u201cdb\u201d markers:\n\n```python\ndef decimal_to_binary(decimal):\n    \"\"\"\n    You will be given a number in decimal form and your task is to convert it to\n    binary format. The function should return a string, with each character representing a binary\n    number. Each character in the string will be '0' or '1'.\n\n    There will be an extra couple of characters 'db' at the beginning and at the end of the string.\n    The extra characters are there to help with the format.\n    \"\"\"\n    # Convert to binary string (removing the '0b' prefix)\n    binary_str = bin(decimal)[2:]\n    # Wrap with 'db' at both ends\n    return f\"db{binary_str}db\"\n\n# Example usage:\nprint(decimal_to_binary(5))   # Output: \"db101db\"\nprint(decimal_to_binary(10))  # Output: \"db1010db\"\nprint(decimal_to_binary(0))   # Output: \"db0db\"\n```",
+          "iterations": 2
+        },
+        "added_at": "2025-09-06T17:29:19.074782",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-06T17:29:19.074686",
+        "code": "\n\ndef decimal_to_binary(decimal):\n    \"\"\"\n    You will be given a number in decimal form and your task is to convert it to\n    binary format. The function should return a string, with each character representing a binary\n    number. Each character in the string will be '0' or '1'.\n\n    There will be an extra couple of characters 'db' at the beginning and at the end of the string.\n    The extra characters are there to help with the format.\n    For negative numbers, use 'dbb' as the prefix (omit the '-' sign) and 'db' as the suffix.\n    \"\"\"\n    if not isinstance(decimal, int):\n        raise TypeError(\"Input must be an integer\")\n    # Convert to binary string without sign and without '0b' prefix\n    binary_str = bin(abs(decimal))[2:]\n    # Determine prefix based on sign\n    prefix = 'db' if decimal >= 0 else 'dbb'\n    return f\"{prefix}{binary_str}db\"\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 379005,
+      "defined_variables": [
+        "decimal_to_binary"
+      ],
+      "execution_count": 2
+    }
+  },
+  "saved_at": "2025-09-06T17:29:35.720528"
+}

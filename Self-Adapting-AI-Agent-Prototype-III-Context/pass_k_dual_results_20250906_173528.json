@@ -1,0 +1,45 @@
+{
+  "problems": {
+    "move_one_ball_HE_109": {
+      "id": "bb42dffd",
+      "request": "\ndef move_one_ball(arr):\n    \"\"\"We have an array 'arr' of N integers arr[1], arr[2], ..., arr[N].The\n    numbers in the array will be randomly ordered. Your task is to determine if\n    it is possible to get an array sorted in non-decreasing order by performing \n    the following operation on the given array:\n        You are allowed to perform right shift operation any number of times.\n    \n    One right shift operation means shifting all elements of the array by one\n    position in the right direction. The last element of the array will be moved to\n    the starting position in the array i.e. 0th index. \n\n    If it is possible to obtain the sorted array by performing the above operation\n    then return True else return False.\n    If the given array is empty then return True.\n\n    Note: The given list is guaranteed to have unique elements.\n    \"\"\"\n",
+      "runs": [
+        {
+          "run": 1,
+          "success": false,
+          "tdd_success": false,
+          "iterations": 6,
+          "log_snippet": "t-Prototype-III-Context/Unit_Test/unitTest.py -v --tb=short\nPytest exit code: 1\nPytest stdout length: 1621 characters\nAdjudication Result: False\nRestarting the process... (Iteration 6)\n=== ITERATION 7 ===\nMaximum iterations (6) reached. Terminating function generation.\nSession saved to: context_sessions/session_20250906_173527.json\nTerminal context saved: context_sessions/session_20250906_173527.json\nLogging complete. Check function_generation.log and function_generation_stats.json for details.\n",
+          "humaneval_pass": null,
+          "final_success": false
+        }
+      ],
+      "standard_pass_k": {
+        "pass@1": 0.0,
+        "pass@5": null,
+        "pass@10": null,
+        "pass@1_empirical": 0,
+        "pass@5_empirical": null,
+        "pass@10_empirical": null,
+        "tdd_success_count": 0,
+        "final_success_count": 0,
+        "success_rate": 0.0,
+        "first_success_at_run": null,
+        "total_successful": 0,
+        "total_runs": 1
+      },
+      "iteration_efficiency": {
+        "avg_iterations": 0,
+        "success_within_1": 0,
+        "success_within_3": 0,
+        "success_within_6": 0,
+        "iteration_distribution": {}
+      }
+    }
+  },
+  "standard_pass_k": {},
+  "iteration_efficiency": {},
+  "timestamp": "2025-09-06T17:32:34.869909",
+  "total_api_calls": 1,
+  "humaneval_mode": true
+}

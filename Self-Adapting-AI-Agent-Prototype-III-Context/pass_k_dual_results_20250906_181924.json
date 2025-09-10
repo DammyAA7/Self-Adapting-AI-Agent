@@ -1,0 +1,55 @@
+{
+  "problems": {
+    "match_parens_HE_119": {
+      "id": "25ee9fca",
+      "request": "\ndef match_parens(lst):\n    '''\n    You are given a list of two strings, both strings consist of open\n    parentheses '(' or close parentheses ')' only.\n    Your job is to check if it is possible to concatenate the two strings in\n    some order, that the resulting string will be good.\n    A string S is considered to be good if and only if all parentheses in S\n    are balanced. For example: the string '(())()' is good, while the string\n    '())' is not.\n    Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.\n    '''\n",
+      "runs": [
+        {
+          "run": 1,
+          "success": true,
+          "tdd_success": true,
+          "iterations": 1,
+          "log_snippet": "response: The two strings \"()()\" and \"(())\" can be concatenated in at least one order to form a balanced parentheses string, so the function returns \"Yes\".\nSession saved to: context_sessions/session_20250906_181923.json\nTerminal context saved: context_sessions/session_20250906_181923.json\n\nFunctions available in persistent context:\n  - match_parens\nLogging complete. Check function_generation.log and function_generation_stats.json for details.\nTerminated python terminal\nTerminated terminal: main\n",
+          "humaneval_pass": true,
+          "final_success": true
+        }
+      ],
+      "standard_pass_k": {
+        "pass@1": 1.0,
+        "pass@5": null,
+        "pass@10": null,
+        "pass@1_empirical": 1,
+        "pass@5_empirical": null,
+        "pass@10_empirical": null,
+        "tdd_success_count": 1,
+        "final_success_count": 1,
+        "success_rate": 100.0,
+        "first_success_at_run": 1,
+        "total_successful": 1,
+        "total_runs": 1
+      },
+      "iteration_efficiency": {
+        "avg_iterations": 1.0,
+        "min_iterations": 1,
+        "max_iterations": 1,
+        "success_within_1": 100.0,
+        "success_within_3": 100.0,
+        "success_within_6": 100.0,
+        "iteration_distribution": {
+          "iteration_1": 1,
+          "iteration_2": 0,
+          "iteration_3": 0,
+          "iteration_4": 0,
+          "iteration_5": 0,
+          "iteration_6": 0
+        },
+        "total_successful_runs": 1
+      }
+    }
+  },
+  "standard_pass_k": {},
+  "iteration_efficiency": {},
+  "timestamp": "2025-09-06T18:18:10.186571",
+  "total_api_calls": 1,
+  "humaneval_mode": true
+}

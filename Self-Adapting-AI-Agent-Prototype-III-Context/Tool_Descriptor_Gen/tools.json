@@ -1,1 +1,22 @@
-[]
+[
+
+    {
+        "type": "function",
+        "function": {
+            "name": "split_words",
+            "description": "Splits the input text using whitespace or commas, or counts lowercase letters with odd alphabetical indices if neither is found.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "txt": {
+                        "type": "string",
+                        "description": "The input string to be split or analyzed.",
+                        "minLength": 1
+                    }
+                },
+                "required": ["txt"]
+            }
+        }
+    }
+
+]

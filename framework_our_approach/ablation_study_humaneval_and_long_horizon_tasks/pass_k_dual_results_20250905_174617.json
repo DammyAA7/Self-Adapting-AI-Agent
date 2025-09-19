@@ -1,0 +1,55 @@
+{
+  "problems": {
+    "car_race_collision_HE_41": {
+      "id": "390395ae",
+      "request": "\n\ndef car_race_collision(n: int):\n    \"\"\"\n    Imagine a road that's a perfectly straight infinitely long line.\n    n cars are driving left to right;  simultaneously, a different set of n cars\n    are driving right to left.   The two sets of cars start out being very far from\n    each other.  All cars move in the same speed.  Two cars are said to collide\n    when a car that's moving left to right hits a car that's moving right to left.\n    However, the cars are infinitely sturdy and strong; as a result, they continue moving\n    in their trajectory as if they did not collide.\n\n    This function outputs the number of such collisions.\n    \"\"\"\n",
+      "runs": [
+        {
+          "run": 1,
+          "success": true,
+          "tdd_success": true,
+          "iterations": 1,
+          "log_snippet": "\nAdded 'car_race_collision' to safe functions\nFinal response: The total number of collisions when there are 5 cars traveling in each direction is 25.\nSession saved to: context_sessions/session_20250905_174615.json\nTerminal context saved: context_sessions/session_20250905_174615.json\n\nFunctions available in persistent context:\n  - car_race_collision\nLogging complete. Check function_generation.log and function_generation_stats.json for details.\nTerminated python terminal\nTerminated terminal: main\n",
+          "humaneval_pass": true,
+          "final_success": true
+        }
+      ],
+      "standard_pass_k": {
+        "pass@1": 1.0,
+        "pass@5": null,
+        "pass@10": null,
+        "pass@1_empirical": 1,
+        "pass@5_empirical": null,
+        "pass@10_empirical": null,
+        "tdd_success_count": 1,
+        "final_success_count": 1,
+        "success_rate": 100.0,
+        "first_success_at_run": 1,
+        "total_successful": 1,
+        "total_runs": 1
+      },
+      "iteration_efficiency": {
+        "avg_iterations": 1.0,
+        "min_iterations": 1,
+        "max_iterations": 1,
+        "success_within_1": 100.0,
+        "success_within_3": 100.0,
+        "success_within_6": 100.0,
+        "iteration_distribution": {
+          "iteration_1": 1,
+          "iteration_2": 0,
+          "iteration_3": 0,
+          "iteration_4": 0,
+          "iteration_5": 0,
+          "iteration_6": 0
+        },
+        "total_successful_runs": 1
+      }
+    }
+  },
+  "standard_pass_k": {},
+  "iteration_efficiency": {},
+  "timestamp": "2025-09-05T17:42:49.570305",
+  "total_api_calls": 1,
+  "humaneval_mode": true
+}

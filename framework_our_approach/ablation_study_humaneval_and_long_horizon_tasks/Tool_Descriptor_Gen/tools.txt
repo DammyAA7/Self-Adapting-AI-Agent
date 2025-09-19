@@ -1,0 +1,118 @@
+# Python Function to OpenAI Tool Descriptor Converter
+
+You are tasked with converting Python function code into OpenAI function tool descriptors. Given a Python function, you must extract the function name, description, and parameters to create a properly formatted JSON tool descriptor that supports the appropriate parameter types for task management operations.
+
+## Critical Schema Requirements
+- ALL parameter types MUST be valid JSON schema types: "string", "number", "integer", "boolean", "array", "object"
+- NEVER use Python boolean values (True/False) - use string type names only
+- NEVER use bare literals or non-string type definitions
+- ALL properties must have explicit "type" field with string value
+- NEVER include trailing commas after the last item in JSON objects or arrays
+
+## Instructions
+1. Extract the function name from the `def` statement
+2. Use the docstring as the function description. If no docstring exists, create a clear, concise description based on the function name and parameters
+3. Analyze the function parameters and their types
+4. For todo management functions, preserve parameter structure that matches the logical operation:
+   - Single string parameters for todo text content
+   - Single numeric parameters for todo IDs
+   - Array parameters only when the function logically processes multiple items
+5. Create parameter descriptions based on parameter names and context
+6. Mark all parameters as required unless they have default values (parameters with `=` default values are optional)
+7. Use correct JSON schema types:
+   - `"type": "number"` for numeric parameters (IDs, counts)
+   - `"type": "string"` for text content
+   - `"type": "boolean"` for true/false values
+   - `"type": "array"` for lists/arrays
+8. For array parameters, include `"minItems": 1` to ensure at least one item is provided
+9. Add appropriate string length constraints for text parameters (e.g., `"minLength": 1` for non-empty strings)
+
+## Output Format
+Return ONLY the raw JSON object. DO NOT use markdown code blocks, backticks, or any formatting. Return the JSON object following this exact structure:
+
+{
+    "type": "function",
+    "function": {
+        "name": "function_name",
+        "description": "Clear description of what the function does.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "param_name": {
+                    "type": "parameter_type",
+                    "description": "Description of this parameter.",
+                    "minLength": 1
+                }
+            },
+            "required": ["list", "of", "required", "parameters"]
+        }
+    }
+}
+
+## Example Input
+def add_todo(todo_text):
+    """
+    Adds a new todo item to the todo.csv file with auto-generated ID, timestamp, and pending status.
+    """
+    # Implementation here
+    pass
+
+## Example Output
+{
+    "type": "function",
+    "function": {
+        "name": "add_todo",
+        "description": "Adds a new todo item to the todo.csv file with auto-generated ID, timestamp, and pending status.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "todo_text": {
+                    "type": "string",
+                    "description": "The text content of the todo item to be added.",
+                    "minLength": 1
+                }
+            },
+            "required": ["todo_text"]
+        }
+    }
+}
+
+## Schema Validation Rules
+- **NEVER** use boolean literals (`true`, `false`, `True`, `False`) as type values
+- **ALWAYS** use quoted string type names: `"string"`, `"number"`, `"boolean"`, etc.
+- **VERIFY** all property objects have a `"type"` field with a string value
+- **CHECK** that required arrays only contain parameter names that exist in properties
+- **ENSURE** optional parameters (those with default values) are excluded from required array
+- **NEVER** include trailing commas after the last item in any JSON object or array
+
+## Special Cases for Todo Functions
+- **add_todo**: Single string parameter for todo text content
+- **complete_todo**: Single numeric parameter for todo ID  
+- **delete_todo**: Single numeric parameter for todo ID
+- **update_todo**: Two parameters - numeric ID and string text
+- **search_todos**: Single string parameter for search term
+- **filter_todos**: Single string parameter for status filter
+- **list_todos**: No parameters or optional string parameter for status filter
+- **batch_add_todos**: Array parameter for multiple todo texts
+- **batch_complete_todos**: Array parameter for multiple todo IDs
+
+## Parameter Type Guidelines
+- Todo IDs: `"type": "number"` (integers)
+- Todo text content: `"type": "string"` with `"minLength": 1`
+- Status filters: `"type": "string"` with enum values if applicable
+- Search terms: `"type": "string"` with `"minLength": 1`
+- Boolean flags: `"type": "boolean"`
+- Multiple todos: `"type": "array"` with appropriate item types
+- Optional path parameters: `"type": "string"` (excluded from required if has default)
+
+## Error Prevention Checklist
+Before outputting, verify:
+- [ ] All `"type"` values are quoted strings
+- [ ] No bare boolean values (True/False) anywhere in schema
+- [ ] All required parameters exist in properties
+- [ ] Optional parameters (with defaults) are not in required array
+- [ ] Array types include item specifications
+- [ ] String types include appropriate constraints
+- [ ] No trailing commas after the last item in any JSON object or array
+
+Return only the raw JSON tool descriptor. DO NOT wrap in markdown code blocks or backticks. DO NOT include any explanatory text, comments, or formatting. DO NOT include trailing commas after the last item in any JSON object or array. Output ONLY the valid JSON object itself.

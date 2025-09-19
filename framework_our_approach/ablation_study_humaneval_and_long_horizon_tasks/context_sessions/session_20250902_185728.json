@@ -1,0 +1,48 @@
+{
+  "session_data": {
+    "created_at": "2025-09-02T18:54:24.162441",
+    "functions": {
+      "max_three": {
+        "code": "\n\ndef max_three(a, b, c):\n    \"\"\"Return the maximum of three numeric values.\"\"\"\n    if not all(isinstance(arg, (int, float)) for arg in (a, b, c)):\n        raise TypeError(\"All arguments must be int or float\")\n    return max(a, b, c)\n",
+        "info": {
+          "requirement": "Function Name: max_three  \nDescription: Takes three numeric inputs and returns the largest of the three.  \nParameters:  \n- a: First number (integer or float)  \n- b: Second number (integer or float)  \n- c: Third number (integer or float)  \n\nExample Usage:  \n```\nresult = max_three(5, 12, 9)\n# result will be 12\n```",
+          "iterations": 2
+        },
+        "added_at": "2025-09-02T18:57:08.183349",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-02T18:57:08.183279",
+        "code": "\n\ndef max_three(a, b, c):\n    \"\"\"Return the maximum of three numeric values.\"\"\"\n    if not all(isinstance(arg, (int, float)) for arg in (a, b, c)):\n        raise TypeError(\"All arguments must be int or float\")\n    return max(a, b, c)\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-02T18:57:26.688348",
+        "code": "result = max_three(a=3, b=7.5, c=2)\nprint(result)",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 236330,
+      "defined_variables": [
+        "max_three"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-09-02T18:57:28.211208"
+}

@@ -1,0 +1,42 @@
+{
+  "session_data": {
+    "created_at": "2025-09-06T18:41:08.766359",
+    "functions": {
+      "rounded_avg": {
+        "code": "\n\ndef rounded_avg(n, m):\n    \"\"\"\n    You are given two positive integers n and m, and your task is to compute the\n    average of the integers from n through m (including n and m).\n    Round the answer to the nearest integer and convert that to binary.\n    If n is greater than m, return -1.\n    \"\"\"\n    if not isinstance(n, int) or not isinstance(m, int):\n        raise TypeError(\"n and m must be integers\")\n    if n > m:\n        return -1\n    count = m - n + 1\n    total = (n + m) * count // 2\n    avg = total / count\n    rounded = int(avg + 0.5)\n    return bin(rounded)[2:]\n",
+        "info": {
+          "requirement": "Here\u2019s one way to implement `rounded_avg` exactly as specified:\n\n```python\ndef rounded_avg(n, m):\n    \"\"\"\n    You are given two positive integers n and m, and your task is to compute the\n    average of the integers from n through m (including n and m). \n    Round the answer to the nearest integer and convert that to binary.\n    If n is greater than m, return -1.\n    \"\"\"\n    # If the range is invalid, bail out\n    if n > m:\n        return -1\n\n    # Number of terms\n    count = m - n + 1\n    \n    # Sum of arithmetic sequence from n to m: (first + last) * count / 2\n    total = (n + m) * count // 2\n    \n    # Compute the floating\u2010point average\n    avg = total / count\n    \n    # Round to nearest integer (ties go up)\n    rounded = int(avg + 0.5)\n    \n    # Convert to binary string (without the '0b' prefix)\n    return bin(rounded)[2:]\n```\n\nExplanation of key steps:\n- If `n > m`, we immediately return `-1`.\n- We use the arithmetic series sum formula to get the total in O(1) time.\n- We divide by the count to find the average, then add 0.5 and truncate to implement \u201cround half up.\u201d\n- Finally, we use Python\u2019s built\u2010in `bin()` to get the binary representation and strip off the `\"0b\"` prefix.",
+          "iterations": 2
+        },
+        "added_at": "2025-09-06T18:42:58.522163",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-06T18:42:58.522107",
+        "code": "\n\ndef rounded_avg(n, m):\n    \"\"\"\n    You are given two positive integers n and m, and your task is to compute the\n    average of the integers from n through m (including n and m).\n    Round the answer to the nearest integer and convert that to binary.\n    If n is greater than m, return -1.\n    \"\"\"\n    if not isinstance(n, int) or not isinstance(m, int):\n        raise TypeError(\"n and m must be integers\")\n    if n > m:\n        return -1\n    count = m - n + 1\n    total = (n + m) * count // 2\n    avg = total / count\n    rounded = int(avg + 0.5)\n    return bin(rounded)[2:]\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 381994,
+      "defined_variables": [
+        "rounded_avg"
+      ],
+      "execution_count": 2
+    }
+  },
+  "saved_at": "2025-09-06T18:43:11.969877"
+}

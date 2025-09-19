@@ -1,0 +1,48 @@
+{
+  "session_data": {
+    "created_at": "2025-09-05T19:19:47.886722",
+    "functions": {
+      "sort_array": {
+        "code": "\n\ndef sort_array(arr):\n    '''Sorts a list of numbers based on the sum of the first and last elements.\n    If the sum is odd, returns a new list sorted in ascending order; if even, a new list sorted in descending order.\n    Raises AttributeError for non-list inputs.'''\n    if not isinstance(arr, list):\n        raise AttributeError(\"Input must be a list\")\n    if len(arr) == 0:\n        return []\n    total = arr[0] + arr[-1]\n    if total % 2:\n        return sorted(arr)\n    else:\n        return sorted(arr, reverse=True)\n",
+        "info": {
+          "requirement": "Here\u2019s an implementation of `sort_array` that returns a new sorted list according to the rule you described:\n\n```python\ndef sort_array(array):\n    \"\"\"\n    Given an array of non-negative integers, return a copy of the given array after sorting.\n    Sort in ascending order if the sum of the first and last elements is odd,\n    or in descending order if that sum is even.\n\n    Note:\n    * The original array is not modified.\n    \"\"\"\n    # Make a shallow copy so we don't modify the input\n    arr = array.copy()\n\n    # If the array is empty or has only one element, just return the copy\n    if len(arr) < 2:\n        return arr\n\n    # Compute the sum of the first and last elements\n    total = arr[0] + arr[-1]\n\n    # Choose sort order based on parity of the sum\n    if total % 2 == 1:\n        # Sum is odd -> ascending\n        return sorted(arr)\n    else:\n        # Sum is even -> descending\n        return sorted(arr, reverse=True)\n```\n\nExample usage:\n\n```python\nprint(sort_array([3, 1, 4, 2]))  # first+last = 3+2=5 (odd) -> [1,2,3,4]\nprint(sort_array([5, 10, 2, 8])) # first+last = 5+8=13 (odd) -> [2,5,8,10]\nprint(sort_array([2, 7, 1, 4]))  # first+last = 2+4=6 (even) -> [7,4,2,1]\n```",
+          "iterations": 3
+        },
+        "added_at": "2025-09-05T19:23:47.716442",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-05T19:23:47.716375",
+        "code": "\n\ndef sort_array(arr):\n    '''Sorts a list of numbers based on the sum of the first and last elements.\n    If the sum is odd, returns a new list sorted in ascending order; if even, a new list sorted in descending order.\n    Raises AttributeError for non-list inputs.'''\n    if not isinstance(arr, list):\n        raise AttributeError(\"Input must be a list\")\n    if len(arr) == 0:\n        return []\n    total = arr[0] + arr[-1]\n    if total % 2:\n        return sorted(arr)\n    else:\n        return sorted(arr, reverse=True)\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-05T19:24:02.479850",
+        "code": "result = sort_array(arr=[3, 1, 2, 4])\nprint(result)",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 343794,
+      "defined_variables": [
+        "sort_array"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-09-05T19:24:04.469496"
+}

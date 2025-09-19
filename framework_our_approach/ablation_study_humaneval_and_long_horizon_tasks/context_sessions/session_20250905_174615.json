@@ -1,0 +1,48 @@
+{
+  "session_data": {
+    "created_at": "2025-09-05T17:42:49.893184",
+    "functions": {
+      "car_race_collision": {
+        "code": "\n\ndef car_race_collision(cars):\n    \"\"\"\n    Calculates the total number of collisions in a car race.\n    \n    Each pair of cars is considered one collision, and this function\n    simplifies that by returning the square of the number of cars.\n    \n    Parameters:\n        cars (int): Number of cars in the race. Must be a non-negative integer.\n    \n    Returns:\n        int: Total number of collisions (cars squared).\n    \n    Raises:\n        TypeError: If cars is not an integer.\n        ValueError: If cars is negative.\n    \"\"\"\n    if not isinstance(cars, int):\n        raise TypeError(\"cars must be an integer\")\n    if cars < 0:\n        raise ValueError(\"cars cannot be negative\")\n    return cars * cars\n\n",
+        "info": {
+          "requirement": "Here\u2019s a simple implementation: each of the n cars going left-to-right will eventually cross paths with each of the n cars going right-to-left, giving n \u00d7 n total collisions.\n\n```python\ndef car_race_collision(n: int) -> int:\n    \"\"\"\n    Imagine a road that's a perfectly straight infinitely long line.\n    n cars are driving left to right; simultaneously, a different set of n cars\n    are driving right to left. The two sets of cars start out being very far from\n    each other. All cars move at the same speed. Two cars are said to collide\n    when a car that's moving left to right hits a car that's moving right to left.\n    However, the cars are infinitely sturdy and strong; as a result, they continue moving\n    in their trajectory as if they did not collide.\n\n    This function outputs the number of such collisions.\n    \"\"\"\n    # Every L\u2192R car will meet every R\u2192L car exactly once\n    return n * n\n```\n\nThis runs in constant time and constant space.",
+          "iterations": 2
+        },
+        "added_at": "2025-09-05T17:45:42.004724",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-05T17:45:42.004629",
+        "code": "\n\ndef car_race_collision(cars):\n    \"\"\"\n    Calculates the total number of collisions in a car race.\n    \n    Each pair of cars is considered one collision, and this function\n    simplifies that by returning the square of the number of cars.\n    \n    Parameters:\n        cars (int): Number of cars in the race. Must be a non-negative integer.\n    \n    Returns:\n        int: Total number of collisions (cars squared).\n    \n    Raises:\n        TypeError: If cars is not an integer.\n        ValueError: If cars is negative.\n    \"\"\"\n    if not isinstance(cars, int):\n        raise TypeError(\"cars must be an integer\")\n    if cars < 0:\n        raise ValueError(\"cars cannot be negative\")\n    return cars * cars\n\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-05T17:46:14.215909",
+        "code": "result = car_race_collision(cars=5)\nprint(result)",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 339248,
+      "defined_variables": [
+        "car_race_collision"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-09-05T17:46:15.943188"
+}

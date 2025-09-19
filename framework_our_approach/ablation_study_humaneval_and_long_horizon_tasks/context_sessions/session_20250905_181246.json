@@ -1,0 +1,48 @@
+{
+  "session_data": {
+    "created_at": "2025-09-05T18:06:26.068832",
+    "functions": {
+      "split_words": {
+        "code": "\n\ndef split_words(txt):\n    \"\"\"Splits the input string into words based on whitespace or commas.\n    If the string contains whitespace, split on whitespace.\n    Else if it contains commas, split on commas.\n    Otherwise, count and return the number of odd-order lowercase letters.\"\"\"\n    if not isinstance(txt, str):\n        raise TypeError\n    if txt == \"\":\n        return 0\n    # If any whitespace present, split on whitespace\n    if any(c.isspace() for c in txt):\n        return txt.split()\n    # No whitespace, but commas present: split on commas\n    if \",\" in txt:\n        return txt.split(\",\")\n    # No separators: count odd-order lowercase letters\n    count = 0\n    for c in txt:\n        if 'a' <= c <= 'z' and ((ord(c) - ord('a')) % 2 == 1):\n            count += 1\n    return count\n",
+        "info": {
+          "requirement": "Here\u2019s an implementation of `split_words` following the specification:\n\n```python\ndef split_words(txt):\n    \"\"\"\n    Given a string of words, return a list of words split on whitespace. \n    If no whitespace exists in the text, split on commas ','.\n    If no commas exist either, return the number of lower-case letters \n    with odd order in the alphabet (ord('a') = 0, ord('b') = 1, ..., ord('z') = 25).\n    \"\"\"\n    # 1) If there\u2019s any whitespace, split on whitespace\n    if any(ch.isspace() for ch in txt):\n        return txt.split()\n\n    # 2) Otherwise, if there\u2019s a comma, split on commas\n    if ',' in txt:\n        return txt.split(',')\n\n    # 3) Otherwise, count lowercase letters whose (ord - ord('a')) is odd\n    count = sum(\n        1\n        for ch in txt\n        if 'a' <= ch <= 'z' and ((ord(ch) - ord('a')) % 2 == 1)\n    )\n    return count\n```\n\nExamples:\n\n- `split_words(\"hello world this is fun\")`  \n  \u2192 `[\"hello\", \"world\", \"this\", \"is\", \"fun\"]`\n\n- `split_words(\"apple,banana,pear\")`  \n  \u2192 `[\"apple\", \"banana\", \"pear\"]`\n\n- `split_words(\"abcdXYZ\")`  \n  Lower-case letters: a(0), b(1), c(2), d(3) \u2192 odd-order are b and d \u2192 count = 2.  \n  \u2192 `2`",
+          "iterations": 2
+        },
+        "added_at": "2025-09-05T18:12:03.029947",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-05T18:12:03.029888",
+        "code": "\n\ndef split_words(txt):\n    \"\"\"Splits the input string into words based on whitespace or commas.\n    If the string contains whitespace, split on whitespace.\n    Else if it contains commas, split on commas.\n    Otherwise, count and return the number of odd-order lowercase letters.\"\"\"\n    if not isinstance(txt, str):\n        raise TypeError\n    if txt == \"\":\n        return 0\n    # If any whitespace present, split on whitespace\n    if any(c.isspace() for c in txt):\n        return txt.split()\n    # No whitespace, but commas present: split on commas\n    if \",\" in txt:\n        return txt.split(\",\")\n    # No separators: count odd-order lowercase letters\n    count = 0\n    for c in txt:\n        if 'a' <= c <= 'z' and ((ord(c) - ord('a')) % 2 == 1):\n            count += 1\n    return count\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-05T18:12:36.387752",
+        "code": "result = split_words(txt=\"Hello world this is a test\")\nprint(result)",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 340424,
+      "defined_variables": [
+        "split_words"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-09-05T18:12:46.615446"
+}

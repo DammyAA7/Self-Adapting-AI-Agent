@@ -1,0 +1,102 @@
+{
+  "session_data": {
+    "created_at": "2025-08-31T05:08:41.572150",
+    "functions": {
+      "calculate_simple_interest": {
+        "code": "\ndef calculate_simple_interest(principal, rate, time):\n    '''\n    Calculate simple interest.\n    \n    Args:\n        principal: Initial amount\n        rate: Interest rate (as decimal, e.g., 0.05 for 5%)\n        time: Time period in years\n    \n    Returns:\n        Simple interest amount\n    '''\n    return principal * rate * time\n",
+        "info": {
+          "requirement": "Calculate simple interest",
+          "iterations": 1
+        },
+        "added_at": "2025-08-31T05:08:41.669612",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      },
+      "calculate_compound_interest": {
+        "code": "\ndef calculate_compound_interest(principal, rate, time, n=12):\n    '''\n    Calculate compound interest and compare with simple interest.\n    Uses the previously defined calculate_simple_interest function!\n    \n    Args:\n        principal: Initial amount\n        rate: Annual interest rate (as decimal)\n        time: Time period in years\n        n: Compounding frequency per year (default monthly)\n    \n    Returns:\n        Dictionary with compound interest, simple interest, and difference\n    '''\n    # Calculate compound interest\n    compound_amount = principal * (1 + rate/n) ** (n * time)\n    compound_interest = compound_amount - principal\n    \n    # Use the PREVIOUSLY GENERATED function!\n    simple_interest = calculate_simple_interest(principal, rate, time)\n    \n    return {\n        'compound': compound_interest,\n        'simple': simple_interest,\n        'difference': compound_interest - simple_interest,\n        'total_amount': compound_amount\n    }\n",
+        "info": {
+          "requirement": "Calculate compound interest using simple interest function",
+          "iterations": 1
+        },
+        "added_at": "2025-08-31T05:08:41.690288",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      },
+      "calculate_investment_portfolio": {
+        "code": "\ndef calculate_investment_portfolio(investments):\n    '''\n    Calculate returns for a portfolio of investments.\n    Uses BOTH previously generated functions!\n    \n    Args:\n        investments: List of investment dictionaries with keys:\n                    - amount, rate, years, type ('simple' or 'compound')\n    \n    Returns:\n        Portfolio summary with total returns\n    '''\n    total_returns = 0\n    results = []\n    \n    for inv in investments:\n        amount = inv['amount']\n        rate = inv['rate']\n        years = inv['years']\n        inv_type = inv.get('type', 'compound')\n        \n        if inv_type == 'simple':\n            # Use first generated function\n            interest = calculate_simple_interest(amount, rate, years)\n            total = amount + interest\n        else:\n            # Use second generated function\n            result = calculate_compound_interest(amount, rate, years)\n            interest = result['compound']\n            total = result['total_amount']\n        \n        results.append({\n            'type': inv_type,\n            'principal': amount,\n            'interest': interest,\n            'total': total\n        })\n        total_returns += total\n    \n    return {\n        'investments': results,\n        'total_portfolio_value': total_returns,\n        'total_interest_earned': total_returns - sum(inv['amount'] for inv in investments)\n    }\n",
+        "info": {
+          "requirement": "Calculate portfolio using both previous functions",
+          "iterations": 1
+        },
+        "added_at": "2025-08-31T05:08:41.710972",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-08-31T05:08:41.669478",
+        "code": "\ndef calculate_simple_interest(principal, rate, time):\n    '''\n    Calculate simple interest.\n    \n    Args:\n        principal: Initial amount\n        rate: Interest rate (as decimal, e.g., 0.05 for 5%)\n        time: Time period in years\n    \n    Returns:\n        Simple interest amount\n    '''\n    return principal * rate * time\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-08-31T05:08:41.679903",
+        "code": "\nresult = calculate_simple_interest(1000, 0.05, 2)\nprint(f\"Simple interest on $1000 at 5% for 2 years: ${result}\")\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-08-31T05:08:41.690254",
+        "code": "\ndef calculate_compound_interest(principal, rate, time, n=12):\n    '''\n    Calculate compound interest and compare with simple interest.\n    Uses the previously defined calculate_simple_interest function!\n    \n    Args:\n        principal: Initial amount\n        rate: Annual interest rate (as decimal)\n        time: Time period in years\n        n: Compounding frequency per year (default monthly)\n    \n    Returns:\n        Dictionary with compound interest, simple interest, and difference\n    '''\n    # Calculate compound interest\n    compound_amount = principal * (1 + rate/n) ** (n * time)\n    compound_interest = compound_amount - principal\n    \n    # Use the PREVIOUSLY GENERATED function!\n    simple_interest = calculate_simple_interest(principal, rate, time)\n    \n    return {\n        'compound': compound_interest,\n        'simple': simple_interest,\n        'difference': compound_interest - simple_interest,\n        'total_amount': compound_amount\n    }\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-08-31T05:08:41.700549",
+        "code": "\nresult = calculate_compound_interest(1000, 0.05, 2)\nprint(f\"Compound interest: ${result['compound']:.2f}\")\nprint(f\"Simple interest: ${result['simple']:.2f}\")\nprint(f\"Difference: ${result['difference']:.2f}\")\nprint(f\"Total amount: ${result['total_amount']:.2f}\")\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-08-31T05:08:41.710944",
+        "code": "\ndef calculate_investment_portfolio(investments):\n    '''\n    Calculate returns for a portfolio of investments.\n    Uses BOTH previously generated functions!\n    \n    Args:\n        investments: List of investment dictionaries with keys:\n                    - amount, rate, years, type ('simple' or 'compound')\n    \n    Returns:\n        Portfolio summary with total returns\n    '''\n    total_returns = 0\n    results = []\n    \n    for inv in investments:\n        amount = inv['amount']\n        rate = inv['rate']\n        years = inv['years']\n        inv_type = inv.get('type', 'compound')\n        \n        if inv_type == 'simple':\n            # Use first generated function\n            interest = calculate_simple_interest(amount, rate, years)\n            total = amount + interest\n        else:\n            # Use second generated function\n            result = calculate_compound_interest(amount, rate, years)\n            interest = result['compound']\n            total = result['total_amount']\n        \n        results.append({\n            'type': inv_type,\n            'principal': amount,\n            'interest': interest,\n            'total': total\n        })\n        total_returns += total\n    \n    return {\n        'investments': results,\n        'total_portfolio_value': total_returns,\n        'total_interest_earned': total_returns - sum(inv['amount'] for inv in investments)\n    }\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-08-31T05:08:41.721498",
+        "code": "\nportfolio = [\n    {'amount': 5000, 'rate': 0.04, 'years': 3, 'type': 'simple'},\n    {'amount': 10000, 'rate': 0.05, 'years': 5, 'type': 'compound'},\n    {'amount': 3000, 'rate': 0.03, 'years': 2, 'type': 'simple'}\n]\n\nresult = calculate_investment_portfolio(portfolio)\nprint(\"Portfolio Analysis:\")\nprint(\"-\" * 40)\nfor i, inv in enumerate(result['investments'], 1):\n    print(f\"Investment {i} ({inv['type']}): ${inv['principal']:,.2f} -> ${inv['total']:,.2f}\")\n    print(f\"  Interest earned: ${inv['interest']:,.2f}\")\nprint(\"-\" * 40)\nprint(f\"Total portfolio value: ${result['total_portfolio_value']:,.2f}\")\nprint(f\"Total interest earned: ${result['total_interest_earned']:,.2f}\")\n",
+        "success": false,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 84398,
+      "defined_variables": [
+        "calculate_simple_interest",
+        "calculate_compound_interest",
+        "calculate_investment_portfolio"
+      ],
+      "execution_count": 8
+    }
+  },
+  "saved_at": "2025-08-31T05:08:41.737741"
+}

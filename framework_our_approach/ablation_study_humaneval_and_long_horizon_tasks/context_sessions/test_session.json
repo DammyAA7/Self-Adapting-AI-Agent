@@ -1,0 +1,63 @@
+{
+  "session_data": {
+    "created_at": "2025-08-31T05:06:34.363390",
+    "functions": {
+      "calculate_interest": {
+        "code": "\ndef calculate_interest(principal, rate, time):\n    '''Calculate simple interest'''\n    return principal * rate * time\n",
+        "info": {},
+        "added_at": "2025-08-31T05:06:34.623185",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      },
+      "calculate_compound_interest": {
+        "code": "\ndef calculate_compound_interest(principal, rate, time, n=1):\n    '''Calculate compound interest using the simple interest function'''\n    # This function can call calculate_interest!\n    simple = calculate_interest(principal, rate, time)\n    compound = principal * ((1 + rate/n) ** (n * time)) - principal\n    return {\n        'simple': simple,\n        'compound': compound,\n        'difference': compound - simple\n    }\n",
+        "info": {},
+        "added_at": "2025-08-31T05:06:34.633813",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-08-31T05:06:34.622927",
+        "code": "\ndef calculate_interest(principal, rate, time):\n    '''Calculate simple interest'''\n    return principal * rate * time\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-08-31T05:06:34.633781",
+        "code": "\ndef calculate_compound_interest(principal, rate, time, n=1):\n    '''Calculate compound interest using the simple interest function'''\n    # This function can call calculate_interest!\n    simple = calculate_interest(principal, rate, time)\n    compound = principal * ((1 + rate/n) ** (n * time)) - principal\n    return {\n        'simple': simple,\n        'compound': compound,\n        'difference': compound - simple\n    }\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-08-31T05:06:34.644243",
+        "code": "\nresult = calculate_compound_interest(1000, 0.05, 10, 12)\nprint(f\"Simple Interest: ${result['simple']:.2f}\")\nprint(f\"Compound Interest: ${result['compound']:.2f}\")\nprint(f\"Difference: ${result['difference']:.2f}\")\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 84328,
+      "defined_variables": [
+        "calculate_interest",
+        "calculate_compound_interest"
+      ],
+      "execution_count": 5
+    }
+  },
+  "saved_at": "2025-08-31T05:06:34.661084"
+}

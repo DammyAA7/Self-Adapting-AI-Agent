@@ -1,0 +1,75 @@
+{
+  "session_data": {
+    "created_at": "2025-09-02T13:08:32.295555",
+    "functions": {
+      "matrix_operations": {
+        "code": "\n\ncomputation_cache = {}\n\ndef matrix_operations(matrix_a, matrix_b):\n    \"\"\"Performs matrix multiplication with caching.\n\n    Returns the resulting matrix as a list of lists.\n    Returns None on invalid input or dimension mismatch.\"\"\"\n    global computation_cache\n\n    # Type validation\n    if not isinstance(matrix_a, list) or not isinstance(matrix_b, list):\n        return None\n\n    # Special case: both matrices empty\n    if matrix_a == [] and matrix_b == []:\n        key = (tuple(tuple(row) for row in matrix_a),\n               tuple(tuple(row) for row in matrix_b))\n        result = []\n        computation_cache[key] = result\n        return result\n\n    # Validate that each row is a list\n    for row in matrix_a:\n        if not isinstance(row, list):\n            return None\n    for row in matrix_b:\n        if not isinstance(row, list):\n            return None\n\n    # Reject if one is empty and the other is not\n    if not matrix_a or not matrix_b:\n        return None\n\n    # Check consistent row lengths for matrix_a\n    cols_a = len(matrix_a[0])\n    for row in matrix_a:\n        if len(row) != cols_a:\n            return None\n\n    # Check consistent row lengths for matrix_b\n    rows_b = len(matrix_b)\n    cols_b = len(matrix_b[0])\n    for row in matrix_b:\n        if len(row) != cols_b:\n            return None\n\n    # Dimension compatibility: columns of A must equal rows of B\n    if cols_a != rows_b:\n        return None\n\n    # Create cache key\n    key = (tuple(tuple(row) for row in matrix_a),\n           tuple(tuple(row) for row in matrix_b))\n    if key in computation_cache:\n        return computation_cache[key]\n\n    # Compute matrix multiplication\n    result = []\n    for i in range(len(matrix_a)):\n        result_row = []\n        for j in range(cols_b):\n            sum_val = 0\n            for k in range(cols_a):\n                sum_val += matrix_a[i][k] * matrix_b[k][j]\n            result_row.append(sum_val)\n        result.append(result_row)\n\n    computation_cache[key] = result\n    return result\n",
+        "info": {
+          "requirement": "Function Name: matrix_operations  \nDescription: Performs multiplication of two matrices and caches the result in a global variable `computation_cache` to avoid redundant computations. If the same pair of matrices is passed again, the function returns the cached result instead of recalculating.  \nParameters:  \n- matrix_a: A two-dimensional list of numbers representing the first matrix.  \n- matrix_b: A two-dimensional list of numbers representing the second matrix.  \n\nExample:  \n```python\n# First call: result is computed and stored in computation_cache\nresult1 = matrix_operations(\n    matrix_a=[[1, 2], [3, 4]],\n    matrix_b=[[5, 6], [7, 8]]\n)\n\n# Second call with the same inputs: result is retrieved from computation_cache\nresult2 = matrix_operations(\n    matrix_a=[[1, 2], [3, 4]],\n    matrix_b=[[5, 6], [7, 8]]\n)\n```  ",
+          "iterations": 3
+        },
+        "added_at": "2025-09-02T13:12:53.741612",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      },
+      "advanced_matrix_ops": {
+        "code": "\n\ncomputation_cache = {}\n\ndef advanced_matrix_ops(matrix, use_cache=True, cache_key=None):\n    \"\"\"Performs advanced matrix operations with optional caching.\n\n    Validates that matrix is a non-empty square numeric matrix.\n    If use_cache is True, caches the result under cache_key or an implicit key.\n    Returns the result dict from matrix_operations or None on invalid input.\n    \"\"\"\n    # Validate matrix structure\n    if not isinstance(matrix, list) or len(matrix) == 0:\n        return None\n    n = len(matrix)\n    for row in matrix:\n        if not isinstance(row, list) or len(row) != n:\n            return None\n        for val in row:\n            if not isinstance(val, (int, float)):\n                return None\n\n    # If caching disabled, always compute fresh and do not populate cache\n    if not use_cache:\n        return matrix_operations(matrix)\n\n    # Determine cache key\n    key = cache_key if cache_key is not None else tuple(tuple(row) for row in matrix)\n\n    # Return cached result if available\n    if key in computation_cache:\n        return computation_cache[key]\n\n    # Compute, cache, and return result\n    result = matrix_operations(matrix)\n    computation_cache[key] = result\n    return result\n",
+        "info": {
+          "requirement": "Function Name: advanced_matrix_ops\nDescription: \n  Provides high-level eigenvalue and eigenvector computations by internally calling the existing matrix_operations function and leveraging computation_cache for result reuse. When invoked, it first checks computation_cache to see if the eigen decomposition for the given matrix already exists; if so, it returns the cached result. Otherwise, it uses matrix_operations to perform the eigenvalue calculation, stores the result in computation_cache, and then returns it.\n\nParameters:\n  - matrix (list of list of numbers): The square matrix (n\u00d7n) for which to compute eigenvalues and eigenvectors.\n  - use_cache (boolean, optional): Whether to consult computation_cache before computing and to store new results afterward. Defaults to true.\n  - cache_key (string, optional): An explicit key under which to store or lookup the result in computation_cache. If not provided, a hash of the matrix is used.\n\nExample:\n  advanced_matrix_ops(\n    matrix = [[4, 1, 2],\n              [1, 2, 0],\n              [2, 0, 3]],\n    use_cache = true\n  )  \n  // Checks if result for this matrix is in computation_cache.\n  // If not, calls matrix_operations(matrix, operation=\"eigen_decomposition\"),\n  // caches the output under a derived key,\n  // and returns { eigenvalues: [...], eigenvectors: [...] }.",
+          "iterations": 1
+        },
+        "added_at": "2025-09-02T14:19:03.899017",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-02T13:12:53.741517",
+        "code": "\n\ncomputation_cache = {}\n\ndef matrix_operations(matrix_a, matrix_b):\n    \"\"\"Performs matrix multiplication with caching.\n\n    Returns the resulting matrix as a list of lists.\n    Returns None on invalid input or dimension mismatch.\"\"\"\n    global computation_cache\n\n    # Type validation\n    if not isinstance(matrix_a, list) or not isinstance(matrix_b, list):\n        return None\n\n    # Special case: both matrices empty\n    if matrix_a == [] and matrix_b == []:\n        key = (tuple(tuple(row) for row in matrix_a),\n               tuple(tuple(row) for row in matrix_b))\n        result = []\n        computation_cache[key] = result\n        return result\n\n    # Validate that each row is a list\n    for row in matrix_a:\n        if not isinstance(row, list):\n            return None\n    for row in matrix_b:\n        if not isinstance(row, list):\n            return None\n\n    # Reject if one is empty and the other is not\n    if not matrix_a or not matrix_b:\n        return None\n\n    # Check consistent row lengths for matrix_a\n    cols_a = len(matrix_a[0])\n    for row in matrix_a:\n        if len(row) != cols_a:\n            return None\n\n    # Check consistent row lengths for matrix_b\n    rows_b = len(matrix_b)\n    cols_b = len(matrix_b[0])\n    for row in matrix_b:\n        if len(row) != cols_b:\n            return None\n\n    # Dimension compatibility: columns of A must equal rows of B\n    if cols_a != rows_b:\n        return None\n\n    # Create cache key\n    key = (tuple(tuple(row) for row in matrix_a),\n           tuple(tuple(row) for row in matrix_b))\n    if key in computation_cache:\n        return computation_cache[key]\n\n    # Compute matrix multiplication\n    result = []\n    for i in range(len(matrix_a)):\n        result_row = []\n        for j in range(cols_b):\n            sum_val = 0\n            for k in range(cols_a):\n                sum_val += matrix_a[i][k] * matrix_b[k][j]\n            result_row.append(sum_val)\n        result.append(result_row)\n\n    computation_cache[key] = result\n    return result\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-02T14:16:49.581444",
+        "code": "\n\ncomputation_cache = {}\n\ndef matrix_operations(matrix_a, matrix_b):\n    \"\"\"Performs matrix multiplication with caching.\n\n    Returns the resulting matrix as a list of lists.\n    Returns None on invalid input or dimension mismatch.\"\"\"\n    global computation_cache\n\n    # Type validation\n    if not isinstance(matrix_a, list) or not isinstance(matrix_b, list):\n        return None\n\n    # Special case: both matrices empty\n    if matrix_a == [] and matrix_b == []:\n        key = (tuple(tuple(row) for row in matrix_a),\n               tuple(tuple(row) for row in matrix_b))\n        result = []\n        computation_cache[key] = result\n        return result\n\n    # Validate that each row is a list\n    for row in matrix_a:\n        if not isinstance(row, list):\n            return None\n    for row in matrix_b:\n        if not isinstance(row, list):\n            return None\n\n    # Reject if one is empty and the other is not\n    if not matrix_a or not matrix_b:\n        return None\n\n    # Check consistent row lengths for matrix_a\n    cols_a = len(matrix_a[0])\n    for row in matrix_a:\n        if len(row) != cols_a:\n            return None\n\n    # Check consistent row lengths for matrix_b\n    rows_b = len(matrix_b)\n    cols_b = len(matrix_b[0])\n    for row in matrix_b:\n        if len(row) != cols_b:\n            return None\n\n    # Dimension compatibility: columns of A must equal rows of B\n    if cols_a != rows_b:\n        return None\n\n    # Create cache key\n    key = (tuple(tuple(row) for row in matrix_a),\n           tuple(tuple(row) for row in matrix_b))\n    if key in computation_cache:\n        return computation_cache[key]\n\n    # Compute matrix multiplication\n    result = []\n    for i in range(len(matrix_a)):\n        result_row = []\n        for j in range(cols_b):\n            sum_val = 0\n            for k in range(cols_a):\n                sum_val += matrix_a[i][k] * matrix_b[k][j]\n            result_row.append(sum_val)\n        result.append(result_row)\n\n    computation_cache[key] = result\n    return result\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-02T14:19:03.899005",
+        "code": "\n\ncomputation_cache = {}\n\ndef advanced_matrix_ops(matrix, use_cache=True, cache_key=None):\n    \"\"\"Performs advanced matrix operations with optional caching.\n\n    Validates that matrix is a non-empty square numeric matrix.\n    If use_cache is True, caches the result under cache_key or an implicit key.\n    Returns the result dict from matrix_operations or None on invalid input.\n    \"\"\"\n    # Validate matrix structure\n    if not isinstance(matrix, list) or len(matrix) == 0:\n        return None\n    n = len(matrix)\n    for row in matrix:\n        if not isinstance(row, list) or len(row) != n:\n            return None\n        for val in row:\n            if not isinstance(val, (int, float)):\n                return None\n\n    # If caching disabled, always compute fresh and do not populate cache\n    if not use_cache:\n        return matrix_operations(matrix)\n\n    # Determine cache key\n    key = cache_key if cache_key is not None else tuple(tuple(row) for row in matrix)\n\n    # Return cached result if available\n    if key in computation_cache:\n        return computation_cache[key]\n\n    # Compute, cache, and return result\n    result = matrix_operations(matrix)\n    computation_cache[key] = result\n    return result\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-02T14:19:23.810740",
+        "code": "result = advanced_matrix_ops(matrix=[[1, 2], [2, 3]], use_cache=True, cache_key=\"eigen_calc_example\")\nprint(result)",
+        "success": false,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 224677,
+      "defined_variables": [
+        "matrix_operations",
+        "advanced_matrix_ops"
+      ],
+      "execution_count": 5
+    }
+  },
+  "saved_at": "2025-09-02T14:19:27.646648"
+}

@@ -1,0 +1,42 @@
+{
+  "session_data": {
+    "created_at": "2025-09-05T16:56:38.981063",
+    "functions": {
+      "decimal_to_binary": {
+        "code": "\n\ndef decimal_to_binary(n):\n    \"\"\"Convert a decimal integer to a binary string with 'db' prefix and suffix.\"\"\"\n    if not isinstance(n, int):\n        raise TypeError(\"Input must be an integer\")\n    sign = '-' if n < 0 else ''\n    digits = bin(abs(n))[2:]\n    return f\"db{sign}{digits}db\"\n",
+        "info": {
+          "requirement": "Here\u2019s a possible implementation of `decimal_to_binary` following your specification:\n\n```python\ndef decimal_to_binary(decimal):\n    \"\"\"\n    You will be given a number in decimal form and your task is to convert it to\n    binary format. The function should return a string, with each character representing a binary\n    number. Each character in the string will be '0' or '1'.\n\n    There will be an extra couple of characters 'db' at the beginning and at the end of the string.\n    The extra characters are there to help with the format.\n    \"\"\"\n    # Handle zero explicitly\n    if decimal == 0:\n        binary = \"0\"\n    else:\n        # For positive numbers, use Python's built-in conversion\n        is_negative = decimal < 0\n        n = abs(decimal)\n        binary_digits = []\n        while n > 0:\n            binary_digits.append(str(n % 2))\n            n //= 2\n        binary = ''.join(reversed(binary_digits))\n\n        if is_negative:\n            # If you want to represent negative values specially,\n            # you could prefix with a minus sign:\n            binary = \"-\" + binary\n\n    # Wrap with 'db' at both ends\n    return f\"db{binary}db\"\n```\n\nExample usage:\n\n```python\nprint(decimal_to_binary(5))   # db101db\nprint(decimal_to_binary(0))   # db0db\nprint(decimal_to_binary(18))  # db10010db\nprint(decimal_to_binary(-3))  # db-11db\n```",
+          "iterations": 1
+        },
+        "added_at": "2025-09-05T17:00:06.655238",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-05T17:00:06.655145",
+        "code": "\n\ndef decimal_to_binary(n):\n    \"\"\"Convert a decimal integer to a binary string with 'db' prefix and suffix.\"\"\"\n    if not isinstance(n, int):\n        raise TypeError(\"Input must be an integer\")\n    sign = '-' if n < 0 else ''\n    digits = bin(abs(n))[2:]\n    return f\"db{sign}{digits}db\"\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 337138,
+      "defined_variables": [
+        "decimal_to_binary"
+      ],
+      "execution_count": 2
+    }
+  },
+  "saved_at": "2025-09-05T17:00:44.165698"
+}

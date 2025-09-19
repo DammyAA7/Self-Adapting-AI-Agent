@@ -1,0 +1,48 @@
+{
+  "session_data": {
+    "created_at": "2025-09-05T18:53:05.334172",
+    "functions": {
+      "move_one_ball": {
+        "code": "\n\ndef move_one_ball(arr):\n    '''Returns True if the list is non-decreasing or is a rotation of a non-decreasing list.'''\n    n = len(arr)\n    if n <= 1:\n        return True\n    drops = 0\n    for i in range(n):\n        if arr[i] > arr[(i + 1) % n]:\n            drops += 1\n            if drops > 1:\n                return False\n    return True\n",
+        "info": {
+          "requirement": "Here\u2019s a simple O(n) implementation that checks for at most one \u201cdrop\u201d (i.e. a place where a value is greater than its successor, counting the last element back to the first). If there\u2019s more than one such drop, you can\u2019t rotate into a non\u2010decreasing sequence.\n\n```python\ndef move_one_ball(arr):\n    \"\"\"\n    We have an array 'arr' of N unique integers. You may perform any number of \n    right\u2010shift (rotation) operations, where each operation takes the last element \n    and moves it to the front. Determine if it is possible to obtain the array \n    sorted in non\u2010decreasing order by such rotations. Return True if possible, \n    or if the array is empty; otherwise return False.\n    \"\"\"\n    n = len(arr)\n    # Empty or single\u2010element arrays are trivially \u201csortable\u201d by rotation\n    if n <= 1:\n        return True\n\n    # Count how many times the sequence \u201cdrops\u201d (arr[i] > arr[i+1]),\n    # treating arr[n-1] > arr[0] as a possible drop too.\n    drops = 0\n    for i in range(n):\n        if arr[i] > arr[(i + 1) % n]:\n            drops += 1\n            # Early exit if too many drops\n            if drops > 1:\n                return False\n\n    # If there\u2019s at most one drop, a suitable rotation exists\n    return True\n```\n\nExplanation of the key idea:\n- A sorted (non\u2010decreasing) array has zero drops.\n- A rotated sorted array has exactly one drop, which marks the \u201cwrap\u201d point.\n- Any array with more than one drop cannot be fixed by a single\u2010direction rotation.",
+          "iterations": 1
+        },
+        "added_at": "2025-09-05T18:55:29.776412",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-09-05T18:55:29.776355",
+        "code": "\n\ndef move_one_ball(arr):\n    '''Returns True if the list is non-decreasing or is a rotation of a non-decreasing list.'''\n    n = len(arr)\n    if n <= 1:\n        return True\n    drops = 0\n    for i in range(n):\n        if arr[i] > arr[(i + 1) % n]:\n            drops += 1\n            if drops > 1:\n                return False\n    return True\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-09-05T18:55:55.781644",
+        "code": "result = move_one_ball(arr=[3, 4, 5, 1, 2])\nprint(result)",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 342033,
+      "defined_variables": [
+        "move_one_ball"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-09-05T18:55:57.183082"
+}

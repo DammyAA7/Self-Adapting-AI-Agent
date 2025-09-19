@@ -1,0 +1,55 @@
+{
+  "problems": {
+    "smallest_change_HE_73": {
+      "id": "3f91dc16",
+      "request": "Complete this Python function:\n\n\ndef smallest_change(arr):\n    \"\"\"\n    Given an array arr of integers, find the minimum number of elements that\n    need to be changed to make the array palindromic. A palindromic array is an array that\n    is read the same backwards and forwards. In one change, you can change one element to any other element.\n    \"\"\"\n",
+      "runs": [
+        {
+          "run": 1,
+          "success": true,
+          "tdd_success": true,
+          "iterations": 1,
+          "log_snippet": "        right -= 1\n\n    return changes\n```\n\nYou can test it with the following code:\n\n```python\nprint(smallest_change([1, 2, 3, 2, 1]))  # Output: 0\n```\nSession saved to: context_sessions/session_20250906_014632.json\nTerminal context saved: context_sessions/session_20250906_014632.json\n\nFunctions available in persistent context:\n  - smallest_change\nLogging complete. Check function_generation.log and function_generation_stats.json for details.\nTerminated python terminal\nTerminated terminal: main\n",
+          "humaneval_pass": true,
+          "final_success": true
+        }
+      ],
+      "standard_pass_k": {
+        "pass@1": 1.0,
+        "pass@5": null,
+        "pass@10": null,
+        "pass@1_empirical": 1,
+        "pass@5_empirical": null,
+        "pass@10_empirical": null,
+        "tdd_success_count": 1,
+        "final_success_count": 1,
+        "success_rate": 100.0,
+        "first_success_at_run": 1,
+        "total_successful": 1,
+        "total_runs": 1
+      },
+      "iteration_efficiency": {
+        "avg_iterations": 1.0,
+        "min_iterations": 1,
+        "max_iterations": 1,
+        "success_within_1": 100.0,
+        "success_within_3": 100.0,
+        "success_within_6": 100.0,
+        "iteration_distribution": {
+          "iteration_1": 1,
+          "iteration_2": 0,
+          "iteration_3": 0,
+          "iteration_4": 0,
+          "iteration_5": 0,
+          "iteration_6": 0
+        },
+        "total_successful_runs": 1
+      }
+    }
+  },
+  "standard_pass_k": {},
+  "iteration_efficiency": {},
+  "timestamp": "2025-09-06T01:42:05.961772",
+  "total_api_calls": 1,
+  "humaneval_mode": true
+}

@@ -1,0 +1,136 @@
+[
+    {
+    "type": "function",
+    "function": {
+        "name": "addition",
+        "description": "Adds multiple numbers and returns the sum.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "numbers": {
+                    "type": "array",
+                    "items": {"type": "number"},
+                    "description": "Array of numbers to add together.",
+                    "minItems": 1
+                }
+            },
+            "required": ["numbers"]
+            }
+        }
+    },
+    {
+    "type": "function",
+    "function": {
+        "name": "subtraction",
+        "description": "Subtracts multiple numbers from the first number and returns the result.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "first": {
+                    "type": "number",
+                    "description": "The starting number from which other numbers will be subtracted."
+                },
+                "subtract": {
+                    "type": "array",
+                    "items": {"type": "number"},
+                    "description": "Array of numbers to subtract from the first number.",
+                    "minItems": 1
+                }
+            },
+            "required": ["first", "subtract"]
+            }
+        }
+    }
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "power",
+            "description": "Raises a base number to the power of multiple exponents and returns the result.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "base": {
+                        "type": "number",
+                        "description": "Base number."
+                    },
+                    "exponents": {
+                        "type": "array",
+                        "items": {"type": "number"},
+                        "description": "Array of exponents to raise the base number to.",
+                        "minItems": 1
+                    }
+                },
+                "required": ["base", "exponents"]
+            }
+        }
+    }
+
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "cosine",
+            "description": "Calculates the cosine of multiple angles measured in degrees.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "angles": {
+                        "type": "array",
+                        "items": {"type": "number"},
+                        "description": "Array of angles measured in degrees.",
+                        "minItems": 1
+                    }
+                },
+                "required": ["angles"]
+            }
+        }
+    }
+
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "division",
+            "description": "Divides the numerator by each of the subsequent denominators sequentially and returns the result.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "numerator": {
+                        "type": "number",
+                        "description": "The numerator value."
+                    },
+                    "denominators": {
+                        "type": "array",
+                        "items": {"type": "number"},
+                        "description": "Array of denominators to divide the numerator by.",
+                        "minItems": 1
+                    }
+                },
+                "required": ["numerator", "denominators"]
+            }
+        }
+    }
+
+,
+    {
+        "type": "function",
+        "function": {
+            "name": "gcd",
+            "description": "Computes the greatest common divisor (GCD) of two or more integers. Returns the largest positive integer that divides all given numbers without leaving a remainder.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "numbers": {
+                        "type": "array",
+                        "items": {"type": "number"},
+                        "description": "List of integers to compute the greatest common divisor (GCD) for.",
+                        "minItems": 2
+                    }
+                },
+                "required": ["numbers"]
+            }
+        }
+    }
+
+]

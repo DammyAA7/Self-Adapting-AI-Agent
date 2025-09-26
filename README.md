@@ -1,5 +1,5 @@
 # Code Repository for ICSE '26 Paper
-## "Self-Adapting Framework for Runtime Code Generation Through Orchestrated Test-Driven Development"
+## "Self-evolving Systems: a Runtime Architecture for Autonomous Code Generation"
 
 This repository contains the implementation and experiments for our paper submission.
 
@@ -14,7 +14,7 @@ cp .env.example .env
 
 2. **Repository Structure:**
 ```
-Self-Adapting-AI-Agent/
+self-evolving-systems-icse-submission/
 ├── framework_our_approach/                          # Full framework (with TDD + Unit Testing)
 │   ├── architecture_designed_for_ticoder_comparison/  # Table 1 experiments (TiCoder comparison)
 │   ├── ablation_study_gcp_calculation/              # Table 2 GCD experiments

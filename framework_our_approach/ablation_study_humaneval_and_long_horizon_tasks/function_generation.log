@@ -11060,3 +11060,1254 @@ def coun...
 2025-09-06 11:51:17,541 - INFO - TDD Adjudication Attempts: 1
 2025-09-06 11:51:17,541 - INFO - Final Adjudication Attempts: 1
 2025-09-06 11:51:17,541 - INFO - Requirement Reinforcements: 0
+2025-09-28 23:15:43,498 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:15:43,515 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-28 23:15:43,515 - INFO - Response Content: Function Name: payment_processor  
+Description:  
+  Processes an employee’s bonus payment based on performance, stores the transaction in shared state, and—unless in “validation” mode—calls the audit_...
+2025-09-28 23:15:43,515 - INFO - Initiating function generation process...
+2025-09-28 23:15:43,519 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-28 23:15:43,519 - INFO - User Input: Create a payment_processor function that calculates bonuses based on employee performance, but it must also call an audit_logger function. The audit_logger function needs to validate payments by calling back to payment_processor with different parameters. Both functions must share a transaction state.
+2025-09-28 23:15:43,519 - INFO - Function Requirement: Function Name: payment_processor  
+Description:  
+  Processes an employee’s bonus payment based on performance, stores the transaction in shared state, and—unless in “validation” mode—calls the audit_logger to record and verify the payment.  
+
+Parameters:  
+  - employee_id (int): Unique identifier of the employee.  
+  - performance_score (float): A normalized score (e.g. 0.0–1.0) representing performance.  
+  - base_salary (float): The employee’s base salary.  
+  - transaction_state (dict): A mutable dict shared between calls to record and look up transactions.  
+  - validate (bool, optional, default=False): If True, skips the audit_logger call and simply returns the computed bonus for validation.  
+
+Returns:  
+  - dict: A transaction record containing  
+      · transaction_id (str)  
+      · employee_id (int)  
+      · calculated_bonus (float)  
+      · status (str) (“processed” or “validated”)  
+
+Example:  
+  state = {}  
+  txn = payment_processor(4, 0.85, 70000.0, state)  
+  # => { 'transaction_id': 'txn_1', 'employee_id': 4, 'calculated_bonus': 5950.0, 'status': 'processed' }  
+
+---
+
+Function Name: audit_logger  
+Description:  
+  Looks up a previously processed transaction in the shared state, re-calculates or validates the bonus by calling back into payment_processor in validation mode, logs the outcome, and updates the transaction’s status.  
+
+Parameters:  
+  - transaction_id (str): The ID of the transaction to audit.  
+  - transaction_state (dict): The same shared dict used by payment_processor to store transactions.  
+
+Returns:  
+  - dict: The updated transaction record with an added `audit_passed` (bool) field and status updated to “audited.”  
+
+Example:  
+  # Assuming state = { 'txn_1': { ... } }  
+  audited = audit_logger('txn_1', state)  
+  # => {  
+  #      'transaction_id': 'txn_1',  
+  #      'employee_id': 4,  
+  #      'calculated_bonus': 5950.0,  
+  #      'status': 'audited',  
+  #      'audit_passed': True  
+  #    }  
+
+---
+
+Usage pattern in code:
+
+```python
+# Shared transaction state
+transaction_state = {}
+
+# 1. Process a bonus payment (automatically calls audit_logger)
+txn_record = payment_processor(
+    employee_id=8,
+    performance_score=0.9,
+    base_salary=68000.0,
+    transaction_state=transaction_state
+)
+
+# 2. If you ever need to re-run the audit explicitly:
+audit_result = audit_logger(txn_record['transaction_id'], transaction_state)
+```
+
+Both functions rely on the same `transaction_state` dict so that any call to one sees the up-to-date records created or modified by the other.
+2025-09-28 23:16:25,983 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:17:21,708 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:17:22,752 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:17:23,942 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:17:27,400 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:17:27,405 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-28 23:17:27,405 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:17:27,405 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:17:27,406 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:17:27,406 - INFO - Iteration: 1
+2025-09-28 23:17:27,406 - INFO - Previous Requirement: 
+2025-09-28 23:17:27,406 - INFO - New Requirement: 
+2025-09-28 23:17:29,851 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:17:29,858 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-09-28 23:17:29,858 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:17:29,858 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:17:29,858 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:17:29,858 - INFO - Iteration: 2
+2025-09-28 23:17:29,858 - INFO - Previous Requirement: 
+2025-09-28 23:17:29,858 - INFO - New Requirement: 
+2025-09-28 23:17:31,913 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:17:31,915 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-09-28 23:17:31,915 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:17:31,915 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:17:31,915 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:17:31,915 - INFO - Iteration: 3
+2025-09-28 23:17:31,916 - INFO - Previous Requirement: 
+2025-09-28 23:17:31,916 - INFO - New Requirement: 
+2025-09-28 23:17:33,859 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:17:33,861 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-09-28 23:17:33,862 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:17:33,862 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:17:33,862 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:17:33,862 - INFO - Iteration: 4
+2025-09-28 23:17:33,862 - INFO - Previous Requirement: 
+2025-09-28 23:17:33,862 - INFO - New Requirement: 
+2025-09-28 23:17:35,597 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:17:35,599 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-09-28 23:17:35,600 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:17:35,600 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:17:35,600 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:17:35,600 - INFO - Iteration: 5
+2025-09-28 23:17:35,600 - INFO - Previous Requirement: 
+2025-09-28 23:17:35,600 - INFO - New Requirement: 
+2025-09-28 23:17:37,681 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:17:37,684 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-09-28 23:17:37,684 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:17:37,684 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:17:37,684 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:17:37,685 - INFO - Iteration: 6
+2025-09-28 23:17:37,685 - INFO - Previous Requirement: 
+2025-09-28 23:17:37,685 - INFO - New Requirement: 
+2025-09-28 23:17:37,685 - WARNING - === MAX ITERATIONS REACHED ===
+2025-09-28 23:17:37,686 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-09-28 23:17:37,686 - WARNING - Total Duration: 114.17 seconds
+2025-09-28 23:17:37,686 - WARNING - Final Iteration Count: 0
+2025-09-28 23:17:37,745 - INFO - === SESSION SUMMARY ===
+2025-09-28 23:17:37,745 - INFO - Session Duration: 137.54 seconds
+2025-09-28 23:17:37,745 - INFO - Functions Attempted: 1
+2025-09-28 23:17:37,745 - INFO - Successful Functions: 0
+2025-09-28 23:17:37,745 - INFO - Terminated Early: 1
+2025-09-28 23:17:37,745 - INFO - Total Iterations: 0
+2025-09-28 23:17:37,745 - INFO - Average Iterations per Function: 0.00
+2025-09-28 23:17:37,745 - INFO - Existing Function Calls: 0 (0 successful)
+2025-09-28 23:17:37,745 - INFO - TDD Adjudication Attempts: 6
+2025-09-28 23:17:37,745 - INFO - Final Adjudication Attempts: 0
+2025-09-28 23:17:37,745 - INFO - Requirement Reinforcements: 6
+2025-09-28 23:35:42,487 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:35:42,501 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-28 23:35:42,501 - INFO - Response Content: Below is an example of how you can add a top‐level `get_salary_info` function in `employee_database.py`.  First we show a “vanilla” version (all salaries, no access control), and then the refactored v...
+2025-09-28 23:35:42,501 - INFO - Initiating function generation process...
+2025-09-28 23:35:42,505 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-28 23:35:42,506 - INFO - User Input: Create get_salary_info function that returns salary data for employees. Then refactor it to add role-based access control where managers can see all salaries, developers can see only Engineering salaries, and analysts can see only aggregated data. The function must maintain its original interface for backward compatibility while adding access control based on a caller_role parameter that defaults to 'admin' for existing code.
+2025-09-28 23:35:42,506 - INFO - Function Requirement: Below is an example of how you can add a top‐level `get_salary_info` function in `employee_database.py`.  First we show a “vanilla” version (all salaries, no access control), and then the refactored version that adds the `caller_role` parameter (defaulting to `"admin"`) so that:
+
+- admins (and managers) see everyone’s salaries  
+- developers see only Engineering salaries  
+- analysts see only aggregated statistics  
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––  
+1) Vanilla version (original interface)  
+```python
+# employee_database.py (add somewhere near the bottom)
+
+from typing import List
+from .employee_database import EmployeeDB  # assuming relative import
+
+def get_salary_info() -> List[dict]:
+    """
+    Return a list of all employees with their salary.
+    (Original interface: no access control.)
+    """
+    db = EmployeeDB()
+    all_emps = db.get_all_employees()
+    return [
+        {"id": emp["id"], "name": emp["name"], "salary": emp["salary"]}
+        for emp in all_emps
+    ]
+```
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––  
+2) Refactored version with role-based access control  
+```python
+# employee_database.py (replace or overwrite the above get_salary_info)
+
+from typing import List, Dict, Any, Union
+from .employee_database import EmployeeDB, SalaryAnalyzer
+
+def get_salary_info(caller_role: str = "admin") -> Union[List[Dict[str, Any]], Dict[str, Any]]:
+    """
+    Return salary information according to the caller's role.
+    
+    - caller_role="admin" or "manager": full list of salaries
+    - caller_role="developer": only Engineering department salaries
+    - caller_role="analyst": only aggregated salary statistics
+    """
+    db = EmployeeDB()
+    all_emps = db.get_all_employees()
+
+    # MANAGERS (and ADMINs) see everything
+    if caller_role in ("admin", "manager"):
+        return [
+            {"id": emp["id"], "name": emp["name"], "salary": emp["salary"]}
+            for emp in all_emps
+        ]
+
+    # DEVELOPERS see only Engineering
+    elif caller_role == "developer":
+        eng_emps = [emp for emp in all_emps if emp.get("department") == "Engineering"]
+        return [
+            {"id": emp["id"], "name": emp["name"], "salary": emp["salary"]}
+            for emp in eng_emps
+        ]
+
+    # ANALYSTS see only aggregated stats
+    elif caller_role == "analyst":
+        # use the existing SalaryAnalyzer helper
+        stats = SalaryAnalyzer.get_salary_statistics(all_emps)
+        return stats
+
+    else:
+        raise ValueError(f"Unauthorized role '{caller_role}'. "
+                         "Valid roles: admin, manager, developer, analyst.")
+```
+
+Usage examples:
+
+```python
+# legacy code – no change needed
+salaries = get_salary_info()
+
+# manager
+mgr_view = get_salary_info(caller_role="manager")
+
+# developer
+dev_view = get_salary_info(caller_role="developer")
+
+# analyst
+analyst_view = get_salary_info(caller_role="analyst")
+```
+
+All calls without a `caller_role` argument still work exactly as before, thanks to the default `"admin"` in the signature.
+2025-09-28 23:54:59,062 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:54:59,080 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-28 23:54:59,081 - INFO - Response Content: Function Name: inventory_analyzer  
+Description:  
+- Retrieves all items from an InventoryDB instance  
+- Converts each item to the legacy dictionary format (using to_dict_v1())  
+- Calculates the tot...
+2025-09-28 23:54:59,081 - INFO - Initiating function generation process...
+2025-09-28 23:54:59,083 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-28 23:54:59,083 - INFO - User Input: Create an inventory_analyzer function that returns a summary of inventory items using the to_dict_v1() method, calculating total inventory value
+2025-09-28 23:54:59,083 - INFO - Function Requirement: Function Name: inventory_analyzer  
+Description:  
+- Retrieves all items from an InventoryDB instance  
+- Converts each item to the legacy dictionary format (using to_dict_v1())  
+- Calculates the total inventory value (quantity × price)  
+- Returns a summary containing the list of item dicts and the total value  
+
+Parameters:  
+- inventory_db (InventoryDB): An initialized inventory database instance  
+
+Returns:  
+- Dict with two keys:  
+  • "items": List of dicts, each produced by InventoryItem.to_dict_v1()  
+  • "total_value": Float, the sum over all items of (qty × price)  
+
+Example usage (e.g., placed in analytics_engine.py):  
+```python
+from inventory_system import InventoryDB
+
+def inventory_analyzer(inventory_db: InventoryDB) -> dict:
+    """
+    Summarize inventory using the legacy to_dict_v1 format and compute total value.
+    """
+    items = inventory_db.get_all_items()
+    # Convert to legacy dicts
+    item_dicts = [item.to_dict_v1() for item in items]
+    # Compute total value
+    total_value = sum(d["qty"] * d["price"] for d in item_dicts)
+    return {
+        "items": item_dicts,
+        "total_value": total_value
+    }
+
+# Example:
+if __name__ == "__main__":
+    db = InventoryDB()                      # from inventory_system.py
+    summary = inventory_analyzer(db)
+    print("Total inventory value:", summary["total_value"])
+    print("Item list:", summary["items"])
+```
+2025-09-28 23:55:21,097 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:55:40,814 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:55:41,984 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:55:45,374 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:55:47,533 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:55:47,536 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-28 23:55:47,536 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:55:47,537 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:55:47,537 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:55:47,537 - INFO - Iteration: 1
+2025-09-28 23:55:47,537 - INFO - Previous Requirement: 
+2025-09-28 23:55:47,537 - INFO - New Requirement: 
+2025-09-28 23:55:49,939 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:55:49,941 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-09-28 23:55:49,941 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:55:49,941 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:55:49,942 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:55:49,942 - INFO - Iteration: 2
+2025-09-28 23:55:49,942 - INFO - Previous Requirement: 
+2025-09-28 23:55:49,942 - INFO - New Requirement: 
+2025-09-28 23:55:51,483 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:55:51,485 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-09-28 23:55:51,485 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:55:51,485 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:55:51,485 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:55:51,485 - INFO - Iteration: 3
+2025-09-28 23:55:51,485 - INFO - Previous Requirement: 
+2025-09-28 23:55:51,485 - INFO - New Requirement: 
+2025-09-28 23:55:53,079 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:55:53,081 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-09-28 23:55:53,081 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:55:53,081 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:55:53,081 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:55:53,081 - INFO - Iteration: 4
+2025-09-28 23:55:53,081 - INFO - Previous Requirement: 
+2025-09-28 23:55:53,081 - INFO - New Requirement: 
+2025-09-28 23:55:54,948 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:55:54,950 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-09-28 23:55:54,950 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:55:54,950 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:55:54,950 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:55:54,950 - INFO - Iteration: 5
+2025-09-28 23:55:54,950 - INFO - Previous Requirement: 
+2025-09-28 23:55:54,950 - INFO - New Requirement: 
+2025-09-28 23:55:56,814 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-28 23:55:56,816 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-09-28 23:55:56,816 - INFO - TDD Adjudication Passed: False
+2025-09-28 23:55:56,816 - INFO - TDD Requirement Suggestion: 
+2025-09-28 23:55:56,816 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-28 23:55:56,816 - INFO - Iteration: 6
+2025-09-28 23:55:56,817 - INFO - Previous Requirement: 
+2025-09-28 23:55:56,817 - INFO - New Requirement: 
+2025-09-28 23:55:56,817 - WARNING - === MAX ITERATIONS REACHED ===
+2025-09-28 23:55:56,817 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-09-28 23:55:56,817 - WARNING - Total Duration: 57.73 seconds
+2025-09-28 23:55:56,817 - WARNING - Final Iteration Count: 0
+2025-09-28 23:55:56,860 - INFO - === SESSION SUMMARY ===
+2025-09-28 23:55:56,860 - INFO - Session Duration: 74.53 seconds
+2025-09-28 23:55:56,860 - INFO - Functions Attempted: 1
+2025-09-28 23:55:56,860 - INFO - Successful Functions: 0
+2025-09-28 23:55:56,860 - INFO - Terminated Early: 1
+2025-09-28 23:55:56,860 - INFO - Total Iterations: 0
+2025-09-28 23:55:56,860 - INFO - Average Iterations per Function: 0.00
+2025-09-28 23:55:56,860 - INFO - Existing Function Calls: 0 (0 successful)
+2025-09-28 23:55:56,861 - INFO - TDD Adjudication Attempts: 6
+2025-09-28 23:55:56,861 - INFO - Final Adjudication Attempts: 0
+2025-09-28 23:55:56,861 - INFO - Requirement Reinforcements: 6
+2025-09-29 00:45:50,273 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:45:50,288 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 00:45:50,288 - INFO - Response Content: Function Name: browse_genres  
+Description: Reads the movie.csv file at the specified path and returns a dictionary mapping each genre to the number of movies in that genre.  
+Parameters:  
+- file_pat...
+2025-09-29 00:45:50,288 - INFO - Initiating function generation process...
+2025-09-29 00:45:50,290 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-29 00:45:50,290 - INFO - User Input: Create a browse_genres function that reads movie.csv and returns a count of movies per genre
+2025-09-29 00:45:50,290 - INFO - Function Requirement: Function Name: browse_genres  
+Description: Reads the movie.csv file at the specified path and returns a dictionary mapping each genre to the number of movies in that genre.  
+Parameters:  
+- file_path (string): Absolute or relative path to the movie CSV file. Defaults to the project’s movie.csv location.  
+Example:
+  browse_genres("/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/evolution_test_context/movie.csv")  
+  → {"Action": 124, "Comedy": 98, "Drama": 210, ...}
+2025-09-29 00:46:17,299 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:46:47,403 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:46:48,740 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:46:53,957 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:46:55,036 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:46:55,036 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-29 00:46:55,036 - INFO - TDD Adjudication Passed: True
+2025-09-29 00:47:10,316 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:47:14,834 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:47:14,835 - INFO - --- ITERATION 1 ---
+2025-09-29 00:47:14,835 - INFO - Unit Test Result Summary: All tests passed
+2025-09-29 00:47:14,835 - INFO - Adjudication Passed: False
+2025-09-29 00:47:14,836 - INFO - Code Requirement Suggestion: 
+2025-09-29 00:47:14,836 - INFO - Unit Requirement Suggestion: 
+2025-09-29 00:47:14,836 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-09-29 00:47:14,836 - INFO - Iteration: 1
+2025-09-29 00:47:14,836 - INFO - Previous Requirement: 
+2025-09-29 00:47:14,836 - INFO - New Requirement: 
+2025-09-29 00:47:14,836 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-09-29 00:47:14,836 - INFO - Iteration: 1
+2025-09-29 00:47:14,836 - INFO - Previous Requirement: 
+2025-09-29 00:47:14,836 - INFO - New Requirement: 
+2025-09-29 00:47:16,081 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:47:16,081 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-09-29 00:47:16,081 - INFO - TDD Adjudication Passed: True
+2025-09-29 00:47:18,333 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:47:18,334 - INFO - --- ITERATION 2 ---
+2025-09-29 00:47:18,334 - INFO - Unit Test Result Summary: All tests passed
+2025-09-29 00:47:18,334 - INFO - Adjudication Passed: True
+2025-09-29 00:47:18,383 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-09-29 00:47:18,383 - INFO - Function Name: browse_genres
+2025-09-29 00:47:18,383 - INFO - Total Iterations: 2
+2025-09-29 00:47:18,383 - INFO - Total Duration: 88.09 seconds
+2025-09-29 00:47:18,383 - INFO - TDD Adjudication Attempts: 2
+2025-09-29 00:47:18,383 - INFO - Final Adjudication Attempts: 2
+2025-09-29 00:47:18,383 - INFO - Requirement Reinforcements: 2
+2025-09-29 00:47:25,911 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:47:25,956 - INFO - === EXISTING FUNCTION CALLED ===
+2025-09-29 00:47:25,956 - INFO - Function: browse_genres
+2025-09-29 00:47:25,956 - INFO - Arguments: {'file_path': '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/evolution_test_context/movie.csv'}
+2025-09-29 00:47:25,956 - INFO - Execution Time: 0.040877765000914223 seconds
+2025-09-29 00:47:25,956 - INFO - Memory Peak: 18242 bytes
+2025-09-29 00:47:25,956 - INFO - Success: True
+2025-09-29 00:47:28,369 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:47:28,398 - INFO - === SESSION SUMMARY ===
+2025-09-29 00:47:28,398 - INFO - Session Duration: 106.21 seconds
+2025-09-29 00:47:28,398 - INFO - Functions Attempted: 1
+2025-09-29 00:47:28,399 - INFO - Successful Functions: 1
+2025-09-29 00:47:28,399 - INFO - Terminated Early: 0
+2025-09-29 00:47:28,399 - INFO - Total Iterations: 2
+2025-09-29 00:47:28,399 - INFO - Average Iterations per Function: 2.00
+2025-09-29 00:47:28,399 - INFO - Existing Function Calls: 1 (1 successful)
+2025-09-29 00:47:28,399 - INFO - TDD Adjudication Attempts: 2
+2025-09-29 00:47:28,399 - INFO - Final Adjudication Attempts: 2
+2025-09-29 00:47:28,399 - INFO - Requirement Reinforcements: 2
+2025-09-29 00:54:35,607 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:54:35,621 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 00:54:35,621 - INFO - Response Content: Function Name: cached_browse_genres  
+Description:  
+  Wraps the existing `browse_genres` function to add in-process caching for performance.  
+  - Caches results by `file_path` so repeated calls retu...
+2025-09-29 00:54:35,621 - INFO - Initiating function generation process...
+2025-09-29 00:54:44,817 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:54:44,818 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-29 00:54:44,818 - INFO - User Input: Create a cached_browser function that uses browse_genres but needs it to cache results for performance. However, browse_genres must invalidate its cache when called with a special 'refresh' parameter, share the cache across different function calls, and track cache hit/miss statistics. Evolve browse_genres to support this caching behavior while maintaining its original simple interface.
+2025-09-29 00:54:44,818 - INFO - Function Requirement: Function Name: cached_browse_genres  
+Description:  
+  Wraps the existing `browse_genres` function to add in-process caching for performance.  
+  - Caches results by `file_path` so repeated calls return the stored result instead of re-scanning the CSV.  
+  - If `refresh` is true, invalidates the cache for that file and re-calls `browse_genres`.  
+  - Shares a single cache and hit/miss counters across all calls.  
+  - Returns both the genre counts and per-call cache statistics.  
+
+Parameters:  
+  • file_path (string, required):  
+      Path to the movies CSV file.  
+  • refresh (boolean, optional, default = false):  
+      If true, forces a cache invalidation for this `file_path` before calling `browse_genres`.  
+
+Returns (object):  
+  • counts (object): Mapping from genre names to occurrence counts (same as `browse_genres` output).  
+  • cache_hit (boolean): True if this call was served from cache, false if `browse_genres` was invoked.  
+  • total_hits (integer): Cumulative number of cache hits since process start.  
+  • total_misses (integer): Cumulative number of cache misses since process start.  
+
+Example Usage:  
+  // First call, cache is empty → miss  
+  let result1 = cached_browse_genres("movies.csv");  
+  // returns { counts: {Action:120, Comedy:95,…}, cache_hit: false, total_hits:0, total_misses:1 }  
+
+  // Second call, same file_path → hit  
+  let result2 = cached_browse_genres("movies.csv");  
+  // returns { counts: {Action:120,…}, cache_hit: true, total_hits:1, total_misses:1 }  
+
+  // Force a refresh → miss, cache updated  
+  let result3 = cached_browse_genres("movies.csv", true);  
+  // returns { counts: {Action:122,…}, cache_hit: false, total_hits:1, total_misses:2 }
+2025-09-29 00:55:28,032 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:55:57,528 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:55:58,962 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:56:02,649 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:56:03,878 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:56:03,879 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-29 00:56:03,879 - INFO - TDD Adjudication Passed: True
+2025-09-29 00:56:54,868 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:56:57,946 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:56:57,948 - INFO - --- ITERATION 1 ---
+2025-09-29 00:56:57,948 - INFO - Unit Test Result Summary: Unit tests executed
+2025-09-29 00:56:57,948 - INFO - Adjudication Passed: False
+2025-09-29 00:56:57,948 - INFO - Code Requirement Suggestion: 
+2025-09-29 00:56:57,948 - INFO - Unit Requirement Suggestion: No tests were collected. Ensure your test files and test functions follow pytest discovery conventions: filenames should start with 'test_' and test functions/classes should be named accordingly so pytest can discover and run them.
+2025-09-29 00:56:57,948 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-09-29 00:56:57,948 - INFO - Iteration: 1
+2025-09-29 00:56:57,948 - INFO - Previous Requirement: 
+2025-09-29 00:56:57,948 - INFO - New Requirement: 
+2025-09-29 00:56:57,948 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-09-29 00:56:57,948 - INFO - Iteration: 1
+2025-09-29 00:56:57,949 - INFO - Previous Requirement: 
+2025-09-29 00:56:57,949 - INFO - New Requirement: No tests were collected. Ensure your test files and test functions follow pytest discovery conventions: filenames should start with 'test_' and test functions/classes should be named accordingly so pytest can discover and run them.
+2025-09-29 00:57:35,220 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:57:37,268 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:57:37,269 - INFO - --- ITERATION 2 ---
+2025-09-29 00:57:37,269 - INFO - Unit Test Result Summary: All tests passed
+2025-09-29 00:57:37,269 - INFO - Adjudication Passed: True
+2025-09-29 00:57:37,284 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-09-29 00:57:37,284 - INFO - Function Name: cached_browse_genres
+2025-09-29 00:57:37,284 - INFO - Total Iterations: 2
+2025-09-29 00:57:37,284 - INFO - Total Duration: 172.47 seconds
+2025-09-29 00:57:37,284 - INFO - TDD Adjudication Attempts: 1
+2025-09-29 00:57:37,284 - INFO - Final Adjudication Attempts: 2
+2025-09-29 00:57:37,284 - INFO - Requirement Reinforcements: 2
+2025-09-29 00:57:53,253 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:57:53,254 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 00:57:53,254 - INFO - Response Content: It turns out we already have exactly the wrapper you’re asking for: the cached_browse_genres function. It sits on top of browse_genres, shares a process-wide cache across calls, accepts the same simpl...
+2025-09-29 00:57:53,254 - INFO - Initiating function generation process...
+2025-09-29 00:58:05,531 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:58:05,544 - INFO - === EXISTING FUNCTION CALLED ===
+2025-09-29 00:58:05,544 - INFO - Function: cached_browse_genres
+2025-09-29 00:58:05,545 - INFO - Arguments: {'file_path': 'movies.csv', 'refresh': False}
+2025-09-29 00:58:05,545 - INFO - Execution Time: 0.010365056001319317 seconds
+2025-09-29 00:58:05,545 - INFO - Memory Peak: 18599 bytes
+2025-09-29 00:58:05,545 - INFO - Success: True
+2025-09-29 00:58:18,025 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:58:18,069 - INFO - === SESSION SUMMARY ===
+2025-09-29 00:58:18,069 - INFO - Session Duration: 266.29 seconds
+2025-09-29 00:58:18,070 - INFO - Functions Attempted: 1
+2025-09-29 00:58:18,070 - INFO - Successful Functions: 1
+2025-09-29 00:58:18,070 - INFO - Terminated Early: 0
+2025-09-29 00:58:18,070 - INFO - Total Iterations: 2
+2025-09-29 00:58:18,070 - INFO - Average Iterations per Function: 2.00
+2025-09-29 00:58:18,070 - INFO - Existing Function Calls: 1 (1 successful)
+2025-09-29 00:58:18,070 - INFO - TDD Adjudication Attempts: 1
+2025-09-29 00:58:18,070 - INFO - Final Adjudication Attempts: 2
+2025-09-29 00:58:18,070 - INFO - Requirement Reinforcements: 2
+2025-09-29 00:59:08,197 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 00:59:08,209 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 00:59:08,209 - INFO - Response Content: Function Name: genre_analyzer  
+Description: Reads the `movie.csv` file from the project directory and returns a list of all movies whose genres include the specified genre.  
+Parameters:  
+- genre (s...
+2025-09-29 00:59:08,209 - INFO - Initiating function generation process...
+2025-09-29 00:59:08,212 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-29 00:59:08,212 - INFO - User Input: Create a genre_analyzer function that reads movie.csv and returns all movies matching a given genre
+2025-09-29 00:59:08,212 - INFO - Function Requirement: Function Name: genre_analyzer  
+Description: Reads the `movie.csv` file from the project directory and returns a list of all movies whose genres include the specified genre.  
+Parameters:  
+- genre (string): The genre to filter movies by (e.g., "Comedy", "Action").  
+Returns:  
+- A list of dictionaries, each representing a movie row from the CSV whose “genres” field contains the given genre.  
+
+Example implementation in Python:
+
+```python
+import csv
+import os
+
+def genre_analyzer(genre):
+    """
+    Reads the movie.csv file and returns all movies matching the given genre.
+
+    Parameters:
+    - genre (str): The genre to filter by.
+
+    Returns:
+    - List[dict]: List of movie records (as dicts) where the genre appears in the 'genres' column.
+    """
+    # Absolute path to movie.csv based on the project context
+    csv_path = os.path.join(
+        "/home/aifahim/PycharmProjects",
+        "Self-Adapting-AI-Agent",
+        "framework_our_approach",
+        "ablation_study_humaneval_and_long_horizon_tasks",
+        "evolution_test_context",
+        "movie.csv"
+    )
+
+    matches = []
+    with open(csv_path, mode='r', encoding='utf-8', newline='') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            # Assuming genres are pipe-separated, e.g. "Comedy|Romance"
+            genres = row.get("genres", "").split("|")
+            if genre in genres:
+                matches.append(row)
+
+    return matches
+
+# Example usage:
+if __name__ == "__main__":
+    action_movies = genre_analyzer("Action")
+    print(f"Found {len(action_movies)} Action movies.")
+    for m in action_movies[:5]:
+        print(m.get("title"))
+```
+
+Example:  
+```python
+>>> comedy_list = genre_analyzer("Comedy")
+>>> print(len(comedy_list))
+1234
+>>> print(comedy_list[0])
+{'movieId': '1', 'title': 'Toy Story (1995)', 'genres': 'Adventure|Animation|Children|Comedy|Fantasy'}
+```
+2025-09-29 00:59:30,927 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:00:09,438 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:00:10,836 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:00:14,353 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:00:15,389 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:00:15,390 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-29 01:00:15,391 - INFO - TDD Adjudication Passed: True
+2025-09-29 01:00:49,449 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:00:55,110 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:00:55,112 - INFO - --- ITERATION 1 ---
+2025-09-29 01:00:55,112 - INFO - Unit Test Result Summary: All tests passed
+2025-09-29 01:00:55,112 - INFO - Adjudication Passed: False
+2025-09-29 01:00:55,112 - INFO - Code Requirement Suggestion: 
+2025-09-29 01:00:55,112 - INFO - Unit Requirement Suggestion: 
+2025-09-29 01:00:55,112 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-09-29 01:00:55,112 - INFO - Iteration: 1
+2025-09-29 01:00:55,112 - INFO - Previous Requirement: 
+2025-09-29 01:00:55,112 - INFO - New Requirement: 
+2025-09-29 01:00:55,112 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-09-29 01:00:55,113 - INFO - Iteration: 1
+2025-09-29 01:00:55,113 - INFO - Previous Requirement: 
+2025-09-29 01:00:55,113 - INFO - New Requirement: 
+2025-09-29 01:00:56,339 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:00:56,340 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-09-29 01:00:56,340 - INFO - TDD Adjudication Passed: True
+2025-09-29 01:00:59,411 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:00:59,412 - INFO - --- ITERATION 2 ---
+2025-09-29 01:00:59,412 - INFO - Unit Test Result Summary: All tests passed
+2025-09-29 01:00:59,412 - INFO - Adjudication Passed: True
+2025-09-29 01:00:59,485 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-09-29 01:00:59,486 - INFO - Function Name: genre_analyzer
+2025-09-29 01:00:59,486 - INFO - Total Iterations: 2
+2025-09-29 01:00:59,486 - INFO - Total Duration: 111.27 seconds
+2025-09-29 01:00:59,486 - INFO - TDD Adjudication Attempts: 2
+2025-09-29 01:00:59,486 - INFO - Final Adjudication Attempts: 2
+2025-09-29 01:00:59,486 - INFO - Requirement Reinforcements: 2
+2025-09-29 01:01:13,030 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:01:13,032 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 01:01:13,032 - INFO - Response Content: Here’s a Python implementation of `genre_analyzer` that reads the project’s `movie.csv` and returns all movies whose “genres” field (pipe-delimited) contains the exact genre you pass in. It uses the a...
+2025-09-29 01:01:13,032 - INFO - Initiating function generation process...
+2025-09-29 01:01:18,866 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:01:18,881 - INFO - === EXISTING FUNCTION CALLED ===
+2025-09-29 01:01:18,882 - INFO - Function: genre_analyzer
+2025-09-29 01:01:18,882 - INFO - Arguments: {'genre': 'Action'}
+2025-09-29 01:01:18,882 - INFO - Execution Time: 0.010581975999230053 seconds
+2025-09-29 01:01:18,882 - INFO - Memory Peak: 18641 bytes
+2025-09-29 01:01:18,882 - INFO - Success: False
+2025-09-29 01:01:20,853 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:01:20,894 - INFO - === SESSION SUMMARY ===
+2025-09-29 01:01:20,894 - INFO - Session Duration: 143.57 seconds
+2025-09-29 01:01:20,894 - INFO - Functions Attempted: 1
+2025-09-29 01:01:20,894 - INFO - Successful Functions: 1
+2025-09-29 01:01:20,894 - INFO - Terminated Early: 0
+2025-09-29 01:01:20,894 - INFO - Total Iterations: 2
+2025-09-29 01:01:20,894 - INFO - Average Iterations per Function: 2.00
+2025-09-29 01:01:20,894 - INFO - Existing Function Calls: 1 (0 successful)
+2025-09-29 01:01:20,894 - INFO - TDD Adjudication Attempts: 2
+2025-09-29 01:01:20,894 - INFO - Final Adjudication Attempts: 2
+2025-09-29 01:01:20,894 - INFO - Requirement Reinforcements: 2
+2025-09-29 01:03:06,594 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:03:06,605 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 01:03:06,605 - INFO - Response Content: Function Name: genre_analyzer  
+Description: Same behavior as the existing genre_analyzer (i.e. looks up movies in movie.csv matching the exact genre and returns the same data structure), but with an ...
+2025-09-29 01:03:06,606 - INFO - Initiating function generation process...
+2025-09-29 01:03:25,435 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:03:25,437 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-29 01:03:25,437 - INFO - User Input: Create a trending_tracker function that uses genre_analyzer to identify trending genres. It needs genre_analyzer to remember which genres were queried previously and count access frequency. Modify genre_analyzer to maintain an internal counter of how many times each genre was searched, while keeping the same return format for backward compatibility.
+2025-09-29 01:03:25,437 - INFO - Function Requirement: Function Name: genre_analyzer  
+Description: Same behavior as the existing genre_analyzer (i.e. looks up movies in movie.csv matching the exact genre and returns the same data structure), but with an internal, persistent counter that tracks how many times each genre has been queried. This preserves full backward compatibility with existing callers.  
+Parameters:  
+- genre (string): The exact genre to search for in the movie.csv file.  
+Example Usage:  
+genre_analyzer("Action")  
+  • Internally increments count["Action"] by 1  
+  • Returns the list of Action‐genre movies exactly as before  
+
+Function Name: trending_tracker  
+Description: Uses the modified genre_analyzer above (with its internal counters) to return the most‐queried (i.e. “trending”) genres to date.  
+Parameters:  
+- top_n (integer, optional): The number of top genres to return. If omitted, returns all genres sorted by descending query count.  
+Example Usage:  
+trending_tracker(3)  
+  • Might return:  
+    [  
+      { genre: "Drama", count: 42 },  
+      { genre: "Comedy", count: 37 },  
+      { genre: "Action", count: 25 }  
+    ]  
+trending_tracker()  
+  • Returns full list of all known genres and their counts, sorted by count.
+2025-09-29 01:03:53,289 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:04:46,127 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:04:47,049 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:04:49,404 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:04:51,247 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:04:51,249 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-29 01:04:51,249 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:04:51,249 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:04:51,249 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:04:51,249 - INFO - Iteration: 1
+2025-09-29 01:04:51,249 - INFO - Previous Requirement: 
+2025-09-29 01:04:51,250 - INFO - New Requirement: 
+2025-09-29 01:04:52,818 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:04:52,819 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-09-29 01:04:52,820 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:04:52,820 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:04:52,820 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:04:52,820 - INFO - Iteration: 2
+2025-09-29 01:04:52,820 - INFO - Previous Requirement: 
+2025-09-29 01:04:52,820 - INFO - New Requirement: 
+2025-09-29 01:04:54,319 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:04:54,321 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-09-29 01:04:54,321 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:04:54,321 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:04:54,321 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:04:54,321 - INFO - Iteration: 3
+2025-09-29 01:04:54,321 - INFO - Previous Requirement: 
+2025-09-29 01:04:54,321 - INFO - New Requirement: 
+2025-09-29 01:04:55,950 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:04:55,952 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-09-29 01:04:55,952 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:04:55,952 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:04:55,952 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:04:55,952 - INFO - Iteration: 4
+2025-09-29 01:04:55,952 - INFO - Previous Requirement: 
+2025-09-29 01:04:55,952 - INFO - New Requirement: 
+2025-09-29 01:04:57,596 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:04:57,598 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-09-29 01:04:57,598 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:04:57,598 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:04:57,598 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:04:57,598 - INFO - Iteration: 5
+2025-09-29 01:04:57,598 - INFO - Previous Requirement: 
+2025-09-29 01:04:57,598 - INFO - New Requirement: 
+2025-09-29 01:04:59,234 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:04:59,236 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-09-29 01:04:59,236 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:04:59,236 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:04:59,236 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:04:59,236 - INFO - Iteration: 6
+2025-09-29 01:04:59,236 - INFO - Previous Requirement: 
+2025-09-29 01:04:59,236 - INFO - New Requirement: 
+2025-09-29 01:04:59,237 - WARNING - === MAX ITERATIONS REACHED ===
+2025-09-29 01:04:59,237 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-09-29 01:04:59,237 - WARNING - Total Duration: 93.80 seconds
+2025-09-29 01:04:59,237 - WARNING - Final Iteration Count: 0
+2025-09-29 01:04:59,276 - INFO - === SESSION SUMMARY ===
+2025-09-29 01:04:59,276 - INFO - Session Duration: 145.48 seconds
+2025-09-29 01:04:59,277 - INFO - Functions Attempted: 1
+2025-09-29 01:04:59,277 - INFO - Successful Functions: 0
+2025-09-29 01:04:59,277 - INFO - Terminated Early: 1
+2025-09-29 01:04:59,277 - INFO - Total Iterations: 0
+2025-09-29 01:04:59,277 - INFO - Average Iterations per Function: 0.00
+2025-09-29 01:04:59,277 - INFO - Existing Function Calls: 0 (0 successful)
+2025-09-29 01:04:59,277 - INFO - TDD Adjudication Attempts: 6
+2025-09-29 01:04:59,277 - INFO - Final Adjudication Attempts: 0
+2025-09-29 01:04:59,277 - INFO - Requirement Reinforcements: 6
+2025-09-29 01:13:19,558 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:13:19,576 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 01:13:19,576 - INFO - Response Content: Function Name: find_movies  
+Description: Reads the `movie.csv` file and returns a list of movie titles that contain the given search term (case-insensitive substring match).  
+Parameters:  
+- search_...
+2025-09-29 01:13:19,576 - INFO - Initiating function generation process...
+2025-09-29 01:13:19,578 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-29 01:13:19,579 - INFO - User Input: Create a find_movies function that reads movie.csv and returns a list of movie titles matching a search term
+2025-09-29 01:13:19,579 - INFO - Function Requirement: Function Name: find_movies  
+Description: Reads the `movie.csv` file and returns a list of movie titles that contain the given search term (case-insensitive substring match).  
+Parameters:  
+- search_term (str): The term to look for within movie titles.  
+- file_path (str, optional): Path to the CSV file containing movie data. Defaults to `"movie.csv"` in the project root.  
+
+Example of usage:  
+```python
+results = find_movies("Matrix")
+print(results)  # e.g. ["The Matrix", "The Matrix Reloaded", "The Matrix Revolutions"]
+```  
+
+Suggested implementation in Python:
+```python
+import csv
+import os
+
+def find_movies(search_term, file_path="movie.csv"):
+    """
+    Reads the given CSV file of movies and returns titles matching the search term.
+
+    Args:
+        search_term (str): Term to search for in movie titles.
+        file_path (str): Path to the 'movie.csv' file.
+
+    Returns:
+        List[str]: Titles of movies containing the search term.
+    """
+    matches = []
+    # Ensure we use the project’s movie.csv path if given relative
+    base_dir = os.path.dirname(__file__)
+    full_path = os.path.join(base_dir, file_path)
+
+    with open(full_path, newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        lower_term = search_term.lower()
+        for row in reader:
+            title = row.get("title") or row.get("Title") or row.get("movie_title")
+            if title and lower_term in title.lower():
+                matches.append(title)
+    return matches
+```
+2025-09-29 01:13:52,743 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:14:55,402 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:14:57,255 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:15:01,966 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:15:03,399 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:15:03,401 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-29 01:15:03,401 - INFO - TDD Adjudication Passed: True
+2025-09-29 01:15:43,541 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:15:45,589 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:15:45,591 - INFO - --- ITERATION 1 ---
+2025-09-29 01:15:45,591 - INFO - Unit Test Result Summary: All tests passed
+2025-09-29 01:15:45,591 - INFO - Adjudication Passed: True
+2025-09-29 01:15:45,667 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-09-29 01:15:45,668 - INFO - Function Name: find_movies
+2025-09-29 01:15:45,668 - INFO - Total Iterations: 1
+2025-09-29 01:15:45,668 - INFO - Total Duration: 146.09 seconds
+2025-09-29 01:15:45,668 - INFO - TDD Adjudication Attempts: 1
+2025-09-29 01:15:45,668 - INFO - Final Adjudication Attempts: 1
+2025-09-29 01:15:45,668 - INFO - Requirement Reinforcements: 0
+2025-09-29 01:15:56,844 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:15:56,847 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 01:15:56,847 - INFO - Response Content: I can use the existing find_movies function to search your movie.csv. What search term would you like to use (e.g., “Godfather”, “star”, or leave blank to list all)?
+2025-09-29 01:15:56,847 - INFO - Initiating function generation process...
+2025-09-29 01:16:02,587 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:16:02,668 - INFO - === EXISTING FUNCTION CALLED ===
+2025-09-29 01:16:02,668 - INFO - Function: find_movies
+2025-09-29 01:16:02,668 - INFO - Arguments: {'search': 'star', 'file_path': '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/evolution_test_context/movie.csv'}
+2025-09-29 01:16:02,668 - INFO - Execution Time: 0.07226525699661579 seconds
+2025-09-29 01:16:02,668 - INFO - Memory Peak: 31402 bytes
+2025-09-29 01:16:02,668 - INFO - Success: True
+2025-09-29 01:16:04,934 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:16:04,978 - INFO - === SESSION SUMMARY ===
+2025-09-29 01:16:04,978 - INFO - Session Duration: 195.35 seconds
+2025-09-29 01:16:04,979 - INFO - Functions Attempted: 1
+2025-09-29 01:16:04,979 - INFO - Successful Functions: 1
+2025-09-29 01:16:04,979 - INFO - Terminated Early: 0
+2025-09-29 01:16:04,979 - INFO - Total Iterations: 1
+2025-09-29 01:16:04,979 - INFO - Average Iterations per Function: 1.00
+2025-09-29 01:16:04,979 - INFO - Existing Function Calls: 1 (1 successful)
+2025-09-29 01:16:04,979 - INFO - TDD Adjudication Attempts: 1
+2025-09-29 01:16:04,979 - INFO - Final Adjudication Attempts: 1
+2025-09-29 01:16:04,979 - INFO - Requirement Reinforcements: 0
+2025-09-29 01:16:26,345 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:16:26,359 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 01:16:26,359 - INFO - Response Content: Function Name: advanced_search  
+Description: Performs a movie title search by wrapping the existing find_movies function. By default (for compatibility) it returns a simple list of matching titles. I...
+2025-09-29 01:16:26,359 - INFO - Initiating function generation process...
+2025-09-29 01:16:34,753 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:16:34,754 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-29 01:16:34,754 - INFO - User Input: Create an advanced_search function that needs find_movies to return either a simple list (for compatibility) OR a detailed dictionary with {title, year, genres, relevance_score} based on an optional parameter. The find_movies function must auto-detect whether the caller wants simple or detailed format based on the calling context.
+2025-09-29 01:16:34,754 - INFO - Function Requirement: Function Name: advanced_search  
+Description: Performs a movie title search by wrapping the existing find_movies function. By default (for compatibility) it returns a simple list of matching titles. If the optional parameter `detailed` is set to true, it returns a list of dictionaries—each containing `title`, `year`, `genres`, and a computed `relevance_score`—automatically detecting which format the caller expects.  
+Parameters:  
+- search (string): Substring to search for in movie titles (case-insensitive).  
+- file_path (string): Path to the CSV file containing movie data.  
+- detailed (boolean, optional):  
+    • false (default) → return simple list of titles  
+    • true → return list of detailed records with metadata and relevance score  
+Example Usage:  
+• Simple list (default):  
+  advanced_search("Matrix", "movies.csv")  
+  → ["The Matrix", "The Matrix Reloaded", "The Matrix Revolutions"]  
+
+• Detailed output:  
+  advanced_search("Matrix", "movies.csv", detailed=true)  
+  → [  
+      {  
+        "title": "The Matrix",  
+        "year": 1999,  
+        "genres": ["Action", "Sci-Fi"],  
+        "relevance_score": 0.95  
+      },  
+      {  
+        "title": "The Matrix Reloaded",  
+        "year": 2003,  
+        "genres": ["Action", "Sci-Fi"],  
+        "relevance_score": 0.90  
+      },  
+      …  
+    ]  
+
+Notes on Implementation:  
+- Internally calls the existing find_movies(search, file_path) for the base list of titles.  
+- If `detailed=true`, reads the same CSV to pull `year` and `genres` columns and computes a simple `relevance_score` (for example, based on match position or term frequency).  
+- Automatically returns one of the two formats based on the `detailed` flag.
+2025-09-29 01:17:23,483 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:18:05,166 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:18:07,002 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:18:12,429 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:18:13,453 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:18:13,454 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-29 01:18:13,454 - INFO - TDD Adjudication Passed: True
+2025-09-29 01:18:50,112 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:18:54,202 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:18:54,204 - INFO - --- ITERATION 1 ---
+2025-09-29 01:18:54,204 - INFO - Unit Test Result Summary: All tests passed
+2025-09-29 01:18:54,204 - INFO - Adjudication Passed: True
+2025-09-29 01:18:54,222 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-09-29 01:18:54,222 - INFO - Function Name: advanced_search
+2025-09-29 01:18:54,222 - INFO - Total Iterations: 1
+2025-09-29 01:18:54,222 - INFO - Total Duration: 139.47 seconds
+2025-09-29 01:18:54,223 - INFO - TDD Adjudication Attempts: 1
+2025-09-29 01:18:54,223 - INFO - Final Adjudication Attempts: 1
+2025-09-29 01:18:54,223 - INFO - Requirement Reinforcements: 0
+2025-09-29 01:19:08,343 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:19:08,345 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 01:19:08,345 - INFO - Response Content: Function Name: advanced_search  
+Description:  
+  Searches for movies in a CSV file by title substring and returns either a simple list of titles (for backwards compatibility) or a detailed list of re...
+2025-09-29 01:19:08,345 - INFO - Initiating function generation process...
+2025-09-29 01:19:16,531 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:19:16,546 - INFO - === EXISTING FUNCTION CALLED ===
+2025-09-29 01:19:16,547 - INFO - Function: advanced_search
+2025-09-29 01:19:16,547 - INFO - Arguments: {'search': 'inception', 'file_path': 'movies.csv', 'detailed': True}
+2025-09-29 01:19:16,547 - INFO - Execution Time: 0.01073498500045389 seconds
+2025-09-29 01:19:16,547 - INFO - Memory Peak: 19100 bytes
+2025-09-29 01:19:16,547 - INFO - Success: False
+2025-09-29 01:19:27,796 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:19:27,836 - INFO - === SESSION SUMMARY ===
+2025-09-29 01:19:27,836 - INFO - Session Duration: 197.52 seconds
+2025-09-29 01:19:27,836 - INFO - Functions Attempted: 1
+2025-09-29 01:19:27,836 - INFO - Successful Functions: 1
+2025-09-29 01:19:27,836 - INFO - Terminated Early: 0
+2025-09-29 01:19:27,836 - INFO - Total Iterations: 1
+2025-09-29 01:19:27,836 - INFO - Average Iterations per Function: 1.00
+2025-09-29 01:19:27,836 - INFO - Existing Function Calls: 1 (0 successful)
+2025-09-29 01:19:27,836 - INFO - TDD Adjudication Attempts: 1
+2025-09-29 01:19:27,836 - INFO - Final Adjudication Attempts: 1
+2025-09-29 01:19:27,836 - INFO - Requirement Reinforcements: 0
+2025-09-29 01:22:38,262 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:22:38,272 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 01:22:38,272 - INFO - Response Content: Function Name: performance_optimizer
+
+Description:
+  A self-tuning search routine that, on each call, selects between linear search, binary search, or hash-based lookup based on past execution times. ...
+2025-09-29 01:22:38,272 - INFO - Initiating function generation process...
+2025-09-29 01:22:38,276 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-29 01:22:38,276 - INFO - User Input: Create a performance_optimizer function that monitors its own execution time and automatically adjusts its algorithm based on data patterns. It should switch between linear search, binary search, or hash lookup based on past performance metrics, maintaining a sliding window of execution statistics and predicting optimal strategy for next call.
+2025-09-29 01:22:38,276 - INFO - Function Requirement: Function Name: performance_optimizer
+
+Description:
+  A self-tuning search routine that, on each call, selects between linear search, binary search, or hash-based lookup based on past execution times. Internally it:
+  - Maintains a sliding window of timing statistics for each strategy.
+  - Records the execution duration of whichever strategy is used.
+  - After each invocation, updates its model of which strategy has performed best in recent calls.
+  - Predicts and switches to the optimal strategy for the next call.
+
+Parameters:
+  • data (list):
+      The collection of items to search. Must be sortable if binary search is to be used.
+  • target (any):
+      The element to locate within `data`.
+  • stats_window (int, optional, default=50):
+      The number of most recent calls to retain in the timing history for each strategy.
+  • key_func (callable, optional, default=None):
+      A function mapping list elements to comparable values (used for sorting and hashing if needed).
+
+Returns:
+  A tuple (index, strategy), where:
+    - index (int): The position of `target` in `data`, or –1 if not found.
+    - strategy (str): The name of the strategy actually used (“linear”, “binary”, or “hash”).
+
+Example:
+  # Suppose we have a growing list of integers and want to find a value repeatedly.
+  data = [3, 1, 4, 1, 5, 9, 2, 6]
+  optimizer = performance_optimizer  # initialize or import
+  
+  # First call (no history yet), will default to linear search:
+  idx, strat = optimizer(data, 5)
+  # idx == 4, strat == "linear"
+  
+  # After many calls, if binary search proves faster:
+  idx, strat = optimizer(data, 9)
+  # idx == 5, strat == "binary"
+
+  # Later, if hash lookup on unsorted data is fastest:
+  idx, strat = optimizer(data, 2)
+  # idx == 6, strat == "hash"
+
+Function internals (conceptual outline):
+  1. On first call, initialize three deques of length `stats_window` to hold recent timings.
+  2. Decide strategy:
+       - If `data` is not sorted or key_func provided, skip binary.
+       - Compare average timings in deques; pick the fastest.
+       - Break ties by preferring binary > hash > linear (or any other policy).
+  3. Execute the chosen strategy, measuring start/end time.
+  4. Append the duration to that strategy’s deque.
+  5. Return the found index and the strategy name.
+2025-09-29 01:23:22,499 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:23:51,581 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:23:53,629 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:23:59,158 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:24:00,387 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:24:00,389 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-29 01:24:00,389 - INFO - TDD Adjudication Passed: True
+2025-09-29 01:24:15,546 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:24:18,005 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:24:18,007 - INFO - --- ITERATION 1 ---
+2025-09-29 01:24:18,007 - INFO - Unit Test Result Summary: All tests passed
+2025-09-29 01:24:18,007 - INFO - Adjudication Passed: True
+2025-09-29 01:24:18,081 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-09-29 01:24:18,081 - INFO - Function Name: performance_optimizer
+2025-09-29 01:24:18,081 - INFO - Total Iterations: 1
+2025-09-29 01:24:18,081 - INFO - Total Duration: 99.81 seconds
+2025-09-29 01:24:18,082 - INFO - TDD Adjudication Attempts: 1
+2025-09-29 01:24:18,082 - INFO - Final Adjudication Attempts: 1
+2025-09-29 01:24:18,082 - INFO - Requirement Reinforcements: 0
+2025-09-29 01:24:18,615 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 400 Bad Request"
+2025-09-29 01:24:18,616 - ERROR - === UNEXPECTED ERROR ===
+2025-09-29 01:24:18,616 - ERROR - Error: Error code: 400 - {'error': {'message': "Invalid schema for function 'performance_optimizer': In context=('properties', 'data'), array schema missing items.", 'type': 'invalid_request_error', 'param': 'tools[0].function.parameters', 'code': 'invalid_function_parameters'}}
+2025-09-29 01:24:18,617 - ERROR - Unexpected error: Error code: 400 - {'error': {'message': "Invalid schema for function 'performance_optimizer': In context=('properties', 'data'), array schema missing items.", 'type': 'invalid_request_error', 'param': 'tools[0].function.parameters', 'code': 'invalid_function_parameters'}}
+2025-09-29 01:24:18,666 - INFO - === SESSION SUMMARY ===
+2025-09-29 01:24:18,666 - INFO - Session Duration: 116.99 seconds
+2025-09-29 01:24:18,666 - INFO - Functions Attempted: 1
+2025-09-29 01:24:18,666 - INFO - Successful Functions: 1
+2025-09-29 01:24:18,666 - INFO - Terminated Early: 0
+2025-09-29 01:24:18,666 - INFO - Total Iterations: 1
+2025-09-29 01:24:18,666 - INFO - Average Iterations per Function: 1.00
+2025-09-29 01:24:18,666 - INFO - Existing Function Calls: 0 (0 successful)
+2025-09-29 01:24:18,666 - INFO - TDD Adjudication Attempts: 1
+2025-09-29 01:24:18,666 - INFO - Final Adjudication Attempts: 1
+2025-09-29 01:24:18,666 - INFO - Requirement Reinforcements: 0
+2025-09-29 01:26:20,270 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:26:20,283 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 01:26:20,283 - INFO - Response Content: Function Name: streaming_processor  
+Description:  
+  Streams a CSV file in configurable chunk sizes and, for each record, emits an “genre” event into a memory‐efficient circular buffer.  
+  It implem...
+2025-09-29 01:26:20,284 - INFO - Initiating function generation process...
+2025-09-29 01:26:20,287 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-29 01:26:20,288 - INFO - User Input: Create a streaming_processor that processes movie.csv in chunks with event-driven architecture. It must: emit events for each genre found, maintain backpressure when downstream processing is slow, buffer events in memory-efficient circular buffer, support multiple subscriber functions with different processing speeds, and guarantee exactly-once delivery semantics even if subscribers fail and retry.
+2025-09-29 01:26:20,288 - INFO - Function Requirement: Function Name: streaming_processor  
+Description:  
+  Streams a CSV file in configurable chunk sizes and, for each record, emits an “genre” event into a memory‐efficient circular buffer.  
+  It implements:  
+  - Event-driven dispatch to multiple subscriber callbacks with differing processing speeds  
+  - Backpressure control: reading pauses when the buffer reaches a high‐water mark and resumes when it drains  
+  - An in‐memory circular buffer to bound memory usage  
+  - Exactly‐once delivery semantics via per‐subscriber checkpointing and retry on failure  
+
+Parameters:  
+  • file_path (string)  
+      – Path to the CSV file to stream.  
+  • chunk_size (int)  
+      – Number of lines to read from the file in each I/O operation.  
+  • buffer_capacity (int)  
+      – Maximum number of events that can be held in the circular buffer.  
+  • high_water_mark (int)  
+      – When the buffer’s occupied slots ≥ this value, pause reading new chunks.  
+  • low_water_mark (int)  
+      – When the buffer’s occupied slots ≤ this value, resume reading.  
+  • subscribers (list of callables)  
+      – A list of subscriber functions, each accepting a single event dict and returning success/failure.  
+  • retry_policy (dict)  
+      – Settings for exactly‐once retries. For example:  
+          { “max_retries”: 5, “backoff_ms”: 200 }  
+
+Example Usage:  
+  def slow_consumer(event):  
+      # simulate slow processing  
+      time.sleep(0.1)  
+      return True  
+
+  def fast_consumer(event):  
+      # quick processing  
+      print("Got genre:", event["genre"])  
+      return True  
+
+  streaming_processor(  
+      file_path="/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/evolution_test_context/movie.csv",  
+      chunk_size=1000,  
+      buffer_capacity=10000,  
+      high_water_mark=8000,  
+      low_water_mark=2000,  
+      subscribers=[slow_consumer, fast_consumer],  
+      retry_policy={"max_retries": 3, "backoff_ms": 500}  
+  )  
+
+This function would open the specified CSV, read it in chunks, emit one event per genre found, manage backpressure via the circular buffer watermarks, and guarantee each subscriber sees each event exactly once even if they fail and retry.
+2025-09-29 01:26:53,652 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:27:28,060 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:27:31,536 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:27:43,420 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:27:44,459 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:27:44,461 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-29 01:27:44,461 - INFO - TDD Adjudication Passed: True
+2025-09-29 01:28:19,670 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:28:22,868 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:28:22,869 - INFO - --- ITERATION 1 ---
+2025-09-29 01:28:22,869 - INFO - Unit Test Result Summary: All tests passed
+2025-09-29 01:28:22,869 - INFO - Adjudication Passed: True
+2025-09-29 01:28:22,933 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-09-29 01:28:22,933 - INFO - Function Name: streaming_processor
+2025-09-29 01:28:22,933 - INFO - Total Iterations: 1
+2025-09-29 01:28:22,934 - INFO - Total Duration: 122.65 seconds
+2025-09-29 01:28:22,934 - INFO - TDD Adjudication Attempts: 1
+2025-09-29 01:28:22,934 - INFO - Final Adjudication Attempts: 1
+2025-09-29 01:28:22,934 - INFO - Requirement Reinforcements: 0
+2025-09-29 01:28:35,439 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:28:37,450 - INFO - === EXISTING FUNCTION CALLED ===
+2025-09-29 01:28:37,451 - INFO - Function: streaming_processor
+2025-09-29 01:28:37,451 - INFO - Arguments: {'file_path': '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/evolution_test_context/movie.csv', 'chunk_size': 1000, 'buffer_capacity': 5000, 'high_water_mark': 4000, 'low_water_mark': 1000, 'subscribers': ['fast_genre_processor', 'slow_genre_analyzer'], 'retry_policy': {'max_retries': 3, 'backoff_ms': 2000}}
+2025-09-29 01:28:37,451 - INFO - Execution Time: 2.005817997996928 seconds
+2025-09-29 01:28:37,451 - INFO - Memory Peak: 1410 bytes
+2025-09-29 01:28:37,451 - INFO - Success: True
+2025-09-29 01:28:39,535 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:28:40,579 - INFO - === SESSION SUMMARY ===
+2025-09-29 01:28:40,579 - INFO - Session Duration: 157.27 seconds
+2025-09-29 01:28:40,580 - INFO - Functions Attempted: 1
+2025-09-29 01:28:40,580 - INFO - Successful Functions: 1
+2025-09-29 01:28:40,580 - INFO - Terminated Early: 0
+2025-09-29 01:28:40,580 - INFO - Total Iterations: 1
+2025-09-29 01:28:40,580 - INFO - Average Iterations per Function: 1.00
+2025-09-29 01:28:40,580 - INFO - Existing Function Calls: 1 (1 successful)
+2025-09-29 01:28:40,580 - INFO - TDD Adjudication Attempts: 1
+2025-09-29 01:28:40,580 - INFO - Final Adjudication Attempts: 1
+2025-09-29 01:28:40,580 - INFO - Requirement Reinforcements: 0
+2025-09-29 01:30:30,745 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:30:30,757 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-09-29 01:30:30,757 - INFO - Response Content: Function Name: movie_api
+
+Description:
+  A single entry-point function for fetching movie data from the project’s movie.csv.  
+  At runtime it inspects the Python call stack to see which “API version”...
+2025-09-29 01:30:30,757 - INFO - Initiating function generation process...
+2025-09-29 01:30:30,759 - INFO - === STARTING FUNCTION GENERATION ===
+2025-09-29 01:30:30,760 - INFO - User Input: Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.
+2025-09-29 01:30:30,760 - INFO - Function Requirement: Function Name: movie_api
+
+Description:
+  A single entry-point function for fetching movie data from the project’s movie.csv.  
+  At runtime it inspects the Python call stack to see which “API version” is invoking it, and automatically returns data in one of three formats, maintaining backward compatibility:
+    – v1: a simple list of title strings  
+    – v2: a dict containing titles plus metadata (count, source, etc.)  
+    – v3: a JSON-LD–compliant structure  
+
+Parameters:
+  • None.  
+    Internally reads “movie.csv” from the project root, parses titles and any metadata fields present.
+
+Return Value:
+  – If called (directly or indirectly) from any function or module whose name ends with “_v1”:  
+      returns a Python list of titles, e.g.  
+        ["The Matrix", "Inception", …]  
+  – If called from a caller name ending with “_v2”:  
+      returns a dict:  
+        {  
+          "count": <number_of_titles>,  
+          "titles": [<list_of_titles>],  
+          "source": "movie.csv"  
+        }  
+  – If called from a caller name ending with “_v3”:  
+      returns a JSON-LD dict, e.g.  
+        {  
+          "@context": "http://schema.org",  
+          "@type": "MovieCollection",  
+          "name": "All Movies",  
+          "hasPart": [  
+            { "@type": "Movie", "name": "The Matrix" },  
+            { "@type": "Movie", "name": "Inception" }  
+          ]  
+        }  
+
+Example:
+  # Caller for v1 compatibility  
+  def legacy_report_v1():  
+      titles = movie_api()  
+      # titles -> ["The Matrix", "Inception", …]  
+
+  # Caller for v2 compatibility  
+  def dashboard_v2():  
+      data = movie_api()  
+      # data -> {"count": 2, "titles": [...], "source": "movie.csv"}  
+
+  # Caller for v3 compatibility  
+  def jsonld_export_v3():  
+      payload = movie_api()  
+      # payload -> JSON-LD structure as above
+
+  # Standalone call with no versioned caller falls back to v1 behavior  
+  if __name__ == "__main__":  
+      print(movie_api())  # prints list of titles
+2025-09-29 01:31:09,241 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:32:14,424 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:32:15,398 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:32:16,217 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:32:17,856 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:32:17,857 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-09-29 01:32:17,857 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:32:17,857 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:32:17,857 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:32:17,857 - INFO - Iteration: 1
+2025-09-29 01:32:17,857 - INFO - Previous Requirement: 
+2025-09-29 01:32:17,857 - INFO - New Requirement: 
+2025-09-29 01:32:19,289 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:32:19,291 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-09-29 01:32:19,291 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:32:19,291 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:32:19,291 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:32:19,291 - INFO - Iteration: 2
+2025-09-29 01:32:19,292 - INFO - Previous Requirement: 
+2025-09-29 01:32:19,292 - INFO - New Requirement: 
+2025-09-29 01:32:20,883 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:32:20,884 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-09-29 01:32:20,884 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:32:20,884 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:32:20,885 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:32:20,885 - INFO - Iteration: 3
+2025-09-29 01:32:20,885 - INFO - Previous Requirement: 
+2025-09-29 01:32:20,885 - INFO - New Requirement: 
+2025-09-29 01:32:22,361 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:32:22,363 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-09-29 01:32:22,364 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:32:22,364 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:32:22,364 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:32:22,364 - INFO - Iteration: 4
+2025-09-29 01:32:22,364 - INFO - Previous Requirement: 
+2025-09-29 01:32:22,364 - INFO - New Requirement: 
+2025-09-29 01:32:23,589 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:32:23,591 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-09-29 01:32:23,591 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:32:23,591 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:32:23,591 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:32:23,592 - INFO - Iteration: 5
+2025-09-29 01:32:23,592 - INFO - Previous Requirement: 
+2025-09-29 01:32:23,592 - INFO - New Requirement: 
+2025-09-29 01:32:24,921 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-29 01:32:24,923 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-09-29 01:32:24,923 - INFO - TDD Adjudication Passed: False
+2025-09-29 01:32:24,923 - INFO - TDD Requirement Suggestion: 
+2025-09-29 01:32:24,923 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-09-29 01:32:24,923 - INFO - Iteration: 6
+2025-09-29 01:32:24,923 - INFO - Previous Requirement: 
+2025-09-29 01:32:24,923 - INFO - New Requirement: 
+2025-09-29 01:32:24,923 - WARNING - === MAX ITERATIONS REACHED ===
+2025-09-29 01:32:24,924 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-09-29 01:32:24,924 - WARNING - Total Duration: 114.16 seconds
+2025-09-29 01:32:24,924 - WARNING - Final Iteration Count: 0
+2025-09-29 01:32:24,953 - INFO - === SESSION SUMMARY ===
+2025-09-29 01:32:24,953 - INFO - Session Duration: 128.67 seconds
+2025-09-29 01:32:24,953 - INFO - Functions Attempted: 1
+2025-09-29 01:32:24,953 - INFO - Successful Functions: 0
+2025-09-29 01:32:24,953 - INFO - Terminated Early: 1
+2025-09-29 01:32:24,953 - INFO - Total Iterations: 0
+2025-09-29 01:32:24,953 - INFO - Average Iterations per Function: 0.00
+2025-09-29 01:32:24,953 - INFO - Existing Function Calls: 0 (0 successful)
+2025-09-29 01:32:24,953 - INFO - TDD Adjudication Attempts: 6
+2025-09-29 01:32:24,953 - INFO - Final Adjudication Attempts: 0
+2025-09-29 01:32:24,953 - INFO - Requirement Reinforcements: 6

@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import all functions from Unit_Test/functions.py
 try:
-    from Unit_Test.functions import *
+    from functions import *
 except ImportError as e:
     print(f"Warning: Could not import from Unit_Test.functions: {e}")
     print("Some functions may not be available for testing")
@@ -35,7 +35,7 @@ class CodeEvalProEvaluator:
 
         self.dataset_path = dataset_path
         self.problems = self._load_dataset()
-        self.log_dir = os.path.join(os.path.dirname(__file__), "logs")
+        self.log_dir = os.path.join(os.path.dirname(__file__), "codeeval_tests_run_logs")
         os.makedirs(self.log_dir, exist_ok=True)
 
     def _load_dataset(self) -> Dict:

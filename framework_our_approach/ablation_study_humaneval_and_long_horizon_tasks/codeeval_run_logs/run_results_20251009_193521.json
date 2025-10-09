@@ -1,0 +1,689 @@
+{
+  "timestamp": "2025-10-09T15:40:43.018349",
+  "total_problems": 164,
+  "successful_base": 15,
+  "successful_composed": 12,
+  "evaluated_success": 11,
+  "skipped_base": 0,
+  "skipped_composed": 1,
+  "skipped_problems": [],
+  "results": [
+    {
+      "problem_id": 0,
+      "base": {
+        "problem_id": 0,
+        "timestamp": "2025-10-09T15:40:43.353094",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 189.78875494003296,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named has_close_elements that from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n",
+        "output": "[Output truncated - 2329 chars]"
+      },
+      "composed": {
+        "problem_id": 0,
+        "timestamp": "2025-10-09T15:43:53.480164",
+        "success": true,
+        "iterations": 5,
+        "time_taken": 822.8438944816589,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named find_close_elements_lists that uses existing has_close_elements function to follow this instruction: # Given a list of lists of floats, determine if there exists any list where at least two numbers are closer to each other than a given threshold. If such a list exists, return the indices of the lists where this condition is met. If no such list exists, return an empty list.\ndef find_close_elements_lists(list_of_lists: List[List[float]], threshold: float) -> List[int]:\n",
+        "output": "[Output truncated - 5038 chars]"
+      },
+      "evaluation": {
+        "problem_id": 0,
+        "timestamp": "2025-10-09T15:57:36.330850",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_0",
+        "task_id": "HumanEval/0"
+      }
+    },
+    {
+      "problem_id": 1,
+      "base": {
+        "problem_id": 1,
+        "timestamp": "2025-10-09T15:57:36.672862",
+        "success": true,
+        "iterations": 3,
+        "time_taken": 392.4722435474396,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named separate_paren_groups that from typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n",
+        "output": "[Output truncated - 3401 chars]"
+      },
+      "composed": {
+        "problem_id": 1,
+        "timestamp": "2025-10-09T16:04:09.480325",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 216.39247846603394,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named count_balanced_paren_groups that uses existing separate_paren_groups function to follow this instruction: # Given a string containing multiple groups of nested parentheses, your goal is to count the number of balanced groups and return the total count. Each group is balanced (each open brace is properly closed) and not nested within each other. Ignore any spaces in the input string.\n\ndef count_balanced_paren_groups(paren_string: str) -> int:\n",
+        "output": "[Output truncated - 4985 chars]"
+      },
+      "evaluation": {
+        "problem_id": 1,
+        "timestamp": "2025-10-09T16:07:45.874306",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_1",
+        "task_id": "HumanEval/1"
+      }
+    },
+    {
+      "problem_id": 2,
+      "base": {
+        "problem_id": 2,
+        "timestamp": "2025-10-09T16:07:46.273231",
+        "success": false,
+        "iterations": 7,
+        "time_taken": 661.7725603580475,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named truncate_number that \n\ndef truncate_number(number: float) -> float:\n    \"\"\" Given a positive floating point number, it can be decomposed into\n    and integer part (largest integer smaller than given number) and decimals\n    (leftover part always smaller than 1).\n\n    Return the decimal part of the number.\n    >>> truncate_number(3.5)\n    0.5\n    \"\"\"\n",
+        "output": "[Output truncated - 1292 chars]"
+      },
+      "composed": {
+        "problem_id": 2,
+        "timestamp": "2025-10-09T16:18:48.378420",
+        "success": false,
+        "iterations": 0,
+        "time_taken": 1.1920928955078125e-05,
+        "error": "Could not extract required function names",
+        "generated_function": null,
+        "skipped": true
+      },
+      "evaluation": {
+        "problem_id": 2,
+        "timestamp": "2025-10-09T16:18:48.379864",
+        "success": false,
+        "tests_passed": 0,
+        "tests_failed": 0,
+        "errors": [
+          "Missing required functions: isclose, sum_of_parts"
+        ],
+        "details": [],
+        "problem_name": "Problem_2",
+        "task_id": "HumanEval/2"
+      }
+    },
+    {
+      "problem_id": 3,
+      "base": {
+        "problem_id": 3,
+        "timestamp": "2025-10-09T16:18:48.728877",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 155.8332233428955,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named below_zero that from typing import List\n\n\ndef below_zero(operations: List[int]) -> bool:\n    \"\"\" You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and\n    at that point function should return True. Otherwise it should return False.\n    >>> below_zero([1, 2, 3])\n    False\n    >>> below_zero([1, 2, -4, 5])\n    True\n    \"\"\"\n",
+        "output": "[Output truncated - 2237 chars]"
+      },
+      "composed": {
+        "problem_id": 3,
+        "timestamp": "2025-10-09T16:21:24.956972",
+        "success": true,
+        "iterations": 5,
+        "time_taken": 679.1322529315948,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named any_account_below_zero that uses existing below_zero function to follow this instruction: # You are given a list of transactions where each transaction is a list of deposit and withdrawal operations on multiple bank accounts. Each sublist represents the operations for a single account, and the accounts are processed in the order they appear in the main list. Your task is to determine if any account falls below zero at any point during its operations. If any account falls below zero, the function should return True. Otherwise, it should return False.\nfrom typing import List\n\ndef below_zero(operations: List[int]) -> bool:\n",
+        "output": "[Output truncated - 4773 chars]"
+      },
+      "evaluation": {
+        "problem_id": 3,
+        "timestamp": "2025-10-09T16:32:44.123474",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_3",
+        "task_id": "HumanEval/3"
+      }
+    },
+    {
+      "problem_id": 4,
+      "base": {
+        "problem_id": 4,
+        "timestamp": "2025-10-09T16:32:44.510523",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 190.53094792366028,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named mean_absolute_deviation that from typing import List\n\n\ndef mean_absolute_deviation(numbers: List[float]) -> float:\n    \"\"\" For a given list of input numbers, calculate Mean Absolute Deviation\n    around the mean of this dataset.\n    Mean Absolute Deviation is the average absolute difference between each\n    element and a centerpoint (mean in this case):\n    MAD = average | x - x_mean |\n    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])\n    1.0\n    \"\"\"\n",
+        "output": "[Output truncated - 2378 chars]"
+      },
+      "composed": {
+        "problem_id": 4,
+        "timestamp": "2025-10-09T16:35:55.493344",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 367.633358001709,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named overall_mean_absolute_deviation that uses existing mean_absolute_deviation function to follow this instruction: # Given a list of lists of numbers, calculate the Mean Absolute Deviation (MAD) for each sublist and then find the overall Mean Absolute Deviation of these MADs. The overall MAD should be calculated around the mean of the MADs of the sublists.\ndef overall_mean_absolute_deviation(list_of_lists: List[List[float]]) -> float:\n",
+        "output": "[Output truncated - 3762 chars]"
+      },
+      "evaluation": {
+        "problem_id": 4,
+        "timestamp": "2025-10-09T16:42:03.151170",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_4",
+        "task_id": "HumanEval/4"
+      }
+    },
+    {
+      "problem_id": 5,
+      "base": {
+        "problem_id": 5,
+        "timestamp": "2025-10-09T16:42:03.557846",
+        "success": false,
+        "iterations": 7,
+        "time_taken": 438.20686173439026,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named intersperse that from typing import List\n\n\ndef intersperse(numbers: List[int], delimeter: int) -> List[int]:\n    \"\"\" Insert a number 'delimeter' between every two consecutive elements of input list `numbers'\n    >>> intersperse([], 4)\n    []\n    >>> intersperse([1, 2, 3], 4)\n    [1, 4, 2, 4, 3]\n    \"\"\"\n",
+        "output": "[Output truncated - 4264 chars]"
+      },
+      "composed": {
+        "problem_id": 5,
+        "timestamp": "2025-10-09T16:49:22.305229",
+        "success": true,
+        "iterations": 2,
+        "time_taken": 262.13921642303467,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named double_intersperse that uses existing intersperse function to follow this instruction: # Given a list of integers, intersperse a specified delimiter between every two consecutive elements of the list. Then, repeat this process with a different delimiter for the resulting list. Finally, return the list after both interspersing operations.\nfrom typing import List\n\n\ndef intersperse(numbers: List[int], delimeter: int) -> List[int]:\n",
+        "output": "[Output truncated - 5220 chars]"
+      },
+      "evaluation": {
+        "problem_id": 5,
+        "timestamp": "2025-10-09T16:53:44.456301",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_5",
+        "task_id": "HumanEval/5"
+      }
+    },
+    {
+      "problem_id": 6,
+      "base": {
+        "problem_id": 6,
+        "timestamp": "2025-10-09T16:53:44.923762",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 155.3218445777893,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named parse_nested_parens that from typing import List\n\n\ndef parse_nested_parens(paren_string: str) -> List[int]:\n    \"\"\" Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n    For each of the group, output the deepest level of nesting of parentheses.\n    E.g. (()()) has maximum two levels of nesting while ((())) has three.\n\n    >>> parse_nested_parens('(()()) ((())) () ((())()())')\n    [2, 3, 1, 3]\n    \"\"\"\n",
+        "output": "[Output truncated - 2340 chars]"
+      },
+      "composed": {
+        "problem_id": 6,
+        "timestamp": "2025-10-09T16:56:20.898483",
+        "success": false,
+        "iterations": 0,
+        "time_taken": 1200.1225352287292,
+        "error": "Timeout after 20 minutes",
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named sum_deepest_nesting that uses existing parse_nested_parens function to follow this instruction: # Given a list of strings, each representing multiple groups of nested parentheses separated by spaces, return the sum of the deepest levels of nesting for each group in each string. For example, if a string contains '(()()) ((())) () ((())()())', the sum of the deepest levels of nesting is 2 + 3 + 1 + 3 = 9.\ndef sum_deepest_nesting(strings: List[str]) -> List[int]:\n"
+      },
+      "evaluation": {
+        "problem_id": 6,
+        "timestamp": "2025-10-09T17:16:21.062667",
+        "success": false,
+        "tests_passed": 0,
+        "tests_failed": 0,
+        "errors": [
+          "Missing required functions: sum_deepest_nesting"
+        ],
+        "details": [],
+        "problem_name": "Problem_6",
+        "task_id": "HumanEval/6"
+      }
+    },
+    {
+      "problem_id": 7,
+      "base": {
+        "problem_id": 7,
+        "timestamp": "2025-10-09T17:16:21.534093",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 260.95293951034546,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named filter_by_substring that from typing import List\n\n\ndef filter_by_substring(strings: List[str], substring: str) -> List[str]:\n    \"\"\" Filter an input list of strings only for ones that contain given substring\n    >>> filter_by_substring([], 'a')\n    []\n    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')\n    ['abc', 'bacd', 'array']\n    \"\"\"\n",
+        "output": "[Output truncated - 2757 chars]"
+      },
+      "composed": {
+        "problem_id": 7,
+        "timestamp": "2025-10-09T17:20:42.948492",
+        "success": true,
+        "iterations": 2,
+        "time_taken": 283.4464445114136,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named filter_by_multiple_substrings that uses existing filter_by_substring function to follow this instruction: # Given a list of strings and a list of substrings, return a set of strings that contain at least one of the given substrings. If a string contains multiple substrings, it should only appear once in the result.\nfrom typing import List\ndef filter_by_multiple_substrings(strings: List[str], substrings: List[str]) -> List[str]:\n",
+        "output": "[Output truncated - 5788 chars]"
+      },
+      "evaluation": {
+        "problem_id": 7,
+        "timestamp": "2025-10-09T17:25:26.404695",
+        "success": false,
+        "tests_passed": 0,
+        "tests_failed": 1,
+        "errors": [
+          "Assertion failed: "
+        ],
+        "details": [
+          "\u2717 Assertion failed: "
+        ],
+        "problem_name": "Problem_7",
+        "task_id": "HumanEval/7"
+      }
+    },
+    {
+      "problem_id": 8,
+      "base": {
+        "problem_id": 8,
+        "timestamp": "2025-10-09T17:25:26.799207",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 127.61063861846924,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named sum_product that from typing import List, Tuple\n\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    \"\"\" For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.\n    Empty sum should be equal to 0 and empty product should be equal to 1.\n    >>> sum_product([])\n    (0, 1)\n    >>> sum_product([1, 2, 3, 4])\n    (10, 24)\n    \"\"\"\n",
+        "output": "[Output truncated - 2307 chars]"
+      },
+      "composed": {
+        "problem_id": 8,
+        "timestamp": "2025-10-09T17:27:34.805658",
+        "success": true,
+        "iterations": 2,
+        "time_taken": 360.7864692211151,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named sum_product_of_lists that uses existing sum_product function to follow this instruction: # Given a list of lists of integers, return a list of tuples where each tuple consists of the sum and product of the integers in the corresponding sublist. Additionally, calculate the total sum and total product of all integers across all sublists.\nfrom typing import List, Tuple\n\n\ndef sum_product_of_lists(lists: List[List[int]]) -> Tuple[List[Tuple[int, int]], int, int]:\n",
+        "output": "[Output truncated - 4255 chars]"
+      },
+      "evaluation": {
+        "problem_id": 8,
+        "timestamp": "2025-10-09T17:33:35.595302",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_8",
+        "task_id": "HumanEval/8"
+      }
+    },
+    {
+      "problem_id": 9,
+      "base": {
+        "problem_id": 9,
+        "timestamp": "2025-10-09T17:33:35.976940",
+        "success": true,
+        "iterations": 2,
+        "time_taken": 202.89439177513123,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named rolling_max that from typing import List, Tuple\n\n\ndef rolling_max(numbers: List[int]) -> List[int]:\n    \"\"\" From a given list of integers, generate a list of rolling maximum element found until given moment\n    in the sequence.\n    >>> rolling_max([1, 2, 3, 2, 3, 4, 2])\n    [1, 2, 3, 3, 3, 4, 4]\n    \"\"\"\n",
+        "output": "[Output truncated - 2838 chars]"
+      },
+      "composed": {
+        "problem_id": 9,
+        "timestamp": "2025-10-09T17:36:59.246356",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 242.57561373710632,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named rolling_max_across_lists that uses existing rolling_max function to follow this instruction: # Given a list of lists of integers, generate a list of lists where each sublist contains the rolling maximum elements for the corresponding sublist in the input. Additionally, find the maximum element across all sublists at each rolling position and return this as a single list.\nfrom typing import List\n\n\ndef rolling_max_across_lists(list_of_lists: List[List[int]]) -> Tuple[List[List[int]], List[int]]:\n",
+        "output": "[Output truncated - 4883 chars]"
+      },
+      "evaluation": {
+        "problem_id": 9,
+        "timestamp": "2025-10-09T17:41:01.824126",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_9",
+        "task_id": "HumanEval/9"
+      }
+    },
+    {
+      "problem_id": 10,
+      "base": {
+        "problem_id": 10,
+        "timestamp": "2025-10-09T17:41:02.287641",
+        "success": true,
+        "iterations": 2,
+        "time_taken": 204.38168287277222,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named is_palindrome that \n\ndef is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\n    >>> make_palindrome('')\n    ''\n    >>> make_palindrome('cat')\n    'catac'\n    >>> make_palindrome('cata')\n    'catac'\n    \"\"\"\n",
+        "output": "[Output truncated - 2652 chars]"
+      },
+      "composed": {
+        "problem_id": 10,
+        "timestamp": "2025-10-09T17:44:27.246516",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 246.45013785362244,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named concatenate_palindromes that uses existing is_palindrome function to follow this instruction: # Given a list of strings, find the shortest palindrome for each string and then concatenate all the resulting palindromes into a single string. If the list is empty, return an empty string.\ndef concatenate_palindromes(strings: list) -> str:\n",
+        "output": "[Output truncated - 3655 chars]"
+      },
+      "evaluation": {
+        "problem_id": 10,
+        "timestamp": "2025-10-09T17:48:33.722054",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_10",
+        "task_id": "HumanEval/10"
+      }
+    },
+    {
+      "problem_id": 11,
+      "base": {
+        "problem_id": 11,
+        "timestamp": "2025-10-09T17:48:34.165281",
+        "success": true,
+        "iterations": 2,
+        "time_taken": 240.47751688957214,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named string_xor that from typing import List\n\n\ndef string_xor(a: str, b: str) -> str:\n    \"\"\" Input are two strings a and b consisting only of 1s and 0s.\n    Perform binary XOR on these inputs and return result also as a string.\n    >>> string_xor('010', '110')\n    '100'\n    \"\"\"\n",
+        "output": "[Output truncated - 2746 chars]"
+      },
+      "composed": {
+        "problem_id": 11,
+        "timestamp": "2025-10-09T17:52:35.066028",
+        "success": false,
+        "iterations": 7,
+        "time_taken": 932.3684635162354,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named cumulative_xor that uses existing string_xor function to follow this instruction: # Given a list of binary strings, perform a cumulative XOR operation on them. The cumulative XOR operation means that for each string in the list, XOR it with the result of all previous XOR operations. Return the final result as a string.\nfrom typing import List\n\n\ndef cumulative_xor(binary_strings: List[str]) -> str:\n",
+        "output": "[Output truncated - 2972 chars]"
+      },
+      "evaluation": {
+        "problem_id": 11,
+        "timestamp": "2025-10-09T18:08:07.470894",
+        "success": false,
+        "tests_passed": 0,
+        "tests_failed": 0,
+        "errors": [
+          "Missing required functions: cumulative_xor"
+        ],
+        "details": [],
+        "problem_name": "Problem_11",
+        "task_id": "HumanEval/11"
+      }
+    },
+    {
+      "problem_id": 12,
+      "base": {
+        "problem_id": 12,
+        "timestamp": "2025-10-09T18:08:08.044089",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 197.5661222934723,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named longest that from typing import List, Optional\n\n\ndef longest(strings: List[str]) -> Optional[str]:\n    \"\"\" Out of list of strings, return the longest one. Return the first one in case of multiple\n    strings of the same length. Return None in case the input list is empty.\n    >>> longest([])\n\n    >>> longest(['a', 'b', 'c'])\n    'a'\n    >>> longest(['a', 'bb', 'ccc'])\n    'ccc'\n    \"\"\"\n",
+        "output": "[Output truncated - 2161 chars]"
+      },
+      "composed": {
+        "problem_id": 12,
+        "timestamp": "2025-10-09T18:11:26.050427",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 216.03054189682007,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named find_longest_strings that uses existing longest function to follow this instruction: # Given a list of lists of strings, return the longest string from each sublist. If a sublist is empty, return 'EMPTY' for that sublist. If there are multiple strings of the same length in a sublist, return the first one. Return a list of these longest strings.\ndef find_longest_strings(list_of_lists: List[List[str]]) -> List[str]:\n",
+        "output": "[Output truncated - 3937 chars]"
+      },
+      "evaluation": {
+        "problem_id": 12,
+        "timestamp": "2025-10-09T18:15:02.082940",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_12",
+        "task_id": "HumanEval/12"
+      }
+    },
+    {
+      "problem_id": 13,
+      "base": {
+        "problem_id": 13,
+        "timestamp": "2025-10-09T18:15:02.541173",
+        "success": true,
+        "iterations": 5,
+        "time_taken": 668.1990191936493,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named greatest_common_divisor that def greatest_common_divisor(a: int, b: int) -> int:\n    \"\"\" Return a greatest common divisor of two integers a and b\n    >>> greatest_common_divisor(3, 5)\n    1\n    >>> greatest_common_divisor(25, 15)\n    5\n    \"\"\"\n",
+        "output": "[Output truncated - 3221 chars]"
+      },
+      "composed": {
+        "problem_id": 13,
+        "timestamp": "2025-10-09T18:26:11.165428",
+        "success": true,
+        "iterations": 4,
+        "time_taken": 437.6827449798584,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named gcd_of_list that uses existing greatest_common_divisor function to follow this instruction: # Given a list of integers, find the greatest common divisor (GCD) of all the integers in the list. You need to implement a function that takes a list of integers as input and returns their GCD.\n\nfrom typing import List\ndef gcd_of_list(lst: List[int]) -> int:\n",
+        "output": "[Output truncated - 5966 chars]"
+      },
+      "evaluation": {
+        "problem_id": 13,
+        "timestamp": "2025-10-09T18:33:28.863097",
+        "success": false,
+        "tests_passed": 0,
+        "tests_failed": 0,
+        "errors": [
+          "Test execution error: List must not be empty\nTraceback (most recent call last):\n  File \"/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/evaluation/codeeval_pro_evaluator.py\", line 168, in run_tests\n    exec(test_code, env)\n  File \"<string>\", line 7, in <module>\n  File \"<string>\", line 94, in gcd_of_list\nValueError: List must not be empty\n"
+        ],
+        "details": [],
+        "problem_name": "Problem_13",
+        "task_id": "HumanEval/13"
+      }
+    },
+    {
+      "problem_id": 14,
+      "base": {
+        "problem_id": 14,
+        "timestamp": "2025-10-09T18:33:29.478611",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 175.05853080749512,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named all_prefixes that from typing import List\n\n\ndef all_prefixes(string: str) -> List[str]:\n    \"\"\" Return list of all prefixes from shortest to longest of the input string\n    >>> all_prefixes('abc')\n    ['a', 'ab', 'abc']\n    \"\"\"\n",
+        "output": "[Output truncated - 2567 chars]"
+      },
+      "composed": {
+        "problem_id": 14,
+        "timestamp": "2025-10-09T18:36:25.022486",
+        "success": true,
+        "iterations": 4,
+        "time_taken": 400.61890745162964,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named all_prefixes_for_list that uses existing all_prefixes function to follow this instruction: # Given a list of strings, return a list of lists where each sublist contains all prefixes of the corresponding string in the input list, sorted from shortest to longest. If the input list is empty, return an empty list.\nfrom typing import List\n\n\ndef all_prefixes(string: str) -> List[str]:\n",
+        "output": "[Output truncated - 5475 chars]"
+      },
+      "evaluation": {
+        "problem_id": 14,
+        "timestamp": "2025-10-09T18:43:05.645466",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_14",
+        "task_id": "HumanEval/14"
+      }
+    },
+    {
+      "problem_id": 15,
+      "base": {
+        "problem_id": 15,
+        "timestamp": "2025-10-09T18:43:06.090668",
+        "success": true,
+        "iterations": 3,
+        "time_taken": 408.18359899520874,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named string_sequence that \n\ndef string_sequence(n: int) -> str:\n    \"\"\" Return a string containing space-delimited numbers starting from 0 upto n inclusive.\n    >>> string_sequence(0)\n    '0'\n    >>> string_sequence(5)\n    '0 1 2 3 4 5'\n    \"\"\"\n",
+        "output": "[Output truncated - 3587 chars]"
+      },
+      "composed": {
+        "problem_id": 15,
+        "timestamp": "2025-10-09T18:49:54.736757",
+        "success": false,
+        "iterations": 0,
+        "time_taken": 1200.0560746192932,
+        "error": "Timeout after 20 minutes",
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named concatenated_sequences that uses existing string_sequence function to follow this instruction: # Given a list of integers, return a single string that concatenates the space-delimited sequences starting from 0 up to each integer in the list. If the list is empty, return an empty string.\nfrom typing import List\ndef concatenated_sequences(lst: List[int]) -> str:\n"
+      },
+      "evaluation": {
+        "problem_id": 15,
+        "timestamp": "2025-10-09T19:09:54.796534",
+        "success": false,
+        "tests_passed": 0,
+        "tests_failed": 0,
+        "errors": [
+          "Missing required functions: concatenated_sequences"
+        ],
+        "details": [],
+        "problem_name": "Problem_15",
+        "task_id": "HumanEval/15"
+      }
+    },
+    {
+      "problem_id": 16,
+      "base": {
+        "problem_id": 16,
+        "timestamp": "2025-10-09T19:09:55.239622",
+        "success": true,
+        "iterations": 3,
+        "time_taken": 325.51648688316345,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named count_distinct_characters that \n\ndef count_distinct_characters(string: str) -> int:\n    \"\"\" Given a string, find out how many distinct characters (regardless of case) does it consist of\n    >>> count_distinct_characters('xyzXYZ')\n    3\n    >>> count_distinct_characters('Jerry')\n    4\n    \"\"\"\n",
+        "output": "[Output truncated - 4034 chars]"
+      },
+      "composed": {
+        "problem_id": 16,
+        "timestamp": "2025-10-09T19:15:21.298512",
+        "success": false,
+        "iterations": 0,
+        "time_taken": 1200.04212474823,
+        "error": "Timeout after 20 minutes",
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named count_distinct_characters_across_strings that uses existing count_distinct_characters function to follow this instruction: # Given a list of strings, find out how many distinct characters (regardless of case) are present across all strings. For example, if the list is ['xyzXYZ', 'Jerry'], the output should be 6 because the distinct characters are 'x', 'y', 'z', 'j', 'e', 'r'.\ndef count_distinct_characters_across_strings(strings: list) -> int:\n"
+      },
+      "evaluation": {
+        "problem_id": 16,
+        "timestamp": "2025-10-09T19:35:21.383491",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_16",
+        "task_id": "HumanEval/16"
+      }
+    }
+  ]
+}

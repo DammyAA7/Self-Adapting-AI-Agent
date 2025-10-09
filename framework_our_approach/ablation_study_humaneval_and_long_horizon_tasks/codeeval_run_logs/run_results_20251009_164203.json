@@ -1,0 +1,210 @@
+{
+  "timestamp": "2025-10-09T15:40:43.018349",
+  "total_problems": 164,
+  "successful_base": 4,
+  "successful_composed": 4,
+  "evaluated_success": 4,
+  "skipped_base": 0,
+  "skipped_composed": 1,
+  "skipped_problems": [],
+  "results": [
+    {
+      "problem_id": 0,
+      "base": {
+        "problem_id": 0,
+        "timestamp": "2025-10-09T15:40:43.353094",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 189.78875494003296,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named has_close_elements that from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n",
+        "output": "[Output truncated - 2329 chars]"
+      },
+      "composed": {
+        "problem_id": 0,
+        "timestamp": "2025-10-09T15:43:53.480164",
+        "success": true,
+        "iterations": 5,
+        "time_taken": 822.8438944816589,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named find_close_elements_lists that uses existing has_close_elements function to follow this instruction: # Given a list of lists of floats, determine if there exists any list where at least two numbers are closer to each other than a given threshold. If such a list exists, return the indices of the lists where this condition is met. If no such list exists, return an empty list.\ndef find_close_elements_lists(list_of_lists: List[List[float]], threshold: float) -> List[int]:\n",
+        "output": "[Output truncated - 5038 chars]"
+      },
+      "evaluation": {
+        "problem_id": 0,
+        "timestamp": "2025-10-09T15:57:36.330850",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_0",
+        "task_id": "HumanEval/0"
+      }
+    },
+    {
+      "problem_id": 1,
+      "base": {
+        "problem_id": 1,
+        "timestamp": "2025-10-09T15:57:36.672862",
+        "success": true,
+        "iterations": 3,
+        "time_taken": 392.4722435474396,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named separate_paren_groups that from typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n",
+        "output": "[Output truncated - 3401 chars]"
+      },
+      "composed": {
+        "problem_id": 1,
+        "timestamp": "2025-10-09T16:04:09.480325",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 216.39247846603394,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named count_balanced_paren_groups that uses existing separate_paren_groups function to follow this instruction: # Given a string containing multiple groups of nested parentheses, your goal is to count the number of balanced groups and return the total count. Each group is balanced (each open brace is properly closed) and not nested within each other. Ignore any spaces in the input string.\n\ndef count_balanced_paren_groups(paren_string: str) -> int:\n",
+        "output": "[Output truncated - 4985 chars]"
+      },
+      "evaluation": {
+        "problem_id": 1,
+        "timestamp": "2025-10-09T16:07:45.874306",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_1",
+        "task_id": "HumanEval/1"
+      }
+    },
+    {
+      "problem_id": 2,
+      "base": {
+        "problem_id": 2,
+        "timestamp": "2025-10-09T16:07:46.273231",
+        "success": false,
+        "iterations": 7,
+        "time_taken": 661.7725603580475,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named truncate_number that \n\ndef truncate_number(number: float) -> float:\n    \"\"\" Given a positive floating point number, it can be decomposed into\n    and integer part (largest integer smaller than given number) and decimals\n    (leftover part always smaller than 1).\n\n    Return the decimal part of the number.\n    >>> truncate_number(3.5)\n    0.5\n    \"\"\"\n",
+        "output": "[Output truncated - 1292 chars]"
+      },
+      "composed": {
+        "problem_id": 2,
+        "timestamp": "2025-10-09T16:18:48.378420",
+        "success": false,
+        "iterations": 0,
+        "time_taken": 1.1920928955078125e-05,
+        "error": "Could not extract required function names",
+        "generated_function": null,
+        "skipped": true
+      },
+      "evaluation": {
+        "problem_id": 2,
+        "timestamp": "2025-10-09T16:18:48.379864",
+        "success": false,
+        "tests_passed": 0,
+        "tests_failed": 0,
+        "errors": [
+          "Missing required functions: isclose, sum_of_parts"
+        ],
+        "details": [],
+        "problem_name": "Problem_2",
+        "task_id": "HumanEval/2"
+      }
+    },
+    {
+      "problem_id": 3,
+      "base": {
+        "problem_id": 3,
+        "timestamp": "2025-10-09T16:18:48.728877",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 155.8332233428955,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named below_zero that from typing import List\n\n\ndef below_zero(operations: List[int]) -> bool:\n    \"\"\" You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and\n    at that point function should return True. Otherwise it should return False.\n    >>> below_zero([1, 2, 3])\n    False\n    >>> below_zero([1, 2, -4, 5])\n    True\n    \"\"\"\n",
+        "output": "[Output truncated - 2237 chars]"
+      },
+      "composed": {
+        "problem_id": 3,
+        "timestamp": "2025-10-09T16:21:24.956972",
+        "success": true,
+        "iterations": 5,
+        "time_taken": 679.1322529315948,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named any_account_below_zero that uses existing below_zero function to follow this instruction: # You are given a list of transactions where each transaction is a list of deposit and withdrawal operations on multiple bank accounts. Each sublist represents the operations for a single account, and the accounts are processed in the order they appear in the main list. Your task is to determine if any account falls below zero at any point during its operations. If any account falls below zero, the function should return True. Otherwise, it should return False.\nfrom typing import List\n\ndef below_zero(operations: List[int]) -> bool:\n",
+        "output": "[Output truncated - 4773 chars]"
+      },
+      "evaluation": {
+        "problem_id": 3,
+        "timestamp": "2025-10-09T16:32:44.123474",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_3",
+        "task_id": "HumanEval/3"
+      }
+    },
+    {
+      "problem_id": 4,
+      "base": {
+        "problem_id": 4,
+        "timestamp": "2025-10-09T16:32:44.510523",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 190.53094792366028,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named mean_absolute_deviation that from typing import List\n\n\ndef mean_absolute_deviation(numbers: List[float]) -> float:\n    \"\"\" For a given list of input numbers, calculate Mean Absolute Deviation\n    around the mean of this dataset.\n    Mean Absolute Deviation is the average absolute difference between each\n    element and a centerpoint (mean in this case):\n    MAD = average | x - x_mean |\n    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])\n    1.0\n    \"\"\"\n",
+        "output": "[Output truncated - 2378 chars]"
+      },
+      "composed": {
+        "problem_id": 4,
+        "timestamp": "2025-10-09T16:35:55.493344",
+        "success": true,
+        "iterations": 1,
+        "time_taken": 367.633358001709,
+        "error": null,
+        "generated_function": null,
+        "skipped": false,
+        "request": "Create a function named overall_mean_absolute_deviation that uses existing mean_absolute_deviation function to follow this instruction: # Given a list of lists of numbers, calculate the Mean Absolute Deviation (MAD) for each sublist and then find the overall Mean Absolute Deviation of these MADs. The overall MAD should be calculated around the mean of the MADs of the sublists.\ndef overall_mean_absolute_deviation(list_of_lists: List[List[float]]) -> float:\n",
+        "output": "[Output truncated - 3762 chars]"
+      },
+      "evaluation": {
+        "problem_id": 4,
+        "timestamp": "2025-10-09T16:42:03.151170",
+        "success": true,
+        "tests_passed": 1,
+        "tests_failed": 0,
+        "errors": [],
+        "details": [
+          "\u2713 All tests passed"
+        ],
+        "problem_name": "Problem_4",
+        "task_id": "HumanEval/4"
+      }
+    }
+  ]
+}

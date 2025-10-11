@@ -1,0 +1,17 @@
+{
+  "id": 1,
+  "task_id": "SelfEvolution/1",
+  "problem_name": "Salary Analyzer",
+  "prompt": "Create a function called salary_analyzer that calculates average salary from employee data. Returns: float representing the average salary value.",
+  "entry_point": "salary_analyzer",
+  "context_files": [
+    "employee_database.py",
+    "data_processor.py",
+    "ml_utils.py",
+    "web_crawler.py"
+  ],
+  "dataset": "self-evolution",
+  "domain": "hr-analytics",
+  "requires_context": true,
+  "test_code": "\nfrom test_context.salary_analyzer.employee_database import EmployeeDB\n\ndb = EmployeeDB()\nassert callable(salary_analyzer)\nresult = salary_analyzer()\nassert isinstance(result, (int, float))\nassert result > 0\nassert 30000 <= result <= 200000\nprint('Salary Analyzer tests passed')\n"
+}

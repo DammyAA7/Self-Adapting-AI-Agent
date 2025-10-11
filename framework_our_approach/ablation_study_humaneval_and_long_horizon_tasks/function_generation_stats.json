@@ -1,31 +1,31 @@
 [
   {
-    "session_id": "20251011_171923",
-    "start_time": "2025-10-11T17:19:23.349753",
+    "session_id": "20251011_201208",
+    "start_time": "2025-10-11T20:12:08.967623",
     "functions": [
       {
-        "function_requirement": "Function Name: parse_sensor_reading  \nDescription: Parses a sensor\u2010data string of the form `\"T:<temp>|H:<hum>|TS:<timestamp>\"`. Splits the string on `'|'`, then on `':'` to extract key/value pairs. Converts  \n- `T` to a float \u2192 `temperature`  \n- `H` to a float \u2192 `humidity`  \n- `TS` to an integer \u2192 `timestamp`  \nIf any conversion fails, its value is set to `None`.  \nReturns a dictionary with keys `\"temperature\"`, `\"humidity\"`, and `\"timestamp\"`.  \n\nParameters:  \n- reading_str (string): sensor data string, e.g. `\"T:25.5|H:60|TS:1234567890\"`  \n\nExample Usage:  \n```python\nresult = parse_sensor_reading(\"T:25.5|H:60|TS:1234567890\")\n# result -> {\"temperature\": 25.5, \"humidity\": 60.0, \"timestamp\": 1234567890}\n\nresult = parse_sensor_reading(\"T:bad|H:45|TS:xyz\")\n# result -> {\"temperature\": None, \"humidity\": 45.0, \"timestamp\": None}\n```",
-        "user_input": "Create a function called parse_sensor_reading that takes a string like 'T:25.5|H:60|TS:1234567890'. Split by '|' to get parts. For each part, split by ':' to get key and value. Return dict with 'temperature', 'humidity', 'timestamp' keys. If a value cannot be converted to float/int, set to None. Handle T as float, H as float, TS as int.",
-        "start_time": "2025-10-11T17:19:31.376066",
+        "function_requirement": "Function Name: book_recommender\nDescription: \n  Reads the books CSV file at the given path, filters all rows whose 'genre' column exactly matches the provided genre string, and returns the results in one of three formats depending on the environment variable API_VERSION (defaulting to 'v1'):\n    - v1: Return a list of book titles (strings).\n    - v2: Return a dict containing:\n        \u2022 titles: list of matching book titles\n        \u2022 count: total number of matches (int)\n        \u2022 avg_rating: average of the 'rating' column for matches (float)\n    - v3: Return a dict conforming to a simple JSON-LD BookCollection schema containing:\n        \u2022 @context: fixed string \"http://schema.org\"\n        \u2022 @type: fixed string \"BookCollection\"\n        \u2022 numberOfItems: total number of matches (int)\n\nParameters:\n  \u2022 genre (str): The genre to filter books by (must match the CSV 'genre' column exactly).\n  \u2022 file_path (str): Path to the books CSV file (e.g. \"/home/aifahim/.../books.csv\" in project).\n\nExample:\n  # Suppose API_VERSION is not set (defaults to 'v1'):\n  titles = book_recommender(\"Thriller\", \"/home/aifahim/.../books.csv\")\n  # titles might be [\"Book Title 2\", \"Book Title 18\", \"Book Title 20\", ...]\n\n  # If API_VERSION='v2':\n  info = book_recommender(\"Thriller\", \"/home/aifahim/.../books.csv\")\n  # info:\n  # {\n  #   \"titles\": [\"Book Title 2\", \"Book Title 18\", \"Book Title 20\", ...],\n  #   \"count\": 3,\n  #   \"avg_rating\": 4.0\n  # }\n\n  # If API_VERSION='v3':\n  summary = book_recommender(\"Thriller\", \"/home/aifahim/.../books.csv\")\n  # summary:\n  # {\n  #   \"@context\": \"http://schema.org\",\n  #   \"@type\": \"BookCollection\",\n  #   \"numberOfItems\": 3\n  # }\n",
+        "user_input": "Create a book_recommender function that filters books by genre from books.csv in PROJECT KNOWLEDGE. Parameters: genre (string) and file_path (path of file (string)). Use os.environ.get('API_VERSION', 'v1') to detect version. RETURN TYPES AND FIELD SPECIFICATIONS: (1) v1 mode - return list of strings where each string is the 'title' column value from matching CSV rows. (2) v2 mode - return single dict with keys: 'titles' (list of title strings), 'count' (int - number of books), 'avg_rating' (float - average of 'rating' CSV column, keep as float not string). (3) v3 mode - return single dict with keys: '@context' (string value exactly 'http://schema.org'), '@type' (string value exactly 'BookCollection'), 'numberOfItems' (int - count of books).",
+        "start_time": "2025-10-11T20:12:30.860365",
         "iterations": 2,
         "successful": true,
         "terminated_early": false,
         "termination_reason": null,
-        "final_function_name": "parse_sensor_reading",
+        "final_function_name": "book_recommender",
         "tdd_adjudication_attempts": [
           {
             "iteration": 1,
             "judgement": true,
             "requirement_suggestion": "",
             "reinforced_requirement": "",
-            "timestamp": "2025-10-11T17:20:46.943102"
+            "timestamp": "2025-10-11T20:14:08.635504"
           },
           {
             "iteration": 2,
             "judgement": true,
             "requirement_suggestion": "",
             "reinforced_requirement": "",
-            "timestamp": "2025-10-11T17:21:33.229281"
+            "timestamp": "2025-10-11T20:15:04.245393"
           }
         ],
         "adjudication_attempts": [
@@ -34,15 +34,15 @@
             "judgement": false,
             "code_requirement_suggestion": "",
             "unit_requirement_suggestion": "",
-            "timestamp": "2025-10-11T17:21:28.318481",
-            "unit_test_summary": "All tests passed"
+            "timestamp": "2025-10-11T20:14:55.454758",
+            "unit_test_summary": "Unit tests executed"
           },
           {
             "iteration": 2,
             "judgement": true,
             "code_requirement_suggestion": "",
             "unit_requirement_suggestion": "",
-            "timestamp": "2025-10-11T17:21:37.530641",
+            "timestamp": "2025-10-11T20:15:38.241115",
             "unit_test_summary": "All tests passed"
           }
         ],
@@ -52,121 +52,35 @@
             "iteration": 1,
             "old_requirement": "",
             "new_requirement": "",
-            "timestamp": "2025-10-11T17:21:28.318648"
+            "timestamp": "2025-10-11T20:14:55.454924"
           },
           {
             "type": "unit_test",
             "iteration": 1,
             "old_requirement": "",
             "new_requirement": "",
-            "timestamp": "2025-10-11T17:21:28.318741"
+            "timestamp": "2025-10-11T20:14:55.455021"
           }
         ],
-        "end_time": "2025-10-11T17:21:37.587219",
-        "total_duration_seconds": 126.211153
+        "end_time": "2025-10-11T20:15:38.276400",
+        "total_duration_seconds": 187.416035
       }
     ],
     "existing_function_calls": [
       {
-        "function_name": "parse_sensor_reading",
+        "function_name": "book_recommender",
         "function_args": {
-          "reading": "T:25.5|H:60|TS:1234567890"
+          "genre": "Fantasy",
+          "file_path": "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/test_context_extended/books.csv"
         },
-        "execution_time": 0.0002255119998153532,
-        "memory_peak": 8081,
-        "result": "{'temperature': 25.5, 'humidity': 60.0, 'timestamp': 1234567890}",
-        "timestamp": "2025-10-11T17:21:51.459873",
+        "execution_time": 0.0006125590007286519,
+        "memory_peak": 42725,
+        "result": "['Book Title 9', 'Book Title 14', 'Book Title 24', 'Book Title 45', 'Book Title 56', 'Book Title 60', 'Book Title 77', 'Book Title 83', 'Book Title 84', 'Book Title 89']",
+        "timestamp": "2025-10-11T20:16:21.865448",
         "successful": true
       }
     ],
-    "end_time": "2025-10-11T17:21:52.594446",
-    "session_duration_seconds": 149.244693
-  },
-  {
-    "session_id": "20251011_172218",
-    "start_time": "2025-10-11T17:22:18.678985",
-    "functions": [
-      {
-        "function_requirement": "Function Name: aggregate_temperature  \nDescription: Processes a list of raw sensor data strings, uses an existing `parse_sensor_reading` function to parse each string into a reading object, collects all non-null temperature values, computes their average, rounds the result to two decimal places, and returns it. If no valid temperatures are found, returns 0.0.  \nParameters:  \n- raw_readings (list of strings): A list where each element is a raw sensor data string to be parsed.  \nExample Usage:  \n```  \n# Suppose parse_sensor_reading(\"sensorA,23.45,OK\") returns { \"temperature\": 23.45, ... }  \nresults = aggregate_temperature([  \n    \"sensorA,23.45,OK\",  \n    \"sensorB, null, ERROR\",  \n    \"sensorC,19.10,OK\"  \n])  \n# results would be (23.45 + 19.10) / 2 = 21.28  \n```",
-        "user_input": "Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.",
-        "start_time": "2025-10-11T17:23:12.686632",
-        "iterations": 2,
-        "successful": true,
-        "terminated_early": false,
-        "termination_reason": null,
-        "final_function_name": "parse_sensor_reading",
-        "tdd_adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": true,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-10-11T17:25:53.538281"
-          },
-          {
-            "iteration": 2,
-            "judgement": true,
-            "requirement_suggestion": "",
-            "reinforced_requirement": "",
-            "timestamp": "2025-10-11T17:26:44.060540"
-          }
-        ],
-        "adjudication_attempts": [
-          {
-            "iteration": 1,
-            "judgement": false,
-            "code_requirement_suggestion": "",
-            "unit_requirement_suggestion": "",
-            "timestamp": "2025-10-11T17:26:35.113412",
-            "unit_test_summary": "All tests passed"
-          },
-          {
-            "iteration": 2,
-            "judgement": true,
-            "code_requirement_suggestion": "",
-            "unit_requirement_suggestion": "",
-            "timestamp": "2025-10-11T17:26:48.015852",
-            "unit_test_summary": "All tests passed"
-          }
-        ],
-        "reinforcement_history": [
-          {
-            "type": "code",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "",
-            "timestamp": "2025-10-11T17:26:35.113590"
-          },
-          {
-            "type": "unit_test",
-            "iteration": 1,
-            "old_requirement": "",
-            "new_requirement": "",
-            "timestamp": "2025-10-11T17:26:35.113695"
-          }
-        ],
-        "end_time": "2025-10-11T17:26:48.051481",
-        "total_duration_seconds": 215.364849
-      }
-    ],
-    "existing_function_calls": [
-      {
-        "function_name": "aggregate_temperature",
-        "function_args": {
-          "readings": [
-            "T:23.5|H:45.2|TS:1638316800",
-            "T:24.1|H:40.0|TS:1638316801",
-            "H:50.0|TS:1638316802"
-          ]
-        },
-        "execution_time": 0.00025875000028463546,
-        "memory_peak": 15562,
-        "result": "23.8",
-        "timestamp": "2025-10-11T17:27:06.450927",
-        "successful": true
-      }
-    ],
-    "end_time": "2025-10-11T17:27:07.483180",
-    "session_duration_seconds": 288.804195
+    "end_time": "2025-10-11T20:16:25.456433",
+    "session_duration_seconds": 256.48881
   }
 ]

@@ -236,7 +236,57 @@ FILE PATHS AVAILABLE IN PROJECT:
             elif file_type == 'text':
                 context += f"TEXT/CONFIG FILE: {full_path}\n"
         
-        context += "\nCOMPLETE FILE CONTENTS BELOW:\n==============================\n"""
+
+        # Extract analyzed directory name for import instructions
+        analyzed_dir_name = os.path.basename(self.project_path)
+
+        # Add import instructions
+        context += f"""
+CRITICAL IMPORT INSTRUCTIONS FOR TDD TESTS:
+==========================================
+When generating test cases that need classes/data from this analyzed project:
+
+1. ALWAYS import classes and helper functions from the analyzed codebase using the FULL module path
+2. NEVER import the function being tested from the codebase (it doesn't exist there yet!)
+3. Import the function being tested from Unit_Test.functions
+
+CORRECT IMPORT PATTERN:
+```python
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import pytest
+from Unit_Test.functions import *  # The function being tested comes from here
+"""
+
+        # Add specific import examples based on actual Python files found
+        python_files = [f for f, d in self.all_files_content.items() if d.get('type') == 'python']
+        if python_files:
+            context += "\n# Import classes/data from analyzed codebase:\n"
+            for py_file in python_files[:3]:  # Show first 3 as examples
+                module_name = os.path.splitext(os.path.basename(py_file))[0]
+                file_data = self.all_files_content[py_file]
+                if file_data.get('classes'):
+                    class_names = ', '.join([c['name'] for c in file_data['classes'][:5]])
+                    context += f"from {analyzed_dir_name}.{module_name} import {class_names}\n"
+                if file_data.get('functions'):
+                    # Only show helper functions (like create_sample_xxx)
+                    helper_funcs = [f['name'] for f in file_data['functions'] if 'create' in f['name'] or 'sample' in f['name']]
+                    if helper_funcs:
+                        context += f"from {analyzed_dir_name}.{module_name} import {', '.join(helper_funcs[:3])}\n"
+
+        context += """```
+
+IMPORTANT: Replace the class/function names above with the ACTUAL names you need from the files shown below.
+Do NOT hardcode 'XYZ' or use placeholder names - use the real class names from the analyzed files!
+
+WRONG: from test_context_extended.XYZ import XYZ  # ❌ Don't use placeholders!
+RIGHT: from test_context_extended.enrollment_system import University, Student  # ✅ Use actual names!
+
+COMPLETE FILE CONTENTS BELOW:
+==============================
+"""
         
         # Add all Python files with FULL content
         for filepath, file_data in self.all_files_content.items():
@@ -289,5 +339,5 @@ FILE PATHS AVAILABLE IN PROJECT:
             context += f"\nSKIPPED FILES (too large):\n"
             for filepath in skipped:
                 context += f"- {filepath}: {self.all_files_content[filepath].get('reason', 'Unknown reason')}\n"
-        
+
         return context

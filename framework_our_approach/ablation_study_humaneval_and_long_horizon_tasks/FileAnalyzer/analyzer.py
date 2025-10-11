@@ -277,6 +277,12 @@ from Unit_Test.functions import *  # The function being tested comes from here
                         context += f"from {analyzed_dir_name}.{module_name} import {', '.join(helper_funcs[:3])}\n"
 
         context += """```
+        
+IMPORTANT: If any file path is needed, Always use file paths hardcoded in code. Hardcoded paths should always be used no matter what.
+
+Example: (CRITICAL: This example should be followed to add file paths in code):
+WRONG: file_path = Path(__file__).parent / "XYZ.csv"
+RIGHT: file_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/test_context_extended/XYZ.csv"
 
 IMPORTANT: Replace the class/function names above with the ACTUAL names you need from the files shown below.
 Do NOT hardcode 'XYZ' or use placeholder names - use the real class names from the analyzed files!

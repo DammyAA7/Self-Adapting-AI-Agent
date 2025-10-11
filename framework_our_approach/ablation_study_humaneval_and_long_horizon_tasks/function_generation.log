@@ -1,151 +1,69 @@
-2025-10-11 16:23:50,371 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:23:50,373 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-10-11 16:23:50,373 - INFO - Response Content: Here’s a standalone utility you can add (for example in a new file `patient_risk.py`) that uses the existing `Hospital`, `Patient` and `MedicalRecord` classes:
-
+2025-10-11 16:51:51,363 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 16:51:51,365 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 16:51:51,365 - INFO - Response Content: Function Name: calculate_simple_gpa  
+Description: Calculate a simple GPA for a given student in a University. The function retrieves all enrollments for the student, looks up each course to get its c...
+2025-10-11 16:51:51,365 - INFO - Initiating function generation process...
+2025-10-11 16:51:51,368 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-11 16:51:51,368 - INFO - User Input: Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0).
+2025-10-11 16:51:51,368 - INFO - Function Requirement: Function Name: calculate_simple_gpa  
+Description: Calculate a simple GPA for a given student in a University. The function retrieves all enrollments for the student, looks up each course to get its credit value, multiplies the credit by the grade‐point value, and then returns the total grade points divided by the total credits (0.0–4.0 scale).  
+Parameters:  
+- university: University  
+  An instance of the University class (from test_context_extended.enrollment_system).  
+- student_id: str  
+  The ID of the student whose GPA is to be calculated.  
+Example:  
 ```python
-from test_context_extended.pa...
-2025-10-11 16:23:50,373 - INFO - Initiating function generation process...
-2025-10-11 16:23:50,376 - INFO - === STARTING FUNCTION GENERATION ===
-2025-10-11 16:23:50,376 - INFO - User Input: Create a function called patient_risk_score that takes a Hospital object and patient_id. Calculate risk score using formula: (patient.age / 100 * 30) + (patient.get_total_conditions() * 5 * 25/100) + (patient.get_average_severity() * 10 * 25/100) + (20 if recent records have abnormal vitals else 0). Use hospital.get_patient(patient_id) and hospital.get_recent_records(patient_id, 90). Returns: float between 0.0 and 100.0.
-2025-10-11 16:23:50,376 - INFO - Function Requirement: Here’s a standalone utility you can add (for example in a new file `patient_risk.py`) that uses the existing `Hospital`, `Patient` and `MedicalRecord` classes:
+from test_context_extended.enrollment_system import create_sample_university
 
-```python
-from test_context_extended.patient_records import Hospital, MedicalRecord
-
-def patient_risk_score(hospital: Hospital, patient_id: str) -> float:
-    """
-    Calculate a risk score for a given patient in a hospital.
-    
-    Formula:
-      - Age component: (patient.age / 100) * 30
-      - Conditions component: patient.get_total_conditions() * 5 * 25/100
-      - Severity component: patient.get_average_severity() * 10 * 25/100
-      - Abnormal vitals component: +20 if any recent record has abnormal vitals
-    
-    Recent records are those within the last 90 days.
-    The final score is clamped to [0.0, 100.0].
-    
-    Parameters:
-    - hospital: Hospital instance (from test_context_extended.patient_records)
-    - patient_id: ID of the patient (string)
-    
-    Returns:
-    - A float risk score between 0.0 and 100.0
-    """
-    # Retrieve patient
-    patient = hospital.get_patient(patient_id)
-    if patient is None:
-        raise ValueError(f"No patient found with ID '{patient_id}'")
-    
-    # Age component
-    age_score = (patient.age / 100.0) * 30.0
-    
-    # Conditions component
-    total_conditions = patient.get_total_conditions()
-    conditions_score = total_conditions * 5.0 * 0.25  # 25%
-    
-    # Severity component
-    avg_severity = patient.get_average_severity()
-    severity_score = avg_severity * 10.0 * 0.25        # 25%
-    
-    # Abnormal vitals component
-    recent_records = hospital.get_recent_records(patient_id, days=90)
-    abnormal_flag = any(r.has_abnormal_vitals() for r in recent_records)
-    vitals_score = 20.0 if abnormal_flag else 0.0
-    
-    # Sum and clamp
-    raw_score = age_score + conditions_score + severity_score + vitals_score
-    risk = max(0.0, min(raw_score, 100.0))
-    
-    return risk
-
-# Example usage:
-# from test_context_extended.patient_records import create_sample_hospital
-# hosp = create_sample_hospital()
-# score = patient_risk_score(hosp, "P001")
-# print(f"P001 risk score: {score:.2f}")
+# create a sample university and compute GPA for student S001
+uni = create_sample_university()
+gpa = calculate_simple_gpa(uni, "S001")
+print(f"S001 simple GPA: {gpa:.2f}")
 ```
-2025-10-11 16:24:29,832 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:25:35,227 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:25:58,464 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:26:10,697 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:26:14,958 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:26:14,959 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
-2025-10-11 16:26:14,959 - INFO - TDD Adjudication Passed: True
-2025-10-11 16:26:38,634 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:27:21,518 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:27:21,519 - INFO - --- ITERATION 1 ---
-2025-10-11 16:27:21,519 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
-2025-10-11 16:27:21,519 - INFO - Adjudication Passed: False
-2025-10-11 16:27:21,519 - INFO - Code Requirement Suggestion: 
-2025-10-11 16:27:21,519 - INFO - Unit Requirement Suggestion: 
-2025-10-11 16:27:21,519 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
-2025-10-11 16:27:21,519 - INFO - Iteration: 1
-2025-10-11 16:27:21,519 - INFO - Previous Requirement: 
-2025-10-11 16:27:21,519 - INFO - New Requirement: 
-2025-10-11 16:27:21,519 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
-2025-10-11 16:27:21,519 - INFO - Iteration: 1
-2025-10-11 16:27:21,519 - INFO - Previous Requirement: 
-2025-10-11 16:27:21,519 - INFO - New Requirement: 
-2025-10-11 16:27:39,886 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:27:39,887 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
-2025-10-11 16:27:39,887 - INFO - TDD Adjudication Passed: True
-2025-10-11 16:28:02,581 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:28:02,581 - INFO - --- ITERATION 2 ---
-2025-10-11 16:28:02,582 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
-2025-10-11 16:28:02,582 - INFO - Adjudication Passed: False
-2025-10-11 16:28:02,582 - INFO - Code Requirement Suggestion: Function should ignore abnormal records older than the specified time threshold when calculating the patient's risk score
-2025-10-11 16:28:02,582 - INFO - Unit Requirement Suggestion: 
-2025-10-11 16:28:02,582 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
-2025-10-11 16:28:02,582 - INFO - Iteration: 2
-2025-10-11 16:28:02,582 - INFO - Previous Requirement: 
-2025-10-11 16:28:02,582 - INFO - New Requirement: Function should ignore abnormal records older than the specified time threshold when calculating the patient's risk score
-2025-10-11 16:28:02,582 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
-2025-10-11 16:28:02,582 - INFO - Iteration: 2
-2025-10-11 16:28:02,582 - INFO - Previous Requirement: 
-2025-10-11 16:28:02,582 - INFO - New Requirement: 
-2025-10-11 16:28:35,042 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:29:46,107 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:30:04,470 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:30:19,490 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:30:23,177 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:30:23,177 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
-2025-10-11 16:30:23,223 - INFO - TDD Adjudication Passed: True
-2025-10-11 16:30:27,222 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:30:27,222 - INFO - --- ITERATION 3 ---
-2025-10-11 16:30:27,222 - INFO - Unit Test Result Summary: All tests passed
-2025-10-11 16:30:27,222 - INFO - Adjudication Passed: True
-2025-10-11 16:30:27,318 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
-2025-10-11 16:30:27,318 - INFO - Function Name: patient_risk_score
-2025-10-11 16:30:27,318 - INFO - Total Iterations: 3
-2025-10-11 16:30:27,318 - INFO - Total Duration: 396.94 seconds
-2025-10-11 16:30:27,318 - INFO - TDD Adjudication Attempts: 3
-2025-10-11 16:30:27,318 - INFO - Final Adjudication Attempts: 3
-2025-10-11 16:30:27,318 - INFO - Requirement Reinforcements: 4
-2025-10-11 16:30:56,477 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:30:56,478 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-10-11 16:30:56,478 - INFO - Response Content: Here’s a standalone Python function you can drop into your codebase (for example, in `patient_records.py` or a new utilities module). It takes a `Hospital` instance, a `patient_id`, and an optional `d...
-2025-10-11 16:30:56,478 - INFO - Initiating function generation process...
-2025-10-11 16:31:05,774 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:31:05,786 - INFO - === EXISTING FUNCTION CALLED ===
-2025-10-11 16:31:05,786 - INFO - Function: patient_risk_score
-2025-10-11 16:31:05,786 - INFO - Arguments: {'patient_id': 1}
-2025-10-11 16:31:05,786 - INFO - Execution Time: 0.010404661999928067 seconds
-2025-10-11 16:31:05,786 - INFO - Memory Peak: 18547 bytes
-2025-10-11 16:31:05,786 - INFO - Success: False
-2025-10-11 16:31:08,437 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-11 16:31:08,448 - INFO - === SESSION SUMMARY ===
-2025-10-11 16:31:08,448 - INFO - Session Duration: 467.74 seconds
-2025-10-11 16:31:08,448 - INFO - Functions Attempted: 1
-2025-10-11 16:31:08,448 - INFO - Successful Functions: 1
-2025-10-11 16:31:08,448 - INFO - Terminated Early: 0
-2025-10-11 16:31:08,448 - INFO - Total Iterations: 3
-2025-10-11 16:31:08,448 - INFO - Average Iterations per Function: 3.00
-2025-10-11 16:31:08,448 - INFO - Existing Function Calls: 1 (0 successful)
-2025-10-11 16:31:08,448 - INFO - TDD Adjudication Attempts: 3
-2025-10-11 16:31:08,448 - INFO - Final Adjudication Attempts: 3
-2025-10-11 16:31:08,448 - INFO - Requirement Reinforcements: 4
-2025-10-11 16:42:07,699 - INFO - Running test for: Patient Risk Analyzer (ID 2)
-2025-10-11 16:42:07,700 - INFO - Successfully imported functions from functions.py
-2025-10-11 16:42:07,749 - INFO - All assertions passed for Patient Risk Analyzer
-2025-10-11 16:42:07,750 - INFO - ===== TEST PASSED ===== (Patient Risk Analyzer)
+2025-10-11 16:52:33,243 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 16:53:32,526 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 16:53:42,216 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 16:53:58,644 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 16:54:05,096 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 16:54:05,097 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-10-11 16:54:05,097 - INFO - TDD Adjudication Passed: True
+2025-10-11 16:54:24,199 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 16:54:29,813 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 16:54:29,814 - INFO - --- ITERATION 1 ---
+2025-10-11 16:54:29,814 - INFO - Unit Test Result Summary: All tests passed
+2025-10-11 16:54:29,814 - INFO - Adjudication Passed: True
+2025-10-11 16:54:29,911 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-11 16:54:29,912 - INFO - Function Name: calculate_simple_gpa
+2025-10-11 16:54:29,912 - INFO - Total Iterations: 1
+2025-10-11 16:54:29,912 - INFO - Total Duration: 158.54 seconds
+2025-10-11 16:54:29,912 - INFO - TDD Adjudication Attempts: 1
+2025-10-11 16:54:29,912 - INFO - Final Adjudication Attempts: 1
+2025-10-11 16:54:29,912 - INFO - Requirement Reinforcements: 0
+2025-10-11 16:54:59,776 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 16:54:59,777 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 16:54:59,777 - INFO - Response Content: Here’s a standalone Python function you can add (for example, to a new utils module or at the bottom of `enrollment_system.py`). It uses the existing `University`, `Enrollment` and `Course` classes fr...
+2025-10-11 16:54:59,777 - INFO - Initiating function generation process...
+2025-10-11 16:55:10,036 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 16:55:10,047 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-11 16:55:10,048 - INFO - Function: calculate_simple_gpa
+2025-10-11 16:55:10,048 - INFO - Arguments: {'student_id': 'S001'}
+2025-10-11 16:55:10,048 - INFO - Execution Time: 0.010371860000304878 seconds
+2025-10-11 16:55:10,048 - INFO - Memory Peak: 18614 bytes
+2025-10-11 16:55:10,048 - INFO - Success: False
+2025-10-11 16:55:12,836 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 16:55:12,847 - INFO - === SESSION SUMMARY ===
+2025-10-11 16:55:12,847 - INFO - Session Duration: 217.42 seconds
+2025-10-11 16:55:12,847 - INFO - Functions Attempted: 1
+2025-10-11 16:55:12,847 - INFO - Successful Functions: 1
+2025-10-11 16:55:12,847 - INFO - Terminated Early: 0
+2025-10-11 16:55:12,847 - INFO - Total Iterations: 1
+2025-10-11 16:55:12,847 - INFO - Average Iterations per Function: 1.00
+2025-10-11 16:55:12,847 - INFO - Existing Function Calls: 1 (0 successful)
+2025-10-11 16:55:12,847 - INFO - TDD Adjudication Attempts: 1
+2025-10-11 16:55:12,847 - INFO - Final Adjudication Attempts: 1
+2025-10-11 16:55:12,847 - INFO - Requirement Reinforcements: 0
+2025-10-11 16:56:50,522 - INFO - Running test for: Student GPA Calculator (ID 3)
+2025-10-11 16:56:50,571 - INFO - Successfully imported functions from functions.py
+2025-10-11 16:56:50,571 - INFO - All assertions passed for Student GPA Calculator
+2025-10-11 16:56:50,571 - INFO - ===== TEST PASSED ===== (Student GPA Calculator)

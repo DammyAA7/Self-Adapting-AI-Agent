@@ -1,0 +1,42 @@
+{
+  "session_data": {
+    "created_at": "2025-10-09T12:38:41.500700",
+    "functions": {
+      "separate_paren_groups": {
+        "code": "\n\ndef separate_paren_groups(input_str):\n    '''Separates the input string into balanced parenthesis groups.\n\n    Args:\n        input_str (str): String containing parentheses and other characters.\n    Returns:\n        list: A list of balanced parenthesis groups as strings.\n    '''\n    groups = []\n    current = \"\"\n    open_count = 0\n\n    for char in input_str:\n        if char == '(':\n            if open_count == 0:\n                current = \"\"\n            open_count += 1\n            current += char\n        elif char == ')':\n            if open_count > 0:\n                open_count -= 1\n                current += char\n                if open_count == 0:\n                    groups.append(current)\n        # ignore all other characters\n\n    return groups\n\n",
+        "info": {
+          "requirement": "Function Name: separate_paren_groups  \nDescription: Splits a string containing multiple groups of nested parentheses into separate balanced\u2010parentheses strings, ignoring any spaces. Each returned group is properly balanced and not nested within another.  \nParameters:  \n- paren_string (str): The input string consisting of one or more parenthesis groups, possibly with spaces.  \nReturns:  \n- List[str]: A list of balanced parenthesis substrings.  \nExample:  \n>>> separate_paren_groups('( ) (( )) (( )( ))')  \n['()', '(())', '(()())']  \n\nImplementation sketch:  \n```python\nfrom typing import List\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    result = []\n    depth = 0\n    current = []\n\n    for ch in paren_string:\n        if ch == '(':\n            depth += 1\n            current.append(ch)\n        elif ch == ')':\n            current.append(ch)\n            depth -= 1\n            if depth == 0:\n                result.append(''.join(current))\n                current = []\n        # ignore all other characters (e.g., spaces)\n\n    return result\n```",
+          "iterations": 1
+        },
+        "added_at": "2025-10-09T12:40:10.108120",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-10-09T12:40:10.108045",
+        "code": "\n\ndef separate_paren_groups(input_str):\n    '''Separates the input string into balanced parenthesis groups.\n\n    Args:\n        input_str (str): String containing parentheses and other characters.\n    Returns:\n        list: A list of balanced parenthesis groups as strings.\n    '''\n    groups = []\n    current = \"\"\n    open_count = 0\n\n    for char in input_str:\n        if char == '(':\n            if open_count == 0:\n                current = \"\"\n            open_count += 1\n            current += char\n        elif char == ')':\n            if open_count > 0:\n                open_count -= 1\n                current += char\n                if open_count == 0:\n                    groups.append(current)\n        # ignore all other characters\n\n    return groups\n\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 75737,
+      "defined_variables": [
+        "separate_paren_groups"
+      ],
+      "execution_count": 2
+    }
+  },
+  "saved_at": "2025-10-09T12:40:21.171747"
+}

@@ -1,0 +1,42 @@
+{
+  "session_data": {
+    "created_at": "2025-10-11T10:48:48.614649",
+    "functions": {
+      "matrix_operations": {
+        "code": "\n\ncomputation_cache = {}\n\ndef matrix_operations(a, b):\n    '''Multiplies two matrices a and b and caches the result.\n    Returns the product matrix as a list of lists, or None for invalid inputs.'''\n    if not isinstance(a, list) or not isinstance(b, list):\n        return None\n    if not a or not b:\n        return None\n    num_cols_a = None\n    for row in a:\n        if not isinstance(row, list) or not row:\n            return None\n        if num_cols_a is None:\n            num_cols_a = len(row)\n        elif len(row) != num_cols_a:\n            return None\n    num_cols_b = None\n    for row in b:\n        if not isinstance(row, list) or not row:\n            return None\n        if num_cols_b is None:\n            num_cols_b = len(row)\n        elif len(row) != num_cols_b:\n            return None\n    if num_cols_a != len(b):\n        return None\n    key = (str(a), str(b))\n    if key in computation_cache:\n        return computation_cache[key]\n    result = []\n    for i in range(len(a)):\n        row_result = []\n        for j in range(num_cols_b):\n            sum_val = 0\n            for k in range(num_cols_a):\n                sum_val += a[i][k] * b[k][j]\n            row_result.append(sum_val)\n        result.append(row_result)\n    computation_cache[key] = result\n    return result\n",
+        "info": {
+          "requirement": "Function Name: matrix_operations  \nDescription: Performs basic matrix multiplication of two 2D arrays (matrices) and stores each result in a global cache called `computation_cache`. If the same pair of matrices is multiplied again, the cached result is returned instead of recomputing.  \nParameters:  \n\u2022 matrix_a (list of lists of numbers): The first matrix, dimensions m\u00d7n.  \n\u2022 matrix_b (list of lists of numbers): The second matrix, dimensions n\u00d7p.  \n\nExample:  \n```python\n# Initial global cache\ncomputation_cache = {}\n\n# Call the function\nresult = matrix_operations(\n    [[1, 2],\n     [3, 4]],\n    [[5, 6],\n     [7, 8]]\n)\n\nprint(result)            # Outputs: [[19, 22], [43, 50]]\nprint(computation_cache) # {\n                        #   (\"[[1, 2], [3, 4]]\", \"[[5, 6], [7, 8]]\"):\n                        #       [[19, 22], [43, 50]]\n                        # }\n```",
+          "iterations": 2
+        },
+        "added_at": "2025-10-11T10:50:10.015517",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-10-11T10:50:10.015455",
+        "code": "\n\ncomputation_cache = {}\n\ndef matrix_operations(a, b):\n    '''Multiplies two matrices a and b and caches the result.\n    Returns the product matrix as a list of lists, or None for invalid inputs.'''\n    if not isinstance(a, list) or not isinstance(b, list):\n        return None\n    if not a or not b:\n        return None\n    num_cols_a = None\n    for row in a:\n        if not isinstance(row, list) or not row:\n            return None\n        if num_cols_a is None:\n            num_cols_a = len(row)\n        elif len(row) != num_cols_a:\n            return None\n    num_cols_b = None\n    for row in b:\n        if not isinstance(row, list) or not row:\n            return None\n        if num_cols_b is None:\n            num_cols_b = len(row)\n        elif len(row) != num_cols_b:\n            return None\n    if num_cols_a != len(b):\n        return None\n    key = (str(a), str(b))\n    if key in computation_cache:\n        return computation_cache[key]\n    result = []\n    for i in range(len(a)):\n        row_result = []\n        for j in range(num_cols_b):\n            sum_val = 0\n            for k in range(num_cols_a):\n                sum_val += a[i][k] * b[k][j]\n            row_result.append(sum_val)\n        result.append(row_result)\n    computation_cache[key] = result\n    return result\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 26118,
+      "defined_variables": [
+        "matrix_operations"
+      ],
+      "execution_count": 2
+    }
+  },
+  "saved_at": "2025-10-11T10:50:23.652240"
+}

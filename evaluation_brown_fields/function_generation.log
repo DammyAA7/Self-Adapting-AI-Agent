@@ -1,0 +1,190 @@
+2025-10-11 20:42:26,746 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 20:42:26,778 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 20:42:26,778 - INFO - Response Content: Here’s a standalone `performance_report` function. It assumes that your working directory is the project root and that the CSV lives at  
+`test_context_extended/performance_reviews.csv`. It uses the P...
+2025-10-11 20:42:26,778 - INFO - Initiating function generation process...
+2025-10-11 20:42:26,780 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-11 20:42:26,780 - INFO - User Input: Create a performance_report function that reads performance_reviews.csv from PROJECT KNOWLEDGE. Parameters: employee_id (optional string), report_type (string, default 'summary'). RETURN TYPES AND FIELD SPECIFICATIONS: (1) summary mode - find CSV row where employee_id column matches parameter, return single dict with keys 'employee_id' (string value), 'overall_rating' (float from CSV column - keep as float not string), 'goals_status' (string from CSV column). (2) detailed mode - find matching row, return single dict with ALL CSV column names as keys preserving exact names and original types. (3) department mode - when employee_id is None, group rows by 'department' CSV column, return dict where keys are department names and values are dicts with 'avg_rating' (float - average of overall_rating column) and 'count' (int - number of employees).
+2025-10-11 20:42:26,780 - INFO - Function Requirement: Here’s a standalone `performance_report` function. It assumes that your working directory is the project root and that the CSV lives at  
+`test_context_extended/performance_reviews.csv`. It uses the Python standard library only (no extra dependencies).
+
+```python
+import csv
+from pathlib import Path
+from typing import Optional, Dict, Any, Union
+
+
+def performance_report(
+    employee_id: Optional[str] = None,
+    report_type: str = "summary"
+) -> Union[Dict[str, Any], Dict[str, Dict[str, Any]]]:
+    """
+    Generate different types of reports from performance_reviews.csv.
+
+    Parameters:
+    - employee_id: (optional) the ID of the employee to report on
+    - report_type: one of "summary", "detailed", or "department"
+        * "summary": Return {employee_id, overall_rating (float), goals_status}
+        * "detailed": Return all fields for that employee, with numeric columns as numbers
+        * "department": employee_id is ignored; group by department and return
+            { department_name: { "avg_rating": float, "count": int }, ... }
+
+    Returns:
+    - A dict as per the report_type specification.
+    """
+    # Locate the CSV file in the project
+    csv_path = Path("test_context_extended") / "performance_reviews.csv"
+    if not csv_path.exists():
+        raise FileNotFoundError(f"Could not find {csv_path}")
+
+    # Read all rows
+    with csv_path.open(newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        rows = list(reader)
+
+    # Department report (grouping)
+    if report_type == "department":
+        dept_stats: Dict[str, Dict[str, Any]] = {}
+        for row in rows:
+            dept = row["department"]
+            rating = float(row["overall_rating"])
+            entry = dept_stats.setdefault(dept, {"avg_rating": 0.0, "count": 0})
+            entry["avg_rating"] += rating
+            entry["count"] += 1
+        # finalize averages
+        for dept, entry in dept_stats.items():
+            entry["avg_rating"] = entry["avg_rating"] / entry["count"]
+        return dept_stats
+
+    # For summary or detailed, employee_id is required
+    if not employee_id:
+        raise ValueError("employee_id must be provided for summary or detailed reports")
+
+    # Find the matching row
+    match = None
+    for row in rows:
+        if row["employee_id"] == employee_id:
+            match = row
+            break
+    if match is None:
+        raise ValueError(f"No record found for employee_id={employee_id}")
+
+    # Summary mode
+    if report_type == "summary":
+        return {
+            "employee_id": match["employee_id"],
+            "overall_rating": float(match["overall_rating"]),
+            "goals_status": match["goals_status"],
+        }
+
+    # Detailed mode: convert known numeric columns
+    if report_type == "detailed":
+        numeric_int_fields = {
+            "technical_score",
+            "communication_score",
+            "teamwork_score",
+            "leadership_score",
+        }
+        detailed: Dict[str, Any] = {}
+        for key, val in match.items():
+            if key in numeric_int_fields:
+                detailed[key] = int(val)
+            elif key == "overall_rating":
+                detailed[key] = float(val)
+            else:
+                # leave everything else as strings
+                detailed[key] = val
+        return detailed
+
+    # Unknown report_type
+    raise ValueError(f"Unknown report_type '{report_type}' (use summary, detailed, or department)")
+```
+
+Usage examples:
+
+```python
+# Summary for E003
+print(performance_report("E003", report_type="summary"))
+# -> {'employee_id': 'E003', 'overall_rating': 3.8, 'goals_status': 'Not Met'}
+
+# Detailed for E003
+print(performance_report("E003", report_type="detailed"))
+# -> {
+#      'employee_id': 'E003',
+#      'employee_name': 'Employee 3',
+#      'department': 'Operations',
+#      'position': 'Manager',
+#      'review_period': 'Q1 2024',
+#      'technical_score': 5,
+#      'communication_score': 4,
+#      'teamwork_score': 2,
+#      'leadership_score': 4,
+#      'overall_rating': 3.8,
+#      'goals_status': 'Not Met',
+#      'feedback': 'Performance feedback for Employee 3'
+#    }
+
+# Department summary
+print(performance_report(report_type="department"))
+# -> {
+#      'Operations': {'avg_rating': 3.6, 'count': 6},
+#      'Customer Support': {'avg_rating': 3.19, 'count': 7},
+#      ...
+#    }
+```
+
+This function matches exactly the requirements:
+
+- Reads from `test_context_extended/performance_reviews.csv`
+- Summary mode returns just `employee_id`, `overall_rating` (float), and `goals_status`
+- Detailed mode returns all columns, converting numeric columns to `int` or `float`
+- Department mode groups by department, computing average overall rating and counts.
+2025-10-11 20:43:09,571 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 20:44:39,877 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 20:44:51,121 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 20:45:03,813 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 20:45:08,325 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 20:45:08,325 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-10-11 20:45:08,325 - INFO - TDD Adjudication Passed: True
+2025-10-11 20:45:28,947 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 20:45:32,928 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 20:45:32,929 - INFO - --- ITERATION 1 ---
+2025-10-11 20:45:32,929 - INFO - Unit Test Result Summary: All tests passed
+2025-10-11 20:45:32,929 - INFO - Adjudication Passed: True
+2025-10-11 20:45:32,969 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-11 20:45:32,969 - INFO - Function Name: performance_report
+2025-10-11 20:45:32,969 - INFO - Total Iterations: 1
+2025-10-11 20:45:32,969 - INFO - Total Duration: 186.19 seconds
+2025-10-11 20:45:32,969 - INFO - TDD Adjudication Attempts: 1
+2025-10-11 20:45:32,969 - INFO - Final Adjudication Attempts: 1
+2025-10-11 20:45:32,969 - INFO - Requirement Reinforcements: 0
+2025-10-11 20:45:54,407 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 20:45:54,408 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 20:45:54,408 - INFO - Response Content: Function Name: performance_report  
+Description:  
+  Reads the project’s performance_reviews.csv and generates one of three types of reports:  
+  1. “summary” (default): for a given employee_id, retur...
+2025-10-11 20:45:54,408 - INFO - Initiating function generation process...
+2025-10-11 20:46:01,779 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 20:46:01,784 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-11 20:46:01,784 - INFO - Function: performance_report
+2025-10-11 20:46:01,784 - INFO - Arguments: {'employee_id': 'E001', 'report_type': 'summary'}
+2025-10-11 20:46:01,784 - INFO - Execution Time: 0.0009691539999039378 seconds
+2025-10-11 20:46:01,785 - INFO - Memory Peak: 80734 bytes
+2025-10-11 20:46:01,785 - INFO - Success: True
+2025-10-11 20:46:05,261 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-11 20:46:05,274 - INFO - === SESSION SUMMARY ===
+2025-10-11 20:46:05,275 - INFO - Session Duration: 282.09 seconds
+2025-10-11 20:46:05,275 - INFO - Functions Attempted: 1
+2025-10-11 20:46:05,275 - INFO - Successful Functions: 1
+2025-10-11 20:46:05,275 - INFO - Terminated Early: 0
+2025-10-11 20:46:05,275 - INFO - Total Iterations: 1
+2025-10-11 20:46:05,275 - INFO - Average Iterations per Function: 1.00
+2025-10-11 20:46:05,275 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-11 20:46:05,275 - INFO - TDD Adjudication Attempts: 1
+2025-10-11 20:46:05,275 - INFO - Final Adjudication Attempts: 1
+2025-10-11 20:46:05,275 - INFO - Requirement Reinforcements: 0
+2025-10-11 20:46:52,495 - INFO - Running test for: Performance Tracker (ID 10)
+2025-10-11 20:46:52,498 - INFO - Successfully imported functions from functions.py
+2025-10-11 20:46:52,499 - INFO - All assertions passed for Performance Tracker
+2025-10-11 20:46:52,499 - INFO - ===== TEST PASSED ===== (Performance Tracker)

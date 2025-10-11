@@ -107,9 +107,9 @@ Generate a function that analyzes employee salary data from an unfamiliar codeba
 
 **Run Command:**
 ```bash
-cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
 
-python Core/main.py --clean-all --analyze test_context/salary_analyzer --request "Create a function called salary_analyzer that calculates average salary from employee data. Returns: float representing the average salary value."
+python Core/main.py --clean-all --analyze dataset/salary_analyzer --request "Create a function called salary_analyzer that calculates average salary from employee data. Returns: float representing the average salary value."
 ```
 
 **Expected Outcome:**
@@ -165,7 +165,7 @@ risk = (age/100 * 30) + (condition_count * 5 * 0.25) + (avg_severity * 10 * 0.25
 
 **Run Command:**
 ```bash
-cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
 
 python Core/main.py --clean-all --analyze test_context_extended --request "Create a function called patient_risk_score that takes a Hospital object and patient_id. Calculate risk score using formula: (patient.age / 100 * 30) + (patient.get_total_conditions() * 5 * 25/100) + (patient.get_average_severity() * 10 * 25/100) + (20 if recent records have abnormal vitals else 0). Use hospital.get_patient(patient_id) and hospital.get_recent_records(patient_id, 90). Returns: float between 0.0 and 100.0."
 ```
@@ -225,9 +225,9 @@ gpa = total_points / total_credits
 
 **Run Command:**
 ```bash
-cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
 
-python Core/main.py --clean-all --analyze test_context/student_gpa_calculator --request "Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0)."
+python Core/main.py --clean-all --analyze dataset/student_gpa_calculator --request "Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0)."
 ```
 
 **Expected Outcome:**
@@ -289,7 +289,7 @@ for product in warehouse.get_all_products():
 
 **Run Command:**
 ```bash
-cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
 
 python Core/main.py --clean-all --analyze test_context_extended --request "Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list."
 ```
@@ -323,7 +323,7 @@ Session 1 creates basic matrix operations. Session 2 retrieves this from Termina
 
 **Session 1:**
 ```bash
-cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
 
 python Core/main.py --clean-all --request "Create a function called matrix_operations that performs basic matrix multiplication and stores results in a global variable computation_cache."
 ```
@@ -393,7 +393,7 @@ Return total weighted_risk
 
 **Session 1:**
 ```bash
-cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
 
 python Core/main.py --clean-all --request "Create a function called calculate_stock_volatility that takes a list of daily stock prices. Calculate daily returns as (price[i] - price[i-1]) / price[i-1] for each pair. Calculate mean of returns, then variance as average of (return - mean) squared. Return square root of variance times 100 as percentage. Return 0.0 if fewer than 2 prices."
 ```
@@ -458,7 +458,7 @@ Load previous session and create portfolio_risk_assessment function. Takes a dic
 
 **Session 1:**
 ```bash
-cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
 
 python Core/main.py --clean-all --request "Create a function called parse_sensor_reading that takes a string like 'T:25.5|H:60|TS:1234567890'. Split by '|' to get parts. For each part, split by ':' to get key and value. Return dict with 'temperature', 'humidity', 'timestamp' keys. If a value cannot be converted to float/int, set to None. Handle T as float, H as float, TS as int."
 ```
@@ -518,7 +518,7 @@ Generate a `movie_api` function that returns different formats based on caller v
 
 **Run Command:**
 ```bash
-cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
 
 python Core/main.py --clean-all --analyze test_context_extended --request "Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context using movie.csv from PROJECT KNOWLEDGE: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously."
 ```
@@ -572,7 +572,7 @@ version = os.environ.get('API_VERSION', 'v1')
 
 **Run Command:**
 ```bash
-cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
 
 python Core/main.py --clean-all --analyze test_context_extended --request "Create a book_recommender function that filters books by genre from books.csv in PROJECT KNOWLEDGE and returns three different formats based on API_VERSION environment variable. v1: list of title strings. v2: dict with titles list, count, and avg_rating. v3: JSON-LD format with schema.org context. Use os.environ.get('API_VERSION', 'v1') to detect version."
 ```
@@ -619,7 +619,7 @@ Generate a `performance_report` function with three report types based on explic
 
 **Run Command:**
 ```bash
-cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
 
 python Core/main.py --clean-all --analyze test_context_extended --request "Create a performance_report function that generates different report views from performance_reviews.csv in PROJECT KNOWLEDGE based on report_type parameter. Takes employee_id (optional) and report_type (default 'summary'). RETURN TYPES: summary mode returns single dict with keys employee_id, overall_rating, goals_status. detailed mode returns single dict with all CSV fields. department mode (when employee_id is None) returns dict where keys are department names and values are dicts with avg_rating and count. Handle all three report types with appropriate return structures."
 ```
@@ -682,7 +682,7 @@ Generate a `friend_suggestions` function with progressive enhancement based on `
 
 **Run Command:**
 ```bash
-cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
 
 python Core/main.py --clean-all --analyze test_context_extended --request "Create a friend_suggestions function that recommends friends from social_graph.json in PROJECT KNOWLEDGE with progressive enhancement based on RECOMMENDATION_MODE environment variable. Takes user_id parameter. basic mode: find mutual friends, score by count. enhanced mode: mutual friends times 2.0 plus common interests times 1.5. advanced mode: add 1.0 bonus if activity levels match. Returns: list of dicts, each with user_id and score keys, sorted by score descending, top 5 highest scores only."
 ```
@@ -756,7 +756,7 @@ All tasks follow this pattern:
 
 1. **Navigate to framework directory:**
    ```bash
-   cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+   cd /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/evaluation_brown_fields
    ```
 
 2. **Run task with appropriate flags:**
@@ -782,16 +782,16 @@ All tasks follow this pattern:
 
 ```bash
 # Task 1: Salary Analyzer (Original)
-python Core/main.py --clean-all --analyze test_context/salary_analyzer --request "Create a function called salary_analyzer that calculates average salary from employee data. Returns: float representing the average salary value."
+python Core/main.py --clean-all --analyze dataset/salary_analyzer --request "Create a function called salary_analyzer that calculates average salary from employee data. Returns: float representing the average salary value."
 
 # Task 2: Patient Risk
 python Core/main.py --clean-all --analyze test_context_extended --request "Create a function called patient_risk_score that takes a Hospital object and patient_id. Calculate risk score using formula: (patient.age / 100 * 30) + (patient.get_total_conditions() * 5 * 25/100) + (patient.get_average_severity() * 10 * 25/100) + (20 if recent records have abnormal vitals else 0). Use hospital.get_patient(patient_id) and hospital.get_recent_records(patient_id, 90). Returns: float between 0.0 and 100.0."
 
 # Task 3: Student GPA
-python Core/main.py --clean-all --analyze test_context/student_gpa_calculator --request "Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0)."
+python Core/main.py --clean-all --analyze dataset/student_gpa_calculator --request "Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0)."
 
 # Task 4: Inventory Alert
-python Core/main.py --clean-all --analyze test_context/inventory_replenishment --request "Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list."
+python Core/main.py --clean-all --analyze dataset/inventory_replenishment --request "Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list."
 ```
 
 **Composition Tasks (Two Sessions):**
@@ -814,7 +814,7 @@ python Core/main.py --clean-all --request "Create a function called parse_sensor
 
 ```bash
 # Task 8: Movie API (Original - uses original 27K movie dataset)
-python Core/main.py --clean-all --analyze test_context/movielens_dataset --request "Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context using movie.csv from PROJECT KNOWLEDGE: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously."
+python Core/main.py --clean-all --analyze dataset/movielens_dataset --request "Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context using movie.csv from PROJECT KNOWLEDGE: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously."
 
 # Task 9: Book Recommender
 python Core/main.py --clean-all --analyze test_context_extended --request "Create a book_recommender function that filters books by genre from books.csv in PROJECT KNOWLEDGE and returns three different formats based on API_VERSION environment variable. v1: list of title strings. v2: dict with titles list, count, and avg_rating. v3: JSON-LD format with schema.org context. Use os.environ.get('API_VERSION', 'v1') to detect version."

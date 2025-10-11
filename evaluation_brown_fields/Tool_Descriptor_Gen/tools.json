@@ -1,0 +1,25 @@
+[
+
+    {
+        "type": "function",
+        "function": {
+            "name": "patient_risk_score",
+            "description": "Calculates the risk score (0-100) for a patient based on age, number of conditions, average condition severity, and abnormal vitals in recent records (last 90 days). Returns 0.0 if patient not found.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "hospital": {
+                        "type": "object",
+                        "description": "The hospital object containing patient data and record access."
+                    },
+                    "patient_id": {
+                        "type": "number",
+                        "description": "The unique ID of the patient whose risk score should be calculated."
+                    }
+                },
+                "required": ["hospital", "patient_id"]
+            }
+        }
+    }
+
+]

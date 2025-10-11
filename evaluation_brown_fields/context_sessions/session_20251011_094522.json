@@ -1,0 +1,42 @@
+{
+  "session_data": {
+    "created_at": "2025-10-11T09:37:54.942573",
+    "functions": {
+      "salary_analyzer": {
+        "code": "\n\ndef salary_analyzer(employees):\n    \"\"\"Calculate average salary for a list of employees.\n    Returns average salary as float, 0.0 for empty list, None for invalid input.\n    \"\"\"\n    if employees is None:\n        return None\n    if not isinstance(employees, list):\n        return None\n    if not employees:\n        return 0.0\n    total_salary = 0.0\n    for emp in employees:\n        if not isinstance(emp, dict):\n            return None\n        if 'salary' not in emp:\n            return None\n        salary = emp['salary']\n        if not isinstance(salary, (int, float)):\n            return None\n        total_salary += salary\n    return total_salary / len(employees)\n",
+        "info": {
+          "requirement": "Function Name: salary_analyzer  \nDescription: Calculates the average salary from a list of employee records. Internally reuses the existing SalaryAnalyzer utility.  \nParameters:  \n  - employees: List[Dict[str, Any]]  \n      A list of employee dictionaries; each must have a numeric `\"salary\"` field.  \nExample usage:  \n```python\nfrom employee_database import EmployeeDB\nfrom salary_util import salary_analyzer  # wherever you place the function\n\n# load all employees from the built-in dataset\ndb = EmployeeDB()\nall_emps = db.get_all_employees()\n\n# compute average salary\navg = salary_analyzer(all_emps)\nprint(f\"Average salary: {avg:.2f}\")\n```",
+          "iterations": 3
+        },
+        "added_at": "2025-10-11T09:44:12.812964",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-10-11T09:44:12.812876",
+        "code": "\n\ndef salary_analyzer(employees):\n    \"\"\"Calculate average salary for a list of employees.\n    Returns average salary as float, 0.0 for empty list, None for invalid input.\n    \"\"\"\n    if employees is None:\n        return None\n    if not isinstance(employees, list):\n        return None\n    if not employees:\n        return 0.0\n    total_salary = 0.0\n    for emp in employees:\n        if not isinstance(emp, dict):\n            return None\n        if 'salary' not in emp:\n            return None\n        salary = emp['salary']\n        if not isinstance(salary, (int, float)):\n            return None\n        total_salary += salary\n    return total_salary / len(employees)\n",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 12061,
+      "defined_variables": [
+        "salary_analyzer"
+      ],
+      "execution_count": 2
+    }
+  },
+  "saved_at": "2025-10-11T09:45:22.754444"
+}

@@ -109,7 +109,7 @@ python Core/main.py  # Expected: 4 iterations
 **To Reproduce:**
 ```bash
 # With TDD - All 10 problems pass
-cd framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd framework_our_approach/evaluation_brown_fields
 
 # Run each problem
 python evaluation/run_dual_pass_k.py --problem "is_equal_to_sum_even_HE_138" --runs 1 --use-humaneval --verbose
@@ -124,7 +124,7 @@ python evaluation/run_dual_pass_k.py --problem "rounded_avg_HE_103" --runs 1 --u
 python evaluation/run_dual_pass_k.py --problem "sort_array_HE_88" --runs 1 --use-humaneval --verbose
 
 # Without TDD - 9 pass, move_one_ball fails
-cd framework_w_o_tdd/ablation_study_humaneval_and_long_horizon_tasks
+cd framework_w_o_tdd/evaluation_brown_fields
 # Run same commands as above
 ```
 
@@ -148,23 +148,23 @@ cd framework_w_o_tdd/ablation_study_humaneval_and_long_horizon_tasks
 
 **Without TDD (Expected: Failure after 6 iterations, ~179s):**
 ```bash
-cd framework_w_o_tdd/ablation_study_humaneval_and_long_horizon_tasks
+cd framework_w_o_tdd/evaluation_brown_fields
 
-python Core/main.py --clean-all --analyze test_context --request "Create a function called salary_analyzer that calculates average salary from employee data"
+python Core/main.py --clean-all --analyze dataset --request "Create a function called salary_analyzer that calculates average salary from employee data"
 ```
 
 **With TDD (Expected: Success after 2 iterations, ~168s):**
 ```bash
-cd framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd framework_our_approach/evaluation_brown_fields
 
-python Core/main.py --clean-all --analyze test_context --request "Create a function called salary_analyzer that calculates average salary from employee data"
+python Core/main.py --clean-all --analyze dataset --request "Create a function called salary_analyzer that calculates average salary from employee data"
 ```
 
 #### To Reproduce Matrix Eigenvalue Task:
 
 **Step 1: Create matrix_operations function**
 ```bash
-cd framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks
+cd framework_our_approach/evaluation_brown_fields
 python Core/main.py
 # When prompted, enter:
 # > Create a function 'matrix_operations' that performs basic matrix multiplication and stores results in a global variable 'computation_cache'.

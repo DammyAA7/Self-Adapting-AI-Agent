@@ -1,0 +1,48 @@
+{
+  "session_data": {
+    "created_at": "2025-10-11T10:11:27.391156",
+    "functions": {
+      "parse_sensor_reading": {
+        "code": "\n\ndef parse_sensor_reading(data):\n    \"\"\"\n    Parses a sensor reading string in the format \"T:<temp>|H:<humidity>|TS:<timestamp>\"\n    and returns a dict with keys \"temperature\" (float or None), \"humidity\" (int or None),\n    and \"timestamp\" (int or None). Extra or malformed fields are ignored.\n    \"\"\"\n    result = {\"temperature\": None, \"humidity\": None, \"timestamp\": None}\n    if not isinstance(data, str):\n        return result\n    if not data.strip():\n        return result\n\n    parts = data.split(\"|\")\n    for part in parts:\n        if \":\" not in part:\n            continue\n        key, val = part.split(\":\", 1)\n        key = key.strip()\n        val = val.strip()\n        if key == \"T\":\n            try:\n                result[\"temperature\"] = float(val)\n            except (ValueError, TypeError):\n                result[\"temperature\"] = None\n        elif key == \"H\":\n            try:\n                result[\"humidity\"] = int(val)\n            except (ValueError, TypeError):\n                result[\"humidity\"] = None\n        elif key == \"TS\":\n            try:\n                result[\"timestamp\"] = int(val)\n            except (ValueError, TypeError):\n                result[\"timestamp\"] = None\n    return result\n\n",
+        "info": {
+          "requirement": "Function Name: parse_sensor_reading  \nDescription: Parses a sensor data string in the format  \n  `T:<temperature>|H:<humidity>|TS:<unix_timestamp>`.  \nReturns a dictionary with keys `temperature`, `humidity`, and `timestamp`.  \nIf any field is missing or cannot be converted to the proper type, that field\u2019s value in the output dictionary will be `None`.  \n\nParameters:  \n- data (string): Sensor reading string, e.g. `\"T:25.5|H:60|TS:1234567890\"`  \n\nExample Usage:  \n```\nresult = parse_sensor_reading(\"T:25.5|H:60|TS:1234567890\")\n# result == {\n#   \"temperature\": 25.5,\n#   \"humidity\": 60,\n#   \"timestamp\": 1234567890\n# }\n\n# Malformed example:\nresult = parse_sensor_reading(\"T:xx|H:60|TS:abc\")\n# result == {\n#   \"temperature\": None,      # invalid float\n#   \"humidity\": 60,\n#   \"timestamp\": None         # invalid integer\n# }\n```",
+          "iterations": 4
+        },
+        "added_at": "2025-10-11T10:15:48.377880",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-10-11T10:15:48.377748",
+        "code": "\n\ndef parse_sensor_reading(data):\n    \"\"\"\n    Parses a sensor reading string in the format \"T:<temp>|H:<humidity>|TS:<timestamp>\"\n    and returns a dict with keys \"temperature\" (float or None), \"humidity\" (int or None),\n    and \"timestamp\" (int or None). Extra or malformed fields are ignored.\n    \"\"\"\n    result = {\"temperature\": None, \"humidity\": None, \"timestamp\": None}\n    if not isinstance(data, str):\n        return result\n    if not data.strip():\n        return result\n\n    parts = data.split(\"|\")\n    for part in parts:\n        if \":\" not in part:\n            continue\n        key, val = part.split(\":\", 1)\n        key = key.strip()\n        val = val.strip()\n        if key == \"T\":\n            try:\n                result[\"temperature\"] = float(val)\n            except (ValueError, TypeError):\n                result[\"temperature\"] = None\n        elif key == \"H\":\n            try:\n                result[\"humidity\"] = int(val)\n            except (ValueError, TypeError):\n                result[\"humidity\"] = None\n        elif key == \"TS\":\n            try:\n                result[\"timestamp\"] = int(val)\n            except (ValueError, TypeError):\n                result[\"timestamp\"] = None\n    return result\n\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-10-11T10:16:01.897597",
+        "code": "result = parse_sensor_reading(data=\"T:25.5|H:60|TS:1234567890\")\nprint(result)",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 18556,
+      "defined_variables": [
+        "parse_sensor_reading"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-10-11T10:16:02.978710"
+}

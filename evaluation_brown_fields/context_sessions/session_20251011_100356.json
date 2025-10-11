@@ -1,0 +1,48 @@
+{
+  "session_data": {
+    "created_at": "2025-10-11T10:02:01.876581",
+    "functions": {
+      "calculate_stock_volatility": {
+        "code": "\n\nimport math\n\ndef calculate_stock_volatility(prices):\n    \"\"\"\n    Calculates the volatility (standard deviation) of daily returns over the most recent 31 prices.\n    Returns a float volatility or None if input is invalid or insufficient data.\n    \"\"\"\n    if not prices or len(prices) < 31:\n        return None\n\n    window = prices[-31:]\n    for p in window:\n        if not isinstance(p, (int, float)) or p <= 0:\n            return None\n\n    returns = [(window[i] / window[i - 1] - 1) for i in range(1, len(window))]\n    mean_return = sum(returns) / len(returns)\n    variance = sum((r - mean_return) ** 2 for r in returns) / len(returns)\n    return math.sqrt(variance)\n",
+        "info": {
+          "requirement": "Function Name: calculate_stock_volatility  \nDescription: Calculates the 30-day volatility of a stock based on the standard deviation of its daily returns, expressed as a percentage. Daily returns are computed as (price[i] \u2013 price[i-1]) / price[i-1]. The function uses the most recent 31 prices to derive 30 daily returns, computes their standard deviation, and multiplies by 100.  \n\nParameters:\n- prices (list of float): A list of sequential daily closing prices. Must contain at least 31 entries to calculate a full 30-day volatility.\n\nExample:\n```python\n# Suppose you have 31 days of closing prices:\nprices = [\n    100.0, 101.2, 102.5, 101.8, 100.9, 102.0, 103.1, 104.0,\n    103.5, 104.2, 105.0, 106.3, 107.5, 108.0, 107.8, 108.5,\n    109.0, 110.2, 111.1, 110.5, 111.0, 112.3, 113.5, 114.0,\n    113.8, 114.5, 115.2, 116.0, 117.1, 116.5, 117.0\n]\n\nvolatility = calculate_stock_volatility(prices)\nprint(f\"30-day volatility: {volatility:.2f}%\")\n```",
+          "iterations": 1
+        },
+        "added_at": "2025-10-11T10:03:45.256317",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-10-11T10:03:45.256180",
+        "code": "\n\nimport math\n\ndef calculate_stock_volatility(prices):\n    \"\"\"\n    Calculates the volatility (standard deviation) of daily returns over the most recent 31 prices.\n    Returns a float volatility or None if input is invalid or insufficient data.\n    \"\"\"\n    if not prices or len(prices) < 31:\n        return None\n\n    window = prices[-31:]\n    for p in window:\n        if not isinstance(p, (int, float)) or p <= 0:\n            return None\n\n    returns = [(window[i] / window[i - 1] - 1) for i in range(1, len(window))]\n    mean_return = sum(returns) / len(returns)\n    variance = sum((r - mean_return) ** 2 for r in returns) / len(returns)\n    return math.sqrt(variance)\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-10-11T10:03:55.527292",
+        "code": "result = calculate_stock_volatility(prices=[100, 101, 102, 100, 98, 99, 100, 101, 102, 103, 104, 103, 102, 101, 100, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 107, 106, 105, 104, 103, 102])\nprint(result)",
+        "success": true,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 16102,
+      "defined_variables": [
+        "calculate_stock_volatility"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-10-11T10:03:56.268393"
+}

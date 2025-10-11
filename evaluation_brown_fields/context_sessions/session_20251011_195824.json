@@ -1,0 +1,48 @@
+{
+  "session_data": {
+    "created_at": "2025-10-11T19:57:27.273192",
+    "functions": {
+      "patient_risk_score": {
+        "code": "\n\nfrom datetime import datetime, timedelta\n\ndef patient_risk_score(hospital, patient_id):\n    \"\"\"\n    Calculates the risk score (0-100) for a patient based on age, number of conditions,\n    average condition severity, and abnormal vitals in recent records (last 90 days).\n    Returns 0.0 if patient not found.\n    \"\"\"\n    patient = hospital.get_patient(patient_id)\n    if not patient:\n        return 0.0\n    \n    # Age factor (30%)\n    age = patient.age\n    age_factor = (age / 100.0) * 30\n\n    # Number of conditions factor (25%) -- each condition out of possible 20, so *5\n    num_conditions = patient.get_total_conditions()\n    conditions_factor = (num_conditions * 5) * 0.25\n\n    # Average condition severity (25%) -- severity scale 0-10, so *10\n    avg_severity = patient.get_average_severity() if num_conditions > 0 else 0.0\n    severity_factor = (avg_severity * 10) * 0.25\n\n    # Abnormal vitals in recent records (20%) -- if any record in last 90 days is abnormal\n    recent_records = hospital.get_recent_records(patient_id, 90)\n    abnormal_recent = any(r.has_abnormal_vitals() for r in recent_records)\n    abnormal_vitals_factor = 20.0 if abnormal_recent else 0.0\n\n    risk = age_factor + conditions_factor + severity_factor + abnormal_vitals_factor\n    # Clamp to [0, 100]\n    if risk < 0.0:\n        risk = 0.0\n    if risk > 100.0:\n        risk = 100.0\n    return float(risk)\n\n",
+        "info": {
+          "requirement": "Function Name: patient_risk_score\nDescription: Calculates a patient's health risk score (0.0-100.0) from the Hospital system using weighted factors. It uses the patient's age, number of medical conditions, average condition severity, and recent abnormal vital signs as specified. The score is calculated as:\n(age / 100 \u00d7 30) + (number_of_conditions \u00d7 5 \u00d7 0.25) + (average_severity \u00d7 10 \u00d7 0.25) + (20 if any abnormal vitals in the last 90 days, else 0),\nwhere:\n- age is taken from patient.age,\n- number_of_conditions from patient.get_total_conditions(),\n- average_severity from patient.get_average_severity(),\n- recent abnormal vitals from any record in hospital.get_recent_records(patient_id, 90) having has_abnormal_vitals() True.\nParameters:\n- hospital: Hospital object (from test_context_extended.patient_records)\n- patient_id: str, the patient ID\nReturns: float in [0.0, 100.0]\nExample:\npatient_risk_score(hospital, \"P001\")  # returns a float risk score for patient \"P001\" (e.g., 74.25)",
+          "iterations": 1
+        },
+        "added_at": "2025-10-11T19:58:16.700640",
+        "execution_result": {
+          "output": "",
+          "error": "",
+          "success": true,
+          "context_preserved": true
+        }
+      }
+    },
+    "variables": {},
+    "execution_history": [
+      {
+        "timestamp": "2025-10-11T19:58:16.700546",
+        "code": "\n\nfrom datetime import datetime, timedelta\n\ndef patient_risk_score(hospital, patient_id):\n    \"\"\"\n    Calculates the risk score (0-100) for a patient based on age, number of conditions,\n    average condition severity, and abnormal vitals in recent records (last 90 days).\n    Returns 0.0 if patient not found.\n    \"\"\"\n    patient = hospital.get_patient(patient_id)\n    if not patient:\n        return 0.0\n    \n    # Age factor (30%)\n    age = patient.age\n    age_factor = (age / 100.0) * 30\n\n    # Number of conditions factor (25%) -- each condition out of possible 20, so *5\n    num_conditions = patient.get_total_conditions()\n    conditions_factor = (num_conditions * 5) * 0.25\n\n    # Average condition severity (25%) -- severity scale 0-10, so *10\n    avg_severity = patient.get_average_severity() if num_conditions > 0 else 0.0\n    severity_factor = (avg_severity * 10) * 0.25\n\n    # Abnormal vitals in recent records (20%) -- if any record in last 90 days is abnormal\n    recent_records = hospital.get_recent_records(patient_id, 90)\n    abnormal_recent = any(r.has_abnormal_vitals() for r in recent_records)\n    abnormal_vitals_factor = 20.0 if abnormal_recent else 0.0\n\n    risk = age_factor + conditions_factor + severity_factor + abnormal_vitals_factor\n    # Clamp to [0, 100]\n    if risk < 0.0:\n        risk = 0.0\n    if risk > 100.0:\n        risk = 100.0\n    return float(risk)\n\n",
+        "success": true,
+        "terminal": "main"
+      },
+      {
+        "timestamp": "2025-10-11T19:58:20.275600",
+        "code": "result = patient_risk_score(patient_id=1)\nprint(result)",
+        "success": false,
+        "terminal": "main"
+      }
+    ]
+  },
+  "terminals": {
+    "main": {
+      "shell_type": "python",
+      "is_alive": true,
+      "pid": 134817,
+      "defined_variables": [
+        "patient_risk_score"
+      ],
+      "execution_count": 3
+    }
+  },
+  "saved_at": "2025-10-11T19:58:24.253070"
+}

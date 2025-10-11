@@ -11210,5 +11210,2451 @@
     "existing_function_calls": [],
     "end_time": "2025-09-29T02:03:29.167810",
     "session_duration_seconds": 302.663382
+  },
+  {
+    "session_id": "20250929_142529",
+    "start_time": "2025-09-29T14:25:29.645325",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T14:25:31.774586",
+    "session_duration_seconds": 2.129261
+  },
+  {
+    "session_id": "20250929_142546",
+    "start_time": "2025-09-29T14:25:46.622411",
+    "functions": [],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T14:25:48.569705",
+    "session_duration_seconds": 1.947294
+  },
+  {
+    "session_id": "20250929_142608",
+    "start_time": "2025-09-29T14:26:08.058021",
+    "functions": [
+      {
+        "function_requirement": "Here\u2019s a self-contained Python implementation of `movie_api` that:\n\n\u2022 Reads your `movie.csv` from the project root  \n\u2022 Uses Python\u2019s `inspect` module to peek at the call stack and decide which version (v1, v2 or v3) the caller expects  \n\u2022 Exposes backward-compatible outputs:\n  \u2013 v1 \u2192 simple list of titles  \n  \u2013 v2 \u2192 a dict with count + titles  \n  \u2013 v3 \u2192 a JSON-LD string  \n\nDrop this into your codebase; it assumes you have pandas installed. You can adapt the stack-inspection logic (file names, function names, markers, etc.) to suit your particular callers.\n\n```python\nimport pandas as pd\nimport inspect\nimport json\nimport os\n\n# Helper: Load the movies CSV once\ndef _load_movie_dataframe():\n    # Adjust path here if you keep movie.csv somewhere else\n    csv_path = os.path.join(os.path.dirname(__file__), 'movie.csv')\n    return pd.read_csv(csv_path)\n\n# Format for v1: just a list of titles\ndef _format_v1(df):\n    return df['title'].tolist()\n\n# Format for v2: dict with metadata\ndef _format_v2(df):\n    return {\n        'count': len(df),\n        'titles': df['title'].tolist()\n    }\n\n# Format for v3: JSON-LD structured data\ndef _format_v3(df):\n    jsonld = {\n        \"@context\": \"http://schema.org\",\n        \"@type\": \"MovieCollection\",\n        \"count\": len(df),\n        \"movies\": []\n    }\n    for _, row in df.iterrows():\n        movie_obj = {\n            \"@type\": \"Movie\",\n            \"movieId\": int(row.get('movieId', -1)),\n            \"name\": row.get('title')\n            # you can add more fields here (e.g. genres, etc.) if desired\n        }\n        jsonld[\"movies\"].append(movie_obj)\n    return json.dumps(jsonld, ensure_ascii=False)\n\n# The unified API entrypoint\ndef movie_api():\n    \"\"\"\n    Automatically returns one of three formats based on the caller's context:\n      - v1: list of titles\n      - v2: dict with metadata\n      - v3: JSON-LD string\n\n    It inspects the call stack\u2014looking at file names or function names containing\n    'v2' or 'v3'\u2014to pick the correct version. Defaults to v1 if no hint is found.\n    \"\"\"\n    # 1) Inspect the stack to find a hint for v2 or v3\n    version = 'v1'\n    for frame_info in inspect.stack():\n        fname = os.path.basename(frame_info.filename).lower()\n        func = frame_info.function.lower()\n        # you can tweak these markers as needed\n        if 'v3' in fname or 'v3' in func:\n            version = 'v3'\n            break\n        elif 'v2' in fname or 'v2' in func:\n            version = 'v2'\n            break\n\n    # 2) Load data\n    df = _load_movie_dataframe()\n\n    # 3) Dispatch to the correct formatter\n    if version == 'v2':\n        return _format_v2(df)\n    elif version == 'v3':\n        return _format_v3(df)\n    else:\n        return _format_v1(df)\n```\n\nUsage examples:\n\n- If you call `movie_api()` from a file or function named `client_v1.py` (or without any \u201cv2\u201d/\u201cv3\u201d hints), you\u2019ll get a Python list of titles.  \n- If you call from `analytics_v2.py` or from within a function called `get_movies_v2()`, you\u2019ll get the dict format `{ count:\u2026, titles:[\u2026] }`.  \n- If you call from `frontend_v3.py` or from a function called `render_v3()`, you\u2019ll get a JSON-LD string suitable for embedding in HTML or returning from a modern API.",
+        "user_input": "Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.",
+        "start_time": "2025-09-29T14:26:52.370050",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "movie_api",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T14:29:07.635088",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-09-29T14:29:08.021947",
+        "total_duration_seconds": 135.651897
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "movie_api",
+        "function_args": {},
+        "execution_time": 0.06308991900004912,
+        "memory_peak": 3495503,
+        "result": "['Toy Story (1995)', 'Jumanji (1995)', 'Grumpier Old Men (1995)', 'Waiting to Exhale (1995)', 'Father of the Bride Part II (1995)', 'Heat (1995)', 'Sabrina (1995)', 'Tom and Huck (1995)', 'Sudden Deat",
+        "timestamp": "2025-09-29T14:30:45.507852",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-09-29T14:30:49.073918",
+    "session_duration_seconds": 281.015897
+  },
+  {
+    "session_id": "20250929_143137",
+    "start_time": "2025-09-29T14:31:37.151063",
+    "functions": [
+      {
+        "function_requirement": "Here\u2019s a self-contained Python implementation of `movie_api()` that:\n\n\u2022 Loads the local `movie.csv`  \n\u2022 Peeks at the call stack to decide which \u201cversion\u201d (v1, v2 or v3) is invoking it  \n\u2022 Returns either  \n  \u2013 v1: a simple list of titles  \n  \u2013 v2: a dict of movie\u2010ID \u2192 metadata dict  \n  \u2013 v3: a JSON-LD \u201c@graph\u201d compliant structure  \n\nSave this in the same directory as your `movie.csv` (e.g. the root of `movielens_dataset`).\n\n```python\nimport os\nimport csv\nimport json\nimport inspect\n\ndef movie_api():\n    \"\"\"\n    movie_api() inspects its caller to choose return format:\n      \u2022 v1 callers get a list of titles\n      \u2022 v2 callers get a dict mapping movieId \u2192 {title, genres}\n      \u2022 all others get full JSON-LD\n    \"\"\"\n\n    # 1) Determine version from caller name\n    caller_name = inspect.stack()[1].function.lower()\n    if 'v1' in caller_name:\n        version = 'v1'\n    elif 'v2' in caller_name:\n        version = 'v2'\n    else:\n        version = 'v3'\n\n    # 2) Load the CSV\n    csv_path = os.path.join(os.path.dirname(__file__), 'movie.csv')\n    movies = []\n    with open(csv_path, newline='', encoding='utf-8') as f:\n        reader = csv.DictReader(f)\n        for row in reader:\n            # Normalize genres into a list\n            genres = row.get('genres', '')\n            genre_list = genres.split('|') if genres else []\n            movies.append({\n                'movieId': row.get('movieId'),\n                'title': row.get('title'),\n                'genres': genre_list\n            })\n\n    # 3) Branch by version\n    if version == 'v1':\n        # Just titles\n        return [m['title'] for m in movies]\n\n    if version == 'v2':\n        # Dict of metadata\n        return {\n            m['movieId']: {\n                'title': m['title'],\n                'genres': m['genres']\n            }\n            for m in movies\n        }\n\n    # version == 'v3' (or any other caller)\n    # Build JSON-LD\n    graph = []\n    for m in movies:\n        graph.append({\n            \"@type\": \"Movie\",\n            \"@id\": f\"movie:{m['movieId']}\",\n            \"name\": m['title'],\n            \"genre\": m['genres']\n        })\n\n    json_ld = {\n        \"@context\": \"http://schema.org\",\n        \"@graph\": graph\n    }\n    return json.dumps(json_ld, indent=2)\n```\n\nExample usage patterns:\n\n```python\ndef client_v1():\n    titles = movie_api()            # caller_name contains \u201cv1\u201d\n    print(titles)                   # \u2192 ['Toy Story (1995)', 'Jumanji (1995)', \u2026]\n\ndef client_v2():\n    meta = movie_api()              # caller_name contains \u201cv2\u201d\n    print(meta['1']['genres'])      # \u2192 ['Animation','Children','Comedy']\n\ndef client_other():\n    ld = movie_api()                # falls back to v3\n    data = json.loads(ld)\n    print(data['@graph'][0]['@type'])  # \u2192 \"Movie\"\n```\n\nThis approach preserves backward compatibility and requires no changes to existing callers beyond their function names indicating v1/v2.",
+        "user_input": "Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.",
+        "start_time": "2025-09-29T14:32:31.741529",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "movie_api",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T14:34:02.252231",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-09-29T14:34:02.302409",
+        "total_duration_seconds": 90.56088
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T14:35:51.621983",
+    "session_duration_seconds": 254.47092
+  },
+  {
+    "session_id": "20250929_143938",
+    "start_time": "2025-09-29T14:39:38.563008",
+    "functions": [
+      {
+        "function_requirement": "Function Name: movie_api  \nDescription:  \n  Reads the project\u2019s `movie.csv` file and inspects the Python call stack to decide which format to return, maintaining backward compatibility with three \u201cversions\u201d of the API simultaneously:  \n  - v1: returns a simple list of movie titles  \n  - v2: returns a dict mapping each movie ID to a metadata dict (title, year, genres, etc.)  \n  - v3: returns a JSON-LD structure for each movie (suitable for semantic/linked-data consumers)  \n\nParameters:  \n  None  \n\nExample:  \n  Suppose you have three client modules:  \n    \u2022 legacy_client_v1.py  \n    \u2022 reporting_client_v2.py  \n    \u2022 semantic_client_v3.py  \n\n  In `legacy_client_v1.py`:\n    ```python\n    from movie_api import movie_api\n    \n    # This client\u2019s module name contains \u201cv1\u201d \u2192 gets a list of titles\n    titles = movie_api()\n    print(type(titles))      # <class 'list'>\n    print(titles[:5])        # ['Toy Story', 'Jumanji', 'Grumpier Old Men', ...]\n    ```\n\n  In `reporting_client_v2.py`:\n    ```python\n    from movie_api import movie_api\n    \n    # Module name contains \u201cv2\u201d \u2192 gets a dict of metadata\n    metadata = movie_api()\n    print(type(metadata))    # <class 'dict'>\n    print(metadata[1])       # {'title': 'Toy Story', 'year': 1995, 'genres': ['Adventure','Animation',...]}\n    ```\n\n  In `semantic_client_v3.py`:\n    ```python\n    from movie_api import movie_api\n    \n    # Module name contains \u201cv3\u201d \u2192 gets JSON-LD\n    jsonld = movie_api()\n    import json\n    print(type(jsonld))      # <class 'list'>\n    print(json.dumps(jsonld[0], indent=2))\n    # {\n    #   \"@context\": \"http://schema.org/\",\n    #   \"@type\": \"Movie\",\n    #   \"identifier\": \"1\",\n    #   \"name\": \"Toy Story\",\n    #   \"datePublished\": \"1995\",\n    #   \"genre\": [\"Adventure\",\"Animation\",...]\n    # }\n    ```\n\nImplementation sketch (to be placed in `movie_api.py`):\n\n```python\nimport csv\nimport inspect\nimport json\n\ndef movie_api():\n    # Determine caller version by inspecting the calling frame\u2019s module name\n    stack = inspect.stack()\n    caller_module = None\n    for frame_info in stack[1:]:\n        mod = frame_info.frame.f_globals.get('__name__')\n        if mod and 'v1' in mod.lower():\n            caller_module = 'v1'; break\n        if mod and 'v2' in mod.lower():\n            caller_module = 'v2'; break\n        if mod and 'v3' in mod.lower():\n            caller_module = 'v3'; break\n\n    # Fallback to v1 if no indicator found\n    version = caller_module or 'v1'\n\n    # Read the CSV\n    path = 'movie.csv'  # adjust if necessary\n    movies = []\n    with open(path, newline='', encoding='utf-8') as csvfile:\n        reader = csv.DictReader(csvfile)\n        for row in reader:\n            # Assuming CSV columns include: movieId, title, year, genres\n            movie = {\n                'id': row['movieId'],\n                'title': row['title'],\n                'year': row.get('year'),\n                'genres': row.get('genres', '').split('|') if row.get('genres') else []\n            }\n            movies.append(movie)\n\n    # v1: simple list of titles\n    if version == 'v1':\n        return [m['title'] for m in movies]\n\n    # v2: dict mapping id \u2192 metadata (excluding id field)\n    if version == 'v2':\n        return {\n            m['id']: {\n                'title': m['title'],\n                'year': m['year'],\n                'genres': m['genres']\n            }\n            for m in movies\n        }\n\n    # v3: JSON-LD structured data\n    if version == 'v3':\n        jsonld = []\n        for m in movies:\n            entry = {\n                \"@context\": \"http://schema.org/\",\n                \"@type\": \"Movie\",\n                \"identifier\": m['id'],\n                \"name\": m['title'],\n                \"datePublished\": m['year'],\n                \"genre\": m['genres']\n            }\n            jsonld.append(entry)\n        return jsonld\n\n    # Fallback\n    return [m['title'] for m in movies]\n```",
+        "user_input": "Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.",
+        "start_time": "2025-09-29T14:40:07.409011",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "The function implementation must be updated to meet the test expectations:\n- Version 1 should return only the movie titles (without the year) and respect the default or explicit limit parameter.\n- Version 2 must return a dict mapping each title to its release year.\n- Version 3 must return a dict limited to the requested number of items.\n- If the CSV file does not exist, the function should raise FileNotFoundError instead of returning data.\n- When required columns ('genres' or 'year') are missing, the function should still return a dict (e.g. empty or partial) rather than a list.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T14:43:02.782578",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T14:44:20.662960",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T14:44:43.430100",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T14:44:56.852500",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T14:45:10.071198",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should implement the versioned behaviors: for v1, filter by the specified year (or default) and return a list of movie titles without the year suffix; for v2 and v3, return data in dict format per the test expectations; validate that the CSV file exists (raising FileNotFoundError) and that required columns (\u2018genres\u2019, \u2018year\u2019) are present (raising an informative exception) before processing.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T14:45:21.528695",
+            "unit_test_summary": "Tests failed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "The function implementation must be updated to meet the test expectations:\n- Version 1 should return only the movie titles (without the year) and respect the default or explicit limit parameter.\n- Version 2 must return a dict mapping each title to its release year.\n- Version 3 must return a dict limited to the requested number of items.\n- If the CSV file does not exist, the function should raise FileNotFoundError instead of returning data.\n- When required columns ('genres' or 'year') are missing, the function should still return a dict (e.g. empty or partial) rather than a list.",
+            "timestamp": "2025-09-29T14:43:02.783262"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T14:43:02.783594"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "The function implementation must be updated to meet the test expectations:\n- Version 1 should return only the movie titles (without the year) and respect the default or explicit limit parameter.\n- Version 2 must return a dict mapping each title to its release year.\n- Version 3 must return a dict limited to the requested number of items.\n- If the CSV file does not exist, the function should raise FileNotFoundError instead of returning data.\n- When required columns ('genres' or 'year') are missing, the function should still return a dict (e.g. empty or partial) rather than a list.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T14:44:20.663380"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T14:44:20.663603"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T14:44:43.430296"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T14:44:43.430396"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T14:44:56.853174"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T14:44:56.853527"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T14:45:10.071421"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T14:45:10.071527"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "Function should implement the versioned behaviors: for v1, filter by the specified year (or default) and return a list of movie titles without the year suffix; for v2 and v3, return data in dict format per the test expectations; validate that the CSV file exists (raising FileNotFoundError) and that required columns (\u2018genres\u2019, \u2018year\u2019) are present (raising an informative exception) before processing.",
+            "timestamp": "2025-09-29T14:45:21.529320"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T14:45:21.529625"
+          }
+        ],
+        "end_time": "2025-09-29T14:45:21.530265",
+        "total_duration_seconds": 314.121254
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T14:45:21.531181",
+    "session_duration_seconds": 342.968173
+  },
+  {
+    "session_id": "20250929_144947",
+    "start_time": "2025-09-29T14:49:47.523456",
+    "functions": [
+      {
+        "function_requirement": "Function Name: movie_api\n\nDescription:\n  A single entry-point for retrieving movie data from the project\u2019s `movie.csv` that automatically switches between three return formats\u2014v1, v2, and v3\u2014by inspecting the Python call stack. It maintains backward compatibility for all versions simultaneously:\n  - v1: Returns a simple list of movie titles.\n  - v2: Returns a dictionary containing metadata for each movie (title, year, genre, etc.).\n  - v3: Returns a JSON-LD structure conforming to schema.org\u2019s \u201cMovie\u201d type.\n\nParameters:\n  - movie_file_path (str, optional):\n      Path to the CSV file containing movie records.  \n      Default: the `movie.csv` file in the project root.\n\nExample:\n  # v1 context (older code calls movie_api directly)\n  titles = movie_api()\n  # -> ['Toy Story (1995)', 'Jumanji (1995)', \u2026]\n\n  # v2 context (e.g. code lives in a module or package named \"*_v2\")\n  details = movie_api()\n  # -> {\n  #       'Toy Story (1995)': {'year': 1995, 'genre': 'Animation|Children|Comedy', \u2026},\n  #       ...\n  #    }\n\n  # v3 context (e.g. code is in a file named \"*_v3.py\" or function named \"*_v3\")\n  jsonld = movie_api()\n  # -> {\n  #       \"@context\": \"http://schema.org\",\n  #       \"@type\": \"ItemList\",\n  #       \"itemListElement\": [\n  #         {\n  #           \"@type\": \"Movie\",\n  #           \"name\": \"Toy Story\",\n  #           \"datePublished\": \"1995\",\n  #           \u2026\n  #         },\n  #         \u2026\n  #       ]\n  #    }\n\nFull Implementation Sketch (to be placed in your codebase):\n\n```python\nimport csv\nimport os\nimport inspect\nimport json\n\ndef movie_api(movie_file_path=None):\n    \"\"\"\n    Automatically dispatch between v1, v2, and v3 return formats\n    based on the caller\u2019s context (filename or function name in the call stack).\n    \"\"\"\n    # 1. Resolve file path\n    if movie_file_path is None:\n        # adjust this path if your project structure differs\n        movie_file_path = os.path.join(os.path.dirname(__file__), 'movie.csv')\n\n    # 2. Load raw data\n    movies = []\n    with open(movie_file_path, encoding='utf-8') as f:\n        reader = csv.DictReader(f)\n        for row in reader:\n            # assume columns: title, year, genre, etc.\n            movies.append(row)\n\n    # 3. Inspect call stack for version hints\n    stack = inspect.stack()\n    caller_context = 'v1'\n    for frame_info in stack:\n        fname = os.path.basename(frame_info.filename).lower()\n        func = frame_info.function.lower()\n        # prioritize v3 over v2 over v1 if multiple hints exist\n        if 'v3' in fname or 'v3' in func:\n            caller_context = 'v3'\n            break\n        if 'v2' in fname or 'v2' in func:\n            caller_context = 'v2'\n            # continue searching in case v3 appears higher up\n    # 4. Dispatch based on detected version\n    if caller_context == 'v1':\n        # Return just a list of titles\n        return [m['title'] for m in movies]\n\n    elif caller_context == 'v2':\n        # Return a dict keyed by title, with full metadata\n        return {m['title']: {k: v for k, v in m.items() if k != 'title'} for m in movies}\n\n    else:  # v3\n        # Build JSON-LD\n        items = []\n        for m in movies:\n            item = {\n                \"@type\": \"Movie\",\n                \"name\": m.get('title'),\n            }\n            if 'year' in m:\n                item[\"datePublished\"] = m['year']\n            if 'genre' in m:\n                # schema.org allows multiple genres\n                item[\"genre\"] = m['genre'].split('|')\n            # add any other fields as additionalProperties\n            for k, v in m.items():\n                if k not in ('title', 'year', 'genre') and v:\n                    item[k] = v\n            items.append(item)\n        return {\n            \"@context\": \"http://schema.org\",\n            \"@type\": \"ItemList\",\n            \"itemListElement\": items\n        }\n```\n\nYou can drop this `movie_api` function into your codebase. It will automatically detect whether it\u2019s being invoked in a \u201c_v1\u201d, \u201c_v2\u201d, or \u201c_v3\u201d context and return the appropriate format, preserving full backward compatibility.",
+        "user_input": "Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.",
+        "start_time": "2025-09-29T14:50:22.403030",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "movie_api",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T14:51:59.835902",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-09-29T14:51:59.909050",
+        "total_duration_seconds": 97.50602
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "movie_api",
+        "function_args": {
+          "movie_file_path": "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_w_o_tdd/ablation_study_humaneval_and_long_horizon_tasks/movielens_dataset/movie.csv"
+        },
+        "execution_time": 0.3155279970014817,
+        "memory_peak": 10459731,
+        "result": "['Toy Story (1995)', 'Jumanji (1995)', 'Grumpier Old Men (1995)', 'Waiting to Exhale (1995)', 'Father of the Bride Part II (1995)', 'Heat (1995)', 'Sabrina (1995)', 'Tom and Huck (1995)', 'Sudden Deat",
+        "timestamp": "2025-09-29T14:52:17.828602",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-09-29T14:52:26.933378",
+    "session_duration_seconds": 159.409922
+  },
+  {
+    "session_id": "20250929_155651",
+    "start_time": "2025-09-29T15:56:51.513592",
+    "functions": [
+      {
+        "function_requirement": "Here\u2019s a simple top\u2010level function you can add (for example, at the bottom of `employee_database.py`) that uses the existing `EmployeeDB` and `SalaryAnalyzer` classes to compute the average salary:\n\n```python\nfrom typing import List, Dict, Any\nfrom employee_database import EmployeeDB, SalaryAnalyzer\n\ndef salary_analyzer() -> float:\n    \"\"\"\n    Calculate and return the average salary of all employees in the database.\n    \n    Returns:\n        float: The average salary, or 0.0 if there are no employees.\n    \"\"\"\n    # Instantiate the employee database (uses the in\u2010memory EMPLOYEE_DATA)\n    db = EmployeeDB()\n    \n    # Retrieve all employee records\n    employees: List[Dict[str, Any]] = db.get_all_employees()\n    \n    # Use the existing SalaryAnalyzer to compute the average\n    avg_salary: float = SalaryAnalyzer.calculate_average_salary(employees)\n    \n    return avg_salary\n\n# Example usage\nif __name__ == \"__main__\":\n    print(f\"Average salary of all employees: ${salary_analyzer():,.2f}\")\n```\n\nJust make sure that the import path (`from employee_database import ...`) aligns with your project structure. If you place this function directly in `employee_database.py`, you can omit the import of `EmployeeDB` and `SalaryAnalyzer`.",
+        "user_input": "Create a function called salary_analyzer that calculates average salary from employee data",
+        "start_time": "2025-09-29T15:57:04.654793",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the import in Unit_Test/unitTest.py: ensure employee_database.py is on the Python path or adjust the import to the correct module path (e.g. add the project root to PYTHONPATH or use a relative import).",
+            "timestamp": "2025-09-29T15:57:56.664465",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Add an __init__.py file in the Unit_Test directory to make it a package, and correct the import path in unitTest.py so that employee_database can be found (e.g., ensure the module path matches the project structure).",
+            "timestamp": "2025-09-29T15:58:31.271133",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T15:59:08.361630",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "The test is failing due to ModuleNotFoundError: ensure that employee_database.py is on the PYTHONPATH or adjust the import in Unit_Test/unitTest.py (line 7) to the correct module path.",
+            "timestamp": "2025-09-29T15:59:17.741697",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T15:59:49.305396",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T15:59:59.721599",
+            "unit_test_summary": "Tests failed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T15:57:56.665051"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Fix the import in Unit_Test/unitTest.py: ensure employee_database.py is on the Python path or adjust the import to the correct module path (e.g. add the project root to PYTHONPATH or use a relative import).",
+            "timestamp": "2025-09-29T15:57:56.665353"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T15:58:31.271594"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "Fix the import in Unit_Test/unitTest.py: ensure employee_database.py is on the Python path or adjust the import to the correct module path (e.g. add the project root to PYTHONPATH or use a relative import).",
+            "new_requirement": "Add an __init__.py file in the Unit_Test directory to make it a package, and correct the import path in unitTest.py so that employee_database can be found (e.g., ensure the module path matches the project structure).",
+            "timestamp": "2025-09-29T15:58:31.271843"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T15:59:08.362473"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "Add an __init__.py file in the Unit_Test directory to make it a package, and correct the import path in unitTest.py so that employee_database can be found (e.g., ensure the module path matches the project structure).",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T15:59:08.362998"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T15:59:17.742363"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "The test is failing due to ModuleNotFoundError: ensure that employee_database.py is on the PYTHONPATH or adjust the import in Unit_Test/unitTest.py (line 7) to the correct module path.",
+            "timestamp": "2025-09-29T15:59:17.742743"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T15:59:49.305919"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "The test is failing due to ModuleNotFoundError: ensure that employee_database.py is on the PYTHONPATH or adjust the import in Unit_Test/unitTest.py (line 7) to the correct module path.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T15:59:49.306165"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T15:59:59.721897"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T15:59:59.722001"
+          }
+        ],
+        "end_time": "2025-09-29T15:59:59.722277",
+        "total_duration_seconds": 175.067484
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T15:59:59.722727",
+    "session_duration_seconds": 188.209135
+  },
+  {
+    "session_id": "20250929_160201",
+    "start_time": "2025-09-29T16:02:01.829408",
+    "functions": [
+      {
+        "function_requirement": "Function Name: salary_analyzer  \nDescription: Calculates the average salary from a list of employee records. If no list is provided, it will load all employees from the existing EmployeeDB.  \nParameters:  \n- employees (optional): List of dictionaries, each representing an employee record with a `\"salary\"` key. If omitted, the function will instantiate `EmployeeDB` and retrieve all employees.  \nReturns:  \n- float: The average salary across the provided employee records (or `0.0` if there are none).  \n\nExample:  \n```python\nfrom test_context.employee_database import EmployeeDB, SalaryAnalyzer\n\ndef salary_analyzer(employees=None):\n    \"\"\"\n    Calculate average salary from employee data.\n\n    :param employees: List[Dict[str, Any]] or None\n    :return: float average salary\n    \"\"\"\n    # If no employee list is passed in, load all employees from the DB\n    if employees is None:\n        db = EmployeeDB()\n        employees = db.get_all_employees()\n    # Use the existing SalaryAnalyzer utility\n    return SalaryAnalyzer.calculate_average_salary(employees)\n\n# Usage examples:\n\n# 1) Calculate average salary of all employees:\navg_all = salary_analyzer()\nprint(f\"Average salary (all employees): ${avg_all:.2f}\")\n\n# 2) Calculate average salary for a filtered group:\ndb = EmployeeDB()\nengineering = db.filter_by_department(\"Engineering\")\navg_engineering = salary_analyzer(engineering)\nprint(f\"Average salary (Engineering): ${avg_engineering:.2f}\")\n```  \nReinforced Requirement: none.",
+        "user_input": "Create a function called salary_analyzer that calculates average salary from employee data",
+        "start_time": "2025-09-29T16:02:16.831491",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "salary_analyzer",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T16:03:04.681618",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-09-29T16:03:04.829054",
+        "total_duration_seconds": 47.997563
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T16:03:05.708899",
+    "session_duration_seconds": 63.879491
+  },
+  {
+    "session_id": "20250929_163751",
+    "start_time": "2025-09-29T16:37:51.353775",
+    "functions": [
+      {
+        "function_requirement": "Here\u2019s a simple helper you can drop into your codebase (for example, in `employee_database.py` or in a new module) that wraps the existing `EmployeeDB` and `SalaryAnalyzer` utilities to compute the average salary:\n\n```python\nfrom test_context.employee_database import EmployeeDB, SalaryAnalyzer\n\ndef salary_analyzer(data=None):\n    \"\"\"\n    Calculate the average salary of employees.\n\n    If `data` is provided, it should be a list of employee dicts  \n    (each containing a `\"salary\"` field).  \n    Otherwise, the default in\u2010memory dataset (EMPLOYEE_DATA) is used.\n\n    Returns:\n        float: The average salary across all provided employees.\n    \"\"\"\n    # Initialize the employee database (uses EMPLOYEE_DATA by default)\n    db = EmployeeDB(data)\n\n    # Fetch all employees\n    employees = db.get_all_employees()\n\n    # Delegate to the existing SalaryAnalyzer\n    return SalaryAnalyzer.calculate_average_salary(employees)\n\n\n# Example usage:\nif __name__ == \"__main__\":\n    # 1) Using the built\u2010in employee data:\n    avg = salary_analyzer()\n    print(f\"Average salary (default data): ${avg:,.2f}\")\n\n    # 2) Passing in a custom list of employee dicts:\n    custom_emps = [\n        {\"id\": 101, \"name\": \"Alice\", \"salary\": 90000, \"email\": \"a@x.com\", \"age\": 30, \"role\": \"dev\", \"department\": \"R&D\"},\n        {\"id\": 102, \"name\": \"Bob\",   \"salary\": 110000, \"email\": \"b@y.com\", \"age\": 40, \"role\": \"mgr\", \"department\": \"Sales\"},\n    ]\n    avg_custom = salary_analyzer(custom_emps)\n    print(f\"Average salary (custom data): ${avg_custom:,.2f}\")\n```\n\nThis leverages the existing `EmployeeDB` and `SalaryAnalyzer` classes in your project to keep everything consistent.",
+        "user_input": "Create a function called salary_analyzer that calculates average salary from employee data",
+        "start_time": "2025-09-29T16:38:05.731304",
+        "iterations": 6,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "salary_analyzer",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should raise ZeroDivisionError when provided with an empty list",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T16:39:03.367862",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "salary_analyzer should instantiate EmployeeDB with the required 'data' argument (pass the salary list when calling EmployeeDB)",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T16:39:42.894320",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should raise ZeroDivisionError when called with an empty list",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T16:40:25.793486",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "In salary_analyzer, pass the data argument into the EmployeeDB constructor (e.g. change `db = EmployeeDB()` to `db = EmployeeDB(data)`)",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T16:41:36.643405",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should raise ZeroDivisionError when provided an empty salary list",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T16:42:23.540469",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 6,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T16:43:19.656534",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should raise ZeroDivisionError when provided with an empty list",
+            "timestamp": "2025-09-29T16:39:03.368043"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T16:39:03.368134"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Function should raise ZeroDivisionError when provided with an empty list",
+            "new_requirement": "salary_analyzer should instantiate EmployeeDB with the required 'data' argument (pass the salary list when calling EmployeeDB)",
+            "timestamp": "2025-09-29T16:39:42.894432"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T16:39:42.894467"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "salary_analyzer should instantiate EmployeeDB with the required 'data' argument (pass the salary list when calling EmployeeDB)",
+            "new_requirement": "Function should raise ZeroDivisionError when called with an empty list",
+            "timestamp": "2025-09-29T16:40:25.793648"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T16:40:25.793741"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "Function should raise ZeroDivisionError when called with an empty list",
+            "new_requirement": "In salary_analyzer, pass the data argument into the EmployeeDB constructor (e.g. change `db = EmployeeDB()` to `db = EmployeeDB(data)`)",
+            "timestamp": "2025-09-29T16:41:36.643568"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T16:41:36.643660"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "In salary_analyzer, pass the data argument into the EmployeeDB constructor (e.g. change `db = EmployeeDB()` to `db = EmployeeDB(data)`)",
+            "new_requirement": "Function should raise ZeroDivisionError when provided an empty salary list",
+            "timestamp": "2025-09-29T16:42:23.540559"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T16:42:23.540590"
+          }
+        ],
+        "end_time": "2025-09-29T16:43:19.694316",
+        "total_duration_seconds": 313.963012
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T16:43:20.478147",
+    "session_duration_seconds": 329.124372
+  },
+  {
+    "session_id": "20250929_165901",
+    "start_time": "2025-09-29T16:59:01.031822",
+    "functions": [
+      {
+        "function_requirement": "Here\u2019s a simple utility function that wraps the existing `EmployeeDB` and `SalaryAnalyzer` classes to compute the average salary of all employees:\n\n```python\n# File: salary_utils.py\n# Place this alongside employee_database.py (or in another utils module)\n\nfrom test_context.employee_database import EmployeeDB, SalaryAnalyzer\n\ndef salary_analyzer() -> float:\n    \"\"\"\n    Calculate the average salary of all employees in the EmployeeDB.\n\n    Returns:\n        float: The average salary across all employees.\n    \"\"\"\n    # Load the in-memory employee data\n    db = EmployeeDB()\n    all_emps = db.get_all_employees()\n\n    # Delegate to the existing SalaryAnalyzer\n    return SalaryAnalyzer.calculate_average_salary(all_emps)\n\n\n# Example usage\nif __name__ == \"__main__\":\n    avg = salary_analyzer()\n    print(f\"Average salary of all employees: ${avg:,.2f}\")\n```\n\nThis function:\n\n\u2022 Instantiates the `EmployeeDB` (which uses the built-in `EMPLOYEE_DATA`).  \n\u2022 Fetches all employee records.  \n\u2022 Calls `SalaryAnalyzer.calculate_average_salary(...)` to get the mean salary.  \n\u2022 Returns that value.",
+        "user_input": "Create a function called salary_analyzer that calculates average salary from employee data",
+        "start_time": "2025-09-29T16:59:15.012448",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:00:05.592820",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "SalaryAnalyzer.calculate_average_salary should handle employee objects by accessing their salary attribute (not just dict subscripting), raise ZeroDivisionError when the employee list is empty, and validate salary values to raise TypeError for non-numeric types.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:00:15.834933",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:01:06.417619",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:01:14.198469",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate input arguments and raise a TypeError for missing or invalid parameters instead of raising ZeroDivisionError",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:01:20.138547",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should convert DummyEmployee objects into a format expected by calculate_average_salary (e.g., dicts with a 'salary' key or by accessing their .salary attribute) to avoid the subscriptable error, and it should raise ValueError (not TypeError) when given an empty employee list",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:03:09.194710",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:00:05.592991"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:00:05.593087"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "SalaryAnalyzer.calculate_average_salary should handle employee objects by accessing their salary attribute (not just dict subscripting), raise ZeroDivisionError when the employee list is empty, and validate salary values to raise TypeError for non-numeric types.",
+            "timestamp": "2025-09-29T17:00:15.835136"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:00:15.835251"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "SalaryAnalyzer.calculate_average_salary should handle employee objects by accessing their salary attribute (not just dict subscripting), raise ZeroDivisionError when the employee list is empty, and validate salary values to raise TypeError for non-numeric types.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:01:06.417991"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:01:06.418268"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:01:14.198551"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:01:14.198588"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "Function should validate input arguments and raise a TypeError for missing or invalid parameters instead of raising ZeroDivisionError",
+            "timestamp": "2025-09-29T17:01:20.138635"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:01:20.138665"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "Function should validate input arguments and raise a TypeError for missing or invalid parameters instead of raising ZeroDivisionError",
+            "new_requirement": "Function should convert DummyEmployee objects into a format expected by calculate_average_salary (e.g., dicts with a 'salary' key or by accessing their .salary attribute) to avoid the subscriptable error, and it should raise ValueError (not TypeError) when given an empty employee list",
+            "timestamp": "2025-09-29T17:03:09.194814"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:03:09.194853"
+          }
+        ],
+        "end_time": "2025-09-29T17:03:09.194970",
+        "total_duration_seconds": 234.182522
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T17:03:09.195133",
+    "session_duration_seconds": 248.163311
+  },
+  {
+    "session_id": "20250929_172204",
+    "start_time": "2025-09-29T17:22:04.876176",
+    "functions": [
+      {
+        "function_requirement": "Here\u2019s a small helper you can add (for example, in `employee_database.py` or in a separate utilities module) that reuses the existing `EmployeeDB` and `SalaryAnalyzer` classes to compute the average salary of all employees:\n\n```python\nfrom typing import List, Dict, Any\nfrom employee_database import EmployeeDB, SalaryAnalyzer\n\ndef salary_analyzer() -> float:\n    \"\"\"\n    Calculate the average salary of all employees in the database.\n\n    Returns:\n        The average salary as a float. If there are no employees,\n        returns 0.0.\n    \"\"\"\n    db = EmployeeDB()                               # Load the built-in EMPLOYEE_DATA\n    employees: List[Dict[str, Any]] = db.get_all_employees()\n    # Reuse the existing static method to compute the average\n    return SalaryAnalyzer.calculate_average_salary(employees)\n```\n\nUsage:\n\n```python\nif __name__ == \"__main__\":\n    avg = salary_analyzer()\n    print(f\"Average salary of all employees: ${avg:,.2f}\")\n```",
+        "user_input": "Create a function called salary_analyzer that calculates average salary from employee data",
+        "start_time": "2025-09-29T17:22:26.544247",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix import error in Unit_Test/functions.py: ensure the employee_database module is on the PYTHONPATH or update the import to the correct relative path.",
+            "timestamp": "2025-09-29T17:24:03.901960",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:24:31.861132",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the import in Unit_Test/functions.py: ensure the employee_database module is present on the PYTHONPATH or correct the import path so that EmployeeDB and SalaryAnalyzer can be resolved",
+            "timestamp": "2025-09-29T17:25:08.215717",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:26:07.823161",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:26:27.389146",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:26:46.944876",
+            "unit_test_summary": "Tests failed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:24:03.902150"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Fix import error in Unit_Test/functions.py: ensure the employee_database module is on the PYTHONPATH or update the import to the correct relative path.",
+            "timestamp": "2025-09-29T17:24:03.902246"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:24:31.861233"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "Fix import error in Unit_Test/functions.py: ensure the employee_database module is on the PYTHONPATH or update the import to the correct relative path.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:24:31.861264"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:25:08.215886"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "Fix the import in Unit_Test/functions.py: ensure the employee_database module is present on the PYTHONPATH or correct the import path so that EmployeeDB and SalaryAnalyzer can be resolved",
+            "timestamp": "2025-09-29T17:25:08.215979"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:26:07.823298"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "Fix the import in Unit_Test/functions.py: ensure the employee_database module is present on the PYTHONPATH or correct the import path so that EmployeeDB and SalaryAnalyzer can be resolved",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:26:07.823331"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:26:27.389276"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:26:27.389319"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:26:46.945075"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:26:46.945169"
+          }
+        ],
+        "end_time": "2025-09-29T17:26:46.945369",
+        "total_duration_seconds": 260.401122
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T17:26:46.945647",
+    "session_duration_seconds": 282.069471
+  },
+  {
+    "session_id": "20250929_172818",
+    "start_time": "2025-09-29T17:28:18.994378",
+    "functions": [
+      {
+        "function_requirement": "Here\u2019s a simple utility function that pulls in all employees from the in\u2010memory database and uses the existing `SalaryAnalyzer` to compute the average salary. You can drop this into your `employee_database.py` (or another shared utilities module) alongside the other classes:\n\n```python\nfrom typing import List, Dict, Any\nfrom employee_database import EmployeeDB, SalaryAnalyzer\n\ndef salary_analyzer() -> float:\n    \"\"\"\n    Calculate the average salary of all employees in the database.\n\n    Returns:\n        The average salary as a float. If there are no employees, returns 0.0.\n    \"\"\"\n    # Instantiate the DB and pull all employees\n    db = EmployeeDB()\n    employees: List[Dict[str, Any]] = db.get_all_employees()\n    \n    # Delegate to the existing SalaryAnalyzer\n    return SalaryAnalyzer.calculate_average_salary(employees)\n```\n\nUsage example:\n```python\nif __name__ == \"__main__\":\n    avg = salary_analyzer()\n    print(f\"The average employee salary is: ${avg:,.2f}\")\n```",
+        "user_input": "Create a function called salary_analyzer that calculates average salary from employee data",
+        "start_time": "2025-09-29T17:28:33.977515",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the import of 'employee_database' in Unit_Test/unitTest.py: ensure the module is on PYTHONPATH or use the correct relative/absolute import so pytest can locate it.",
+            "timestamp": "2025-09-29T17:29:18.933303",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:29:40.845499",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix import statement in Unit_Test/unitTest.py: 'employee_database' cannot be imported from 'Unit_Test'. Change the import to the correct module path (for example, use `from employee_database import employee_database` or update Unit_Test/__init__.py to expose that module).",
+            "timestamp": "2025-09-29T17:30:10.652606",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:30:32.748601",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Ensure the test can find the employee_database module. Add the correct import path or __init__.py, or adjust PYTHONPATH so that 'employee_database' can be imported in the test.",
+            "timestamp": "2025-09-29T17:30:45.288274",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the import in Unit_Test/unitTest.py: ensure the employee_database module is on the Python path or correct the module name/path so that pytest can locate it.",
+            "timestamp": "2025-09-29T17:31:02.198318",
+            "unit_test_summary": "Tests failed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:29:18.933431"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Fix the import of 'employee_database' in Unit_Test/unitTest.py: ensure the module is on PYTHONPATH or use the correct relative/absolute import so pytest can locate it.",
+            "timestamp": "2025-09-29T17:29:18.933469"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:29:40.845664"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "Fix the import of 'employee_database' in Unit_Test/unitTest.py: ensure the module is on PYTHONPATH or use the correct relative/absolute import so pytest can locate it.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:29:40.845764"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:30:10.652808"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "Fix import statement in Unit_Test/unitTest.py: 'employee_database' cannot be imported from 'Unit_Test'. Change the import to the correct module path (for example, use `from employee_database import employee_database` or update Unit_Test/__init__.py to expose that module).",
+            "timestamp": "2025-09-29T17:30:10.652910"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:30:32.748789"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "Fix import statement in Unit_Test/unitTest.py: 'employee_database' cannot be imported from 'Unit_Test'. Change the import to the correct module path (for example, use `from employee_database import employee_database` or update Unit_Test/__init__.py to expose that module).",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:30:32.748888"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:30:45.288645"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "Ensure the test can find the employee_database module. Add the correct import path or __init__.py, or adjust PYTHONPATH so that 'employee_database' can be imported in the test.",
+            "timestamp": "2025-09-29T17:30:45.289199"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:31:02.198499"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "Ensure the test can find the employee_database module. Add the correct import path or __init__.py, or adjust PYTHONPATH so that 'employee_database' can be imported in the test.",
+            "new_requirement": "Fix the import in Unit_Test/unitTest.py: ensure the employee_database module is on the Python path or correct the module name/path so that pytest can locate it.",
+            "timestamp": "2025-09-29T17:31:02.198591"
+          }
+        ],
+        "end_time": "2025-09-29T17:31:02.198804",
+        "total_duration_seconds": 148.221289
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T17:31:02.199101",
+    "session_duration_seconds": 163.204723
+  },
+  {
+    "session_id": "20250929_174002",
+    "start_time": "2025-09-29T17:40:02.810405",
+    "functions": [
+      {
+        "function_requirement": "Here\u2019s a simple utility function you can drop into your codebase (for example, in `employee_database.py` or in a new module) that uses the existing `EmployeeDB` and `SalaryAnalyzer` classes to compute the average salary:\n\n```python\nfrom test_context.employee_database import EmployeeDB, SalaryAnalyzer\n\ndef salary_analyzer() -> float:\n    \"\"\"\n    Load all employees from the in-memory database and return\n    the average salary.\n    \"\"\"\n    # Instantiate the database and fetch all employees\n    db = EmployeeDB()\n    employees = db.get_all_employees()\n\n    # Use the existing SalaryAnalyzer to compute the average\n    analyzer = SalaryAnalyzer()\n    return analyzer.calculate_average_salary(employees)\n\n# Example usage:\nif __name__ == \"__main__\":\n    avg = salary_analyzer()\n    print(f\"The average salary of all employees is: ${avg:,.2f}\")\n```\n\nExplanation:\n\n- We import `EmployeeDB` and `SalaryAnalyzer` from your existing `employee_database.py`.\n- `EmployeeDB()` is used to retrieve the full list of employees.\n- `SalaryAnalyzer.calculate_average_salary` does the actual computation.\n- The function returns a single `float` representing the average salary.\n- The example at the bottom shows how you might call it in a script.",
+        "user_input": "Create a function called salary_analyzer that calculates average salary from employee data",
+        "start_time": "2025-09-29T17:40:17.091598",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "salary_analyzer",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:40:47.097943",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:40:50.078405",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:40:47.098126"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:40:47.098215"
+          }
+        ],
+        "end_time": "2025-09-29T17:40:50.115177",
+        "total_duration_seconds": 33.023579
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T17:41:07.181670",
+    "session_duration_seconds": 64.371265
+  },
+  {
+    "session_id": "20250929_174154",
+    "start_time": "2025-09-29T17:41:54.483402",
+    "functions": [
+      {
+        "function_requirement": "Here\u2019s a helper function you can drop into your `employee_database.py` (or any other module) that wraps the existing `EmployeeDB` and `SalaryAnalyzer` classes to produce the overall average salary:\n\n```python\n# In employee_database.py (or another utils module)\n\nfrom typing import Optional, List, Dict, Any\nfrom employee_database import EmployeeDB, SalaryAnalyzer\n\ndef salary_analyzer(employees: Optional[List[Dict[str, Any]]] = None) -> float:\n    \"\"\"\n    Calculate the average salary for a list of employees. \n    If no list is provided, it will load all employees from the EmployeeDB.\n\n    Parameters:\n    - employees: Optional list of employee dicts. If None, loads from EmployeeDB.\n\n    Returns:\n    - The average salary as a float.\n    \"\"\"\n    # Load all employees if none were passed in\n    if employees is None:\n        db = EmployeeDB()\n        employees = db.get_all_employees()\n\n    # Delegate to the existing SalaryAnalyzer\n    return SalaryAnalyzer.calculate_average_salary(employees)\n\n# Example usage:\nif __name__ == \"__main__\":\n    avg = salary_analyzer()\n    print(f\"Average salary among all employees: ${avg:,.2f}\")\n```\n\nExplanation:\n\n\u2022 If you pass in a custom list of employee records, it will compute the average on that.  \n\u2022 If you don\u2019t pass anything, it instantiates `EmployeeDB()` (which uses the in-file `EMPLOYEE_DATA`), retrieves all employees, and then uses the existing `SalaryAnalyzer.calculate_average_salary`.  \n\u2022 You don\u2019t need to touch any file paths, since the employee data is already defined in `employee_database.py`.",
+        "user_input": "Create a function called salary_analyzer that calculates average salary from employee data",
+        "start_time": "2025-09-29T17:42:19.064088",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:43:15.081964",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:43:22.298834",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the import in Unit_Test/unitTest.py: ensure the employee_database module is on PYTHONPATH or use a correct relative import (e.g. from ..employee_database import salary_analyzer, EmployeeDB, SalaryAnalyzer) and verify employee_database.py exists in the project.",
+            "timestamp": "2025-09-29T17:43:44.385525",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:44:19.390934",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T17:44:25.940522",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the import in Unit_Test/unitTest.py: ensure the module 'employee_database.py' is on the PYTHONPATH or use the correct relative import so pytest can locate it.",
+            "timestamp": "2025-09-29T17:44:31.111141",
+            "unit_test_summary": "Tests failed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:43:15.082134"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:43:15.082229"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:43:22.299008"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:43:22.299100"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:43:44.385605"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "Fix the import in Unit_Test/unitTest.py: ensure the employee_database module is on PYTHONPATH or use a correct relative import (e.g. from ..employee_database import salary_analyzer, EmployeeDB, SalaryAnalyzer) and verify employee_database.py exists in the project.",
+            "timestamp": "2025-09-29T17:43:44.385642"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:44:19.391110"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "Fix the import in Unit_Test/unitTest.py: ensure the employee_database module is on PYTHONPATH or use a correct relative import (e.g. from ..employee_database import salary_analyzer, EmployeeDB, SalaryAnalyzer) and verify employee_database.py exists in the project.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:44:19.391208"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:44:25.940703"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:44:25.940806"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T17:44:31.111257"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "Fix the import in Unit_Test/unitTest.py: ensure the module 'employee_database.py' is on the PYTHONPATH or use the correct relative import so pytest can locate it.",
+            "timestamp": "2025-09-29T17:44:31.111288"
+          }
+        ],
+        "end_time": "2025-09-29T17:44:31.111394",
+        "total_duration_seconds": 132.047306
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T17:44:31.111970",
+    "session_duration_seconds": 156.628568
+  },
+  {
+    "session_id": "20250929_185657",
+    "start_time": "2025-09-29T18:56:57.510813",
+    "functions": [
+      {
+        "function_requirement": "I see you\u2019ve provided a file path:\n\n/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_w_o_tdd/ablation_study_humaneval_and_long_horizon_tasks\n\nWhat would you like me to do with this directory? For example, list its contents, read a specific file, or perform some analysis? Let me know so I can assist you further.",
+        "user_input": "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_w_o_tdd/ablation_study_humaneval_and_long_horizon_tasks",
+        "start_time": "2025-09-29T18:57:07.684490",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T18:57:44.133169",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T18:57:51.400703",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T18:57:57.326539",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix syntax error in Unit_Test/unitTest.py at line 1: remove or comment out the plain text and replace the curly apostrophe (U+2019) with a standard ASCII apostrophe or otherwise ensure the file contains valid Python code.",
+            "timestamp": "2025-09-29T18:58:05.446768",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T18:58:25.297074",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "Fix the syntax error in functions.py at line 14: the plain text (\u2018What would you like to do with that directory? \u2026\u2019) must be commented out or removed to be valid Python code.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T18:58:39.529525",
+            "unit_test_summary": "Tests failed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T18:57:44.133291"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T18:57:44.133337"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T18:57:51.400802"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T18:57:51.400837"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T18:57:57.326723"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T18:57:57.326830"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T18:58:05.446954"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "Fix syntax error in Unit_Test/unitTest.py at line 1: remove or comment out the plain text and replace the curly apostrophe (U+2019) with a standard ASCII apostrophe or otherwise ensure the file contains valid Python code.",
+            "timestamp": "2025-09-29T18:58:05.447046"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T18:58:25.297278"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "Fix syntax error in Unit_Test/unitTest.py at line 1: remove or comment out the plain text and replace the curly apostrophe (U+2019) with a standard ASCII apostrophe or otherwise ensure the file contains valid Python code.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T18:58:25.297395"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "Fix the syntax error in functions.py at line 14: the plain text (\u2018What would you like to do with that directory? \u2026\u2019) must be commented out or removed to be valid Python code.",
+            "timestamp": "2025-09-29T18:58:39.529682"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T18:58:39.529779"
+          }
+        ],
+        "end_time": "2025-09-29T18:58:39.530016",
+        "total_duration_seconds": 91.845526
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T18:58:39.530271",
+    "session_duration_seconds": 102.019458
+  },
+  {
+    "session_id": "20250929_190323",
+    "start_time": "2025-09-29T19:03:23.937448",
+    "functions": [
+      {
+        "function_requirement": "Function Name: matrix_operations  \nDescription: Performs basic multiplication of two matrices (matrix A \u00d7 matrix B). The result is stored in a global cache variable named `computation_cache` under a key derived from the input matrices (for example, a stringified combination of the two). If the same pair of matrices is multiplied again, the function returns the cached result instead of recomputing it.  \nParameters:  \n- matrix_a: Two-dimensional list of numbers representing the first matrix (m \u00d7 n).  \n- matrix_b: Two-dimensional list of numbers representing the second matrix (n \u00d7 p).  \n\nGlobal Variables:  \n- computation_cache (dict): A mapping from a tuple of stringified input matrices to their multiplication result.\n\nExample Usage:  \n```python\n# Initialize global cache\ncomputation_cache = {}\n\ndef matrix_operations(matrix_a, matrix_b):\n    \"\"\"\n    Multiplies matrix_a by matrix_b and caches the result.\n    matrix_a dimensions: m x n\n    matrix_b dimensions: n x p\n    Returns: m x p result matrix\n    \"\"\"\n    # Create a cache key based on inputs\n    key = (tuple(map(tuple, matrix_a)), tuple(map(tuple, matrix_b)))\n    if key in computation_cache:\n        return computation_cache[key]\n    \n    # Validate dimensions\n    m, n = len(matrix_a), len(matrix_a[0])\n    n_b, p = len(matrix_b), len(matrix_b[0])\n    if n != n_b:\n        raise ValueError(\"Inner dimensions must match for multiplication.\")\n    \n    # Perform multiplication\n    result = [[0 for _ in range(p)] for _ in range(m)]\n    for i in range(m):\n        for j in range(p):\n            for k in range(n):\n                result[i][j] += matrix_a[i][k] * matrix_b[k][j]\n    \n    # Cache and return\n    computation_cache[key] = result\n    return result\n\n# Example call:\nA = [[1, 2, 3],\n     [4, 5, 6]]\nB = [[7,  8],\n     [9, 10],\n     [11,12]]\n\nC = matrix_operations(A, B)\n# C is now [[58, 64], [139, 154]]\n```\n\nExample:  \nmatrix_operations([[1, 2], [3, 4]], [[5, 6], [7, 8]])  \n# Returns [[19, 22], [43, 50]] and stores it in `computation_cache`.",
+        "user_input": "Create a function 'matrix_operations' that performs basic matrix multiplication and stores results in a global variable 'computation_cache'.",
+        "start_time": "2025-09-29T19:03:39.589992",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "matrix_operations",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:05:02.096789",
+            "unit_test_summary": "All tests passed"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:05:07.385521",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:05:02.097152"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:05:02.097197"
+          }
+        ],
+        "end_time": "2025-09-29T19:05:07.433422",
+        "total_duration_seconds": 87.84343
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "matrix_operations",
+        "function_args": {
+          "matrix_a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "matrix_b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ]
+        },
+        "execution_time": 0.00036878099490422755,
+        "memory_peak": 8666,
+        "result": "[[19, 22], [43, 50]]",
+        "timestamp": "2025-09-29T19:05:29.033145",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-09-29T19:05:30.385022",
+    "session_duration_seconds": 126.447574
+  },
+  {
+    "session_id": "20250929_191611",
+    "start_time": "2025-09-29T19:16:11.650857",
+    "functions": [
+      {
+        "function_requirement": "Function Name: advanced_matrix_ops  \nDescription: Provides higher-level matrix computations by leveraging an existing `matrix_operations` library for core operations and a `computation_cache` to store/retrieve intermediate results. In particular, this function adds eigenvalue and eigenvector calculations, caching results to avoid redundant work.  \nParameters:  \n- matrix: A 2D array or list of lists representing the matrix to analyze.  \n- compute: A string or list of strings specifying which advanced computations to perform. Supported values include:  \n  \u2022 \"eigen\": compute eigenvalues and eigenvectors  \n  \u2022 (Optionally extendable for other advanced operations)  \n- use_cache (optional): Boolean flag (default true). If true, will check `computation_cache` for previously computed results on the same matrix and computation type, and store new results back into the cache.  \nExample:  \n```\n# Perform eigen computations on a 3x3 matrix, with caching enabled\nresult = advanced_matrix_ops(\n    matrix=[[2, 0, 0],\n            [0, 3, 4],\n            [0, 4, 9]],\n    compute=\"eigen\",\n    use_cache=true\n)\n\n# Expected result structure:\n# {\n#   eigenvalues: [2, 1, 11],\n#   eigenvectors: [[1,0,0], [...], [...]],\n#   from_cache: false\n# }\n```  \nInternally, `advanced_matrix_ops` would:  \n1. Serialize the input matrix and computation type to form a cache key.  \n2. If `use_cache` is true and a cached entry exists in `computation_cache`, return that.  \n3. Otherwise call `matrix_operations(matrix, \"eigen\")` to get eigenvalues/vectors.  \n4. Store the result in `computation_cache` under the generated key.  \n5. Return the computed eigenvalues, eigenvectors, and a flag indicating cache usage.",
+        "user_input": "Load the previous session and create a function 'advanced_matrix_ops' that uses the existing 'matrix_operations' function and 'computation_cache' to perform eigenvalue calculations.",
+        "start_time": "2025-09-29T19:16:47.568711",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:19:05.182009",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "The functions.py module should use a proper relative import for computation_cache (e.g. `from . import computation_cache`) or include a computation_cache.py in the same package so that `import computation_cache` can resolve.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:19:34.597375",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the import in Unit_Test/functions.py: replace the bare `import computation_cache` with the correct module path or a relative import (e.g. `from . import computation_cache` or `from Unit_Test import computation_cache`) so that pytest can find the computation_cache module.",
+            "timestamp": "2025-09-29T19:20:32.055548",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the import in Unit_Test/unitTest.py: ensure the computation_cache module is on PYTHONPATH or adjust the import to the correct package path (e.g. add an __init__.py in Unit_Test or use 'from computation_cache import computation_cache').",
+            "timestamp": "2025-09-29T19:21:18.828149",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:22:01.661525",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:22:11.965159",
+            "unit_test_summary": "Tests failed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:19:05.182203"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:19:05.182296"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "The functions.py module should use a proper relative import for computation_cache (e.g. `from . import computation_cache`) or include a computation_cache.py in the same package so that `import computation_cache` can resolve.",
+            "timestamp": "2025-09-29T19:19:34.597473"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:19:34.597506"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "The functions.py module should use a proper relative import for computation_cache (e.g. `from . import computation_cache`) or include a computation_cache.py in the same package so that `import computation_cache` can resolve.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:20:32.055712"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "Fix the import in Unit_Test/functions.py: replace the bare `import computation_cache` with the correct module path or a relative import (e.g. `from . import computation_cache` or `from Unit_Test import computation_cache`) so that pytest can find the computation_cache module.",
+            "timestamp": "2025-09-29T19:20:32.055821"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:21:18.855607"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "Fix the import in Unit_Test/functions.py: replace the bare `import computation_cache` with the correct module path or a relative import (e.g. `from . import computation_cache` or `from Unit_Test import computation_cache`) so that pytest can find the computation_cache module.",
+            "new_requirement": "Fix the import in Unit_Test/unitTest.py: ensure the computation_cache module is on PYTHONPATH or adjust the import to the correct package path (e.g. add an __init__.py in Unit_Test or use 'from computation_cache import computation_cache').",
+            "timestamp": "2025-09-29T19:21:18.855643"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:22:01.661700"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "Fix the import in Unit_Test/unitTest.py: ensure the computation_cache module is on PYTHONPATH or adjust the import to the correct package path (e.g. add an __init__.py in Unit_Test or use 'from computation_cache import computation_cache').",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:22:01.661790"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:22:11.965282"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:22:11.965329"
+          }
+        ],
+        "end_time": "2025-09-29T19:22:11.965446",
+        "total_duration_seconds": 324.396735
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T19:22:11.976051",
+    "session_duration_seconds": 360.325194
+  },
+  {
+    "session_id": "20250929_192525",
+    "start_time": "2025-09-29T19:25:25.827968",
+    "functions": [
+      {
+        "function_requirement": "Function Name: matrix_operations  \nDescription: Performs basic matrix multiplication of two input matrices and stores the resulting matrix in a global cache variable named `computation_cache`. Before multiplication, it checks that the number of columns in the first matrix matches the number of rows in the second matrix to ensure the operation is valid.  \n\nParameters:  \n- matrix_a (list of list of numbers): The first input matrix with dimensions m \u00d7 n.  \n- matrix_b (list of list of numbers): The second input matrix with dimensions n \u00d7 p.  \n\nExample:  \n```python\n# Global cache (initially empty)\ncomputation_cache = {}\n\n# Call the function\nresult = matrix_operations(\n    matrix_a = [\n        [1, 2],\n        [3, 4]\n    ],\n    matrix_b = [\n        [5, 6],\n        [7, 8]\n    ]\n)\n\n# After the call:\n# result == [\n#   [19, 22],\n#   [43, 50]\n# ]\n# computation_cache == {\n#   \"last_result\": [\n#       [19, 22],\n#       [43, 50]\n#   ]\n# }\n```  ",
+        "user_input": "Create a function 'matrix_operations' that performs basic matrix multiplication and stores results in a global variable 'computation_cache'.",
+        "start_time": "2025-09-29T19:25:49.804668",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "matrix_operations",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function should validate inputs and raise appropriate exceptions: raise ValueError for invalid or empty matrix dimensions, raise TypeError for non-list or non-numeric inputs, and ensure cache is not updated when an exception occurs.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:27:50.856735",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:28:51.716626",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function should validate inputs and raise appropriate exceptions: raise ValueError for invalid or empty matrix dimensions, raise TypeError for non-list or non-numeric inputs, and ensure cache is not updated when an exception occurs.",
+            "timestamp": "2025-09-29T19:27:50.856924"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:27:50.857027"
+          }
+        ],
+        "end_time": "2025-09-29T19:28:51.756302",
+        "total_duration_seconds": 181.951634
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "matrix_operations",
+        "function_args": {
+          "matrix_a": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              4,
+              5,
+              6
+            ]
+          ],
+          "matrix_b": [
+            [
+              7,
+              8
+            ],
+            [
+              9,
+              10
+            ],
+            [
+              11,
+              12
+            ]
+          ]
+        },
+        "execution_time": 0.0003522379993228242,
+        "memory_peak": 12312,
+        "result": "[[58, 64], [139, 154]]",
+        "timestamp": "2025-09-29T19:29:16.338284",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-09-29T19:29:24.853682",
+    "session_duration_seconds": 239.025714
+  },
+  {
+    "session_id": "20250929_193726",
+    "start_time": "2025-09-29T19:37:26.511860",
+    "functions": [
+      {
+        "function_requirement": "Function Name: advanced_matrix_ops  \nDescription: Provides advanced matrix computations\u2014currently focused on eigenvalue calculations\u2014by leveraging an existing `matrix_operations` module for the core numeric routines and a `computation_cache` layer to store and retrieve past results for speed. If eigenvalues for a given matrix are already in cache, it returns the cached result; otherwise it computes via `matrix_operations`, caches it, and returns it.  \nParameters:  \n- matrix (list of lists of numbers): The square matrix whose eigenvalues are to be computed.  \n- use_cache (boolean, optional, default=true): Whether to attempt retrieving a cached result before computing.  \n- force_recompute (boolean, optional, default=false): If true, ignores cache and recomputes eigenvalues.  \nExample:  \nadvanced_matrix_ops(  \n    matrix=[[2, 0, 0], [0, 3, 4], [0, 4, 9]],  \n    use_cache=true,  \n    force_recompute=false  \n)  # Returns the eigenvalues for the given matrix, using cache if available.",
+        "user_input": "Load the previous session and create a function 'advanced_matrix_ops' that uses the existing 'matrix_operations' function and 'computation_cache' to perform eigenvalue calculations.",
+        "start_time": "2025-09-29T19:38:34.652807",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:40:33.947962",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure that the matrix_operations module is available to the project or adjust the import path in functions.py so that matrix_operations can be found.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:40:46.126923",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "The test suite is failing to import the module \u2018matrix_operations\u2019. Ensure that the file matrix_operations.py is on the Python path or adjust the import in Unit_Test/functions.py to use the correct package path (e.g. a relative import) or add the module\u2019s directory to PYTHONPATH.",
+            "timestamp": "2025-09-29T19:41:43.696877",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:42:42.374376",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure the function module can locate and import the matrix_operations module. For example, include matrix_operations in the package or use a correct relative import (e.g. from .matrix_operations import \u2026) so the import does not fail.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:42:56.722697",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T19:43:58.571280",
+            "unit_test_summary": "Tests failed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:40:33.948069"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:40:33.948105"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "Ensure that the matrix_operations module is available to the project or adjust the import path in functions.py so that matrix_operations can be found.",
+            "timestamp": "2025-09-29T19:40:46.127090"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:40:46.127182"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "Ensure that the matrix_operations module is available to the project or adjust the import path in functions.py so that matrix_operations can be found.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:41:43.719210"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "The test suite is failing to import the module \u2018matrix_operations\u2019. Ensure that the file matrix_operations.py is on the Python path or adjust the import in Unit_Test/functions.py to use the correct package path (e.g. a relative import) or add the module\u2019s directory to PYTHONPATH.",
+            "timestamp": "2025-09-29T19:41:43.719258"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:42:42.374551"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "The test suite is failing to import the module \u2018matrix_operations\u2019. Ensure that the file matrix_operations.py is on the Python path or adjust the import in Unit_Test/functions.py to use the correct package path (e.g. a relative import) or add the module\u2019s directory to PYTHONPATH.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:42:42.374642"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "Ensure the function module can locate and import the matrix_operations module. For example, include matrix_operations in the package or use a correct relative import (e.g. from .matrix_operations import \u2026) so the import does not fail.",
+            "timestamp": "2025-09-29T19:42:56.722790"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:42:56.722843"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "Ensure the function module can locate and import the matrix_operations module. For example, include matrix_operations in the package or use a correct relative import (e.g. from .matrix_operations import \u2026) so the import does not fail.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:43:58.571406"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T19:43:58.571443"
+          }
+        ],
+        "end_time": "2025-09-29T19:43:58.571557",
+        "total_duration_seconds": 323.91875
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T19:43:58.582048",
+    "session_duration_seconds": 392.070188
+  },
+  {
+    "session_id": "20250929_200909",
+    "start_time": "2025-09-29T20:09:09.290677",
+    "functions": [
+      {
+        "function_requirement": "Function Name: matrix_operations  \nDescription: Performs basic matrix multiplication of two input matrices and stores the resulting matrix in a global variable `computation_cache`, keyed by a tuple of the input matrices for caching.  \nParameters:  \n- matrix_a: A list of lists of numbers representing the first matrix (m \u00d7 n).  \n- matrix_b: A list of lists of numbers representing the second matrix (n \u00d7 p).  \n\nExample:  \n```\n# Suppose we have:\nmatrix_a = [[1, 2],\n            [3, 4]]\nmatrix_b = [[5, 6],\n            [7, 8]]\n\n# Call the function:\nresult = matrix_operations(matrix_a, matrix_b)\n\n# The function computes:\n# result = [[1*5 + 2*7, 1*6 + 2*8],\n#           [3*5 + 4*7, 3*6 + 4*8]]\n#       = [[19, 22],\n#          [43, 50]]\n\n# And stores this in computation_cache under the key (matrix_a, matrix_b).\n```",
+        "user_input": "Create a function 'matrix_operations' that performs basic matrix multiplication and stores results in a global variable 'computation_cache'.",
+        "start_time": "2025-09-29T20:09:22.568995",
+        "iterations": 3,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "matrix_operations",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:11:20.139572",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "The test 'test_float_and_negative_numbers' is using pytest.approx on a nested list, which isn\u2019t supported. Update that test to compare nested lists element-wise (e.g. apply pytest.approx to each number) or use a helper like numpy.testing.assert_allclose for nested list comparisons.",
+            "timestamp": "2025-09-29T20:11:28.518837",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:11:50.404667",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:11:20.139670"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:11:20.139702"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:11:28.519007"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "The test 'test_float_and_negative_numbers' is using pytest.approx on a nested list, which isn\u2019t supported. Update that test to compare nested lists element-wise (e.g. apply pytest.approx to each number) or use a helper like numpy.testing.assert_allclose for nested list comparisons.",
+            "timestamp": "2025-09-29T20:11:28.519096"
+          }
+        ],
+        "end_time": "2025-09-29T20:11:50.443528",
+        "total_duration_seconds": 147.874533
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "matrix_operations",
+        "function_args": {
+          "matrix_a": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              4,
+              5,
+              6
+            ]
+          ],
+          "matrix_b": [
+            [
+              7,
+              8
+            ],
+            [
+              9,
+              10
+            ],
+            [
+              11,
+              12
+            ]
+          ]
+        },
+        "execution_time": 0.0003823789884336293,
+        "memory_peak": 14420,
+        "result": "[[58, 64], [139, 154]]",
+        "timestamp": "2025-09-29T20:12:16.522792",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-09-29T20:12:18.428324",
+    "session_duration_seconds": 189.137647
+  },
+  {
+    "session_id": "20250929_201625",
+    "start_time": "2025-09-29T20:16:25.240185",
+    "functions": [
+      {
+        "function_requirement": "Function Name: advanced_matrix_ops  \nDescription: Computes the eigenvalues of a given matrix by leveraging an existing `matrix_operations` module and stores (or retrieves) results in a `computation_cache` to avoid redundant computations.  \nParameters:  \n- matrix (list of list of float): The square matrix for which to compute eigenvalues.  \n- cache_key (string, optional): A unique identifier under which to store or retrieve the computed eigenvalues in the cache. If not provided, a default key will be derived from the matrix contents.  \n- use_cache (boolean, default true): Whether to attempt retrieving from cache before computing anew.  \nExample:  \n```\n# Compute eigenvalues, caching under key \"M1\"\nadvanced_matrix_ops(\n    matrix = [[2.0, 1.0],\n              [1.0, 2.0]],\n    cache_key = \"M1\",\n    use_cache = true\n)\n```",
+        "user_input": "Load the previous session and create a function 'advanced_matrix_ops' that uses the existing 'matrix_operations' function and 'computation_cache' to perform eigenvalue calculations.",
+        "start_time": "2025-09-29T20:16:58.368763",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the import of 'matrix_operations' in Unit_Test/functions.py: ensure the module is on the PYTHONPATH or adjust the import path so pytest can locate it.",
+            "timestamp": "2025-09-29T20:18:55.478678",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the unterminated triple-quoted string literal in Unit_Test/functions.py (around line 187) by adding the missing closing quotes.",
+            "timestamp": "2025-09-29T20:19:40.455131",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:20:54.875954",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "Fix the import in your test: ensure the matrix_operations module exists and is on the PYTHONPATH (or adjust the import path), e.g., add matrix_operations.py to the project root or update sys.path/__init__.py so pytest can locate it.",
+            "timestamp": "2025-09-29T20:21:03.816664",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:22:01.768786",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "Fix the syntax error in Unit_Test/functions.py by properly terminating the triple-quoted string literal (e.g. add the missing ''' or \"\"\" at line 387)",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:22:12.755235",
+            "unit_test_summary": "Tests failed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:18:55.478779"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Fix the import of 'matrix_operations' in Unit_Test/functions.py: ensure the module is on the PYTHONPATH or adjust the import path so pytest can locate it.",
+            "timestamp": "2025-09-29T20:18:55.478825"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:19:40.455252"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "Fix the import of 'matrix_operations' in Unit_Test/functions.py: ensure the module is on the PYTHONPATH or adjust the import path so pytest can locate it.",
+            "new_requirement": "Fix the unterminated triple-quoted string literal in Unit_Test/functions.py (around line 187) by adding the missing closing quotes.",
+            "timestamp": "2025-09-29T20:19:40.455290"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:20:54.876044"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "Fix the unterminated triple-quoted string literal in Unit_Test/functions.py (around line 187) by adding the missing closing quotes.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:20:54.876081"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:21:03.816758"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "Fix the import in your test: ensure the matrix_operations module exists and is on the PYTHONPATH (or adjust the import path), e.g., add matrix_operations.py to the project root or update sys.path/__init__.py so pytest can locate it.",
+            "timestamp": "2025-09-29T20:21:03.816790"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:22:01.769082"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "Fix the import in your test: ensure the matrix_operations module exists and is on the PYTHONPATH (or adjust the import path), e.g., add matrix_operations.py to the project root or update sys.path/__init__.py so pytest can locate it.",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:22:01.769121"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "Fix the syntax error in Unit_Test/functions.py by properly terminating the triple-quoted string literal (e.g. add the missing ''' or \"\"\" at line 387)",
+            "timestamp": "2025-09-29T20:22:12.755366"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:22:12.755403"
+          }
+        ],
+        "end_time": "2025-09-29T20:22:12.755516",
+        "total_duration_seconds": 314.386753
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T20:22:12.765898",
+    "session_duration_seconds": 347.525713
+  },
+  {
+    "session_id": "20250929_202938",
+    "start_time": "2025-09-29T20:29:38.087155",
+    "functions": [
+      {
+        "function_requirement": "Function Name: matrix_operations  \nDescription: Performs basic matrix multiplication of two two-dimensional numeric arrays (matrices) and stores the resulting matrix in a global variable named `computation_cache`. If the dimensions are incompatible, it should raise an error or return an appropriate message.  \nParameters:  \n- matrix_a: A two-dimensional list (array) of numbers, representing the first matrix (dimensions m\u00d7n).  \n- matrix_b: A two-dimensional list (array) of numbers, representing the second matrix (dimensions n\u00d7p).  \n\nExample of usage:  \n```python\n# Suppose matrix_a is 2\u00d73 and matrix_b is 3\u00d72\nmatrix_a = [\n    [1, 2, 3],\n    [4, 5, 6]\n]\nmatrix_b = [\n    [7,  8],\n    [9, 10],\n    [11,12]\n]\n\n# Call the function\nmatrix_operations(matrix_a, matrix_b)\n\n# After execution, the global computation_cache would contain:\n# [\n#   [58, 64],\n#   [139,154]\n# ]\n```\n",
+        "user_input": "Create a function 'matrix_operations' that performs basic matrix multiplication and stores results in a global variable 'computation_cache'.",
+        "start_time": "2025-09-29T20:30:02.105036",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "matrix_operations",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:31:01.083421",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-09-29T20:31:01.122295",
+        "total_duration_seconds": 59.017259
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "matrix_operations",
+        "function_args": {
+          "matrix_a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "matrix_b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ]
+        },
+        "execution_time": 0.00034637800126802176,
+        "memory_peak": 12011,
+        "result": "[[19, 22], [43, 50]]",
+        "timestamp": "2025-09-29T20:31:14.706203",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-09-29T20:31:17.303986",
+    "session_duration_seconds": 99.216831
+  },
+  {
+    "session_id": "20250929_204148",
+    "start_time": "2025-09-29T20:41:48.488821",
+    "functions": [
+      {
+        "function_requirement": "Function Name: advanced_matrix_ops  \nDescription: A higher\u2010level function that computes eigenvalues (and optionally eigenvectors) of a given matrix by internally calling the existing `matrix_operations` function and storing/retrieving results in `computation_cache` for faster repeated access.  \n\nParameters:  \n- matrix_data (required): A two-dimensional array (list of lists) representing the square matrix whose eigenvalues are to be computed.  \n- return_eigenvectors (optional, default=false): Boolean flag indicating whether to return eigenvectors alongside eigenvalues.  \n- use_cache (optional, default=true): Boolean flag indicating whether to check `computation_cache` for a previous result before computing anew.  \n- cache_key (optional): String key to store or look up the result in `computation_cache`. If not provided and `use_cache` is true, a key is auto-generated based on a hash of `matrix_data` and `return_eigenvectors`.  \n\nExample of usage:  \nadvanced_matrix_ops(  \n  matrix_data=[[4,1],[1,3]],  \n  return_eigenvectors=true,  \n  use_cache=true,  \n  cache_key=\"matrix_4x4_eig\"  \n)  ",
+        "user_input": "Load the previous session and create a function 'advanced_matrix_ops' that uses the existing 'matrix_operations' function and 'computation_cache' to perform eigenvalue calculations.",
+        "start_time": "2025-09-29T20:42:09.228990",
+        "iterations": 6,
+        "successful": false,
+        "terminated_early": true,
+        "termination_reason": "Maximum iterations (6) reached",
+        "final_function_name": null,
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Function advanced_matrix_ops should call matrix_operations with both required arguments (e.g., pass matrix_b or provide a default for matrix_b) so that matrix_operations doesn\u2019t raise a missing argument TypeError.",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:45:23.307583",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Fix the unterminated triple-quoted string literal in Unit_Test/functions.py by closing the docstring properly (e.g., add the closing quotes around line 184)",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:46:27.290353",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:47:47.052645",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:48:11.116394",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 5,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:48:27.403741",
+            "unit_test_summary": "Tests failed"
+          },
+          {
+            "iteration": 6,
+            "judgement": false,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-09-29T20:48:40.199743",
+            "unit_test_summary": "Tests failed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Function advanced_matrix_ops should call matrix_operations with both required arguments (e.g., pass matrix_b or provide a default for matrix_b) so that matrix_operations doesn\u2019t raise a missing argument TypeError.",
+            "timestamp": "2025-09-29T20:45:23.307765"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:45:23.307879"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Function advanced_matrix_ops should call matrix_operations with both required arguments (e.g., pass matrix_b or provide a default for matrix_b) so that matrix_operations doesn\u2019t raise a missing argument TypeError.",
+            "new_requirement": "Fix the unterminated triple-quoted string literal in Unit_Test/functions.py by closing the docstring properly (e.g., add the closing quotes around line 184)",
+            "timestamp": "2025-09-29T20:46:27.290520"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:46:27.290618"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "Fix the unterminated triple-quoted string literal in Unit_Test/functions.py by closing the docstring properly (e.g., add the closing quotes around line 184)",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:47:47.052828"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:47:47.052927"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:48:11.116556"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:48:11.116651"
+          },
+          {
+            "type": "code",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:48:27.403917"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 5,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:48:27.404011"
+          },
+          {
+            "type": "code",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:48:40.199918"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 6,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-09-29T20:48:40.200023"
+          }
+        ],
+        "end_time": "2025-09-29T20:48:40.200237",
+        "total_duration_seconds": 390.971247
+      }
+    ],
+    "existing_function_calls": [],
+    "end_time": "2025-09-29T20:48:40.211061",
+    "session_duration_seconds": 411.72224
   }
 ]

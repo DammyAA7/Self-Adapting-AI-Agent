@@ -7,8 +7,6 @@
   "context_files": [
     "performance_reviews.csv"
   ],
-  "dataset": "self-evolution",
   "domain": "hr-analytics",
-  "requires_context": true,
   "test_code": "\nresult_summary = performance_report('E001', report_type='summary')\nassert isinstance(result_summary, dict)\nassert 'employee_id' in result_summary\nassert 'overall_rating' in result_summary\nassert 'goals_status' in result_summary\nassert result_summary['employee_id'] == 'E001'\nassert isinstance(result_summary['overall_rating'], (int, float))\nassert result_summary['overall_rating'] == 2.5\nassert result_summary['goals_status'] == 'Exceeded'\n\n# Test detailed report\nresult_detailed = performance_report('E001', report_type='detailed')\nassert isinstance(result_detailed, dict)\nassert 'employee_id' in result_detailed\nassert 'employee_name' in result_detailed\nassert 'department' in result_detailed\nassert 'technical_score' in result_detailed\nassert result_detailed['department'] == 'Operations'\nassert result_detailed['employee_name'] == 'Employee 1'\n\n# Test department aggregation\nresult_dept = performance_report(None, report_type='department')\nassert isinstance(result_dept, dict)\nassert len(result_dept) >= 5\nfor dept_name, dept_data in result_dept.items():\n    assert isinstance(dept_data, dict)\n    assert 'avg_rating' in dept_data\n    assert 'count' in dept_data\n    assert isinstance(dept_data['avg_rating'], float)\n    assert isinstance(dept_data['count'], int)\n\nprint('Performance Tracker tests passed')\n"
 }

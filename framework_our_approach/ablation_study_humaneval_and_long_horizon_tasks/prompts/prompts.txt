@@ -10,6 +10,8 @@ python Core/main.py --clean-all --analyze test_context/performance_tracker --req
 python Core/main.py --clean-all --analyze test_context/friend_suggester --request "Create a friend_suggestions function that recommends friends from social_graph.json in PROJECT KNOWLEDGE with progressive enhancement based on RECOMMENDATION_MODE environment variable. Takes user_id parameter. basic mode: find mutual friends, score by count. enhanced mode: mutual friends times 2.0 plus common interests times 1.5. advanced mode: add 1.0 bonus if activity levels match. Returns: list of dicts, each with user_id and score keys, sorted by score descending, top 5 highest scores only."
 
 Double run tasks:
+
+No.1:
 Session 1:
 python Core/main.py --clean-all --request "Create a function called parse_sensor_reading that takes a string like 'T:25.5|H:60|TS:1234567890'. Split by '|' to get parts. For each part, split by ':' to get key and value. Return dict with 'temperature', 'humidity', 'timestamp' keys. If a value cannot be converted to float/int, set to None. Handle T as float, H as float, TS as int."
 
@@ -21,6 +23,7 @@ Request for Session 2:
 
 Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.
 
+No.2:
 Session 1:
 python Core/main.py --clean-all --request "Create a function called calculate_stock_volatility that takes a list of daily stock prices. Calculate daily returns as (price[i] - price[i-1]) / price[i-1] for each pair. Calculate mean of returns, then variance as average of (return - mean) squared. Return square root of variance times 100 as percentage. Return 0.0 if fewer than 2 prices."
 
@@ -32,6 +35,7 @@ Request for Session 2:
 
 Load previous session and create portfolio_risk_assessment function. Takes a dict where keys are stock names and values have 'prices' list and 'allocation' float. For each stock, call calculate_stock_volatility(prices), multiply by allocation, sum all weighted volatilities. Returns: float representing total portfolio risk as weighted sum.
 
+No.3:
 Session 1:
 python Core/main.py --clean-all --request "Create a function called matrix_operations that performs basic matrix multiplication and stores results in a global variable computation_cache."
 

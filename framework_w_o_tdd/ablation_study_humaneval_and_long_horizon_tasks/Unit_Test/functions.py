@@ -9,85 +9,45 @@ class Priority(Enum):
     LOW = "low"
     MEDIUM = "medium"
     HIGH = "high"
+computation_cache = None
 
-
-import inspect
-import os
-import csv
-import re
-
-def movie_api():
-    """
-    A single-entry API function that inspects the caller's context to determine which version
-    of the output format to return:
-    - Version "v1": returns a simple list of movie titles.
-    - Version "v2": returns a dict with key "movies" mapping to a list of metadata dicts.
-    - Version "v3": returns a JSON-LD structured payload compliant with schema.org's Movie type.
-    Reads data from the project's movie.csv file and filters by requested year based on caller context.
-
-    Parameters:
-    None
-
-    Returns:
-    list, dict, or JSON-LD dict depending on version.
-    """
-    # Determine version and year from call stack
-    version = 'v1'
-    year = None
-    for frame_info in inspect.stack()[1:]:
-        func_name = frame_info.function or ''
-        file_name = os.path.basename(frame_info.filename or '')
-        # detect version
-        if '_v3' in func_name or '_v3' in file_name:
-            version = 'v3'
-        elif '_v2' in func_name or '_v2' in file_name:
-            if version != 'v3':
-                version = 'v2'
-        elif '_v1' in func_name or '_v1' in file_name:
-            if version not in ('v2', 'v3'):
-                version = 'v1'
-        # detect year
-        if year is None:
-            m = re.search(r'(\d{4})', func_name) or re.search(r'(\d{4})', file_name)
-            if m:
-                year = m.group(1)
-        # if we've found a non-default version and a year, we can stop
-        if version != 'v1' and year:
-            break
-
-    # Path to the CSV file
-    file_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_w_o_tdd/ablation_study_humaneval_and_long_horizon_tasks/movielens_dataset/movie.csv"
-    if not os.path.exists(file_path):
-        raise FileNotFoundError
-
-    movies = []
-    with open(file_path, newline='', encoding='utf-8') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            title = row.get('title', '').strip()
-            yr = row.get('year', '').strip()
-            genre = row.get('genre', '').strip()
-            if not title:
-                continue
-            if year and yr != year:
-                continue
-            movies.append({'title': title, 'year': yr, 'genre': genre})
-
-    if version == 'v1':
-        return [m['title'] for m in movies]
-    elif version == 'v2':
-        return {'movies': movies}
-    else:  # v3
-        item_list = []
-        for m in movies:
-            item_list.append({
-                '@type': 'Movie',
-                'name': m['title'],
-                'datePublished': m['year'],
-                'genre': m['genre']
-            })
-        return {
-            '@context': "http://schema.org",
-            '@type': "ItemList",
-            'itemListElement': item_list
-        }
+def matrix_operations(matrix_a, matrix_b):
+    """Performs matrix multiplication of two matrices(matrix_a m×n, matrix_b n×p),
+    stores the resulting matrix in the global variable computation_cache, and returns it."""
+    # Validate that both inputs are 2D lists
+    if not isinstance(matrix_a, list) or not isinstance(matrix_b, list):
+        raise TypeError("Both matrix_a and matrix_b must be lists.")
+    if not matrix_a or not matrix_b:
+        raise ValueError("Input matrices cannot be empty.")
+    if any(not isinstance(row, list) for row in matrix_a):
+        raise TypeError("matrix_a must be a two-dimensional list.")
+    if any(not isinstance(row, list) for row in matrix_b):
+        raise TypeError("matrix_b must be a two-dimensional list.")
+    # Validate consistent row lengths
+    num_cols_a = len(matrix_a[0])
+    if any(len(row) != num_cols_a for row in matrix_a):
+        raise ValueError("All rows in matrix_a must have the same length.")
+    num_cols_b = len(matrix_b[0])
+    if any(len(row) != num_cols_b for row in matrix_b):
+        raise ValueError("All rows in matrix_b must have the same length.")
+    # Check dimensions for multiplication
+    num_rows_a = len(matrix_a)
+    num_rows_b = len(matrix_b)
+    if num_cols_a != num_rows_b:
+        raise ValueError("Incompatible dimensions for matrix multiplication.")
+    # Perform multiplication
+    result = [[0 for _ in range(num_cols_b)] for _ in range(num_rows_a)]
+    for i in range(num_rows_a):
+        for j in range(num_cols_b):
+            total = 0
+            for k in range(num_cols_a):
+                a_val = matrix_a[i][k]
+                b_val = matrix_b[k][j]
+                if not isinstance(a_val, (int, float)) or not isinstance(b_val, (int, float)):
+                    raise TypeError("Matrix elements must be numeric.")
+                total += a_val * b_val
+            result[i][j] = total
+    # Store in global cache
+    global computation_cache
+    computation_cache = result
+    return result

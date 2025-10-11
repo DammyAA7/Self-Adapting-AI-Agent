@@ -1,115 +1,182 @@
-2025-10-12 01:04:59,929 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-12 01:04:59,932 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-10-12 01:04:59,932 - INFO - Response Content: Function Name: inventory_low_stock_alert  
-Description: Scans all products in a Warehouse instance and identifies those whose current stock is below their reorder point. Returns a list of dictionaries...
-2025-10-12 01:04:59,932 - INFO - Initiating function generation process...
-2025-10-12 01:04:59,935 - INFO - === STARTING FUNCTION GENERATION ===
-2025-10-12 01:04:59,936 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
-2025-10-12 01:04:59,936 - INFO - Function Requirement: Function Name: inventory_low_stock_alert  
-Description: Scans all products in a Warehouse instance and identifies those whose current stock is below their reorder point. Returns a list of dictionaries with SKU, product name, current stock, reorder point, and the deficit amount (how many units below the reorder point).  
+2025-10-12 01:53:08,109 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:53:08,112 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 01:53:08,112 - INFO - Response Content: Function Name: salary_analyzer  
+Description: Calculates the average salary across all employees in the system by leveraging the existing EmployeeDB and SalaryAnalyzer classes from the employee_databa...
+2025-10-12 01:53:08,112 - INFO - Initiating function generation process...
+2025-10-12 01:53:08,115 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-12 01:53:08,115 - INFO - User Input: Create a function called salary_analyzer that calculates average salary from employee data. Returns: float representing the average salary value.
+2025-10-12 01:53:08,115 - INFO - Function Requirement: Function Name: salary_analyzer  
+Description: Calculates the average salary across all employees in the system by leveraging the existing EmployeeDB and SalaryAnalyzer classes from the employee_database module.  
 Parameters:  
-- warehouse (Warehouse): An instance of Warehouse containing product catalog and stock levels.  
+- None (the function will internally instantiate EmployeeDB, which uses the built-in EMPLOYEE_DATA)  
 Returns:  
-- List[Dict[str, Any]]: A list where each element is a dict with keys  
-  • "sku": str – the product SKU  
-  • "name": str – product name  
-  • "current_stock": int – the current stock level  
-  • "reorder_point": int – the reorder threshold for the product  
-  • "deficit": int – (reorder_point − current_stock)  
+- float: the average salary of all employees  
 
 Example:  
 ```python
-from test_context_extended.inventory_system import create_sample_warehouse
-
-warehouse = create_sample_warehouse()
-alerts = inventory_low_stock_alert(warehouse)
-for alert in alerts:
-    print(f"SKU {alert['sku']} ({alert['name']}): current {alert['current_stock']}, "
-          f"reorder at {alert['reorder_point']} (deficit {alert['deficit']})")
+>>> average = salary_analyzer()
+>>> print(f"Average salary is ${average:.2f}")
+Average salary is $70300.00
 ```
-
-Function code:
-```python
-from typing import List, Dict, Any
-from test_context_extended.inventory_system import Warehouse, Product
-
-def inventory_low_stock_alert(warehouse: Warehouse) -> List[Dict[str, Any]]:
-    """
-    Identify products in the warehouse where current stock is below the reorder point.
-
-    Args:
-        warehouse (Warehouse): A Warehouse instance with products and stock levels.
-
-    Returns:
-        List[Dict[str, Any]]: A list of alerts for low-stock products, each containing:
-            - sku: product SKU
-            - name: product name
-            - current_stock: current quantity on hand
-            - reorder_point: minimum quantity before reorder
-            - deficit: reorder_point minus current_stock
-    """
-    low_stock_alerts: List[Dict[str, Any]] = []
-    # Iterate through all products in the catalog
-    for product in warehouse.get_all_products():
-        sku = product.sku
-        name = product.name
-        reorder_point = product.reorder_point
-        current_stock = warehouse.get_current_stock(sku)
-        # If stock is below the threshold, record an alert
-        if current_stock < reorder_point:
-            deficit = reorder_point - current_stock
-            low_stock_alerts.append({
-                "sku": sku,
-                "name": name,
-                "current_stock": current_stock,
-                "reorder_point": reorder_point,
-                "deficit": deficit
-            })
-    return low_stock_alerts
-```
-2025-10-12 01:05:47,456 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-12 01:06:27,053 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-12 01:06:30,629 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-12 01:06:43,092 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-12 01:06:47,824 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-12 01:06:47,825 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
-2025-10-12 01:06:47,825 - INFO - TDD Adjudication Passed: True
-2025-10-12 01:07:17,171 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-12 01:07:20,553 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-12 01:07:20,554 - INFO - --- ITERATION 1 ---
-2025-10-12 01:07:20,554 - INFO - Unit Test Result Summary: All tests passed
-2025-10-12 01:07:20,554 - INFO - Adjudication Passed: True
-2025-10-12 01:07:20,601 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
-2025-10-12 01:07:20,601 - INFO - Function Name: inventory_low_stock_alert
-2025-10-12 01:07:20,601 - INFO - Total Iterations: 1
-2025-10-12 01:07:20,601 - INFO - Total Duration: 140.67 seconds
-2025-10-12 01:07:20,601 - INFO - TDD Adjudication Attempts: 1
-2025-10-12 01:07:20,601 - INFO - Final Adjudication Attempts: 1
-2025-10-12 01:07:20,601 - INFO - Requirement Reinforcements: 0
-2025-10-12 01:07:39,926 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-12 01:07:39,927 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
-2025-10-12 01:07:39,927 - INFO - Response Content: Here’s a standalone Python function that you can add to your codebase. It takes a `Warehouse` instance, checks each product’s current stock against its reorder point, and returns a list of alerts with...
-2025-10-12 01:07:39,927 - INFO - Initiating function generation process...
-2025-10-12 01:07:58,159 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-12 01:07:58,172 - INFO - === EXISTING FUNCTION CALLED ===
-2025-10-12 01:07:58,172 - INFO - Function: inventory_low_stock_alert
-2025-10-12 01:07:58,172 - INFO - Arguments: {}
-2025-10-12 01:07:58,172 - INFO - Execution Time: 0.010314845996617805 seconds
-2025-10-12 01:07:58,172 - INFO - Memory Peak: 18534 bytes
-2025-10-12 01:07:58,172 - INFO - Success: False
-2025-10-12 01:08:00,206 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
-2025-10-12 01:08:00,219 - INFO - === SESSION SUMMARY ===
-2025-10-12 01:08:00,219 - INFO - Session Duration: 200.49 seconds
-2025-10-12 01:08:00,219 - INFO - Functions Attempted: 1
-2025-10-12 01:08:00,219 - INFO - Successful Functions: 1
-2025-10-12 01:08:00,219 - INFO - Terminated Early: 0
-2025-10-12 01:08:00,219 - INFO - Total Iterations: 1
-2025-10-12 01:08:00,219 - INFO - Average Iterations per Function: 1.00
-2025-10-12 01:08:00,219 - INFO - Existing Function Calls: 1 (0 successful)
-2025-10-12 01:08:00,219 - INFO - TDD Adjudication Attempts: 1
-2025-10-12 01:08:00,219 - INFO - Final Adjudication Attempts: 1
-2025-10-12 01:08:00,219 - INFO - Requirement Reinforcements: 0
-2025-10-12 01:09:31,832 - INFO - Running test for: Inventory Low Stock Alert (ID 4)
-2025-10-12 01:09:31,839 - INFO - Successfully imported functions from functions.py
-2025-10-12 01:09:31,957 - INFO - All assertions passed for Inventory Low Stock Alert
-2025-10-12 01:09:31,957 - INFO - ===== TEST PASSED ===== (Inventory Low Stock Alert)
+2025-10-12 01:54:08,266 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:54:45,773 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:54:48,538 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:54:58,424 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:55:03,052 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:55:03,052 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-10-12 01:55:03,052 - INFO - TDD Adjudication Passed: True
+2025-10-12 01:55:16,355 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:55:21,367 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:55:21,368 - INFO - --- ITERATION 1 ---
+2025-10-12 01:55:21,368 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 01:55:21,368 - INFO - Adjudication Passed: False
+2025-10-12 01:55:21,368 - INFO - Code Requirement Suggestion: Function should correctly compute the average salary for the default dataset so that it returns 70300.0 instead of 69700.0.
+2025-10-12 01:55:21,368 - INFO - Unit Requirement Suggestion: 
+2025-10-12 01:55:21,368 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 01:55:21,368 - INFO - Iteration: 1
+2025-10-12 01:55:21,368 - INFO - Previous Requirement: 
+2025-10-12 01:55:21,368 - INFO - New Requirement: Function should correctly compute the average salary for the default dataset so that it returns 70300.0 instead of 69700.0.
+2025-10-12 01:55:21,368 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 01:55:21,368 - INFO - Iteration: 1
+2025-10-12 01:55:21,368 - INFO - Previous Requirement: 
+2025-10-12 01:55:21,368 - INFO - New Requirement: 
+2025-10-12 01:55:55,052 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:57:26,269 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:57:28,611 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:57:30,618 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:57:38,238 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:57:38,239 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-10-12 01:57:38,239 - INFO - TDD Adjudication Passed: False
+2025-10-12 01:57:38,239 - INFO - TDD Requirement Suggestion: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that `salary_analyzer` is actually defined in Unit_Test/functions.py or correct the import statement to match the real function name/path.
+2025-10-12 01:57:38,239 - INFO - Applied Reinforced Requirement: Function should correctly compute the average salary for the default dataset so that it returns 70300.0 instead of 69700.0.
+2025-10-12 01:57:38,239 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-10-12 01:57:38,239 - INFO - Iteration: 2
+2025-10-12 01:57:38,239 - INFO - Previous Requirement: Function should correctly compute the average salary for the default dataset so that it returns 70300.0 instead of 69700.0.
+2025-10-12 01:57:38,239 - INFO - New Requirement: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that `salary_analyzer` is actually defined in Unit_Test/functions.py or correct the import statement to match the real function name/path.
+2025-10-12 01:58:24,193 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:59:57,312 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 01:59:58,905 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:00:03,651 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:00:15,265 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:00:15,265 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-10-12 02:00:15,265 - INFO - TDD Adjudication Passed: False
+2025-10-12 02:00:15,265 - INFO - TDD Requirement Suggestion: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that Unit_Test/functions.py actually defines salary_analyzer (and EmployeeDB) or correct the module path/name used in the import statement.
+2025-10-12 02:00:15,265 - INFO - Applied Reinforced Requirement: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that `salary_analyzer` is actually defined in Unit_Test/functions.py or correct the import statement to match the real function name/path.
+2025-10-12 02:00:15,265 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-10-12 02:00:15,266 - INFO - Iteration: 3
+2025-10-12 02:00:15,266 - INFO - Previous Requirement: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that `salary_analyzer` is actually defined in Unit_Test/functions.py or correct the import statement to match the real function name/path.
+2025-10-12 02:00:15,266 - INFO - New Requirement: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that Unit_Test/functions.py actually defines salary_analyzer (and EmployeeDB) or correct the module path/name used in the import statement.
+2025-10-12 02:00:52,943 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:02:33,679 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:02:36,291 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:02:38,511 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:02:45,475 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:02:45,476 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-10-12 02:02:45,476 - INFO - TDD Adjudication Passed: False
+2025-10-12 02:02:45,476 - INFO - TDD Requirement Suggestion: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that salary_analyzer is defined and correctly imported from Unit_Test/functions.py or update the import path/name accordingly.
+2025-10-12 02:02:45,476 - INFO - Applied Reinforced Requirement: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that Unit_Test/functions.py actually defines salary_analyzer (and EmployeeDB) or correct the module path/name used in the import statement.
+2025-10-12 02:02:45,476 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-10-12 02:02:45,476 - INFO - Iteration: 4
+2025-10-12 02:02:45,476 - INFO - Previous Requirement: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that Unit_Test/functions.py actually defines salary_analyzer (and EmployeeDB) or correct the module path/name used in the import statement.
+2025-10-12 02:02:45,476 - INFO - New Requirement: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that salary_analyzer is defined and correctly imported from Unit_Test/functions.py or update the import path/name accordingly.
+2025-10-12 02:04:03,703 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:05:39,887 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:05:41,964 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:05:44,119 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:05:49,045 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:05:49,045 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-10-12 02:05:49,045 - INFO - TDD Adjudication Passed: False
+2025-10-12 02:05:49,045 - INFO - TDD Requirement Suggestion: Add a missing import for salary_analyzer in the test file (e.g., include `from your_module import salary_analyzer` at the top of Test_Driven_Development/testDrivenCases.py).
+2025-10-12 02:05:49,045 - INFO - Applied Reinforced Requirement: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that salary_analyzer is defined and correctly imported from Unit_Test/functions.py or update the import path/name accordingly.
+2025-10-12 02:05:49,046 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-10-12 02:05:49,046 - INFO - Iteration: 5
+2025-10-12 02:05:49,046 - INFO - Previous Requirement: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that salary_analyzer is defined and correctly imported from Unit_Test/functions.py or update the import path/name accordingly.
+2025-10-12 02:05:49,046 - INFO - New Requirement: Add a missing import for salary_analyzer in the test file (e.g., include `from your_module import salary_analyzer` at the top of Test_Driven_Development/testDrivenCases.py).
+2025-10-12 02:06:14,500 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:07:47,251 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:07:50,451 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:07:53,845 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:08:00,184 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-10-12 02:08:00,185 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-10-12 02:08:00,185 - INFO - TDD Adjudication Passed: False
+2025-10-12 02:08:00,185 - INFO - TDD Requirement Suggestion: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that salary_analyzer is correctly defined in Unit_Test/functions.py or update the import path to the module where salary_analyzer actually exists.
+2025-10-12 02:08:00,185 - INFO - Applied Reinforced Requirement: Add a missing import for salary_analyzer in the test file (e.g., include `from your_module import salary_analyzer` at the top of Test_Driven_Development/testDrivenCases.py).
+2025-10-12 02:08:00,185 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-10-12 02:08:00,185 - INFO - Iteration: 6
+2025-10-12 02:08:00,185 - INFO - Previous Requirement: Add a missing import for salary_analyzer in the test file (e.g., include `from your_module import salary_analyzer` at the top of Test_Driven_Development/testDrivenCases.py).
+2025-10-12 02:08:00,185 - INFO - New Requirement: Fix the import in Test_Driven_Development/testDrivenCases.py: ensure that salary_analyzer is correctly defined in Unit_Test/functions.py or update the import path to the module where salary_analyzer actually exists.
+2025-10-12 02:08:00,188 - WARNING - === MAX ITERATIONS REACHED ===
+2025-10-12 02:08:00,188 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-10-12 02:08:00,188 - WARNING - Total Duration: 892.07 seconds
+2025-10-12 02:08:00,188 - WARNING - Final Iteration Count: 1
+2025-10-12 02:08:00,193 - INFO - === SESSION SUMMARY ===
+2025-10-12 02:08:00,193 - INFO - Session Duration: 919.69 seconds
+2025-10-12 02:08:00,193 - INFO - Functions Attempted: 1
+2025-10-12 02:08:00,193 - INFO - Successful Functions: 0
+2025-10-12 02:08:00,193 - INFO - Terminated Early: 1
+2025-10-12 02:08:00,193 - INFO - Total Iterations: 1
+2025-10-12 02:08:00,193 - INFO - Average Iterations per Function: 1.00
+2025-10-12 02:08:00,193 - INFO - Existing Function Calls: 0 (0 successful)
+2025-10-12 02:08:00,193 - INFO - TDD Adjudication Attempts: 6
+2025-10-12 02:08:00,193 - INFO - Final Adjudication Attempts: 1
+2025-10-12 02:08:00,193 - INFO - Requirement Reinforcements: 7
+2025-10-12 03:04:43,717 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-previewv "HTTP/1.1 404 Resource Not Found"
+2025-10-12 03:04:43,719 - ERROR - === UNEXPECTED ERROR ===
+2025-10-12 03:04:43,719 - ERROR - Error: Error code: 404 - {'error': {'code': '404', 'message': 'Resource not found'}}
+2025-10-12 03:04:43,719 - ERROR - Unexpected error: Error code: 404 - {'error': {'code': '404', 'message': 'Resource not found'}}
+2025-10-12 03:04:43,732 - INFO - === SESSION SUMMARY ===
+2025-10-12 03:04:43,732 - INFO - Session Duration: 62.81 seconds
+2025-10-12 03:04:43,732 - INFO - Functions Attempted: 0
+2025-10-12 03:04:43,732 - INFO - Successful Functions: 0
+2025-10-12 03:04:43,732 - INFO - Terminated Early: 0
+2025-10-12 03:04:43,732 - INFO - Total Iterations: 0
+2025-10-12 03:04:43,732 - INFO - Average Iterations per Function: 0.00
+2025-10-12 03:04:43,732 - INFO - Existing Function Calls: 0 (0 successful)
+2025-10-12 03:04:43,732 - INFO - TDD Adjudication Attempts: 0
+2025-10-12 03:04:43,732 - INFO - Final Adjudication Attempts: 0
+2025-10-12 03:04:43,732 - INFO - Requirement Reinforcements: 0
+2025-10-12 03:04:53,256 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-previewv "HTTP/1.1 404 Resource Not Found"
+2025-10-12 03:04:53,258 - ERROR - === UNEXPECTED ERROR ===
+2025-10-12 03:04:53,258 - ERROR - Error: Error code: 404 - {'error': {'code': '404', 'message': 'Resource not found'}}
+2025-10-12 03:04:53,258 - ERROR - Unexpected error: Error code: 404 - {'error': {'code': '404', 'message': 'Resource not found'}}
+2025-10-12 03:04:53,270 - INFO - === SESSION SUMMARY ===
+2025-10-12 03:04:53,270 - INFO - Session Duration: 4.60 seconds
+2025-10-12 03:04:53,270 - INFO - Functions Attempted: 0
+2025-10-12 03:04:53,270 - INFO - Successful Functions: 0
+2025-10-12 03:04:53,270 - INFO - Terminated Early: 0
+2025-10-12 03:04:53,270 - INFO - Total Iterations: 0
+2025-10-12 03:04:53,270 - INFO - Average Iterations per Function: 0.00
+2025-10-12 03:04:53,270 - INFO - Existing Function Calls: 0 (0 successful)
+2025-10-12 03:04:53,270 - INFO - TDD Adjudication Attempts: 0
+2025-10-12 03:04:53,270 - INFO - Final Adjudication Attempts: 0
+2025-10-12 03:04:53,270 - INFO - Requirement Reinforcements: 0
+2025-10-12 03:52:47,000 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-previewv "HTTP/1.1 404 Resource Not Found"
+2025-10-12 03:52:47,002 - ERROR - === UNEXPECTED ERROR ===
+2025-10-12 03:52:47,002 - ERROR - Error: Error code: 404 - {'error': {'code': '404', 'message': 'Resource not found'}}
+2025-10-12 03:52:47,002 - ERROR - Unexpected error: Error code: 404 - {'error': {'code': '404', 'message': 'Resource not found'}}
+2025-10-12 03:52:47,014 - INFO - === SESSION SUMMARY ===
+2025-10-12 03:52:47,014 - INFO - Session Duration: 1.93 seconds
+2025-10-12 03:52:47,014 - INFO - Functions Attempted: 0
+2025-10-12 03:52:47,014 - INFO - Successful Functions: 0
+2025-10-12 03:52:47,014 - INFO - Terminated Early: 0
+2025-10-12 03:52:47,014 - INFO - Total Iterations: 0
+2025-10-12 03:52:47,014 - INFO - Average Iterations per Function: 0.00
+2025-10-12 03:52:47,014 - INFO - Existing Function Calls: 0 (0 successful)
+2025-10-12 03:52:47,014 - INFO - TDD Adjudication Attempts: 0
+2025-10-12 03:52:47,014 - INFO - Final Adjudication Attempts: 0
+2025-10-12 03:52:47,014 - INFO - Requirement Reinforcements: 0
+2025-10-12 03:53:25,702 - INFO - HTTP Request: POST https://rahma-m9ipapep-eastus2.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-previewv "HTTP/1.1 404 Resource Not Found"
+2025-10-12 03:53:25,704 - ERROR - === UNEXPECTED ERROR ===
+2025-10-12 03:53:25,704 - ERROR - Error: Error code: 404 - {'error': {'code': '404', 'message': 'Resource not found'}}
+2025-10-12 03:53:25,704 - ERROR - Unexpected error: Error code: 404 - {'error': {'code': '404', 'message': 'Resource not found'}}
+2025-10-12 03:53:25,717 - INFO - === SESSION SUMMARY ===
+2025-10-12 03:53:25,717 - INFO - Session Duration: 1.74 seconds
+2025-10-12 03:53:25,717 - INFO - Functions Attempted: 0
+2025-10-12 03:53:25,717 - INFO - Successful Functions: 0
+2025-10-12 03:53:25,717 - INFO - Terminated Early: 0
+2025-10-12 03:53:25,717 - INFO - Total Iterations: 0
+2025-10-12 03:53:25,717 - INFO - Average Iterations per Function: 0.00
+2025-10-12 03:53:25,717 - INFO - Existing Function Calls: 0 (0 successful)
+2025-10-12 03:53:25,717 - INFO - TDD Adjudication Attempts: 0
+2025-10-12 03:53:25,717 - INFO - Final Adjudication Attempts: 0
+2025-10-12 03:53:25,717 - INFO - Requirement Reinforcements: 0

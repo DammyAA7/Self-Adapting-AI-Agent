@@ -12894,3 +12894,18 @@ Please note that you need a python interpreter or platform where python can be e
 2025-09-06 12:43:24,407 - INFO - TDD Adjudication Attempts: 2
 2025-09-06 12:43:24,407 - INFO - Final Adjudication Attempts: 2
 2025-09-06 12:43:24,407 - INFO - Requirement Reinforcements: 2
+2025-09-30 06:11:14,978 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-09-30 06:11:14,981 - ERROR - === UNEXPECTED ERROR ===
+2025-09-30 06:11:14,981 - ERROR - Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************CF4A. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-09-30 06:11:14,981 - ERROR - Unexpected error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************CF4A. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-09-30 06:11:14,997 - INFO - === SESSION SUMMARY ===
+2025-09-30 06:11:14,997 - INFO - Session Duration: 3.23 seconds
+2025-09-30 06:11:14,997 - INFO - Functions Attempted: 0
+2025-09-30 06:11:14,997 - INFO - Successful Functions: 0
+2025-09-30 06:11:14,997 - INFO - Terminated Early: 0
+2025-09-30 06:11:14,997 - INFO - Total Iterations: 0
+2025-09-30 06:11:14,997 - INFO - Average Iterations per Function: 0.00
+2025-09-30 06:11:14,997 - INFO - Existing Function Calls: 0 (0 successful)
+2025-09-30 06:11:14,997 - INFO - TDD Adjudication Attempts: 0
+2025-09-30 06:11:14,997 - INFO - Final Adjudication Attempts: 0
+2025-09-30 06:11:14,997 - INFO - Requirement Reinforcements: 0

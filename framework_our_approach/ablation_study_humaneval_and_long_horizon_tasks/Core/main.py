@@ -45,10 +45,17 @@ def get_user_input():
     parser.add_argument('--no-clean', action='store_true', help='Skip automatic cleanup of test files before running')
     parser.add_argument('--context-memory', action='store_true', help='Enable context memory mode - restore previous sessions and preserve function context')
     parser.add_argument('--session', type=str, help='Direct path to specific session file to load (requires --context-memory)')
+    parser.add_argument('--auto-load', action='store_true', help='Automatically load the most recent context session without prompting (requires --context-memory)')
     parser.add_argument('--debug', action='store_true', help='Enable debug output for troubleshooting')
 
     args = parser.parse_args()
-    
+
+    # Validate auto-load requires context-memory
+    if args.auto_load and not args.context_memory:
+        print("❌ Error: --auto-load requires --context-memory to be enabled")
+        parser.print_help()
+        sys.exit(1)
+
     # Handle cleanup options first
     if args.clean_all:
         full_cleanup(verbose=True)
@@ -82,14 +89,15 @@ def get_user_input():
 
     return None, None, args
 
-def select_context_session(context_manager, auto_session=None):
+def select_context_session(context_manager, auto_session=None, auto_load=False):
     """
     Interactive session selection for context memory mode.
-    
+
     Args:
         context_manager: ContextManager instance
         auto_session: Direct path to session file (optional)
-    
+        auto_load: If True, automatically load the most recent session without prompting
+
     Returns:
         (loaded_successfully, session_file_path) tuple
     """
@@ -138,7 +146,30 @@ def select_context_session(context_manager, auto_session=None):
     
     # Sort by saved_at timestamp (most recent first)
     sessions.sort(key=lambda x: x['saved_at'], reverse=True)
-    
+
+    # Auto-load most recent session if requested
+    if auto_load and sessions:
+        selected_file = sessions[0]['filepath']
+        print("\n" + "="*60)
+        print("Auto-Loading Most Recent Context Session")
+        print("="*60)
+        print(f"🎯 Loading: {sessions[0]['filename']}")
+
+        # Load the session
+        success = context_manager.load_session(selected_file)
+
+        if success:
+            print("✅ Session loaded successfully!")
+            functions = context_manager.list_available_functions()
+            if functions:
+                print(f"📋 Available functions: {', '.join(functions)}")
+            else:
+                print("📋 No functions found in session")
+        else:
+            print("❌ Failed to load session")
+
+        return success, selected_file
+
     print("\n" + "="*60)
     print("Context Memory Mode - Session Selection")
     print("="*60)
@@ -275,7 +306,8 @@ if __name__ == "__main__":
         
         # Load previous session
         auto_session = cmd_args.session if hasattr(cmd_args, 'session') and cmd_args.session else None
-        loaded, session_path = select_context_session(context_manager, auto_session)
+        auto_load = hasattr(cmd_args, 'auto_load') and cmd_args.auto_load
+        loaded, session_path = select_context_session(context_manager, auto_session, auto_load)
         
         if loaded:
             # Re-populate Unit_Test/functions.py from loaded context

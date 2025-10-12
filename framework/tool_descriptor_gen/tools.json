@@ -1,0 +1,26 @@
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "patient_risk_score",
+            "description": "Calculate risk score for a patient based on age, conditions, severity, and recent vitals.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "hospital": {
+                        "type": "object",
+                        "description": "The hospital object containing patient and record data."
+                    },
+                    "patient_id": {
+                        "type": "number",
+                        "description": "The unique identifier of the patient whose risk score is being calculated."
+                    }
+                },
+                "required": [
+                    "hospital",
+                    "patient_id"
+                ]
+            }
+        }
+    }
+]

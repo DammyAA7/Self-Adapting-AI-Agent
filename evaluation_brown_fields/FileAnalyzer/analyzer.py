@@ -287,8 +287,8 @@ RIGHT: file_path = "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framewo
 IMPORTANT: Replace the class/function names above with the ACTUAL names you need from the files shown below.
 Do NOT hardcode 'XYZ' or use placeholder names - use the real class names from the analyzed files!
 
-WRONG: from test_context_extended.XYZ import XYZ  # ❌ Don't use placeholders!
-RIGHT: from test_context_extended.enrollment_system import University, Student  # ✅ Use actual names!
+WRONG: from dataset.XYZ import XYZ  # ❌ Don't use placeholders!
+RIGHT: from dataset.enrollment_system import University, Student  # ✅ Use actual names!
 
 COMPLETE FILE CONTENTS BELOW:
 ==============================

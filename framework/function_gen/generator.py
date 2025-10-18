@@ -48,9 +48,9 @@ EXAMPLES:
     # Using Azure OpenAI
     # Note: Azure uses deployment names, not model names
     generator_response = client.chat.completions.create(
-        model="o4-mini",  # Azure deployment name
-        max_completion_tokens=5000,
-        # temperature=0.7,
+        model="gpt-4.1",  # Azure deployment name
+        max_tokens=5000,
+        temperature=0.7,
         messages=generator_messages
     )
     

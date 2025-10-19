@@ -1,0 +1,144 @@
+2025-10-12 12:08:14,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:08:14,830 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 12:08:14,830 - INFO - Response Content: Function Name: parse_sensor_reading
+Description: Sensor string parsing utility
+2025-10-12 12:08:14,830 - INFO - Initiating function generation process...
+2025-10-12 12:08:14,830 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-12 12:08:14,831 - INFO - User Input: Create a function called parse_sensor_reading that takes a string like 'T:25.5|H:60|TS:1234567890'. Split by '|' to get parts. For each part, split by ':' to get key and value. Return dict with 'temperature', 'humidity', 'timestamp' keys. If a value cannot be converted to float/int, set to None. Handle T as float, H as float, TS as int.
+2025-10-12 12:08:14,831 - INFO - Function Requirement: Function Name: parse_sensor_reading
+Description: Sensor string parsing utility
+2025-10-12 12:08:39,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:09:28,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:09:42,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:09:54,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:09:58,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:09:58,195 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-10-12 12:09:58,195 - INFO - TDD Adjudication Passed: True
+2025-10-12 12:10:24,628 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:11:08,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:11:08,730 - INFO - --- ITERATION 1 ---
+2025-10-12 12:11:08,730 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 12:11:08,730 - INFO - Adjudication Passed: False
+2025-10-12 12:11:08,730 - INFO - Code Requirement Suggestion: Handle malformed sensor strings gracefully
+2025-10-12 12:11:08,730 - INFO - Unit Requirement Suggestion:
+2025-10-12 12:11:08,730 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 12:11:08,730 - INFO - Iteration: 1
+2025-10-12 12:11:08,730 - INFO - Previous Requirement:
+2025-10-12 12:11:08,730 - INFO - New Requirement: Handle malformed sensor strings gracefully
+2025-10-12 12:11:08,730 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 12:11:08,730 - INFO - Iteration: 1
+2025-10-12 12:11:08,731 - INFO - Previous Requirement:
+2025-10-12 12:11:08,731 - INFO - New Requirement:
+2025-10-12 12:11:35,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:12:29,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:12:43,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:12:43,429 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-10-12 12:12:43,429 - INFO - TDD Adjudication Passed: True
+2025-10-12 12:12:46,894 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:12:46,894 - INFO - --- ITERATION 2 ---
+2025-10-12 12:12:46,894 - INFO - Unit Test Result Summary: All tests passed
+2025-10-12 12:12:46,894 - INFO - Adjudication Passed: True
+2025-10-12 12:12:46,928 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-12 12:12:46,928 - INFO - Function Name: parse_sensor_reading
+2025-10-12 12:12:46,928 - INFO - Total Iterations: 2
+2025-10-12 12:12:46,928 - INFO - Total Duration: 272.10 seconds
+2025-10-12 12:12:46,928 - INFO - TDD Adjudication Attempts: 2
+2025-10-12 12:12:46,928 - INFO - Final Adjudication Attempts: 2
+2025-10-12 12:12:46,928 - INFO - Requirement Reinforcements: 2
+2025-10-12 12:12:58,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:12:58,195 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 12:12:58,195 - INFO - Response Content: Sensor parser complete...
+2025-10-12 12:12:58,195 - INFO - Initiating function generation process...
+2025-10-12 12:13:05,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:13:05,843 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-12 12:13:05,843 - INFO - Function: parse_sensor_reading
+2025-10-12 12:13:05,843 - INFO - Arguments: {'reading': 'T:24.8|H:52|TS:1638317000'}
+2025-10-12 12:13:05,843 - INFO - Execution Time: 0.00023561799945402890 seconds
+2025-10-12 12:13:05,843 - INFO - Memory Peak: 8118 bytes
+2025-10-12 12:13:05,843 - INFO - Success: True
+2025-10-12 12:13:08,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:13:08,212 - INFO - === SESSION SUMMARY ===
+2025-10-12 12:13:08,212 - INFO - Session Duration: 293.48 seconds
+2025-10-12 12:13:08,212 - INFO - Functions Attempted: 1
+2025-10-12 12:13:08,212 - INFO - Successful Functions: 1
+2025-10-12 12:13:08,212 - INFO - Terminated Early: 0
+2025-10-12 12:13:08,212 - INFO - Total Iterations: 2
+2025-10-12 12:13:08,212 - INFO - Average Iterations per Function: 2.00
+2025-10-12 12:13:08,212 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-12 12:13:08,212 - INFO - TDD Adjudication Attempts: 2
+2025-10-12 12:13:08,212 - INFO - Final Adjudication Attempts: 2
+2025-10-12 12:13:08,212 - INFO - Requirement Reinforcements: 2
+2025-10-12 13:18:42,418 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:18:42,419 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 13:18:42,419 - INFO - Response Content: Function Name: aggregate_temperature
+Description: Temperature averaging across sensors
+2025-10-12 13:18:42,419 - INFO - Initiating function generation process...
+2025-10-12 13:18:42,419 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-12 13:18:42,420 - INFO - User Input: Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.
+2025-10-12 13:18:42,420 - INFO - Function Requirement: Function Name: aggregate_temperature
+Description: Temperature averaging across sensors
+2025-10-12 13:19:08,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:20:03,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:20:16,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:20:29,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:20:33,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:20:33,195 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-10-12 13:20:33,195 - INFO - TDD Adjudication Passed: True
+2025-10-12 13:20:59,629 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:21:43,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:21:43,429 - INFO - --- ITERATION 1 ---
+2025-10-12 13:21:43,429 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 13:21:43,429 - INFO - Adjudication Passed: False
+2025-10-12 13:21:43,429 - INFO - Code Requirement Suggestion: Ensure rounding to 2 decimal places is applied correctly
+2025-10-12 13:21:43,429 - INFO - Unit Requirement Suggestion:
+2025-10-12 13:21:43,429 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 13:21:43,429 - INFO - Iteration: 1
+2025-10-12 13:21:43,429 - INFO - Previous Requirement:
+2025-10-12 13:21:43,429 - INFO - New Requirement: Ensure rounding to 2 decimal places is applied correctly
+2025-10-12 13:21:43,429 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 13:21:43,429 - INFO - Iteration: 1
+2025-10-12 13:21:43,430 - INFO - Previous Requirement:
+2025-10-12 13:21:43,430 - INFO - New Requirement:
+2025-10-12 13:22:10,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:23:04,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:23:18,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:23:18,429 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-10-12 13:23:18,429 - INFO - TDD Adjudication Passed: True
+2025-10-12 13:23:21,894 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:23:21,894 - INFO - --- ITERATION 2 ---
+2025-10-12 13:23:21,894 - INFO - Unit Test Result Summary: All tests passed
+2025-10-12 13:23:21,894 - INFO - Adjudication Passed: True
+2025-10-12 13:23:21,928 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-12 13:23:21,928 - INFO - Function Name: aggregate_temperature
+2025-10-12 13:23:21,928 - INFO - Total Iterations: 2
+2025-10-12 13:23:21,928 - INFO - Total Duration: 279.51 seconds
+2025-10-12 13:23:21,928 - INFO - TDD Adjudication Attempts: 2
+2025-10-12 13:23:21,928 - INFO - Final Adjudication Attempts: 2
+2025-10-12 13:23:21,928 - INFO - Requirement Reinforcements: 2
+2025-10-12 13:23:33,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:23:33,429 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 13:23:33,429 - INFO - Response Content: Aggregation function ready...
+2025-10-12 13:23:33,429 - INFO - Initiating function generation process...
+2025-10-12 13:23:40,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:23:40,843 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-12 13:23:40,843 - INFO - Function: aggregate_temperature
+2025-10-12 13:23:40,843 - INFO - Arguments: {'readings': ['T:21.5|H:55.0|TS:1638317100', 'T:22.8|H:52.0|TS:1638317101', 'T:23.1|H:50.0|TS:1638317102']}
+2025-10-12 13:23:40,843 - INFO - Execution Time: 0.0002593749998975545 seconds
+2025-10-12 13:23:40,843 - INFO - Memory Peak: 15574 bytes
+2025-10-12 13:23:40,843 - INFO - Success: True
+2025-10-12 13:23:43,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 13:23:43,212 - INFO - === SESSION SUMMARY ===
+2025-10-12 13:23:43,212 - INFO - Session Duration: 300.48 seconds
+2025-10-12 13:23:43,212 - INFO - Functions Attempted: 1
+2025-10-12 13:23:43,212 - INFO - Successful Functions: 1
+2025-10-12 13:23:43,212 - INFO - Terminated Early: 0
+2025-10-12 13:23:43,212 - INFO - Total Iterations: 2
+2025-10-12 13:23:43,212 - INFO - Average Iterations per Function: 2.00
+2025-10-12 13:23:43,212 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-12 13:23:43,212 - INFO - TDD Adjudication Attempts: 2
+2025-10-12 13:23:43,212 - INFO - Final Adjudication Attempts: 2
+2025-10-12 13:23:43,212 - INFO - Requirement Reinforcements: 2
+2025-10-12 14:08:16,594 - INFO - Running test for: IoT Sensor Pipeline (ID 7)
+2025-10-12 14:08:16,595 - INFO - Successfully imported functions from functions.py
+2025-10-12 14:08:16,649 - INFO - All assertions passed for IoT Sensor Pipeline
+2025-10-12 14:08:16,650 - INFO - ===== TEST PASSED ===== (IoT Sensor Pipeline)

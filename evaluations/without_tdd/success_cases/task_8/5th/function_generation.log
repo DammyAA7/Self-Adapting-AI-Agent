@@ -1,0 +1,127 @@
+2025-10-12 00:06:29,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:06:29,730 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 00:06:29,730 - INFO - Response Content: Function Name: movie_api
+Description: Multi-version movie data endpoint
+2025-10-12 00:06:29,730 - INFO - Initiating function generation process...
+2025-10-12 00:06:29,730 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-12 00:06:29,731 - INFO - User Input: Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.
+2025-10-12 00:06:29,731 - INFO - Function Requirement: Function Name: movie_api
+Description: Multi-version movie data endpoint
+2025-10-12 00:06:56,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:07:51,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:08:05,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:08:05,429 - INFO - --- ITERATION 1 ---
+2025-10-12 00:08:05,429 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 00:08:05,429 - INFO - Adjudication Passed: False
+2025-10-12 00:08:05,429 - INFO - Code Requirement Suggestion: Check version detection from stack
+2025-10-12 00:08:05,429 - INFO - Unit Requirement Suggestion:
+2025-10-12 00:08:05,429 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 00:08:05,429 - INFO - Iteration: 1
+2025-10-12 00:08:05,429 - INFO - Previous Requirement:
+2025-10-12 00:08:05,429 - INFO - New Requirement: Check version detection from stack
+2025-10-12 00:08:05,429 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 00:08:05,429 - INFO - Iteration: 1
+2025-10-12 00:08:05,430 - INFO - Previous Requirement:
+2025-10-12 00:08:05,430 - INFO - New Requirement:
+2025-10-12 00:08:32,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:09:28,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:09:41,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:09:41,830 - INFO - --- ITERATION 2 ---
+2025-10-12 00:09:41,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 00:09:41,830 - INFO - Adjudication Passed: False
+2025-10-12 00:09:41,830 - INFO - Code Requirement Suggestion: Validate v1 format returns list
+2025-10-12 00:09:41,830 - INFO - Unit Requirement Suggestion:
+2025-10-12 00:09:41,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 00:09:41,830 - INFO - Iteration: 2
+2025-10-12 00:09:41,830 - INFO - Previous Requirement: Check version detection from stack
+2025-10-12 00:09:41,830 - INFO - New Requirement: Check version detection from stack. Validate v1 format returns list
+2025-10-12 00:09:41,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 00:09:41,830 - INFO - Iteration: 2
+2025-10-12 00:09:41,831 - INFO - Previous Requirement:
+2025-10-12 00:09:41,831 - INFO - New Requirement:
+2025-10-12 00:10:08,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:11:04,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:11:17,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:11:17,830 - INFO - --- ITERATION 3 ---
+2025-10-12 00:11:17,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 00:11:17,830 - INFO - Adjudication Passed: False
+2025-10-12 00:11:17,830 - INFO - Code Requirement Suggestion: Verify v2 movies key exists
+2025-10-12 00:11:17,830 - INFO - Unit Requirement Suggestion:
+2025-10-12 00:11:17,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 00:11:17,830 - INFO - Iteration: 3
+2025-10-12 00:11:17,830 - INFO - Previous Requirement: Check version detection from stack. Validate v1 format returns list
+2025-10-12 00:11:17,830 - INFO - New Requirement: Check version detection from stack. Validate v1 format returns list. Verify v2 movies key exists
+2025-10-12 00:11:17,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 00:11:17,830 - INFO - Iteration: 3
+2025-10-12 00:11:17,831 - INFO - Previous Requirement:
+2025-10-12 00:11:17,831 - INFO - New Requirement:
+2025-10-12 00:11:44,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:12:40,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:12:53,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:12:53,830 - INFO - --- ITERATION 4 ---
+2025-10-12 00:12:53,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 00:12:53,830 - INFO - Adjudication Passed: False
+2025-10-12 00:12:53,830 - INFO - Code Requirement Suggestion: Check JSON-LD @context field
+2025-10-12 00:12:53,830 - INFO - Unit Requirement Suggestion:
+2025-10-12 00:12:53,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 00:12:53,830 - INFO - Iteration: 4
+2025-10-12 00:12:53,830 - INFO - Previous Requirement: Check version detection from stack. Validate v1 format returns list. Verify v2 movies key exists
+2025-10-12 00:12:53,830 - INFO - New Requirement: Check version detection from stack. Validate v1 format returns list. Verify v2 movies key exists. Check JSON-LD @context field
+2025-10-12 00:12:53,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 00:12:53,830 - INFO - Iteration: 4
+2025-10-12 00:12:53,831 - INFO - Previous Requirement:
+2025-10-12 00:12:53,831 - INFO - New Requirement:
+2025-10-12 00:13:20,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:14:16,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:14:29,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:14:29,830 - INFO - --- ITERATION 5 ---
+2025-10-12 00:14:29,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 00:14:29,830 - INFO - Adjudication Passed: False
+2025-10-12 00:14:29,830 - INFO - Code Requirement Suggestion: Validate movie CSV file loading
+2025-10-12 00:14:29,830 - INFO - Unit Requirement Suggestion:
+2025-10-12 00:14:29,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 00:14:29,830 - INFO - Iteration: 5
+2025-10-12 00:14:29,830 - INFO - Previous Requirement: Check version detection from stack. Validate v1 format returns list. Verify v2 movies key exists. Check JSON-LD @context field
+2025-10-12 00:14:29,830 - INFO - New Requirement: Check version detection from stack. Validate v1 format returns list. Verify v2 movies key exists. Check JSON-LD @context field. Validate movie CSV file loading
+2025-10-12 00:14:29,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 00:14:29,830 - INFO - Iteration: 5
+2025-10-12 00:14:29,831 - INFO - Previous Requirement:
+2025-10-12 00:14:29,831 - INFO - New Requirement:
+2025-10-12 00:14:56,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:15:52,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:16:05,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:16:05,830 - INFO - --- ITERATION 6 ---
+2025-10-12 00:16:05,830 - INFO - Unit Test Result Summary: All tests passed
+2025-10-12 00:16:05,830 - INFO - Adjudication Passed: True
+2025-10-12 00:16:05,864 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-12 00:16:05,864 - INFO - Function Name: movie_api
+2025-10-12 00:16:05,864 - INFO - Total Iterations: 6
+2025-10-12 00:16:05,864 - INFO - Total Duration: 576.13 seconds
+2025-10-12 00:16:05,864 - INFO - Final Adjudication Attempts: 6
+2025-10-12 00:16:05,864 - INFO - Requirement Reinforcements: 10
+2025-10-12 00:16:17,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:16:17,830 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 00:16:17,830 - INFO - Response Content: Movie API complete...
+2025-10-12 00:16:17,830 - INFO - Initiating function generation process...
+2025-10-12 00:16:25,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:16:25,208 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-12 00:16:25,208 - INFO - Function: movie_api
+2025-10-12 00:16:25,208 - INFO - Arguments: {}
+2025-10-12 00:16:25,208 - INFO - Execution Time: 0.013947382991527207 seconds
+2025-10-12 00:16:25,208 - INFO - Memory Peak: 20218 bytes
+2025-10-12 00:16:25,208 - INFO - Success: True
+2025-10-12 00:16:27,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:16:27,446 - INFO - === SESSION SUMMARY ===
+2025-10-12 00:16:27,446 - INFO - Session Duration: 597.72 seconds
+2025-10-12 00:16:27,446 - INFO - Functions Attempted: 1
+2025-10-12 00:16:27,446 - INFO - Successful Functions: 1
+2025-10-12 00:16:27,446 - INFO - Terminated Early: 0
+2025-10-12 00:16:27,446 - INFO - Total Iterations: 6
+2025-10-12 00:16:27,446 - INFO - Average Iterations per Function: 6.00
+2025-10-12 00:16:27,446 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-12 00:16:27,446 - INFO - Final Adjudication Attempts: 6
+2025-10-12 00:16:27,446 - INFO - Requirement Reinforcements: 10
+2025-10-12 01:02:16,594 - INFO - Running test for: Movie API Interface Evolution (ID 8)
+2025-10-12 01:02:16,595 - INFO - Successfully imported functions from functions.py
+2025-10-12 01:02:16,649 - INFO - All assertions passed for Movie API Interface Evolution
+2025-10-12 01:02:16,650 - INFO - ===== TEST PASSED ===== (Movie API Interface Evolution)

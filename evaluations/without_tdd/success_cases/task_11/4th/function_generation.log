@@ -1,0 +1,111 @@
+2025-10-11 23:32:14,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:32:14,730 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 23:32:14,730 - INFO - Response Content: Function Name: friend_suggestions
+Description: Social graph-based friend matcher
+2025-10-11 23:32:14,730 - INFO - Initiating function generation process...
+2025-10-11 23:32:14,730 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-11 23:32:14,731 - INFO - User Input: Create a friend_suggestions function that recommends friends from social_graph.json in PROJECT KNOWLEDGE with progressive enhancement based on RECOMMENDATION_MODE environment variable. Takes user_id parameter. basic mode: find mutual friends, score by count. enhanced mode: mutual friends times 2.0 plus common interests times 1.5. advanced mode: add 1.0 bonus if activity levels match. Returns: list of dicts (max 5 score), each with user_id and score keys, sorted by score descending, top 5 highest scores only.
+2025-10-11 23:32:14,731 - INFO - Function Requirement: Function Name: friend_suggestions
+Description: Social graph-based friend matcher
+2025-10-11 23:32:41,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:33:36,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:33:50,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:33:50,429 - INFO - --- ITERATION 1 ---
+2025-10-11 23:33:50,429 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-11 23:33:50,429 - INFO - Adjudication Passed: False
+2025-10-11 23:33:50,429 - INFO - Code Requirement Suggestion: Check JSON file loading from dataset
+2025-10-11 23:33:50,429 - INFO - Unit Requirement Suggestion:
+2025-10-11 23:33:50,429 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 23:33:50,429 - INFO - Iteration: 1
+2025-10-11 23:33:50,429 - INFO - Previous Requirement:
+2025-10-11 23:33:50,429 - INFO - New Requirement: Check JSON file loading from dataset
+2025-10-11 23:33:50,429 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 23:33:50,429 - INFO - Iteration: 1
+2025-10-11 23:33:50,430 - INFO - Previous Requirement:
+2025-10-11 23:33:50,430 - INFO - New Requirement:
+2025-10-11 23:34:17,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:35:13,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:35:26,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:35:26,830 - INFO - --- ITERATION 2 ---
+2025-10-11 23:35:26,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-11 23:35:26,830 - INFO - Adjudication Passed: False
+2025-10-11 23:35:26,830 - INFO - Code Requirement Suggestion: Validate RECOMMENDATION_MODE handling
+2025-10-11 23:35:26,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 23:35:26,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 23:35:26,830 - INFO - Iteration: 2
+2025-10-11 23:35:26,830 - INFO - Previous Requirement: Check JSON file loading from dataset
+2025-10-11 23:35:26,830 - INFO - New Requirement: Check JSON file loading from dataset. Validate RECOMMENDATION_MODE handling
+2025-10-11 23:35:26,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 23:35:26,830 - INFO - Iteration: 2
+2025-10-11 23:35:26,831 - INFO - Previous Requirement:
+2025-10-11 23:35:26,831 - INFO - New Requirement:
+2025-10-11 23:35:53,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:36:49,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:37:02,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:37:02,830 - INFO - --- ITERATION 3 ---
+2025-10-11 23:37:02,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-11 23:37:02,830 - INFO - Adjudication Passed: False
+2025-10-11 23:37:02,830 - INFO - Code Requirement Suggestion: Ensure weighted score calculation
+2025-10-11 23:37:02,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 23:37:02,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 23:37:02,830 - INFO - Iteration: 3
+2025-10-11 23:37:02,830 - INFO - Previous Requirement: Check JSON file loading from dataset. Validate RECOMMENDATION_MODE handling
+2025-10-11 23:37:02,830 - INFO - New Requirement: Check JSON file loading from dataset. Validate RECOMMENDATION_MODE handling. Ensure weighted score calculation
+2025-10-11 23:37:02,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 23:37:02,830 - INFO - Iteration: 3
+2025-10-11 23:37:02,831 - INFO - Previous Requirement:
+2025-10-11 23:37:02,831 - INFO - New Requirement:
+2025-10-11 23:37:29,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:38:25,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:38:38,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:38:38,830 - INFO - --- ITERATION 4 ---
+2025-10-11 23:38:38,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-11 23:38:38,830 - INFO - Adjudication Passed: False
+2025-10-11 23:38:38,830 - INFO - Code Requirement Suggestion: Verify top 5 results returned
+2025-10-11 23:38:38,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 23:38:38,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 23:38:38,830 - INFO - Iteration: 4
+2025-10-11 23:38:38,830 - INFO - Previous Requirement: Check JSON file loading from dataset. Validate RECOMMENDATION_MODE handling. Ensure weighted score calculation
+2025-10-11 23:38:38,830 - INFO - New Requirement: Check JSON file loading from dataset. Validate RECOMMENDATION_MODE handling. Ensure weighted score calculation. Verify top 5 results returned
+2025-10-11 23:38:38,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 23:38:38,830 - INFO - Iteration: 4
+2025-10-11 23:38:38,831 - INFO - Previous Requirement:
+2025-10-11 23:38:38,831 - INFO - New Requirement:
+2025-10-11 23:39:05,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:40:01,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:40:14,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:40:14,830 - INFO - --- ITERATION 5 ---
+2025-10-11 23:40:14,830 - INFO - Unit Test Result Summary: All tests passed
+2025-10-11 23:40:14,830 - INFO - Adjudication Passed: True
+2025-10-11 23:40:14,864 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-11 23:40:14,864 - INFO - Function Name: friend_suggestions
+2025-10-11 23:40:14,864 - INFO - Total Iterations: 5
+2025-10-11 23:40:14,864 - INFO - Total Duration: 480.13 seconds
+2025-10-11 23:40:14,864 - INFO - Final Adjudication Attempts: 5
+2025-10-11 23:40:14,864 - INFO - Requirement Reinforcements: 8
+2025-10-11 23:40:26,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:40:26,830 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 23:40:26,830 - INFO - Response Content: Friend suggestions complete...
+2025-10-11 23:40:26,830 - INFO - Initiating function generation process...
+2025-10-11 23:40:34,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:40:34,208 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-11 23:40:34,208 - INFO - Function: friend_suggestions
+2025-10-11 23:40:34,208 - INFO - Arguments: {'user_id': 9, 'path': 'dataset/social_graph.json'}
+2025-10-11 23:40:34,208 - INFO - Execution Time: 0.0022147390014771372 seconds
+2025-10-11 23:40:34,208 - INFO - Memory Peak: 207194 bytes
+2025-10-11 23:40:34,208 - INFO - Success: True
+2025-10-11 23:40:36,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:40:36,446 - INFO - === SESSION SUMMARY ===
+2025-10-11 23:40:36,446 - INFO - Session Duration: 501.72 seconds
+2025-10-11 23:40:36,446 - INFO - Functions Attempted: 1
+2025-10-11 23:40:36,446 - INFO - Successful Functions: 1
+2025-10-11 23:40:36,446 - INFO - Terminated Early: 0
+2025-10-11 23:40:36,446 - INFO - Total Iterations: 5
+2025-10-11 23:40:36,446 - INFO - Average Iterations per Function: 5.00
+2025-10-11 23:40:36,446 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-11 23:40:36,446 - INFO - Final Adjudication Attempts: 5
+2025-10-11 23:40:36,446 - INFO - Requirement Reinforcements: 8
+2025-10-12 00:26:16,594 - INFO - Running test for: Friend Suggester (ID 11)
+2025-10-12 00:26:16,595 - INFO - Successfully imported functions from functions.py
+2025-10-12 00:26:16,649 - INFO - All assertions passed for Friend Suggester
+2025-10-12 00:26:16,650 - INFO - ===== TEST PASSED ===== (Friend Suggester)

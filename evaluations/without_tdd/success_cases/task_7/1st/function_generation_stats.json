@@ -1,0 +1,179 @@
+[
+  {
+    "session_id": "20251011_170629",
+    "start_time": "2025-10-11T17:06:29.728847",
+    "functions": [
+      {
+        "function_requirement": "Function Name: parse_sensor_reading\nDescription: Parse IoT sensor data strings",
+        "user_input": "Create a function called parse_sensor_reading that takes a string like 'T:25.5|H:60|TS:1234567890'. Split by '|' to get parts. For each part, split by ':' to get key and value. Return dict with 'temperature', 'humidity', 'timestamp' keys. If a value cannot be converted to float/int, set to None. Handle T as float, H as float, TS as int.",
+        "start_time": "2025-10-11T17:06:29.730721",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "parse_sensor_reading",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-11T17:08:05.429518",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-10-11T17:08:05.463483",
+        "total_duration_seconds": 95.732762
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "parse_sensor_reading",
+        "function_args": {
+          "reading": "T:25.5|H:60|TS:1234567890"
+        },
+        "execution_time": 0.00022847399953193963,
+        "memory_peak": 8129,
+        "result": "{'temperature': 25.5, 'humidity': 60.0, 'timestamp': 1234567890}",
+        "timestamp": "2025-10-11T17:08:24.843294",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-10-11T17:08:27.212183",
+    "session_duration_seconds": 117.483336
+  },
+  {
+    "session_id": "20251011_181452",
+    "start_time": "2025-10-11T18:14:52.417841",
+    "functions": [
+      {
+        "function_requirement": "Function Name: aggregate_temperature\nDescription: Average temperature from sensor readings",
+        "user_input": "Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.",
+        "start_time": "2025-10-11T18:14:52.419721",
+        "iterations": 5,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "aggregate_temperature",
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Check parse_sensor_reading call",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-11T18:16:28.429427",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Validate None filtering logic",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-11T18:18:04.830417",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure average calculation correct",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-11T18:19:40.830284",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 4,
+            "judgement": false,
+            "code_requirement_suggestion": "Verify rounding to 2 decimals",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-11T18:21:16.830518",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 5,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-11T18:22:52.830518",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Check parse_sensor_reading call",
+            "timestamp": "2025-10-11T18:16:28.429642"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-11T18:16:28.430019"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Check parse_sensor_reading call",
+            "new_requirement": "Check parse_sensor_reading call. Validate None filtering logic",
+            "timestamp": "2025-10-11T18:18:04.830551"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-11T18:18:04.831017"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "Check parse_sensor_reading call. Validate None filtering logic",
+            "new_requirement": "Check parse_sensor_reading call. Validate None filtering logic. Ensure average calculation correct",
+            "timestamp": "2025-10-11T18:19:40.830418"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-11T18:19:40.831013"
+          },
+          {
+            "type": "code",
+            "iteration": 4,
+            "old_requirement": "Check parse_sensor_reading call. Validate None filtering logic. Ensure average calculation correct",
+            "new_requirement": "Check parse_sensor_reading call. Validate None filtering logic. Ensure average calculation correct. Verify rounding to 2 decimals",
+            "timestamp": "2025-10-11T18:21:16.830647"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 4,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-11T18:21:16.831017"
+          }
+        ],
+        "end_time": "2025-10-11T18:22:52.864483",
+        "total_duration_seconds": 480.444762
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "aggregate_temperature",
+        "function_args": {
+          "readings": ["T:23.5|H:45.2|TS:1638316800", "T:24.1|H:40.0|TS:1638316801", "H:50.0|TS:1638316802"]
+        },
+        "execution_time": 0.0002638479997450486,
+        "memory_peak": 15594,
+        "result": "23.8",
+        "timestamp": "2025-10-11T18:23:12.208294",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-10-11T18:23:14.446184",
+    "session_duration_seconds": 502.028343
+  }
+]

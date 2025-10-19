@@ -1,0 +1,206 @@
+2025-10-12 11:14:38,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:14:38,830 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 11:14:38,830 - INFO - Response Content: Function Name: movie_api
+
+Description:
+  Adaptive movie data endpoint utilizing Python stack frame inspection.
+  - "v1" legacy: simple array of movie title strings
+  - "v2" standard: structured dict containing movie metadata collection
+  - "v3" linked: JSON-LD formatted response following schema.org specifications
+  Source data from movie.csv with full version compatibility.
+
+Parameters:
+  None
+
+Returns:
+  - Detection of "_v1" in caller → List[str], such as ["Pulp Fiction", "Goodfellas", ...]
+  - Detection of "_v2" in caller → Metadata dict:
+      {
+        "movies": [
+          {"title": "Pulp Fiction", "year": "1994", "genre": "Crime, Drama"},
+          ...
+        ]
+      }
+  - Detection of "_v3" in caller → JSON-LD structured:
+      {
+        "@context": "http://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "Movie",
+            "name": "Pulp Fiction",
+            "datePublished": "1994",
+            "genre": "Crime, Drama"
+          },
+          ...
+        ]
+      }
+
+Examples:
+
+# In v1_client.py
+films = movie_api()
+# result: ["Pulp Fiction", "Goodfellas", ...]
+
+# In v2_application.py
+movies_data = movie_api()
+# result: {"movies": [{"title": "Pulp Fiction", ...}, ...]}
+
+# In v3_service.py
+json_ld = movie_api()
+# result: {"@context": "http://schema.org", "@type": "ItemList", ...}
+2025-10-12 11:14:38,830 - INFO - Initiating function generation process...
+2025-10-12 11:14:38,830 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-12 11:14:38,831 - INFO - User Input: Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.
+2025-10-12 11:14:38,831 - INFO - Function Requirement: Function Name: movie_api
+
+Description:
+  Adaptive movie data endpoint utilizing Python stack frame inspection.
+  - "v1" legacy: simple array of movie title strings
+  - "v2" standard: structured dict containing movie metadata collection
+  - "v3" linked: JSON-LD formatted response following schema.org specifications
+  Source data from movie.csv with full version compatibility.
+
+Parameters:
+  None
+
+Returns:
+  - Detection of "_v1" in caller → List[str], such as ["Pulp Fiction", "Goodfellas", ...]
+  - Detection of "_v2" in caller → Metadata dict:
+      {
+        "movies": [
+          {"title": "Pulp Fiction", "year": "1994", "genre": "Crime, Drama"},
+          ...
+        ]
+      }
+  - Detection of "_v3" in caller → JSON-LD structured:
+      {
+        "@context": "http://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "Movie",
+            "name": "Pulp Fiction",
+            "datePublished": "1994",
+            "genre": "Crime, Drama"
+          },
+          ...
+        ]
+      }
+
+Examples:
+
+# In v1_client.py
+films = movie_api()
+# result: ["Pulp Fiction", "Goodfellas", ...]
+
+# In v2_application.py
+movies_data = movie_api()
+# result: {"movies": [{"title": "Pulp Fiction", ...}, ...]}
+
+# In v3_service.py
+json_ld = movie_api()
+# result: {"@context": "http://schema.org", "@type": "ItemList", ...}
+2025-10-12 11:15:05,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:16:00,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:16:14,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:16:26,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:16:30,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:16:30,195 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-10-12 11:16:30,195 - INFO - TDD Adjudication Passed: True
+2025-10-12 11:16:56,628 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:17:40,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:17:40,730 - INFO - --- ITERATION 1 ---
+2025-10-12 11:17:40,730 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 11:17:40,730 - INFO - Adjudication Passed: False
+2025-10-12 11:17:40,730 - INFO - Code Requirement Suggestion: Stack frame detection logic needs refinement
+2025-10-12 11:17:40,730 - INFO - Unit Requirement Suggestion:
+2025-10-12 11:17:40,730 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 11:17:40,730 - INFO - Iteration: 1
+2025-10-12 11:17:40,730 - INFO - Previous Requirement:
+2025-10-12 11:17:40,730 - INFO - New Requirement: Stack frame detection logic needs refinement
+2025-10-12 11:17:40,730 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 11:17:40,730 - INFO - Iteration: 1
+2025-10-12 11:17:40,731 - INFO - Previous Requirement:
+2025-10-12 11:17:40,731 - INFO - New Requirement:
+2025-10-12 11:18:07,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:19:01,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:19:15,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:19:15,429 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-10-12 11:19:15,429 - INFO - TDD Adjudication Passed: True
+2025-10-12 11:19:18,894 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:19:18,894 - INFO - --- ITERATION 2 ---
+2025-10-12 11:19:18,894 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 11:19:18,895 - INFO - Adjudication Passed: False
+2025-10-12 11:19:18,895 - INFO - Code Requirement Suggestion: Ensure metadata fields match expected names in v2
+2025-10-12 11:19:18,895 - INFO - Unit Requirement Suggestion:
+2025-10-12 11:19:18,895 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 11:19:18,895 - INFO - Iteration: 2
+2025-10-12 11:19:18,895 - INFO - Previous Requirement: Stack frame detection logic needs refinement
+2025-10-12 11:19:18,895 - INFO - New Requirement: Stack frame detection logic needs refinement. Ensure metadata fields match expected names in v2
+2025-10-12 11:19:18,895 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 11:19:18,895 - INFO - Iteration: 2
+2025-10-12 11:19:18,895 - INFO - Previous Requirement:
+2025-10-12 11:19:18,895 - INFO - New Requirement:
+2025-10-12 11:19:45,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:20:40,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:20:53,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:20:53,830 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-10-12 11:20:53,830 - INFO - TDD Adjudication Passed: True
+2025-10-12 11:20:57,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:20:57,194 - INFO - --- ITERATION 3 ---
+2025-10-12 11:20:57,194 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 11:20:57,195 - INFO - Adjudication Passed: False
+2025-10-12 11:20:57,195 - INFO - Code Requirement Suggestion: Verify v3 JSON-LD structure conforms to schema.org
+2025-10-12 11:20:57,195 - INFO - Unit Requirement Suggestion:
+2025-10-12 11:20:57,195 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 11:20:57,195 - INFO - Iteration: 3
+2025-10-12 11:20:57,195 - INFO - Previous Requirement: Stack frame detection logic needs refinement. Ensure metadata fields match expected names in v2
+2025-10-12 11:20:57,195 - INFO - New Requirement: Stack frame detection logic needs refinement. Ensure metadata fields match expected names in v2. Verify v3 JSON-LD structure conforms to schema.org
+2025-10-12 11:20:57,195 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 11:20:57,195 - INFO - Iteration: 3
+2025-10-12 11:20:57,195 - INFO - Previous Requirement:
+2025-10-12 11:20:57,195 - INFO - New Requirement:
+2025-10-12 11:21:24,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:22:19,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:22:32,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:22:32,830 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-10-12 11:22:32,830 - INFO - TDD Adjudication Passed: True
+2025-10-12 11:22:36,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:22:36,194 - INFO - --- ITERATION 4 ---
+2025-10-12 11:22:36,194 - INFO - Unit Test Result Summary: All tests passed
+2025-10-12 11:22:36,194 - INFO - Adjudication Passed: True
+2025-10-12 11:22:36,228 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-12 11:22:36,228 - INFO - Function Name: movie_api
+2025-10-12 11:22:36,228 - INFO - Total Iterations: 4
+2025-10-12 11:22:36,228 - INFO - Total Duration: 477.40 seconds
+2025-10-12 11:22:36,228 - INFO - TDD Adjudication Attempts: 4
+2025-10-12 11:22:36,228 - INFO - Final Adjudication Attempts: 4
+2025-10-12 11:22:36,228 - INFO - Requirement Reinforcements: 6
+2025-10-12 11:22:47,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:22:47,830 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 11:22:47,830 - INFO - Response Content: Multi-format movie API complete...
+2025-10-12 11:22:47,830 - INFO - Initiating function generation process...
+2025-10-12 11:22:55,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:22:55,208 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-12 11:22:55,208 - INFO - Function: movie_api
+2025-10-12 11:22:55,208 - INFO - Arguments: {}
+2025-10-12 11:22:55,208 - INFO - Execution Time: 0.013574829991348088 seconds
+2025-10-12 11:22:55,208 - INFO - Memory Peak: 20082 bytes
+2025-10-12 11:22:55,208 - INFO - Success: True
+2025-10-12 11:22:57,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 11:22:57,446 - INFO - === SESSION SUMMARY ===
+2025-10-12 11:22:57,446 - INFO - Session Duration: 498.62 seconds
+2025-10-12 11:22:57,446 - INFO - Functions Attempted: 1
+2025-10-12 11:22:57,446 - INFO - Successful Functions: 1
+2025-10-12 11:22:57,446 - INFO - Terminated Early: 0
+2025-10-12 11:22:57,446 - INFO - Total Iterations: 4
+2025-10-12 11:22:57,446 - INFO - Average Iterations per Function: 4.00
+2025-10-12 11:22:57,446 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-12 11:22:57,446 - INFO - TDD Adjudication Attempts: 4
+2025-10-12 11:22:57,446 - INFO - Final Adjudication Attempts: 4
+2025-10-12 11:22:57,446 - INFO - Requirement Reinforcements: 6
+2025-10-12 12:08:42,593 - INFO - Running test for: Movie API Interface Evolution (ID 8)
+2025-10-12 12:08:42,594 - INFO - Successfully imported functions from functions.py
+2025-10-12 12:08:42,648 - INFO - All assertions passed for Movie API Interface Evolution
+2025-10-12 12:08:42,649 - INFO - ===== TEST PASSED ===== (Movie API Interface Evolution)

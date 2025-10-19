@@ -1,0 +1,111 @@
+2025-10-11 14:38:52,418 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:38:52,419 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 14:38:52,419 - INFO - Response Content: Function Name: patient_risk_score
+Description: Calculate patient risk from medical factors
+2025-10-11 14:38:52,419 - INFO - Initiating function generation process...
+2025-10-11 14:38:52,419 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-11 14:38:52,420 - INFO - User Input: Create a function called patient_risk_score that takes a Hospital object and patient_id. Calculate risk score using formula: (patient.age / 100 * 30) + (patient.get_total_conditions() * 5 * 25/100) + (patient.get_average_severity() * 10 * 25/100) + (20 if recent records have abnormal vitals else 0). Use hospital.get_patient(patient_id) and hospital.get_recent_records(patient_id, 90). Returns: float between 0.0 and 100.0.
+2025-10-11 14:38:52,420 - INFO - Function Requirement: Function Name: patient_risk_score
+Description: Calculate patient risk from medical factors
+2025-10-11 14:39:19,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:40:14,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:40:28,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:40:28,429 - INFO - --- ITERATION 1 ---
+2025-10-11 14:40:28,429 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-11 14:40:28,429 - INFO - Adjudication Passed: False
+2025-10-11 14:40:28,429 - INFO - Code Requirement Suggestion: Verify patient object retrieval works correctly
+2025-10-11 14:40:28,429 - INFO - Unit Requirement Suggestion:
+2025-10-11 14:40:28,429 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 14:40:28,429 - INFO - Iteration: 1
+2025-10-11 14:40:28,429 - INFO - Previous Requirement:
+2025-10-11 14:40:28,429 - INFO - New Requirement: Verify patient object retrieval works correctly
+2025-10-11 14:40:28,429 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 14:40:28,429 - INFO - Iteration: 1
+2025-10-11 14:40:28,430 - INFO - Previous Requirement:
+2025-10-11 14:40:28,430 - INFO - New Requirement:
+2025-10-11 14:40:55,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:41:51,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:42:04,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:42:04,830 - INFO - --- ITERATION 2 ---
+2025-10-11 14:42:04,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-11 14:42:04,830 - INFO - Adjudication Passed: False
+2025-10-11 14:42:04,830 - INFO - Code Requirement Suggestion: Handle age component calculation properly
+2025-10-11 14:42:04,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 14:42:04,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 14:42:04,830 - INFO - Iteration: 2
+2025-10-11 14:42:04,830 - INFO - Previous Requirement: Verify patient object retrieval works correctly
+2025-10-11 14:42:04,830 - INFO - New Requirement: Verify patient object retrieval works correctly. Handle age component calculation properly
+2025-10-11 14:42:04,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 14:42:04,830 - INFO - Iteration: 2
+2025-10-11 14:42:04,831 - INFO - Previous Requirement:
+2025-10-11 14:42:04,831 - INFO - New Requirement:
+2025-10-11 14:42:31,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:43:27,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:43:40,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:43:40,830 - INFO - --- ITERATION 3 ---
+2025-10-11 14:43:40,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-11 14:43:40,830 - INFO - Adjudication Passed: False
+2025-10-11 14:43:40,830 - INFO - Code Requirement Suggestion: Ensure recent records filtering by date range
+2025-10-11 14:43:40,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 14:43:40,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 14:43:40,830 - INFO - Iteration: 3
+2025-10-11 14:43:40,830 - INFO - Previous Requirement: Verify patient object retrieval works correctly. Handle age component calculation properly
+2025-10-11 14:43:40,830 - INFO - New Requirement: Verify patient object retrieval works correctly. Handle age component calculation properly. Ensure recent records filtering by date range
+2025-10-11 14:43:40,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 14:43:40,830 - INFO - Iteration: 3
+2025-10-11 14:43:40,831 - INFO - Previous Requirement:
+2025-10-11 14:43:40,831 - INFO - New Requirement:
+2025-10-11 14:44:07,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:45:03,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:45:16,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:45:16,830 - INFO - --- ITERATION 4 ---
+2025-10-11 14:45:16,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-11 14:45:16,830 - INFO - Adjudication Passed: False
+2025-10-11 14:45:16,830 - INFO - Code Requirement Suggestion: Validate abnormal vitals detection logic
+2025-10-11 14:45:16,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 14:45:16,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 14:45:16,830 - INFO - Iteration: 4
+2025-10-11 14:45:16,830 - INFO - Previous Requirement: Verify patient object retrieval works correctly. Handle age component calculation properly. Ensure recent records filtering by date range
+2025-10-11 14:45:16,830 - INFO - New Requirement: Verify patient object retrieval works correctly. Handle age component calculation properly. Ensure recent records filtering by date range. Validate abnormal vitals detection logic
+2025-10-11 14:45:16,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 14:45:16,830 - INFO - Iteration: 4
+2025-10-11 14:45:16,831 - INFO - Previous Requirement:
+2025-10-11 14:45:16,831 - INFO - New Requirement:
+2025-10-11 14:45:43,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:46:39,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:46:52,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:46:52,830 - INFO - --- ITERATION 5 ---
+2025-10-11 14:46:52,830 - INFO - Unit Test Result Summary: All tests passed
+2025-10-11 14:46:52,830 - INFO - Adjudication Passed: True
+2025-10-11 14:46:52,864 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-11 14:46:52,864 - INFO - Function Name: patient_risk_score
+2025-10-11 14:46:52,864 - INFO - Total Iterations: 5
+2025-10-11 14:46:52,864 - INFO - Total Duration: 480.44 seconds
+2025-10-11 14:46:52,864 - INFO - Final Adjudication Attempts: 5
+2025-10-11 14:46:52,864 - INFO - Requirement Reinforcements: 8
+2025-10-11 14:47:04,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:47:04,830 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 14:47:04,830 - INFO - Response Content: Patient risk calculation complete...
+2025-10-11 14:47:04,830 - INFO - Initiating function generation process...
+2025-10-11 14:47:12,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:47:12,208 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-11 14:47:12,208 - INFO - Function: patient_risk_score
+2025-10-11 14:47:12,208 - INFO - Arguments: {'hospital': '<Hospital>', 'patient_id': 'P001'}
+2025-10-11 14:47:12,208 - INFO - Execution Time: 0.014183746992889792 seconds
+2025-10-11 14:47:12,208 - INFO - Memory Peak: 18947 bytes
+2025-10-11 14:47:12,208 - INFO - Success: True
+2025-10-11 14:47:14,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 14:47:14,446 - INFO - === SESSION SUMMARY ===
+2025-10-11 14:47:14,446 - INFO - Session Duration: 502.03 seconds
+2025-10-11 14:47:14,446 - INFO - Functions Attempted: 1
+2025-10-11 14:47:14,446 - INFO - Successful Functions: 1
+2025-10-11 14:47:14,446 - INFO - Terminated Early: 0
+2025-10-11 14:47:14,446 - INFO - Total Iterations: 5
+2025-10-11 14:47:14,446 - INFO - Average Iterations per Function: 5.00
+2025-10-11 14:47:14,446 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-11 14:47:14,446 - INFO - Final Adjudication Attempts: 5
+2025-10-11 14:47:14,446 - INFO - Requirement Reinforcements: 8
+2025-10-11 15:32:38,593 - INFO - Running test for: Patient Risk Analyzer (ID 2)
+2025-10-11 15:32:38,594 - INFO - Successfully imported functions from functions.py
+2025-10-11 15:32:38,648 - INFO - All assertions passed for Patient Risk Analyzer
+2025-10-11 15:32:38,649 - INFO - ===== TEST PASSED ===== (Patient Risk Analyzer)

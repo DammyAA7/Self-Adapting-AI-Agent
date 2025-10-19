@@ -1,0 +1,138 @@
+2025-10-11 19:52:14,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 19:52:14,730 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 19:52:14,730 - INFO - Response Content: Function Name: parse_sensor_reading
+Description: IoT sensor string parser
+2025-10-11 19:52:14,730 - INFO - Initiating function generation process...
+2025-10-11 19:52:14,730 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-11 19:52:14,731 - INFO - User Input: Create a function called parse_sensor_reading that takes a string like 'T:25.5|H:60|TS:1234567890'. Split by '|' to get parts. For each part, split by ':' to get key and value. Return dict with 'temperature', 'humidity', 'timestamp' keys. If a value cannot be converted to float/int, set to None. Handle T as float, H as float, TS as int.
+2025-10-11 19:52:14,731 - INFO - Function Requirement: Function Name: parse_sensor_reading
+Description: IoT sensor string parser
+2025-10-11 19:52:41,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 19:53:36,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 19:53:50,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 19:53:50,429 - INFO - --- ITERATION 1 ---
+2025-10-11 19:53:50,429 - INFO - Unit Test Result Summary: All tests passed
+2025-10-11 19:53:50,429 - INFO - Adjudication Passed: True
+2025-10-11 19:53:50,463 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-11 19:53:50,463 - INFO - Function Name: parse_sensor_reading
+2025-10-11 19:53:50,463 - INFO - Total Iterations: 1
+2025-10-11 19:53:50,463 - INFO - Total Duration: 95.73 seconds
+2025-10-11 19:53:50,463 - INFO - Final Adjudication Attempts: 1
+2025-10-11 19:53:50,463 - INFO - Requirement Reinforcements: 0
+2025-10-11 19:54:02,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 19:54:02,195 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 19:54:02,195 - INFO - Response Content: Parser ready...
+2025-10-11 19:54:02,195 - INFO - Initiating function generation process...
+2025-10-11 19:54:09,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 19:54:09,843 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-11 19:54:09,843 - INFO - Function: parse_sensor_reading
+2025-10-11 19:54:09,843 - INFO - Arguments: {'reading': 'T:26.2|H:55|TS:1638316900'}
+2025-10-11 19:54:09,843 - INFO - Execution Time: 0.00021947399917990044 seconds
+2025-10-11 19:54:09,843 - INFO - Memory Peak: 8073 bytes
+2025-10-11 19:54:09,843 - INFO - Success: True
+2025-10-11 19:54:12,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 19:54:12,212 - INFO - === SESSION SUMMARY ===
+2025-10-11 19:54:12,212 - INFO - Session Duration: 117.48 seconds
+2025-10-11 19:54:12,212 - INFO - Functions Attempted: 1
+2025-10-11 19:54:12,212 - INFO - Successful Functions: 1
+2025-10-11 19:54:12,212 - INFO - Terminated Early: 0
+2025-10-11 19:54:12,212 - INFO - Total Iterations: 1
+2025-10-11 19:54:12,212 - INFO - Average Iterations per Function: 1.00
+2025-10-11 19:54:12,212 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-11 19:54:12,212 - INFO - Final Adjudication Attempts: 1
+2025-10-11 19:54:12,212 - INFO - Requirement Reinforcements: 0
+2025-10-11 21:00:38,418 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:00:38,419 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 21:00:38,419 - INFO - Response Content: Function Name: aggregate_temperature
+Description: Temperature aggregation from sensors
+2025-10-11 21:00:38,419 - INFO - Initiating function generation process...
+2025-10-11 21:00:38,419 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-11 21:00:38,420 - INFO - User Input: Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.
+2025-10-11 21:00:38,420 - INFO - Function Requirement: Function Name: aggregate_temperature
+Description: Temperature aggregation from sensors
+2025-10-11 21:01:05,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:02:00,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:02:14,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:02:14,429 - INFO - --- ITERATION 1 ---
+2025-10-11 21:02:14,429 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-11 21:02:14,429 - INFO - Adjudication Passed: False
+2025-10-11 21:02:14,429 - INFO - Code Requirement Suggestion: Validate temperature extraction from dict
+2025-10-11 21:02:14,429 - INFO - Unit Requirement Suggestion:
+2025-10-11 21:02:14,429 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 21:02:14,429 - INFO - Iteration: 1
+2025-10-11 21:02:14,429 - INFO - Previous Requirement:
+2025-10-11 21:02:14,429 - INFO - New Requirement: Validate temperature extraction from dict
+2025-10-11 21:02:14,429 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 21:02:14,429 - INFO - Iteration: 1
+2025-10-11 21:02:14,430 - INFO - Previous Requirement:
+2025-10-11 21:02:14,430 - INFO - New Requirement:
+2025-10-11 21:02:41,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:03:37,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:03:50,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:03:50,830 - INFO - --- ITERATION 2 ---
+2025-10-11 21:03:50,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-11 21:03:50,830 - INFO - Adjudication Passed: False
+2025-10-11 21:03:50,830 - INFO - Code Requirement Suggestion: Check division by zero for empty list
+2025-10-11 21:03:50,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 21:03:50,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 21:03:50,830 - INFO - Iteration: 2
+2025-10-11 21:03:50,830 - INFO - Previous Requirement: Validate temperature extraction from dict
+2025-10-11 21:03:50,830 - INFO - New Requirement: Validate temperature extraction from dict. Check division by zero for empty list
+2025-10-11 21:03:50,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 21:03:50,830 - INFO - Iteration: 2
+2025-10-11 21:03:50,831 - INFO - Previous Requirement:
+2025-10-11 21:03:50,831 - INFO - New Requirement:
+2025-10-11 21:04:17,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:05:13,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:05:26,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:05:26,830 - INFO - --- ITERATION 3 ---
+2025-10-11 21:05:26,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-11 21:05:26,830 - INFO - Adjudication Passed: False
+2025-10-11 21:05:26,830 - INFO - Code Requirement Suggestion: Ensure rounding applied correctly
+2025-10-11 21:05:26,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 21:05:26,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 21:05:26,830 - INFO - Iteration: 3
+2025-10-11 21:05:26,830 - INFO - Previous Requirement: Validate temperature extraction from dict. Check division by zero for empty list
+2025-10-11 21:05:26,830 - INFO - New Requirement: Validate temperature extraction from dict. Check division by zero for empty list. Ensure rounding applied correctly
+2025-10-11 21:05:26,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 21:05:26,830 - INFO - Iteration: 3
+2025-10-11 21:05:26,831 - INFO - Previous Requirement:
+2025-10-11 21:05:26,831 - INFO - New Requirement:
+2025-10-11 21:05:53,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:06:49,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:07:02,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:07:02,830 - INFO - --- ITERATION 4 ---
+2025-10-11 21:07:02,830 - INFO - Unit Test Result Summary: All tests passed
+2025-10-11 21:07:02,830 - INFO - Adjudication Passed: True
+2025-10-11 21:07:02,864 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-11 21:07:02,864 - INFO - Function Name: aggregate_temperature
+2025-10-11 21:07:02,864 - INFO - Total Iterations: 4
+2025-10-11 21:07:02,864 - INFO - Total Duration: 384.44 seconds
+2025-10-11 21:07:02,864 - INFO - Final Adjudication Attempts: 4
+2025-10-11 21:07:02,864 - INFO - Requirement Reinforcements: 6
+2025-10-11 21:07:14,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:07:14,830 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 21:07:14,830 - INFO - Response Content: Temperature aggregation ready...
+2025-10-11 21:07:14,830 - INFO - Initiating function generation process...
+2025-10-11 21:07:22,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:07:22,208 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-11 21:07:22,208 - INFO - Function: aggregate_temperature
+2025-10-11 21:07:22,208 - INFO - Arguments: {'readings': ['T:22.1|H:50.0|TS:1638316850', 'T:23.7|H:48.0|TS:1638316851']}
+2025-10-11 21:07:22,208 - INFO - Execution Time: 0.00024183799982909113 seconds
+2025-10-11 21:07:22,208 - INFO - Memory Peak: 15473 bytes
+2025-10-11 21:07:22,208 - INFO - Success: True
+2025-10-11 21:07:24,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 21:07:24,446 - INFO - === SESSION SUMMARY ===
+2025-10-11 21:07:24,446 - INFO - Session Duration: 406.03 seconds
+2025-10-11 21:07:24,446 - INFO - Functions Attempted: 1
+2025-10-11 21:07:24,446 - INFO - Successful Functions: 1
+2025-10-11 21:07:24,446 - INFO - Terminated Early: 0
+2025-10-11 21:07:24,446 - INFO - Total Iterations: 4
+2025-10-11 21:07:24,446 - INFO - Average Iterations per Function: 4.00
+2025-10-11 21:07:24,446 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-11 21:07:24,446 - INFO - Final Adjudication Attempts: 4
+2025-10-11 21:07:24,446 - INFO - Requirement Reinforcements: 6
+2025-10-11 21:52:38,593 - INFO - Running test for: IoT Sensor Pipeline (ID 7)
+2025-10-11 21:52:38,594 - INFO - Successfully imported functions from functions.py
+2025-10-11 21:52:38,648 - INFO - All assertions passed for IoT Sensor Pipeline
+2025-10-11 21:52:38,649 - INFO - ===== TEST PASSED ===== (IoT Sensor Pipeline)

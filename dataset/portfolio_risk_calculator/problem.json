@@ -1,0 +1,17 @@
+{
+  "id": 6,
+  "task_id": "SelfEvolution/6",
+  "problem_name": "Portfolio Risk Calculator",
+  "domain": "financial-analysis",
+  "session_1": {
+    "entry_point": "calculate_stock_volatility",
+    "prompt": "Create a function called calculate_stock_volatility that takes a list of daily stock prices. Calculate daily returns as (price[i] - price[i-1]) / price[i-1] for each pair. Calculate mean of returns, then variance as average of (return - mean) squared. Return square root of variance times 100 as percentage. Return 0.0 if fewer than 2 prices."
+  },
+  "session_2": {
+    "entry_point": "portfolio_risk_assessment",
+    "depends_on": ["calculate_stock_volatility"],
+    "prompt": "Load previous session and create portfolio_risk_assessment function. Takes a dict where keys are stock names and values have 'prices' list and 'allocation' float. For each stock, call calculate_stock_volatility(prices), multiply by allocation, sum all weighted volatilities. Returns: float representing total portfolio risk as weighted sum."
+  },
+  "context_files": [],
+  "test_code": "\n# Test Session 1 function: calculate_stock_volatility\nprices1 = [100.0, 102.0, 98.0, 101.0, 99.0]\nvol1 = calculate_stock_volatility(prices1)\nassert isinstance(vol1, float)\nassert vol1 >= 0  # Volatility cannot be negative\nassert vol1 < 100  # Reasonable volatility range\n\n# Test edge cases\nassert calculate_stock_volatility([]) == 0.0\nassert calculate_stock_volatility([100.0]) == 0.0\n\n# Test Session 2 function: portfolio_risk_assessment\nportfolio = {\n    'AAPL': {'prices': [150.0, 152.0, 148.0, 155.0], 'allocation': 0.6},\n    'GOOGL': {'prices': [2800.0, 2820.0, 2790.0, 2850.0], 'allocation': 0.4}\n}\nportfolio_risk = portfolio_risk_assessment(portfolio)\nassert isinstance(portfolio_risk, float)\nassert portfolio_risk >= 0\nassert portfolio_risk < 100\n\nprint('Portfolio Risk Calculator tests passed')\n"
+}

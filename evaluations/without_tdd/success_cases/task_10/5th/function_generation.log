@@ -1,0 +1,79 @@
+2025-10-12 00:52:29,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:52:29,730 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 00:52:29,730 - INFO - Response Content: Function Name: performance_report
+Description: Performance review data extractor
+2025-10-12 00:52:29,730 - INFO - Initiating function generation process...
+2025-10-12 00:52:29,730 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-12 00:52:29,731 - INFO - User Input: Create a performance_report function that reads performance_reviews.csv from PROJECT KNOWLEDGE. Parameters: employee_id (optional string), report_type (string, default 'summary'). RETURN TYPES AND FIELD SPECIFICATIONS: (1) summary mode - find CSV row where employee_id column matches parameter, return single dict with keys 'employee_id' (string value), 'overall_rating' (float from CSV column - keep as float not string), 'goals_status' (string from CSV column). (2) detailed mode - find matching row, return single dict with ALL CSV column names as keys preserving exact names and original types. (3) department mode - when employee_id is None, group rows by 'department' CSV column, return dict where keys are department names and values are dicts with 'avg_rating' (float - average of overall_rating column) and 'count' (int - number of employees).
+2025-10-12 00:52:29,731 - INFO - Function Requirement: Function Name: performance_report
+Description: Performance review data extractor
+2025-10-12 00:52:56,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:53:51,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:54:05,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:54:05,429 - INFO - --- ITERATION 1 ---
+2025-10-12 00:54:05,429 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 00:54:05,429 - INFO - Adjudication Passed: False
+2025-10-12 00:54:05,429 - INFO - Code Requirement Suggestion: Check employee lookup implementation
+2025-10-12 00:54:05,429 - INFO - Unit Requirement Suggestion:
+2025-10-12 00:54:05,429 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 00:54:05,429 - INFO - Iteration: 1
+2025-10-12 00:54:05,429 - INFO - Previous Requirement:
+2025-10-12 00:54:05,429 - INFO - New Requirement: Check employee lookup implementation
+2025-10-12 00:54:05,429 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 00:54:05,429 - INFO - Iteration: 1
+2025-10-12 00:54:05,430 - INFO - Previous Requirement:
+2025-10-12 00:54:05,430 - INFO - New Requirement:
+2025-10-12 00:54:32,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:55:28,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:55:41,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:55:41,830 - INFO - --- ITERATION 2 ---
+2025-10-12 00:55:41,830 - INFO - Unit Test Result Summary: Mixed results (some passed, some failed)
+2025-10-12 00:55:41,830 - INFO - Adjudication Passed: False
+2025-10-12 00:55:41,830 - INFO - Code Requirement Suggestion: Validate avg_rating calculation for departments
+2025-10-12 00:55:41,830 - INFO - Unit Requirement Suggestion:
+2025-10-12 00:55:41,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-12 00:55:41,830 - INFO - Iteration: 2
+2025-10-12 00:55:41,830 - INFO - Previous Requirement: Check employee lookup implementation
+2025-10-12 00:55:41,830 - INFO - New Requirement: Check employee lookup implementation. Validate avg_rating calculation for departments
+2025-10-12 00:55:41,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-12 00:55:41,830 - INFO - Iteration: 2
+2025-10-12 00:55:41,831 - INFO - Previous Requirement:
+2025-10-12 00:55:41,831 - INFO - New Requirement:
+2025-10-12 00:56:08,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:57:04,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:57:17,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:57:17,830 - INFO - --- ITERATION 3 ---
+2025-10-12 00:57:17,830 - INFO - Unit Test Result Summary: All tests passed
+2025-10-12 00:57:17,830 - INFO - Adjudication Passed: True
+2025-10-12 00:57:17,864 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-12 00:57:17,864 - INFO - Function Name: performance_report
+2025-10-12 00:57:17,864 - INFO - Total Iterations: 3
+2025-10-12 00:57:17,864 - INFO - Total Duration: 288.13 seconds
+2025-10-12 00:57:17,864 - INFO - Final Adjudication Attempts: 3
+2025-10-12 00:57:17,864 - INFO - Requirement Reinforcements: 4
+2025-10-12 00:57:29,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:57:29,830 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 00:57:29,830 - INFO - Response Content: Performance ready...
+2025-10-12 00:57:29,830 - INFO - Initiating function generation process...
+2025-10-12 00:57:37,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:57:37,208 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-12 00:57:37,208 - INFO - Function: performance_report
+2025-10-12 00:57:37,208 - INFO - Arguments: {'employee_id': 'E005', 'report_type': 'summary'}
+2025-10-12 00:57:37,208 - INFO - Execution Time: 0.0008836379996407777 seconds
+2025-10-12 00:57:37,208 - INFO - Memory Peak: 81018 bytes
+2025-10-12 00:57:37,208 - INFO - Success: True
+2025-10-12 00:57:39,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 00:57:39,446 - INFO - === SESSION SUMMARY ===
+2025-10-12 00:57:39,446 - INFO - Session Duration: 309.72 seconds
+2025-10-12 00:57:39,446 - INFO - Functions Attempted: 1
+2025-10-12 00:57:39,446 - INFO - Successful Functions: 1
+2025-10-12 00:57:39,446 - INFO - Terminated Early: 0
+2025-10-12 00:57:39,446 - INFO - Total Iterations: 3
+2025-10-12 00:57:39,446 - INFO - Average Iterations per Function: 3.00
+2025-10-12 00:57:39,446 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-12 00:57:39,446 - INFO - Final Adjudication Attempts: 3
+2025-10-12 00:57:39,446 - INFO - Requirement Reinforcements: 4
+2025-10-12 01:42:27,593 - INFO - Running test for: Performance Tracker (ID 10)
+2025-10-12 01:42:27,594 - INFO - Successfully imported functions from functions.py
+2025-10-12 01:42:27,648 - INFO - All assertions passed for Performance Tracker
+2025-10-12 01:42:27,649 - INFO - ===== TEST PASSED ===== (Performance Tracker)

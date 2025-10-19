@@ -1,0 +1,171 @@
+[
+  {
+    "session_id": "20251012_131623",
+    "start_time": "2025-10-12T13:16:23.828847",
+    "functions": [
+      {
+        "function_requirement": "Function Name: calculate_stock_volatility\nDescription: Daily return volatility measurement",
+        "user_input": "Create a function called calculate_stock_volatility that takes a list of daily stock prices. Calculate daily returns as (price[i] - price[i-1]) / price[i-1] for each pair. Calculate mean of returns, then variance as average of (return - mean) squared. Return square root of variance times 100 as percentage. Return 0.0 if fewer than 2 prices.",
+        "start_time": "2025-10-12T13:16:23.830721",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "calculate_stock_volatility",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T13:18:07.195284"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T13:20:52.429183"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure returns list is not empty before calculating mean",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T13:19:17.730427",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T13:20:55.894617",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Ensure returns list is not empty before calculating mean",
+            "timestamp": "2025-10-12T13:19:17.730642"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-12T13:19:17.731019"
+          }
+        ],
+        "end_time": "2025-10-12T13:20:55.928482",
+        "total_duration_seconds": 272.097761
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "calculate_stock_volatility",
+        "function_args": {
+          "prices": [110, 112, 111, 115, 117]
+        },
+        "execution_time": 0.010482638990459964,
+        "memory_peak": 17851,
+        "result": "25.495097567963926",
+        "timestamp": "2025-10-12T13:21:14.843294",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-10-12T13:21:17.212183",
+    "session_duration_seconds": 293.583336
+  },
+  {
+    "session_id": "20251012_142842",
+    "start_time": "2025-10-12T14:28:42.417841",
+    "functions": [
+      {
+        "function_requirement": "Function Name: portfolio_risk_assessment\nDescription: Aggregate weighted volatility across portfolio holdings",
+        "user_input": "Load previous session and create portfolio_risk_assessment function. Takes a dict where keys are stock names and values have 'prices' list and 'allocation' float. For each stock, call calculate_stock_volatility(prices), multiply by allocation, sum all weighted volatilities. Returns: float representing total portfolio risk as weighted sum.",
+        "start_time": "2025-10-12T14:28:42.419721",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "portfolio_risk_assessment",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T14:30:33.195284"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T14:33:18.429183"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Verify allocation weights sum correctly",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T14:31:43.429427",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T14:33:21.894617",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Verify allocation weights sum correctly",
+            "timestamp": "2025-10-12T14:31:43.429642"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-12T14:31:43.430019"
+          }
+        ],
+        "end_time": "2025-10-12T14:33:21.928482",
+        "total_duration_seconds": 279.508741
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "portfolio_risk_assessment",
+        "function_args": {
+          "portfolio": {
+            "NFLX": {"prices": [520, 525, 518], "allocation": 0.5},
+            "META": {"prices": [340, 345, 338], "allocation": 0.5}
+          }
+        },
+        "execution_time": 0.011638291993876919,
+        "memory_peak": 18614,
+        "result": "1.3247",
+        "timestamp": "2025-10-12T14:33:40.843294",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-10-12T14:33:43.212184",
+    "session_duration_seconds": 300.794343
+  }
+]

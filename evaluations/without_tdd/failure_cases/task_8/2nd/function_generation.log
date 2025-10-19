@@ -1,0 +1,123 @@
+2025-10-11 18:38:52,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:38:52,730 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 18:38:52,730 - INFO - Response Content: Function Name: movie_api
+Description: Context-aware movie data API
+2025-10-11 18:38:52,730 - INFO - Initiating function generation process...
+2025-10-11 18:38:52,730 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-11 18:38:52,731 - INFO - User Input: Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.
+2025-10-11 18:38:52,731 - INFO - Function Requirement: Function Name: movie_api
+Description: Context-aware movie data API
+2025-10-11 18:39:19,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:40:14,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:40:28,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:40:28,429 - INFO - --- ITERATION 1 ---
+2025-10-11 18:40:28,429 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 18:40:28,429 - INFO - Adjudication Passed: False
+2025-10-11 18:40:28,429 - INFO - Code Requirement Suggestion: Import inspect module for stack analysis
+2025-10-11 18:40:28,429 - INFO - Unit Requirement Suggestion:
+2025-10-11 18:40:28,429 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 18:40:28,429 - INFO - Iteration: 1
+2025-10-11 18:40:28,429 - INFO - Previous Requirement:
+2025-10-11 18:40:28,429 - INFO - New Requirement: Import inspect module for stack analysis
+2025-10-11 18:40:28,429 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 18:40:28,429 - INFO - Iteration: 1
+2025-10-11 18:40:28,430 - INFO - Previous Requirement:
+2025-10-11 18:40:28,430 - INFO - New Requirement:
+2025-10-11 18:40:55,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:41:51,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:42:04,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:42:04,830 - INFO - --- ITERATION 2 ---
+2025-10-11 18:42:04,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 18:42:04,830 - INFO - Adjudication Passed: False
+2025-10-11 18:42:04,830 - INFO - Code Requirement Suggestion: Check caller context detection pattern
+2025-10-11 18:42:04,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 18:42:04,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 18:42:04,830 - INFO - Iteration: 2
+2025-10-11 18:42:04,830 - INFO - Previous Requirement: Import inspect module for stack analysis
+2025-10-11 18:42:04,830 - INFO - New Requirement: Import inspect module for stack analysis. Check caller context detection pattern
+2025-10-11 18:42:04,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 18:42:04,830 - INFO - Iteration: 2
+2025-10-11 18:42:04,831 - INFO - Previous Requirement:
+2025-10-11 18:42:04,831 - INFO - New Requirement:
+2025-10-11 18:42:31,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:43:27,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:43:40,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:43:40,830 - INFO - --- ITERATION 3 ---
+2025-10-11 18:43:40,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 18:43:40,830 - INFO - Adjudication Passed: False
+2025-10-11 18:43:40,830 - INFO - Code Requirement Suggestion: Verify movies key in v2 format
+2025-10-11 18:43:40,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 18:43:40,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 18:43:40,830 - INFO - Iteration: 3
+2025-10-11 18:43:40,830 - INFO - Previous Requirement: Import inspect module for stack analysis. Check caller context detection pattern
+2025-10-11 18:43:40,830 - INFO - New Requirement: Import inspect module for stack analysis. Check caller context detection pattern. Verify movies key in v2 format
+2025-10-11 18:43:40,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 18:43:40,830 - INFO - Iteration: 3
+2025-10-11 18:43:40,831 - INFO - Previous Requirement:
+2025-10-11 18:43:40,831 - INFO - New Requirement:
+2025-10-11 18:44:07,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:45:03,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:45:16,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:45:16,830 - INFO - --- ITERATION 4 ---
+2025-10-11 18:45:16,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 18:45:16,830 - INFO - Adjudication Passed: False
+2025-10-11 18:45:16,830 - INFO - Code Requirement Suggestion: Validate JSON-LD structure fields
+2025-10-11 18:45:16,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 18:45:16,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 18:45:16,830 - INFO - Iteration: 4
+2025-10-11 18:45:16,830 - INFO - Previous Requirement: Import inspect module for stack analysis. Check caller context detection pattern. Verify movies key in v2 format
+2025-10-11 18:45:16,830 - INFO - New Requirement: Import inspect module for stack analysis. Check caller context detection pattern. Verify movies key in v2 format. Validate JSON-LD structure fields
+2025-10-11 18:45:16,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 18:45:16,830 - INFO - Iteration: 4
+2025-10-11 18:45:16,831 - INFO - Previous Requirement:
+2025-10-11 18:45:16,831 - INFO - New Requirement:
+2025-10-11 18:45:43,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:46:39,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:46:52,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:46:52,830 - INFO - --- ITERATION 5 ---
+2025-10-11 18:46:52,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 18:46:52,830 - INFO - Adjudication Passed: False
+2025-10-11 18:46:52,830 - INFO - Code Requirement Suggestion:
+2025-10-11 18:46:52,830 - INFO - Unit Requirement Suggestion: Verify movie.csv file path correct
+2025-10-11 18:46:52,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 18:46:52,830 - INFO - Iteration: 5
+2025-10-11 18:46:52,830 - INFO - Previous Requirement: Import inspect module for stack analysis. Check caller context detection pattern. Verify movies key in v2 format. Validate JSON-LD structure fields
+2025-10-11 18:46:52,830 - INFO - New Requirement: Import inspect module for stack analysis. Check caller context detection pattern. Verify movies key in v2 format. Validate JSON-LD structure fields
+2025-10-11 18:46:52,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 18:46:52,830 - INFO - Iteration: 5
+2025-10-11 18:46:52,831 - INFO - Previous Requirement:
+2025-10-11 18:46:52,831 - INFO - New Requirement: Verify movie.csv file path correct
+2025-10-11 18:47:19,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:48:15,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:48:28,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 18:48:28,830 - INFO - --- ITERATION 6 ---
+2025-10-11 18:48:28,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 18:48:28,830 - INFO - Adjudication Passed: False
+2025-10-11 18:48:28,830 - INFO - Code Requirement Suggestion:
+2025-10-11 18:48:28,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 18:48:28,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 18:48:28,830 - INFO - Iteration: 6
+2025-10-11 18:48:28,830 - INFO - Previous Requirement: Import inspect module for stack analysis. Check caller context detection pattern. Verify movies key in v2 format. Validate JSON-LD structure fields
+2025-10-11 18:48:28,830 - INFO - New Requirement: Import inspect module for stack analysis. Check caller context detection pattern. Verify movies key in v2 format. Validate JSON-LD structure fields
+2025-10-11 18:48:28,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 18:48:28,830 - INFO - Iteration: 6
+2025-10-11 18:48:28,831 - INFO - Previous Requirement: Verify movie.csv file path correct
+2025-10-11 18:48:28,831 - INFO - New Requirement: Verify movie.csv file path correct
+2025-10-11 18:48:28,831 - WARNING - === MAX ITERATIONS REACHED ===
+2025-10-11 18:48:28,831 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-10-11 18:48:28,831 - WARNING - Total Duration: 576.10 seconds
+2025-10-11 18:48:28,831 - WARNING - Final Iteration Count: 6
+2025-10-11 18:48:28,841 - INFO - === SESSION SUMMARY ===
+2025-10-11 18:48:28,841 - INFO - Session Duration: 596.21 seconds
+2025-10-11 18:48:28,841 - INFO - Functions Attempted: 1
+2025-10-11 18:48:28,841 - INFO - Successful Functions: 0
+2025-10-11 18:48:28,841 - INFO - Terminated Early: 1
+2025-10-11 18:48:28,841 - INFO - Total Iterations: 6
+2025-10-11 18:48:28,841 - INFO - Average Iterations per Function: 6.00
+2025-10-11 18:48:28,841 - INFO - Existing Function Calls: 0 (0 successful)
+2025-10-11 18:48:28,841 - INFO - Final Adjudication Attempts: 6
+2025-10-11 18:48:28,841 - INFO - Requirement Reinforcements: 12
+2025-10-11 19:34:16,594 - INFO - Running test for: Movie API Interface Evolution (ID 8)
+2025-10-11 19:34:16,595 - INFO - Successfully imported functions from functions.py
+2025-10-11 19:34:16,649 - ERROR - Test assertion failed for Movie API Interface Evolution: Assertion failed:
+2025-10-11 19:34:16,649 - INFO - ===== TEST FAILED ===== (Movie API Interface Evolution)

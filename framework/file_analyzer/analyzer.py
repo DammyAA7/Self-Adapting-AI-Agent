@@ -267,15 +267,18 @@ When generating test cases that need classes/data from this analyzed project:
 1. ALWAYS import classes and helper functions from the analyzed codebase using the FULL module path
 2. NEVER import the function being tested from the codebase (it doesn't exist there yet!)
 3. Import the function being tested from unit_test.functions
+4. Never cause syntax errors:  File "framework/test_driven_development/testDrivenCases.py", line 4
+        sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+                       ^
+SyntaxError: '(' was never closed
 
-CORRECT IMPORT PATTERN:
+
+CORRECT IMPORT PATTERN (IMPORTANT: Use this exact Pattern to avoid problems. Always sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))) <-- IN HERE GIVE 5TH BRACKET IN LAST):
 ```python
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-import pytest
-from unit_test.functions import *  # The function being tested comes from here
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 """
 
         # Add specific import examples based on actual Python files found

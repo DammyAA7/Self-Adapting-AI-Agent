@@ -1,0 +1,137 @@
+2025-10-12 12:14:47,629 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:14:47,630 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 12:14:47,630 - INFO - Response Content: Function Name: book_recommender
+
+Description:
+  Book catalog filter with environment-based version control.
+  Loads books.csv, filters on genre column equality, formats output per API_VERSION:
+    • v1: returns array of title column values
+    • v2: returns object with titles, total count, and rating mean
+    • v3: returns schema.org compliant BookCollection object
+
+Parameters:
+  – genre (string): genre value for CSV filtering
+  – file_path (string): path to books.csv data file
+
+Return Specifications:
+  v1 → List[str] containing titles, example: ["Novel A", "Novel B", ...]
+
+  v2 → Dictionary format:
+      {
+        "titles": ["Novel A", "Novel B", ...],
+        "count": 20,
+        "avg_rating": 4.15
+      }
+
+  v3 → Dictionary format:
+      {
+        "@context": "http://schema.org",
+        "@type": "BookCollection",
+        "numberOfItems": 20
+      }
+
+Example Calls:
+
+# v1 default behavior
+titles = book_recommender("Horror", "dataset/books.csv")
+# result: ["Horror Story 1", "Horror Story 2", ...]
+
+# v2 with environment variable
+result = book_recommender("Horror", "dataset/books.csv")
+# result: {"titles": ["Horror Story 1", ...], "count": 15, "avg_rating": 3.8}
+
+# v3 with environment variable
+result = book_recommender("Horror", "dataset/books.csv")
+# result: {"@context": "http://schema.org", "@type": "BookCollection", "numberOfItems": 15}
+2025-10-12 12:14:47,630 - INFO - Initiating function generation process...
+2025-10-12 12:14:47,630 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-12 12:14:47,631 - INFO - User Input: Create a book_recommender function that filters books by genre from books.csv in PROJECT KNOWLEDGE. Parameters: genre (string) and file_path (path of file (string)). Use os.environ.get('API_VERSION', 'v1') to detect version. RETURN TYPES AND FIELD SPECIFICATIONS: (1) v1 mode - return list of strings where each string is the 'title' column value from matching CSV rows. (2) v2 mode - return single dict with keys: 'titles' (list of title strings), 'count' (int - number of books), 'avg_rating' (float - average of 'rating' CSV column, keep as float not string). (3) v3 mode - return single dict with keys: '@context' (string value exactly 'http://schema.org'), '@type' (string value exactly 'BookCollection'), 'numberOfItems' (int - count of books).
+2025-10-12 12:14:47,631 - INFO - Function Requirement: Function Name: book_recommender
+
+Description:
+  Book catalog filter with environment-based version control.
+  Loads books.csv, filters on genre column equality, formats output per API_VERSION:
+    • v1: returns array of title column values
+    • v2: returns object with titles, total count, and rating mean
+    • v3: returns schema.org compliant BookCollection object
+
+Parameters:
+  – genre (string): genre value for CSV filtering
+  – file_path (string): path to books.csv data file
+
+Return Specifications:
+  v1 → List[str] containing titles, example: ["Novel A", "Novel B", ...]
+
+  v2 → Dictionary format:
+      {
+        "titles": ["Novel A", "Novel B", ...],
+        "count": 20,
+        "avg_rating": 4.15
+      }
+
+  v3 → Dictionary format:
+      {
+        "@context": "http://schema.org",
+        "@type": "BookCollection",
+        "numberOfItems": 20
+      }
+
+Example Calls:
+
+# v1 default behavior
+titles = book_recommender("Horror", "dataset/books.csv")
+# result: ["Horror Story 1", "Horror Story 2", ...]
+
+# v2 with environment variable
+result = book_recommender("Horror", "dataset/books.csv")
+# result: {"titles": ["Horror Story 1", ...], "count": 15, "avg_rating": 3.8}
+
+# v3 with environment variable
+result = book_recommender("Horror", "dataset/books.csv")
+# result: {"@context": "http://schema.org", "@type": "BookCollection", "numberOfItems": 15}
+2025-10-12 12:15:14,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:16:09,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:16:23,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:16:35,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:16:39,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:16:39,195 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-10-12 12:16:39,195 - INFO - TDD Adjudication Passed: True
+2025-10-12 12:17:05,628 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:17:49,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:17:49,730 - INFO - --- ITERATION 1 ---
+2025-10-12 12:17:49,730 - INFO - Unit Test Result Summary: All tests passed
+2025-10-12 12:17:49,730 - INFO - Adjudication Passed: True
+2025-10-12 12:17:49,764 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-12 12:17:49,764 - INFO - Function Name: book_recommender
+2025-10-12 12:17:49,764 - INFO - Total Iterations: 1
+2025-10-12 12:17:49,764 - INFO - Total Duration: 182.13 seconds
+2025-10-12 12:17:49,764 - INFO - TDD Adjudication Attempts: 1
+2025-10-12 12:17:49,764 - INFO - Final Adjudication Attempts: 1
+2025-10-12 12:17:49,764 - INFO - Requirement Reinforcements: 0
+2025-10-12 12:18:01,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:18:01,195 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-12 12:18:01,195 - INFO - Response Content: Book recommendations ready...
+2025-10-12 12:18:01,195 - INFO - Initiating function generation process...
+2025-10-12 12:18:08,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:18:08,843 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-12 12:18:08,843 - INFO - Function: book_recommender
+2025-10-12 12:18:08,843 - INFO - Arguments: {'genre': 'Thriller', 'file_path': 'dataset/books.csv'}
+2025-10-12 12:18:08,843 - INFO - Execution Time: 0.0007028379994468950 seconds
+2025-10-12 12:18:08,843 - INFO - Memory Peak: 92174 bytes
+2025-10-12 12:18:08,843 - INFO - Success: True
+2025-10-12 12:18:11,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-12 12:18:11,212 - INFO - === SESSION SUMMARY ===
+2025-10-12 12:18:11,212 - INFO - Session Duration: 203.58 seconds
+2025-10-12 12:18:11,212 - INFO - Functions Attempted: 1
+2025-10-12 12:18:11,212 - INFO - Successful Functions: 1
+2025-10-12 12:18:11,212 - INFO - Terminated Early: 0
+2025-10-12 12:18:11,212 - INFO - Total Iterations: 1
+2025-10-12 12:18:11,212 - INFO - Average Iterations per Function: 1.00
+2025-10-12 12:18:11,212 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-12 12:18:11,212 - INFO - TDD Adjudication Attempts: 1
+2025-10-12 12:18:11,212 - INFO - Final Adjudication Attempts: 1
+2025-10-12 12:18:11,212 - INFO - Requirement Reinforcements: 0
+2025-10-12 13:03:27,593 - INFO - Running test for: Book Recommender (ID 9)
+2025-10-12 13:03:27,594 - INFO - Successfully imported functions from functions.py
+2025-10-12 13:03:27,648 - INFO - All assertions passed for Book Recommender
+2025-10-12 13:03:27,649 - INFO - ===== TEST PASSED ===== (Book Recommender)

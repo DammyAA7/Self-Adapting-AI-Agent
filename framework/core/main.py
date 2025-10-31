@@ -414,7 +414,7 @@ if __name__ == "__main__":
     
     # You need to specify your deployment name - replace with your actual deployment
     # Common deployment names are: gpt-35-turbo, gpt-4, etc.
-    azure_deployment_name = "gpt-4.1"  # CHANGE THIS to your actual deployment name
+    azure_deployment_name = "o4-mini"  # CHANGE THIS to your actual deployment name
     
     # Create Azure OpenAI client
     openai_client = AzureOpenAI(
@@ -422,9 +422,6 @@ if __name__ == "__main__":
         azure_endpoint=azure_endpoint,
         api_version=azure_api_version
     )
-    
-    # Use Azure OpenAI for both clients
-    anthropic_client = openai_client  # Using Azure OpenAI for all operations
     
     function_code = None
     tools_code = None

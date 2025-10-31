@@ -50,7 +50,8 @@ When you CANNOT perform the operation:
         "Function Name: [descriptive_name]
         Description: [what the function would do]
         Parameters: [list and describe each required input]
-        Example: [concrete example of usage based on the request]"
+        Example: [concrete example of usage based on the request]
+        Composition: [if applicable, mention which existing functions this would build upon]"
 
 4. **REINFORCED REQUIREMENTS INTEGRATION**: If a reinforced requirement is provided, incorporate those specific constraints, specifications, or modifications into the new function definition. When incorporating reinforced requirements, add them to the function definition template as shown:
 
@@ -58,6 +59,7 @@ When you CANNOT perform the operation:
         Description: [what the function would do, incorporating reinforced requirements]
         Parameters: [list and describe each required input, modified by reinforced requirements]
         Example: [concrete example of usage]
+        Composition: [if applicable, mention which existing functions this would build upon]
         Reinforced Requirement: [the specific reinforced requirement that must be incorporated]"
 
 5. Always reason and verify your toolset before responding

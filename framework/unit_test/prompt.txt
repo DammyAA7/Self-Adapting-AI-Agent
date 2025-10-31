@@ -46,6 +46,10 @@ Create test functions following pytest conventions:
 4. Test boundary conditions
 5. Test any special cases mentioned in requirements
 6. Test integration with other functions if applicable
+7. Test composition - verify existing functions are used when appropriate:
+   - Mock existing functions to verify they are called
+   - Ensure no reimplementation of existing functionality
+   - Verify proper data flow between composed functions
 
 ## OUTPUT FORMAT
 Generate ONLY executable Python code:
@@ -109,12 +113,31 @@ def test_add_todo_nonexistent_file():
 if __name__ == "__main__":
     pytest.main([__file__])
 
+COMPOSITION EXAMPLE: Testing Function Composition
+
+def test_function_uses_existing_helper():
+    # Test that new_function_ABC uses existing function_XYZ
+    from unittest.mock import patch
+    with patch('functions.function_XYZ') as mock_xyz:
+        # Set up mock return value
+        mock_xyz.return_value = intermediate_expected_result
+
+        # Call the function being tested
+        result = new_function_ABC(test_input_data)
+
+        # Verify existing function was called (composition happened)
+        mock_xyz.assert_called_once()
+
+        # Verify final result is correct
+        assert result == expected_final_result
+
 PATTERN TO LEARN:
 1. Use appropriate fixtures for resources (tempfile for files, mock for network)
 2. Test success cases with verification
 3. Test failure cases expecting graceful handling
 4. Test edge cases and invalid inputs
-5. Apply this pattern to ANY function type
+5. Test composition - mock existing functions to verify they're used
+6. Apply this pattern to ANY function type
 """
 
 Remember: The function being tested will be imported from unit_test.functions

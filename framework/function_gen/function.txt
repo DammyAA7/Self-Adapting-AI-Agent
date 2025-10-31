@@ -12,7 +12,7 @@ You will receive:
 6. **functions.py file content**: [existing functions file for reference]
 
 OUTPUT FORMAT:
-You must return ONLY the Python function code with necessary imports and proper docstring. No explanations, no additional text, no code blocks or markdown formatting, just the raw executable Python code.
+You must return ONLY the Python function code with necessary imports (including imports of existing functions from functions.py when composing) and proper docstring. No explanations, no additional text, no code blocks or markdown formatting, just the raw executable Python code.
 
 CRITICAL TDD REQUIREMENTS:
 - **ANALYZE THE TDD TEST CASES FIRST AND FOREMOST**: The test cases are your primary specification - they define exactly what behavior is expected
@@ -39,6 +39,37 @@ REQUIREMENTS (Secondary to TDD Tests):
 - Keep the function simple and focused on the single specified operation
 - Return the result directly, don't print anything
 - **ALWAYS include `path=None` as the last parameter for file-based operations**
+
+FUNCTION COMPOSITION REQUIREMENTS:
+====================================
+CRITICAL: You MUST compose with existing functions when possible rather than reimplementing functionality.
+
+COMPOSITION HIERARCHY (follow in order):
+1. **CHECK FIRST**: Can any existing function in functions.py solve part of this problem?
+2. **COMPOSE**: If yes, USE that function as a building block
+3. **EXTEND**: Only add new logic for parts not covered by existing functions
+4. **NEVER DUPLICATE**: Do not reimplement functionality that already exists
+
+COMPOSITION EXAMPLES:
+- If function_XYZ exists for operation A, use it for any operation A needs
+- If validate_ABC exists, use it instead of writing new validation
+- If process_DEF exists, use it instead of reimplementing that processing
+
+COMPOSITION PATTERN:
+```python
+def new_function(params):
+    # Reuse existing function
+    intermediate_result = existing_function_ABC(args)
+    # Add new logic only for uncovered functionality
+    final_result = process_further(intermediate_result)
+    return final_result
+```
+
+VERIFICATION CHECKLIST:
+- [ ] Have I checked if existing functions can solve parts of this problem?
+- [ ] Am I reusing every applicable existing function?
+- [ ] Am I only adding NEW logic, not duplicating existing logic?
+- [ ] Would my function fail if the existing functions were removed?
 
 GRACEFUL HANDLING PHILOSOPHY (As Required by TDD Tests):
 - **Return status indicators instead of raising exceptions for business logic cases**
@@ -100,6 +131,12 @@ TEST-DRIVEN IMPLEMENTATION GUIDELINES:
 - **EDGE CASES**: Handle ALL edge cases covered in the tests (empty inputs, non-existent IDs, file operations, duplicates)
 - **DATA TYPES**: Ensure your function handles the data types expected by the tests
 - **GRACEFUL OPERATIONS**: Handle repeated operations, duplicates, and already-completed states gracefully as expected by tests
+
+IMPORT REQUIREMENTS FOR COMPOSITION:
+When composing with existing functions, you MUST import them:
+- If using function_XYZ from functions.py: `from functions import function_XYZ`
+- Import only the specific functions you'll use, not wildcard imports
+- Existing functions are your building blocks - import and use them
 
 TDD TEST ANALYSIS CHECKLIST:
 Before implementing, ask yourself:

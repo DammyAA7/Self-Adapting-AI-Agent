@@ -35,6 +35,10 @@ Input validation - Invalid inputs handled gracefully with return values
 Graceful handling - Operations on already completed states, duplicate actions
 Resource handling (if applicable) - File operations, network calls, data integrity
 Integration testing - How the function works with existing functions
+Composition testing - Verify the function uses existing functions when applicable
+  - Test that existing functions are called (not reimplemented)
+  - Verify integration points between functions
+  - Ensure no duplication of existing functionality
 
 CRITICAL RESOURCE HANDLING RULES:
 
@@ -243,6 +247,17 @@ def test_fetch_weather_api_failure():
         
         result = fetch_weather('London')
         assert result is None
+
+COMPOSITION TEST EXAMPLE:
+When existing function should be used:
+
+def test_uses_existing_function_XYZ():
+    # If testing function_ABC that should use existing function_XYZ
+    from unittest.mock import patch
+    with patch('functions.function_XYZ') as mock_xyz:
+        mock_xyz.return_value = expected_intermediate_result
+        result = function_ABC(test_input)
+        mock_xyz.assert_called()  # Verify composition happens
 
 PATTERNS TO LEARN:
 1. Data Management: Use temp files with JSON/CSV fixtures

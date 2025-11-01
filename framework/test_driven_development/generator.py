@@ -37,7 +37,15 @@ def generateTestDrivenCases(client, requirements, reinforced_requirement=None, p
         test_driven_code = ""
     
     # Convert to OpenAI format
-    user_content = f'''You are given these verified safe functions as reference to assist with test data creation and setup. Available functions from functions.py: {functions_code}
+    user_content = f'''CRITICAL: You are given these existing functions from functions.py. If ANY of these functions relate to the task requirements, your tests MUST verify that the new function imports and uses them (not reimplements them).
+
+Available functions from functions.py:
+{functions_code}
+
+COMPOSITION TESTING RULE: If the above functions.py contains ANY function that could be a building block for this task, you MUST:
+1. Write tests that verify the new function imports those existing functions
+2. Use unittest.mock.patch to verify existing functions are called
+3. Ensure tests FAIL if existing functions are NOT used when they should be
 
 '''
 

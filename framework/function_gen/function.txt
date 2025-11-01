@@ -42,34 +42,46 @@ REQUIREMENTS (Secondary to TDD Tests):
 
 FUNCTION COMPOSITION REQUIREMENTS:
 ====================================
-CRITICAL: You MUST compose with existing functions when possible rather than reimplementing functionality.
+CRITICAL MANDATORY RULE: You MUST compose with existing functions rather than reimplementing functionality.
+
+**BEFORE WRITING ANY CODE**: Analyze the provided functions.py file:
+1. Read through ALL existing functions in functions.py
+2. Identify if ANY existing function could serve as a building block for this task
+3. If existing functions exist that relate to this task, YOU MUST USE THEM - no exceptions
 
 COMPOSITION HIERARCHY (follow in order):
-1. **CHECK FIRST**: Can any existing function in functions.py solve part of this problem?
-2. **COMPOSE**: If yes, USE that function as a building block
-3. **EXTEND**: Only add new logic for parts not covered by existing functions
-4. **NEVER DUPLICATE**: Do not reimplement functionality that already exists
+1. **ANALYZE FIRST**: Read the entire functions.py file - what functions already exist?
+2. **MANDATORY COMPOSITION**: If ANY existing function solves part of this problem, YOU MUST import and use it
+3. **EXTEND ONLY**: Add ONLY the new logic not covered by existing functions
+4. **ZERO DUPLICATION**: NEVER reimplement any logic that already exists in functions.py
 
-COMPOSITION EXAMPLES:
-- If function_XYZ exists for operation A, use it for any operation A needs
-- If validate_ABC exists, use it instead of writing new validation
-- If process_DEF exists, use it instead of reimplementing that processing
+COMPOSITION DETECTION RULES:
+- If functions.py contains matrix operations → YOU MUST import and use them for any matrix task
+- If functions.py contains calculation functions → YOU MUST import and use them for any calculation task
+- If functions.py contains validation functions → YOU MUST import and use them for any validation task
+- If functions.py contains data processing functions → YOU MUST import and use them for any data task
+- **THE EXISTENCE OF RELATED FUNCTIONS = MANDATORY REUSE**
 
-COMPOSITION PATTERN:
+MANDATORY COMPOSITION PATTERN:
 ```python
+from functions import existing_function_ABC  # REQUIRED if exists
+
 def new_function(params):
-    # Reuse existing function
+    # MUST use existing function if it exists
     intermediate_result = existing_function_ABC(args)
-    # Add new logic only for uncovered functionality
+    # ONLY add new logic not covered by existing functions
     final_result = process_further(intermediate_result)
     return final_result
 ```
 
-VERIFICATION CHECKLIST:
-- [ ] Have I checked if existing functions can solve parts of this problem?
-- [ ] Am I reusing every applicable existing function?
-- [ ] Am I only adding NEW logic, not duplicating existing logic?
-- [ ] Would my function fail if the existing functions were removed?
+COMPOSITION VERIFICATION - YOU MUST ANSWER "YES" TO ALL:
+- [ ] Have I read through the ENTIRE functions.py file?
+- [ ] Have I identified ALL existing functions that relate to this task?
+- [ ] Am I importing and calling EVERY applicable existing function?
+- [ ] Am I adding ONLY new logic that doesn't exist in functions.py?
+- [ ] Would my function fail if I removed the imports of existing functions (proving I'm using them)?
+
+**COMPOSITION FAILURE = INCORRECT IMPLEMENTATION**: If you fail to use existing functions when they're available, your implementation is WRONG and will be rejected.
 
 GRACEFUL HANDLING PHILOSOPHY (As Required by TDD Tests):
 - **Return status indicators instead of raising exceptions for business logic cases**

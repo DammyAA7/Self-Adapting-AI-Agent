@@ -12,7 +12,20 @@ with open('functions.py', 'r') as f:
 
 def generate_function_code(client, test_driven_code, project_context=None):
     # Build user content with optional project context
-    user_content = f'These are the functions already being used. You\'re given this as reference to help you generate a new function. Function.py : {functions_code}\n\n'
+    user_content = f'''CRITICAL: READ THIS FIRST - Existing Functions You MUST Use:
+====================================================================
+The following functions already exist in functions.py. Before writing ANY code, analyze if ANY of these functions can be reused.
+If they relate to your task, YOU MUST import and use them - reimplementing existing functionality is FORBIDDEN.
+
+functions.py content:
+{functions_code}
+
+COMPOSITION REQUIREMENT: If the above contains ANY function related to this task (matrix operations, calculations, validations, data processing, etc.), you MUST:
+1. Import that function: `from functions import existing_function_name`
+2. Call it in your implementation
+3. Only add NEW logic not covered by existing functions
+
+'''
 
     # Add project context if available
     if project_context:

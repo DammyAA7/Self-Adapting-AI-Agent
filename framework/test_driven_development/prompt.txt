@@ -35,10 +35,12 @@ Input validation - Invalid inputs handled gracefully with return values
 Graceful handling - Operations on already completed states, duplicate actions
 Resource handling (if applicable) - File operations, network calls, data integrity
 Integration testing - How the function works with existing functions
-Composition testing - Verify the function uses existing functions when applicable
-  - Test that existing functions are called (not reimplemented)
-  - Verify integration points between functions
-  - Ensure no duplication of existing functionality
+**MANDATORY Composition testing** - CRITICAL: If ANY existing functions relate to this task:
+  - YOU MUST test that existing functions are called (verify with mocks if needed)
+  - YOU MUST verify integration points between the new function and existing functions
+  - YOU MUST ensure the new function imports and uses existing functionality
+  - Test should FAIL if existing functions are NOT used when they should be
+  - Use unittest.mock.patch to verify existing functions are called
 
 CRITICAL RESOURCE HANDLING RULES:
 

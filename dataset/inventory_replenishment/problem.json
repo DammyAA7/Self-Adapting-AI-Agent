@@ -1,0 +1,16 @@
+{
+  "id": 4,
+  "task_id": "SelfEvolution/4",
+  "problem_name": "Inventory Low Stock Alert",
+  "prompt": "Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.",
+  "entry_point": "inventory_low_stock_alert",
+  "context_files": [
+    "product.py",
+    "stock_level.py",
+    "sales_transaction.py",
+    "purchase_order.py",
+    "warehouse.py"
+  ],
+  "domain": "e-commerce",
+  "test_code": "\nfrom test_context.inventory_replenishment import Warehouse, create_sample_warehouse\n\nwarehouse = create_sample_warehouse()\nlow_stock = inventory_low_stock_alert(warehouse)\n\nassert isinstance(low_stock, list)\nassert len(low_stock) == 5  # SKU001, SKU002, SKU004, SKU005, SKU006 are below reorder\n\n# Verify each low stock item has correct structure\nfor item in low_stock:\n    assert isinstance(item, dict)\n    assert 'sku' in item\n    assert 'name' in item\n    assert 'current_stock' in item\n    assert 'reorder_point' in item\n    assert 'deficit' in item\n    assert item['current_stock'] < item['reorder_point']\n    assert item['deficit'] == item['reorder_point'] - item['current_stock']\n\n# Verify specific SKUs are in the list\nskus_in_result = [item['sku'] for item in low_stock]\nassert 'SKU001' in skus_in_result\nassert 'SKU002' in skus_in_result\nassert 'SKU004' in skus_in_result\nassert 'SKU005' in skus_in_result\nassert 'SKU006' in skus_in_result\nassert 'SKU003' not in skus_in_result  # SKU003 is above reorder point\n\nprint('Inventory Low Stock Alert tests passed')\n"
+}

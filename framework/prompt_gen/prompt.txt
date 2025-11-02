@@ -1,0 +1,76 @@
+You are tasked with creating comprehensive function descriptions that help an LLM understand how to recognize when to use a specific function. These descriptions will be injected back into the original LLM to give it context about what functions are available and when to use them. Given a Python function and its corresponding tool descriptor, you must generate a detailed description following a specific format.
+
+Your Task:
+Analyze the provided Python function code and tool descriptor, then create a function description that includes:
+1. Function signature and brief description - Show the function name with parameters and a concise explanation
+2. Recognizable phrases - List words, phrases, symbols, or expressions that indicate this function should be used
+3. Usage examples - Provide 9–12 realistic examples showing natural language inputs and how they map to function calls
+
+Format Requirements:
+- Start with: `function_name(parameters) - Brief description`
+- Follow with: `- Recognizable phrases: [comma-separated list of phrases, words, symbols]`
+- Then: `- Examples:` followed by indented examples
+- Each example should follow: `"Natural language input" → Use function_name(arg1, arg2, ...)`
+
+Guidelines for Recognizable Phrases:
+- Include obvious keywords related to the operation
+- Add mathematical symbols if applicable
+- Include synonyms and alternative expressions
+- Consider both formal and informal language
+- Think about how users might naturally express the operation
+- If this function composes with other existing functions, mention related operations
+- Include phrases that suggest building upon existing functionality
+
+Guidelines for Examples:
+- Use varied phrasing and sentence structures
+- Include both formal and casual language
+- Show realistic scenarios users might encounter
+- MUST include:
+  - At least two examples with TWO numeric inputs
+  - At least two examples with THREE OR MORE numeric inputs
+  - At least two example that could generate a mathematical error** (e.g., divide by zero, log of negative number, square root of a negative number)
+- Ensure parameter order matches the function signature
+- Make examples diverse but focused on the core operation
+- Use varied numeric value types including:
+  - Simple integers: 5, 12, 100
+  - Floating point numbers: -3.5, 2.7, 0.25
+  - Negative numbers: -8, -12.4, -0.33
+  - Zero and edge cases: 0, 1, -1
+
+IMPORTANT for functions that only support two inputs (e.g., power, mod, log):
+- DO NOT include examples with three or more inputs unless the function signature supports variadic input
+- If the function only takes two parameters, make this clear in examples and ensure no usage example exceeds the supported arity
+- When in doubt, follow the function signature strictly
+
+Example Output Format:
+
+
+function_name(param1, param2) - Brief description of what it does
+- Recognizable phrases: keyword1, keyword2, symbol, phrase1, phrase2, alternative_word
+- Examples:
+    - "Natural input 1 with simple integers" → Use function_name(5, 12)
+    - "Natural input 2 with multiple inputs" → Use function_name(4.2, -1.8, 6.5, 0.33)
+    - "Natural input 3 with negative numbers" → Use function_name(-8, 15)
+    - "Natural input 4 with floating point" → Use function_name(2.75, 8.1, -4.6)
+    - "Natural input 5 (error-prone)" → Use function_name(15, 0)
+    - "Natural input 6 with decimals" → Use function_name(0.25, -7.8)
+    - "Natural input 7 with mixed values" → Use function_name(100, 3.14, -25)
+    - "Natural input 8 with multiple inputs" → Use function_name(-2.1, 4, 6.3, 1.9)
+    - "Natural input 9 with precision" → Use function_name(12.567, -8, 3)
+    - "Natural input 10 with simple and complex" → Use function_name(10, 23.456)
+    - "Natural input 11 with edge cases" → Use function_name(1, -1, 0.5)
+
+
+Input Format:
+You will be provided with:
+1. Python function code
+2. JSON tool descriptor
+
+Generate only the function description in the specified format. Do not include any additional commentary or explanation.
+
+Key Reminders:
+- Include varied numeric types: Simple integers (5, 12), floating point numbers (2.5, -3.14), negative numbers (-5, -0.33), and edge cases (0, 1, -1)
+- Always include examples with 2+ inputs where the function supports it
+- Always include at least one error-prone example (division by zero, invalid domain, etc.)
+- Mix simple and complex values to show natural usage patterns
+- These descriptions will be used by an LLM to understand available functions - make them clear and comprehensive for function selection

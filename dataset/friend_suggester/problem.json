@@ -1,0 +1,12 @@
+{
+  "id": 11,
+  "task_id": "SelfEvolution/11",
+  "problem_name": "Friend Suggester",
+  "prompt": "Create a friend_suggestions function that recommends friends from social_graph.json in PROJECT KNOWLEDGE with progressive enhancement based on RECOMMENDATION_MODE environment variable. Takes user_id parameter. basic mode: find mutual friends, score by count. enhanced mode: mutual friends times 2.0 plus common interests times 1.5. advanced mode: add 1.0 bonus if activity levels match. Returns: list of dicts, each with user_id and score keys, sorted by score descending, top 5 highest scores only.",
+  "entry_point": "friend_suggestions",
+  "context_files": [
+    "social_graph.json"
+  ],
+  "domain": "social-network",
+  "test_code": "\nimport os\n\nos.environ['RECOMMENDATION_MODE'] = 'basic'\nresult_basic = friend_suggestions('U001')\nassert isinstance(result_basic, list)\nassert len(result_basic) <= 5\nfor suggestion in result_basic:\n    assert isinstance(suggestion, dict)\n    assert 'user_id' in suggestion\n    assert 'score' in suggestion\n    assert isinstance(suggestion['score'], (int, float))\n    assert suggestion['score'] > 0\n    assert suggestion['user_id'] != 'U001'\n\n# Test enhanced mode\nos.environ['RECOMMENDATION_MODE'] = 'enhanced'\nresult_enhanced = friend_suggestions('U001')\nassert isinstance(result_enhanced, list)\nassert len(result_enhanced) <= 5\nfor suggestion in result_enhanced:\n    assert 'user_id' in suggestion\n    assert 'score' in suggestion\n\nif result_basic and result_enhanced:\n    assert result_enhanced[0]['score'] >= result_basic[0]['score'] * 0.8\n\n# Test advanced mode\nos.environ['RECOMMENDATION_MODE'] = 'advanced'\nresult_advanced = friend_suggestions('U001')\nassert isinstance(result_advanced, list)\nassert len(result_advanced) <= 5\n\n# Test different user\nos.environ['RECOMMENDATION_MODE'] = 'basic'\nresult_u002 = friend_suggestions('U002')\nassert isinstance(result_u002, list)\nassert len(result_u002) <= 5\n\nprint('Friend Suggester tests passed')\n"
+}

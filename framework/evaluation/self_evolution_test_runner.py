@@ -41,14 +41,58 @@ def setup_logging():
 
 
 def load_test_suite():
-    """Load test suite from JSON"""
-    test_suite_path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        'SELF_EVOLUTION_TEST_SUITE.json'
+    """Load test suite from individual problem.json files in dataset directories"""
+    dataset_path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        'dataset'
     )
 
-    with open(test_suite_path, 'r') as f:
-        return json.load(f)
+    test_suite = []
+
+    # List all directories in dataset (excluding __pycache__)
+    for dir_name in sorted(os.listdir(dataset_path)):
+        dir_path = os.path.join(dataset_path, dir_name)
+
+        # Skip non-directories and __pycache__
+        if not os.path.isdir(dir_path) or dir_name == '__pycache__':
+            continue
+
+        # Check for problem.json file
+        problem_file = os.path.join(dir_path, 'problem.json')
+        if os.path.exists(problem_file):
+            with open(problem_file, 'r') as f:
+                problem_data = json.load(f)
+
+                # Standardize the data structure for compatibility
+                test_case = {
+                    'id': problem_data['id'],
+                    'problem_name': problem_data['problem_name'],
+                    'test_code': problem_data['test_code'],
+                    'task_id': problem_data.get('task_id', f"SelfEvolution/{problem_data['id']}"),
+                    'domain': problem_data.get('domain', 'unknown'),
+                    'directory': dir_name
+                }
+
+                # Add prompt information (handle both single and multi-session)
+                if 'prompt' in problem_data:
+                    test_case['prompt'] = problem_data['prompt']
+                    test_case['entry_point'] = problem_data.get('entry_point', '')
+                elif 'session_1' in problem_data:
+                    # For multi-session problems, we might need special handling
+                    test_case['is_multi_session'] = True
+                    test_case['session_1'] = problem_data['session_1']
+                    if 'session_2' in problem_data:
+                        test_case['session_2'] = problem_data['session_2']
+
+                # Add context files information
+                test_case['context_files'] = problem_data.get('context_files', [])
+
+                test_suite.append(test_case)
+
+    # Sort by ID to maintain consistent order
+    test_suite.sort(key=lambda x: x['id'])
+
+    return test_suite
 
 
 def run_test(test_id, logger):
@@ -83,6 +127,13 @@ def run_test(test_id, logger):
     print(f"\n{'='*60}")
     print(f"Running Test ID {test_id}: {problem_name}")
     print(f"{'='*60}\n")
+
+    # Add dataset path to sys.path for imports to work
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    dataset_path = os.path.join(project_root, 'dataset')
+    if dataset_path not in sys.path:
+        sys.path.insert(0, dataset_path)
+        logger.info(f"Added dataset path to sys.path: {dataset_path}")
 
     # Import functions module dynamically
     try:
@@ -219,16 +270,21 @@ def main():
     if args.list:
         test_suite = load_test_suite()
         print(f"\nAvailable Self-Evolution Tests:")
-        print(f"{'='*60}")
+        print(f"{'='*80}")
+        print(f"{'ID':<4} {'Problem Name':<35} {'Domain':<20} {'Directory':<20}")
+        print(f"{'-'*4} {'-'*35} {'-'*20} {'-'*20}")
         for test in test_suite:
-            print(f"ID {test['id']}: {test['problem_name']}")
-        print(f"{'='*60}\n")
+            print(f"{test['id']:<4} {test['problem_name'][:35]:<35} {test.get('domain', 'unknown')[:20]:<20} {test.get('directory', 'N/A')[:20]:<20}")
+        print(f"{'='*80}")
+        print(f"\nTotal: {len(test_suite)} tests\n")
         return
 
     # Run specific test
     if args.id:
-        if not (1 <= args.id <= 11):
-            print(f"Error: Test ID must be between 1 and 11")
+        test_suite = load_test_suite()
+        valid_ids = [t['id'] for t in test_suite]
+        if args.id not in valid_ids:
+            print(f"Error: Test ID must be one of: {sorted(valid_ids)}")
             sys.exit(1)
 
         passed, problem_name, error_msg = run_test(args.id, logger)

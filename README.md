@@ -119,6 +119,10 @@ python core/main.py --context-memory
 python evaluation/self_evolution_test_runner.py --id 7
 ```
 
+### Test Configuration
+
+Before running the evaluation suite, please update the import statements and file paths in the `test_code` field of each `dataset/*/problem.json` file to match your local environment. This ensures the test runner can correctly locate all required modules and data files.
+
 ### Running Individual Problems
 
 To run any specific problem from the evaluation suite:

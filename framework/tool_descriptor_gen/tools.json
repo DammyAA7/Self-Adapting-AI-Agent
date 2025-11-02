@@ -1,1 +1,42 @@
-[]
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "matrix_operations",
+            "description": "Performs matrix multiplication between two matrices and caches the result. Returns the resulting matrix as a list of lists, or None for invalid inputs or dimension mismatch.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "matrix_a": {
+                        "type": "array",
+                        "description": "First matrix to multiply, represented as a non-empty rectangular matrix of numeric values.",
+                        "minItems": 1,
+                        "items": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "matrix_b": {
+                        "type": "array",
+                        "description": "Second matrix to multiply, represented as a non-empty rectangular matrix of numeric values.",
+                        "minItems": 1,
+                        "items": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "matrix_a",
+                    "matrix_b"
+                ]
+            }
+        }
+    }
+]

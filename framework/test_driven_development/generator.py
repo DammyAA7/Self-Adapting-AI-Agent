@@ -87,9 +87,9 @@ If you are given a reinforced requirement, you must use it to fix the already ge
 
     # Using Azure OpenAI
     generator_response = client.chat.completions.create(
-        model="o4-mini",  # Azure deployment name
-        max_completion_tokens=10000,
-        # temperature=0.7,
+        model="gpt-4.1",  # Azure deployment name
+        max_tokens=10000,
+        temperature=0.7,
         messages=generator_messages
     )
     # Don't clear and append - just write the complete content

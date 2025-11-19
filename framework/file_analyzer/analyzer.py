@@ -1,12 +1,22 @@
 """
 Simple file analyzer for reading and providing full project context to LLM.
 For research purposes - gives LLM complete visibility without filtering.
+Enhanced with Tree-sitter for two-phase context management.
 """
 
 import os
 import json
 import ast
-from typing import Dict, Any
+from typing import Dict, Any, List
+
+# Tree-sitter imports for robust code parsing
+try:
+    from tree_sitter import Language, Parser
+    import tree_sitter_python as tspython
+    TREE_SITTER_AVAILABLE = True
+except ImportError:
+    TREE_SITTER_AVAILABLE = False
+    print("Warning: tree-sitter not available. Install with: pip install tree-sitter tree-sitter-python")
 
 class SimpleAnalyzer:
     """Reads all project files and provides full content to LLM"""
@@ -14,21 +24,75 @@ class SimpleAnalyzer:
     def __init__(self, project_path: str):
         """
         Initialize analyzer with project path.
-        
+
         Args:
             project_path: Path to the project to analyze
         """
         self.project_path = os.path.abspath(project_path) if project_path else os.getcwd()
         self.all_files_content = {}
-        self.ignore_dirs = {'.git', '__pycache__', '.venv', 'venv', 'env', 
+        self.folder_structure = None  # Store folder structure explicitly
+        self.ignore_dirs = {'.git', '__pycache__', '.venv', 'venv', 'env',
                            'node_modules', '.pytest_cache', '.idea', '.vscode'}
         self.max_file_size = 100000  # 100KB max per file to avoid huge files
+
+        # Initialize Tree-sitter parser for robust code analysis
+        if TREE_SITTER_AVAILABLE:
+            try:
+                # Try newer tree-sitter API (v0.21+)
+                self.ts_language = Language(tspython.language())
+                self.ts_parser = Parser(self.ts_language)
+            except TypeError:
+                # Fallback to older API (v0.20)
+                self.ts_parser = Parser()
+                self.ts_language = Language(tspython.language())
+                self.ts_parser.language = self.ts_language  # Property, not method
+        else:
+            self.ts_parser = None
+            self.ts_language = None
         
+    def _capture_folder_structure(self):
+        """STEP 1: Capture folder structure FIRST (before reading files)"""
+        directories = set()
+        files = []
+
+        for root, dirs, filenames in os.walk(self.project_path):
+            # Remove ignored directories
+            dirs[:] = [d for d in dirs if d not in self.ignore_dirs and not d.startswith('.')]
+
+            rel_root = os.path.relpath(root, self.project_path)
+            if rel_root != '.':
+                directories.add(rel_root)
+
+            for filename in filenames:
+                rel_path = os.path.relpath(os.path.join(root, filename), self.project_path)
+                file_type = 'python' if filename.endswith('.py') else \
+                           'csv' if filename.endswith('.csv') else \
+                           'json' if filename.endswith('.json') else 'other'
+
+                files.append({
+                    'path': rel_path,
+                    'name': filename,
+                    'type': file_type,
+                    'is_init': filename == '__init__.py'
+                })
+
+        self.folder_structure = {
+            'directories': sorted(list(directories)),
+            'files': files,
+            'root': os.path.basename(self.project_path)
+        }
+
     def read_all_files(self) -> Dict[str, Any]:
         """
         Read all relevant files in the project without filtering.
-        Returns everything for the LLM to process.
+        STEP 1: Capture folder structure FIRST (mandatory)
+        STEP 2: Then read file contents
         """
+        # STEP 1: ALWAYS capture folder structure first
+        self._capture_folder_structure()
+        print(f"✓ Folder structure captured: {len(self.folder_structure.get('files', []))} files, {len(self.folder_structure.get('directories', []))} directories")
+
+        # STEP 2: Read file contents
         for root, dirs, files in os.walk(self.project_path):
             # Remove ignored directories from traversal
             dirs[:] = [d for d in dirs if d not in self.ignore_dirs and not d.startswith('.')]
@@ -53,12 +117,17 @@ class SimpleAnalyzer:
                     try:
                         with open(filepath, 'r', encoding='utf-8') as f:
                             content = f.read()
+
+                            # Use Tree-sitter for parsing (returns functions + parsed tree)
+                            functions, parsed_tree = self._extract_functions_with_treesitter(content)
+
                             self.all_files_content[relative_path] = {
                                 'type': 'python',
                                 'content': content,  # FULL CONTENT
                                 'line_count': len(content.splitlines()),
-                                'functions': self._extract_functions(content),
-                                'classes': self._extract_classes(content)
+                                'functions': functions,  # From Tree-sitter
+                                'classes': self._extract_classes(content),  # Still use AST for classes
+                                'tree': parsed_tree  # Store Tree-sitter tree for Phase 2
                             }
                     except Exception as e:
                         self.all_files_content[relative_path] = {
@@ -120,8 +189,155 @@ class SimpleAnalyzer:
         
         return self.all_files_content
     
+    def _extract_functions_with_treesitter(self, python_code: str) -> tuple:
+        """Extract function metadata using Tree-sitter with class context detection"""
+        functions = []
+        tree = None
+
+        if not self.ts_parser:
+            # Fallback to AST if tree-sitter not available
+            return self._extract_functions(python_code), None
+
+        try:
+            # Parse with Tree-sitter
+            tree = self.ts_parser.parse(bytes(python_code, 'utf-8'))
+
+            # First: Extract class methods with Tree-sitter query
+            class_query = self.ts_language.query("""
+                (class_definition
+                  name: (identifier) @class_name
+                  body: (block
+                    (decorated_definition
+                      (decorator)* @decorators
+                      definition: (function_definition
+                        name: (identifier) @method_name
+                        parameters: (parameters) @params
+                      ) @method
+                    )
+                    (function_definition
+                      name: (identifier) @method_name
+                      parameters: (parameters) @params
+                    ) @method
+                  )
+                ) @class
+            """)
+
+            class_methods = {}  # Map method_name -> class_name
+            class_captures = class_query.captures(tree.root_node)
+
+            for node, tag in class_captures:
+                if tag == 'class_name':
+                    current_class = node.text.decode('utf-8')
+                elif tag == 'method':
+                    method_name_node = node.child_by_field_name('name')
+                    if method_name_node:
+                        method_name = method_name_node.text.decode('utf-8')
+                        class_methods[method_name] = current_class
+
+            # Second: Extract all functions (standalone + methods)
+            func_query = self.ts_language.query("""
+                (function_definition
+                  name: (identifier) @func_name
+                  parameters: (parameters) @params
+                ) @function
+            """)
+
+            func_captures = func_query.captures(tree.root_node)
+            processed = set()
+
+            for node, tag in func_captures:
+                if tag == 'function':
+                    name_node = node.child_by_field_name('name')
+                    if not name_node:
+                        continue
+
+                    func_name = name_node.text.decode('utf-8')
+
+                    # Avoid duplicates
+                    if func_name in processed:
+                        continue
+                    processed.add(func_name)
+
+                    # Get parameters
+                    params_node = node.child_by_field_name('parameters')
+                    args = self._parse_params_treesitter(params_node) if params_node else []
+
+                    # Get docstring
+                    docstring = self._extract_docstring_treesitter(node)
+
+                    # Check if decorators exist (for @staticmethod, @classmethod detection)
+                    parent = node.parent
+                    is_static = False
+                    is_classmethod = False
+                    if parent and parent.type == 'decorated_definition':
+                        for child in parent.children:
+                            if child.type == 'decorator':
+                                decorator_text = child.text.decode('utf-8')
+                                if 'staticmethod' in decorator_text:
+                                    is_static = True
+                                elif 'classmethod' in decorator_text:
+                                    is_classmethod = True
+
+                    # Determine if this is a class method
+                    class_name = class_methods.get(func_name)
+
+                    functions.append({
+                        'name': func_name,
+                        'args': args,
+                        'docstring': docstring,
+                        'start_line': node.start_point[0] + 1,
+                        'end_line': node.end_point[0] + 1,
+                        'start_byte': node.start_byte,
+                        'end_byte': node.end_byte,
+                        'is_method': class_name is not None,
+                        'class_name': class_name,
+                        'is_static': is_static,
+                        'is_classmethod': is_classmethod
+                    })
+
+        except Exception as e:
+            # Fallback to AST on tree-sitter failure
+            print(f"Tree-sitter parsing failed, using AST fallback: {e}")
+            return self._extract_functions(python_code), None
+
+        return functions, tree
+
+    def _parse_params_treesitter(self, params_node) -> list:
+        """Extract parameter names from Tree-sitter parameters node"""
+        params = []
+        if not params_node:
+            return params
+
+        for child in params_node.named_children:
+            if child.type == 'identifier':
+                params.append(child.text.decode('utf-8'))
+            elif child.type in ['typed_parameter', 'default_parameter', 'typed_default_parameter']:
+                # Get the name field
+                name_node = child.child_by_field_name('name')
+                if name_node:
+                    params.append(name_node.text.decode('utf-8'))
+
+        return params
+
+    def _extract_docstring_treesitter(self, func_node) -> str:
+        """Extract docstring from function using Tree-sitter"""
+        body_node = func_node.child_by_field_name('body')
+        if not body_node or len(body_node.named_children) == 0:
+            return None
+
+        first_stmt = body_node.named_children[0]
+        if first_stmt.type == 'expression_statement':
+            if len(first_stmt.named_children) > 0:
+                expr = first_stmt.named_children[0]
+                if expr.type == 'string':
+                    docstring = expr.text.decode('utf-8')
+                    # Remove triple quotes
+                    return docstring.strip('"""').strip("'''").strip()
+
+        return None
+
     def _extract_functions(self, python_code: str) -> list:
-        """Extract function names and signatures from Python code"""
+        """Extract function names and signatures from Python code using AST (fallback)"""
         functions = []
         try:
             tree = ast.parse(python_code)
@@ -131,7 +347,9 @@ class SimpleAnalyzer:
                     functions.append({
                         'name': node.name,
                         'args': args,
-                        'docstring': ast.get_docstring(node)
+                        'docstring': ast.get_docstring(node),
+                        'start_line': node.lineno,
+                        'end_line': node.end_lineno
                     })
         except:
             pass
@@ -199,6 +417,262 @@ class SimpleAnalyzer:
         
         return summary
     
+    def _generate_folder_tree(self) -> str:
+        """Generate a tree structure view from captured folder structure"""
+        if not self.folder_structure:
+            return "Folder structure not available\n"
+
+        tree_lines = ["PROJECT FOLDER STRUCTURE:", "=" * 60]
+        tree_lines.append(f"{self.folder_structure['root']}/")
+
+        files_list = sorted(self.folder_structure['files'], key=lambda x: x['path'])
+        dirs_shown = set()
+
+        for file_info in files_list:
+            parts = file_info['path'].split(os.sep)
+
+            # Show directory headers
+            if len(parts) > 1:
+                dir_path = os.sep.join(parts[:-1])
+                if dir_path not in dirs_shown:
+                    dirs_shown.add(dir_path)
+                    indent = "│   " * (len(parts) - 2)
+                    tree_lines.append(f"{indent}├── [DIR]  {parts[-2]}/")
+
+            # Marker based on type
+            if file_info['is_init']:
+                marker = '[INIT]'
+            elif file_info['type'] == 'python':
+                marker = '[PY]  '
+            elif file_info['type'] == 'csv':
+                marker = '[CSV] '
+            elif file_info['type'] == 'json':
+                marker = '[JSON]'
+            else:
+                marker = '[FILE]'
+
+            # Indentation based on depth
+            indent = "│   " * (len(parts) - 1) if len(parts) > 1 else ""
+            tree_lines.append(f"{indent}├── {marker} {file_info['name']}")
+
+        tree_lines.append("=" * 60)
+        tree_lines.append("\n[INIT] = __init__.py (usually just imports - LLM should SKIP selecting these)")
+        tree_lines.append("[PY]   = Python module files (select these for functions)")
+        tree_lines.append("[CSV]  = Data files")
+        tree_lines.append("[JSON] = Config files\n")
+        return '\n'.join(tree_lines)
+
+    def format_context_for_llm_phase1(self) -> str:
+        """
+        Phase 1: Format ONLY function signatures and metadata (lightweight).
+        LLM uses this to semantically select which functions it needs full code for.
+        """
+        summary = self.get_project_summary()
+
+        context = f"""PROJECT ANALYSIS - PHASE 1 (Metadata Only)
+========================
+Project Path: {summary['project_path']}
+Total Files: {summary['total_files']}
+Total Functions: {summary['total_functions']}
+Total Classes: {summary['total_classes']}
+
+{self._generate_folder_tree()}
+
+AVAILABLE FUNCTIONS (Signatures + Docstrings Only):
+"""
+
+        # Add function signatures from all Python files
+        for filepath, file_data in self.all_files_content.items():
+            if file_data.get('type') == 'python' and 'functions' in file_data:
+                if file_data['functions']:
+                    context += f"\n{'='*60}\nFILE: {filepath}\n{'='*60}\n"
+
+                    for func in file_data['functions']:
+                        args_str = ', '.join(func['args'])
+
+                        # Show if it's a class method
+                        if func.get('is_method') and func.get('class_name'):
+                            if func.get('is_static'):
+                                context += f"\nStatic Method: {func['class_name']}.{func['name']}({args_str})\n"
+                                context += f"  Usage: {func['class_name']}.{func['name']}(...)  # Call on class\n"
+                            elif func.get('is_classmethod'):
+                                context += f"\nClass Method: {func['class_name']}.{func['name']}({args_str})\n"
+                                context += f"  Usage: {func['class_name']}.{func['name']}(...)  # Call on class\n"
+                            else:
+                                context += f"\nInstance Method: {func['class_name']}.{func['name']}({args_str})\n"
+                                context += f"  Usage: instance.{func['name']}(...)  # Call on instance\n"
+                        else:
+                            context += f"\nStandalone Function: {func['name']}({args_str})\n"
+
+                        if func.get('start_line') and func.get('end_line'):
+                            context += f"  Location: Lines {func['start_line']}-{func['end_line']}\n"
+                        if func.get('docstring'):
+                            doc = func['docstring'][:100] + "..." if len(func.get('docstring', '')) > 100 else func.get('docstring', '')
+                            context += f"  Description: {doc}\n"
+
+        # Add class summaries (metadata only)
+        context += "\n" + "="*60 + "\nCLASSES:\n" + "="*60 + "\n"
+        for filepath, file_data in self.all_files_content.items():
+            if file_data.get('type') == 'python' and 'classes' in file_data:
+                if file_data['classes']:
+                    for cls in file_data['classes']:
+                        methods_str = ', '.join(cls.get('methods', []))
+                        context += f"\n{filepath}: Class {cls['name']}\n  Methods: {methods_str}\n"
+
+        # Add data file summaries (structure only, not content)
+        context += "\n" + "="*60 + "\nDATA FILES:\n" + "="*60 + "\n"
+        for filepath, file_data in self.all_files_content.items():
+            if file_data.get('type') == 'csv':
+                full_path = os.path.join(self.project_path, filepath)
+                context += f"\nCSV: {filepath}\n"
+                context += f"  Full Path: {full_path}\n"
+                context += f"  Headers: {file_data.get('headers', 'Unknown')}\n"
+                context += f"  Rows: {file_data.get('line_count', 0) - 1}\n"
+            elif file_data.get('type') == 'json':
+                full_path = os.path.join(self.project_path, filepath)
+                context += f"\nJSON: {filepath}\n"
+                context += f"  Full Path: {full_path}\n"
+                context += f"  Structure: {file_data.get('structure', 'Unknown')}\n"
+
+        # Add CRITICAL import instructions (MUST be included for correct imports)
+        path_parts = self.project_path.split(os.sep)
+        analyzed_dir_name = os.path.basename(self.project_path)
+
+        # Find if 'dataset' or 'datasets' in path
+        for i, part in enumerate(path_parts):
+            if part in ['dataset', 'datasets']:
+                analyzed_dir_name = '.'.join(path_parts[i:])
+                break
+
+        context += f"""
+
+{'='*60}
+CRITICAL IMPORT INSTRUCTIONS:
+{'='*60}
+
+For CLASSES (to access instance/class/static methods):
+```python
+from {analyzed_dir_name}.hospital import Hospital
+from {analyzed_dir_name}.patient import Patient
+```
+
+For STATIC METHODS (shown as "Static Method: ClassName.method_name"):
+```python
+from {analyzed_dir_name}.salary_analyzer_class import SalaryAnalyzer
+# Then call: SalaryAnalyzer.calculate_average_salary(data)
+```
+
+For STANDALONE FUNCTIONS:
+```python
+from {analyzed_dir_name}.utilities import helper_function
+```
+
+WRONG PATTERNS (Do NOT use):
+❌ from hospital import Hospital  # Missing module path!
+❌ from dataset.XYZ import Hospital  # Don't use placeholders!
+❌ from salary_analyzer_class import calculate_average_salary  # It's a class method, not standalone!
+
+The function being tested comes from:
+```python
+from unit_test.functions import your_function_name
+```
+"""
+
+        return context
+
+    def extract_selected_functions(self, selections: List[Dict[str, str]]) -> str:
+        """
+        Phase 2: Extract FULL implementations of selected functions using Tree-sitter.
+        This is where Tree-sitter's precision extraction is used.
+        """
+        if not selections:
+            return ""
+
+        context = "\n" + "="*60 + "\n"
+        context += "PHASE 2: SELECTED FUNCTION IMPLEMENTATIONS\n"
+        context += "(Full code for functions selected by LLM)\n"
+        context += "="*60 + "\n\n"
+
+        for selection in selections:
+            filepath = selection.get('filepath')
+            func_name = selection.get('function_name')
+
+            if not filepath or not func_name:
+                continue
+
+            # Try exact match first
+            file_data = self.all_files_content.get(filepath)
+
+            # If not found, try matching by basename (LLM might include dataset prefix)
+            if not file_data:
+                basename = os.path.basename(filepath)
+                for key in self.all_files_content.keys():
+                    if os.path.basename(key) == basename or key.endswith(filepath):
+                        file_data = self.all_files_content[key]
+                        filepath = key  # Use actual dict key
+                        print(f"  → Matched '{selection.get('filepath')}' to '{key}'")
+                        break
+
+            if not file_data or file_data.get('type') != 'python':
+                print(f"⚠ Warning: Could not find file '{filepath}' for function '{func_name}'")
+                continue
+
+            # Try Tree-sitter extraction first (most precise)
+            extracted_code = None
+            if file_data.get('tree') and self.ts_parser:
+                extracted_code = self._extract_function_with_treesitter(
+                    file_data['tree'], file_data['content'], func_name
+                )
+
+            # Fallback to line-based extraction
+            if not extracted_code:
+                extracted_code = self._extract_function_by_lines(
+                    file_data['content'], func_name, file_data.get('functions', [])
+                )
+
+            if extracted_code:
+                context += f"\n{'─'*60}\n"
+                context += f"FILE: {filepath}\n"
+                context += f"FUNCTION: {func_name}()\n"
+                if 'reasoning' in selection:
+                    context += f"WHY SELECTED: {selection['reasoning']}\n"
+                context += f"{'─'*60}\n"
+                context += extracted_code + "\n\n"
+
+        return context
+
+    def _extract_function_with_treesitter(self, tree, content: str, function_name: str) -> str:
+        """Extract function code using Tree-sitter tree (Phase 2 - precise extraction)"""
+        try:
+            query = self.ts_language.query("""
+                (function_definition
+                  name: (identifier) @func_name
+                ) @function
+            """)
+
+            captures = query.captures(tree.root_node)
+            for node, tag in captures:
+                if tag == 'function':
+                    name_node = node.child_by_field_name('name')
+                    if name_node and name_node.text.decode('utf-8') == function_name:
+                        # Extract using Tree-sitter byte offsets (most precise)
+                        return content[node.start_byte:node.end_byte]
+
+        except Exception as e:
+            print(f"Tree-sitter extraction failed for {function_name}: {e}")
+
+        return None
+
+    def _extract_function_by_lines(self, content: str, function_name: str, functions: list) -> str:
+        """Fallback: Extract function by line numbers (if tree-sitter fails)"""
+        for func in functions:
+            if func['name'] == function_name:
+                lines = content.splitlines()
+                start = func.get('start_line', 1) - 1
+                end = func.get('end_line', len(lines))
+                return '\n'.join(lines[start:end])
+        return None
+
     def format_context_for_llm(self) -> str:
         """
         Format all file contents into a single context string for the LLM.
@@ -363,5 +837,6 @@ COMPLETE FILE CONTENTS BELOW:
             context += f"\nSKIPPED FILES (too large):\n"
             for filepath in skipped:
                 context += f"- {filepath}: {self.all_files_content[filepath].get('reason', 'Unknown reason')}\n"
+        print(context)
 
         return context

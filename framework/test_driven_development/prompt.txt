@@ -12,8 +12,11 @@ Use pytest framework for all tests
 Include all necessary imports at the top
 Ensure test code is immediately executable when saved as a .py file
 
+CRITICAL SCOPE: Test ONLY the new function specified in requirements. Do NOT create tests for existing codebase classes' internal methods (like StockLevel.__init__, Product.__init__, etc.)
+
 Required Imports:
-You MUST include these imports in your code AT THE VERY TOP:
+You MUST include these imports in your code AT THE VERY TOP.
+CRITICAL: Ensure ALL parentheses are properly closed!
 
 import sys
 import os
@@ -23,8 +26,14 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 import pytest
-from unit_test.functions import *  # Import the function being tested
+from unit_test.functions import *  # Import newly generated functions
 # Additional imports based on function requirements (tempfile, mock, dataset classes, etc.)
+
+CRITICAL TEST SCOPE:
+- Test ONLY the newly generated function from unit_test.functions
+- Do NOT create tests for existing codebase classes (StockLevel, Product, Warehouse, etc.)
+- All test names must be: test_{new_function_name}_*
+- Do NOT create: test_StockLevel_*, test_Product_*, test_{ExistingClass}_*
 
 Test Coverage Requirements:
 Your tests must cover:

@@ -237,6 +237,70 @@ def select_context_session(context_manager, auto_session=None, auto_load=False):
     
     return success, selected_file
 
+def select_relevant_functions(client, user_request: str, metadata_context: str) -> list:
+    """
+    Phase 1.5: LLM selects which functions it needs full implementations for.
+    Uses semantic understanding to bridge gap between user request and codebase.
+    """
+    selection_prompt = f"""You are analyzing a codebase to determine which existing functions are relevant to a new task.
+
+TASK: {user_request}
+
+AVAILABLE FUNCTIONS (metadata only):
+{metadata_context}
+
+Analyze which functions you would need to see FULL implementations for to complete this task.
+CRITICAL: Remember you can only select once, so select what you need and don't think you can see and try selecting again
+
+Consider:
+- Direct dependencies (functions you'll directly call)
+- Indirect dependencies (functions that your called functions will use)
+- Helper utilities (validation, data processing, formatting)
+- Semantic relationships (e.g., matrix operations needed for eigenvalue calculation)
+
+IMPORTANT: Use semantic understanding, not just keyword matching!
+Example: "eigenvalue" task needs "matrix_multiply" even though no "eigenvalue" keyword exists in that function.
+
+Select UP TO 10 most relevant functions. If none are relevant, return empty array.
+
+Respond ONLY with JSON format:
+{{
+  "functions": [
+    {{"filepath": "relative/path/file.py", "function_name": "function_name", "reasoning": "why this function is needed"}},
+    ...
+  ]
+}}
+"""
+
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4.1",
+            messages=[{"role": "user", "content": selection_prompt}],
+            temperature=0.3,
+            response_format={"type": "json_object"}
+        )
+
+        result = json.loads(response.choices[0].message.content)
+        selections = result.get('functions', [])
+
+        if selections:
+            print(f"\n{'='*60}")
+            print(f"✓ LLM SEMANTIC SELECTION: Selected {len(selections)} relevant functions")
+            print(f"{'='*60}")
+            for sel in selections:
+                print(f"  • {sel.get('function_name')} from {sel.get('filepath')}")
+                if 'reasoning' in sel:
+                    print(f"    → Reason: {sel['reasoning']}")
+            print(f"{'='*60}\n")
+        else:
+            print("✓ LLM determined no existing functions needed (generating from scratch)\n")
+
+        return selections
+
+    except Exception as e:
+        print(f"⚠ Function selection failed: {e}. Proceeding without Phase 2 extraction.")
+        return []
+
 def setup_variables(user_request=None, project_context=""):
     with open('tool_descriptor_gen/tools.json', 'r') as f:
         tool_list = json.load(f)
@@ -378,27 +442,47 @@ if __name__ == "__main__":
     # Note: Cleanup is already handled in get_user_input() if flags are set
     # No need to repeat it here
 
-    # Analyze project if path provided
+    # Analyze project if path provided (Phase 1 only - metadata extraction)
     project_context = ""
+    analyzer = None
+    project_context_phase1 = ""
+
     if analyze_path:
         print(f"\nAnalyzing project at: {analyze_path}")
+        print("Using two-phase context management with Tree-sitter...")
         print("This may take a moment...\n")
 
         analyzer = SimpleAnalyzer(analyze_path)
         analyzer.read_all_files()
         summary = analyzer.get_project_summary()
 
-        print(f"Analysis complete!")
+        print(f"✓ Analysis complete!")
         print(f"Found {summary['total_files']} files:")
         print(f"  - Python: {summary['python_files']} files ({summary['total_functions']} functions, {summary['total_classes']} classes)")
         print(f"  - CSV: {summary['csv_files']} files")
         print(f"  - JSON: {summary['json_files']} files")
         print(f"  - Text/Config: {summary['text_files']} files")
         print(f"  - Total lines: {summary['total_lines']}")
-        print(f"\nProceeding with your request...\n")
 
-        # Get formatted context for LLM
-        project_context = analyzer.format_context_for_llm()
+        # PHASE 1: Extract metadata only (before OpenAI client is created)
+        print(f"\n{'─'*60}")
+        print("PHASE 1: Extracting function metadata (signatures only)...")
+        print(f"{'─'*60}")
+
+        project_context_phase1 = analyzer.format_context_for_llm_phase1()
+        phase1_tokens = len(project_context_phase1) // 4
+        print(f"✓ Phase 1 complete: ~{phase1_tokens:,} tokens (metadata only)")
+
+        # DEBUG: Show what's being sent to LLM in Phase 1
+        print(f"\n{'▼'*60}")
+        print("DEBUG: PHASE 1 CONTEXT (What LLM sees for selection)")
+        print(f"{'▼'*60}")
+        print(project_context_phase1[:2000])  # Show first 2000 chars
+        if len(project_context_phase1) > 2000:
+            print(f"\n... (truncated, showing first 2000 of {len(project_context_phase1)} characters)")
+        print(f"{'▲'*60}\n")
+
+        print("  (Waiting for OpenAI client initialization for Phase 1.5...)\n")
 
     restart = True
     MAX_ITERATIONS = 6  # Maximum number of iterations before terminating
@@ -422,7 +506,71 @@ if __name__ == "__main__":
         azure_endpoint=azure_endpoint,
         api_version=azure_api_version
     )
-    
+
+    # PHASE 1.5 and PHASE 2: Complete context creation (now that client exists)
+    if analyzer and project_context_phase1:
+        print(f"{'─'*60}")
+        print("PHASE 1.5: LLM analyzing and selecting relevant functions...")
+        print(f"{'─'*60}")
+
+        relevant_functions = select_relevant_functions(
+            openai_client, user_request, project_context_phase1
+        )
+
+        # DEBUG: Show what LLM selected
+        print(f"\n{'▼'*60}")
+        print("DEBUG: LLM SELECTION RESULT")
+        print(f"{'▼'*60}")
+        if relevant_functions:
+            import json
+            print(json.dumps(relevant_functions, indent=2))
+        else:
+            print("No functions selected (empty array)")
+        print(f"{'▲'*60}\n")
+
+        # Phase 2: Extract full implementations
+        if relevant_functions:
+            print(f"{'─'*60}")
+            print(f"PHASE 2: Extracting full code for {len(relevant_functions)} selected functions...")
+            print(f"{'─'*60}\n")
+
+            selected_code = analyzer.extract_selected_functions(relevant_functions)
+            phase2_tokens = len(selected_code) // 4
+            print(f"✓ Phase 2 complete: ~{phase2_tokens:,} tokens (selected implementations)")
+
+            # DEBUG: Show what was extracted in Phase 2
+            print(f"\n{'▼'*60}")
+            print("DEBUG: PHASE 2 EXTRACTED CODE (Selected function implementations)")
+            print(f"{'▼'*60}")
+            print(selected_code[:1500])  # Show first 1500 chars
+            if len(selected_code) > 1500:
+                print(f"\n... (truncated, showing first 1500 of {len(selected_code)} characters)")
+            print(f"{'▲'*60}\n")
+
+            project_context = project_context_phase1 + "\n\n" + selected_code
+        else:
+            project_context = project_context_phase1
+
+        total_tokens = len(project_context) // 4
+        print(f"\n{'='*60}")
+        print(f"TOTAL CONTEXT SIZE: ~{total_tokens:,} tokens")
+        print(f"{'='*60}")
+
+        # DEBUG: Show final combined context
+        print(f"\n{'▼'*60}")
+        print("DEBUG: FINAL COMBINED CONTEXT (Phase 1 + Phase 2, sent to TDD/Function generators)")
+        print(f"{'▼'*60}")
+        print(f"Total length: {len(project_context)} characters (~{total_tokens:,} tokens)")
+        print(f"\nFirst 1000 characters:")
+        print(project_context[:1000])
+        if len(project_context) > 1000:
+            print(f"\n... (truncated for readability)")
+            print(f"\nLast 500 characters:")
+            print(project_context[-500:])
+        print(f"{'▲'*60}\n")
+
+        print(f"Proceeding with code generation...\n")
+
     function_code = None
     tools_code = None
     prompt_function_descriptor = None

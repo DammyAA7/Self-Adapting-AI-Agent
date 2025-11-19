@@ -65,5 +65,26 @@ Unit test code: {unit_test_code if unit_test_code else "Not available"}'''
         temperature=0.7,
         messages=generator_messages
     )
-     
-    return generator_response.choices[0].message.content
+
+    # AUTO-FIX: Fix common syntax errors before returning
+    unit_test_code = generator_response.choices[0].message.content
+    unit_test_code = fix_common_syntax_errors(unit_test_code)
+
+    return unit_test_code
+
+def fix_common_syntax_errors(code: str) -> str:
+    """Fix common syntax errors in generated test code"""
+    lines = code.split('\n')
+    fixed_lines = []
+
+    for line in lines:
+        # Fix unclosed parenthesis in sys.path.insert with nested dirname()
+        if 'sys.path.insert' in line and line.count('(') > line.count(')'):
+            # Count missing closing parens
+            missing = line.count('(') - line.count(')')
+            line = line.rstrip() + (')' * missing)
+            print(f"  ✓ Auto-fixed unclosed parenthesis in sys.path line")
+
+        fixed_lines.append(line)
+
+    return '\n'.join(fixed_lines)

@@ -11,79 +11,48 @@ class Priority(Enum):
     HIGH = "high"
 
 
-from dataset.inventory_replenishment.warehouse import Warehouse
-
 def inventory_low_stock_alert(warehouse):
     """
-    Returns a list of dictionaries for products in the warehouse that are below their reorder point.
-    Each dict contains: 'sku', 'name', 'current_stock', 'reorder_point', 'deficit'.
-    Handles missing stock level, zero or negative stock, and skips products without reorder_point.
-    Returns [] for invalid warehouse objects.
-    Raises ValueError if any StockLevel.last_updated is in an unsupported date format.
+    Returns a list of dicts for products in the warehouse whose current stock is below their reorder point.
+    Each dict contains: sku, name, current_stock, reorder_point, deficit.
+    Handles edge cases as specified in tests.
     """
-    import datetime
-
-    # Supported date formats for StockLevel.last_updated
-    supported_formats = [
-        "%Y-%m-%d",
-        "%Y-%m-%d %H:%M",
-        "%Y-%m-%d %H:%M:%S"
-    ]
-
-    # Validate warehouse object: must have get_all_products and get_current_stock
-    if not hasattr(warehouse, "get_all_products") or not hasattr(warehouse, "get_current_stock"):
+    # Validate input: must have get_all_products and get_current_stock
+    if not hasattr(warehouse, 'get_all_products') or not hasattr(warehouse, 'get_current_stock'):
         return []
-
-    result = []
-    try:
-        products = warehouse.get_all_products()
-    except Exception:
+    products = warehouse.get_all_products()
+    if not isinstance(products, list):
         return []
-
-    for prod in products:
-        # Defensive: skip if prod has no reorder_point or name or sku
-        if not hasattr(prod, "reorder_point") or not hasattr(prod, "sku") or not hasattr(prod, "name"):
+    alerts = []
+    for product in products:
+        sku = getattr(product, 'sku', None)
+        name = getattr(product, 'name', None)
+        reorder_point = getattr(product, 'reorder_point', None)
+        if sku is None or reorder_point is None:
             continue
-
-        sku = prod.sku
-        name = prod.name
-        reorder_point = getattr(prod, "reorder_point", None)
-        if reorder_point is None:
-            continue
-
-        # Get current stock using warehouse.get_current_stock(sku)
-        try:
-            current_stock = warehouse.get_current_stock(sku)
-        except Exception:
+        current_stock = warehouse.get_current_stock(sku)
+        # If current_stock is None, treat as 0 (per test: missing stock returns 0)
+        if current_stock is None:
             current_stock = 0
-
-        # Find all stock_levels for this SKU in the warehouse (if attribute exists)
-        stock_levels = getattr(warehouse, "stock_levels", [])
-        for stock in stock_levels:
-            if getattr(stock, "sku", None) == sku and getattr(stock, "warehouse_id", None) == getattr(warehouse, "warehouse_id", None):
-                last_updated = getattr(stock, "last_updated", None)
-                if last_updated is not None:
-                    # Validate date format
-                    for fmt in supported_formats:
-                        try:
-                            datetime.datetime.strptime(last_updated, fmt)
-                            break
-                        except Exception:
-                            continue
-                    else:
-                        raise ValueError(f"Unsupported date format for last_updated: {last_updated}")
-                # Only check the first matching stock_level for this SKU+warehouse_id
-                break
-
-        # If current_stock < reorder_point, add alert
+        # If reorder_point == 0, only negative stock triggers alert
+        if reorder_point == 0:
+            if current_stock < 0:
+                alerts.append({
+                    'sku': sku,
+                    'name': name,
+                    'current_stock': current_stock,
+                    'reorder_point': reorder_point,
+                    'deficit': abs(current_stock)
+                })
+            continue
+        # Normal alert if stock < reorder_point
         if current_stock < reorder_point:
-            result.append({
-                "sku": sku,
-                "name": name,
-                "current_stock": current_stock,
-                "reorder_point": reorder_point,
-                "deficit": reorder_point - current_stock
+            alerts.append({
+                'sku': sku,
+                'name': name,
+                'current_stock': current_stock,
+                'reorder_point': reorder_point,
+                'deficit': reorder_point - current_stock
             })
-
-    return result
+    return alerts
 

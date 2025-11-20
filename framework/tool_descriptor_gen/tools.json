@@ -1,1 +1,21 @@
-[]
+[
+
+    {
+        "type": "function",
+        "function": {
+            "name": "inventory_low_stock_alert",
+            "description": "Returns a list of dicts for products in the warehouse whose current stock is below their reorder point. Each dict contains: sku, name, current_stock, reorder_point, deficit.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "warehouse": {
+                        "type": "object",
+                        "description": "Warehouse object containing product information and stock retrieval methods."
+                    }
+                },
+                "required": ["warehouse"]
+            }
+        }
+    }
+
+]

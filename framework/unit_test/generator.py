@@ -31,15 +31,31 @@ def generateTestCases(client, requirements, reinforced_requirement=None, project
 
     # Add project context if available
     if project_context:
-        user_content += f'''PROJECT KNOWLEDGE:
-================
+        user_content += f'''
+{'='*70}
+EXTERNAL PROJECT CODEBASE (DEPENDENCIES - USE BUT DO NOT TEST)
+{'='*70}
+
+⚠️  CRITICAL BOUNDARY:
+The code below is from the EXISTING external codebase.
+These are DEPENDENCIES, not test subjects.
+
+YOUR SCOPE:
+✅ TEST: The NEW generated function
+❌ DON'T TEST: External classes (Warehouse, Product, StockLevel, etc.)
+✅ USE: External classes for test data and fixtures
+❌ DON'T CREATE: Tests for external class methods
+
+EXTERNAL CODEBASE:
 {project_context}
 
-You have full visibility of the project above. When generating unit tests:
-- Test with actual data structures from the project (CSV columns, JSON keys, etc.)
-- Follow unit testing patterns you see in the project
-- Create tests that verify integration with existing code
-- Use realistic test data based on what you see in the project files
+{'='*70}
+
+When generating unit tests:
+- Test the NEW generated function's behavior
+- Use external classes in test fixtures (respect their parameter constraints)
+- Follow testing patterns from external code
+- Create realistic test data matching project structures
 
 '''
 

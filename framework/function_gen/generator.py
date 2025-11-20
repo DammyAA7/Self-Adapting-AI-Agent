@@ -29,24 +29,41 @@ COMPOSITION REQUIREMENT: If the above contains ANY function related to this task
 
     # Add project context if available
     if project_context:
-        user_content += f'''PROJECT KNOWLEDGE:
-================
+        user_content += f'''
+{'='*70}
+EXTERNAL PROJECT CODEBASE (DEPENDENCIES - USE BUT DO NOT MODIFY)
+{'='*70}
+
+⚠️  CRITICAL BOUNDARY:
+The code below is from the EXISTING external codebase.
+These are DEPENDENCIES you can call/use, not code to modify.
+
+YOUR SCOPE:
+✅ GENERATE: The NEW function specified in requirements
+❌ DON'T MODIFY: External classes (Warehouse, Product, StockLevel, etc.)
+✅ IMPORT AND CALL: External classes and their methods
+❌ DON'T REIMPLEMENT: Functionality that exists in external classes
+
+EXTERNAL CODEBASE:
 {project_context}
 
+{'='*70}
+
 CRITICAL REQUIREMENTS - You MUST follow these rules:
-1. **USE EXACT FILE PATHS**: When you see any file paths in the project context above (e.g., "CSV FILE: /path/to/data.csv", "JSON FILE: /path/to/config.json", "PYTHON FILE: /path/to/module.py"), you MUST use the complete absolute paths in your code, NOT relative paths or generic filenames.
+1. **USE EXACT FILE PATHS**: When you see file paths in context above, use complete absolute paths in your code, NOT relative paths.
 
-2. **NO NEW FILES**: Work with existing files shown in the project context. Do not create new files unless explicitly requested by the user.
+2. **NO NEW FILES**: Work with existing files shown in context. Do not create new files unless explicitly requested.
 
-3. **REUSE EXISTING DATA**: All data files (CSV, JSON, text, etc.) shown above contain real project data - use their exact paths and existing structures.
+3. **REUSE EXISTING DATA**: All data files (CSV, JSON, text, etc.) shown above contain real project data - use their exact paths.
 
-4. **FOLLOW PROJECT PATTERNS**: Match the coding style, imports, and patterns you see in existing project files.
+4. **FOLLOW PROJECT PATTERNS**: Match the coding style, imports, and patterns from external code.
+
+5. **RESPECT EXTERNAL CLASS CONSTRAINTS**: When calling external classes, follow their exact parameter requirements (formats, types, etc.).
 
 EXAMPLES:
 - If context shows "CSV FILE: /home/user/project/data.csv" → Use: DATA_PATH = "/home/user/project/data.csv"
-- If context shows "JSON FILE: /home/user/config/settings.json" → Use: CONFIG_PATH = "/home/user/config/settings.json"  
-- If context shows "PYTHON FILE: /home/user/utils/helpers.py" → Import from exact path or use existing functions shown
-- NOT: DATA_PATH = "data.csv" or CONFIG_PATH = "settings.json" (these are WRONG)
+- If StockLevel.__init__ expects datetime "%Y-%m-%d %H:%M:%S" → Use: "2024-06-01 00:00:00"
+- NOT: DATA_PATH = "data.csv" or datetime = "2024-06-01" (WRONG formats)
 
 '''
 

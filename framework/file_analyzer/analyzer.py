@@ -202,75 +202,62 @@ class SimpleAnalyzer:
             # Parse with Tree-sitter
             tree = self.ts_parser.parse(bytes(python_code, 'utf-8'))
 
-            # First: Extract class methods with Tree-sitter query
-            class_query = self.ts_language.query("""
-                (class_definition
-                  name: (identifier) @class_name
-                  body: (block
-                    (decorated_definition
-                      (decorator)* @decorators
-                      definition: (function_definition
-                        name: (identifier) @method_name
-                        parameters: (parameters) @params
-                      ) @method
-                    )
-                    (function_definition
-                      name: (identifier) @method_name
-                      parameters: (parameters) @params
-                    ) @method
-                  )
-                ) @class
-            """)
-
+            # Use node walking instead of deprecated query API
             class_methods = {}  # Map method_name -> class_name
-            class_captures = class_query.captures(tree.root_node)
-
-            for node, tag in class_captures:
-                if tag == 'class_name':
-                    current_class = node.text.decode('utf-8')
-                elif tag == 'method':
-                    method_name_node = node.child_by_field_name('name')
-                    if method_name_node:
-                        method_name = method_name_node.text.decode('utf-8')
-                        class_methods[method_name] = current_class
-
-            # Second: Extract all functions (standalone + methods)
-            func_query = self.ts_language.query("""
-                (function_definition
-                  name: (identifier) @func_name
-                  parameters: (parameters) @params
-                ) @function
-            """)
-
-            func_captures = func_query.captures(tree.root_node)
             processed = set()
 
-            for node, tag in func_captures:
-                if tag == 'function':
-                    name_node = node.child_by_field_name('name')
+            # First pass: Find class methods
+            def find_class_methods(node, current_class=None):
+                if node.type == 'class_definition':
+                    class_name_node = node.child_by_field_name('name')
+                    if class_name_node:
+                        current_class = class_name_node.text.decode('utf-8')
+
+                for child in node.children:
+                    if child.type == 'block' and current_class:
+                        for item in child.children:
+                            func_node = item
+                            if item.type == 'decorated_definition':
+                                func_node = item.child_by_field_name('definition')
+
+                            if func_node and func_node.type == 'function_definition':
+                                func_name_node = func_node.child_by_field_name('name')
+                                if func_name_node:
+                                    method_name = func_name_node.text.decode('utf-8')
+                                    class_methods[method_name] = current_class
+                    else:
+                        find_class_methods(child, current_class)
+
+            find_class_methods(tree.root_node)
+
+            # Second pass: Extract all functions using node walking
+            def extract_all_functions(node):
+                if node.type == 'function_definition' or node.type == 'decorated_definition':
+                    func_node = node if node.type == 'function_definition' else node.child_by_field_name('definition')
+                    if not func_node:
+                        return
+
+                    name_node = func_node.child_by_field_name('name')
                     if not name_node:
-                        continue
+                        return
 
                     func_name = name_node.text.decode('utf-8')
-
-                    # Avoid duplicates
                     if func_name in processed:
-                        continue
+                        return
                     processed.add(func_name)
 
                     # Get parameters
-                    params_node = node.child_by_field_name('parameters')
+                    params_node = func_node.child_by_field_name('parameters')
                     args = self._parse_params_treesitter(params_node) if params_node else []
 
                     # Get docstring
-                    docstring = self._extract_docstring_treesitter(node)
+                    docstring = self._extract_docstring_treesitter(func_node)
 
-                    # Check if decorators exist (for @staticmethod, @classmethod detection)
-                    parent = node.parent
+                    # Check decorators
                     is_static = False
                     is_classmethod = False
-                    if parent and parent.type == 'decorated_definition':
-                        for child in parent.children:
+                    if node.type == 'decorated_definition':
+                        for child in node.children:
                             if child.type == 'decorator':
                                 decorator_text = child.text.decode('utf-8')
                                 if 'staticmethod' in decorator_text:
@@ -278,22 +265,26 @@ class SimpleAnalyzer:
                                 elif 'classmethod' in decorator_text:
                                     is_classmethod = True
 
-                    # Determine if this is a class method
                     class_name = class_methods.get(func_name)
 
                     functions.append({
                         'name': func_name,
                         'args': args,
                         'docstring': docstring,
-                        'start_line': node.start_point[0] + 1,
-                        'end_line': node.end_point[0] + 1,
-                        'start_byte': node.start_byte,
-                        'end_byte': node.end_byte,
+                        'start_line': func_node.start_point[0] + 1,
+                        'end_line': func_node.end_point[0] + 1,
+                        'start_byte': func_node.start_byte,
+                        'end_byte': func_node.end_byte,
                         'is_method': class_name is not None,
                         'class_name': class_name,
                         'is_static': is_static,
                         'is_classmethod': is_classmethod
                     })
+
+                for child in node.children:
+                    extract_all_functions(child)
+
+            extract_all_functions(tree.root_node)
 
         except Exception as e:
             # Fallback to AST on tree-sitter failure
@@ -580,6 +571,32 @@ from unit_test.functions import your_function_name
 
         return context
 
+    def _extract_imports_from_file(self, filepath: str) -> List[str]:
+        """Extract class names imported in a file (for dependency detection)"""
+        file_data = self.all_files_content.get(filepath)
+        if not file_data or file_data.get('type') != 'python':
+            return []
+
+        content = file_data.get('content', '')
+        imports = []
+
+        try:
+            tree = ast.parse(content)
+            for node in ast.walk(tree):
+                if isinstance(node, ast.ImportFrom):
+                    # from stock_level import StockLevel
+                    for alias in node.names:
+                        if alias.name[0].isupper():  # Likely a class (starts with capital)
+                            imports.append(alias.name)
+                elif isinstance(node, ast.Import):
+                    # import stock_level
+                    for alias in node.names:
+                        imports.append(alias.name)
+        except:
+            pass
+
+        return imports
+
     def extract_selected_functions(self, selections: List[Dict[str, str]]) -> str:
         """
         Phase 2: Extract FULL implementations of selected functions using Tree-sitter.
@@ -589,9 +606,12 @@ from unit_test.functions import your_function_name
             return ""
 
         context = "\n" + "="*60 + "\n"
-        context += "PHASE 2: SELECTED FUNCTION IMPLEMENTATIONS\n"
-        context += "(Full code for functions selected by LLM)\n"
+        context += "PHASE 2: COMPLETE CLASS IMPLEMENTATIONS\n"
+        context += "(Full classes for selected functions + their dependencies)\n"
         context += "="*60 + "\n\n"
+
+        # Track which classes we've already extracted
+        extracted_classes = set()
 
         for selection in selections:
             filepath = selection.get('filepath')
@@ -619,49 +639,222 @@ from unit_test.functions import your_function_name
 
             # Try Tree-sitter extraction first (most precise)
             extracted_code = None
-            if file_data.get('tree') and self.ts_parser:
+            has_tree = file_data.get('tree') is not None
+            has_parser = self.ts_parser is not None
+
+            print(f"  → File '{filepath}', Function '{func_name}':")
+            print(f"     Has tree: {has_tree}, Has parser: {has_parser}")
+
+            if has_tree and has_parser:
+                print(f"     Trying tree-sitter extraction...")
                 extracted_code = self._extract_function_with_treesitter(
                     file_data['tree'], file_data['content'], func_name
                 )
+                if extracted_code:
+                    print(f"     ✓ Tree-sitter extraction succeeded ({len(extracted_code)} chars)")
+                else:
+                    print(f"     ✗ Tree-sitter returned None")
 
             # Fallback to line-based extraction
             if not extracted_code:
+                print(f"     Using AST line-based fallback...")
                 extracted_code = self._extract_function_by_lines(
                     file_data['content'], func_name, file_data.get('functions', [])
                 )
+                if extracted_code:
+                    print(f"     ✓ AST extraction succeeded ({len(extracted_code)} chars)")
 
             if extracted_code:
+                # Check if this is a class method
+                func_metadata = None
+                for func in file_data.get('functions', []):
+                    if func['name'] == func_name:
+                        func_metadata = func
+                        break
+
+                is_class_method = func_metadata and func_metadata.get('is_method')
+                class_name = func_metadata.get('class_name') if func_metadata else None
+
                 context += f"\n{'─'*60}\n"
                 context += f"FILE: {filepath}\n"
-                context += f"FUNCTION: {func_name}()\n"
+
+                if is_class_method and class_name:
+                    context += f"CLASS: {class_name} (contains {func_name})\n"
+                else:
+                    context += f"FUNCTION: {func_name}()\n"
+
                 if 'reasoning' in selection:
                     context += f"WHY SELECTED: {selection['reasoning']}\n"
                 context += f"{'─'*60}\n"
                 context += extracted_code + "\n\n"
 
+                # Mark this class as extracted
+                if is_class_method and class_name:
+                    extracted_classes.add(class_name)
+
+        # Extract dependency classes (classes imported and used by selected classes)
+        dependency_context = self._extract_dependency_classes(selections, extracted_classes)
+        if dependency_context:
+            context += "\n" + "="*60 + "\n"
+            context += "DEPENDENCY CLASSES (Used by selected functions)\n"
+            context += "="*60 + "\n\n"
+            context += dependency_context
+
         return context
 
-    def _extract_function_with_treesitter(self, tree, content: str, function_name: str) -> str:
-        """Extract function code using Tree-sitter tree (Phase 2 - precise extraction)"""
-        try:
-            query = self.ts_language.query("""
-                (function_definition
-                  name: (identifier) @func_name
-                ) @function
-            """)
+    def _extract_dependency_classes(self, selections: List[Dict], already_extracted: set) -> str:
+        """Extract classes that are imported and used by selected functions"""
+        context = ""
+        dependency_classes = set()
 
-            captures = query.captures(tree.root_node)
-            for node, tag in captures:
-                if tag == 'function':
+        # For each selected function's file, get imports
+        for selection in selections:
+            filepath = selection.get('filepath')
+            if not filepath:
+                continue
+
+            # Match filepath
+            file_data = self.all_files_content.get(filepath)
+            if not file_data:
+                basename = os.path.basename(filepath)
+                for key in self.all_files_content.keys():
+                    if os.path.basename(key) == basename:
+                        file_data = self.all_files_content[key]
+                        filepath = key
+                        break
+
+            if file_data:
+                imports = self._extract_imports_from_file(filepath)
+                dependency_classes.update(imports)
+
+        # Remove already extracted classes
+        dependency_classes = dependency_classes - already_extracted
+
+        # Extract full class code for each dependency
+        for class_name in dependency_classes:
+            # Find which file contains this class
+            for filepath, file_data in self.all_files_content.items():
+                if file_data.get('type') != 'python':
+                    continue
+
+                for cls in file_data.get('classes', []):
+                    if cls['name'] == class_name:
+                        # Extract full class
+                        full_class = self._extract_full_class_by_name(
+                            file_data.get('tree'),
+                            file_data.get('content'),
+                            class_name
+                        )
+
+                        if full_class:
+                            context += f"\n{'─'*60}\n"
+                            context += f"FILE: {filepath}\n"
+                            context += f"DEPENDENCY CLASS: {class_name}\n"
+                            context += f"(Used by selected functions)\n"
+                            context += f"{'─'*60}\n"
+                            context += full_class + "\n\n"
+                        break
+
+        return context
+
+    def _extract_full_class_by_name(self, tree, content: str, class_name: str) -> str:
+        """Extract entire class definition by class name using node walking"""
+        if not tree or not self.ts_parser:
+            return None
+
+        try:
+            # Walk tree to find class by name
+            def find_class(node):
+                if node.type == 'class_definition':
                     name_node = node.child_by_field_name('name')
-                    if name_node and name_node.text.decode('utf-8') == function_name:
-                        # Extract using Tree-sitter byte offsets (most precise)
+                    if name_node and name_node.text.decode('utf-8') == class_name:
+                        print(f"  → Extracting dependency class {class_name}")
                         return content[node.start_byte:node.end_byte]
+
+                for child in node.children:
+                    result = find_class(child)
+                    if result:
+                        return result
+                return None
+
+            return find_class(tree.root_node)
+
+        except Exception as e:
+            print(f"Dependency class extraction failed for {class_name}: {e}")
+
+        return None
+
+    def _extract_class_containing_function(self, tree, content: str, function_name: str) -> tuple:
+        """
+        Extract ENTIRE CLASS if function is a method, or just function if standalone.
+        Uses node walking (not deprecated query API).
+        Returns: (extracted_code, class_name or None)
+        """
+        try:
+            # Walk tree to find classes containing the target function
+            def find_class_with_method(node):
+                if node.type == 'class_definition':
+                    class_name_node = node.child_by_field_name('name')
+                    if class_name_node:
+                        class_name = class_name_node.text.decode('utf-8')
+
+                        # Check if this class contains the target function
+                        for child in node.children:
+                            if child.type == 'block':
+                                for item in child.children:
+                                    # Handle both regular and decorated methods
+                                    func_node = item
+                                    if item.type == 'decorated_definition':
+                                        func_node = item.child_by_field_name('definition')
+
+                                    if func_node and func_node.type == 'function_definition':
+                                        func_name_node = func_node.child_by_field_name('name')
+                                        if func_name_node and func_name_node.text.decode('utf-8') == function_name:
+                                            # Found! Return ENTIRE CLASS
+                                            print(f"  → Extracting full class {class_name} (contains {function_name})")
+                                            return content[node.start_byte:node.end_byte], class_name
+
+                # Recursively search children
+                for child in node.children:
+                    result = find_class_with_method(child)
+                    if result and result[0]:
+                        return result
+
+                return None, None
+
+            # Check if function is in a class
+            class_code, class_name = find_class_with_method(tree.root_node)
+            if class_code:
+                return class_code, class_name
+
+            # Not in a class - extract standalone function
+            def find_standalone_function(node):
+                if node.type == 'function_definition':
+                    func_name_node = node.child_by_field_name('name')
+                    if func_name_node and func_name_node.text.decode('utf-8') == function_name:
+                        print(f"  → Extracting standalone function {function_name}")
+                        return content[node.start_byte:node.end_byte]
+
+                for child in node.children:
+                    result = find_standalone_function(child)
+                    if result:
+                        return result
+                return None
+
+            func_code = find_standalone_function(tree.root_node)
+            return func_code, None
 
         except Exception as e:
             print(f"Tree-sitter extraction failed for {function_name}: {e}")
+            import traceback
+            traceback.print_exc()
 
-        return None
+        return None, None
+
+    def _extract_function_with_treesitter(self, tree, content: str, function_name: str) -> str:
+        """Extract function code using Tree-sitter tree (Phase 2 - precise extraction)"""
+        code, class_name = self._extract_class_containing_function(tree, content, function_name)
+        return code
 
     def _extract_function_by_lines(self, content: str, function_name: str, functions: list) -> str:
         """Fallback: Extract function by line numbers (if tree-sitter fails)"""

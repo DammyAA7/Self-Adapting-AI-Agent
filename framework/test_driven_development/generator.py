@@ -51,25 +51,27 @@ COMPOSITION TESTING RULE: If the above functions.py contains ANY function that c
 
     # Add project context if available
     if project_context:
-        user_content += f'''PROJECT KNOWLEDGE:
-================
+        user_content += f'''
+{'='*70}
+EXTERNAL PROJECT CODEBASE (DEPENDENCIES - USE BUT DO NOT TEST)
+{'='*70}
+
+⚠️  CRITICAL BOUNDARY:
+The code below is from the EXISTING external codebase.
+These are DEPENDENCIES, not test subjects.
+
+YOUR SCOPE:
+✅ TEST: The NEW function being generated
+❌ DON'T TEST: External classes below (Warehouse, Product, StockLevel, etc.)
+✅ USE: External classes in test fixtures
+❌ DON'T CREATE: Tests named test_StockLevel_*, test_Warehouse_*, etc.
+
+IMPORTANT: When using external classes in fixtures, follow their exact parameter constraints (check type hints, docstrings, formats).
+
+EXTERNAL CODEBASE:
 {project_context}
 
-CRITICAL REQUIREMENTS - You MUST follow these rules when generating test cases:
-1. **USE TEMPORARY FILES FOR TESTS**: Create temporary files for testing, never modify actual project files. Use pytest fixtures, tempfile module, or tmp_path for safe testing.
-
-2. **REPLICATE REAL DATA STRUCTURES**: Your test data should match the exact structure (columns, keys, formats) of the actual project files shown above, but in temporary test files.
-
-3. **TEST FILE PATH PARAMETERS**: Ensure your tests verify that functions can accept file paths as parameters and work with different locations.
-
-4. **FOLLOW PROJECT PATTERNS**: Match testing patterns, fixtures, and assertions you see in existing test files.
-
-EXAMPLES FOR SAFE TESTING:
-- If context shows CSV with columns "id,todo,status,priority" → Create temp CSV with same structure
-- If context shows JSON with keys "name", "config" → Create temp JSON with same keys  
-- Use: @pytest.fixture, tmp_path, tempfile.NamedTemporaryFile(), etc.
-- Test that functions work with various file paths, not just hardcoded ones
-
+{'='*70}
 '''
 
     user_content += f'''Requirements: {requirements}

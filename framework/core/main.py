@@ -536,40 +536,50 @@ if __name__ == "__main__":
 
             selected_code = analyzer.extract_selected_functions(relevant_functions)
             phase2_tokens = len(selected_code) // 4
-            print(f"✓ Phase 2 complete: ~{phase2_tokens:,} tokens (selected implementations)")
+            print(f"✓ Phase 2 complete: ~{phase2_tokens:,} tokens (complete classes + dependencies)")
 
             # DEBUG: Show what was extracted in Phase 2
             print(f"\n{'▼'*60}")
-            print("DEBUG: PHASE 2 EXTRACTED CODE (Selected function implementations)")
+            print("DEBUG: PHASE 2 EXTRACTED CODE (Complete classes + dependencies)")
             print(f"{'▼'*60}")
             print(selected_code[:1500])  # Show first 1500 chars
             if len(selected_code) > 1500:
                 print(f"\n... (truncated, showing first 1500 of {len(selected_code)} characters)")
             print(f"{'▲'*60}\n")
 
-            project_context = project_context_phase1 + "\n\n" + selected_code
+            # Use ONLY Phase 2 (complete classes) for project_context
+            project_context = selected_code
         else:
-            project_context = project_context_phase1
+            # If no functions selected, don't include any project context
+            project_context = ""
 
         total_tokens = len(project_context) // 4
         print(f"\n{'='*60}")
-        print(f"TOTAL CONTEXT SIZE: ~{total_tokens:,} tokens")
+        print(f"FINAL CONTEXT SIZE: ~{total_tokens:,} tokens")
+        print(f"(Phase 2 ONLY - Complete classes + dependencies)")
         print(f"{'='*60}")
 
-        # DEBUG: Show final combined context
+        # DEBUG: Show final context (Phase 2 only)
         print(f"\n{'▼'*60}")
-        print("DEBUG: FINAL COMBINED CONTEXT (Phase 1 + Phase 2, sent to TDD/Function generators)")
+        print("DEBUG: FINAL CONTEXT (Phase 2 only, sent to generators)")
         print(f"{'▼'*60}")
         print(f"Total length: {len(project_context)} characters (~{total_tokens:,} tokens)")
-        print(f"\nFirst 1000 characters:")
-        print(project_context[:1000])
-        if len(project_context) > 1000:
-            print(f"\n... (truncated for readability)")
-            print(f"\nLast 500 characters:")
-            print(project_context[-500:])
+        if project_context:
+            print(f"\nFirst 1000 characters:")
+            print(project_context[:1000])
+            if len(project_context) > 1000:
+                print(f"\n... (truncated for readability)")
+                print(f"\nLast 500 characters:")
+                print(project_context[-500:])
+        else:
+            print("(No project context - generating from scratch)")
         print(f"{'▲'*60}\n")
 
         print(f"Proceeding with code generation...\n")
+
+    print(f"{'->' * 50}")
+    print(project_context)
+    print(f"{'->' * 50}")
 
     function_code = None
     tools_code = None

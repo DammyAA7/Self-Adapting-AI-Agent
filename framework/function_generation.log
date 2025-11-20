@@ -2859,3 +2859,2079 @@ Description: Returns a list of dictionaries for products in the given Warehouse 
 2025-11-20 22:00:33,114 - INFO - TDD Adjudication Attempts: 1
 2025-11-20 22:00:33,114 - INFO - Final Adjudication Attempts: 1
 2025-11-20 22:00:33,114 - INFO - Requirement Reinforcements: 0
+2025-11-20 23:42:54,824 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-20 23:42:57,485 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-20 23:42:57,486 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-20 23:42:57,487 - INFO - Response Content: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, identifies all products that are currently below their reorder point. For each such product, retrieves the SKU, name...
+2025-11-20 23:42:57,487 - INFO - Initiating function generation process...
+2025-11-20 23:42:57,493 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-20 23:42:57,494 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-20 23:42:57,494 - INFO - Function Requirement: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, identifies all products that are currently below their reorder point. For each such product, retrieves the SKU, name, current stock quantity, reorder point, and calculates the stock deficit (reorder_point - current_stock). Returns a list of dictionaries with this information.
+Parameters:
+- warehouse: Warehouse object for which to check stock levels
+Example: inventory_low_stock_alert(warehouse)
+Composition: This function builds upon warehouse.get_all_products() and warehouse.get_current_stock(product.sku) to fetch inventory data, and then performs stock level analysis per product. It returns a list of dicts, each with keys: sku, name, current_stock, reorder_point, deficit.
+2025-11-20 23:43:12,844 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-20 23:43:16,324 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-20 23:43:17,552 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:10:27,209 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:10:30,280 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:10:30,281 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 00:10:30,281 - INFO - Response Content: Function Name: inventory_low_stock_alert  
+Description: For a given Warehouse object, checks all products in the warehouse and returns a list of those for which current stock is below the product's re...
+2025-11-21 00:10:30,281 - INFO - Initiating function generation process...
+2025-11-21 00:10:30,304 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 00:10:30,304 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 00:10:30,304 - INFO - Function Requirement: Function Name: inventory_low_stock_alert  
+Description: For a given Warehouse object, checks all products in the warehouse and returns a list of those for which current stock is below the product's reorder_point. Each low stock entry includes: sku, name, current_stock, reorder_point, and deficit (calculated as reorder_point minus current_stock).  
+Parameters:
+- warehouse: Warehouse object (must provide get_all_products() and get_current_stock(sku) methods)
+Example:
+inventory_low_stock_alert(warehouse)
+# Returns:
+# [
+#   {
+#     "sku": "ABC123",
+#     "name": "Widget",
+#     "current_stock": 5,
+#     "reorder_point": 10,
+#     "deficit": 5
+#   },
+#   ...
+# ]
+Composition: This function would use warehouse.get_all_products() to retrieve the list of Product objects, then for each product, call warehouse.get_current_stock(product.sku), and compare this to product.reorder_point.
+If the current stock is less than the reorder point, it adds a dictionary (sku, name, current_stock, reorder_point, deficit) to the result list.
+No actual file operations are specified; all operations are assumed to interact with in-memory objects or methods. If needed, file access should use actual file paths from the project context.
+2025-11-21 00:28:33,292 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:28:36,154 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:28:36,155 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 00:28:36,155 - INFO - Response Content: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, checks all products and identifies those whose current stock is below their reorder point. Returns a list of diction...
+2025-11-21 00:28:36,155 - INFO - Initiating function generation process...
+2025-11-21 00:28:36,158 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 00:28:36,158 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 00:28:36,158 - INFO - Function Requirement: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, checks all products and identifies those whose current stock is below their reorder point. Returns a list of dictionaries, each containing the product's SKU, name, current stock, reorder point, and the deficit (the difference between reorder point and current stock).
+Parameters:
+- warehouse: Warehouse object from which to retrieve products and stock levels.
+Example: inventory_low_stock_alert(warehouse)
+Composition: Builds upon Warehouse.get_all_products and Warehouse.get_current_stock methods, and accesses each Product's sku, name, and reorder_point. Iterates through all products, compares current stock to reorder point, and computes the deficit; collects relevant details for products with low stock.
+
+2025-11-21 00:28:49,235 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:28:53,527 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:28:54,958 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:28:59,047 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:29:00,888 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:29:00,888 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 00:29:00,888 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:29:00,889 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:29:00,889 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:29:00,889 - INFO - Iteration: 1
+2025-11-21 00:29:00,889 - INFO - Previous Requirement: 
+2025-11-21 00:29:00,889 - INFO - New Requirement: 
+2025-11-21 00:29:02,424 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:29:02,425 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 00:29:02,425 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:29:02,425 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:29:02,425 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:29:02,425 - INFO - Iteration: 2
+2025-11-21 00:29:02,425 - INFO - Previous Requirement: 
+2025-11-21 00:29:02,425 - INFO - New Requirement: 
+2025-11-21 00:29:03,954 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:29:03,955 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 00:29:03,955 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:29:03,955 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:29:03,955 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:29:03,955 - INFO - Iteration: 3
+2025-11-21 00:29:03,955 - INFO - Previous Requirement: 
+2025-11-21 00:29:03,955 - INFO - New Requirement: 
+2025-11-21 00:29:05,590 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:29:05,591 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 00:29:05,591 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:29:05,591 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:29:05,591 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:29:05,591 - INFO - Iteration: 4
+2025-11-21 00:29:05,591 - INFO - Previous Requirement: 
+2025-11-21 00:29:05,591 - INFO - New Requirement: 
+2025-11-21 00:29:34,024 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:29:37,298 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:29:37,298 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 00:29:37,298 - INFO - Response Content: Function Name: inventory_low_stock_alert
+Description: Returns a list of products in a Warehouse with stock below the reorder point. For each product in the warehouse, retrieves the current stock using...
+2025-11-21 00:29:37,298 - INFO - Initiating function generation process...
+2025-11-21 00:29:37,301 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 00:29:37,301 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 00:29:37,301 - INFO - Function Requirement: Function Name: inventory_low_stock_alert
+Description: Returns a list of products in a Warehouse with stock below the reorder point. For each product in the warehouse, retrieves the current stock using warehouse.get_current_stock(product.sku). If this value is below product.reorder_point, the product is included in the output with details including sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock).
+Parameters:
+- warehouse: Warehouse object — The warehouse from which to evaluate product stock.
+Example: inventory_low_stock_alert(warehouse)
+Composition: Builds upon Warehouse.get_all_products() and Warehouse.get_current_stock().
+Location: As implied by the project structure, this logic would likely reside in warehouse.py.
+
+Sample implementation:
+def inventory_low_stock_alert(warehouse):
+    result = []
+    for product in warehouse.get_all_products():
+        current_stock = warehouse.get_current_stock(product.sku)
+        if current_stock < product.reorder_point:
+            deficit = product.reorder_point - current_stock
+            result.append({
+                "sku": product.sku,
+                "name": product.name,
+                "current_stock": current_stock,
+                "reorder_point": product.reorder_point,
+                "deficit": deficit
+            })
+    return result
+2025-11-21 00:29:50,192 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:29:55,408 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:29:56,440 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:30:00,012 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:30:01,854 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:30:01,855 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 00:30:01,855 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:30:01,855 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:30:01,855 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:30:01,855 - INFO - Iteration: 1
+2025-11-21 00:30:01,855 - INFO - Previous Requirement: 
+2025-11-21 00:30:01,855 - INFO - New Requirement: 
+2025-11-21 00:30:03,696 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:30:03,696 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 00:30:03,696 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:30:03,696 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:30:03,697 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:30:03,697 - INFO - Iteration: 2
+2025-11-21 00:30:03,697 - INFO - Previous Requirement: 
+2025-11-21 00:30:03,697 - INFO - New Requirement: 
+2025-11-21 00:30:05,333 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:30:05,334 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 00:30:05,334 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:30:05,334 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:30:05,334 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:30:05,334 - INFO - Iteration: 3
+2025-11-21 00:30:05,334 - INFO - Previous Requirement: 
+2025-11-21 00:30:05,334 - INFO - New Requirement: 
+2025-11-21 00:30:06,971 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:30:06,971 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 00:30:06,971 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:30:06,971 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:30:06,971 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:30:06,971 - INFO - Iteration: 4
+2025-11-21 00:30:06,971 - INFO - Previous Requirement: 
+2025-11-21 00:30:06,971 - INFO - New Requirement: 
+2025-11-21 00:30:08,786 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:30:08,787 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-11-21 00:30:08,787 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:30:08,787 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:30:08,787 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:30:08,787 - INFO - Iteration: 5
+2025-11-21 00:30:08,787 - INFO - Previous Requirement: 
+2025-11-21 00:30:08,787 - INFO - New Requirement: 
+2025-11-21 00:30:10,417 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:30:10,417 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-11-21 00:30:10,417 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:30:10,417 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:30:10,417 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:30:10,417 - INFO - Iteration: 6
+2025-11-21 00:30:10,417 - INFO - Previous Requirement: 
+2025-11-21 00:30:10,417 - INFO - New Requirement: 
+2025-11-21 00:30:10,418 - WARNING - === MAX ITERATIONS REACHED ===
+2025-11-21 00:30:10,418 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-11-21 00:30:10,418 - WARNING - Total Duration: 33.12 seconds
+2025-11-21 00:30:10,418 - WARNING - Final Iteration Count: 0
+2025-11-21 00:30:10,423 - INFO - === SESSION SUMMARY ===
+2025-11-21 00:30:10,423 - INFO - Session Duration: 42.38 seconds
+2025-11-21 00:30:10,423 - INFO - Functions Attempted: 1
+2025-11-21 00:30:10,423 - INFO - Successful Functions: 0
+2025-11-21 00:30:10,423 - INFO - Terminated Early: 1
+2025-11-21 00:30:10,423 - INFO - Total Iterations: 0
+2025-11-21 00:30:10,423 - INFO - Average Iterations per Function: 0.00
+2025-11-21 00:30:10,423 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 00:30:10,423 - INFO - TDD Adjudication Attempts: 6
+2025-11-21 00:30:10,423 - INFO - Final Adjudication Attempts: 0
+2025-11-21 00:30:10,423 - INFO - Requirement Reinforcements: 6
+2025-11-21 00:43:54,852 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:43:57,720 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:43:57,720 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 00:43:57,720 - INFO - Response Content: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, this function iterates over all products retrieved using warehouse.get_all_products(). It checks the current stock f...
+2025-11-21 00:43:57,720 - INFO - Initiating function generation process...
+2025-11-21 00:43:57,722 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 00:43:57,722 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 00:43:57,722 - INFO - Function Requirement: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, this function iterates over all products retrieved using warehouse.get_all_products(). It checks the current stock for each product using warehouse.get_current_stock(product.sku). If the current stock is below the product's reorder_point, it appends a dictionary to the result list containing the sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). The function returns the complete list of low-stock products and their associated deficit data.
+Parameters:
+- warehouse: A Warehouse object that manages products and stock levels.
+Example:
+inventory_low_stock_alert(warehouse_instance)
+# Returns: [{'sku': 'SKU123', 'name': 'Widget', 'current_stock': 7, 'reorder_point': 10, 'deficit': 3}, ...]
+Composition: Builds upon the existing methods Warehouse.get_all_products() and Warehouse.get_current_stock(product.sku) (see warehouse.py). Uses actual Product fields (sku, name, reorder_point) as described in product.py and Warehouse logic from warehouse.py.
+2025-11-21 00:44:10,834 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:44:13,702 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:44:14,726 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:44:18,824 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:44:20,873 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:44:20,873 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 00:44:20,873 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:44:20,873 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:44:20,873 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:44:20,873 - INFO - Iteration: 1
+2025-11-21 00:44:20,873 - INFO - Previous Requirement: 
+2025-11-21 00:44:20,873 - INFO - New Requirement: 
+2025-11-21 00:44:22,425 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:44:22,426 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 00:44:22,426 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:44:22,426 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:44:22,426 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:44:22,426 - INFO - Iteration: 2
+2025-11-21 00:44:22,426 - INFO - Previous Requirement: 
+2025-11-21 00:44:22,426 - INFO - New Requirement: 
+2025-11-21 00:44:24,151 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:44:24,151 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 00:44:24,151 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:44:24,151 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:44:24,151 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:44:24,151 - INFO - Iteration: 3
+2025-11-21 00:44:24,151 - INFO - Previous Requirement: 
+2025-11-21 00:44:24,151 - INFO - New Requirement: 
+2025-11-21 00:44:27,019 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:44:27,019 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 00:44:27,019 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:44:27,019 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:44:27,019 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:44:27,019 - INFO - Iteration: 4
+2025-11-21 00:44:27,019 - INFO - Previous Requirement: 
+2025-11-21 00:44:27,020 - INFO - New Requirement: 
+2025-11-21 00:44:28,556 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:44:28,556 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-11-21 00:44:28,556 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:44:28,556 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:44:28,556 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:44:28,556 - INFO - Iteration: 5
+2025-11-21 00:44:28,556 - INFO - Previous Requirement: 
+2025-11-21 00:44:28,556 - INFO - New Requirement: 
+2025-11-21 00:44:30,297 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:44:30,298 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-11-21 00:44:30,298 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:44:30,298 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:44:30,298 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:44:30,298 - INFO - Iteration: 6
+2025-11-21 00:44:30,298 - INFO - Previous Requirement: 
+2025-11-21 00:44:30,298 - INFO - New Requirement: 
+2025-11-21 00:44:30,298 - WARNING - === MAX ITERATIONS REACHED ===
+2025-11-21 00:44:30,298 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-11-21 00:44:30,298 - WARNING - Total Duration: 32.58 seconds
+2025-11-21 00:44:30,298 - WARNING - Final Iteration Count: 0
+2025-11-21 00:44:30,305 - INFO - === SESSION SUMMARY ===
+2025-11-21 00:44:30,305 - INFO - Session Duration: 38.41 seconds
+2025-11-21 00:44:30,305 - INFO - Functions Attempted: 1
+2025-11-21 00:44:30,305 - INFO - Successful Functions: 0
+2025-11-21 00:44:30,305 - INFO - Terminated Early: 1
+2025-11-21 00:44:30,305 - INFO - Total Iterations: 0
+2025-11-21 00:44:30,305 - INFO - Average Iterations per Function: 0.00
+2025-11-21 00:44:30,305 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 00:44:30,305 - INFO - TDD Adjudication Attempts: 6
+2025-11-21 00:44:30,305 - INFO - Final Adjudication Attempts: 0
+2025-11-21 00:44:30,305 - INFO - Requirement Reinforcements: 6
+2025-11-21 00:57:35,661 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:57:38,534 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:57:38,535 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 00:57:38,556 - INFO - Response Content: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, checks all products using warehouse.get_all_products() and retrieves the current stock of each using warehouse.get_c...
+2025-11-21 00:57:38,556 - INFO - Initiating function generation process...
+2025-11-21 00:57:38,558 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 00:57:38,558 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 00:57:38,559 - INFO - Function Requirement: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, checks all products using warehouse.get_all_products() and retrieves the current stock of each using warehouse.get_current_stock(product.sku). If the current stock is below the product's reorder_point, the product is added to a result list as a dictionary containing sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Returns this list of low stock alerts.
+Parameters:
+- warehouse: Warehouse object from which to check inventory and product details.
+Example:
+alerts = inventory_low_stock_alert(warehouse)
+# Sample element in alerts:
+# {
+#     "sku": "ABC123",
+#     "name": "Widget Deluxe",
+#     "current_stock": 5,
+#     "reorder_point": 10,
+#     "deficit": 5
+# }
+Composition: Builds upon Warehouse.get_all_products() and Warehouse.get_current_stock(). Iterates over all Product objects associated with the Warehouse.
+
+2025-11-21 00:57:50,413 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:57:54,304 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:57:55,541 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:57:59,015 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:58:00,551 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:58:00,551 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 00:58:00,551 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:58:00,551 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:58:00,551 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:58:00,551 - INFO - Iteration: 1
+2025-11-21 00:58:00,551 - INFO - Previous Requirement: 
+2025-11-21 00:58:00,552 - INFO - New Requirement: 
+2025-11-21 00:58:02,087 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:58:02,087 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 00:58:02,087 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:58:02,088 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:58:02,088 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:58:02,088 - INFO - Iteration: 2
+2025-11-21 00:58:02,088 - INFO - Previous Requirement: 
+2025-11-21 00:58:02,088 - INFO - New Requirement: 
+2025-11-21 00:58:03,521 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:58:03,521 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 00:58:03,521 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:58:03,521 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:58:03,521 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:58:03,521 - INFO - Iteration: 3
+2025-11-21 00:58:03,521 - INFO - Previous Requirement: 
+2025-11-21 00:58:03,521 - INFO - New Requirement: 
+2025-11-21 00:58:05,159 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:58:05,160 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 00:58:05,160 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:58:05,160 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:58:05,160 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:58:05,160 - INFO - Iteration: 4
+2025-11-21 00:58:05,160 - INFO - Previous Requirement: 
+2025-11-21 00:58:05,160 - INFO - New Requirement: 
+2025-11-21 00:58:06,797 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:58:06,798 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-11-21 00:58:06,798 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:58:06,798 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:58:06,798 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:58:06,798 - INFO - Iteration: 5
+2025-11-21 00:58:06,798 - INFO - Previous Requirement: 
+2025-11-21 00:58:06,798 - INFO - New Requirement: 
+2025-11-21 00:58:09,255 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 00:58:09,256 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-11-21 00:58:09,256 - INFO - TDD Adjudication Passed: False
+2025-11-21 00:58:09,256 - INFO - TDD Requirement Suggestion: 
+2025-11-21 00:58:09,256 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 00:58:09,256 - INFO - Iteration: 6
+2025-11-21 00:58:09,256 - INFO - Previous Requirement: 
+2025-11-21 00:58:09,256 - INFO - New Requirement: 
+2025-11-21 00:58:09,256 - WARNING - === MAX ITERATIONS REACHED ===
+2025-11-21 00:58:09,256 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-11-21 00:58:09,256 - WARNING - Total Duration: 30.70 seconds
+2025-11-21 00:58:09,256 - WARNING - Final Iteration Count: 0
+2025-11-21 00:58:09,262 - INFO - === SESSION SUMMARY ===
+2025-11-21 00:58:09,262 - INFO - Session Duration: 36.72 seconds
+2025-11-21 00:58:09,262 - INFO - Functions Attempted: 1
+2025-11-21 00:58:09,263 - INFO - Successful Functions: 0
+2025-11-21 00:58:09,263 - INFO - Terminated Early: 1
+2025-11-21 00:58:09,263 - INFO - Total Iterations: 0
+2025-11-21 00:58:09,263 - INFO - Average Iterations per Function: 0.00
+2025-11-21 00:58:09,263 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 00:58:09,263 - INFO - TDD Adjudication Attempts: 6
+2025-11-21 00:58:09,263 - INFO - Final Adjudication Attempts: 0
+2025-11-21 00:58:09,263 - INFO - Requirement Reinforcements: 6
+2025-11-21 01:01:54,646 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:01:58,127 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:01:58,128 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:01:58,128 - INFO - Response Content: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, this function iterates through all products using warehouse.get_all_products(). For each product, it checks the curr...
+2025-11-21 01:01:58,128 - INFO - Initiating function generation process...
+2025-11-21 01:01:58,152 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:01:58,152 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 01:01:58,152 - INFO - Function Requirement: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, this function iterates through all products using warehouse.get_all_products(). For each product, it checks the current stock level with warehouse.get_current_stock(product.sku). If the current stock is below the product's reorder_point, it appends a dictionary with the following keys to a result list: sku, name, current_stock, reorder_point, and deficit (which is reorder_point minus current_stock). The function returns the compiled list of all products that are understocked.
+Parameters:
+- warehouse: Warehouse object – The warehouse instance to analyze.
+Example:
+inventory_low_stock_alert(warehouse)
+# Returns (for example):
+# [
+#   {"sku": "ABC123", "name": "Widget", "current_stock": 4, "reorder_point": 10, "deficit": 6},
+#   {"sku": "XYZ789", "name": "Gadget", "current_stock": 2, "reorder_point": 5, "deficit": 3}
+# ]
+Composition: Builds upon Warehouse.get_all_products() and Warehouse.get_current_stock(product.sku), and directly accesses product fields (sku, name, reorder_point) as well as basic Python list and dict operations.
+2025-11-21 01:02:11,437 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:02:14,917 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:02:16,145 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:02:19,831 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:02:21,470 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:02:21,470 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:02:21,470 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:02:21,470 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:02:21,470 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:02:21,470 - INFO - Iteration: 1
+2025-11-21 01:02:21,470 - INFO - Previous Requirement: 
+2025-11-21 01:02:21,470 - INFO - New Requirement: 
+2025-11-21 01:02:23,107 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:02:23,108 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 01:02:23,108 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:02:23,108 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:02:23,108 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:02:23,108 - INFO - Iteration: 2
+2025-11-21 01:02:23,108 - INFO - Previous Requirement: 
+2025-11-21 01:02:23,108 - INFO - New Requirement: 
+2025-11-21 01:02:24,438 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:02:24,439 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 01:02:24,439 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:02:24,439 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:02:24,439 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:02:24,439 - INFO - Iteration: 3
+2025-11-21 01:02:24,439 - INFO - Previous Requirement: 
+2025-11-21 01:02:24,439 - INFO - New Requirement: 
+2025-11-21 01:02:25,974 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:02:25,974 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 01:02:25,975 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:02:25,975 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:02:25,975 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:02:25,975 - INFO - Iteration: 4
+2025-11-21 01:02:25,975 - INFO - Previous Requirement: 
+2025-11-21 01:02:25,975 - INFO - New Requirement: 
+2025-11-21 01:02:27,407 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:02:27,408 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-11-21 01:02:27,408 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:02:27,408 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:02:27,408 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:02:27,408 - INFO - Iteration: 5
+2025-11-21 01:02:27,408 - INFO - Previous Requirement: 
+2025-11-21 01:02:27,408 - INFO - New Requirement: 
+2025-11-21 01:02:28,638 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:02:28,639 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-11-21 01:02:28,639 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:02:28,639 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:02:28,639 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:02:28,639 - INFO - Iteration: 6
+2025-11-21 01:02:28,639 - INFO - Previous Requirement: 
+2025-11-21 01:02:28,639 - INFO - New Requirement: 
+2025-11-21 01:02:28,639 - WARNING - === MAX ITERATIONS REACHED ===
+2025-11-21 01:02:28,639 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-11-21 01:02:28,639 - WARNING - Total Duration: 30.49 seconds
+2025-11-21 01:02:28,639 - WARNING - Final Iteration Count: 0
+2025-11-21 01:02:28,643 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:02:28,643 - INFO - Session Duration: 37.53 seconds
+2025-11-21 01:02:28,643 - INFO - Functions Attempted: 1
+2025-11-21 01:02:28,643 - INFO - Successful Functions: 0
+2025-11-21 01:02:28,643 - INFO - Terminated Early: 1
+2025-11-21 01:02:28,643 - INFO - Total Iterations: 0
+2025-11-21 01:02:28,643 - INFO - Average Iterations per Function: 0.00
+2025-11-21 01:02:28,643 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 01:02:28,643 - INFO - TDD Adjudication Attempts: 6
+2025-11-21 01:02:28,643 - INFO - Final Adjudication Attempts: 0
+2025-11-21 01:02:28,644 - INFO - Requirement Reinforcements: 6
+2025-11-21 01:11:52,833 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:11:55,701 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:11:55,701 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:11:55,701 - INFO - Response Content: Function Name: inventory_low_stock_alert
+Description: Returns a list of products in the warehouse whose current stock is below their reorder point. For each such product, include a dictionary with the...
+2025-11-21 01:11:55,701 - INFO - Initiating function generation process...
+2025-11-21 01:11:55,739 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:11:55,739 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 01:11:55,739 - INFO - Function Requirement: Function Name: inventory_low_stock_alert
+Description: Returns a list of products in the warehouse whose current stock is below their reorder point. For each such product, include a dictionary with the fields: sku, name, current_stock, reorder_point, and deficit (reorder_point - current_stock).
+Parameters:
+- warehouse: Warehouse object instance to analyze for low stock.
+Example: 
+  inventory_low_stock_alert(warehouse)
+  # Returns: [{"sku": "A23", "name": "Widget", "current_stock": 3, "reorder_point": 10, "deficit": 7}, ...]
+Composition: 
+- Uses Warehouse.get_all_products() to iterate over all products.
+- For each product, uses Warehouse.get_current_stock(product.sku) to get current stock.
+- If current stock < product.reorder_point, adds a dictionary to the result as specified.
+2025-11-21 01:12:10,240 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:15,154 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:16,178 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:20,069 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:21,707 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:21,708 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:12:21,708 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:12:21,708 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:12:21,708 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:12:21,708 - INFO - Iteration: 1
+2025-11-21 01:12:21,708 - INFO - Previous Requirement: 
+2025-11-21 01:12:21,708 - INFO - New Requirement: 
+2025-11-21 01:12:23,141 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:23,142 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 01:12:23,142 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:12:23,142 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:12:23,142 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:12:23,142 - INFO - Iteration: 2
+2025-11-21 01:12:23,142 - INFO - Previous Requirement: 
+2025-11-21 01:12:23,142 - INFO - New Requirement: 
+2025-11-21 01:12:24,369 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:24,370 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 01:12:24,370 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:12:24,370 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:12:24,370 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:12:24,370 - INFO - Iteration: 3
+2025-11-21 01:12:24,370 - INFO - Previous Requirement: 
+2025-11-21 01:12:24,370 - INFO - New Requirement: 
+2025-11-21 01:12:29,285 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:32,357 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:32,357 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:12:32,394 - INFO - Response Content: Function Name: inventory_low_stock_alert  
+Description: Returns a list of products in a given Warehouse whose current stock is below their reorder point. For each such product, includes SKU, name, cur...
+2025-11-21 01:12:32,394 - INFO - Initiating function generation process...
+2025-11-21 01:12:32,398 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:12:32,399 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 01:12:32,399 - INFO - Function Requirement: Function Name: inventory_low_stock_alert  
+Description: Returns a list of products in a given Warehouse whose current stock is below their reorder point. For each such product, includes SKU, name, current stock, the reorder point, and the deficit (reorder point minus current stock) in the result.  
+Parameters: 
+- warehouse: Warehouse object to check for low stock products
+Returns: 
+- List of dictionaries, each with keys: sku, name, current_stock, reorder_point, deficit
+Example:  
+inventory_low_stock_alert(warehouse)  
+# Might return:  
+# [
+#   {"sku": "X1", "name": "Widget", "current_stock": 4, "reorder_point": 10, "deficit": 6},
+#   ...
+# ]
+Composition: Uses warehouse.get_all_products() and warehouse.get_current_stock(product.sku) (from /absolute/path/to/warehouse.py, replace with project's actual absolute path in implementation).
+2025-11-21 01:12:45,465 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:49,355 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:50,481 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:55,089 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:56,318 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:56,318 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:12:56,319 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:12:56,319 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:12:56,319 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:12:56,319 - INFO - Iteration: 1
+2025-11-21 01:12:56,319 - INFO - Previous Requirement: 
+2025-11-21 01:12:56,319 - INFO - New Requirement: 
+2025-11-21 01:12:57,752 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:57,752 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 01:12:57,752 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:12:57,752 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:12:57,752 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:12:57,752 - INFO - Iteration: 2
+2025-11-21 01:12:57,752 - INFO - Previous Requirement: 
+2025-11-21 01:12:57,752 - INFO - New Requirement: 
+2025-11-21 01:12:59,390 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:12:59,390 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 01:12:59,390 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:12:59,390 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:12:59,390 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:12:59,390 - INFO - Iteration: 3
+2025-11-21 01:12:59,390 - INFO - Previous Requirement: 
+2025-11-21 01:12:59,390 - INFO - New Requirement: 
+2025-11-21 01:13:01,028 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:13:01,029 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 01:13:01,029 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:13:01,029 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:13:01,029 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:13:01,029 - INFO - Iteration: 4
+2025-11-21 01:13:01,029 - INFO - Previous Requirement: 
+2025-11-21 01:13:01,029 - INFO - New Requirement: 
+2025-11-21 01:13:02,425 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:13:02,425 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-11-21 01:13:02,425 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:13:02,425 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:13:02,425 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:13:02,425 - INFO - Iteration: 5
+2025-11-21 01:13:02,425 - INFO - Previous Requirement: 
+2025-11-21 01:13:02,425 - INFO - New Requirement: 
+2025-11-21 01:13:03,690 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:13:03,691 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-11-21 01:13:03,691 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:13:03,691 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:13:03,691 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:13:03,691 - INFO - Iteration: 6
+2025-11-21 01:13:03,691 - INFO - Previous Requirement: 
+2025-11-21 01:13:03,691 - INFO - New Requirement: 
+2025-11-21 01:13:03,691 - WARNING - === MAX ITERATIONS REACHED ===
+2025-11-21 01:13:03,691 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-11-21 01:13:03,691 - WARNING - Total Duration: 31.29 seconds
+2025-11-21 01:13:03,691 - WARNING - Final Iteration Count: 0
+2025-11-21 01:13:03,694 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:13:03,694 - INFO - Session Duration: 37.37 seconds
+2025-11-21 01:13:03,694 - INFO - Functions Attempted: 1
+2025-11-21 01:13:03,694 - INFO - Successful Functions: 0
+2025-11-21 01:13:03,694 - INFO - Terminated Early: 1
+2025-11-21 01:13:03,694 - INFO - Total Iterations: 0
+2025-11-21 01:13:03,694 - INFO - Average Iterations per Function: 0.00
+2025-11-21 01:13:03,694 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 01:13:03,694 - INFO - TDD Adjudication Attempts: 6
+2025-11-21 01:13:03,694 - INFO - Final Adjudication Attempts: 0
+2025-11-21 01:13:03,694 - INFO - Requirement Reinforcements: 6
+2025-11-21 01:14:49,154 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:14:52,026 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:14:52,027 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:14:52,027 - INFO - Response Content: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, checks all products and identifies those where current stock is below the product's reorder point. For each such pro...
+2025-11-21 01:14:52,027 - INFO - Initiating function generation process...
+2025-11-21 01:14:52,029 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:14:52,029 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 01:14:52,029 - INFO - Function Requirement: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, checks all products and identifies those where current stock is below the product's reorder point. For each such product, adds a dictionary containing the product's sku, name, current_stock, reorder_point, and deficit (how much stock is needed to reach the reorder point) to the result list. Returns this list of low-stock product alerts.
+Parameters:
+- warehouse: A Warehouse object whose inventory should be checked for low-stock situations
+Example:
+inventory_low_stock_alert(warehouse)
+# Returns something like:
+# [
+#   {'sku': 'A123', 'name': 'Widget', 'current_stock': 4, 'reorder_point': 10, 'deficit': 6},
+#   {'sku': 'B567', 'name': 'Gadget', 'current_stock': 3, 'reorder_point': 5, 'deficit': 2},
+# ]
+
+Composition: Builds upon the Warehouse.get_all_products and Warehouse.get_current_stock methods and uses the Product attributes (sku, name, reorder_point).
+2025-11-21 01:15:05,134 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:15:09,229 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:15:10,424 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:15:15,168 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:15:16,442 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:15:16,442 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:15:16,442 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:15:16,442 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:15:16,443 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:15:16,443 - INFO - Iteration: 1
+2025-11-21 01:15:16,443 - INFO - Previous Requirement: 
+2025-11-21 01:15:16,443 - INFO - New Requirement: 
+2025-11-21 01:15:17,830 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:15:17,831 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 01:15:17,831 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:15:17,831 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:15:17,831 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:15:17,831 - INFO - Iteration: 2
+2025-11-21 01:15:17,831 - INFO - Previous Requirement: 
+2025-11-21 01:15:17,831 - INFO - New Requirement: 
+2025-11-21 01:15:19,059 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:15:19,060 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 01:15:19,060 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:15:19,060 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:15:19,060 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:15:19,060 - INFO - Iteration: 3
+2025-11-21 01:15:19,060 - INFO - Previous Requirement: 
+2025-11-21 01:15:19,060 - INFO - New Requirement: 
+2025-11-21 01:15:20,288 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:15:20,288 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 01:15:20,288 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:15:20,288 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:15:20,289 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:15:20,289 - INFO - Iteration: 4
+2025-11-21 01:15:20,289 - INFO - Previous Requirement: 
+2025-11-21 01:15:20,289 - INFO - New Requirement: 
+2025-11-21 01:15:21,517 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:15:21,517 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-11-21 01:15:21,517 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:15:21,517 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:15:21,517 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:15:21,517 - INFO - Iteration: 5
+2025-11-21 01:15:21,517 - INFO - Previous Requirement: 
+2025-11-21 01:15:21,517 - INFO - New Requirement: 
+2025-11-21 01:15:22,745 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:15:22,746 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-11-21 01:15:22,746 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:15:22,746 - INFO - TDD Requirement Suggestion: 
+2025-11-21 01:15:22,746 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:15:22,746 - INFO - Iteration: 6
+2025-11-21 01:15:22,746 - INFO - Previous Requirement: 
+2025-11-21 01:15:22,746 - INFO - New Requirement: 
+2025-11-21 01:15:22,746 - WARNING - === MAX ITERATIONS REACHED ===
+2025-11-21 01:15:22,746 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-11-21 01:15:22,746 - WARNING - Total Duration: 30.72 seconds
+2025-11-21 01:15:22,746 - WARNING - Final Iteration Count: 0
+2025-11-21 01:15:22,749 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:15:22,749 - INFO - Session Duration: 36.46 seconds
+2025-11-21 01:15:22,749 - INFO - Functions Attempted: 1
+2025-11-21 01:15:22,749 - INFO - Successful Functions: 0
+2025-11-21 01:15:22,749 - INFO - Terminated Early: 1
+2025-11-21 01:15:22,749 - INFO - Total Iterations: 0
+2025-11-21 01:15:22,749 - INFO - Average Iterations per Function: 0.00
+2025-11-21 01:15:22,749 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 01:15:22,749 - INFO - TDD Adjudication Attempts: 6
+2025-11-21 01:15:22,749 - INFO - Final Adjudication Attempts: 0
+2025-11-21 01:15:22,749 - INFO - Requirement Reinforcements: 6
+2025-11-21 01:22:04,753 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:07,417 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:07,418 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:22:07,418 - INFO - Response Content: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, this function iterates over all products in the warehouse, checks current stock for each product, and returns a list...
+2025-11-21 01:22:07,418 - INFO - Initiating function generation process...
+2025-11-21 01:22:07,421 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:22:07,421 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 01:22:07,421 - INFO - Function Requirement: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, this function iterates over all products in the warehouse, checks current stock for each product, and returns a list of products that are below their reorder point. For each such product, the output includes sku, name, current_stock, reorder_point, and deficit (defined as reorder_point minus current_stock).
+Parameters:
+- warehouse: Warehouse object from which to fetch products and stock levels.
+Example:
+inventory_low_stock_alert(warehouse)
+# Returns: [{'sku': 'SKU123', 'name': 'Widget', 'current_stock': 5, 'reorder_point': 10, 'deficit': 5}, ...]
+Composition: Builds upon warehouse.get_all_products() and warehouse.get_current_stock(). Uses the Product class' attributes (sku, name, reorder_point). The function requires only the in-memory Warehouse object and does not need any file path.
+2025-11-21 01:22:21,165 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:25,636 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:27,077 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:30,966 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:31,995 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:31,995 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:22:31,995 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:22:42,233 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:43,188 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:43,189 - INFO - --- ITERATION 1 ---
+2025-11-21 01:22:43,190 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:22:43,190 - INFO - Adjudication Passed: False
+2025-11-21 01:22:43,190 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:22:43,190 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:22:43,190 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:22:43,190 - INFO - Iteration: 1
+2025-11-21 01:22:43,190 - INFO - Previous Requirement: 
+2025-11-21 01:22:43,190 - INFO - New Requirement: 
+2025-11-21 01:22:43,190 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:22:43,190 - INFO - Iteration: 1
+2025-11-21 01:22:43,190 - INFO - Previous Requirement: 
+2025-11-21 01:22:43,190 - INFO - New Requirement: 
+2025-11-21 01:22:44,069 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:44,069 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 01:22:44,069 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:22:44,892 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:44,893 - INFO - --- ITERATION 2 ---
+2025-11-21 01:22:44,893 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:22:44,893 - INFO - Adjudication Passed: True
+2025-11-21 01:22:44,932 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-11-21 01:22:44,932 - INFO - Function Name: inventory_low_stock_alert
+2025-11-21 01:22:44,932 - INFO - Total Iterations: 2
+2025-11-21 01:22:44,932 - INFO - Total Duration: 37.51 seconds
+2025-11-21 01:22:44,932 - INFO - TDD Adjudication Attempts: 2
+2025-11-21 01:22:44,932 - INFO - Final Adjudication Attempts: 2
+2025-11-21 01:22:44,932 - INFO - Requirement Reinforcements: 2
+2025-11-21 01:22:47,849 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:47,849 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:22:47,849 - INFO - Response Content: The requested operation matches the purpose of identifying products in a warehouse whose current stock is below their reorder point and presenting key details for each such product, including the defi...
+2025-11-21 01:22:47,849 - INFO - Initiating function generation process...
+2025-11-21 01:22:48,734 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:48,747 - INFO - === EXISTING FUNCTION CALLED ===
+2025-11-21 01:22:48,747 - INFO - Function: inventory_low_stock_alert
+2025-11-21 01:22:48,747 - INFO - Arguments: {'warehouse': 'WH01'}
+2025-11-21 01:22:48,747 - INFO - Execution Time: 0.010343193000153406 seconds
+2025-11-21 01:22:48,747 - INFO - Memory Peak: 17817 bytes
+2025-11-21 01:22:48,747 - INFO - Success: True
+2025-11-21 01:22:50,234 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:22:50,253 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:22:50,253 - INFO - Session Duration: 49.09 seconds
+2025-11-21 01:22:50,253 - INFO - Functions Attempted: 1
+2025-11-21 01:22:50,253 - INFO - Successful Functions: 1
+2025-11-21 01:22:50,253 - INFO - Terminated Early: 0
+2025-11-21 01:22:50,253 - INFO - Total Iterations: 2
+2025-11-21 01:22:50,253 - INFO - Average Iterations per Function: 2.00
+2025-11-21 01:22:50,253 - INFO - Existing Function Calls: 1 (1 successful)
+2025-11-21 01:22:50,253 - INFO - TDD Adjudication Attempts: 2
+2025-11-21 01:22:50,253 - INFO - Final Adjudication Attempts: 2
+2025-11-21 01:22:50,253 - INFO - Requirement Reinforcements: 2
+2025-11-21 01:23:25,206 - INFO - Retrying request to /chat/completions in 0.378707 seconds
+2025-11-21 01:23:25,587 - INFO - Retrying request to /chat/completions in 0.783214 seconds
+2025-11-21 01:23:26,374 - INFO - Retrying request to /chat/completions in 0.422934 seconds
+2025-11-21 01:23:26,798 - INFO - Retrying request to /chat/completions in 0.987554 seconds
+2025-11-21 01:23:27,788 - ERROR - === UNEXPECTED ERROR ===
+2025-11-21 01:23:27,788 - ERROR - Error: Connection error.
+2025-11-21 01:23:27,788 - ERROR - Unexpected error: Connection error.
+2025-11-21 01:23:27,794 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:23:27,794 - INFO - Session Duration: 2.73 seconds
+2025-11-21 01:23:27,794 - INFO - Functions Attempted: 0
+2025-11-21 01:23:27,794 - INFO - Successful Functions: 0
+2025-11-21 01:23:27,794 - INFO - Terminated Early: 0
+2025-11-21 01:23:27,794 - INFO - Total Iterations: 0
+2025-11-21 01:23:27,794 - INFO - Average Iterations per Function: 0.00
+2025-11-21 01:23:27,794 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 01:23:27,794 - INFO - TDD Adjudication Attempts: 0
+2025-11-21 01:23:27,794 - INFO - Final Adjudication Attempts: 0
+2025-11-21 01:23:27,794 - INFO - Requirement Reinforcements: 0
+2025-11-21 01:23:38,705 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:23:41,976 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:23:41,977 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:23:41,977 - INFO - Response Content: Function Name: inventory_low_stock_alert  
+Description: For a given Warehouse object, scans all products in the warehouse and identifies those where current stock is below the product's reorder point....
+2025-11-21 01:23:41,977 - INFO - Initiating function generation process...
+2025-11-21 01:23:41,982 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:23:41,982 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 01:23:41,982 - INFO - Function Requirement: Function Name: inventory_low_stock_alert  
+Description: For a given Warehouse object, scans all products in the warehouse and identifies those where current stock is below the product's reorder point. For each such product, adds a dictionary to the results containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Returns the resulting list.
+Parameters:
+- warehouse: A Warehouse object to check for low stock products.
+
+Example:
+inventory_low_stock_alert(warehouse)  
+# Returns:  
+# [  
+#   {"sku": "SKU001", "name": "Widget A", "current_stock": 3, "reorder_point": 10, "deficit": 7},  
+#   {"sku": "SKU002", "name": "Gadget B", "current_stock": 1, "reorder_point": 5, "deficit": 4}  
+# ]
+
+Composition:  
+- Uses Warehouse.get_all_products() to list all products.
+- For each product, retrieves stock via Warehouse.get_current_stock(product.sku).
+- Compares current_stock against product.reorder_point.
+- If current_stock < product.reorder_point, appends result dictionary as described above.  
+- Returns the final list.
+
+If this function needs to be placed in a file, use the actual Warehouse class found at:
+/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/inventory_replenishment/warehouse.py
+2025-11-21 01:23:56,825 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:23:59,692 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:24:00,818 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:24:04,505 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:24:05,528 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:24:05,529 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:24:05,529 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:24:21,456 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:24:23,052 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:24:23,052 - INFO - --- ITERATION 1 ---
+2025-11-21 01:24:23,052 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:24:23,052 - INFO - Adjudication Passed: True
+2025-11-21 01:24:23,088 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-11-21 01:24:23,089 - INFO - Function Name: inventory_low_stock_alert
+2025-11-21 01:24:23,089 - INFO - Total Iterations: 1
+2025-11-21 01:24:23,089 - INFO - Total Duration: 41.11 seconds
+2025-11-21 01:24:23,089 - INFO - TDD Adjudication Attempts: 1
+2025-11-21 01:24:23,089 - INFO - Final Adjudication Attempts: 1
+2025-11-21 01:24:23,089 - INFO - Requirement Reinforcements: 0
+2025-11-21 01:24:25,094 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:24:25,094 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:24:25,094 - INFO - Response Content: The requested operation directly matches the inventory_low_stock_alert function, which already exists in your available tools.
+
+Therefore, there is no need to create a new function. You can use invent...
+2025-11-21 01:24:25,094 - INFO - Initiating function generation process...
+2025-11-21 01:24:26,015 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:24:26,041 - INFO - === EXISTING FUNCTION CALLED ===
+2025-11-21 01:24:26,041 - INFO - Function: inventory_low_stock_alert
+2025-11-21 01:24:26,041 - INFO - Arguments: {}
+2025-11-21 01:24:26,041 - INFO - Execution Time: 0.00020954100000381004 seconds
+2025-11-21 01:24:26,041 - INFO - Memory Peak: 7453 bytes
+2025-11-21 01:24:26,041 - INFO - Success: False
+2025-11-21 01:24:28,680 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:24:28,695 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:24:28,695 - INFO - Session Duration: 53.86 seconds
+2025-11-21 01:24:28,695 - INFO - Functions Attempted: 1
+2025-11-21 01:24:28,695 - INFO - Successful Functions: 1
+2025-11-21 01:24:28,695 - INFO - Terminated Early: 0
+2025-11-21 01:24:28,695 - INFO - Total Iterations: 1
+2025-11-21 01:24:28,695 - INFO - Average Iterations per Function: 1.00
+2025-11-21 01:24:28,695 - INFO - Existing Function Calls: 1 (0 successful)
+2025-11-21 01:24:28,695 - INFO - TDD Adjudication Attempts: 1
+2025-11-21 01:24:28,695 - INFO - Final Adjudication Attempts: 1
+2025-11-21 01:24:28,695 - INFO - Requirement Reinforcements: 0
+2025-11-21 01:30:54,334 - INFO - Running test for: Inventory Low Stock Alert (ID 4)
+2025-11-21 01:30:54,334 - INFO - Successfully imported functions from functions.py
+2025-11-21 01:30:54,334 - INFO - All assertions passed for Inventory Low Stock Alert
+2025-11-21 01:30:54,334 - INFO - ===== TEST PASSED ===== (Inventory Low Stock Alert)
+2025-11-21 01:31:27,896 - INFO - Retrying request to /chat/completions in 0.380946 seconds
+2025-11-21 01:31:28,279 - INFO - Retrying request to /chat/completions in 0.951751 seconds
+2025-11-21 01:31:29,235 - INFO - Retrying request to /chat/completions in 0.461682 seconds
+2025-11-21 01:31:29,698 - INFO - Retrying request to /chat/completions in 0.787233 seconds
+2025-11-21 01:31:30,487 - ERROR - === UNEXPECTED ERROR ===
+2025-11-21 01:31:30,487 - ERROR - Error: Connection error.
+2025-11-21 01:31:30,487 - ERROR - Unexpected error: Connection error.
+2025-11-21 01:31:30,493 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:31:30,494 - INFO - Session Duration: 2.71 seconds
+2025-11-21 01:31:30,494 - INFO - Functions Attempted: 0
+2025-11-21 01:31:30,494 - INFO - Successful Functions: 0
+2025-11-21 01:31:30,494 - INFO - Terminated Early: 0
+2025-11-21 01:31:30,494 - INFO - Total Iterations: 0
+2025-11-21 01:31:30,494 - INFO - Average Iterations per Function: 0.00
+2025-11-21 01:31:30,494 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 01:31:30,494 - INFO - TDD Adjudication Attempts: 0
+2025-11-21 01:31:30,494 - INFO - Final Adjudication Attempts: 0
+2025-11-21 01:31:30,494 - INFO - Requirement Reinforcements: 0
+2025-11-21 01:31:37,587 - INFO - Retrying request to /chat/completions in 0.452189 seconds
+2025-11-21 01:31:38,041 - INFO - Retrying request to /chat/completions in 0.905673 seconds
+2025-11-21 01:32:04,583 - INFO - Retrying request to /chat/completions in 0.375714 seconds
+2025-11-21 01:32:04,961 - INFO - Retrying request to /chat/completions in 0.795769 seconds
+2025-11-21 01:32:05,760 - INFO - Retrying request to /chat/completions in 0.444281 seconds
+2025-11-21 01:32:06,206 - INFO - Retrying request to /chat/completions in 0.921785 seconds
+2025-11-21 01:33:10,698 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:33:12,746 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:33:12,746 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:33:12,746 - INFO - Response Content: Function Name: salary_analyzer
+Description: Calculates the average salary from employee data, returning a float representing the average salary value.
+Parameters:
+- None (the function internally retri...
+2025-11-21 01:33:12,747 - INFO - Initiating function generation process...
+2025-11-21 01:33:12,750 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:33:12,750 - INFO - User Input: Create a function called salary_analyzer that calculates average salary from employee data. Returns: float representing the average salary value.
+2025-11-21 01:33:12,750 - INFO - Function Requirement: Function Name: salary_analyzer
+Description: Calculates the average salary from employee data, returning a float representing the average salary value.
+Parameters:
+- None (the function internally retrieves all employee records from the EmployeeDB as per the project's structure)
+Example: salary_analyzer() → 52450.0
+Composition: Utilizes EmployeeDB.get_all_employees() to retrieve employee data and SalaryAnalyzer.calculate_average_salary() to compute the average salary. Both should use the actual file paths:
+/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/salary_analyzer/employee_db.py
+/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/salary_analyzer/salary_analyzer_class.py
+2025-11-21 01:33:21,963 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:33:24,831 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:33:25,751 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:33:28,721 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:33:29,745 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:33:29,745 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:33:29,745 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:33:36,504 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:33:37,432 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:33:37,432 - INFO - --- ITERATION 1 ---
+2025-11-21 01:33:37,432 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:33:37,433 - INFO - Adjudication Passed: True
+2025-11-21 01:33:37,479 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-11-21 01:33:37,479 - INFO - Function Name: salary_analyzer
+2025-11-21 01:33:37,480 - INFO - Total Iterations: 1
+2025-11-21 01:33:37,480 - INFO - Total Duration: 24.73 seconds
+2025-11-21 01:33:37,480 - INFO - TDD Adjudication Attempts: 1
+2025-11-21 01:33:37,480 - INFO - Final Adjudication Attempts: 1
+2025-11-21 01:33:37,480 - INFO - Requirement Reinforcements: 0
+2025-11-21 01:33:38,961 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:33:38,961 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:33:38,961 - INFO - Response Content: The requested function salary_analyzer already exists in your available tools, and it is implemented using the SalaryAnalyzer and EmployeeDB classes from the analyzed project context. This function ca...
+2025-11-21 01:33:38,961 - INFO - Initiating function generation process...
+2025-11-21 01:33:39,780 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:33:39,803 - ERROR - === UNEXPECTED ERROR ===
+2025-11-21 01:33:39,803 - ERROR - Error: list index out of range
+2025-11-21 01:33:39,803 - ERROR - Unexpected error: list index out of range
+2025-11-21 01:33:39,819 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:33:39,820 - INFO - Session Duration: 32.19 seconds
+2025-11-21 01:33:39,820 - INFO - Functions Attempted: 1
+2025-11-21 01:33:39,820 - INFO - Successful Functions: 1
+2025-11-21 01:33:39,820 - INFO - Terminated Early: 0
+2025-11-21 01:33:39,820 - INFO - Total Iterations: 1
+2025-11-21 01:33:39,820 - INFO - Average Iterations per Function: 1.00
+2025-11-21 01:33:39,820 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 01:33:39,820 - INFO - TDD Adjudication Attempts: 1
+2025-11-21 01:33:39,820 - INFO - Final Adjudication Attempts: 1
+2025-11-21 01:33:39,820 - INFO - Requirement Reinforcements: 0
+2025-11-21 01:35:55,814 - INFO - Running test for: Salary Analyzer (ID 1)
+2025-11-21 01:35:55,814 - INFO - Successfully imported functions from functions.py
+2025-11-21 01:35:55,814 - INFO - All assertions passed for Salary Analyzer
+2025-11-21 01:35:55,814 - INFO - ===== TEST PASSED ===== (Salary Analyzer)
+2025-11-21 01:36:38,164 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:36:41,645 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:36:41,646 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:36:41,646 - INFO - Response Content: Function Name: calculate_simple_gpa
+Description: Calculates the GPA for a student by summing the product of each course's grade points and credits, dividing by the total number of credits. GPA is a fl...
+2025-11-21 01:36:41,646 - INFO - Initiating function generation process...
+2025-11-21 01:36:41,670 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:36:41,670 - INFO - User Input: Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0).
+2025-11-21 01:36:41,670 - INFO - Function Requirement: Function Name: calculate_simple_gpa
+Description: Calculates the GPA for a student by summing the product of each course's grade points and credits, dividing by the total number of credits. GPA is a float between 0.0 and 4.0.
+Parameters:
+- university: University object from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/student_gpa_calculator/university.py
+- student_id: str, unique identifier for the student
+
+Example:
+calculate_simple_gpa(university, "S12345")
+
+Composition:
+- Uses university.get_student_enrollments(student_id) to retrieve a list of Enrollment objects.
+- For each enrollment, uses university.get_course(enrollment.course_code) to retrieve the Course.
+- For each enrollment, uses enrollment.get_grade_points() to get the grade as points.
+- Computes (grade points) * (course credits) for all valid enrollments, sums total points and total credits taken.
+- Returns GPA as total_points / total_credits (float in range 0.0 to 4.0).
+
+If either total_points or total_credits is zero (e.g., no graded courses), GPA returned is 0.0.
+2025-11-21 01:36:58,645 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:02,126 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:03,559 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:08,680 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:09,908 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:09,909 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:37:09,909 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:37:09,909 - INFO - TDD Requirement Suggestion: Function should call get_grade_points for each enrollment when calculating GPA, ensuring that the composition logic is exercised and the mock's call_count matches the number of enrollments.
+2025-11-21 01:37:09,909 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:37:09,909 - INFO - Iteration: 1
+2025-11-21 01:37:09,909 - INFO - Previous Requirement: 
+2025-11-21 01:37:09,909 - INFO - New Requirement: Function should call get_grade_points for each enrollment when calculating GPA, ensuring that the composition logic is exercised and the mock's call_count matches the number of enrollments.
+2025-11-21 01:37:21,992 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:25,576 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:27,111 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:31,003 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:32,021 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:32,022 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 01:37:32,022 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:37:42,882 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:43,905 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:43,906 - INFO - --- ITERATION 2 ---
+2025-11-21 01:37:43,906 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:37:43,906 - INFO - Adjudication Passed: False
+2025-11-21 01:37:43,906 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:37:43,906 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:37:43,906 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:37:43,906 - INFO - Iteration: 2
+2025-11-21 01:37:43,906 - INFO - Previous Requirement: Function should call get_grade_points for each enrollment when calculating GPA, ensuring that the composition logic is exercised and the mock's call_count matches the number of enrollments.
+2025-11-21 01:37:43,906 - INFO - New Requirement: 
+2025-11-21 01:37:43,906 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:37:43,906 - INFO - Iteration: 2
+2025-11-21 01:37:43,906 - INFO - Previous Requirement: 
+2025-11-21 01:37:43,906 - INFO - New Requirement: 
+2025-11-21 01:37:44,929 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:44,929 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 01:37:44,930 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:37:45,748 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:45,749 - INFO - --- ITERATION 3 ---
+2025-11-21 01:37:45,749 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:37:45,749 - INFO - Adjudication Passed: False
+2025-11-21 01:37:45,749 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:37:45,749 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:37:45,749 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:37:45,749 - INFO - Iteration: 3
+2025-11-21 01:37:45,749 - INFO - Previous Requirement: 
+2025-11-21 01:37:45,749 - INFO - New Requirement: 
+2025-11-21 01:37:45,749 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:37:45,749 - INFO - Iteration: 3
+2025-11-21 01:37:45,749 - INFO - Previous Requirement: 
+2025-11-21 01:37:45,749 - INFO - New Requirement: 
+2025-11-21 01:37:46,772 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:46,773 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 01:37:46,773 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:37:47,796 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:47,797 - INFO - --- ITERATION 4 ---
+2025-11-21 01:37:47,797 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:37:47,797 - INFO - Adjudication Passed: False
+2025-11-21 01:37:47,797 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:37:47,797 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:37:47,797 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:37:47,797 - INFO - Iteration: 4
+2025-11-21 01:37:47,797 - INFO - Previous Requirement: 
+2025-11-21 01:37:47,797 - INFO - New Requirement: 
+2025-11-21 01:37:47,797 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:37:47,797 - INFO - Iteration: 4
+2025-11-21 01:37:47,797 - INFO - Previous Requirement: 
+2025-11-21 01:37:47,797 - INFO - New Requirement: 
+2025-11-21 01:37:48,615 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:48,616 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-11-21 01:37:48,616 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:37:49,537 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:49,538 - INFO - --- ITERATION 5 ---
+2025-11-21 01:37:49,538 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:37:49,538 - INFO - Adjudication Passed: False
+2025-11-21 01:37:49,538 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:37:49,538 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:37:49,538 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:37:49,538 - INFO - Iteration: 5
+2025-11-21 01:37:49,538 - INFO - Previous Requirement: 
+2025-11-21 01:37:49,538 - INFO - New Requirement: 
+2025-11-21 01:37:49,538 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:37:49,538 - INFO - Iteration: 5
+2025-11-21 01:37:49,538 - INFO - Previous Requirement: 
+2025-11-21 01:37:49,538 - INFO - New Requirement: 
+2025-11-21 01:37:50,663 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:50,664 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-11-21 01:37:50,664 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:37:51,449 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:51,449 - INFO - --- ITERATION 6 ---
+2025-11-21 01:37:51,449 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:37:51,449 - INFO - Adjudication Passed: False
+2025-11-21 01:37:51,449 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:37:51,450 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:37:51,450 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:37:51,450 - INFO - Iteration: 6
+2025-11-21 01:37:51,450 - INFO - Previous Requirement: 
+2025-11-21 01:37:51,450 - INFO - New Requirement: 
+2025-11-21 01:37:51,450 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:37:51,450 - INFO - Iteration: 6
+2025-11-21 01:37:51,450 - INFO - Previous Requirement: 
+2025-11-21 01:37:51,450 - INFO - New Requirement: 
+2025-11-21 01:37:51,450 - WARNING - === MAX ITERATIONS REACHED ===
+2025-11-21 01:37:51,450 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-11-21 01:37:51,450 - WARNING - Total Duration: 69.78 seconds
+2025-11-21 01:37:51,450 - WARNING - Final Iteration Count: 6
+2025-11-21 01:37:51,456 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:37:51,456 - INFO - Session Duration: 76.66 seconds
+2025-11-21 01:37:51,456 - INFO - Functions Attempted: 1
+2025-11-21 01:37:51,456 - INFO - Successful Functions: 0
+2025-11-21 01:37:51,456 - INFO - Terminated Early: 1
+2025-11-21 01:37:51,456 - INFO - Total Iterations: 6
+2025-11-21 01:37:51,456 - INFO - Average Iterations per Function: 6.00
+2025-11-21 01:37:51,456 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 01:37:51,456 - INFO - TDD Adjudication Attempts: 6
+2025-11-21 01:37:51,456 - INFO - Final Adjudication Attempts: 5
+2025-11-21 01:37:51,456 - INFO - Requirement Reinforcements: 11
+2025-11-21 01:37:57,401 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:59,880 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:37:59,880 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:37:59,880 - INFO - Response Content: Function Name: calculate_simple_gpa  
+Description: Calculates the cumulative simple GPA for a student by collecting all enrollments of the given student from the University object. For each enrollment...
+2025-11-21 01:37:59,880 - INFO - Initiating function generation process...
+2025-11-21 01:37:59,883 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:37:59,883 - INFO - User Input: Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0).
+2025-11-21 01:37:59,883 - INFO - Function Requirement: Function Name: calculate_simple_gpa  
+Description: Calculates the cumulative simple GPA for a student by collecting all enrollments of the given student from the University object. For each enrollment, it fetches the associated course to get its credits, multiplies the numeric grade points by the course credits, sums these to get total grade points and total credits, and returns the GPA as total_points / total_credits (on a 0.0-4.0 scale). Returns 0.0 if there are no credits.  
+Parameters: 
+- university: University object (from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/student_gpa_calculator/university.py)
+- student_id: str (student's unique identifier)  
+Example: calculate_simple_gpa(university, "S1001")  
+Composition: Builds upon University.get_student_enrollments, University.get_course, Enrollment.get_grade_points using objects and structures from student_gpa_calculator/*.py
+2025-11-21 01:38:15,650 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:38:19,540 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:38:20,974 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:38:29,781 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:38:31,009 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:38:31,010 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:38:31,011 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:39:43,913 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:39:47,809 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:39:47,810 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:39:47,810 - INFO - Response Content: Function Name: calculate_simple_gpa
+Description: Calculates the GPA for a student by iterating through their enrollments, multiplying each enrollment's grade points (via enrollment.get_grade_points())...
+2025-11-21 01:39:47,810 - INFO - Initiating function generation process...
+2025-11-21 01:39:47,814 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:39:47,814 - INFO - User Input: Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0).
+2025-11-21 01:39:47,814 - INFO - Function Requirement: Function Name: calculate_simple_gpa
+Description: Calculates the GPA for a student by iterating through their enrollments, multiplying each enrollment's grade points (via enrollment.get_grade_points()) by the course's credits (from university.get_course(enrollment.course_code)), summing all points and all credits, and returning the total_points divided by total_credits. Returns 0.0 if there are no enrollments or total_credits is zero. Operates on a University object and uses the actual class and method references from the project.
+Parameters:
+- university: University object (from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/student_gpa_calculator/university.py)
+- student_id: str, the ID of the student for whom the GPA needs to be calculated
+Example: calculate_simple_gpa(university, "stu12345")
+Composition: Builds upon University.get_student_enrollments (to get enrollments list), University.get_course (to get course and its credits), and Enrollment.get_grade_points (to convert letter grade to GPA points). Uses only the actual available classes and methods as analyzed.
+2025-11-21 01:40:03,375 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:06,651 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:08,290 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:13,205 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:15,457 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:15,458 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:40:15,458 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:40:15,458 - INFO - TDD Requirement Suggestion: Function should correctly calculate GPA for mixed valid and failed courses to match expected results. Additionally, ensure that Enrollment.get_grade_points() is called with the correct instance (self) and is properly mocked or implemented to avoid missing positional arguments.
+2025-11-21 01:40:15,458 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:40:15,458 - INFO - Iteration: 1
+2025-11-21 01:40:15,458 - INFO - Previous Requirement: 
+2025-11-21 01:40:15,458 - INFO - New Requirement: Function should correctly calculate GPA for mixed valid and failed courses to match expected results. Additionally, ensure that Enrollment.get_grade_points() is called with the correct instance (self) and is properly mocked or implemented to avoid missing positional arguments.
+2025-11-21 01:40:27,746 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:31,432 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:32,866 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:36,757 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:38,395 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:38,396 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 01:40:38,396 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:40:38,396 - INFO - TDD Requirement Suggestion: Function should correctly calculate GPA for cases with a mix of valid and failed courses, ensuring the GPA matches expected values based on the test scenario.
+2025-11-21 01:40:38,396 - INFO - Applied Reinforced Requirement: Function should correctly calculate GPA for mixed valid and failed courses to match expected results. Additionally, ensure that Enrollment.get_grade_points() is called with the correct instance (self) and is properly mocked or implemented to avoid missing positional arguments.
+2025-11-21 01:40:38,396 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:40:38,396 - INFO - Iteration: 2
+2025-11-21 01:40:38,396 - INFO - Previous Requirement: Function should correctly calculate GPA for mixed valid and failed courses to match expected results. Additionally, ensure that Enrollment.get_grade_points() is called with the correct instance (self) and is properly mocked or implemented to avoid missing positional arguments.
+2025-11-21 01:40:38,396 - INFO - New Requirement: Function should correctly calculate GPA for cases with a mix of valid and failed courses, ensuring the GPA matches expected values based on the test scenario.
+2025-11-21 01:40:53,347 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:58,261 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:40:59,592 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:03,483 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:05,019 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:05,019 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 01:41:05,019 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:41:05,020 - INFO - TDD Requirement Suggestion: Function should correctly include all relevant enrollments, including those for 'CHEM101', when calculating GPA for mixed valid and failed courses.
+2025-11-21 01:41:05,020 - INFO - Applied Reinforced Requirement: Function should correctly calculate GPA for cases with a mix of valid and failed courses, ensuring the GPA matches expected values based on the test scenario.
+2025-11-21 01:41:05,020 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:41:05,020 - INFO - Iteration: 3
+2025-11-21 01:41:05,020 - INFO - Previous Requirement: Function should correctly calculate GPA for cases with a mix of valid and failed courses, ensuring the GPA matches expected values based on the test scenario.
+2025-11-21 01:41:05,020 - INFO - New Requirement: Function should correctly include all relevant enrollments, including those for 'CHEM101', when calculating GPA for mixed valid and failed courses.
+2025-11-21 01:41:19,152 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:22,632 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:24,066 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:28,361 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:29,186 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:29,186 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 01:41:29,186 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:41:42,295 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:43,317 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:43,318 - INFO - --- ITERATION 4 ---
+2025-11-21 01:41:43,318 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:41:43,318 - INFO - Adjudication Passed: False
+2025-11-21 01:41:43,318 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:41:43,318 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:41:43,318 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:41:43,318 - INFO - Iteration: 4
+2025-11-21 01:41:43,318 - INFO - Previous Requirement: Function should correctly include all relevant enrollments, including those for 'CHEM101', when calculating GPA for mixed valid and failed courses.
+2025-11-21 01:41:43,318 - INFO - New Requirement: 
+2025-11-21 01:41:43,318 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:41:43,318 - INFO - Iteration: 4
+2025-11-21 01:41:43,318 - INFO - Previous Requirement: 
+2025-11-21 01:41:43,318 - INFO - New Requirement: 
+2025-11-21 01:41:44,341 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:44,342 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-11-21 01:41:44,342 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:41:45,160 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:45,161 - INFO - --- ITERATION 5 ---
+2025-11-21 01:41:45,161 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:41:45,161 - INFO - Adjudication Passed: False
+2025-11-21 01:41:45,161 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:41:45,161 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:41:45,161 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:41:45,161 - INFO - Iteration: 5
+2025-11-21 01:41:45,161 - INFO - Previous Requirement: 
+2025-11-21 01:41:45,161 - INFO - New Requirement: 
+2025-11-21 01:41:45,161 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:41:45,161 - INFO - Iteration: 5
+2025-11-21 01:41:45,161 - INFO - Previous Requirement: 
+2025-11-21 01:41:45,161 - INFO - New Requirement: 
+2025-11-21 01:41:46,185 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:46,185 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-11-21 01:41:46,185 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:41:47,003 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:41:47,004 - INFO - --- ITERATION 6 ---
+2025-11-21 01:41:47,004 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:41:47,004 - INFO - Adjudication Passed: False
+2025-11-21 01:41:47,004 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:41:47,004 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:41:47,004 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:41:47,004 - INFO - Iteration: 6
+2025-11-21 01:41:47,004 - INFO - Previous Requirement: 
+2025-11-21 01:41:47,004 - INFO - New Requirement: 
+2025-11-21 01:41:47,004 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:41:47,004 - INFO - Iteration: 6
+2025-11-21 01:41:47,004 - INFO - Previous Requirement: 
+2025-11-21 01:41:47,004 - INFO - New Requirement: 
+2025-11-21 01:41:47,004 - WARNING - === MAX ITERATIONS REACHED ===
+2025-11-21 01:41:47,004 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-11-21 01:41:47,004 - WARNING - Total Duration: 119.19 seconds
+2025-11-21 01:41:47,004 - WARNING - Final Iteration Count: 6
+2025-11-21 01:41:47,009 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:41:47,009 - INFO - Session Duration: 128.39 seconds
+2025-11-21 01:41:47,009 - INFO - Functions Attempted: 1
+2025-11-21 01:41:47,009 - INFO - Successful Functions: 0
+2025-11-21 01:41:47,009 - INFO - Terminated Early: 1
+2025-11-21 01:41:47,009 - INFO - Total Iterations: 6
+2025-11-21 01:41:47,009 - INFO - Average Iterations per Function: 6.00
+2025-11-21 01:41:47,009 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 01:41:47,009 - INFO - TDD Adjudication Attempts: 6
+2025-11-21 01:41:47,009 - INFO - Final Adjudication Attempts: 3
+2025-11-21 01:41:47,009 - INFO - Requirement Reinforcements: 9
+2025-11-21 01:42:16,294 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:42:19,772 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:42:19,773 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:42:19,773 - INFO - Response Content: Function Name: patient_risk_score
+Description: Calculates a composite health risk score for a patient in the hospital system using the following formula:
+- (patient.age / 100 * 30) +
+- (patient.get_to...
+2025-11-21 01:42:19,773 - INFO - Initiating function generation process...
+2025-11-21 01:42:19,796 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:42:19,796 - INFO - User Input: Create a function called patient_risk_score that takes a Hospital object and patient_id. Calculate risk score using formula: (patient.age / 100 * 30) + (patient.get_total_conditions() * 5 * 25/100) + (patient.get_average_severity() * 10 * 25/100) + (20 if recent records have abnormal vitals else 0). Use hospital.get_patient(patient_id) and hospital.get_recent_records(patient_id, 90). Returns: float between 0.0 and 100.0.
+2025-11-21 01:42:19,796 - INFO - Function Requirement: Function Name: patient_risk_score
+Description: Calculates a composite health risk score for a patient in the hospital system using the following formula:
+- (patient.age / 100 * 30) +
+- (patient.get_total_conditions() * 5 * 25/100) +
+- (patient.get_average_severity() * 10 * 25/100) +
+- (20 if any recent (last 90 days) records show abnormal vitals, else 0)
+
+It retrieves the Patient object with hospital.get_patient(patient_id) and all recent records with hospital.get_recent_records(patient_id, 90), and uses Patient’s get_total_conditions() and get_average_severity(). For abnormal vitals, MedicalRecord.has_abnormal_vitals() is checked over recent records.
+
+Parameters:
+- hospital: Hospital — the Hospital object (from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/patient_risk_analyzer/hospital.py)
+- patient_id: str — patient’s unique identifier
+
+Example:
+patient_risk_score(hospital, "P123")
+
+Composition:
+- Uses Hospital.get_patient(patient_id)
+- Uses Hospital.get_recent_records(patient_id, 90)
+- Accesses Patient.get_total_conditions() and Patient.get_average_severity()
+- Checks MedicalRecord.has_abnormal_vitals() for recent records
+
+Returns: float — a value between 0.0 and 100.0 representing the patient’s risk score
+2025-11-21 01:42:39,025 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:42:43,325 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:42:44,757 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:42:49,064 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:42:50,697 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:42:50,698 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:42:50,698 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:42:50,698 - INFO - TDD Requirement Suggestion: Function should return a numeric value (float) instead of a MagicMock object when called in test_patient_risk_score_composition_calls. Ensure that all mocked dependencies in the function are properly configured to return expected data types.
+2025-11-21 01:42:50,698 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:42:50,698 - INFO - Iteration: 1
+2025-11-21 01:42:50,698 - INFO - Previous Requirement: 
+2025-11-21 01:42:50,698 - INFO - New Requirement: Function should return a numeric value (float) instead of a MagicMock object when called in test_patient_risk_score_composition_calls. Ensure that all mocked dependencies in the function are properly configured to return expected data types.
+2025-11-21 01:43:05,240 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:09,404 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:10,768 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:14,660 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:15,683 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:15,684 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 01:43:15,684 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:43:28,382 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:29,405 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:29,406 - INFO - --- ITERATION 2 ---
+2025-11-21 01:43:29,406 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:43:29,406 - INFO - Adjudication Passed: False
+2025-11-21 01:43:29,406 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:43:29,406 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:43:29,406 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:43:29,406 - INFO - Iteration: 2
+2025-11-21 01:43:29,406 - INFO - Previous Requirement: Function should return a numeric value (float) instead of a MagicMock object when called in test_patient_risk_score_composition_calls. Ensure that all mocked dependencies in the function are properly configured to return expected data types.
+2025-11-21 01:43:29,406 - INFO - New Requirement: 
+2025-11-21 01:43:29,406 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:43:29,406 - INFO - Iteration: 2
+2025-11-21 01:43:29,406 - INFO - Previous Requirement: 
+2025-11-21 01:43:29,406 - INFO - New Requirement: 
+2025-11-21 01:43:30,224 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:30,225 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 01:43:30,226 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:43:31,248 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:31,249 - INFO - --- ITERATION 3 ---
+2025-11-21 01:43:31,249 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:43:31,249 - INFO - Adjudication Passed: False
+2025-11-21 01:43:31,249 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:43:31,249 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:43:31,249 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:43:31,249 - INFO - Iteration: 3
+2025-11-21 01:43:31,249 - INFO - Previous Requirement: 
+2025-11-21 01:43:31,249 - INFO - New Requirement: 
+2025-11-21 01:43:31,249 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:43:31,249 - INFO - Iteration: 3
+2025-11-21 01:43:31,249 - INFO - Previous Requirement: 
+2025-11-21 01:43:31,249 - INFO - New Requirement: 
+2025-11-21 01:43:32,272 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:32,273 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 01:43:32,273 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:43:33,297 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:33,297 - INFO - --- ITERATION 4 ---
+2025-11-21 01:43:33,297 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:43:33,297 - INFO - Adjudication Passed: False
+2025-11-21 01:43:33,297 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:43:33,297 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:43:33,297 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:43:33,297 - INFO - Iteration: 4
+2025-11-21 01:43:33,297 - INFO - Previous Requirement: 
+2025-11-21 01:43:33,297 - INFO - New Requirement: 
+2025-11-21 01:43:33,297 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:43:33,297 - INFO - Iteration: 4
+2025-11-21 01:43:33,297 - INFO - Previous Requirement: 
+2025-11-21 01:43:33,297 - INFO - New Requirement: 
+2025-11-21 01:43:34,320 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:34,321 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-11-21 01:43:34,321 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:43:35,140 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:35,140 - INFO - --- ITERATION 5 ---
+2025-11-21 01:43:35,140 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:43:35,140 - INFO - Adjudication Passed: True
+2025-11-21 01:43:35,178 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-11-21 01:43:35,178 - INFO - Function Name: patient_risk_score
+2025-11-21 01:43:35,178 - INFO - Total Iterations: 5
+2025-11-21 01:43:35,178 - INFO - Total Duration: 75.38 seconds
+2025-11-21 01:43:35,178 - INFO - TDD Adjudication Attempts: 5
+2025-11-21 01:43:35,178 - INFO - Final Adjudication Attempts: 4
+2025-11-21 01:43:35,178 - INFO - Requirement Reinforcements: 7
+2025-11-21 01:43:38,621 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:38,622 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:43:38,622 - INFO - Response Content: Function Name: patient_risk_score  
+Description: Calculates a risk score for a patient in a hospital system based on the patient's age, the total number of medical conditions, the average severity of ...
+2025-11-21 01:43:38,622 - INFO - Initiating function generation process...
+2025-11-21 01:43:39,850 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:39,884 - INFO - === EXISTING FUNCTION CALLED ===
+2025-11-21 01:43:39,884 - INFO - Function: patient_risk_score
+2025-11-21 01:43:39,884 - INFO - Arguments: {'patient_id': 1234}
+2025-11-21 01:43:39,884 - INFO - Execution Time: 0.010274965999997221 seconds
+2025-11-21 01:43:39,884 - INFO - Memory Peak: 18379 bytes
+2025-11-21 01:43:39,884 - INFO - Success: False
+2025-11-21 01:43:43,127 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:43:43,142 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:43:43,142 - INFO - Session Duration: 90.99 seconds
+2025-11-21 01:43:43,142 - INFO - Functions Attempted: 1
+2025-11-21 01:43:43,142 - INFO - Successful Functions: 1
+2025-11-21 01:43:43,142 - INFO - Terminated Early: 0
+2025-11-21 01:43:43,142 - INFO - Total Iterations: 5
+2025-11-21 01:43:43,142 - INFO - Average Iterations per Function: 5.00
+2025-11-21 01:43:43,142 - INFO - Existing Function Calls: 1 (0 successful)
+2025-11-21 01:43:43,142 - INFO - TDD Adjudication Attempts: 5
+2025-11-21 01:43:43,142 - INFO - Final Adjudication Attempts: 4
+2025-11-21 01:43:43,142 - INFO - Requirement Reinforcements: 7
+2025-11-21 01:47:28,248 - INFO - Running test for: Patient Risk Analyzer (ID 2)
+2025-11-21 01:47:28,248 - INFO - Successfully imported functions from functions.py
+2025-11-21 01:47:28,248 - INFO - All assertions passed for Patient Risk Analyzer
+2025-11-21 01:47:28,248 - INFO - ===== TEST PASSED ===== (Patient Risk Analyzer)
+2025-11-21 01:47:44,998 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:47:48,070 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:47:48,071 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:47:48,092 - INFO - Response Content: Function Name: calculate_simple_gpa  
+Description: Calculates a student's cumulative GPA based on all enrollments. For each enrollment retrieved by university.get_student_enrollments(student_id), it o...
+2025-11-21 01:47:48,092 - INFO - Initiating function generation process...
+2025-11-21 01:47:48,094 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:47:48,094 - INFO - User Input: Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0).
+2025-11-21 01:47:48,094 - INFO - Function Requirement: Function Name: calculate_simple_gpa  
+Description: Calculates a student's cumulative GPA based on all enrollments. For each enrollment retrieved by university.get_student_enrollments(student_id), it obtains the course using university.get_course(enrollment.course_code), multiplies the enrollment's grade points (enrollment.get_grade_points()) by the course's credits, sums all grade points and credits, and returns the cumulative GPA as total_points / total_credits (returns 0.0 if no credits).  
+Parameters: 
+- university: University object (from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/student_gpa_calculator/university.py)
+- student_id: str (the student ID to retrieve enrollments for)
+Example: calculate_simple_gpa(university, "S1005")
+Composition: 
+- Uses university.get_student_enrollments(student_id) to get all enrollments
+- For each enrollment, uses university.get_course(enrollment.course_code) to get the course and its credits
+- Uses enrollment.get_grade_points() for grade-to-points conversion
+- Sums total_points and total_credits and returns total_points / total_credits as GPA
+2025-11-21 01:48:01,383 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:48:04,454 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:48:06,093 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:48:10,189 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:48:11,213 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:48:11,213 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:48:11,213 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:48:19,815 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:48:20,838 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:48:20,839 - INFO - --- ITERATION 1 ---
+2025-11-21 01:48:20,839 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:48:20,839 - INFO - Adjudication Passed: True
+2025-11-21 01:48:20,876 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-11-21 01:48:20,876 - INFO - Function Name: calculate_simple_gpa
+2025-11-21 01:48:20,876 - INFO - Total Iterations: 1
+2025-11-21 01:48:20,876 - INFO - Total Duration: 32.78 seconds
+2025-11-21 01:48:20,876 - INFO - TDD Adjudication Attempts: 1
+2025-11-21 01:48:20,876 - INFO - Final Adjudication Attempts: 1
+2025-11-21 01:48:20,876 - INFO - Requirement Reinforcements: 0
+2025-11-21 01:48:23,501 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:48:23,501 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:48:23,501 - INFO - Response Content: The requested function calculate_simple_gpa is already available in your tools list with the following description:
+
+- It calculates the GPA for a student in the university system.
+- Returns a float b...
+2025-11-21 01:48:23,501 - INFO - Initiating function generation process...
+2025-11-21 01:48:24,754 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:48:24,766 - INFO - === EXISTING FUNCTION CALLED ===
+2025-11-21 01:48:24,766 - INFO - Function: calculate_simple_gpa
+2025-11-21 01:48:24,767 - INFO - Arguments: {'university': 'ExampleUniversity', 'student_id': 12345}
+2025-11-21 01:48:24,767 - INFO - Execution Time: 0.010472449000189954 seconds
+2025-11-21 01:48:24,767 - INFO - Memory Peak: 18678 bytes
+2025-11-21 01:48:24,767 - INFO - Success: False
+2025-11-21 01:48:27,191 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:48:27,206 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:48:27,206 - INFO - Session Duration: 45.34 seconds
+2025-11-21 01:48:27,206 - INFO - Functions Attempted: 1
+2025-11-21 01:48:27,206 - INFO - Successful Functions: 1
+2025-11-21 01:48:27,206 - INFO - Terminated Early: 0
+2025-11-21 01:48:27,206 - INFO - Total Iterations: 1
+2025-11-21 01:48:27,206 - INFO - Average Iterations per Function: 1.00
+2025-11-21 01:48:27,206 - INFO - Existing Function Calls: 1 (0 successful)
+2025-11-21 01:48:27,206 - INFO - TDD Adjudication Attempts: 1
+2025-11-21 01:48:27,206 - INFO - Final Adjudication Attempts: 1
+2025-11-21 01:48:27,206 - INFO - Requirement Reinforcements: 0
+2025-11-21 01:51:27,598 - INFO - Running test for: Student GPA Calculator (ID 3)
+2025-11-21 01:51:27,598 - INFO - Successfully imported functions from functions.py
+2025-11-21 01:51:27,598 - INFO - All assertions passed for Student GPA Calculator
+2025-11-21 01:51:27,598 - INFO - ===== TEST PASSED ===== (Student GPA Calculator)
+2025-11-21 01:56:35,417 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:56:37,889 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:56:37,890 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:56:37,890 - INFO - Response Content: Function Name: patient_risk_score
+Description: Calculates a risk score for a specific patient in a Hospital system based on age, number of known conditions, average severity of conditions, and the pre...
+2025-11-21 01:56:37,890 - INFO - Initiating function generation process...
+2025-11-21 01:56:37,892 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 01:56:37,892 - INFO - User Input: Create a function called patient_risk_score that takes a Hospital object and patient_id. Calculate risk score using formula: (patient.age / 100 * 30) + (patient.get_total_conditions() * 5 * 25/100) + (patient.get_average_severity() * 10 * 25/100) + (20 if recent records have abnormal vitals else 0). Use hospital.get_patient(patient_id) and hospital.get_recent_records(patient_id, 90). Returns: float between 0.0 and 100.0.
+2025-11-21 01:56:37,892 - INFO - Function Requirement: Function Name: patient_risk_score
+Description: Calculates a risk score for a specific patient in a Hospital system based on age, number of known conditions, average severity of conditions, and the presence of abnormal vitals in the last 90 days. Uses the formula: (patient.age / 100 * 30) + (patient.get_total_conditions() * 5 * 25/100) + (patient.get_average_severity() * 10 * 25/100) + (20 if recent records have abnormal vitals else 0). Scores are normalized between 0.0 and 100.0.
+Parameters:
+- hospital: Hospital object (from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/patient_risk_analyzer/hospital.py)
+- patient_id: str (the unique ID of the patient)
+Returns: float (the calculated risk score between 0.0 and 100.0)
+Example: patient_risk_score(hospital, "PAT12345")
+Composition: Uses Hospital.get_patient(patient_id), Patient.get_total_conditions(), Patient.get_average_severity(), Hospital.get_recent_records(patient_id, 90), and MedicalRecord.has_abnormal_vitals()
+
+2025-11-21 01:56:56,527 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:03,592 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:05,128 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:10,657 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:12,706 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:12,706 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 01:57:12,706 - INFO - TDD Adjudication Passed: False
+2025-11-21 01:57:12,706 - INFO - TDD Requirement Suggestion: Function should correctly calculate patient risk scores to ensure that when all components are at their maximum, the score approaches 100, and that abnormal recent records for patients with zero conditions yield the expected score within the asserted range. Review the weighting and normalization logic for risk score components.
+2025-11-21 01:57:12,706 - INFO - --- REQUIREMENT REINFORCEMENT (TDD) ---
+2025-11-21 01:57:12,707 - INFO - Iteration: 1
+2025-11-21 01:57:12,707 - INFO - Previous Requirement: 
+2025-11-21 01:57:12,707 - INFO - New Requirement: Function should correctly calculate patient risk scores to ensure that when all components are at their maximum, the score approaches 100, and that abnormal recent records for patients with zero conditions yield the expected score within the asserted range. Review the weighting and normalization logic for risk score components.
+2025-11-21 01:57:29,093 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:36,257 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:37,898 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:42,813 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:43,630 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:43,631 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 01:57:43,631 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:57:57,661 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:58,788 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:58,788 - INFO - --- ITERATION 2 ---
+2025-11-21 01:57:58,789 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:57:58,789 - INFO - Adjudication Passed: False
+2025-11-21 01:57:58,789 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:57:58,789 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:57:58,789 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:57:58,789 - INFO - Iteration: 2
+2025-11-21 01:57:58,789 - INFO - Previous Requirement: Function should correctly calculate patient risk scores to ensure that when all components are at their maximum, the score approaches 100, and that abnormal recent records for patients with zero conditions yield the expected score within the asserted range. Review the weighting and normalization logic for risk score components.
+2025-11-21 01:57:58,789 - INFO - New Requirement: 
+2025-11-21 01:57:58,789 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:57:58,789 - INFO - Iteration: 2
+2025-11-21 01:57:58,789 - INFO - Previous Requirement: 
+2025-11-21 01:57:58,789 - INFO - New Requirement: 
+2025-11-21 01:57:59,812 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:57:59,813 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 01:57:59,813 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:58:00,833 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:58:00,834 - INFO - --- ITERATION 3 ---
+2025-11-21 01:58:00,834 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:58:00,834 - INFO - Adjudication Passed: False
+2025-11-21 01:58:00,834 - INFO - Code Requirement Suggestion: 
+2025-11-21 01:58:00,834 - INFO - Unit Requirement Suggestion: 
+2025-11-21 01:58:00,834 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 01:58:00,834 - INFO - Iteration: 3
+2025-11-21 01:58:00,834 - INFO - Previous Requirement: 
+2025-11-21 01:58:00,834 - INFO - New Requirement: 
+2025-11-21 01:58:00,834 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 01:58:00,834 - INFO - Iteration: 3
+2025-11-21 01:58:00,834 - INFO - Previous Requirement: 
+2025-11-21 01:58:00,834 - INFO - New Requirement: 
+2025-11-21 01:58:01,860 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:58:01,861 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 01:58:01,861 - INFO - TDD Adjudication Passed: True
+2025-11-21 01:58:02,881 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:58:02,881 - INFO - --- ITERATION 4 ---
+2025-11-21 01:58:02,882 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 01:58:02,883 - INFO - Adjudication Passed: True
+2025-11-21 01:58:02,918 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-11-21 01:58:02,918 - INFO - Function Name: patient_risk_score
+2025-11-21 01:58:02,919 - INFO - Total Iterations: 4
+2025-11-21 01:58:02,919 - INFO - Total Duration: 85.03 seconds
+2025-11-21 01:58:02,919 - INFO - TDD Adjudication Attempts: 4
+2025-11-21 01:58:02,919 - INFO - Final Adjudication Attempts: 3
+2025-11-21 01:58:02,919 - INFO - Requirement Reinforcements: 5
+2025-11-21 01:58:06,568 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:58:06,568 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 01:58:06,568 - INFO - Response Content: Function Name: patient_risk_score  
+Description: Calculates a composite risk score for a given patient. The risk score is computed using the patient’s age, number of conditions, average severity, and ...
+2025-11-21 01:58:06,568 - INFO - Initiating function generation process...
+2025-11-21 01:58:07,799 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:58:07,811 - INFO - === EXISTING FUNCTION CALLED ===
+2025-11-21 01:58:07,811 - INFO - Function: patient_risk_score
+2025-11-21 01:58:07,811 - INFO - Arguments: {'hospital': 'HOSP-001', 'patient_id': 'PAT12345'}
+2025-11-21 01:58:07,811 - INFO - Execution Time: 0.010210323000137578 seconds
+2025-11-21 01:58:07,811 - INFO - Memory Peak: 18406 bytes
+2025-11-21 01:58:07,811 - INFO - Success: False
+2025-11-21 01:58:11,475 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 01:58:11,493 - INFO - === SESSION SUMMARY ===
+2025-11-21 01:58:11,493 - INFO - Session Duration: 99.70 seconds
+2025-11-21 01:58:11,493 - INFO - Functions Attempted: 1
+2025-11-21 01:58:11,493 - INFO - Successful Functions: 1
+2025-11-21 01:58:11,493 - INFO - Terminated Early: 0
+2025-11-21 01:58:11,493 - INFO - Total Iterations: 4
+2025-11-21 01:58:11,493 - INFO - Average Iterations per Function: 4.00
+2025-11-21 01:58:11,493 - INFO - Existing Function Calls: 1 (0 successful)
+2025-11-21 01:58:11,494 - INFO - TDD Adjudication Attempts: 4
+2025-11-21 01:58:11,494 - INFO - Final Adjudication Attempts: 3
+2025-11-21 01:58:11,494 - INFO - Requirement Reinforcements: 5
+2025-11-21 02:01:46,713 - INFO - Running test for: Patient Risk Analyzer (ID 2)
+2025-11-21 02:01:46,713 - INFO - Successfully imported functions from functions.py
+2025-11-21 02:01:46,713 - INFO - All assertions passed for Patient Risk Analyzer
+2025-11-21 02:01:46,713 - INFO - ===== TEST PASSED ===== (Patient Risk Analyzer)
+2025-11-21 02:02:13,557 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:17,552 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:17,553 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 02:02:17,553 - INFO - Response Content: Function Name: calculate_simple_gpa
+Description: Calculates the simple GPA (on a 0.0–4.0 scale) for a student by summing grade points earned in each enrolled course multiplied by course credits, then ...
+2025-11-21 02:02:17,553 - INFO - Initiating function generation process...
+2025-11-21 02:02:17,576 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 02:02:17,576 - INFO - User Input: Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0).
+2025-11-21 02:02:17,576 - INFO - Function Requirement: Function Name: calculate_simple_gpa
+Description: Calculates the simple GPA (on a 0.0–4.0 scale) for a student by summing grade points earned in each enrolled course multiplied by course credits, then dividing by the total number of credits the student has attempted. For each enrollment from university.get_student_enrollments(student_id), it fetches the course using university.get_course(enrollment.course_code), multiplies enrollment.get_grade_points() by course.credits, sums up all grade points and attempted credits, and returns total_points / total_credits. Returns 0.0 if the student has no enrollments or zero total attempted credits.
+Parameters:
+- university: University object (from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/student_gpa_calculator/university.py), representing the university data system
+- student_id: str, unique identifier for the student in question
+Example: calculate_simple_gpa(university, "S001")
+Composition: Relies on:
+- university.get_student_enrollments(student_id)
+- university.get_course(enrollment.course_code)
+- enrollment.get_grade_points()
+- course.credits
+
+Implementation example:
+```python
+def calculate_simple_gpa(university, student_id):
+    enrollments = university.get_student_enrollments(student_id)
+    total_points = 0.0
+    total_credits = 0
+    for enrollment in enrollments:
+        course = university.get_course(enrollment.course_code)
+        if course:
+            points = enrollment.get_grade_points() * course.credits
+            total_points += points
+            total_credits += course.credits
+    if total_credits == 0:
+        return 0.0
+    return total_points / total_credits
+```
+No file I/O is necessary for this logic; all interactions use methods and objects as per the analyzed codebase.
+2025-11-21 02:02:29,327 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:33,217 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:34,650 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:39,156 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:40,180 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:40,181 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 02:02:40,181 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:02:48,987 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:50,011 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:50,012 - INFO - --- ITERATION 1 ---
+2025-11-21 02:02:50,012 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:02:50,012 - INFO - Adjudication Passed: False
+2025-11-21 02:02:50,012 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:02:50,012 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:02:50,012 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:02:50,012 - INFO - Iteration: 1
+2025-11-21 02:02:50,012 - INFO - Previous Requirement: 
+2025-11-21 02:02:50,012 - INFO - New Requirement: 
+2025-11-21 02:02:50,012 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:02:50,012 - INFO - Iteration: 1
+2025-11-21 02:02:50,012 - INFO - Previous Requirement: 
+2025-11-21 02:02:50,012 - INFO - New Requirement: 
+2025-11-21 02:02:51,034 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:51,035 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 02:02:51,035 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:02:52,121 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:52,121 - INFO - --- ITERATION 2 ---
+2025-11-21 02:02:52,122 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:02:52,122 - INFO - Adjudication Passed: False
+2025-11-21 02:02:52,122 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:02:52,122 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:02:52,122 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:02:52,122 - INFO - Iteration: 2
+2025-11-21 02:02:52,122 - INFO - Previous Requirement: 
+2025-11-21 02:02:52,122 - INFO - New Requirement: 
+2025-11-21 02:02:52,122 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:02:52,122 - INFO - Iteration: 2
+2025-11-21 02:02:52,122 - INFO - Previous Requirement: 
+2025-11-21 02:02:52,122 - INFO - New Requirement: 
+2025-11-21 02:02:53,082 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:53,083 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 02:02:53,084 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:02:54,107 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:54,107 - INFO - --- ITERATION 3 ---
+2025-11-21 02:02:54,107 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:02:54,107 - INFO - Adjudication Passed: False
+2025-11-21 02:02:54,107 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:02:54,107 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:02:54,107 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:02:54,107 - INFO - Iteration: 3
+2025-11-21 02:02:54,107 - INFO - Previous Requirement: 
+2025-11-21 02:02:54,107 - INFO - New Requirement: 
+2025-11-21 02:02:54,107 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:02:54,107 - INFO - Iteration: 3
+2025-11-21 02:02:54,107 - INFO - Previous Requirement: 
+2025-11-21 02:02:54,107 - INFO - New Requirement: 
+2025-11-21 02:02:55,130 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:55,131 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 02:02:55,131 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:02:56,155 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:56,155 - INFO - --- ITERATION 4 ---
+2025-11-21 02:02:56,155 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:02:56,155 - INFO - Adjudication Passed: True
+2025-11-21 02:02:56,192 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-11-21 02:02:56,192 - INFO - Function Name: calculate_simple_gpa
+2025-11-21 02:02:56,192 - INFO - Total Iterations: 4
+2025-11-21 02:02:56,192 - INFO - Total Duration: 38.62 seconds
+2025-11-21 02:02:56,192 - INFO - TDD Adjudication Attempts: 4
+2025-11-21 02:02:56,192 - INFO - Final Adjudication Attempts: 4
+2025-11-21 02:02:56,192 - INFO - Requirement Reinforcements: 6
+2025-11-21 02:02:59,841 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:02:59,842 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 02:02:59,842 - INFO - Response Content: Function Name: calculate_simple_gpa
+Description: Calculates the weighted GPA for a student by iterating through all their enrollments in the provided University object. For each enrollment, it retriev...
+2025-11-21 02:02:59,842 - INFO - Initiating function generation process...
+2025-11-21 02:03:01,274 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:03:01,287 - INFO - === EXISTING FUNCTION CALLED ===
+2025-11-21 02:03:01,287 - INFO - Function: calculate_simple_gpa
+2025-11-21 02:03:01,287 - INFO - Arguments: {'student_id': 's12345'}
+2025-11-21 02:03:01,287 - INFO - Execution Time: 0.010408574999928533 seconds
+2025-11-21 02:03:01,287 - INFO - Memory Peak: 18387 bytes
+2025-11-21 02:03:01,287 - INFO - Success: False
+2025-11-21 02:03:04,756 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:03:04,775 - INFO - === SESSION SUMMARY ===
+2025-11-21 02:03:04,775 - INFO - Session Duration: 54.28 seconds
+2025-11-21 02:03:04,775 - INFO - Functions Attempted: 1
+2025-11-21 02:03:04,775 - INFO - Successful Functions: 1
+2025-11-21 02:03:04,775 - INFO - Terminated Early: 0
+2025-11-21 02:03:04,775 - INFO - Total Iterations: 4
+2025-11-21 02:03:04,775 - INFO - Average Iterations per Function: 4.00
+2025-11-21 02:03:04,775 - INFO - Existing Function Calls: 1 (0 successful)
+2025-11-21 02:03:04,775 - INFO - TDD Adjudication Attempts: 4
+2025-11-21 02:03:04,775 - INFO - Final Adjudication Attempts: 4
+2025-11-21 02:03:04,775 - INFO - Requirement Reinforcements: 6
+2025-11-21 02:04:49,659 - INFO - Running test for: Student GPA Calculator (ID 3)
+2025-11-21 02:04:49,659 - INFO - Successfully imported functions from functions.py
+2025-11-21 02:04:49,659 - INFO - All assertions passed for Student GPA Calculator
+2025-11-21 02:04:49,659 - INFO - ===== TEST PASSED ===== (Student GPA Calculator)
+2025-11-21 02:05:16,443 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:05:19,105 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:05:19,106 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 02:05:19,106 - INFO - Response Content: Function Name: salary_analyzer
+Description: Calculates the average salary for a list of employee records provided as input. Returns a float value representing the average salary.
+Parameters:
+- employe...
+2025-11-21 02:05:19,106 - INFO - Initiating function generation process...
+2025-11-21 02:05:19,129 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 02:05:19,129 - INFO - User Input: Create a function called salary_analyzer that calculates average salary from employee data. Returns: float representing the average salary value.
+2025-11-21 02:05:19,129 - INFO - Function Requirement: Function Name: salary_analyzer
+Description: Calculates the average salary for a list of employee records provided as input. Returns a float value representing the average salary.
+Parameters:
+- employees: List of dictionaries, where each dictionary represents an employee and must contain a 'salary' key with a numeric value.
+Example: salary_analyzer([{'id': 1, 'salary': 50000}, {'id': 2, 'salary': 70000}])
+Composition: This would utilize the SalaryAnalyzer.calculate_average_salary static method found in /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/salary_analyzer/salary_analyzer_class.py, accepting a list of employee dictionaries as input.
+2025-11-21 02:05:26,685 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:05:31,188 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:05:32,826 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:05:40,609 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:05:41,428 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:05:41,429 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 02:05:41,429 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:05:46,344 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:05:47,367 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:05:47,368 - INFO - --- ITERATION 1 ---
+2025-11-21 02:05:47,368 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:05:47,368 - INFO - Adjudication Passed: True
+2025-11-21 02:05:47,405 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-11-21 02:05:47,405 - INFO - Function Name: salary_analyzer
+2025-11-21 02:05:47,405 - INFO - Total Iterations: 1
+2025-11-21 02:05:47,405 - INFO - Total Duration: 28.28 seconds
+2025-11-21 02:05:47,405 - INFO - TDD Adjudication Attempts: 1
+2025-11-21 02:05:47,405 - INFO - Final Adjudication Attempts: 1
+2025-11-21 02:05:47,405 - INFO - Requirement Reinforcements: 0
+2025-11-21 02:05:49,401 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:05:49,401 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 02:05:49,401 - INFO - Response Content: Function Name: salary_analyzer
+Description: Calculates the average salary from a list of employee records, each containing a numeric 'salary' field. Returns a float value representing the average sala...
+2025-11-21 02:05:49,401 - INFO - Initiating function generation process...
+2025-11-21 02:05:50,439 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:05:50,440 - ERROR - === UNEXPECTED ERROR ===
+2025-11-21 02:05:50,440 - ERROR - Error: No module named 'dataset'
+2025-11-21 02:05:50,440 - ERROR - Unexpected error: No module named 'dataset'
+2025-11-21 02:05:50,455 - INFO - === SESSION SUMMARY ===
+2025-11-21 02:05:50,455 - INFO - Session Duration: 37.13 seconds
+2025-11-21 02:05:50,455 - INFO - Functions Attempted: 1
+2025-11-21 02:05:50,455 - INFO - Successful Functions: 1
+2025-11-21 02:05:50,455 - INFO - Terminated Early: 0
+2025-11-21 02:05:50,455 - INFO - Total Iterations: 1
+2025-11-21 02:05:50,455 - INFO - Average Iterations per Function: 1.00
+2025-11-21 02:05:50,455 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 02:05:50,455 - INFO - TDD Adjudication Attempts: 1
+2025-11-21 02:05:50,455 - INFO - Final Adjudication Attempts: 1
+2025-11-21 02:05:50,455 - INFO - Requirement Reinforcements: 0
+2025-11-21 02:06:18,087 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:19,924 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:19,925 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 02:06:19,925 - INFO - Response Content: Function Name: salary_analyzer
+Description: Calculates the average salary from the employee data and returns a float representing the average salary value.
+Parameters:
+- None (the function fetches all...
+2025-11-21 02:06:19,925 - INFO - Initiating function generation process...
+2025-11-21 02:06:19,928 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 02:06:19,928 - INFO - User Input: Create a function called salary_analyzer that calculates average salary from employee data. Returns: float representing the average salary value.
+2025-11-21 02:06:19,928 - INFO - Function Requirement: Function Name: salary_analyzer
+Description: Calculates the average salary from the employee data and returns a float representing the average salary value.
+Parameters:
+- None (the function fetches all employees from the data repository)
+Example: salary_analyzer() → 59750.0
+Composition: This function utilizes EmployeeDB.get_all_employees() from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/salary_analyzer/employee_db.py to retrieve all employee records, and then SalaryAnalyzer.calculate_average_salary() from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/salary_analyzer/salary_analyzer_class.py to compute the average salary.
+2025-11-21 02:06:29,147 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:31,604 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:34,676 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:38,976 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:39,796 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:39,796 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 02:06:39,796 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:06:46,350 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:47,373 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:47,374 - INFO - --- ITERATION 1 ---
+2025-11-21 02:06:47,374 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:06:47,374 - INFO - Adjudication Passed: False
+2025-11-21 02:06:47,374 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:06:47,374 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:06:47,374 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:06:47,374 - INFO - Iteration: 1
+2025-11-21 02:06:47,374 - INFO - Previous Requirement: 
+2025-11-21 02:06:47,374 - INFO - New Requirement: 
+2025-11-21 02:06:47,374 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:06:47,374 - INFO - Iteration: 1
+2025-11-21 02:06:47,374 - INFO - Previous Requirement: 
+2025-11-21 02:06:47,374 - INFO - New Requirement: 
+2025-11-21 02:06:48,398 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:48,398 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 02:06:48,398 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:06:49,421 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:49,422 - INFO - --- ITERATION 2 ---
+2025-11-21 02:06:49,422 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:06:49,422 - INFO - Adjudication Passed: True
+2025-11-21 02:06:49,459 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-11-21 02:06:49,459 - INFO - Function Name: salary_analyzer
+2025-11-21 02:06:49,459 - INFO - Total Iterations: 2
+2025-11-21 02:06:49,459 - INFO - Total Duration: 29.53 seconds
+2025-11-21 02:06:49,459 - INFO - TDD Adjudication Attempts: 2
+2025-11-21 02:06:49,459 - INFO - Final Adjudication Attempts: 2
+2025-11-21 02:06:49,459 - INFO - Requirement Reinforcements: 2
+2025-11-21 02:06:51,264 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:51,265 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 02:06:51,265 - INFO - Response Content: The function salary_analyzer already exists in your toolset and is designed to calculate the average salary from employee data, returning a float representing the average salary value.
+
+You do not nee...
+2025-11-21 02:06:51,265 - INFO - Initiating function generation process...
+2025-11-21 02:06:52,084 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:06:52,085 - ERROR - === UNEXPECTED ERROR ===
+2025-11-21 02:06:52,085 - ERROR - Error: list index out of range
+2025-11-21 02:06:52,085 - ERROR - Unexpected error: list index out of range
+2025-11-21 02:06:52,103 - INFO - === SESSION SUMMARY ===
+2025-11-21 02:06:52,103 - INFO - Session Duration: 37.33 seconds
+2025-11-21 02:06:52,103 - INFO - Functions Attempted: 1
+2025-11-21 02:06:52,103 - INFO - Successful Functions: 1
+2025-11-21 02:06:52,103 - INFO - Terminated Early: 0
+2025-11-21 02:06:52,103 - INFO - Total Iterations: 2
+2025-11-21 02:06:52,103 - INFO - Average Iterations per Function: 2.00
+2025-11-21 02:06:52,103 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 02:06:52,103 - INFO - TDD Adjudication Attempts: 2
+2025-11-21 02:06:52,103 - INFO - Final Adjudication Attempts: 2
+2025-11-21 02:06:52,103 - INFO - Requirement Reinforcements: 2
+2025-11-21 02:08:21,947 - INFO - Running test for: Salary Analyzer (ID 1)
+2025-11-21 02:08:21,947 - INFO - Successfully imported functions from functions.py
+2025-11-21 02:08:21,947 - INFO - All assertions passed for Salary Analyzer
+2025-11-21 02:08:21,947 - INFO - ===== TEST PASSED ===== (Salary Analyzer)
+2025-11-21 02:08:48,205 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:08:51,416 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:08:51,416 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 02:08:51,438 - INFO - Response Content: Function Name: inventory_low_stock_alert
+Description: Generates an alert list of products in a warehouse that are below their reorder point. For each product in the warehouse, it retrieves the current...
+2025-11-21 02:08:51,438 - INFO - Initiating function generation process...
+2025-11-21 02:08:51,444 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 02:08:51,444 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 02:08:51,444 - INFO - Function Requirement: Function Name: inventory_low_stock_alert
+Description: Generates an alert list of products in a warehouse that are below their reorder point. For each product in the warehouse, it retrieves the current stock, compares it to the product's reorder point, and includes those products in the result whose stock is below the reorder threshold. The output contains a list of dictionaries, each with the following keys: sku, name, current_stock, reorder_point, and deficit (deficit = reorder_point - current_stock).
+Parameters:
+- warehouse: Warehouse object (as defined in /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/inventory_replenishment/warehouse.py)
+Example:
+inventory_low_stock_alert(warehouse)
+# Might return:
+# [
+#   {
+#     "sku": "P001",
+#     "name": "Widget",
+#     "current_stock": 5,
+#     "reorder_point": 10,
+#     "deficit": 5
+#   },
+#   ...
+# ]
+Composition: Builds upon Warehouse.get_all_products and Warehouse.get_current_stock from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/inventory_replenishment/warehouse.py and utilizes Product attributes from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/inventory_replenishment/product.py.
+2025-11-21 02:09:07,418 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:10,528 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:11,962 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:16,467 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:17,286 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:17,287 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 02:09:17,287 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:09:28,347 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:29,364 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:29,365 - INFO - --- ITERATION 1 ---
+2025-11-21 02:09:29,365 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:09:29,365 - INFO - Adjudication Passed: False
+2025-11-21 02:09:29,365 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:09:29,365 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:09:29,365 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:09:29,365 - INFO - Iteration: 1
+2025-11-21 02:09:29,365 - INFO - Previous Requirement: 
+2025-11-21 02:09:29,365 - INFO - New Requirement: 
+2025-11-21 02:09:29,365 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:09:29,365 - INFO - Iteration: 1
+2025-11-21 02:09:29,365 - INFO - Previous Requirement: 
+2025-11-21 02:09:29,365 - INFO - New Requirement: 
+2025-11-21 02:09:30,394 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:30,394 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 02:09:30,394 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:09:31,213 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:31,213 - INFO - --- ITERATION 2 ---
+2025-11-21 02:09:31,214 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:09:31,214 - INFO - Adjudication Passed: False
+2025-11-21 02:09:31,214 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:09:31,214 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:09:31,214 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:09:31,214 - INFO - Iteration: 2
+2025-11-21 02:09:31,214 - INFO - Previous Requirement: 
+2025-11-21 02:09:31,214 - INFO - New Requirement: 
+2025-11-21 02:09:31,214 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:09:31,214 - INFO - Iteration: 2
+2025-11-21 02:09:31,214 - INFO - Previous Requirement: 
+2025-11-21 02:09:31,214 - INFO - New Requirement: 
+2025-11-21 02:09:32,237 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:32,237 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 02:09:32,238 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:09:33,261 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:33,262 - INFO - --- ITERATION 3 ---
+2025-11-21 02:09:33,262 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:09:33,262 - INFO - Adjudication Passed: False
+2025-11-21 02:09:33,262 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:09:33,262 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:09:33,262 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:09:33,262 - INFO - Iteration: 3
+2025-11-21 02:09:33,262 - INFO - Previous Requirement: 
+2025-11-21 02:09:33,262 - INFO - New Requirement: 
+2025-11-21 02:09:33,262 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:09:33,262 - INFO - Iteration: 3
+2025-11-21 02:09:33,262 - INFO - Previous Requirement: 
+2025-11-21 02:09:33,262 - INFO - New Requirement: 
+2025-11-21 02:09:34,285 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:34,285 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 02:09:34,285 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:09:35,309 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:35,310 - INFO - --- ITERATION 4 ---
+2025-11-21 02:09:35,310 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:09:35,310 - INFO - Adjudication Passed: False
+2025-11-21 02:09:35,310 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:09:35,310 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:09:35,310 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:09:35,310 - INFO - Iteration: 4
+2025-11-21 02:09:35,310 - INFO - Previous Requirement: 
+2025-11-21 02:09:35,310 - INFO - New Requirement: 
+2025-11-21 02:09:35,310 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:09:35,310 - INFO - Iteration: 4
+2025-11-21 02:09:35,310 - INFO - Previous Requirement: 
+2025-11-21 02:09:35,310 - INFO - New Requirement: 
+2025-11-21 02:09:36,333 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:36,334 - INFO - --- TDD ADJUDICATION (Iteration 5) ---
+2025-11-21 02:09:36,334 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:09:37,357 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:37,358 - INFO - --- ITERATION 5 ---
+2025-11-21 02:09:37,358 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:09:37,358 - INFO - Adjudication Passed: False
+2025-11-21 02:09:37,358 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:09:37,358 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:09:37,358 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:09:37,358 - INFO - Iteration: 5
+2025-11-21 02:09:37,358 - INFO - Previous Requirement: 
+2025-11-21 02:09:37,358 - INFO - New Requirement: 
+2025-11-21 02:09:37,358 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:09:37,358 - INFO - Iteration: 5
+2025-11-21 02:09:37,358 - INFO - Previous Requirement: 
+2025-11-21 02:09:37,358 - INFO - New Requirement: 
+2025-11-21 02:09:38,381 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:38,381 - INFO - --- TDD ADJUDICATION (Iteration 6) ---
+2025-11-21 02:09:38,382 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:09:39,200 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:39,201 - INFO - --- ITERATION 6 ---
+2025-11-21 02:09:39,201 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:09:39,201 - INFO - Adjudication Passed: False
+2025-11-21 02:09:39,201 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:09:39,201 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:09:39,201 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:09:39,201 - INFO - Iteration: 6
+2025-11-21 02:09:39,201 - INFO - Previous Requirement: 
+2025-11-21 02:09:39,201 - INFO - New Requirement: 
+2025-11-21 02:09:39,201 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:09:39,201 - INFO - Iteration: 6
+2025-11-21 02:09:39,201 - INFO - Previous Requirement: 
+2025-11-21 02:09:39,201 - INFO - New Requirement: 
+2025-11-21 02:09:39,201 - WARNING - === MAX ITERATIONS REACHED ===
+2025-11-21 02:09:39,201 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-11-21 02:09:39,201 - WARNING - Total Duration: 47.76 seconds
+2025-11-21 02:09:39,201 - WARNING - Final Iteration Count: 6
+2025-11-21 02:09:39,208 - INFO - === SESSION SUMMARY ===
+2025-11-21 02:09:39,208 - INFO - Session Duration: 53.83 seconds
+2025-11-21 02:09:39,208 - INFO - Functions Attempted: 1
+2025-11-21 02:09:39,208 - INFO - Successful Functions: 0
+2025-11-21 02:09:39,208 - INFO - Terminated Early: 1
+2025-11-21 02:09:39,208 - INFO - Total Iterations: 6
+2025-11-21 02:09:39,208 - INFO - Average Iterations per Function: 6.00
+2025-11-21 02:09:39,208 - INFO - Existing Function Calls: 0 (0 successful)
+2025-11-21 02:09:39,208 - INFO - TDD Adjudication Attempts: 6
+2025-11-21 02:09:39,208 - INFO - Final Adjudication Attempts: 6
+2025-11-21 02:09:39,208 - INFO - Requirement Reinforcements: 12
+2025-11-21 02:09:44,525 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:48,007 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:09:48,007 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-11-21 02:09:48,007 - INFO - Response Content: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, checks all products via warehouse.get_all_products(). For each product, retrieves current stock using warehouse.get_...
+2025-11-21 02:09:48,007 - INFO - Initiating function generation process...
+2025-11-21 02:09:48,012 - INFO - === STARTING FUNCTION GENERATION ===
+2025-11-21 02:09:48,013 - INFO - User Input: Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+2025-11-21 02:09:48,013 - INFO - Function Requirement: Function Name: inventory_low_stock_alert
+Description: For a given Warehouse object, checks all products via warehouse.get_all_products(). For each product, retrieves current stock using warehouse.get_current_stock(product.sku). If stock is below the product's reorder_point, adds a dictionary to the result list containing: sku, name, current_stock, reorder_point, and deficit (calculated as reorder_point minus current_stock). Returns the list of low stock products with these details.
+Parameters:
+- warehouse: Warehouse object (from /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/inventory_replenishment/warehouse.py) whose products and stock should be checked.
+Example:
+inventory_low_stock_alert(warehouse)
+# Returns:
+# [
+#   {'sku': 'A001', 'name': 'Widget', 'current_stock': 2, 'reorder_point': 10, 'deficit': 8},
+#   {'sku': 'B002', 'name': 'Gadget', 'current_stock': 5, 'reorder_point': 20, 'deficit': 15},
+#   ...
+# ]
+Composition: Builds upon Warehouse.get_all_products and Warehouse.get_current_stock. Uses the Product attributes (sku, name, reorder_point) and compares with stock levels. Utilizes objects defined in:
+- /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/inventory_replenishment/warehouse.py (Warehouse)
+- /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/inventory_replenishment/product.py (Product)
+- Stock levels via warehouse.get_current_stock
+- Standard list/dict operations for result assembly
+2025-11-21 02:10:03,777 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:07,872 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:09,101 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:12,378 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:13,197 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:13,197 - INFO - --- TDD ADJUDICATION (Iteration 1) ---
+2025-11-21 02:10:13,197 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:10:24,052 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:25,075 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:25,075 - INFO - --- ITERATION 1 ---
+2025-11-21 02:10:25,075 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:10:25,075 - INFO - Adjudication Passed: False
+2025-11-21 02:10:25,076 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:10:25,076 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:10:25,076 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:10:25,076 - INFO - Iteration: 1
+2025-11-21 02:10:25,076 - INFO - Previous Requirement: 
+2025-11-21 02:10:25,076 - INFO - New Requirement: 
+2025-11-21 02:10:25,076 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:10:25,076 - INFO - Iteration: 1
+2025-11-21 02:10:25,076 - INFO - Previous Requirement: 
+2025-11-21 02:10:25,076 - INFO - New Requirement: 
+2025-11-21 02:10:26,099 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:26,100 - INFO - --- TDD ADJUDICATION (Iteration 2) ---
+2025-11-21 02:10:26,100 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:10:27,124 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:27,124 - INFO - --- ITERATION 2 ---
+2025-11-21 02:10:27,124 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:10:27,124 - INFO - Adjudication Passed: False
+2025-11-21 02:10:27,124 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:10:27,124 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:10:27,124 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:10:27,124 - INFO - Iteration: 2
+2025-11-21 02:10:27,124 - INFO - Previous Requirement: 
+2025-11-21 02:10:27,124 - INFO - New Requirement: 
+2025-11-21 02:10:27,124 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:10:27,124 - INFO - Iteration: 2
+2025-11-21 02:10:27,124 - INFO - Previous Requirement: 
+2025-11-21 02:10:27,124 - INFO - New Requirement: 
+2025-11-21 02:10:28,147 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:28,147 - INFO - --- TDD ADJUDICATION (Iteration 3) ---
+2025-11-21 02:10:28,147 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:10:29,171 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:29,172 - INFO - --- ITERATION 3 ---
+2025-11-21 02:10:29,173 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:10:29,173 - INFO - Adjudication Passed: False
+2025-11-21 02:10:29,173 - INFO - Code Requirement Suggestion: 
+2025-11-21 02:10:29,173 - INFO - Unit Requirement Suggestion: 
+2025-11-21 02:10:29,173 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-11-21 02:10:29,173 - INFO - Iteration: 3
+2025-11-21 02:10:29,173 - INFO - Previous Requirement: 
+2025-11-21 02:10:29,173 - INFO - New Requirement: 
+2025-11-21 02:10:29,173 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-11-21 02:10:29,173 - INFO - Iteration: 3
+2025-11-21 02:10:29,173 - INFO - Previous Requirement: 
+2025-11-21 02:10:29,173 - INFO - New Requirement: 
+2025-11-21 02:10:30,195 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:30,196 - INFO - --- TDD ADJUDICATION (Iteration 4) ---
+2025-11-21 02:10:30,196 - INFO - TDD Adjudication Passed: True
+2025-11-21 02:10:31,014 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:31,015 - INFO - --- ITERATION 4 ---
+2025-11-21 02:10:31,015 - INFO - Unit Test Result Summary: All tests passed
+2025-11-21 02:10:31,015 - INFO - Adjudication Passed: True
+2025-11-21 02:10:31,052 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-11-21 02:10:31,052 - INFO - Function Name: inventory_low_stock_alert
+2025-11-21 02:10:31,053 - INFO - Total Iterations: 4
+2025-11-21 02:10:31,053 - INFO - Total Duration: 43.04 seconds
+2025-11-21 02:10:31,053 - INFO - TDD Adjudication Attempts: 4
+2025-11-21 02:10:31,053 - INFO - Final Adjudication Attempts: 4
+2025-11-21 02:10:31,053 - INFO - Requirement Reinforcements: 6
+2025-11-21 02:10:32,860 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:32,863 - INFO - === EXISTING FUNCTION CALLED ===
+2025-11-21 02:10:32,863 - INFO - Function: inventory_low_stock_alert
+2025-11-21 02:10:32,863 - INFO - Arguments: {}
+2025-11-21 02:10:32,863 - INFO - Execution Time: 0.0001861079999798676 seconds
+2025-11-21 02:10:32,863 - INFO - Memory Peak: 7960 bytes
+2025-11-21 02:10:32,863 - INFO - Success: False
+2025-11-21 02:10:34,701 - INFO - HTTP Request: POST https://jenly-staging.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-11-21 02:10:34,716 - INFO - === SESSION SUMMARY ===
+2025-11-21 02:10:34,716 - INFO - Session Duration: 53.21 seconds
+2025-11-21 02:10:34,716 - INFO - Functions Attempted: 1
+2025-11-21 02:10:34,716 - INFO - Successful Functions: 1
+2025-11-21 02:10:34,716 - INFO - Terminated Early: 0
+2025-11-21 02:10:34,716 - INFO - Total Iterations: 4
+2025-11-21 02:10:34,716 - INFO - Average Iterations per Function: 4.00
+2025-11-21 02:10:34,716 - INFO - Existing Function Calls: 1 (0 successful)
+2025-11-21 02:10:34,716 - INFO - TDD Adjudication Attempts: 4
+2025-11-21 02:10:34,716 - INFO - Final Adjudication Attempts: 4
+2025-11-21 02:10:34,716 - INFO - Requirement Reinforcements: 6
+2025-11-21 02:11:53,154 - INFO - Running test for: Inventory Low Stock Alert (ID 4)
+2025-11-21 02:11:53,154 - INFO - Successfully imported functions from functions.py
+2025-11-21 02:11:53,154 - INFO - All assertions passed for Inventory Low Stock Alert
+2025-11-21 02:11:53,154 - INFO - ===== TEST PASSED ===== (Inventory Low Stock Alert)

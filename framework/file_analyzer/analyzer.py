@@ -610,6 +610,23 @@ from unit_test.functions import your_function_name
         context += "(Full classes for selected functions + their dependencies)\n"
         context += "="*60 + "\n\n"
 
+        context += """IMPORTANT: If any file path is needed, always use the FULL ABSOLUTE paths shown in "FULL PATH" sections above.
+
+Example: (CRITICAL: Always use absolute paths from the FILE PATHS section above):
+WRONG: file_path = Path(__file__).parent / "data.csv"
+RIGHT: file_path = "/absolute/path/to/dataset/patient_risk_analyzer/data.csv"  # Use actual FULL PATH shown above
+
+IMPORTANT: Replace the class/function names above with the ACTUAL names you need from the files shown below.
+Do NOT hardcode 'XYZ' or use placeholder names - use the real class names from the analyzed files!
+
+WRONG: from dataset.XYZ import XYZ  # ❌ Don't use placeholders!
+RIGHT: from dataset.patient_risk_analyzer.patient_records import Hospital, Patient  # ✅ Use actual names!
+
+COMPLETE FILE CONTENTS BELOW:
+==============================
+
+"""
+
         # Track which classes we've already extracted
         extracted_classes = set()
 
@@ -619,6 +636,12 @@ from unit_test.functions import your_function_name
 
             if not filepath or not func_name:
                 continue
+
+            # FIX: LLM returns "ClassName.method_name", strip to "method_name"
+            if '.' in func_name:
+                original = func_name
+                func_name = func_name.split('.')[-1]
+                print(f"  → Stripped class prefix: '{original}' → '{func_name}'")
 
             # Try exact match first
             file_data = self.all_files_content.get(filepath)
@@ -665,6 +688,8 @@ from unit_test.functions import your_function_name
                     print(f"     ✓ AST extraction succeeded ({len(extracted_code)} chars)")
 
             if extracted_code:
+                print(f"     → Adding to context: {len(extracted_code)} chars")
+
                 # Check if this is a class method
                 func_metadata = None
                 for func in file_data.get('functions', []):
@@ -675,8 +700,12 @@ from unit_test.functions import your_function_name
                 is_class_method = func_metadata and func_metadata.get('is_method')
                 class_name = func_metadata.get('class_name') if func_metadata else None
 
+                # Get full absolute path
+                full_path = os.path.join(self.project_path, filepath)
+
                 context += f"\n{'─'*60}\n"
                 context += f"FILE: {filepath}\n"
+                context += f"FILE_PATH: {full_path}\n"
 
                 if is_class_method and class_name:
                     context += f"CLASS: {class_name} (contains {func_name})\n"
@@ -688,9 +717,13 @@ from unit_test.functions import your_function_name
                 context += f"{'─'*60}\n"
                 context += extracted_code + "\n\n"
 
+                print(f"     → Context now has {len(context)} total chars")
+
                 # Mark this class as extracted
                 if is_class_method and class_name:
                     extracted_classes.add(class_name)
+            else:
+                print(f"     ✗ No code extracted!")
 
         # Extract dependency classes (classes imported and used by selected classes)
         dependency_context = self._extract_dependency_classes(selections, extracted_classes)
@@ -747,8 +780,10 @@ from unit_test.functions import your_function_name
                         )
 
                         if full_class:
+                            full_path = os.path.join(self.project_path, filepath)
                             context += f"\n{'─'*60}\n"
                             context += f"FILE: {filepath}\n"
+                            context += f"FILE_PATH: {full_path}\n"
                             context += f"DEPENDENCY CLASS: {class_name}\n"
                             context += f"(Used by selected functions)\n"
                             context += f"{'─'*60}\n"

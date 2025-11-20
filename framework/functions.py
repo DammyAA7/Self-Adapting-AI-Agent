@@ -4,48 +4,43 @@
 
 def inventory_low_stock_alert(warehouse):
     """
-    Returns a list of dicts for products in the warehouse whose current stock is below their reorder point.
-    Each dict contains: sku, name, current_stock, reorder_point, deficit.
-    Handles edge cases as specified in tests.
+    Returns a list of dictionaries for each product in the warehouse whose current stock is below the reorder point.
+    Each dictionary contains: sku, name, current_stock, reorder_point, and deficit.
+    Returns an empty list if there are no such products, or if input is invalid.
     """
-    # Validate input: must have get_all_products and get_current_stock
-    if not hasattr(warehouse, 'get_all_products') or not hasattr(warehouse, 'get_current_stock'):
+    if not warehouse or not hasattr(warehouse, "get_all_products") or not hasattr(warehouse, "get_current_stock"):
         return []
-    products = warehouse.get_all_products()
-    if not isinstance(products, list):
+    result = []
+    try:
+        products = warehouse.get_all_products()
+    except Exception:
         return []
-    alerts = []
     for product in products:
-        sku = getattr(product, 'sku', None)
-        name = getattr(product, 'name', None)
-        reorder_point = getattr(product, 'reorder_point', None)
-        if sku is None or reorder_point is None:
+        # Validate product object has required attributes
+        if not hasattr(product, "sku") or not hasattr(product, "name") or not hasattr(product, "reorder_point"):
             continue
-        current_stock = warehouse.get_current_stock(sku)
-        # If current_stock is None, treat as 0 (per test: missing stock returns 0)
-        if current_stock is None:
-            current_stock = 0
-        # If reorder_point == 0, only negative stock triggers alert
-        if reorder_point == 0:
-            if current_stock < 0:
-                alerts.append({
-                    'sku': sku,
-                    'name': name,
-                    'current_stock': current_stock,
-                    'reorder_point': reorder_point,
-                    'deficit': abs(current_stock)
+        try:
+            sku = product.sku
+            name = product.name
+            reorder_point = product.reorder_point
+            # Defensive: skip if reorder_point is not int
+            if not isinstance(reorder_point, int):
+                continue
+            current_stock = warehouse.get_current_stock(sku)
+            # Defensive: skip if current_stock is not an int
+            if not isinstance(current_stock, int):
+                continue
+            if current_stock < reorder_point:
+                result.append({
+                    "sku": sku,
+                    "name": name,
+                    "current_stock": current_stock,
+                    "reorder_point": reorder_point,
+                    "deficit": reorder_point - current_stock
                 })
+        except Exception:
             continue
-        # Normal alert if stock < reorder_point
-        if current_stock < reorder_point:
-            alerts.append({
-                'sku': sku,
-                'name': name,
-                'current_stock': current_stock,
-                'reorder_point': reorder_point,
-                'deficit': reorder_point - current_stock
-            })
-    return alerts
+    return result
 
 
 

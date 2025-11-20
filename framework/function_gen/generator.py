@@ -30,6 +30,28 @@ COMPOSITION REQUIREMENT: If the above contains ANY function related to this task
     # Add project context if available
     if project_context:
         user_content += f'''
+     
+======================================
+EXTREMELY IMPORANT IMPORT RULES, NEVER SKIP THIS ---   
+
+IMPORTANT: Replace the class/function names above with the ACTUAL names you need from the files shown below.
+Do NOT hardcode 'XYZ/ABC/IFG' or use placeholder names - use the real class names from the analyzed files!
+ALWAYS IMPORT FROM EXTERNAL PROJECT CODEBASE LIKE THIS:
+
+RIGHT: from dataset.ABC.XYZ import IFG  # ✅ FOLLOW THIS STRUCTURE (TAKE THIS AS EXAMPLE NOT HARDCODED)
+RIGHT: from dataset.inventory_replenishment.warehouse import Warehouse # ✅ CORRECT EXAMPLE (TAKE THIS AS EXAMPLE, YOU CAN SEE FIRST IS dataset., then it is directory name, then the file)
+WRONG: from dataset.XYZ import XYZ  # ❌ Don't use placeholders!
+WRONG: from warehouse import Warehouse # ❌ Don't Import Directly!
+WRONG: from product import Product # ❌ Don't Import Directly!
+        
+IMPORTANT: If any file path is needed, always use the FULL ABSOLUTE paths shown in "FULL PATH" sections above.
+
+Example: (CRITICAL: Always use absolute paths from the FILE PATHS section above):
+WRONG: file_path = Path(__file__).parent / "data.csv"
+RIGHT: file_path = "/absolute/path/to/dataset/patient_risk_analyzer/data.csv"  # Use actual FULL PATH shown above
+
+======================================
+     
 {'='*70}
 EXTERNAL PROJECT CODEBASE (DEPENDENCIES - USE BUT DO NOT MODIFY)
 {'='*70}

@@ -38,23 +38,44 @@ def setup_logging():
     logger.addHandler(handler)
 
     return logger
-### START TESTS ###
 
 
-from dataset.salary_analyzer.employee_db import EmployeeDB
+#### START TESTS HERE ####
 
-db = EmployeeDB()
-assert callable(salary_analyzer)
-result = salary_analyzer()
-assert isinstance(result, (int, float))
-assert result > 0
-assert 30000 <= result <= 200000
-print('Salary Analyzer tests passed')
 
+from dataset.inventory_replenishment.warehouse import Warehouse, create_sample_warehouse
+
+warehouse = create_sample_warehouse()
+low_stock = inventory_low_stock_alert(warehouse)
+
+assert isinstance(low_stock, list)
+assert len(low_stock) == 5  # SKU001, SKU002, SKU004, SKU005, SKU006 are below reorder
+
+# Verify each low stock item has correct structure
+for item in low_stock:
+    assert isinstance(item, dict)
+    assert 'sku' in item
+    assert 'name' in item
+    assert 'current_stock' in item
+    assert 'reorder_point' in item
+    assert 'deficit' in item
+    assert item['current_stock'] < item['reorder_point']
+    assert item['deficit'] == item['reorder_point'] - item['current_stock']
+
+# Verify specific SKUs are in the list
+skus_in_result = [item['sku'] for item in low_stock]
+assert 'SKU001' in skus_in_result
+assert 'SKU002' in skus_in_result
+assert 'SKU004' in skus_in_result
+assert 'SKU005' in skus_in_result
+assert 'SKU006' in skus_in_result
+assert 'SKU003' not in skus_in_result  # SKU003 is above reorder point
+
+print('Inventory Low Stock Alert tests passed')
 
 logger = setup_logging()
-logger.info(f"Running test for: {"Salary Analyzer"} (ID {"1"})")
+logger.info(f"Running test for: {"Inventory Low Stock Alert"} (ID {"4"})")
 logger.info(f"Successfully imported functions from functions.py")
-logger.info(f"All assertions passed for {"Salary Analyzer"}")
-logger.info(f"===== TEST PASSED ===== ({"Salary Analyzer"})")
+logger.info(f"All assertions passed for {"Inventory Low Stock Alert"}")
+logger.info(f"===== TEST PASSED ===== ({"Inventory Low Stock Alert"})")
 print("success")

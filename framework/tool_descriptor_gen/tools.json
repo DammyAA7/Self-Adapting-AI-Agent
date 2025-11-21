@@ -3,17 +3,22 @@
     {
         "type": "function",
         "function": {
-            "name": "inventory_low_stock_alert",
-            "description": "Returns a list of products in the given warehouse whose current stock is below their reorder point. Each product includes sku, name, current_stock, reorder_point, and deficit.",
+            "name": "patient_risk_score",
+            "description": "Calculates the risk score for a patient in the hospital system based on age, number of conditions, average severity, and recent abnormal vital signs.",
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "warehouse": {
+                    "hospital": {
                         "type": "object",
-                        "description": "The warehouse object to check for products with low stock."
+                        "description": "The hospital system instance providing access to patient records."
+                    },
+                    "patient_id": {
+                        "type": "string",
+                        "description": "The patient's unique ID.",
+                        "minLength": 1
                     }
                 },
-                "required": ["warehouse"]
+                "required": ["hospital", "patient_id"]
             }
         }
     }

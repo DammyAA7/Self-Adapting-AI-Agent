@@ -2,45 +2,47 @@
 
 
 
-def inventory_low_stock_alert(warehouse):
+from dataset.patient_risk_analyzer.hospital import Hospital
+from dataset.patient_risk_analyzer.patient import Patient
+from dataset.patient_risk_analyzer.medical_record import MedicalRecord
+
+def patient_risk_score(hospital, patient_id):
     """
-    Returns a list of dictionaries for each product in the warehouse whose current stock is below the reorder point.
-    Each dictionary contains: sku, name, current_stock, reorder_point, and deficit.
-    Returns an empty list if there are no such products, or if input is invalid.
+    Calculates the risk score for a patient in the hospital system based on age, number of conditions,
+    average severity, and recent abnormal vital signs.
+
+    Args:
+        hospital (Hospital): The hospital system instance.
+        patient_id (str): The patient's unique ID.
+
+    Returns:
+        float: The patient's risk score (0.0 to 100.0), or 0.0/None if patient not found.
     """
-    if not warehouse or not hasattr(warehouse, "get_all_products") or not hasattr(warehouse, "get_current_stock"):
-        return []
-    result = []
-    try:
-        products = warehouse.get_all_products()
-    except Exception:
-        return []
-    for product in products:
-        # Validate product object has required attributes
-        if not hasattr(product, "sku") or not hasattr(product, "name") or not hasattr(product, "reorder_point"):
-            continue
-        try:
-            sku = product.sku
-            name = product.name
-            reorder_point = product.reorder_point
-            # Defensive: skip if reorder_point is not int
-            if not isinstance(reorder_point, int):
-                continue
-            current_stock = warehouse.get_current_stock(sku)
-            # Defensive: skip if current_stock is not an int
-            if not isinstance(current_stock, int):
-                continue
-            if current_stock < reorder_point:
-                result.append({
-                    "sku": sku,
-                    "name": name,
-                    "current_stock": current_stock,
-                    "reorder_point": reorder_point,
-                    "deficit": reorder_point - current_stock
-                })
-        except Exception:
-            continue
-    return result
+    patient = hospital.get_patient(patient_id)
+    if not patient:
+        return 0.0
+
+    age_score = (patient.age / 100.0) * 30
+
+    total_conditions = patient.get_total_conditions()
+    conditions_score = total_conditions * 5 * 0.25  # (n*5)*25/100 = n*5*0.25
+
+    avg_severity = patient.get_average_severity()
+    severity_score = avg_severity * 10 * 0.25
+
+    recent_records = hospital.get_recent_records(patient_id, 90)
+    abnormal_vitals_score = 0.0
+    if any(r.has_abnormal_vitals() for r in recent_records):
+        abnormal_vitals_score = 20.0
+
+    total_score = age_score + conditions_score + severity_score + abnormal_vitals_score
+    # Clamp between 0.0 and 100.0
+    if total_score < 0.0:
+        total_score = 0.0
+    elif total_score > 100.0:
+        total_score = 100.0
+
+    return float(total_score)
 
 
 

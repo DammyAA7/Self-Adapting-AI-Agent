@@ -1,0 +1,138 @@
+[
+  {
+    "session_id": "20251012_082847",
+    "start_time": "2025-10-12T08:28:47.317842",
+    "functions": [
+      {
+        "function_requirement": "Function Name: parse_sensor_reading\nDescription: Parse IoT sensor data strings",
+        "user_input": "Create a function called parse_sensor_reading that takes a string like 'T:25.5|H:60|TS:1234567890'. Split by '|' to get parts. For each part, split by ':' to get key and value. Return dict with 'temperature', 'humidity', 'timestamp' keys. If a value cannot be converted to float/int, set to None. Handle T as float, H as float, TS as int.",
+        "start_time": "2025-10-12T08:28:47.319721",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "parse_sensor_reading",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T08:30:31.195284"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T08:31:41.730518",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-10-12T08:31:41.764482",
+        "total_duration_seconds": 174.444761
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "parse_sensor_reading",
+        "function_args": {
+          "reading": "T:25.5|H:60|TS:1234567890"
+        },
+        "execution_time": 0.00023847399917477742,
+        "memory_peak": 8147,
+        "result": "{'temperature': 25.5, 'humidity': 60.0, 'timestamp': 1234567890}",
+        "timestamp": "2025-10-12T08:32:00.843294",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-10-12T08:32:03.212183",
+    "session_duration_seconds": 195.894336
+  },
+  {
+    "session_id": "20251012_093829",
+    "start_time": "2025-10-12T09:38:29.417841",
+    "functions": [
+      {
+        "function_requirement": "Function Name: aggregate_temperature\nDescription: Calculate average temperature from sensor readings",
+        "user_input": "Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.",
+        "start_time": "2025-10-12T09:38:29.419721",
+        "iterations": 2,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "aggregate_temperature",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T09:40:19.195284"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T09:43:04.429183"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Handle empty readings list properly",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T09:41:29.429427",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T09:43:07.894617",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Handle empty readings list properly",
+            "timestamp": "2025-10-12T09:41:29.429642"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-12T09:41:29.430019"
+          }
+        ],
+        "end_time": "2025-10-12T09:43:07.928482",
+        "total_duration_seconds": 278.508741
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "aggregate_temperature",
+        "function_args": {
+          "readings": ["T:23.5|H:45.2|TS:1638316800", "T:24.1|H:40.0|TS:1638316801", "H:50.0|TS:1638316802"]
+        },
+        "execution_time": 0.0002714839997887611,
+        "memory_peak": 15638,
+        "result": "23.8",
+        "timestamp": "2025-10-12T09:43:26.843294",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-10-12T09:43:29.212184",
+    "session_duration_seconds": 299.794343
+  }
+]

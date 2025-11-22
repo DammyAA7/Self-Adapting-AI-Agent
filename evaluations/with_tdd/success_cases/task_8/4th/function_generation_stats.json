@@ -1,0 +1,141 @@
+[
+  {
+    "session_id": "20251012_111438",
+    "start_time": "2025-10-12T11:14:38.828847",
+    "functions": [
+      {
+        "function_requirement": "Function Name: movie_api\n\nDescription:\n  Adaptive movie data endpoint utilizing Python stack frame inspection.\n  - \"v1\" legacy: simple array of movie title strings\n  - \"v2\" standard: structured dict containing movie metadata collection\n  - \"v3\" linked: JSON-LD formatted response following schema.org specifications\n  Source data from movie.csv with full version compatibility.\n\nParameters:\n  None\n\nReturns:\n  - Detection of \"_v1\" in caller \u2192 List[str], such as [\"Pulp Fiction\", \"Goodfellas\", ...]\n  - Detection of \"_v2\" in caller \u2192 Metadata dict:\n      {\n        \"movies\": [\n          {\"title\": \"Pulp Fiction\", \"year\": \"1994\", \"genre\": \"Crime, Drama\"},\n          ...\n        ]\n      }\n  - Detection of \"_v3\" in caller \u2192 JSON-LD structured:\n      {\n        \"@context\": \"http://schema.org\",\n        \"@type\": \"ItemList\",\n        \"itemListElement\": [\n          {\n            \"@type\": \"Movie\",\n            \"name\": \"Pulp Fiction\",\n            \"datePublished\": \"1994\",\n            \"genre\": \"Crime, Drama\"\n          },\n          ...\n        ]\n      }\n\nExamples:\n\n# In v1_client.py\nfilms = movie_api()\n# result: [\"Pulp Fiction\", \"Goodfellas\", ...]\n\n# In v2_application.py\nmovies_data = movie_api()\n# result: {\"movies\": [{\"title\": \"Pulp Fiction\", ...}, ...]}\n\n# In v3_service.py\njson_ld = movie_api()\n# result: {\"@context\": \"http://schema.org\", \"@type\": \"ItemList\", ...}",
+        "user_input": "Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.",
+        "start_time": "2025-10-12T11:14:38.830721",
+        "iterations": 4,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "movie_api",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T11:16:30.195284"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T11:19:15.429183"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T11:20:53.830274"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T11:22:32.830274"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Stack frame detection logic needs refinement",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T11:17:40.730427",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure metadata fields match expected names in v2",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T11:19:18.894617",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": false,
+            "code_requirement_suggestion": "Verify v3 JSON-LD structure conforms to schema.org",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T11:20:57.194518",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 4,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T11:22:36.194518",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Stack frame detection logic needs refinement",
+            "timestamp": "2025-10-12T11:17:40.730642"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-12T11:17:40.731019"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Stack frame detection logic needs refinement",
+            "new_requirement": "Stack frame detection logic needs refinement. Ensure metadata fields match expected names in v2",
+            "timestamp": "2025-10-12T11:19:18.895183"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-12T11:19:18.895274"
+          },
+          {
+            "type": "code",
+            "iteration": 3,
+            "old_requirement": "Stack frame detection logic needs refinement. Ensure metadata fields match expected names in v2",
+            "new_requirement": "Stack frame detection logic needs refinement. Ensure metadata fields match expected names in v2. Verify v3 JSON-LD structure conforms to schema.org",
+            "timestamp": "2025-10-12T11:20:57.195183"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 3,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-12T11:20:57.195274"
+          }
+        ],
+        "end_time": "2025-10-12T11:22:36.228482",
+        "total_duration_seconds": 477.397761
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "movie_api",
+        "function_args": {},
+        "execution_time": 0.013574829991348088,
+        "memory_peak": 20082,
+        "result": "",
+        "timestamp": "2025-10-12T11:22:55.208294",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-10-12T11:22:57.446184",
+    "session_duration_seconds": 498.617337
+  }
+]

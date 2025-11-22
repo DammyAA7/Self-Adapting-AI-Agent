@@ -1,0 +1,166 @@
+2025-10-11 22:18:38,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:18:38,730 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 22:18:38,730 - INFO - Response Content: Function Name: parse_sensor_reading
+Description: Sensor data parsing utility
+2025-10-11 22:18:38,730 - INFO - Initiating function generation process...
+2025-10-11 22:18:38,730 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-11 22:18:38,731 - INFO - User Input: Create a function called parse_sensor_reading that takes a string like 'T:25.5|H:60|TS:1234567890'. Split by '|' to get parts. For each part, split by ':' to get key and value. Return dict with 'temperature', 'humidity', 'timestamp' keys. If a value cannot be converted to float/int, set to None. Handle T as float, H as float, TS as int.
+2025-10-11 22:18:38,731 - INFO - Function Requirement: Function Name: parse_sensor_reading
+Description: Sensor data parsing utility
+2025-10-11 22:19:05,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:20:00,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:20:14,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:20:14,429 - INFO - --- ITERATION 1 ---
+2025-10-11 22:20:14,429 - INFO - Unit Test Result Summary: All tests passed
+2025-10-11 22:20:14,429 - INFO - Adjudication Passed: True
+2025-10-11 22:20:14,463 - INFO - === FUNCTION GENERATION SUCCESSFUL ===
+2025-10-11 22:20:14,463 - INFO - Function Name: parse_sensor_reading
+2025-10-11 22:20:14,463 - INFO - Total Iterations: 1
+2025-10-11 22:20:14,463 - INFO - Total Duration: 95.73 seconds
+2025-10-11 22:20:14,463 - INFO - Final Adjudication Attempts: 1
+2025-10-11 22:20:14,463 - INFO - Requirement Reinforcements: 0
+2025-10-11 22:20:26,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:20:26,195 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 22:20:26,195 - INFO - Response Content: Parser done...
+2025-10-11 22:20:26,195 - INFO - Initiating function generation process...
+2025-10-11 22:20:33,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:20:33,843 - INFO - === EXISTING FUNCTION CALLED ===
+2025-10-11 22:20:33,843 - INFO - Function: parse_sensor_reading
+2025-10-11 22:20:33,843 - INFO - Arguments: {'reading': 'T:24.8|H:52|TS:1638317000'}
+2025-10-11 22:20:33,843 - INFO - Execution Time: 0.00023174700063979253 seconds
+2025-10-11 22:20:33,843 - INFO - Memory Peak: 8094 bytes
+2025-10-11 22:20:33,843 - INFO - Success: True
+2025-10-11 22:20:36,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:20:36,212 - INFO - === SESSION SUMMARY ===
+2025-10-11 22:20:36,212 - INFO - Session Duration: 117.48 seconds
+2025-10-11 22:20:36,212 - INFO - Functions Attempted: 1
+2025-10-11 22:20:36,212 - INFO - Successful Functions: 1
+2025-10-11 22:20:36,212 - INFO - Terminated Early: 0
+2025-10-11 22:20:36,212 - INFO - Total Iterations: 1
+2025-10-11 22:20:36,212 - INFO - Average Iterations per Function: 1.00
+2025-10-11 22:20:36,212 - INFO - Existing Function Calls: 1 (1 successful)
+2025-10-11 22:20:36,212 - INFO - Final Adjudication Attempts: 1
+2025-10-11 22:20:36,212 - INFO - Requirement Reinforcements: 0
+2025-10-11 23:27:14,418 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:27:14,419 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 23:27:14,419 - INFO - Response Content: Function Name: aggregate_temperature
+Description: Multi-sensor temperature averaging
+2025-10-11 23:27:14,419 - INFO - Initiating function generation process...
+2025-10-11 23:27:14,419 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-11 23:27:14,420 - INFO - User Input: Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.
+2025-10-11 23:27:14,420 - INFO - Function Requirement: Function Name: aggregate_temperature
+Description: Multi-sensor temperature averaging
+2025-10-11 23:27:41,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:28:36,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:28:50,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:28:50,429 - INFO - --- ITERATION 1 ---
+2025-10-11 23:28:50,429 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 23:28:50,429 - INFO - Adjudication Passed: False
+2025-10-11 23:28:50,429 - INFO - Code Requirement Suggestion: Import parse_sensor_reading correctly
+2025-10-11 23:28:50,429 - INFO - Unit Requirement Suggestion:
+2025-10-11 23:28:50,429 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 23:28:50,429 - INFO - Iteration: 1
+2025-10-11 23:28:50,429 - INFO - Previous Requirement:
+2025-10-11 23:28:50,429 - INFO - New Requirement: Import parse_sensor_reading correctly
+2025-10-11 23:28:50,429 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 23:28:50,429 - INFO - Iteration: 1
+2025-10-11 23:28:50,430 - INFO - Previous Requirement:
+2025-10-11 23:28:50,430 - INFO - New Requirement:
+2025-10-11 23:29:17,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:30:13,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:30:26,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:30:26,830 - INFO - --- ITERATION 2 ---
+2025-10-11 23:30:26,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 23:30:26,830 - INFO - Adjudication Passed: False
+2025-10-11 23:30:26,830 - INFO - Code Requirement Suggestion: Check temperature field access
+2025-10-11 23:30:26,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 23:30:26,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 23:30:26,830 - INFO - Iteration: 2
+2025-10-11 23:30:26,830 - INFO - Previous Requirement: Import parse_sensor_reading correctly
+2025-10-11 23:30:26,830 - INFO - New Requirement: Import parse_sensor_reading correctly. Check temperature field access
+2025-10-11 23:30:26,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 23:30:26,830 - INFO - Iteration: 2
+2025-10-11 23:30:26,831 - INFO - Previous Requirement:
+2025-10-11 23:30:26,831 - INFO - New Requirement:
+2025-10-11 23:30:53,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:31:49,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:32:02,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:32:02,830 - INFO - --- ITERATION 3 ---
+2025-10-11 23:32:02,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 23:32:02,830 - INFO - Adjudication Passed: False
+2025-10-11 23:32:02,830 - INFO - Code Requirement Suggestion: Validate list comprehension for filtering
+2025-10-11 23:32:02,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 23:32:02,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 23:32:02,830 - INFO - Iteration: 3
+2025-10-11 23:32:02,830 - INFO - Previous Requirement: Import parse_sensor_reading correctly. Check temperature field access
+2025-10-11 23:32:02,830 - INFO - New Requirement: Import parse_sensor_reading correctly. Check temperature field access. Validate list comprehension for filtering
+2025-10-11 23:32:02,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 23:32:02,830 - INFO - Iteration: 3
+2025-10-11 23:32:02,831 - INFO - Previous Requirement:
+2025-10-11 23:32:02,831 - INFO - New Requirement:
+2025-10-11 23:32:29,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:33:25,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:33:38,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:33:38,830 - INFO - --- ITERATION 4 ---
+2025-10-11 23:33:38,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 23:33:38,830 - INFO - Adjudication Passed: False
+2025-10-11 23:33:38,830 - INFO - Code Requirement Suggestion: Check round() function usage
+2025-10-11 23:33:38,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 23:33:38,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 23:33:38,830 - INFO - Iteration: 4
+2025-10-11 23:33:38,830 - INFO - Previous Requirement: Import parse_sensor_reading correctly. Check temperature field access. Validate list comprehension for filtering
+2025-10-11 23:33:38,830 - INFO - New Requirement: Import parse_sensor_reading correctly. Check temperature field access. Validate list comprehension for filtering. Check round() function usage
+2025-10-11 23:33:38,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 23:33:38,830 - INFO - Iteration: 4
+2025-10-11 23:33:38,831 - INFO - Previous Requirement:
+2025-10-11 23:33:38,831 - INFO - New Requirement:
+2025-10-11 23:34:05,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:35:01,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:35:14,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:35:14,830 - INFO - --- ITERATION 5 ---
+2025-10-11 23:35:14,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 23:35:14,830 - INFO - Adjudication Passed: False
+2025-10-11 23:35:14,830 - INFO - Code Requirement Suggestion:
+2025-10-11 23:35:14,830 - INFO - Unit Requirement Suggestion: Verify parse_sensor_reading accessible from aggregate_temperature
+2025-10-11 23:35:14,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 23:35:14,830 - INFO - Iteration: 5
+2025-10-11 23:35:14,830 - INFO - Previous Requirement: Import parse_sensor_reading correctly. Check temperature field access. Validate list comprehension for filtering. Check round() function usage
+2025-10-11 23:35:14,830 - INFO - New Requirement: Import parse_sensor_reading correctly. Check temperature field access. Validate list comprehension for filtering. Check round() function usage
+2025-10-11 23:35:14,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 23:35:14,830 - INFO - Iteration: 5
+2025-10-11 23:35:14,831 - INFO - Previous Requirement:
+2025-10-11 23:35:14,831 - INFO - New Requirement: Verify parse_sensor_reading accessible from aggregate_temperature
+2025-10-11 23:35:41,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:36:37,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:36:50,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 23:36:50,830 - INFO - --- ITERATION 6 ---
+2025-10-11 23:36:50,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 23:36:50,830 - INFO - Adjudication Passed: False
+2025-10-11 23:36:50,830 - INFO - Code Requirement Suggestion:
+2025-10-11 23:36:50,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 23:36:50,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 23:36:50,830 - INFO - Iteration: 6
+2025-10-11 23:36:50,830 - INFO - Previous Requirement: Import parse_sensor_reading correctly. Check temperature field access. Validate list comprehension for filtering. Check round() function usage
+2025-10-11 23:36:50,830 - INFO - New Requirement: Import parse_sensor_reading correctly. Check temperature field access. Validate list comprehension for filtering. Check round() function usage
+2025-10-11 23:36:50,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 23:36:50,830 - INFO - Iteration: 6
+2025-10-11 23:36:50,831 - INFO - Previous Requirement: Verify parse_sensor_reading accessible from aggregate_temperature
+2025-10-11 23:36:50,831 - INFO - New Requirement: Verify parse_sensor_reading accessible from aggregate_temperature
+2025-10-11 23:36:50,831 - WARNING - === MAX ITERATIONS REACHED ===
+2025-10-11 23:36:50,831 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-10-11 23:36:50,831 - WARNING - Total Duration: 576.41 seconds
+2025-10-11 23:36:50,831 - WARNING - Final Iteration Count: 6
+2025-10-11 23:36:50,841 - INFO - === SESSION SUMMARY ===
+2025-10-11 23:36:50,841 - INFO - Session Duration: 596.42 seconds
+2025-10-11 23:36:50,841 - INFO - Functions Attempted: 1
+2025-10-11 23:36:50,841 - INFO - Successful Functions: 0
+2025-10-11 23:36:50,841 - INFO - Terminated Early: 1
+2025-10-11 23:36:50,841 - INFO - Total Iterations: 6
+2025-10-11 23:36:50,841 - INFO - Average Iterations per Function: 6.00
+2025-10-11 23:36:50,841 - INFO - Existing Function Calls: 0 (0 successful)
+2025-10-11 23:36:50,841 - INFO - Final Adjudication Attempts: 6
+2025-10-11 23:36:50,841 - INFO - Requirement Reinforcements: 12
+2025-10-12 00:22:27,593 - INFO - Running test for: IoT Sensor Pipeline (ID 7)
+2025-10-12 00:22:27,597 - INFO - Successfully imported functions from functions.py
+2025-10-12 00:22:27,682 - ERROR - Test assertion failed for IoT Sensor Pipeline: Assertion failed:
+2025-10-12 00:22:27,682 - INFO - ===== TEST FAILED ===== (IoT Sensor Pipeline)

@@ -1,0 +1,108 @@
+[
+  {
+    "session_id": "20251012_101452",
+    "start_time": "2025-10-12T10:14:52.728847",
+    "functions": [
+      {
+        "function_requirement": "Function Name: parse_sensor_reading\nDescription: IoT data string parser",
+        "user_input": "Create a function called parse_sensor_reading that takes a string like 'T:25.5|H:60|TS:1234567890'. Split by '|' to get parts. For each part, split by ':' to get key and value. Return dict with 'temperature', 'humidity', 'timestamp' keys. If a value cannot be converted to float/int, set to None. Handle T as float, H as float, TS as int.",
+        "start_time": "2025-10-12T10:14:52.730721",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "parse_sensor_reading",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T10:16:36.195284"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T10:17:46.730518",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-10-12T10:17:46.764482",
+        "total_duration_seconds": 174.033761
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "parse_sensor_reading",
+        "function_args": {
+          "reading": "T:26.2|H:55|TS:1638316900"
+        },
+        "execution_time": 0.00022194599965587258,
+        "memory_peak": 8092,
+        "result": "{'temperature': 26.2, 'humidity': 55.0, 'timestamp': 1638316900}",
+        "timestamp": "2025-10-12T10:18:05.843294",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-10-12T10:18:08.212183",
+    "session_duration_seconds": 195.483336
+  },
+  {
+    "session_id": "20251012_112438",
+    "start_time": "2025-10-12T11:24:38.417841",
+    "functions": [
+      {
+        "function_requirement": "Function Name: aggregate_temperature\nDescription: Average temperature from sensor data",
+        "user_input": "Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.",
+        "start_time": "2025-10-12T11:24:38.419721",
+        "iterations": 1,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "aggregate_temperature",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T11:26:28.195284"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T11:27:38.429518",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [],
+        "end_time": "2025-10-12T11:27:38.463482",
+        "total_duration_seconds": 180.043761
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "aggregate_temperature",
+        "function_args": {
+          "readings": ["T:22.1|H:50.0|TS:1638316850", "T:23.7|H:48.0|TS:1638316851"]
+        },
+        "execution_time": 0.00024738599988771603,
+        "memory_peak": 15492,
+        "result": "22.9",
+        "timestamp": "2025-10-12T11:27:57.208294",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-10-12T11:27:59.446184",
+    "session_duration_seconds": 200.989343
+  }
+]

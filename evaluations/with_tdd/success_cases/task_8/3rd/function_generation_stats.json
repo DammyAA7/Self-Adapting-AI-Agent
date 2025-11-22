@@ -1,0 +1,112 @@
+[
+  {
+    "session_id": "20251012_092852",
+    "start_time": "2025-10-12T09:28:52.417841",
+    "functions": [
+      {
+        "function_requirement": "Function Name: movie_api\n\nDescription:\n  Context-aware API using call stack analysis for format selection.\n  - \"v1\" mode: returns list of title strings only\n  - \"v2\" mode: returns movies dict with full metadata arrays\n  - \"v3\" mode: returns schema.org compliant JSON-LD format\n  Reads from movie.csv while preserving backward compatibility.\n\nParameters:\n  None\n\nReturns:\n  - If caller has \"_v1\" \u2192 List[str] like [\"The Matrix\", \"Interstellar\", ...]\n  - If caller has \"_v2\" \u2192 Dict format:\n      {\n        \"movies\": [\n          {\"title\": \"The Matrix\", \"year\": \"1999\", \"genre\": \"Action, Sci-Fi\"},\n          ...\n        ]\n      }\n  - If caller has \"_v3\" \u2192 JSON-LD format:\n      {\n        \"@context\": \"http://schema.org\",\n        \"@type\": \"ItemList\",\n        \"itemListElement\": [\n          {\n            \"@type\": \"Movie\",\n            \"name\": \"The Matrix\",\n            \"datePublished\": \"1999\",\n            \"genre\": \"Action, Sci-Fi\"\n          },\n          ...\n        ]\n      }\n\nUsage:\n\n# From v1_legacy_code.py\nmovies = movie_api()\n# output: [\"The Matrix\", \"Interstellar\", ...]\n\n# From v2_module.py\ndata = movie_api()\n# output: {\"movies\": [{\"title\": \"The Matrix\", ...}, ...]}\n\n# From v3_app.py\nlinked = movie_api()\n# output: {\"@context\": \"http://schema.org\", ...}",
+        "user_input": "Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.",
+        "start_time": "2025-10-12T09:28:52.419721",
+        "iterations": 3,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "movie_api",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T09:30:43.195284"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T09:33:28.429183"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T09:35:06.830274"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Verify v1 format returns clean title list",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T09:31:53.429427",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Check v2 movies array structure matches expected schema",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T09:33:31.894617",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T09:35:10.194518",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Verify v1 format returns clean title list",
+            "timestamp": "2025-10-12T09:31:53.429642"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-12T09:31:53.430019"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Verify v1 format returns clean title list",
+            "new_requirement": "Verify v1 format returns clean title list. Check v2 movies array structure matches expected schema",
+            "timestamp": "2025-10-12T09:33:31.895183"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-12T09:33:31.895274"
+          }
+        ],
+        "end_time": "2025-10-12T09:35:10.228482",
+        "total_duration_seconds": 377.808761
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "movie_api",
+        "function_args": {},
+        "execution_time": 0.014128473992366344,
+        "memory_peak": 20293,
+        "result": "",
+        "timestamp": "2025-10-12T09:35:29.208294",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-10-12T09:35:31.446184",
+    "session_duration_seconds": 398.817343
+  }
+]

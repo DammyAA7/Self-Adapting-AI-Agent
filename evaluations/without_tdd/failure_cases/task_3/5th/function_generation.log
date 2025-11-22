@@ -1,0 +1,123 @@
+2025-10-11 22:28:47,629 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:28:47,630 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 22:28:47,630 - INFO - Response Content: Function Name: calculate_simple_gpa
+Description: Calculate cumulative GPA for university student
+2025-10-11 22:28:47,630 - INFO - Initiating function generation process...
+2025-10-11 22:28:47,630 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-11 22:28:47,631 - INFO - User Input: Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0).
+2025-10-11 22:28:47,631 - INFO - Function Requirement: Function Name: calculate_simple_gpa
+Description: Calculate cumulative GPA for university student
+2025-10-11 22:29:14,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:30:09,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:30:23,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:30:23,429 - INFO - --- ITERATION 1 ---
+2025-10-11 22:30:23,429 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 22:30:23,429 - INFO - Adjudication Passed: False
+2025-10-11 22:30:23,429 - INFO - Code Requirement Suggestion: Import dataset.enrollment_system module correctly
+2025-10-11 22:30:23,429 - INFO - Unit Requirement Suggestion:
+2025-10-11 22:30:23,429 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 22:30:23,429 - INFO - Iteration: 1
+2025-10-11 22:30:23,429 - INFO - Previous Requirement:
+2025-10-11 22:30:23,429 - INFO - New Requirement: Import dataset.enrollment_system module correctly
+2025-10-11 22:30:23,429 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 22:30:23,429 - INFO - Iteration: 1
+2025-10-11 22:30:23,430 - INFO - Previous Requirement:
+2025-10-11 22:30:23,430 - INFO - New Requirement:
+2025-10-11 22:30:50,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:31:46,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:31:59,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:31:59,830 - INFO - --- ITERATION 2 ---
+2025-10-11 22:31:59,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 22:31:59,830 - INFO - Adjudication Passed: False
+2025-10-11 22:31:59,830 - INFO - Code Requirement Suggestion: Verify University class methods accessible
+2025-10-11 22:31:59,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 22:31:59,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 22:31:59,830 - INFO - Iteration: 2
+2025-10-11 22:31:59,830 - INFO - Previous Requirement: Import dataset.enrollment_system module correctly
+2025-10-11 22:31:59,830 - INFO - New Requirement: Import dataset.enrollment_system module correctly. Verify University class methods accessible
+2025-10-11 22:31:59,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 22:31:59,830 - INFO - Iteration: 2
+2025-10-11 22:31:59,831 - INFO - Previous Requirement:
+2025-10-11 22:31:59,831 - INFO - New Requirement:
+2025-10-11 22:32:26,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:33:22,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:33:35,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:33:35,830 - INFO - --- ITERATION 3 ---
+2025-10-11 22:33:35,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 22:33:35,830 - INFO - Adjudication Passed: False
+2025-10-11 22:33:35,830 - INFO - Code Requirement Suggestion: Check course object attribute access
+2025-10-11 22:33:35,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 22:33:35,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 22:33:35,830 - INFO - Iteration: 3
+2025-10-11 22:33:35,830 - INFO - Previous Requirement: Import dataset.enrollment_system module correctly. Verify University class methods accessible
+2025-10-11 22:33:35,830 - INFO - New Requirement: Import dataset.enrollment_system module correctly. Verify University class methods accessible. Check course object attribute access
+2025-10-11 22:33:35,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 22:33:35,830 - INFO - Iteration: 3
+2025-10-11 22:33:35,831 - INFO - Previous Requirement:
+2025-10-11 22:33:35,831 - INFO - New Requirement:
+2025-10-11 22:34:02,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:34:58,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:35:11,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:35:11,830 - INFO - --- ITERATION 4 ---
+2025-10-11 22:35:11,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 22:35:11,830 - INFO - Adjudication Passed: False
+2025-10-11 22:35:11,830 - INFO - Code Requirement Suggestion: Validate division implementation for GPA
+2025-10-11 22:35:11,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 22:35:11,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 22:35:11,830 - INFO - Iteration: 4
+2025-10-11 22:35:11,830 - INFO - Previous Requirement: Import dataset.enrollment_system module correctly. Verify University class methods accessible. Check course object attribute access
+2025-10-11 22:35:11,830 - INFO - New Requirement: Import dataset.enrollment_system module correctly. Verify University class methods accessible. Check course object attribute access. Validate division implementation for GPA
+2025-10-11 22:35:11,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 22:35:11,830 - INFO - Iteration: 4
+2025-10-11 22:35:11,831 - INFO - Previous Requirement:
+2025-10-11 22:35:11,831 - INFO - New Requirement:
+2025-10-11 22:35:38,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:36:34,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:36:47,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:36:47,830 - INFO - --- ITERATION 5 ---
+2025-10-11 22:36:47,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 22:36:47,830 - INFO - Adjudication Passed: False
+2025-10-11 22:36:47,830 - INFO - Code Requirement Suggestion:
+2025-10-11 22:36:47,830 - INFO - Unit Requirement Suggestion: Verify enrollment_system module structure in dataset
+2025-10-11 22:36:47,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 22:36:47,830 - INFO - Iteration: 5
+2025-10-11 22:36:47,830 - INFO - Previous Requirement: Import dataset.enrollment_system module correctly. Verify University class methods accessible. Check course object attribute access. Validate division implementation for GPA
+2025-10-11 22:36:47,830 - INFO - New Requirement: Import dataset.enrollment_system module correctly. Verify University class methods accessible. Check course object attribute access. Validate division implementation for GPA
+2025-10-11 22:36:47,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 22:36:47,830 - INFO - Iteration: 5
+2025-10-11 22:36:47,831 - INFO - Previous Requirement:
+2025-10-11 22:36:47,831 - INFO - New Requirement: Verify enrollment_system module structure in dataset
+2025-10-11 22:37:14,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:38:10,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:38:23,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 22:38:23,830 - INFO - --- ITERATION 6 ---
+2025-10-11 22:38:23,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 22:38:23,830 - INFO - Adjudication Passed: False
+2025-10-11 22:38:23,830 - INFO - Code Requirement Suggestion:
+2025-10-11 22:38:23,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 22:38:23,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 22:38:23,830 - INFO - Iteration: 6
+2025-10-11 22:38:23,830 - INFO - Previous Requirement: Import dataset.enrollment_system module correctly. Verify University class methods accessible. Check course object attribute access. Validate division implementation for GPA
+2025-10-11 22:38:23,830 - INFO - New Requirement: Import dataset.enrollment_system module correctly. Verify University class methods accessible. Check course object attribute access. Validate division implementation for GPA
+2025-10-11 22:38:23,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 22:38:23,830 - INFO - Iteration: 6
+2025-10-11 22:38:23,831 - INFO - Previous Requirement: Verify enrollment_system module structure in dataset
+2025-10-11 22:38:23,831 - INFO - New Requirement: Verify enrollment_system module structure in dataset
+2025-10-11 22:38:23,831 - WARNING - === MAX ITERATIONS REACHED ===
+2025-10-11 22:38:23,831 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-10-11 22:38:23,831 - WARNING - Total Duration: 576.20 seconds
+2025-10-11 22:38:23,831 - WARNING - Final Iteration Count: 6
+2025-10-11 22:38:23,841 - INFO - === SESSION SUMMARY ===
+2025-10-11 22:38:23,841 - INFO - Session Duration: 596.31 seconds
+2025-10-11 22:38:23,841 - INFO - Functions Attempted: 1
+2025-10-11 22:38:23,841 - INFO - Successful Functions: 0
+2025-10-11 22:38:23,841 - INFO - Terminated Early: 1
+2025-10-11 22:38:23,841 - INFO - Total Iterations: 6
+2025-10-11 22:38:23,841 - INFO - Average Iterations per Function: 6.00
+2025-10-11 22:38:23,841 - INFO - Existing Function Calls: 0 (0 successful)
+2025-10-11 22:38:23,841 - INFO - Final Adjudication Attempts: 6
+2025-10-11 22:38:23,841 - INFO - Requirement Reinforcements: 12
+2025-10-11 23:24:16,594 - INFO - Running test for: Student GPA Calculator (ID 3)
+2025-10-11 23:24:16,595 - INFO - Successfully imported functions from functions.py
+2025-10-11 23:24:16,649 - ERROR - Test assertion failed for Student GPA Calculator: Assertion failed:
+2025-10-11 23:24:16,649 - INFO - ===== TEST FAILED ===== (Student GPA Calculator)

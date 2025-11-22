@@ -1,0 +1,112 @@
+[
+  {
+    "session_id": "20251012_130614",
+    "start_time": "2025-10-12T13:06:14.728847",
+    "functions": [
+      {
+        "function_requirement": "Function Name: movie_api\n\nDescription:\n  Stack-based version detection for movie data delivery.\n  - \"v1\" returns: array of movie title strings\n  - \"v2\" returns: dictionary with movies metadata list\n  - \"v3\" returns: schema.org Movie JSON-LD structure\n  CSV-sourced data maintaining all three format versions.\n\nParameters:\n  None\n\nReturn Formats:\n  - Caller with \"_v1\" \u2192 List[str], e.g. [\"Fight Club\", \"Se7en\", ...]\n  - Caller with \"_v2\" \u2192 Metadata dictionary:\n      {\n        \"movies\": [\n          {\"title\": \"Fight Club\", \"year\": \"1999\", \"genre\": \"Drama\"},\n          ...\n        ]\n      }\n  - Caller with \"_v3\" \u2192 JSON-LD structure:\n      {\n        \"@context\": \"http://schema.org\",\n        \"@type\": \"ItemList\",\n        \"itemListElement\": [\n          {\n            \"@type\": \"Movie\",\n            \"name\": \"Fight Club\",\n            \"datePublished\": \"1999\",\n            \"genre\": \"Drama\"\n          },\n          ...\n        ]\n      }\n\nImplementation:\n\n# Call from v1_handler.py\ntitles = movie_api()\n# returns: [\"Fight Club\", \"Se7en\", ...]\n\n# Call from v2_service.py\nmovie_data = movie_api()\n# returns: {\"movies\": [{\"title\": \"Fight Club\", ...}, ...]}\n\n# Call from v3_endpoint.py\nstructured_data = movie_api()\n# returns: {\"@context\": \"http://schema.org\", ...}",
+        "user_input": "Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.",
+        "start_time": "2025-10-12T13:06:14.730721",
+        "iterations": 3,
+        "successful": true,
+        "terminated_early": false,
+        "termination_reason": null,
+        "final_function_name": "movie_api",
+        "tdd_adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T13:08:05.195284"
+          },
+          {
+            "iteration": 2,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T13:10:50.429183"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "requirement_suggestion": "",
+            "reinforced_requirement": "",
+            "timestamp": "2025-10-12T13:12:28.830274"
+          }
+        ],
+        "adjudication_attempts": [
+          {
+            "iteration": 1,
+            "judgement": false,
+            "code_requirement_suggestion": "Handle context detection for multiple caller patterns",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T13:09:15.730427",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 2,
+            "judgement": false,
+            "code_requirement_suggestion": "Ensure all three formats have proper data structure",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T13:10:53.894617",
+            "unit_test_summary": "Mixed results (some passed, some failed)"
+          },
+          {
+            "iteration": 3,
+            "judgement": true,
+            "code_requirement_suggestion": "",
+            "unit_requirement_suggestion": "",
+            "timestamp": "2025-10-12T13:12:32.194518",
+            "unit_test_summary": "All tests passed"
+          }
+        ],
+        "reinforcement_history": [
+          {
+            "type": "code",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "Handle context detection for multiple caller patterns",
+            "timestamp": "2025-10-12T13:09:15.730642"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 1,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-12T13:09:15.731019"
+          },
+          {
+            "type": "code",
+            "iteration": 2,
+            "old_requirement": "Handle context detection for multiple caller patterns",
+            "new_requirement": "Handle context detection for multiple caller patterns. Ensure all three formats have proper data structure",
+            "timestamp": "2025-10-12T13:10:53.895183"
+          },
+          {
+            "type": "unit_test",
+            "iteration": 2,
+            "old_requirement": "",
+            "new_requirement": "",
+            "timestamp": "2025-10-12T13:10:53.895274"
+          }
+        ],
+        "end_time": "2025-10-12T13:12:32.228482",
+        "total_duration_seconds": 377.497761
+      }
+    ],
+    "existing_function_calls": [
+      {
+        "function_name": "movie_api",
+        "function_args": {},
+        "execution_time": 0.013291847989894450,
+        "memory_peak": 19974,
+        "result": "",
+        "timestamp": "2025-10-12T13:12:51.208294",
+        "successful": true
+      }
+    ],
+    "end_time": "2025-10-12T13:12:53.446184",
+    "session_duration_seconds": 398.717337
+  }
+]

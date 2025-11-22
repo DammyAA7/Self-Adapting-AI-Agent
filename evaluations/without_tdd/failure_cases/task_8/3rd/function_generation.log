@@ -1,0 +1,123 @@
+2025-10-11 20:26:14,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:26:14,730 - INFO - === MODEL RESPONSE WITHOUT TOOL CALLS ===
+2025-10-11 20:26:14,730 - INFO - Response Content: Function Name: movie_api
+Description: Stack-based format detection API
+2025-10-11 20:26:14,730 - INFO - Initiating function generation process...
+2025-10-11 20:26:14,730 - INFO - === STARTING FUNCTION GENERATION ===
+2025-10-11 20:26:14,731 - INFO - User Input: Create a movie_api function that automatically detects and switches between three different return formats based on the caller's context: v1 returns list of titles, v2 returns dict with metadata, v3 returns JSON-LD structured data. The function must inspect the call stack to determine which version to use and maintain backward compatibility for all three simultaneously.
+2025-10-11 20:26:14,731 - INFO - Function Requirement: Function Name: movie_api
+Description: Stack-based format detection API
+2025-10-11 20:26:41,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:27:36,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:27:50,428 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:27:50,429 - INFO - --- ITERATION 1 ---
+2025-10-11 20:27:50,429 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 20:27:50,429 - INFO - Adjudication Passed: False
+2025-10-11 20:27:50,429 - INFO - Code Requirement Suggestion: Check stack frame analysis implementation
+2025-10-11 20:27:50,429 - INFO - Unit Requirement Suggestion:
+2025-10-11 20:27:50,429 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 20:27:50,429 - INFO - Iteration: 1
+2025-10-11 20:27:50,429 - INFO - Previous Requirement:
+2025-10-11 20:27:50,429 - INFO - New Requirement: Check stack frame analysis implementation
+2025-10-11 20:27:50,429 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 20:27:50,429 - INFO - Iteration: 1
+2025-10-11 20:27:50,430 - INFO - Previous Requirement:
+2025-10-11 20:27:50,430 - INFO - New Requirement:
+2025-10-11 20:28:17,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:29:13,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:29:26,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:29:26,830 - INFO - --- ITERATION 2 ---
+2025-10-11 20:29:26,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 20:29:26,830 - INFO - Adjudication Passed: False
+2025-10-11 20:29:26,830 - INFO - Code Requirement Suggestion: Verify version pattern matching
+2025-10-11 20:29:26,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 20:29:26,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 20:29:26,830 - INFO - Iteration: 2
+2025-10-11 20:29:26,830 - INFO - Previous Requirement: Check stack frame analysis implementation
+2025-10-11 20:29:26,830 - INFO - New Requirement: Check stack frame analysis implementation. Verify version pattern matching
+2025-10-11 20:29:26,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 20:29:26,830 - INFO - Iteration: 2
+2025-10-11 20:29:26,831 - INFO - Previous Requirement:
+2025-10-11 20:29:26,831 - INFO - New Requirement:
+2025-10-11 20:29:53,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:30:49,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:31:02,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:31:02,830 - INFO - --- ITERATION 3 ---
+2025-10-11 20:31:02,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 20:31:02,830 - INFO - Adjudication Passed: False
+2025-10-11 20:31:02,830 - INFO - Code Requirement Suggestion: Check movie data formatting for each version
+2025-10-11 20:31:02,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 20:31:02,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 20:31:02,830 - INFO - Iteration: 3
+2025-10-11 20:31:02,830 - INFO - Previous Requirement: Check stack frame analysis implementation. Verify version pattern matching
+2025-10-11 20:31:02,830 - INFO - New Requirement: Check stack frame analysis implementation. Verify version pattern matching. Check movie data formatting for each version
+2025-10-11 20:31:02,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 20:31:02,830 - INFO - Iteration: 3
+2025-10-11 20:31:02,831 - INFO - Previous Requirement:
+2025-10-11 20:31:02,831 - INFO - New Requirement:
+2025-10-11 20:31:29,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:32:25,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:32:38,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:32:38,830 - INFO - --- ITERATION 4 ---
+2025-10-11 20:32:38,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 20:32:38,830 - INFO - Adjudication Passed: False
+2025-10-11 20:32:38,830 - INFO - Code Requirement Suggestion: Validate ItemList type for v3
+2025-10-11 20:32:38,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 20:32:38,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 20:32:38,830 - INFO - Iteration: 4
+2025-10-11 20:32:38,830 - INFO - Previous Requirement: Check stack frame analysis implementation. Verify version pattern matching. Check movie data formatting for each version
+2025-10-11 20:32:38,830 - INFO - New Requirement: Check stack frame analysis implementation. Verify version pattern matching. Check movie data formatting for each version. Validate ItemList type for v3
+2025-10-11 20:32:38,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 20:32:38,830 - INFO - Iteration: 4
+2025-10-11 20:32:38,831 - INFO - Previous Requirement:
+2025-10-11 20:32:38,831 - INFO - New Requirement:
+2025-10-11 20:33:05,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:34:01,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:34:14,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:34:14,830 - INFO - --- ITERATION 5 ---
+2025-10-11 20:34:14,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 20:34:14,830 - INFO - Adjudication Passed: False
+2025-10-11 20:34:14,830 - INFO - Code Requirement Suggestion:
+2025-10-11 20:34:14,830 - INFO - Unit Requirement Suggestion: Ensure movie CSV accessible from function
+2025-10-11 20:34:14,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 20:34:14,830 - INFO - Iteration: 5
+2025-10-11 20:34:14,830 - INFO - Previous Requirement: Check stack frame analysis implementation. Verify version pattern matching. Check movie data formatting for each version. Validate ItemList type for v3
+2025-10-11 20:34:14,830 - INFO - New Requirement: Check stack frame analysis implementation. Verify version pattern matching. Check movie data formatting for each version. Validate ItemList type for v3
+2025-10-11 20:34:14,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 20:34:14,830 - INFO - Iteration: 5
+2025-10-11 20:34:14,831 - INFO - Previous Requirement:
+2025-10-11 20:34:14,831 - INFO - New Requirement: Ensure movie CSV accessible from function
+2025-10-11 20:34:41,729 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:35:37,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:35:50,829 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"
+2025-10-11 20:35:50,830 - INFO - --- ITERATION 6 ---
+2025-10-11 20:35:50,830 - INFO - Unit Test Result Summary: Tests failed
+2025-10-11 20:35:50,830 - INFO - Adjudication Passed: False
+2025-10-11 20:35:50,830 - INFO - Code Requirement Suggestion:
+2025-10-11 20:35:50,830 - INFO - Unit Requirement Suggestion:
+2025-10-11 20:35:50,830 - INFO - --- REQUIREMENT REINFORCEMENT (CODE) ---
+2025-10-11 20:35:50,830 - INFO - Iteration: 6
+2025-10-11 20:35:50,830 - INFO - Previous Requirement: Check stack frame analysis implementation. Verify version pattern matching. Check movie data formatting for each version. Validate ItemList type for v3
+2025-10-11 20:35:50,830 - INFO - New Requirement: Check stack frame analysis implementation. Verify version pattern matching. Check movie data formatting for each version. Validate ItemList type for v3
+2025-10-11 20:35:50,830 - INFO - --- REQUIREMENT REINFORCEMENT (UNIT_TEST) ---
+2025-10-11 20:35:50,830 - INFO - Iteration: 6
+2025-10-11 20:35:50,831 - INFO - Previous Requirement: Ensure movie CSV accessible from function
+2025-10-11 20:35:50,831 - INFO - New Requirement: Ensure movie CSV accessible from function
+2025-10-11 20:35:50,831 - WARNING - === MAX ITERATIONS REACHED ===
+2025-10-11 20:35:50,831 - WARNING - Maximum iterations (6) reached without successful function generation.
+2025-10-11 20:35:50,831 - WARNING - Total Duration: 576.10 seconds
+2025-10-11 20:35:50,831 - WARNING - Final Iteration Count: 6
+2025-10-11 20:35:50,841 - INFO - === SESSION SUMMARY ===
+2025-10-11 20:35:50,841 - INFO - Session Duration: 596.21 seconds
+2025-10-11 20:35:50,841 - INFO - Functions Attempted: 1
+2025-10-11 20:35:50,841 - INFO - Successful Functions: 0
+2025-10-11 20:35:50,841 - INFO - Terminated Early: 1
+2025-10-11 20:35:50,841 - INFO - Total Iterations: 6
+2025-10-11 20:35:50,841 - INFO - Average Iterations per Function: 6.00
+2025-10-11 20:35:50,841 - INFO - Existing Function Calls: 0 (0 successful)
+2025-10-11 20:35:50,841 - INFO - Final Adjudication Attempts: 6
+2025-10-11 20:35:50,841 - INFO - Requirement Reinforcements: 12
+2025-10-11 21:22:16,594 - INFO - Running test for: Movie API Interface Evolution (ID 8)
+2025-10-11 21:22:16,595 - INFO - Successfully imported functions from functions.py
+2025-10-11 21:22:16,649 - ERROR - Test assertion failed for Movie API Interface Evolution: Assertion failed:
+2025-10-11 21:22:16,649 - INFO - ===== TEST FAILED ===== (Movie API Interface Evolution)

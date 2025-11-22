@@ -1,5 +1,6 @@
 import os
 import sys
+
 # Add parent directory to path so imports work correctly
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -24,14 +25,15 @@ import argparse
 # Import terminal context if available
 try:
     from terminal_context.context_manager import get_context_manager
+
     TERMINAL_CONTEXT_AVAILABLE = True
 except ImportError:
     TERMINAL_CONTEXT_AVAILABLE = False
     print("Terminal Context not available - functions won't persist between generations")
 
-
 python_dir = sys.executable
-folder_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/" 
+folder_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"
+
 
 def get_user_input():
     """Get user request dynamically from various sources"""
@@ -43,9 +45,12 @@ def get_user_input():
     parser.add_argument('--clean', action='store_true', help='Clean test files before running')
     parser.add_argument('--clean-all', action='store_true', help='Clean all files including generated functions')
     parser.add_argument('--no-clean', action='store_true', help='Skip automatic cleanup of test files before running')
-    parser.add_argument('--context-memory', action='store_true', help='Enable context memory mode - restore previous sessions and preserve function context')
-    parser.add_argument('--session', type=str, help='Direct path to specific session file to load (requires --context-memory)')
-    parser.add_argument('--auto-load', action='store_true', help='Automatically load the most recent context session without prompting (requires --context-memory)')
+    parser.add_argument('--context-memory', action='store_true',
+                        help='Enable context memory mode - restore previous sessions and preserve function context')
+    parser.add_argument('--session', type=str,
+                        help='Direct path to specific session file to load (requires --context-memory)')
+    parser.add_argument('--auto-load', action='store_true',
+                        help='Automatically load the most recent context session without prompting (requires --context-memory)')
     parser.add_argument('--debug', action='store_true', help='Enable debug output for troubleshooting')
 
     args = parser.parse_args()
@@ -70,9 +75,9 @@ def get_user_input():
 
     # Interactive mode (default if no arguments)
     if args.interactive or (not args.request and not args.file):
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("Self-Evolving Framework - Interactive Mode")
-        print("="*60)
+        print("=" * 60)
         analyze_path = input("Project path to analyze (press Enter to skip): ").strip()
         request = input("What would you like me to help with? > ").strip()
         return request, analyze_path if analyze_path else None, args
@@ -89,6 +94,7 @@ def get_user_input():
 
     return None, None, args
 
+
 def select_context_session(context_manager, auto_session=None, auto_load=False):
     """
     Interactive session selection for context memory mode.
@@ -104,7 +110,7 @@ def select_context_session(context_manager, auto_session=None, auto_load=False):
     import json
     from datetime import datetime
     import os
-    
+
     if auto_session:
         # Direct session file provided via --session argument
         print(f"📂 Loading specified session: {auto_session}")
@@ -115,13 +121,13 @@ def select_context_session(context_manager, auto_session=None, auto_load=False):
         if success:
             print("✅ Session loaded successfully!")
         return success, auto_session
-    
+
     # List available sessions
     session_dir = os.path.join("..", "outputs", "sessions", "context_sessions")
     if not os.path.exists(session_dir):
         print("📁 No context sessions directory found. Starting fresh.")
         return False, None
-    
+
     sessions = []
     for filename in os.listdir(session_dir):
         if filename.endswith('.json'):
@@ -139,20 +145,20 @@ def select_context_session(context_manager, auto_session=None, auto_load=False):
             except Exception as e:
                 print(f"⚠ Warning: Could not read session {filename}: {e}")
                 continue
-    
+
     if not sessions:
         print("📁 No valid session files found. Starting fresh.")
         return False, None
-    
+
     # Sort by saved_at timestamp (most recent first)
     sessions.sort(key=lambda x: x['saved_at'], reverse=True)
 
     # Auto-load most recent session if requested
     if auto_load and sessions:
         selected_file = sessions[0]['filepath']
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("Auto-Loading Most Recent Context Session")
-        print("="*60)
+        print("=" * 60)
         print(f"🎯 Loading: {sessions[0]['filename']}")
 
         # Load the session
@@ -170,11 +176,11 @@ def select_context_session(context_manager, auto_session=None, auto_load=False):
 
         return success, selected_file
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("Context Memory Mode - Session Selection")
-    print("="*60)
+    print("=" * 60)
     print("\n📂 Available Context Sessions:")
-    
+
     for idx, session in enumerate(sessions[:10], 1):
         # Parse timestamp for display
         try:
@@ -182,25 +188,25 @@ def select_context_session(context_manager, auto_session=None, auto_load=False):
             date_str = timestamp.strftime("%b %d, %H:%M")
         except:
             date_str = 'Unknown date'
-        
+
         func_count = len(session['functions'])
         func_names = ', '.join(session['functions'][:3])
         if len(session['functions']) > 3:
-            func_names += f", +{len(session['functions'])-3} more"
-        
+            func_names += f", +{len(session['functions']) - 3} more"
+
         print(f"{idx}. {session['filename']} ({date_str})")
         print(f"   Functions ({func_count}): {func_names if func_names else 'None'}")
         print()
-    
+
     # Get user selection
     print("Options:")
     print(f"  - Enter 1-{len(sessions[:10])} to select a session")
     print("  - Enter full path to custom session file")
     print("  - Enter 'new' to start fresh with context memory")
     print("  - Press Enter to use most recent session")
-    
+
     selection = input("\nYour choice: > ").strip()
-    
+
     # Process selection
     selected_file = None
     if not selection and sessions:
@@ -211,8 +217,8 @@ def select_context_session(context_manager, auto_session=None, auto_load=False):
         print("🆕 Starting fresh session with context memory enabled")
         return False, None
     elif selection.isdigit() and 1 <= int(selection) <= len(sessions[:10]):
-        selected_file = sessions[int(selection)-1]['filepath']
-        print(f"🎯 Selected: {sessions[int(selection)-1]['filename']}")
+        selected_file = sessions[int(selection) - 1]['filepath']
+        print(f"🎯 Selected: {sessions[int(selection) - 1]['filename']}")
     elif os.path.exists(selection):
         selected_file = selection
         print(f"🎯 Loading custom path: {selection}")
@@ -220,11 +226,11 @@ def select_context_session(context_manager, auto_session=None, auto_load=False):
         print(f"❌ Invalid selection: {selection}")
         print("Starting fresh session...")
         return False, None
-    
+
     # Load selected session
     print(f"\n📂 Loading session: {selected_file}")
     success = context_manager.load_session(selected_file)
-    
+
     if success:
         print("✅ Session loaded successfully!")
         functions = context_manager.list_available_functions()
@@ -234,42 +240,54 @@ def select_context_session(context_manager, auto_session=None, auto_load=False):
             print("📋 No functions found in session")
     else:
         print("❌ Failed to load session")
-    
+
     return success, selected_file
+
 
 def select_relevant_functions(client, user_request: str, metadata_context: str) -> list:
     """
-    Phase 1.5: LLM selects which functions it needs full implementations for.
+    Phase 1.5: LLM selects which functions and data files it needs for the task.
     Uses semantic understanding to bridge gap between user request and codebase.
     """
-    selection_prompt = f"""You are analyzing a codebase to determine which existing functions are relevant to a new task.
+    selection_prompt = f"""You are analyzing a codebase to determine which existing resources are relevant to a new task.
 
 TASK: {user_request}
 
-AVAILABLE FUNCTIONS (metadata only):
+AVAILABLE RESOURCES (metadata only):
 {metadata_context}
 
-Analyze which functions you would need to see FULL implementations for to complete this task.
-CRITICAL: Remember you can only select once, so select what you need and don't think you can see and try selecting again
+Analyze which resources you need for this task. Select BOTH functions AND data files:
 
-Consider:
+FUNCTIONS - Select if you need to see FULL implementations:
 - Direct dependencies (functions you'll directly call)
 - Indirect dependencies (functions that your called functions will use)
 - Helper utilities (validation, data processing, formatting)
 - Semantic relationships (e.g., matrix operations needed for eigenvalue calculation)
 
-IMPORTANT: Use semantic understanding, not just keyword matching!
-Example: "eigenvalue" task needs "matrix_multiply" even though no "eigenvalue" keyword exists in that function.
+DATA FILES - Select if the task needs to work with these files:
+- CSV files to read/filter/process (e.g., "filter books from books.csv")
+- JSON files for configuration or data
+- Any file mentioned in the task requirements
 
-Select UP TO 10 most relevant functions. If none are relevant, return empty array.
+IMPORTANT: Use semantic understanding, not just keyword matching!
+Example 1: "eigenvalue" task needs "matrix_multiply" function even though no "eigenvalue" keyword exists
+Example 2: "filter books by genre" needs books.csv data file
+
+CRITICAL: Remember you can only select once, so select what you need and don't think you can see and try selecting again!
+
+Select UP TO 10 functions and relevant data files.
 
 Respond ONLY with JSON format:
 {{
   "functions": [
-    {{"filepath": "relative/path/file.py", "function_name": "function_name", "reasoning": "why this function is needed"}},
-    ...
+    {{"filepath": "relative/path/file.py", "function_name": "function_name", "reasoning": "why this function is needed"}}
+  ],
+  "data_files": [
+    {{"filepath": "relative/path/file.csv", "file_type": "csv", "reasoning": "why this data file is needed"}}
   ]
 }}
+
+If no functions needed, return empty array for "functions". If no data files needed, return empty array for "data_files".
 """
 
     try:
@@ -281,25 +299,44 @@ Respond ONLY with JSON format:
         )
 
         result = json.loads(response.choices[0].message.content)
-        selections = result.get('functions', [])
+        function_selections = result.get('functions', [])
+        data_file_selections = result.get('data_files', [])
 
-        if selections:
-            print(f"\n{'='*60}")
-            print(f"✓ LLM SEMANTIC SELECTION: Selected {len(selections)} relevant functions")
-            print(f"{'='*60}")
-            for sel in selections:
+        # Print function selections
+        if function_selections:
+            print(f"\n{'=' * 60}")
+            print(f"✓ LLM SELECTED {len(function_selections)} FUNCTIONS:")
+            print(f"{'=' * 60}")
+            for sel in function_selections:
                 print(f"  • {sel.get('function_name')} from {sel.get('filepath')}")
                 if 'reasoning' in sel:
                     print(f"    → Reason: {sel['reasoning']}")
-            print(f"{'='*60}\n")
-        else:
-            print("✓ LLM determined no existing functions needed (generating from scratch)\n")
+            print(f"{'=' * 60}\n")
 
-        return selections
+        # Print data file selections
+        if data_file_selections:
+            print(f"\n{'=' * 60}")
+            print(f"✓ LLM SELECTED {len(data_file_selections)} DATA FILES:")
+            print(f"{'=' * 60}")
+            for sel in data_file_selections:
+                print(f"  • {sel.get('filepath')} ({sel.get('file_type', 'unknown')})")
+                if 'reasoning' in sel:
+                    print(f"    → Reason: {sel['reasoning']}")
+            print(f"{'=' * 60}\n")
+
+        if not function_selections and not data_file_selections:
+            print("✓ LLM determined no existing resources needed (generating from scratch)\n")
+
+        # Return both selections as a dict
+        return {
+            'functions': function_selections,
+            'data_files': data_file_selections
+        }
 
     except Exception as e:
-        print(f"⚠ Function selection failed: {e}. Proceeding without Phase 2 extraction.")
-        return []
+        print(f"⚠ Resource selection failed: {e}. Proceeding without Phase 2 extraction.")
+        return {'functions': [], 'data_files': []}
+
 
 def setup_variables(user_request=None, project_context=""):
     with open('tool_descriptor_gen/tools.json', 'r') as f:
@@ -330,7 +367,7 @@ IMPORTANT: You have full visibility of the project above. Use this knowledge to:
     if not user_request:
         user_request = "Create a function that can calculate factorial expressions. And answer me what is 2!+2! (Print me answer)"
 
-    #Define prompt for the LLM and input messages
+    # Define prompt for the LLM and input messages
     input_messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_request}
@@ -339,22 +376,22 @@ IMPORTANT: You have full visibility of the project above. Use this knowledge to:
 
 if __name__ == "__main__":
     load_dotenv()  # Load environment variables from .env file
-    
+
     # Initialize logger
     logger = FunctionGenerationLogger()
-    
+
     # Initialize terminal context if available
     context_manager = None
     if TERMINAL_CONTEXT_AVAILABLE:
         context_manager = get_context_manager()
         print("Terminal Context initialized - functions will persist across generations")
-    
+
     # Get user input, analyze path, and command-line args
     user_request, analyze_path, cmd_args = get_user_input()
     if not user_request:
         print("No request provided. Exiting.")
         sys.exit(0)
-    
+
     # Handle context memory mode
     context_memory_mode = False
     loaded = False  # Track whether functions were loaded from session
@@ -363,20 +400,20 @@ if __name__ == "__main__":
         if not TERMINAL_CONTEXT_AVAILABLE:
             print("❌ Context memory mode requires Terminal Context module, but it's not available.")
             sys.exit(1)
-        
-        print("\n" + "="*60)
+
+        print("\n" + "=" * 60)
         print("Context Memory Mode Activated")
-        print("="*60)
-        
+        print("=" * 60)
+
         # Load previous session
         auto_session = cmd_args.session if hasattr(cmd_args, 'session') and cmd_args.session else None
         auto_load = hasattr(cmd_args, 'auto_load') and cmd_args.auto_load
         loaded, session_path = select_context_session(context_manager, auto_session, auto_load)
-        
+
         if loaded:
             # Re-populate unit_test/functions.py from loaded context
             print("\n🔄 Restoring function definitions to unit_test/functions.py...")
-            
+
             # Debug: Check if session data is accessible
             if hasattr(context_manager, 'session_data') and context_manager.session_data:
                 print(f"🔍 Debug: context_manager.session_data keys: {list(context_manager.session_data.keys())}")
@@ -386,7 +423,7 @@ if __name__ == "__main__":
                     print("⚠ Warning: No 'functions' key in session_data")
             else:
                 print("⚠ Warning: context_manager.session_data is empty or not accessible")
-            
+
             # Read enum content first
             with open('unit_test/enumUtility.txt', 'r') as f:
                 enum_utility = f.read()
@@ -429,16 +466,16 @@ if __name__ == "__main__":
                     print(f"⚠ Warning: Functions not found in functions.py: {missing_functions}")
                 else:
                     print("✅ All session functions verified in functions.py")
-                    
+
             except Exception as e:
                 print(f"⚠ Warning: Could not verify function restoration: {e}")
-            
+
             print("✅ Function definitions restored!")
         else:
             print("🆕 Starting fresh session with context memory enabled")
-        
-        print("="*60 + "\n")
-    
+
+        print("=" * 60 + "\n")
+
     # Note: Cleanup is already handled in get_user_input() if flags are set
     # No need to repeat it here
 
@@ -465,41 +502,42 @@ if __name__ == "__main__":
         print(f"  - Total lines: {summary['total_lines']}")
 
         # PHASE 1: Extract metadata only (before OpenAI client is created)
-        print(f"\n{'─'*60}")
+        print(f"\n{'─' * 60}")
         print("PHASE 1: Extracting function metadata (signatures only)...")
-        print(f"{'─'*60}")
+        print(f"{'─' * 60}")
 
         project_context_phase1 = analyzer.format_context_for_llm_phase1()
         phase1_tokens = len(project_context_phase1) // 4
         print(f"✓ Phase 1 complete: ~{phase1_tokens:,} tokens (metadata only)")
 
         # DEBUG: Show what's being sent to LLM in Phase 1
-        print(f"\n{'▼'*60}")
+        print(f"\n{'▼' * 60}")
         print("DEBUG: PHASE 1 CONTEXT (What LLM sees for selection)")
-        print(f"{'▼'*60}")
+        print(f"{'▼' * 60}")
         print(project_context_phase1[:2000])  # Show first 2000 chars
         if len(project_context_phase1) > 2000:
             print(f"\n... (truncated, showing first 2000 of {len(project_context_phase1)} characters)")
-        print(f"{'▲'*60}\n")
+        print(f"{'▲' * 60}\n")
 
         print("  (Waiting for OpenAI client initialization for Phase 1.5...)\n")
 
     restart = True
     MAX_ITERATIONS = 6  # Maximum number of iterations before terminating
-    
+
     # Azure OpenAI Configuration
     # Get credentials from environment variables
     azure_api_key = os.environ.get("AZURE_OPENAI_API_KEY") or os.environ.get("AZURE_API_KEY")
     azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT") or os.environ.get("AZURE_API_BASE") or "https://jenly-staging.cognitiveservices.azure.com"
     azure_api_version = os.environ.get("AZURE_OPENAI_API_VERSION") or os.environ.get("AZURE_API_VERSION") or "2024-12-01-preview"
-    
+
     if not azure_api_key:
-        raise ValueError("AZURE_OPENAI_API_KEY or AZURE_API_KEY environment variable is required. Please set it before running.")
-    
+        raise ValueError(
+            "AZURE_OPENAI_API_KEY or AZURE_API_KEY environment variable is required. Please set it before running.")
+
     # You need to specify your deployment name - replace with your actual deployment
-    # Common deployment names are: gpt-35-turbo, gpt-4, etc.
+    # Common deployment names are: gpt-35-turbo, gpt-4o-mini, gpt-4, etc.
     azure_deployment_name = "gpt-4.1"  # CHANGE THIS to your actual deployment name
-    
+
     # Create Azure OpenAI client
     openai_client = AzureOpenAI(
         api_key=azure_api_key,
@@ -509,60 +547,101 @@ if __name__ == "__main__":
 
     # PHASE 1.5 and PHASE 2: Complete context creation (now that client exists)
     if analyzer and project_context_phase1:
-        print(f"{'─'*60}")
+        print(f"{'─' * 60}")
         print("PHASE 1.5: LLM analyzing and selecting relevant functions...")
-        print(f"{'─'*60}")
+        print(f"{'─' * 60}")
 
-        relevant_functions = select_relevant_functions(
+        relevant_selections = select_relevant_functions(
             openai_client, user_request, project_context_phase1
         )
 
         # DEBUG: Show what LLM selected
-        print(f"\n{'▼'*60}")
+        print(f"\n{'▼' * 60}")
         print("DEBUG: LLM SELECTION RESULT")
-        print(f"{'▼'*60}")
-        if relevant_functions:
+        print(f"{'▼' * 60}")
+        if relevant_selections:
             import json
-            print(json.dumps(relevant_functions, indent=2))
-        else:
-            print("No functions selected (empty array)")
-        print(f"{'▲'*60}\n")
 
-        # Phase 2: Extract full implementations
+            print(json.dumps(relevant_selections, indent=2))
+        else:
+            print("No resources selected (empty)")
+        print(f"{'▲' * 60}\n")
+
+        # Extract selections
+        relevant_functions = relevant_selections.get('functions', []) if isinstance(relevant_selections, dict) else []
+        data_files_selected = relevant_selections.get('data_files', []) if isinstance(relevant_selections, dict) else []
+
+        # Phase 2: Extract selected resources (functions and/or data files)
+        context_parts = []
+
         if relevant_functions:
-            print(f"{'─'*60}")
+            print(f"{'─' * 60}")
             print(f"PHASE 2: Extracting full code for {len(relevant_functions)} selected functions...")
-            print(f"{'─'*60}\n")
+            print(f"{'─' * 60}\n")
 
             selected_code = analyzer.extract_selected_functions(relevant_functions)
             phase2_tokens = len(selected_code) // 4
             print(f"✓ Phase 2 complete: ~{phase2_tokens:,} tokens (complete classes + dependencies)")
 
             # DEBUG: Show what was extracted in Phase 2
-            print(f"\n{'▼'*60}")
+            print(f"\n{'▼' * 60}")
             print("DEBUG: PHASE 2 EXTRACTED CODE (Complete classes + dependencies)")
-            print(f"{'▼'*60}")
+            print(f"{'▼' * 60}")
             print(selected_code[:1500])  # Show first 1500 chars
             if len(selected_code) > 1500:
                 print(f"\n... (truncated, showing first 1500 of {len(selected_code)} characters)")
-            print(f"{'▲'*60}\n")
+            print(f"{'▲' * 60}\n")
 
-            # Use ONLY Phase 2 (complete classes) for project_context
-            project_context = selected_code
+            context_parts.append(selected_code)
+
+        if data_files_selected:
+            print(f"{'─' * 60}")
+            print(f"PHASE 2: Extracting metadata for {len(data_files_selected)} selected data files...")
+            print(f"{'─' * 60}\n")
+
+            data_files_context = analyzer.extract_selected_data_files(data_files_selected)
+            data_tokens = len(data_files_context) // 4
+            print(f"✓ Data files extraction complete: ~{data_tokens:,} tokens")
+
+            # DEBUG: Show extracted data files info
+            print(f"\n{'▼' * 60}")
+            print("DEBUG: EXTRACTED DATA FILES METADATA")
+            print(f"{'▼' * 60}")
+            print(data_files_context[:1000])
+            if len(data_files_context) > 1000:
+                print(f"\n... (truncated)")
+            print(f"{'▲' * 60}\n")
+
+            context_parts.append(data_files_context)
+
+        # Build final context
+        if context_parts:
+            project_context = "\n\n".join(context_parts)
         else:
-            # If no functions selected, don't include any project context
+            # Nothing selected - generate from scratch
             project_context = ""
+            print("✓ No resources selected - generating from scratch without project context\n")
 
         total_tokens = len(project_context) // 4
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print(f"FINAL CONTEXT SIZE: ~{total_tokens:,} tokens")
-        print(f"(Phase 2 ONLY - Complete classes + dependencies)")
-        print(f"{'='*60}")
 
-        # DEBUG: Show final context (Phase 2 only)
-        print(f"\n{'▼'*60}")
-        print("DEBUG: FINAL CONTEXT (Phase 2 only, sent to generators)")
-        print(f"{'▼'*60}")
+        # Show what's in the context
+        context_description = []
+        if relevant_functions:
+            context_description.append("Selected functions")
+        if data_files_selected:
+            context_description.append("Selected data files")
+        if not context_parts:
+            context_description.append("Nothing (from scratch)")
+
+        print(f"({' + '.join(context_description)})")
+        print(f"{'=' * 60}")
+
+        # DEBUG: Show final context
+        print(f"\n{'▼' * 60}")
+        print("DEBUG: FINAL CONTEXT (sent to generators)")
+        print(f"{'▼' * 60}")
         print(f"Total length: {len(project_context)} characters (~{total_tokens:,} tokens)")
         if project_context:
             print(f"\nFirst 1000 characters:")
@@ -595,10 +674,10 @@ if __name__ == "__main__":
             if just_generated:
                 just_generated = False
                 print("Function was just generated, proceeding to execution...")
-            
+
             tools, input_messages = setup_variables(user_request, project_context)
             user_input = user_request  # Use the dynamic user input
-            
+
             # Debug logging for Pass@k evaluation
             if cmd_args.debug:
                 print(f"DEBUG: Number of tools loaded: {len(tools)}")
@@ -607,7 +686,7 @@ if __name__ == "__main__":
                     print(f"DEBUG: Available tools: {tool_names}")
                 else:
                     print("DEBUG: No tools loaded - this explains the failure!")
-                    
+
                 # Also show tools.json file content
                 try:
                     with open('tool_descriptor_gen/tools.json', 'r') as f:
@@ -615,7 +694,7 @@ if __name__ == "__main__":
                     print(f"DEBUG: tools.json content: {content[:200]}...")
                 except Exception as e:
                     print(f"DEBUG: Error reading tools.json: {e}")
-            
+
             # If we analyzed a project, remind the model to use project file paths when relevant
             if analyze_path and project_context:
                 # Enhance the user message to include file path reminder
@@ -623,14 +702,14 @@ if __name__ == "__main__":
                 # Update the last user message (which contains the user request)
                 if input_messages and input_messages[-1]["role"] == "user":
                     input_messages[-1]["content"] = enhanced_request
-            
+
             response = openai_client.chat.completions.create(
                 model=azure_deployment_name,  # Use Azure deployment name
                 messages= input_messages + ([{"role": "user", "content": f"Reinforced requirment: {reinforced_requirement}"}] if reinforced_requirement else []),
                 tools=tools,
                 tool_choice="auto"
             )
-            
+
             # Check if model wants to use tools
             if response.choices[0].message.tool_calls:
                 tool_call = response.choices[0].message.tool_calls[0]
@@ -638,18 +717,18 @@ if __name__ == "__main__":
                 function_args = json.loads(tool_call.function.arguments)
                 print(function_args)
                 print(f"Model called tool: {function_name} with arguments: {function_args}")
-                
+
                 results, safetyType = execute_function(function_name, function_args, tools)
                 output = results['result']
-                
+
                 # Log existing function call
                 logger.log_existing_function_call(function_name, function_args, results)
-                
+
                 messages_with_result = input_messages + [
                     response.choices[0].message,
                     {"role": "tool", "content": str(output), "tool_call_id": tool_call.id}
                 ]
-                
+
                 final_response = openai_client.chat.completions.create(
                     model=azure_deployment_name,
                     messages=messages_with_result,
@@ -657,32 +736,32 @@ if __name__ == "__main__":
                 )
                 print("Final response:", final_response.choices[0].message.content)
                 restart = False
-                
+
             elif response.choices[0].message.content:
                 # If the model did not call any tools, check if existing functions can handle this first
                 function_requirement = response.choices[0].message.content
                 logger.log_model_response_without_tools(function_requirement)
-                
+
                 # Two-phase approach: Check if existing functions can handle the request
                 if tools:  # Only check if we have existing tools
                     check_message = "Before generating a new function, check: Do any of your existing tools match this request? If yes, call the appropriate function with reasonable example parameters. If no exact match exists, proceed with generating a new function."
-                    
+
                     # If we analyzed a project, add file path reminder for existing function calls too
                     if analyze_path and project_context:
                         check_message += "\n\nNote: If calling functions that work with files, use the actual file paths from the analyzed project context."
-                    
+
                     check_messages = input_messages + [
                         {"role": "assistant", "content": function_requirement},
                         {"role": "user", "content": check_message}
                     ]
-                    
+
                     check_response = openai_client.chat.completions.create(
                         model=azure_deployment_name,
                         messages=check_messages,
                         tools=tools,
                         tool_choice="auto"
                     )
-                    
+
                     # If the check response wants to use an existing tool, handle it
                     if check_response.choices[0].message.tool_calls:
                         print("Found existing function that can handle this request!")
@@ -690,18 +769,18 @@ if __name__ == "__main__":
                         function_name = tool_call.function.name
                         function_args = json.loads(tool_call.function.arguments)
                         print(f"Using existing function: {function_name} with arguments: {function_args}")
-                        
+
                         results, safetyType = execute_function(function_name, function_args, tools)
                         output = results['result']
-                        
+
                         # Log existing function call
                         logger.log_existing_function_call(function_name, function_args, results)
-                        
+
                         messages_with_result = input_messages + [
                             check_response.choices[0].message,
                             {"role": "tool", "content": str(output), "tool_call_id": tool_call.id}
                         ]
-                        
+
                         final_response = openai_client.chat.completions.create(
                             model=azure_deployment_name,
                             messages=messages_with_result,
@@ -710,9 +789,9 @@ if __name__ == "__main__":
                         print("Final response:", final_response.choices[0].message.content)
                         restart = False
                         continue  # Skip function generation entirely
-                
+
                 adjudicator = False
-                
+
                 # Clean test files before starting generation (unless disabled)
                 if not hasattr(cmd_args, 'no_clean') or not cmd_args.no_clean:
                     if context_memory_mode and loaded:
@@ -730,8 +809,8 @@ if __name__ == "__main__":
                     # Start logging for this function generation
                     if iteration_count == 0:  # First iteration
                         logger.start_function_generation(function_requirement, user_input)
-                    
-                    
+
+
                     iteration_count += 1
                     print(f"=== ITERATION {iteration_count} ===")
                     # Check if maximum iterations reached
@@ -741,8 +820,8 @@ if __name__ == "__main__":
                         logger.log_max_iterations_reached(MAX_ITERATIONS)
                         restart = False
                         break
-                
-                    # If function code is not available or reinforced requirement is provided 
+
+                    # If function code is not available or reinforced requirement is provided
                     if not function_code or reinforced_requirement:
                         # Generate the function code using the generator module
                         print("Generating function code...")
@@ -769,7 +848,7 @@ if __name__ == "__main__":
                         import re
                         # Improved regex pattern to handle complex function names
                         func_match = re.search(r'def\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(', function_code)
-                        
+
                         # Debug information for function name extraction
                         if not func_match:
                             first_lines = '\n'.join(function_code.split('\n')[:3])
@@ -795,7 +874,7 @@ if __name__ == "__main__":
                             write_to_file('python_function', 'unit_test/functions.py', "\n" + function_code)
                             write_to_file('python', 'functions.py', "\n" + function_code)
 
-                    if not unit_test_reinforced_requirement or reinforced_requirement: 
+                    if not unit_test_reinforced_requirement or reinforced_requirement:
                         #Check test driven code
                         tdd_adjudication_result = intermidiate_adjudicate(openai_client)
                         logger.log_tdd_adjudication(iteration_count, tdd_adjudication_result, reinforced_requirement)
@@ -826,7 +905,7 @@ if __name__ == "__main__":
                         write_to_file('python', 'functions.py', function_code)
                         write_to_file('json', 'tool_descriptor_gen/tools.json', tools_code)
                         write_to_file('txt', 'core/prompt.txt', prompt_function_descriptor)
-                        
+
                         # Add function to terminal context if available
                         if context_manager and function_code:
                             try:
@@ -838,7 +917,7 @@ if __name__ == "__main__":
                                     func_name = tools_data[0]['function']['name']
                                 else:
                                     func_name = "unknown_function"
-                                
+
                                 # Add the function to the persistent context
                                 context_manager.add_generated_function(func_name, function_code, {
                                     'requirement': function_requirement,
@@ -847,7 +926,7 @@ if __name__ == "__main__":
                                 print(f"Function '{func_name}' added to persistent context")
                             except Exception as e:
                                 print(f"Warning: Could not add function to context: {e}")
-                        
+
                         # Extract function name from tools_code for logging
                         try:
                             # Parse the JSON
@@ -866,7 +945,7 @@ if __name__ == "__main__":
                         except (json.JSONDecodeError, KeyError, IndexError) as e:
                             print(f"Warning: Could not extract function name from tools_code: {e}")
                             function_name = "unknown_function"
-                        
+
                         # Log successful function generation
                         logger.log_function_success(function_name)
                         # Set flag to indicate we just generated a function
@@ -876,13 +955,13 @@ if __name__ == "__main__":
                     else:
                         old_code_req = reinforced_requirement
                         old_unit_req = unit_test_reinforced_requirement
-                        
+
                         reinforced_requirement = adjudication_result.code_requirement_suggestion
                         unit_test_reinforced_requirement = adjudication_result.unit_requirement_suggestion
-                        
+
                         logger.log_reinforcement('code', old_code_req, reinforced_requirement, iteration_count)
                         logger.log_reinforcement('unit_test', old_unit_req, unit_test_reinforced_requirement, iteration_count)
-    
+
                         print(f"Restarting the process... (Iteration {iteration_count})")
     except KeyboardInterrupt:
         logger.log_user_interruption()  # ADD THIS
@@ -894,13 +973,13 @@ if __name__ == "__main__":
         # clear_file(folder_dir + 'Test_Driven_Development/testDrivenCases.py')
         # clear_file('Unit_Test/unitTest.py')
         # clear_file('Unit_Test/functions.py')
-        
+
         # Save terminal context session if available
         if context_manager:
             try:
                 session_file = context_manager.save_session()
                 print(f"Terminal context saved: {session_file}")
-                
+
                 # Print summary of available functions
                 functions = context_manager.list_available_functions()
                 if functions:
@@ -909,7 +988,7 @@ if __name__ == "__main__":
                         print(f"  - {func}")
             except Exception as e:
                 print(f"Warning: Could not save terminal context: {e}")
-        
+
         # Save session statistics and show summary
         logger.save_session_stats()
         logger.get_generation_summary()

@@ -139,7 +139,6 @@ def fix_common_syntax_errors(code: str) -> str:
             # Count missing closing parens
             missing = line.count('(') - line.count(')')
             line = line.rstrip() + (')' * missing)
-            print(f"  ✓ Auto-fixed unclosed parenthesis in sys.path line")
 
         fixed_lines.append(line)
 

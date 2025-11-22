@@ -735,6 +735,79 @@ COMPLETE FILE CONTENTS BELOW:
 
         return context
 
+    def extract_selected_data_files(self, selections: List[Dict[str, str]]) -> str:
+        """
+        Extract metadata AND first 500 lines for selected data files (CSV/JSON).
+        Returns formatted context with file paths, headers, structure, and actual content.
+        """
+        if not selections:
+            return ""
+
+        context = "\n" + "="*60 + "\n"
+        context += "SELECTED DATA FILES\n"
+        context += "="*60 + "\n"
+
+        for selection in selections:
+            filepath = selection.get('filepath', '')
+            file_type = selection.get('file_type', '')
+            reasoning = selection.get('reasoning', '')
+
+            # Match filepath (handle both relative and full paths)
+            file_data = self.all_files_content.get(filepath)
+            if not file_data:
+                # Try matching by basename
+                basename = os.path.basename(filepath)
+                for key in self.all_files_content.keys():
+                    if os.path.basename(key) == basename or key.endswith(filepath):
+                        file_data = self.all_files_content[key]
+                        filepath = key
+                        break
+
+            if not file_data:
+                print(f"⚠ Data file not found: {filepath}")
+                continue
+
+            # Get full absolute path
+            full_path = os.path.join(self.project_path, filepath)
+
+            context += f"\n{'─'*60}\n"
+            context += f"FILE: {filepath}\n"
+            context += f"FULL PATH: {full_path}\n"
+            context += f"TYPE: {file_data.get('type', file_type).upper()}\n"
+
+            if reasoning:
+                context += f"WHY SELECTED: {reasoning}\n"
+
+            context += f"{'─'*60}\n"
+
+            # Add type-specific metadata
+            if file_data.get('type') == 'csv':
+                context += f"HEADERS: {file_data.get('headers', 'Unknown')}\n"
+                context += f"ROWS: {file_data.get('line_count', 0) - 1}\n"
+            elif file_data.get('type') == 'json':
+                context += f"STRUCTURE: {file_data.get('structure', 'Unknown')}\n"
+
+            # Add actual file content (first 500 lines)
+            file_content = file_data.get('content', '')
+            if file_content:
+                lines = file_content.split('\n')
+                first_500_lines = '\n'.join(lines[:500])
+                total_lines = len(lines)
+
+                context += f"\nCONTENT (First 500 lines of {total_lines}):\n"
+                context += f"{'─'*60}\n"
+                context += first_500_lines
+
+                if total_lines > 500:
+                    context += f"\n{'─'*60}\n"
+                    context += f"... (truncated, showing 500 of {total_lines} lines)\n"
+
+                context += f"{'─'*60}\n"
+
+            context += "\n"
+
+        return context
+
     def _extract_dependency_classes(self, selections: List[Dict], already_extracted: set) -> str:
         """Extract classes that are imported and used by selected functions"""
         context = ""

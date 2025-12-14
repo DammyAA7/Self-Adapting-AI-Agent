@@ -1,0 +1,71 @@
+Thought: The user provided a codebase and detailed requirements for implementing a function that filters books by genre with different return formats based on API version. This is a clear, multi-step programming task with all necessary information provided.
+Response Category: TASK
+English
+This is a pure software development task (writing a Python function to process a CSV file according to versioned requirements). The requirement is XS in complexity and does not require a full software development process or decomposition. According to the guidelines, I should assign the task directly to the Engineer (Alex) with all necessary details, including the file path, required behavior for each API version, and the CSV structure.
+
+I will inform the user that I am assigning the task to Alex and provide him with all the required instructions.
+
+```json
+[
+    {
+        "command_name": "Plan.append_task",
+        "args": {
+            "task_id": "1",
+            "dependent_task_ids": [],
+            "instruction": "Create a Python function named 'book_recommender' that filters books by genre from 'books.csv' located in the 'book_recommender/' directory. The function should take a single parameter: genre (string). Use os.environ.get('API_VERSION', 'v1') to detect the version. Implement the following return types: (1) For 'v1' mode, return a list of strings, each being the 'title' of a matching book. (2) For 'v2' mode, return a dict with keys: 'titles' (list of title strings), 'count' (int, number of books), 'avg_rating' (float, average of the 'rating' column for matching books). (3) For 'v3' mode, return a dict with keys: '@context' (string, exactly 'http://schema.org'), '@type' (string, exactly 'BookCollection'), 'numberOfItems' (int, count of books). The function must work with the provided codebase and CSV file. Do not create a full project, only the requested function.",
+            "assignee": "Alex"
+        }
+    },
+    {
+        "command_name": "TeamLeader.publish_team_message",
+        "args": {
+            "content": "Alex, please create a Python function named 'book_recommender' that filters books by genre from 'books.csv' in the 'book_recommender/' directory. The function should take a 'genre' parameter (string) and use os.environ.get('API_VERSION', 'v1') to detect the version. For 'v1', return a list of matching book titles. For 'v2', return a dict with 'titles' (list), 'count' (int), and 'avg_rating' (float). For 'v3', return a dict with '@context' (exactly 'http://schema.org'), '@type' (exactly 'BookCollection'), and 'numberOfItems' (int). Only output the function, not a full project. The CSV columns are: isbn,title,author,genre,year,rating.",
+            "send_to": "Alex"
+        }
+    },
+    {
+        "command_name": "RoleZero.reply_to_human",
+        "args": {
+            "content": "I have assigned the task to Alex, our engineer. He will write the 'book_recommender' function according to your specifications, using the provided books.csv and handling all three API versions as described."
+        }
+    }
+]
+```
+English
+To fulfill Mike's request, I will write the Python function `book_recommender` as specified. It will read from 'book_recommender/books.csv', filter by genre, and return results according to the detected API version. Only the function will be output, as required.
+
+```json
+[
+    {
+        "command_name": "RoleZero.reply_to_human",
+        "args": {
+            "content": "Here is the requested Python function:\n\n```python\nimport os\nimport csv\n\ndef book_recommender(genre):\n    csv_path = os.path.join('book_recommender', 'books.csv')\n    version = os.environ.get('API_VERSION', 'v1')\n    titles = []\n    ratings = []\n    with open(csv_path, newline='', encoding='utf-8') as csvfile:\n        reader = csv.DictReader(csvfile)\n        for row in reader:\n            if row['genre'] == genre:\n                titles.append(row['title'])\n                try:\n                    ratings.append(float(row['rating']))\n                except (ValueError, KeyError):\n                    pass\n    if version == 'v1':\n        return titles\n    elif version == 'v2':\n        avg_rating = sum(ratings) / len(ratings) if ratings else 0.0\n        return {\n            'titles': titles,\n            'count': len(titles),\n            'avg_rating': avg_rating\n        }\n    elif version == 'v3':\n        return {\n            '@context': 'http://schema.org',\n            '@type': 'BookCollection',\n            'numberOfItems': len(titles)\n        }\n    else:\n        # Default to v1 if unknown version\n        return titles\n```\n\nThis function meets all requirements: it filters by genre, detects API version, and returns the correct format for v1, v2, and v3."
+        }
+    }
+]
+```
+The requested function has already been provided to the user, and there are no further actions required at this time. I will end the process.
+
+```json
+[
+    {
+        "command_name": "end",
+        "args": {}
+    }
+]
+```
+- Delivered a Python function named book_recommender that filters books by genre from book_recommender/books.csv and returns results in three formats based on API version.
+- File path of deliverable: book_recommender/__init__.py
+Alex has reported that he has finished the task and delivered the required Python function in book_recommender/__init__.py. The current task matches the completed work, so I should mark the current task as finished and end the process.
+
+```json
+[
+    {
+        "command_name": "Plan.finish_current_task",
+        "args": {}
+    },
+    {
+        "command_name": "end"
+    }
+]
+```

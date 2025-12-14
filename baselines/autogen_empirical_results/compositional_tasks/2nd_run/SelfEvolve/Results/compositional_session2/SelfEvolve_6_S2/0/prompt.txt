@@ -1,0 +1,1 @@
+Load previous session and create portfolio_risk_assessment function. Takes a dict where keys are stock names and values have 'prices' list and 'allocation' float. For each stock, call calculate_stock_volatility(prices), multiply by allocation, sum all weighted volatilities. Returns: float representing total portfolio risk as weighted sum.

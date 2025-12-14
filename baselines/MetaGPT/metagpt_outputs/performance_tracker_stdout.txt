@@ -1,0 +1,74 @@
+Thought: The user wants a Python function that processes a provided CSV file to generate different types of performance reports based on parameters, which requires reading and manipulating data from the codebase.
+Response Category: TASK
+English
+The user request is purely data-related: it requires reading a CSV, processing/filtering/grouping, and returning results in a specified format. According to the instructions, such tasks should be assigned directly to the Data Analyst (David) without decomposition. I will assign the task to David and inform the user.
+
+```json
+[
+    {
+        "command_name": "Plan.append_task",
+        "args": {
+            "task_id": "1",
+            "dependent_task_ids": [],
+            "instruction": "Create a performance_report function that reads performance_reviews.csv from the project. Parameters: employee_id (optional string), report_type (string, default 'summary'). RETURN TYPES AND FIELD SPECIFICATIONS: (1) summary mode - find CSV row where employee_id column matches parameter, return single dict with keys 'employee_id' (string value), 'overall_rating' (float from CSV column - keep as float not string), 'goals_status' (string from CSV column). (2) detailed mode - find matching row, return single dict with ALL CSV column names as keys preserving exact names and original types. (3) department mode - when employee_id is None, group rows by 'department' CSV column, return dict where keys are department names and values are dicts with 'avg_rating' (float - average of overall_rating column) and 'count' (int - number of employees). IMPORTANT: Generate ONLY the requested Python function. Do not create a full project. The function must work with the existing codebase shown above. Output the code inside python blocks.",
+            "assignee": "David"
+        }
+    },
+    {
+        "command_name": "TeamLeader.publish_message",
+        "args": {
+            "content": "Create a performance_report function that reads performance_reviews.csv from the project. Parameters: employee_id (optional string), report_type (string, default 'summary'). RETURN TYPES AND FIELD SPECIFICATIONS: (1) summary mode - find CSV row where employee_id column matches parameter, return single dict with keys 'employee_id' (string value), 'overall_rating' (float from CSV column - keep as float not string), 'goals_status' (string from CSV column). (2) detailed mode - find matching row, return single dict with ALL CSV column names as keys preserving exact names and original types. (3) department mode - when employee_id is None, group rows by 'department' CSV column, return dict where keys are department names and values are dicts with 'avg_rating' (float - average of overall_rating column) and 'count' (int - number of employees). IMPORTANT: Generate ONLY the requested Python function. Do not create a full project. The function must work with the existing codebase shown above. Output the code inside python blocks.",
+            "send_to": "David"
+        }
+    },
+    {
+        "command_name": "RoleZero.reply_to_human",
+        "args": {
+            "content": "I have assigned your request to David, our Data Analyst. He will generate the requested Python function to process the performance_reviews.csv file as specified."
+        }
+    }
+]
+```
+English
+To address the request, I will generate the Python function `performance_report` that reads from `performance_reviews.csv` and implements the three modes as specified. The function will use standard Python libraries and ensure type preservation as required. I will now provide the code in a Python block.
+
+```json
+[
+    {
+        "command_name": "RoleZero.reply_to_human",
+        "args": {
+            "content": "```python\nimport csv\nfrom collections import defaultdict\nfrom typing import Optional, Dict, Any, Union\n\ndef performance_report(employee_id: Optional[str] = None, report_type: str = 'summary') -> Union[Dict[str, Any], Dict[str, Dict[str, Any]]]:\n    \"\"\"\n    Reads performance_reviews.csv and returns performance report based on parameters.\n    Parameters:\n        employee_id (optional str): Employee ID to filter. If None and report_type is 'department', returns department summary.\n        report_type (str): 'summary', 'detailed', or 'department'. Default is 'summary'.\n    Returns:\n        - summary: dict with 'employee_id', 'overall_rating' (float), 'goals_status' (str)\n        - detailed: dict with all CSV columns, preserving types\n        - department: dict {department: {'avg_rating': float, 'count': int}}\n    \"\"\"\n    csv_path = 'performance_reviews.csv'\n    with open(csv_path, newline='', encoding='utf-8') as csvfile:\n        reader = csv.DictReader(csvfile)\n        rows = list(reader)\n\n    if report_type == 'department' and employee_id is None:\n        dept_data = defaultdict(list)\n        for row in rows:\n            dept = row['department']\n            try:\n                rating = float(row['overall_rating'])\n            except ValueError:\n                continue\n            dept_data[dept].append(rating)\n        result = {}\n        for dept, ratings in dept_data.items():\n            result[dept] = {\n                'avg_rating': sum(ratings) / len(ratings) if ratings else 0.0,\n                'count': len(ratings)\n            }\n        return result\n\n    # Find the row for the given employee_id\n    match_row = None\n    for row in rows:\n        if row['employee_id'] == employee_id:\n            match_row = row\n            break\n    if not match_row:\n        return {}\n\n    if report_type == 'summary':\n        return {\n            'employee_id': match_row['employee_id'],\n            'overall_rating': float(match_row['overall_rating']),\n            'goals_status': match_row['goals_status']\n        }\n    elif report_type == 'detailed':\n        # Convert numeric columns to correct types\n        detailed = {}\n        for k, v in match_row.items():\n            if k == 'overall_rating':\n                detailed[k] = float(v)\n            elif k in ['technical_score', 'communication_score', 'teamwork_score', 'leadership_score']:\n                try:\n                    detailed[k] = int(v)\n                except ValueError:\n                    detailed[k] = v\n            else:\n                detailed[k] = v\n        return detailed\n    else:\n        raise ValueError(\"Invalid report_type. Choose 'summary', 'detailed', or 'department'.\")\n```"
+        }
+    }
+]
+```
+
+The requested function has already been provided to the user in the previous step, and there are no further actions required at this time. I will end the process.
+
+```json
+[
+    {
+        "command_name": "end",
+        "args": {}
+    }
+]
+```
+Lately, I delivered a Python function named performance_report that reads and analyzes employee performance data from performance_reviews.csv. The function supports summary, detailed, and department report modes as specified. 
+
+**Deliverable:**
+- Code file path: performance_tracker/__init__.py
+
+No additional metrics, URLs, or quantitative results were produced.
+David has completed the task and delivered the required Python function. I will now mark the current task as finished. Since there are no further tasks in the plan, this will complete the workflow.
+
+```json
+[
+    {
+        "command_name": "Plan.finish_current_task",
+        "args": {}
+    },
+    {
+        "command_name": "end"
+    }
+]
+```

@@ -1,0 +1,12 @@
+{
+  "id": 3,
+  "task_id": "SelfEvolution/3",
+  "problem_name": "Student GPA Calculator",
+  "prompt": "Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0).",
+  "entry_point": "calculate_simple_gpa",
+  "context_files": [
+    "enrollment_system.py"
+  ],
+  "domain": "education",
+  "test_code": "\nfrom dataset.student_gpa_calculator.university import University, create_sample_university\n\nuniversity = create_sample_university()\n\n# Test S001 - Good student: A(3cr), A-(4cr), B+(4cr), A(3cr), B(4cr), A-(4cr)\n# GPA = (4.0*3 + 3.7*4 + 3.3*4 + 4.0*3 + 3.0*4 + 3.7*4) / (3+4+4+3+4+4) = 78.8/22 = 3.58\ngpa_s001 = calculate_simple_gpa(university, 'S001')\nassert isinstance(gpa_s001, float)\nassert 3.5 <= gpa_s001 <= 3.7\n\n# Test S002 - Average student: B(3cr), C+(4cr), B-(4cr), C(3cr)\n# GPA = (3.0*3 + 2.3*4 + 2.7*4 + 2.0*3) / (3+4+4+3) = 35.0/14 = 2.5\ngpa_s002 = calculate_simple_gpa(university, 'S002')\nassert isinstance(gpa_s002, float)\nassert 2.4 <= gpa_s002 <= 2.6\n\n# Test S003 - Struggling: C(4cr), D(3cr), B-(3cr), F(3cr)\n# GPA = (2.0*4 + 1.0*3 + 2.7*3 + 0.0*3) / (4+3+3+3) = 19.1/13 = 1.47\ngpa_s003 = calculate_simple_gpa(university, 'S003')\nassert isinstance(gpa_s003, float)\nassert 1.4 <= gpa_s003 <= 1.6\n\nprint('Student GPA Calculator tests passed')\n"
+}

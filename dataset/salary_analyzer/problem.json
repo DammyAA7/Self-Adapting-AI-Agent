@@ -11,5 +11,5 @@
     "web_crawler.py"
   ],
   "domain": "hr-analytics",
-  "test_code": "\nfrom test_context.salary_analyzer.employee_database import EmployeeDB\n\ndb = EmployeeDB()\nassert callable(salary_analyzer)\nresult = salary_analyzer()\nassert isinstance(result, (int, float))\nassert result > 0\nassert 30000 <= result <= 200000\nprint('Salary Analyzer tests passed')\n"
+  "test_code": "\nfrom dataset.salary_analyzer.employee_db import EmployeeDB\n\ndb = EmployeeDB()\nassert callable(salary_analyzer)\nresult = salary_analyzer()\nassert isinstance(result, (int, float))\nassert result > 0\nassert 30000 <= result <= 200000\nprint('Salary Analyzer tests passed')\n"
 }

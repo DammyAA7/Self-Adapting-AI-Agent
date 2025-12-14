@@ -1,0 +1,4 @@
+TASK:
+Create a function called calculate_stock_volatility that takes a list of daily stock prices. Calculate daily returns as (price[i] - price[i-1]) / price[i-1] for each pair. Calculate mean of returns, then variance as average of (return - mean) squared. Return square root of variance times 100 as percentage. Return 0.0 if fewer than 2 prices.
+
+Generate the Python function. Output the code inside ```python``` blocks.

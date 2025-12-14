@@ -1,0 +1,28 @@
+def parse_sensor_reading(reading_str):
+    """
+    Parses a sensor reading string (e.g. 'T:25.5|H:60|TS:1234567890') and returns a dictionary
+    with keys 'temperature', 'humidity', and 'timestamp'.
+    If a value cannot be converted to float/int, sets value to None.
+    """
+    result = {'temperature': None, 'humidity': None, 'timestamp': None}
+    key_map = {'T': 'temperature', 'H': 'humidity', 'TS': 'timestamp'}
+    for part in reading_str.split('|'):
+        if ':' not in part:
+            continue
+        key, value = part.split(':', 1)
+        if key == 'T':
+            try:
+                result['temperature'] = float(value)
+            except ValueError:
+                result['temperature'] = None
+        elif key == 'H':
+            try:
+                result['humidity'] = float(value)
+            except ValueError:
+                result['humidity'] = None
+        elif key == 'TS':
+            try:
+                result['timestamp'] = int(value)
+            except ValueError:
+                result['timestamp'] = None
+    return result

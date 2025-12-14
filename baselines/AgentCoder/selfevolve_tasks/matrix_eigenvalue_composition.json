@@ -1,0 +1,10 @@
+{
+  "task_id": "SelfEvolve/5",
+  "prompt": "\ndef matrix_operations():\n    '''\n    Create a function called matrix_operations that performs basic matrix multiplication and stores results in a global variable computation_cache.\n    '''\n    pass\n",
+  "entry_point": "matrix_operations",
+  "test": "\nimport numpy as np\n\n# Verify both functions exist from cross-session composition\nassert callable(matrix_operations)\nassert callable(advanced_matrix_ops)\n\n# Test with sample 2x2 matrix\ntest_matrix = [[1, 2], [3, 4]]\nresult = advanced_matrix_ops(test_matrix)\nassert result is not None\n\n# Verify computation_cache global variable exists\nassert 'computation_cache' in globals() or 'computation_cache' in dir()\n\nprint('Matrix Eigenvalue Composition tests passed')\n",
+  "original_task": "matrix_eigenvalue_composition",
+  "context_files": [],
+  "is_compositional": true,
+  "expected_to_fail": true
+}

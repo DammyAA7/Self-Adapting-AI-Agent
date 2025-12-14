@@ -1,0 +1,8 @@
+STDOUT:
+
+
+STDERR:
+Traceback (most recent call last):
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/book_recommender_test.py", line 48, in <module>
+    result_v1 = book_recommender('Fiction', file_path="/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/test_context_extended/books.csv")
+TypeError: book_recommender() got an unexpected keyword argument 'file_path'

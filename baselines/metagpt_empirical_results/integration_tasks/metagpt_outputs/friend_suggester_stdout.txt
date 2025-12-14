@@ -1,0 +1,18 @@
+Thought: The user has provided a detailed codebase and a specific task to implement a Python function for friend suggestions with different recommendation modes, requiring code generation based on the provided data structure.
+Response Category: TASK
+English
+Here is the requested Python function that works with the provided codebase and data. It reads the social_graph.json, computes friend suggestions for a given user_id, and applies progressive enhancement based on the RECOMMENDATION_MODE environment variable. Only the function is generated, as requested.
+
+```json
+[
+    {
+        "command_name": "RoleZero.reply_to_human",
+        "args": {
+            "content": "Here is the requested Python function:\n\n```python\nimport os\nimport json\n\ndef friend_suggestions(user_id):\n    # Load social graph data\n    with open('friend_suggester/social_graph.json', 'r') as f:\n        data = json.load(f)\n    users = {u['user_id']: u for u in data['users']}\n    if user_id not in users:\n        return []\n    user = users[user_id]\n    user_friends = set(user['friends'])\n    user_interests = set(user['interests'])\n    user_activity = user['activity']['level']\n    mode = os.environ.get('RECOMMENDATION_MODE', 'basic').lower()\n    suggestions = []\n    for candidate_id, candidate in users.items():\n        if candidate_id == user_id or candidate_id in user_friends:\n            continue\n        candidate_friends = set(candidate['friends'])\n        candidate_interests = set(candidate['interests'])\n        candidate_activity = candidate['activity']['level']\n        # Mutual friends\n        mutual_friends = len(user_friends & candidate_friends)\n        score = 0.0\n        if mode == 'basic':\n            score = float(mutual_friends)\n        elif mode == 'enhanced':\n            common_interests = len(user_interests & candidate_interests)\n            score = mutual_friends * 2.0 + common_interests * 1.5\n        elif mode == 'advanced':\n            common_interests = len(user_interests & candidate_interests)\n            score = mutual_friends * 2.0 + common_interests * 1.5\n            if user_activity == candidate_activity:\n                score += 1.0\n        else:\n            score = float(mutual_friends)  # fallback to basic\n        if score > 0:\n            suggestions.append({'user_id': candidate_id, 'score': score})\n    # Sort and return top 5\n    suggestions.sort(key=lambda x: x['score'], reverse=True)\n    return suggestions[:5]\n```\n\nThis function should be placed in your codebase and will work with the provided social_graph.json. It returns the top 5 friend suggestions for a given user_id, as specified."
+        }
+    },
+    {
+        "command_name": "end"
+    }
+]
+```

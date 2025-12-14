@@ -1,0 +1,37 @@
+Thought: The user wants a specific function implemented that calculates the average salary from employee data, which is a concrete coding task that fits into the existing codebase.
+Response Category: TASK
+English
+The user requested a function called salary_analyzer that calculates the average salary from employee data and returns a float. The codebase already contains a SalaryAnalyzer class with a static method calculate_average_salary that does exactly this. To fulfill the requirement and ensure compatibility, I will create a function salary_analyzer that uses SalaryAnalyzer.calculate_average_salary under the hood.
+
+Here is the required function:
+
+```python
+def salary_analyzer(employees):
+    """
+    Calculates the average salary from employee data.
+
+    Args:
+        employees (list of dict): List of employee records, each containing at least a 'salary' key.
+
+    Returns:
+        float: The average salary value.
+    """
+    from salary_analyzer.salary_analyzer_class import SalaryAnalyzer
+    return SalaryAnalyzer.calculate_average_salary(employees)
+```
+
+No further planning or team assignment is needed, as this is a straightforward code-writing task.
+
+```json
+[
+    {
+        "command_name": "RoleZero.reply_to_human",
+        "args": {
+            "content": "```python\ndef salary_analyzer(employees):\n    \"\"\"\n    Calculates the average salary from employee data.\n\n    Args:\n        employees (list of dict): List of employee records, each containing at least a 'salary' key.\n\n    Returns:\n        float: The average salary value.\n    \"\"\"\n    from salary_analyzer.salary_analyzer_class import SalaryAnalyzer\n    return SalaryAnalyzer.calculate_average_salary(employees)\n```"
+        }
+    },
+    {
+        "command_name": "end"
+    }
+]
+```

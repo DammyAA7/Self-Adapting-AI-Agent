@@ -1,0 +1,34 @@
+computation_cache = {}
+
+def matrix_operations(matrix_a, matrix_b):
+    """
+    Multiplies two matrices (matrix_a and matrix_b) and stores the result in the global computation_cache.
+    Args:
+        matrix_a (list of list of numbers): First matrix.
+        matrix_b (list of list of numbers): Second matrix.
+    Returns:
+        result (list of list of numbers): The product of matrix_a and matrix_b.
+    """
+    global computation_cache
+    # Check if multiplication is possible
+    if len(matrix_a[0]) != len(matrix_b):
+        raise ValueError("Number of columns in matrix_a must equal number of rows in matrix_b.")
+
+    # Perform matrix multiplication
+    result = []
+    for i in range(len(matrix_a)):
+        result_row = []
+        for j in range(len(matrix_b[0])):
+            cell_sum = 0
+            for k in range(len(matrix_b)):
+                cell_sum += matrix_a[i][k] * matrix_b[k][j]
+            result_row.append(cell_sum)
+        result.append(result_row)
+
+    # Store in global cache
+    computation_cache['last_multiplication'] = {
+        'matrix_a': matrix_a,
+        'matrix_b': matrix_b,
+        'result': result
+    }
+    return result

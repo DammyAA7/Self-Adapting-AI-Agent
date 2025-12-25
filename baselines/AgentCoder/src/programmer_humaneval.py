@@ -33,11 +33,17 @@ openai.api_version = os.getenv("AZURE_OPENAI_API_VERSION")
 # print(f"Loaded {len(dataset)} non-compositional tasks")
 
 # For compositional Session 2 (3 tasks with Session 1 code in context):
-# Session 1: with open("./dataset/compositional_session1.jsonl", "r") as f:
+# Session 1:
+# print("Loading Compositional Session 1 tasks...")
+# with open("./dataset/compositional_session1.jsonl", "r") as f:
+#     dataset = [json.loads(line) for line in f]
+# Session 2:
 print("Loading Compositional Session 2 tasks...")
 with open("./dataset/compositional_session2.jsonl", "r") as f:
     dataset = [json.loads(line) for line in f]
+# print(f"Loaded {len(dataset)} compositional Session 1 tasks")
 print(f"Loaded {len(dataset)} compositional Session 2 tasks")
+# print(f"Loaded {len(dataset)} integrational tasks")
 
 for task in dataset[:3]:
     ctx_len = len(task.get("codebase_context", ""))
@@ -161,8 +167,10 @@ if __name__ == "__main__":
                     except Exception as e:
                         print(repr(e))
             # MODIFIED: Save results
-            # For non-comp: with open(f"./dataset/{model}_{lg}_noncomp.json", "w") as f:
-            # For comp S1: with open(f"./dataset/{model}_{lg}_comp_s1.json", "w") as f:
+            # For non-comp:
+            # with open(f"./dataset/{model}_{lg}_noncomp.json", "w") as f:
+            # For comp S1:
+            # with open(f"./dataset/{model}_{lg}_comp_s1.json", "w") as f:
             # For comp S2:
             with open(f"./dataset/{model}_{lg}_comp_s2.json", "w") as f:
                 json.dump(dataset, f, indent=4)

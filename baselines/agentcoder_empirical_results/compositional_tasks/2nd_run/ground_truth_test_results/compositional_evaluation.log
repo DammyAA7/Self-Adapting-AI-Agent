@@ -1,0 +1,41 @@
+2025-12-25 02:42:31,706 - INFO - ======================================================================
+2025-12-25 02:42:31,706 - INFO - COMPOSITIONAL TASKS EVALUATION (Session 2 Only)
+2025-12-25 02:42:31,706 - INFO - Testing if Session 2 code properly integrates Session 1
+2025-12-25 02:42:31,706 - INFO - ======================================================================
+2025-12-25 02:42:31,706 - INFO - Loading Session 2 final results: dataset/gpt-4.1_4.json
+2025-12-25 02:42:31,707 - INFO - Loaded 3 Session 2 tasks
+2025-12-25 02:42:31,707 - INFO - 
+--- Task 1/3: matrix_eigenvalue_composition ---
+2025-12-25 02:42:31,707 - INFO - Session 1 function: matrix_operations (1161 chars)
+2025-12-25 02:42:31,707 - INFO - Session 2 function: advanced_matrix_ops (718 chars)
+2025-12-25 02:42:31,707 - INFO - Session 2 references Session 1 function: True
+2025-12-25 02:42:31,707 - INFO - Test file created: compositional_tests/matrix_eigenvalue_composition.py
+2025-12-25 02:42:31,767 - WARNING - FAIL: matrix_eigenvalue_composition
+2025-12-25 02:42:31,767 - INFO - 
+--- Task 2/3: portfolio_risk_calculator ---
+2025-12-25 02:42:31,767 - INFO - Session 1 function: calculate_stock_volatility (1163 chars)
+2025-12-25 02:42:31,767 - INFO - Session 2 function: portfolio_risk_assessment (684 chars)
+2025-12-25 02:42:31,767 - INFO - Session 2 references Session 1 function: True
+2025-12-25 02:42:31,767 - INFO - Test file created: compositional_tests/portfolio_risk_calculator.py
+2025-12-25 02:42:31,780 - WARNING - FAIL: portfolio_risk_calculator
+2025-12-25 02:42:31,780 - INFO - 
+--- Task 3/3: iot_sensor_pipeline ---
+2025-12-25 02:42:31,780 - INFO - Session 1 function: parse_sensor_reading (1785 chars)
+2025-12-25 02:42:31,780 - INFO - Session 2 function: aggregate_temperature (1060 chars)
+2025-12-25 02:42:31,780 - INFO - Session 2 references Session 1 function: True
+2025-12-25 02:42:31,780 - INFO - Test file created: compositional_tests/iot_sensor_pipeline.py
+2025-12-25 02:42:31,792 - WARNING - FAIL: iot_sensor_pipeline
+2025-12-25 02:42:31,792 - INFO - 
+======================================================================
+2025-12-25 02:42:31,792 - INFO - COMPOSITIONAL TASKS SUMMARY
+2025-12-25 02:42:31,792 - INFO - ======================================================================
+2025-12-25 02:42:31,792 - INFO - 
+Total compositional tasks: 3
+2025-12-25 02:42:31,792 - INFO - PASS: 0 (0.0%)
+2025-12-25 02:42:31,792 - INFO - FAIL: 3 (100.0%)
+2025-12-25 02:42:31,792 - INFO - 
+AgentCoder Compositional Pass@1: 0/3 = 0.0%
+2025-12-25 02:42:31,792 - INFO - SelfEvolve Compositional Pass@1: 93.3%
+2025-12-25 02:42:31,792 - INFO - Performance gap: 93.3pp
+2025-12-25 02:42:31,792 - INFO - 
+Results saved: compositional_results.json

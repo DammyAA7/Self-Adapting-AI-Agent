@@ -160,42 +160,28 @@ This manual injection gives AgentCoder the advantage it lacks (no built-in persi
     evaluations/quantitative_comparison/agentcoder_empirical_results/
     ├── integration_tasks/
     │   ├── 1st_run/
+    │   │   ├── dataset_created/                    # Created datasets
+    │   │   ├── default_saved_logs/                 # AgentCoder default outputs (gpt-4.1_*.json)
+    │   │   ├── ground_truth_test_results/          # Validation results (8 task .json files)
+    │   │   └── terminal_logs/                      # Execution logs
     │   ├── 2nd_run/
     │   ├── 3rd_run/
     │   ├── 4th_run/
     │   └── 5th_run/
-    │       ├── gpt-4.1_python_noncomp.json          # AgentCoder output
-    │       └── ground_truth_test_results/
-    │           ├── patient_risk_analyzer.json       # PASS/FAIL + errors
-    │           ├── salary_analyzer.json
-    │           ├── student_gpa_calculator.json
-    │           ├── inventory_replenishment.json
-    │           ├── movielens_dataset.json
-    │           ├── book_recommender.json
-    │           ├── performance_tracker.json
-    │           └── friend_suggester.json
     └── compositional_tasks/
         ├── 1st_run/
-        │   ├── SelfEvolve_1/                        # First attempt
-        │   ├── SelfEvolve_2/                        # Second attempt
-        │   ├── SelfEvolve_3/                        # Third attempt
-        │   └── SelfEvolve_4/                        # Fourth attempt
-        │       ├── 0/                               # Session 1
-        │       │   ├── gpt-4.1_python_comp_s1.json
-        │       │   └── ground_truth_test_results/
-        │       └── 1/                               # Session 2
-        │           ├── gpt-4.1_python_comp_s2.json
-        │           └── ground_truth_test_results/
-        │               ├── matrix_eigenvalue_composition.json
-        │               ├── portfolio_risk_calculator.json
-        │               └── iot_sensor_pipeline.json
+        │   ├── dataset_created/                    # Session 1 & 2 datasets
+        │   ├── default_saved_logs/                 # AgentCoder outputs (gpt-4.1_python_comp_s*.json)
+        │   ├── ground_truth_test_results/          # compositional_evaluation.log, compositional_results.json
+        │   └── terminal_logs/                      # Bash logs
         ├── 2nd_run/
         ├── 3rd_run/
         ├── 4th_run/
         └── 5th_run/
 
 **Key Files:**
-- `ground_truth_test_results/*.json`: Contains PASS/FAIL status and error details
+- `ground_truth_test_results/compositional_results.json`: PASS/FAIL for 3 compositional tasks
+- `default_saved_logs/gpt-4.1_python_noncomp.json`: AgentCoder raw outputs
 - AgentCoder uses 5 iterations per task (fixed budget)
 
 **Performance:** 0/55 (0.0%) - Complete failure across all tasks and all runs
@@ -301,32 +287,38 @@ For each of 5 independent runs:
     evaluations/quantitative_comparison/autogen_empirical_results/
     ├── integration_tasks/
     │   ├── 1st_run/
+    │   │   └── SelfEvolve/
+    │   │       ├── autogen_tabulate_pass.log (KEY FILE - PASS/FAIL results)
+    │   │       ├── Results/ (agbench execution results)
+    │   │       ├── Tasks/ (task definitions)
+    │   │       ├── Scripts/
+    │   │       ├── Templates/
+    │   │       ├── config.yaml
+    │   │       ├── ENV.yaml
+    │   │       └── test_autogen_results.py
     │   ├── 2nd_run/
     │   ├── 3rd_run/
     │   ├── 4th_run/
     │   └── 5th_run/
-    │       └── SelfEvolve/
-    │           ├── autogen_tabulate_pass.log         # PASS/FAIL results
-    │           └── [task_id]/
-    │               ├── console_log.txt               # Full conversation
-    │               └── coding/*.py                   # Generated code
     └── compositional_tasks/
         ├── 1st_run/
+        │   ├── 1st_run/ (Session 1)
+        │   │   └── SelfEvolve/
+        │   │       ├── autogen_tabulate_pass.log
+        │   │       └── Results/compositional_session1/SelfEvolve_[5,6,7]_S1/0/
+        │   └── 2nd_run/ (Session 2)
+        │       └── SelfEvolve/
+        │           ├── autogen_tabulate_pass.log (KEY FILE - compositional results)
+        │           ├── Results/compositional_session2/SelfEvolve_[5,6,7]_S2/0/
+        │           └── Results/compositional_session1/ (Session 1 for reference)
         ├── 2nd_run/
         ├── 3rd_run/
         ├── 4th_run/
         └── 5th_run/
-            ├── 1st_run/                              # Session 1 execution
-            │   └── SelfEvolve/
-            │       └── autogen_tabulate_pass.log
-            └── 2nd_run/                              # Session 2 execution
-                └── SelfEvolve/
-                    └── autogen_tabulate_pass.log     # Final compositional results
 
 **Key Files:**
-- `autogen_tabulate_pass.log`: Contains task ID, pass/fail status (True/False)
-- `console_log.txt`: Complete conversation showing iteration count
-- AutoGen uses max_turns=12 (variable iteration count)
+- `autogen_tabulate_pass.log`: Task ID, pass/fail status (True/False), turn count
+- AutoGen uses max_turns=12 (variable conversation rounds)
 
 **Performance:** 17/55 (30.9%)
 - Integration: 0/20 (0%) - No success on codebase integration
@@ -443,38 +435,40 @@ Generates Session 1 functions, saves to `metagpt_comp_s1_outputs/`
     evaluations/quantitative_comparison/metagpt_empirical_results/
     ├── integration_tasks/
     │   ├── 1st_run/
+    │   │   ├── metagpt_results.json (KEY FILE - PASS/FAIL status)
+    │   │   ├── metagpt_outputs/ (8 tasks: *_code.py, *_stdout.txt)
+    │   │   ├── metagpt_prompts/ (prompts used)
+    │   │   ├── metagpt_tests/ (ground truth tests)
+    │   │   ├── metagpt_evaluation.log
+    │   │   └── run_metagpt_evaluation.py
     │   ├── 2nd_run/
     │   ├── 3rd_run/
     │   ├── 4th_run/
     │   └── 5th_run/
-    │       ├── metagpt_results.json                 # PASS/FAIL + test status
-    │       ├── metagpt_outputs/
-    │       │   ├── patient_risk_analyzer_code.py    # Extracted code
-    │       │   ├── patient_risk_analyzer_stdout.txt # Full output
-    │       │   └── ... (all 8 tasks)
-    │       └── metagpt_tests/
-    │           └── [task]_test.py                   # Ground truth tests
     └── compositional_tasks/
         ├── 1st_run/
+        │   ├── 1st_run/ (Session 1)
+        │   │   ├── metagpt_comp_s1_results.json (KEY FILE - Session 1 results)
+        │   │   ├── metagpt_comp_s1_outputs/ (3 tasks: *_s1_code.py, *_s1_stdout.txt)
+        │   │   ├── metagpt_comp_s1_prompts/
+        │   │   ├── metagpt_compositional_s1.log
+        │   │   └── run_metagpt_compositional_session1.py
+        │   └── 2nd_run/ (Session 2)
+        │       ├── metagpt_comp_s2_results.json (KEY FILE - Session 2 results)
+        │       ├── metagpt_comp_s2_outputs/ (3 tasks: *_s2_code.py, *_s2_stdout.txt)
+        │       ├── metagpt_comp_s2_prompts/
+        │       ├── metagpt_comp_s2_tests/
+        │       ├── metagpt_compositional_s2.log
+        │       └── run_metagpt_compositional_session2.py
         ├── 2nd_run/
         ├── 3rd_run/
         ├── 4th_run/
         └── 5th_run/
-            ├── 1st_run/                              # Session 1
-            │   ├── metagpt_comp_s1_results.json
-            │   └── metagpt_comp_s1_outputs/*.py
-            └── 2nd_run/                              # Session 2
-                ├── metagpt_comp_s2_results.json      # Final results
-                ├── metagpt_comp_s2_outputs/
-                │   ├── matrix_eigenvalue_composition_s2_code.py
-                │   ├── matrix_eigenvalue_composition_s2_stdout.txt
-                │   └── ... (3 compositional tasks)
-                └── metagpt_comp_s2_tests/*.py
 
 **Key Files:**
-- `metagpt_results.json`: Pass/fail status with error details
-- `metagpt_comp_s2_results.json`: Compositional Session 2 results
-- Iteration count: 1 (single-shot per task)
+- `metagpt_results.json`: Pass/fail status for 8 integration/data tasks
+- `metagpt_comp_s2_results.json`: Pass/fail status for 3 compositional tasks
+- Iteration count: 1 (single-shot generation per task)
 
 **Performance:** 15/55 (27.3%)
 - Integration: 10/20 (50%) - Moderate success (file list generation helps)

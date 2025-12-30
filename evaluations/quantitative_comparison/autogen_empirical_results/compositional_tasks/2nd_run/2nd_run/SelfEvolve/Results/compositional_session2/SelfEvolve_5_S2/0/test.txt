@@ -1,0 +1,18 @@
+def check(candidate):
+    
+    import numpy as np
+    
+    # Verify both functions exist from cross-session composition
+    assert callable(matrix_operations)
+    assert callable(advanced_matrix_ops)
+    
+    # Test with sample 2x2 matrix
+    test_matrix = [[1, 2], [3, 4]]
+    result = candidate(test_matrix)
+    assert result is not None
+    
+    # Verify computation_cache global variable exists
+    assert 'computation_cache' in globals() or 'computation_cache' in dir()
+    
+    print('Matrix Eigenvalue Composition tests passed')
+    

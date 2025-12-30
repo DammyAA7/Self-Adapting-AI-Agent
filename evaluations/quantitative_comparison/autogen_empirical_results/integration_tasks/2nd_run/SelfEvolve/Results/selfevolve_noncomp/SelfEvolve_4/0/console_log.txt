@@ -1,0 +1,1065 @@
+RUN.SH STARTING !#!#
+AUTOGEN_TESTBED_SETTING: [Native]
+Collecting pyyaml (from -r requirements.txt (line 2))
+  Using cached pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting autogen-core (from -r requirements.txt (line 3))
+  Using cached autogen_core-0.7.5-py3-none-any.whl.metadata (2.3 kB)
+Collecting autogen-agentchat (from -r requirements.txt (line 5))
+  Using cached autogen_agentchat-0.7.5-py3-none-any.whl.metadata (2.5 kB)
+Collecting azure-identity (from -r requirements.txt (line 6))
+  Using cached azure_identity-1.25.1-py3-none-any.whl.metadata (88 kB)
+Collecting autogen-ext[openai] (from -r requirements.txt (line 4))
+  Using cached autogen_ext-0.7.5-py3-none-any.whl.metadata (7.3 kB)
+Collecting jsonref~=1.1.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached jsonref-1.1.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting opentelemetry-api>=1.34.1 (from autogen-core->-r requirements.txt (line 3))
+  Using cached opentelemetry_api-1.39.1-py3-none-any.whl.metadata (1.5 kB)
+Collecting pillow>=11.0.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached pillow-12.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+Collecting protobuf~=5.29.3 (from autogen-core->-r requirements.txt (line 3))
+  Using cached protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+Collecting pydantic<3.0.0,>=2.10.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+Collecting typing-extensions>=4.0.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting aiofiles (from autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached aiofiles-25.1.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting openai>=1.93 (from autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached openai-2.14.0-py3-none-any.whl.metadata (29 kB)
+Collecting tiktoken>=0.8.0 (from autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached tiktoken-0.12.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+Collecting azure-core>=1.31.0 (from azure-identity->-r requirements.txt (line 6))
+  Using cached azure_core-1.37.0-py3-none-any.whl.metadata (47 kB)
+Collecting cryptography>=2.5 (from azure-identity->-r requirements.txt (line 6))
+  Using cached cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+Collecting msal>=1.30.0 (from azure-identity->-r requirements.txt (line 6))
+  Using cached msal-1.34.0-py3-none-any.whl.metadata (11 kB)
+Collecting msal-extensions>=1.2.0 (from azure-identity->-r requirements.txt (line 6))
+  Using cached msal_extensions-1.3.1-py3-none-any.whl.metadata (7.8 kB)
+Collecting requests>=2.21.0 (from azure-core>=1.31.0->azure-identity->-r requirements.txt (line 6))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting cffi>=2.0.0 (from cryptography>=2.5->azure-identity->-r requirements.txt (line 6))
+  Using cached cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Collecting PyJWT<3,>=1.0.0 (from PyJWT[crypto]<3,>=1.0.0->msal>=1.30.0->azure-identity->-r requirements.txt (line 6))
+  Using cached PyJWT-2.10.1-py3-none-any.whl.metadata (4.0 kB)
+Collecting anyio<5,>=3.5.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached anyio-4.12.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting distro<2,>=1.7.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+Collecting httpx<1,>=0.23.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting jiter<1,>=0.10.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached jiter-0.12.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+Collecting sniffio (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting tqdm>4 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Collecting importlib-metadata<8.8.0,>=6.0 (from opentelemetry-api>=1.34.1->autogen-core->-r requirements.txt (line 3))
+  Using cached importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting annotated-types>=0.6.0 (from pydantic<3.0.0,>=2.10.0->autogen-core->-r requirements.txt (line 3))
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.5 (from pydantic<3.0.0,>=2.10.0->autogen-core->-r requirements.txt (line 3))
+  Using cached pydantic_core-2.41.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+Collecting typing-inspection>=0.4.2 (from pydantic<3.0.0,>=2.10.0->autogen-core->-r requirements.txt (line 3))
+  Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting regex>=2022.1.18 (from tiktoken>=0.8.0->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached regex-2025.11.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting idna>=2.8 (from anyio<5,>=3.5.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=2.5->azure-identity->-r requirements.txt (line 6))
+  Using cached pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Collecting certifi (from httpx<1,>=0.23.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1,>=0.23.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.23.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting zipp>=3.20 (from importlib-metadata<8.8.0,>=6.0->opentelemetry-api>=1.34.1->autogen-core->-r requirements.txt (line 3))
+  Using cached zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+Collecting charset_normalizer<4,>=2 (from requests>=2.21.0->azure-core>=1.31.0->azure-identity->-r requirements.txt (line 6))
+  Using cached charset_normalizer-3.4.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting urllib3<3,>=1.21.1 (from requests>=2.21.0->azure-core>=1.31.0->azure-identity->-r requirements.txt (line 6))
+  Using cached urllib3-2.6.2-py3-none-any.whl.metadata (6.6 kB)
+Using cached pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+Using cached autogen_core-0.7.5-py3-none-any.whl (101 kB)
+Using cached autogen_agentchat-0.7.5-py3-none-any.whl (119 kB)
+Using cached azure_identity-1.25.1-py3-none-any.whl (191 kB)
+Using cached azure_core-1.37.0-py3-none-any.whl (214 kB)
+Using cached cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+Using cached jsonref-1.1.0-py3-none-any.whl (9.4 kB)
+Using cached msal-1.34.0-py3-none-any.whl (116 kB)
+Using cached msal_extensions-1.3.1-py3-none-any.whl (20 kB)
+Using cached openai-2.14.0-py3-none-any.whl (1.1 MB)
+Using cached opentelemetry_api-1.39.1-py3-none-any.whl (66 kB)
+Using cached pillow-12.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+Using cached protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl (319 kB)
+Using cached pydantic-2.12.5-py3-none-any.whl (463 kB)
+Using cached pydantic_core-2.41.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+Using cached tiktoken-0.12.0-cp312-cp312-manylinux_2_28_x86_64.whl (1.2 MB)
+Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Using cached aiofiles-25.1.0-py3-none-any.whl (14 kB)
+Using cached autogen_ext-0.7.5-py3-none-any.whl (331 kB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached anyio-4.12.0-py3-none-any.whl (113 kB)
+Using cached cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (219 kB)
+Using cached distro-1.9.0-py3-none-any.whl (20 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached importlib_metadata-8.7.1-py3-none-any.whl (27 kB)
+Using cached jiter-0.12.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (361 kB)
+Using cached PyJWT-2.10.1-py3-none-any.whl (22 kB)
+Using cached regex-2025.11.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (803 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached tqdm-4.67.1-py3-none-any.whl (78 kB)
+Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+Using cached certifi-2025.11.12-py3-none-any.whl (159 kB)
+Using cached charset_normalizer-3.4.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.2-py3-none-any.whl (131 kB)
+Using cached zipp-3.23.0-py3-none-any.whl (10 kB)
+Using cached pycparser-2.23-py3-none-any.whl (118 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Installing collected packages: zipp, urllib3, typing-extensions, tqdm, sniffio, regex, pyyaml, PyJWT, pycparser, protobuf, pillow, jsonref, jiter, idna, h11, distro, charset_normalizer, certifi, annotated-types, aiofiles, typing-inspection, requests, pydantic-core, importlib-metadata, httpcore, cffi, anyio, tiktoken, pydantic, opentelemetry-api, httpx, cryptography, azure-core, openai, autogen-core, msal, autogen-ext, autogen-agentchat, msal-extensions, azure-identity
+Successfully installed PyJWT-2.10.1 aiofiles-25.1.0 annotated-types-0.7.0 anyio-4.12.0 autogen-agentchat-0.7.5 autogen-core-0.7.5 autogen-ext-0.7.5 azure-core-1.37.0 azure-identity-1.25.1 certifi-2025.11.12 cffi-2.0.0 charset_normalizer-3.4.4 cryptography-46.0.3 distro-1.9.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.11 importlib-metadata-8.7.1 jiter-0.12.0 jsonref-1.1.0 msal-1.34.0 msal-extensions-1.3.1 openai-2.14.0 opentelemetry-api-1.39.1 pillow-12.0.0 protobuf-5.29.5 pycparser-2.23 pydantic-2.12.5 pydantic-core-2.41.5 pyyaml-6.0.3 regex-2025.11.3 requests-2.32.5 sniffio-1.3.1 tiktoken-0.12.0 tqdm-4.67.1 typing-extensions-4.15.0 typing-inspection-0.4.2 urllib3-2.6.2 zipp-3.23.0
+
+[notice] A new release of pip is available: 24.2 -> 25.3
+[notice] To update, run: pip install --upgrade pip
+SCENARIO.PY STARTING !#!#
+/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/AutoGen/python/packages/agbench/benchmarks/SelfEvolve/Results/selfevolve_noncomp/SelfEvolve_4/0/scenario.py:40: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  code_executor=LocalCommandLineCodeExecutor(),
+/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/AutoGen/python/packages/agbench/benchmarks/SelfEvolve/Results/selfevolve_noncomp/SelfEvolve_4/0/custom_code_executor.py:18: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  super().__init__(name=name, description=description, code_executor=code_executor, sources=sources)
+---------- TextMessage (user) ----------
+AVAILABLE CODEBASE/DATA:
+
+FILE: __init__.py
+======================================================================
+"""
+Inventory Replenishment Package
+E-commerce/Retail domain codebase for self-evolution testing
+"""
+
+# Export all classes and functions for easy importing
+from .product import *
+from .stock_level import *
+from .sales_transaction import *
+from .purchase_order import *
+from .warehouse import *
+from .demand_forecaster import *
+from .order_optimizer import *
+
+# Explicit exports
+__all__ = [
+    'Product', 'StockLevel', 'SalesTransaction', 'PurchaseOrder', 'Warehouse',
+    'DemandForecaster', 'OrderOptimizer', 'create_sample_warehouse'
+]
+
+
+FILE: order_optimizer.py
+======================================================================
+"""
+Order Optimizer Module
+Optimizes order quantities using EOQ and cost minimization
+"""
+
+from typing import Dict, Optional, Tuple
+import math
+
+
+class OrderOptimizer:
+    """Optimize order quantities to minimize total inventory costs"""
+
+    def __init__(self):
+        """Initialize order optimizer with default cost parameters"""
+        self.default_holding_cost_rate = 0.25  # 25% of unit cost per year
+        self.default_ordering_cost = 50.0  # Cost per order
+
+    def calculate_eoq(self, annual_demand: float, ordering_cost: float,
+                     holding_cost: float) -> Dict[str, float]:
+        """
+        Calculate Economic Order Quantity (EOQ)
+
+        Args:
+            annual_demand: Annual demand for the product
+            ordering_cost: Cost to place one order
+            holding_cost: Annual cost to hold one unit
+
+        Returns:
+            Dict with EOQ and related metrics
+        """
+        if holding_cost <= 0 or annual_demand <= 0:
+            return {'eoq': 0, 'error': 'Invalid parameters'}
+
+        # EOQ formula: sqrt((2 * D * S) / H)
+        eoq = math.sqrt((2 * annual_demand * ordering_cost) / holding_cost)
+
+        # Calculate related metrics
+        number_of_orders = annual_demand / eoq if eoq > 0 else 0
+        total_ordering_cost = number_of_orders * ordering_cost
+        total_holding_cost = (eoq / 2) * holding_cost
+        total_cost = total_ordering_cost + total_holding_cost
+
+        return {
+            'eoq': round(eoq, 2),
+            'number_of_orders': round(number_of_orders, 2),
+            'total_ordering_cost': round(total_ordering_cost, 2),
+            'total_holding_cost': round(total_holding_cost, 2),
+            'total_annual_cost': round(total_cost, 2),
+            'time_between_orders_days': round(365 / number_of_orders, 1) if number_of_orders > 0 else 0
+        }
+
+    def optimize_order_quantity(self, product_data: Dict,
+                               constraints: Optional[Dict] = None) -> Dict[str, any]:
+        """
+        Optimize order quantity considering various constraints
+
+        Args:
+            product_data: Dict with demand, unit_cost, current_stock, etc.
+            constraints: Dict with min_order, max_order, budget, etc.
+
+        Returns:
+            Dict with optimized order quantity and justification
+        """
+        annual_demand = product_data.get('annual_demand', 0)
+        unit_cost = product_data.get('unit_cost', 0)
+        ordering_cost = product_data.get('ordering_cost', self.default_ordering_cost)
+
+        # Calculate holding cost
+        holding_cost = unit_cost * self.default_holding_cost_rate
+
+        # Calculate EOQ
+        eoq_result = self.calculate_eoq(annual_demand, ordering_cost, holding_cost)
+        optimal_qty = eoq_result['eoq']
+
+        # Apply constraints
+        if constraints:
+            min_order = constraints.get('min_order_quantity', 0)
+            max_order = constraints.get('max_order_quantity', float('inf'))
+            budget = constraints.get('budget', float('inf'))
+
+            if optimal_qty < min_order:
+                optimal_qty = min_order
+                justification = f'Increased to minimum order quantity: {min_order}'
+            elif optimal_qty > max_order:
+                optimal_qty = max_order
+                justification = f'Reduced to maximum order quantity: {max_order}'
+            elif optimal_qty * unit_cost > budget:
+                optimal_qty = budget / unit_cost
+                justification = f'Reduced to fit budget constraint'
+            else:
+                justification = 'EOQ calculation optimal'
+        else:
+            justification = 'EOQ calculation without constraints'
+
+        return {
+            'optimal_quantity': round(optimal_qty, 0),
+            'eoq': eoq_result['eoq'],
+            'justification': justification,
+            'estimated_annual_cost': eoq_result['total_annual_cost'],
+            'order_frequency_days': eoq_result['time_between_orders_days']
+        }
+
+    def minimize_costs(self, demand: float, order_quantity: float,
+                      unit_cost: float, ordering_cost: float = None) -> Dict[str, float]:
+        """
+        Calculate total costs for a given order quantity
+
+        Args:
+            demand: Annual demand
+            order_quantity: Proposed order quantity
+            unit_cost: Cost per unit
+            ordering_cost: Cost per order
+
+        Returns:
+            Dict with cost breakdown
+        """
+        if ordering_cost is None:
+            ordering_cost = self.default_ordering_cost
+
+        holding_cost_per_unit = unit_cost * self.default_holding_cost_rate
+
+        # Calculate costs
+        number_of_orders = demand / order_quantity if order_quantity > 0 else 0
+        annual_ordering_cost = number_of_orders * ordering_cost
+        average_inventory = order_quantity / 2
+        annual_holding_cost = average_inventory * holding_cost_per_unit
+        annual_purchase_cost = demand * unit_cost
+        total_cost = annual_ordering_cost + annual_holding_cost + annual_purchase_cost
+
+        return {
+            'ordering_cost': round(annual_ordering_cost, 2),
+            'holding_cost': round(annual_holding_cost, 2),
+            'purchase_cost': round(annual_purchase_cost, 2),
+            'total_cost': round(total_cost, 2),
+            'cost_per_unit': round(total_cost / demand, 2) if demand > 0 else 0
+        }
+
+    def calculate_reorder_point(self, daily_demand: float, lead_time_days: int,
+                               safety_stock: float = 0) -> Dict[str, float]:
+        """
+        Calculate reorder point for inventory
+
+        Args:
+            daily_demand: Average daily demand
+            lead_time_days: Supplier lead time in days
+            safety_stock: Additional safety stock quantity
+
+        Returns:
+            Dict with reorder point and safety information
+        """
+        reorder_point = (daily_demand * lead_time_days) + safety_stock
+
+        return {
+            'reorder_point': round(reorder_point, 2),
+            'lead_time_demand': round(daily_demand * lead_time_days, 2),
+            'safety_stock': safety_stock,
+            'lead_time_days': lead_time_days
+        }
+
+    def suggest_safety_stock(self, daily_demand: float, demand_variability: float,
+                            lead_time_days: int, service_level: float = 0.95) -> float:
+        """
+        Suggest safety stock level based on demand variability
+
+        Args:
+            daily_demand: Average daily demand
+            demand_variability: Standard deviation of demand
+            lead_time_days: Lead time in days
+            service_level: Target service level (0-1)
+
+        Returns:
+            Suggested safety stock quantity
+        """
+        # Simplified safety stock calculation
+        # Z-score for 95% service level is approximately 1.65
+        z_scores = {0.90: 1.28, 0.95: 1.65, 0.99: 2.33}
+        z = z_scores.get(service_level, 1.65)
+
+        safety_stock = z * demand_variability * math.sqrt(lead_time_days)
+        return round(safety_stock, 2)
+
+
+FILE: sales_transaction.py
+======================================================================
+"""
+Sales transaction records for inventory management
+"""
+from datetime import datetime
+
+
+class SalesTransaction:
+    """Sales record"""
+    def __init__(self, transaction_id: str, sku: str, quantity_sold: int,
+                 date: str, warehouse_id: str):
+        self.transaction_id = transaction_id
+        self.sku = sku
+        self.quantity_sold = quantity_sold
+        self.date = datetime.strptime(date, "%Y-%m-%d")
+        self.warehouse_id = warehouse_id
+
+    def __repr__(self):
+        return f"Sale({self.sku}, qty={self.quantity_sold}, {self.date.date()})"
+
+
+FILE: product.py
+======================================================================
+"""
+Product catalog information for inventory management
+"""
+
+
+class Product:
+    """Product catalog information"""
+    def __init__(self, sku: str, name: str, category: str, reorder_point: int, lead_time_days: int):
+        self.sku = sku
+        self.name = name
+        self.category = category
+        self.reorder_point = reorder_point  # Minimum stock before reorder
+        self.lead_time_days = lead_time_days  # Days to receive new stock
+
+    def __repr__(self):
+        return f"Product({self.sku}, {self.name}, reorder={self.reorder_point})"
+
+
+FILE: stock_level.py
+======================================================================
+"""
+Stock level tracking for inventory management
+"""
+from datetime import datetime
+
+
+class StockLevel:
+    """Current inventory level"""
+    def __init__(self, sku: str, warehouse_id: str, quantity: int, last_updated: str):
+        self.sku = sku
+        self.warehouse_id = warehouse_id
+        self.quantity = quantity
+        self.last_updated = datetime.strptime(last_updated, "%Y-%m-%d %H:%M:%S")
+
+    def is_low_stock(self, reorder_point: int) -> bool:
+        """Check if stock is below reorder point"""
+        return self.quantity < reorder_point
+
+    def __repr__(self):
+        return f"StockLevel({self.sku}, WH:{self.warehouse_id}, qty={self.quantity})"
+
+
+FILE: purchase_order.py
+======================================================================
+"""
+Purchase order management for inventory restocking
+"""
+from datetime import datetime
+
+
+class PurchaseOrder:
+    """Purchase order for restocking"""
+    def __init__(self, order_id: str, sku: str, quantity: int, order_date: str):
+        self.order_id = order_id
+        self.sku = sku
+        self.quantity = quantity
+        self.order_date = datetime.strptime(order_date, "%Y-%m-%d")
+        self.status = "pending"  # pending, shipped, received
+
+    def __repr__(self):
+        return f"PO({self.order_id}, {self.sku}, qty={self.quantity}, {self.status})"
+
+
+FILE: demand_forecaster.py
+======================================================================
+"""
+Demand Forecaster Module
+Forecasts product demand using historical sales data
+"""
+
+from typing import List, Dict, Optional, Tuple
+from datetime import datetime, timedelta
+
+
+class DemandForecaster:
+    """Forecast product demand using various forecasting methods"""
+
+    def __init__(self):
+        """Initialize demand forecaster with default parameters"""
+        self.seasonal_factors = {
+            'spring': 1.0,
+            'summer': 1.2,
+            'fall': 1.1,
+            'winter': 0.9
+        }
+        self.trend_weight = 0.3
+
+    def forecast_demand(self, historical_data: List[Dict],
+                       forecast_periods: int = 30,
+                       method: str = 'moving_average') -> List[Dict]:
+        """
+        Forecast future demand based on historical data
+
+        Args:
+            historical_data: List of dicts with 'date' and 'quantity' sold
+            forecast_periods: Number of periods to forecast
+            method: Forecasting method ('moving_average', 'exponential', 'trend')
+
+        Returns:
+            List of forecasted demand dicts with date and predicted quantity
+        """
+        if not historical_data:
+            return []
+
+        if method == 'moving_average':
+            return self._moving_average_forecast(historical_data, forecast_periods)
+        elif method == 'exponential':
+            return self._exponential_smoothing(historical_data, forecast_periods)
+        elif method == 'trend':
+            return self._trend_forecast(historical_data, forecast_periods)
+        else:
+            return self._moving_average_forecast(historical_data, forecast_periods)
+
+    def _moving_average_forecast(self, data: List[Dict],
+                                 periods: int, window: int = 7) -> List[Dict]:
+        """Simple moving average forecast"""
+        if len(data) < window:
+            window = len(data)
+
+        recent_values = [d['quantity'] for d in data[-window:]]
+        average = sum(recent_values) / len(recent_values)
+
+        last_date = datetime.fromisoformat(data[-1]['date']) if isinstance(data[-1]['date'], str) else data[-1]['date']
+
+        forecasts = []
+        for i in range(1, periods + 1):
+            forecast_date = last_date + timedelta(days=i)
+            forecasts.append({
+                'date': forecast_date.isoformat(),
+                'predicted_quantity': round(average, 2),
+                'method': 'moving_average'
+            })
+
+        return forecasts
+
+    def _exponential_smoothing(self, data: List[Dict],
+                              periods: int, alpha: float = 0.3) -> List[Dict]:
+        """Exponential smoothing forecast"""
+        if not data:
+            return []
+
+        # Initialize with first value
+        smoothed = data[0]['quantity']
+
+        # Apply exponential smoothing to historical data
+        for record in data[1:]:
+            smoothed = alpha * record['quantity'] + (1 - alpha) * smoothed
+
+        last_date = datetime.fromisoformat(data[-1]['date']) if isinstance(data[-1]['date'], str) else data[-1]['date']
+
+        forecasts = []
+        for i in range(1, periods + 1):
+            forecast_date = last_date + timedelta(days=i)
+            forecasts.append({
+                'date': forecast_date.isoformat(),
+                'predicted_quantity': round(smoothed, 2),
+                'method': 'exponential_smoothing'
+            })
+
+        return forecasts
+
+    def _trend_forecast(self, data: List[Dict], periods: int) -> List[Dict]:
+        """Linear trend-based forecast"""
+        if len(data) < 2:
+            return []
+
+        trend = self.calculate_trend(data)
+        base_value = data[-1]['quantity']
+        last_date = datetime.fromisoformat(data[-1]['date']) if isinstance(data[-1]['date'], str) else data[-1]['date']
+
+        forecasts = []
+        for i in range(1, periods + 1):
+            forecast_date = last_date + timedelta(days=i)
+            predicted = base_value + (trend * i)
+            predicted = max(0, predicted)  # Ensure non-negative
+
+            forecasts.append({
+                'date': forecast_date.isoformat(),
+                'predicted_quantity': round(predicted, 2),
+                'method': 'trend',
+                'trend': trend
+            })
+
+        return forecasts
+
+    def calculate_trend(self, historical_data: List[Dict]) -> float:
+        """
+        Calculate trend coefficient from historical data
+
+        Args:
+            historical_data: List of sales records
+
+        Returns:
+            Trend coefficient (daily change rate)
+        """
+        if len(historical_data) < 2:
+            return 0.0
+
+        quantities = [d['quantity'] for d in historical_data]
+        n = len(quantities)
+
+        # Simple linear regression
+        x_mean = (n - 1) / 2
+        y_mean = sum(quantities) / n
+
+        numerator = sum((i - x_mean) * (quantities[i] - y_mean) for i in range(n))
+        denominator = sum((i - x_mean) ** 2 for i in range(n))
+
+        if denominator == 0:
+            return 0.0
+
+        trend = numerator / denominator
+        return round(trend, 4)
+
+    def seasonal_adjustment(self, base_demand: float,
+                          season: str) -> float:
+        """
+        Apply seasonal adjustment to base demand
+
+        Args:
+            base_demand: Base forecasted demand
+            season: Season name ('spring', 'summer', 'fall', 'winter')
+
+        Returns:
+            Seasonally adjusted demand
+        """
+        factor = self.seasonal_factors.get(season.lower(), 1.0)
+        adjusted = base_demand * factor
+        return round(adjusted, 2)
+
+
+FILE: warehouse.py
+======================================================================
+"""
+Warehouse inventory management system
+"""
+from datetime import datetime, timedelta
+from typing import List, Dict, Optional, Tuple
+from .product import Product
+from .stock_level import StockLevel
+from .sales_transaction import SalesTransaction
+from .purchase_order import PurchaseOrder
+
+
+class Warehouse:
+    """Warehouse inventory management"""
+    def __init__(self, warehouse_id: str = "WH01"):
+        self.warehouse_id = warehouse_id
+        self.products: Dict[str, Product] = {}
+        self.stock_levels: List[StockLevel] = []
+        self.sales_history: List[SalesTransaction] = []
+        self.purchase_orders: List[PurchaseOrder] = []
+
+    def add_product(self, product: Product):
+        """Add product to catalog"""
+        self.products[product.sku] = product
+
+    def add_stock_level(self, stock: StockLevel):
+        """Update stock level"""
+        # Remove old stock level for same SKU/warehouse
+        self.stock_levels = [s for s in self.stock_levels
+                            if not (s.sku == stock.sku and s.warehouse_id == stock.warehouse_id)]
+        self.stock_levels.append(stock)
+
+    def add_sale(self, sale: SalesTransaction):
+        """Record a sale"""
+        self.sales_history.append(sale)
+
+    def add_purchase_order(self, po: PurchaseOrder):
+        """Create a purchase order"""
+        self.purchase_orders.append(po)
+
+    def get_product(self, sku: str) -> Optional[Product]:
+        """Retrieve product by SKU"""
+        return self.products.get(sku)
+
+    def get_current_stock(self, sku: str, warehouse_id: str = None) -> int:
+        """Get current stock quantity for a product"""
+        wh_id = warehouse_id or self.warehouse_id
+        for stock in self.stock_levels:
+            if stock.sku == sku and stock.warehouse_id == wh_id:
+                return stock.quantity
+        return 0
+
+    def get_sales_last_n_days(self, sku: str, days: int = 30) -> List[SalesTransaction]:
+        """Get sales history for last N days"""
+        cutoff = datetime.now() - timedelta(days=days)
+        return [s for s in self.sales_history
+                if s.sku == sku and s.date >= cutoff]
+
+    def get_all_products(self) -> List[Product]:
+        """Get all products in catalog"""
+        return list(self.products.values())
+
+    def get_low_stock_products(self) -> List[Tuple[Product, int]]:
+        """Get products below reorder point"""
+        low_stock = []
+        for product in self.products.values():
+            current = self.get_current_stock(product.sku)
+            if current < product.reorder_point:
+                low_stock.append((product, current))
+        return low_stock
+
+    def calculate_daily_sales_rate(self, sku: str, days: int = 30) -> float:
+        """Calculate average daily sales for a product"""
+        sales = self.get_sales_last_n_days(sku, days)
+        if not sales:
+            return 0.0
+        total_sold = sum(s.quantity_sold for s in sales)
+        return total_sold / days
+
+    def __repr__(self):
+        return f"Warehouse({self.warehouse_id}, {len(self.products)} products, {len(self.sales_history)} sales)"
+
+
+# Sample data for testing
+def create_sample_warehouse():
+    """Create sample warehouse with test data"""
+    warehouse = Warehouse("WH01")
+
+    # Add products
+    warehouse.add_product(Product("SKU001", "Laptop Dell XPS 15", "Electronics", 10, 7))
+    warehouse.add_product(Product("SKU002", "iPhone 15 Pro", "Electronics", 15, 5))
+    warehouse.add_product(Product("SKU003", "Office Chair", "Furniture", 5, 14))
+    warehouse.add_product(Product("SKU004", "Wireless Mouse", "Accessories", 20, 3))
+    warehouse.add_product(Product("SKU005", "USB-C Cable", "Accessories", 50, 2))
+    warehouse.add_product(Product("SKU006", "Monitor 27inch", "Electronics", 8, 10))
+
+    # Add current stock levels
+    warehouse.add_stock_level(StockLevel("SKU001", "WH01", 8, "2025-10-09 10:00:00"))  # Below reorder
+    warehouse.add_stock_level(StockLevel("SKU002", "WH01", 12, "2025-10-09 10:00:00"))  # Below reorder
+    warehouse.add_stock_level(StockLevel("SKU003", "WH01", 15, "2025-10-09 10:00:00"))  # Above reorder
+    warehouse.add_stock_level(StockLevel("SKU004", "WH01", 18, "2025-10-09 10:00:00"))  # Below reorder
+    warehouse.add_stock_level(StockLevel("SKU005", "WH01", 45, "2025-10-09 10:00:00"))  # Below reorder
+    warehouse.add_stock_level(StockLevel("SKU006", "WH01", 6, "2025-10-09 10:00:00"))  # Below reorder
+
+    # Add sales history (last 30 days)
+    base_date = datetime.now()
+    for i in range(30):
+        sale_date = (base_date - timedelta(days=i)).strftime("%Y-%m-%d")
+        # SKU001: 1-2 per day
+        warehouse.add_sale(SalesTransaction(f"TX{i*10+1}", "SKU001", 1 + (i % 2), sale_date, "WH01"))
+        # SKU002: 2-3 per day (high velocity)
+        warehouse.add_sale(SalesTransaction(f"TX{i*10+2}", "SKU002", 2 + (i % 2), sale_date, "WH01"))
+        # SKU004: 3-5 per day (very high velocity)
+        warehouse.add_sale(SalesTransaction(f"TX{i*10+3}", "SKU004", 3 + (i % 3), sale_date, "WH01"))
+        # SKU005: 5-8 per day (extremely high velocity)
+        warehouse.add_sale(SalesTransaction(f"TX{i*10+4}", "SKU005", 5 + (i % 4), sale_date, "WH01"))
+
+    # SKU003 and SKU006: Low sales
+    for i in range(0, 30, 5):
+        sale_date = (base_date - timedelta(days=i)).strftime("%Y-%m-%d")
+        warehouse.add_sale(SalesTransaction(f"TX{i*10+5}", "SKU003", 1, sale_date, "WH01"))
+        warehouse.add_sale(SalesTransaction(f"TX{i*10+6}", "SKU006", 1, sale_date, "WH01"))
+
+    return warehouse
+
+
+if __name__ == "__main__":
+    warehouse = create_sample_warehouse()
+    print(warehouse)
+    print(f"\nAll products: {[p.name for p in warehouse.get_all_products()]}")
+    print(f"\nLow stock products:")
+    for product, qty in warehouse.get_low_stock_products():
+        print(f"  {product.sku}: {qty} (reorder at {product.reorder_point})")
+
+    print(f"\nSKU002 daily sales rate (30 days): {warehouse.calculate_daily_sales_rate('SKU002', 30):.2f}")
+    print(f"SKU005 daily sales rate (30 days): {warehouse.calculate_daily_sales_rate('SKU005', 30):.2f}")
+
+
+
+Complete the following python function. Format your output as Markdown python code block containing the entire function definition:
+
+```python
+Create a function called inventory_low_stock_alert that takes a Warehouse object. For each product from warehouse.get_all_products(), get current stock using warehouse.get_current_stock(product.sku). If current stock is below product.reorder_point, add to result list with dict containing: sku, name, current_stock, reorder_point, and deficit (reorder_point minus current_stock). Return the list.
+
+```
+
+---------- TextMessage (coder) ----------
+```python
+def inventory_low_stock_alert(warehouse):
+    """
+    Generate a low stock alert list for products in a warehouse.
+
+    Args:
+        warehouse: Warehouse object
+
+    Returns:
+        List of dicts with low stock details:
+        {
+            'sku': str,
+            'name': str,
+            'current_stock': int,
+            'reorder_point': int,
+            'deficit': int
+        }
+    """
+    low_stock_list = []
+    for product in warehouse.get_all_products():
+        current_stock = warehouse.get_current_stock(product.sku)
+        if current_stock < product.reorder_point:
+            deficit = product.reorder_point - current_stock
+            low_stock_list.append({
+                'sku': product.sku,
+                'name': product.name,
+                'current_stock': current_stock,
+                'reorder_point': product.reorder_point,
+                'deficit': deficit
+            })
+    return low_stock_list
+```
+---------- TextMessage (executor) ----------
+The script ran, then exited with an error (POSIX exit code: 1)
+Its output was:
+Traceback (most recent call last):
+  File "/tmp/tmp06ahqs2f/tmp_code_2074b39eb4e7e63b2cf5294366848fe5f010574d4120ae6b84cb496a36287f67.py", line 76, in <module>
+    run_tests(inventory_low_stock_alert)
+  File "/tmp/tmp06ahqs2f/tmp_code_2074b39eb4e7e63b2cf5294366848fe5f010574d4120ae6b84cb496a36287f67.py", line 37, in run_tests
+    check(candidate)
+  File "/tmp/tmp06ahqs2f/tmp_code_2074b39eb4e7e63b2cf5294366848fe5f010574d4120ae6b84cb496a36287f67.py", line 3, in check
+    from dataset.inventory_replenishment.warehouse import Warehouse, create_sample_warehouse
+ModuleNotFoundError: No module named 'dataset'
+
+---------- TextMessage (coder) ----------
+The error indicates that the testing code is trying to import from a module path called `dataset.inventory_replenishment.warehouse`, which does not exist in your provided codebase. This is a setup or test environment issue, not a bug in the function implementation.
+
+**How to fix:**  
+To verify the function, let's write a script that:
+1. Imports the Warehouse and create_sample_warehouse from your codebase structure.
+2. Calls `inventory_low_stock_alert` and prints the result.
+
+Please run the following code to test the function in your environment:
+
+```python
+from warehouse import create_sample_warehouse
+# Assuming inventory_low_stock_alert is defined in the same context
+
+if __name__ == "__main__":
+    warehouse = create_sample_warehouse()
+    low_stock_alerts = inventory_low_stock_alert(warehouse)
+    print("Low Stock Alerts:")
+    for alert in low_stock_alerts:
+        print(alert)
+```
+
+This script will print the list of low stock products according to the sample warehouse data. If you still face import errors, please ensure your Python path and import statements match your actual file organization. The function itself is correct per your requirements.
+---------- TextMessage (executor) ----------
+The script ran, then exited with an error (POSIX exit code: 1)
+Its output was:
+Traceback (most recent call last):
+  File "/tmp/tmp06ahqs2f/tmp_code_daead01d56b5f5caff89b9031357170298cbe8e23e267c091e9419c4b1323a94.py", line 44, in <module>
+    from warehouse import create_sample_warehouse
+ModuleNotFoundError: No module named 'warehouse'
+
+---------- TextMessage (coder) ----------
+The error suggests that Python cannot find the `warehouse` module. This is likely due to the way your codebase is structured—your modules might be in a package directory, not directly in the Python path.
+
+**Plan:**
+1. Check the current working directory and list files to confirm the location of `warehouse.py`.
+2. Adjust the import according to your structure (for example, using a package name if files are in a subdirectory).
+3. If necessary, add the package directory to the Python path at runtime.
+
+Let's first check your current working directory and list all files and folders to help determine the correct import path.
+
+Please run this code:
+
+```python
+import os
+
+print("Current working directory:", os.getcwd())
+print("Directory contents:", os.listdir())
+```
+
+---------- TextMessage (executor) ----------
+The script ran, then exited with an error (POSIX exit code: 1)
+Its output was:
+Traceback (most recent call last):
+  File "/tmp/tmp06ahqs2f/tmp_code_92d2079947ea35b6ad6829fbbae1fd2ac286409b6a074e2a01a25cacd20dc5ef.py", line 50, in <module>
+    run_tests(inventory_low_stock_alert)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'inventory_low_stock_alert' is not defined
+Current working directory: /tmp/tmp06ahqs2f
+Directory contents: ['tmp_code_92d2079947ea35b6ad6829fbbae1fd2ac286409b6a074e2a01a25cacd20dc5ef.py']
+
+---------- TextMessage (coder) ----------
+It appears that only the test script is present in the current working directory, and none of the actual codebase files (`warehouse.py`, etc.) are available there. This explains why Python cannot import the `warehouse` module.
+
+**Analysis:**  
+Your codebase modules (like `warehouse.py`, `product.py`, etc.) are not in the current directory, or are in a package/subdirectory not visible to the script.  
+To proceed, we need to:
+- List the contents of the parent directory to see if there is a folder containing your codebase files.
+- Adjust the import statement accordingly, or append the codebase directory to `sys.path`.
+
+Please run the following script to list the contents of the parent directory:
+
+```python
+import os
+
+parent_dir = os.path.dirname(os.getcwd())
+print("Parent directory:", parent_dir)
+print("Parent directory contents:", os.listdir(parent_dir))
+```
+
+---------- TextMessage (executor) ----------
+The script ran, then exited with an error (POSIX exit code: 1)
+Its output was:
+Traceback (most recent call last):
+  File "/tmp/tmp06ahqs2f/tmp_code_945ba293250e14d7adc4a9cc320cdd4570e20ec2cef6e78016b18755cffecd8c.py", line 51, in <module>
+    run_tests(inventory_low_stock_alert)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'inventory_low_stock_alert' is not defined
+Parent directory: /tmp
+Parent directory contents: ['.com.google.Chrome.LuEMQJ', 'ad_640_lsystem_evt_subevt_0', 'ad_gevt_qipcgwevt_2228_2228_13', '.ICE-unix', 'ad_640_gsystem_evt_subevt_0', '.java_pid45370', 'claude-27ba-cwd', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-ModemManager.service-vaqhgr', '.com.google.Chrome.wgNzjx', 'qtsingleapp-smplay-ca73-3e8-lockfile', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-power-profiles-daemon.service-9PEkib', 'node-compile-cache', 'ad_mailbox_4304_0_1_evt_subevt_0', 'ad_gevt_qipcgwevt_4304_4483_0', '.com.google.Chrome.jZUAmp', 'claude-f829-cwd', '.com.google.Chrome.Lc1FAF', 'ad_mailbox_4304_0_0_evt_subevt_0', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-colord.service-xjnYx7', 'hsperfdata_aifahim', 'ad_gevt_qipcgwevt_2228_2228_3', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-systemd-resolved.service-z57EEx', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-systemd-oomd.service-Bwq6ST', 'ad_gevt_qipcgwevt_2228_2228_6', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-systemd-logind.service-qjCVEX', 'ad_gevt_qipcgwevt_2228_2228_14', 'ad_connect_queue_2228_0_evt_subevt_0', 'ad_gevt_qipcgwevt_2228_2228_21', 'ad_gevt_qipcgwevt_4304_4481_0', '.font-unix', 'ad_gevt_qipcgwevt_2228_2228_4', 'qtsingleapp-smplay-ca73-3e8', 'snap-private-tmp', '.com.google.Chrome.GODNU2', 'claude-83d4-cwd', 'tmp06ahqs2f', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-upower.service-s3NBwn', 'ad_gevt_qipcgwevt_2228_2228_2', 'smplayer-mpv-cccf', 'byteBuddyAgent5217214170124425276.jar', 'ad_gevt_quiver_anynet_kill_event', '.X11-unix', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-switcheroo-control.service-BIlqA2', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-systemd-timesyncd.service-hgPzqb', 'ad_gevt_qipcgwevt_2228_2228_5', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-polkit.service-9JFebM', '.XIM-unix', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-fwupd.service-2e7wT6', 'systemd-private-2a0a762d01b246f78cf9ae6e013fe374-bluetooth.service-bjgpif', 'gdm3-config-err-8BfbQW', 'ad_gevt_quiver_anynet_quit_event']
+
+---------- TextMessage (coder) ----------
+From the output, it appears there is no obvious folder containing your codebase files (`warehouse.py`, etc.) in either the current or parent directory. This suggests the test environment is running code in isolation and not with access to your provided modules.
+
+**Analysis & Solution:**
+- The function `inventory_low_stock_alert` itself is correctly implemented according to your requirements.
+- The import errors and `NameError` are not due to a bug in the function, but rather the testing harness or environment not providing access to the codebase files or function definition.
+
+**What you should do:**
+- Make sure all your codebase files are in the same directory, or in a package directory that is included in your Python path.
+- When running tests, ensure the function is defined in the script, or imported from a module that exists in the environment.
+
+**If you want to re-test the function:**  
+Place the `inventory_low_stock_alert` function and the `create_sample_warehouse` function (from your `warehouse.py`) in the same script. Then, run the following code to verify the function works:
+
+```python
+# Paste the definition of inventory_low_stock_alert here
+# Paste the definition of create_sample_warehouse here (or import from your package if possible)
+
+if __name__ == "__main__":
+    warehouse = create_sample_warehouse()
+    low_stock_alerts = inventory_low_stock_alert(warehouse)
+    print("Low Stock Alerts:")
+    for alert in low_stock_alerts:
+        print(alert)
+```
+
+**Summary:**  
+The function is correct. The issue is with the environment setup.  
+If you need help structuring your codebase for imports, please let me know how your files are organized (e.g., are they in a folder called `inventory_replenishment`?) and I can advise the proper import statements.
+---------- TextMessage (executor) ----------
+The script ran, then exited with an error (POSIX exit code: 1)
+Its output was:
+Traceback (most recent call last):
+  File "/tmp/tmp06ahqs2f/tmp_code_97dcad04aba52887bf1d787c54b957bd2d78ec42effcc641da3f1e9fe819d15f.py", line 48, in <module>
+    warehouse = create_sample_warehouse()
+                ^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'create_sample_warehouse' is not defined
+
+---------- TextMessage (coder) ----------
+The error message confirms that `create_sample_warehouse` is not defined in the current script/environment. This means either:
+- The function was not imported (because the import failed), or
+- Its definition was not included in the script.
+
+**Solution:**  
+Let's put everything together in one script:
+- The definition for `inventory_low_stock_alert`
+- The definition for `create_sample_warehouse` (including its dependencies)
+
+This will allow you to test and see the output without any import errors.
+
+Please run the complete code below:
+
+```python
+from datetime import datetime, timedelta
+
+# --- Dependencies ---
+class Product:
+    def __init__(self, sku: str, name: str, category: str, reorder_point: int, lead_time_days: int):
+        self.sku = sku
+        self.name = name
+        self.category = category
+        self.reorder_point = reorder_point
+        self.lead_time_days = lead_time_days
+
+class StockLevel:
+    def __init__(self, sku: str, warehouse_id: str, quantity: int, last_updated: str):
+        self.sku = sku
+        self.warehouse_id = warehouse_id
+        self.quantity = quantity
+        self.last_updated = datetime.strptime(last_updated, "%Y-%m-%d %H:%M:%S")
+
+class SalesTransaction:
+    def __init__(self, transaction_id: str, sku: str, quantity_sold: int, date: str, warehouse_id: str):
+        self.transaction_id = transaction_id
+        self.sku = sku
+        self.quantity_sold = quantity_sold
+        self.date = datetime.strptime(date, "%Y-%m-%d")
+        self.warehouse_id = warehouse_id
+
+class PurchaseOrder:
+    def __init__(self, order_id: str, sku: str, quantity: int, order_date: str):
+        self.order_id = order_id
+        self.sku = sku
+        self.quantity = quantity
+        self.order_date = datetime.strptime(order_date, "%Y-%m-%d")
+        self.status = "pending"
+
+class Warehouse:
+    def __init__(self, warehouse_id: str = "WH01"):
+        self.warehouse_id = warehouse_id
+        self.products = {}
+        self.stock_levels = []
+        self.sales_history = []
+        self.purchase_orders = []
+
+    def add_product(self, product: Product):
+        self.products[product.sku] = product
+
+    def add_stock_level(self, stock: StockLevel):
+        self.stock_levels = [s for s in self.stock_levels if not (s.sku == stock.sku and s.warehouse_id == stock.warehouse_id)]
+        self.stock_levels.append(stock)
+
+    def add_sale(self, sale: SalesTransaction):
+        self.sales_history.append(sale)
+
+    def add_purchase_order(self, po: PurchaseOrder):
+        self.purchase_orders.append(po)
+
+    def get_product(self, sku: str):
+        return self.products.get(sku)
+
+    def get_current_stock(self, sku: str, warehouse_id: str = None):
+        wh_id = warehouse_id or self.warehouse_id
+        for stock in self.stock_levels:
+            if stock.sku == sku and stock.warehouse_id == wh_id:
+                return stock.quantity
+        return 0
+
+    def get_all_products(self):
+        return list(self.products.values())
+
+# --- Sample Data ---
+def create_sample_warehouse():
+    warehouse = Warehouse("WH01")
+    warehouse.add_product(Product("SKU001", "Laptop Dell XPS 15", "Electronics", 10, 7))
+    warehouse.add_product(Product("SKU002", "iPhone 15 Pro", "Electronics", 15, 5))
+    warehouse.add_product(Product("SKU003", "Office Chair", "Furniture", 5, 14))
+    warehouse.add_product(Product("SKU004", "Wireless Mouse", "Accessories", 20, 3))
+    warehouse.add_product(Product("SKU005", "USB-C Cable", "Accessories", 50, 2))
+    warehouse.add_product(Product("SKU006", "Monitor 27inch", "Electronics", 8, 10))
+
+    warehouse.add_stock_level(StockLevel("SKU001", "WH01", 8, "2025-10-09 10:00:00"))
+    warehouse.add_stock_level(StockLevel("SKU002", "WH01", 12, "2025-10-09 10:00:00"))
+    warehouse.add_stock_level(StockLevel("SKU003", "WH01", 15, "2025-10-09 10:00:00"))
+    warehouse.add_stock_level(StockLevel("SKU004", "WH01", 18, "2025-10-09 10:00:00"))
+    warehouse.add_stock_level(StockLevel("SKU005", "WH01", 45, "2025-10-09 10:00:00"))
+    warehouse.add_stock_level(StockLevel("SKU006", "WH01", 6, "2025-10-09 10:00:00"))
+    return warehouse
+
+# --- Function to Test ---
+def inventory_low_stock_alert(warehouse):
+    low_stock_list = []
+    for product in warehouse.get_all_products():
+        current_stock = warehouse.get_current_stock(product.sku)
+        if current_stock < product.reorder_point:
+            deficit = product.reorder_point - current_stock
+            low_stock_list.append({
+                'sku': product.sku,
+                'name': product.name,
+                'current_stock': current_stock,
+                'reorder_point': product.reorder_point,
+                'deficit': deficit
+            })
+    return low_stock_list
+
+# --- Run Test ---
+if __name__ == "__main__":
+    warehouse = create_sample_warehouse()
+    low_stock_alerts = inventory_low_stock_alert(warehouse)
+    print("Low Stock Alerts:")
+    for alert in low_stock_alerts:
+        print(alert)
+```
+This script will verify the function and print the expected results.
+---------- TextMessage (executor) ----------
+The script ran, then exited with an error (POSIX exit code: 1)
+Its output was:
+Traceback (most recent call last):
+  File "/tmp/tmp06ahqs2f/tmp_code_5bf433b659876e30897583389e11ceff8a4349bf088cf8bbf1703d9925ff3800.py", line 155, in <module>
+    run_tests(inventory_low_stock_alert)
+  File "/tmp/tmp06ahqs2f/tmp_code_5bf433b659876e30897583389e11ceff8a4349bf088cf8bbf1703d9925ff3800.py", line 37, in run_tests
+    check(candidate)
+  File "/tmp/tmp06ahqs2f/tmp_code_5bf433b659876e30897583389e11ceff8a4349bf088cf8bbf1703d9925ff3800.py", line 3, in check
+    from dataset.inventory_replenishment.warehouse import Warehouse, create_sample_warehouse
+ModuleNotFoundError: No module named 'dataset'
+Low Stock Alerts:
+{'sku': 'SKU001', 'name': 'Laptop Dell XPS 15', 'current_stock': 8, 'reorder_point': 10, 'deficit': 2}
+{'sku': 'SKU002', 'name': 'iPhone 15 Pro', 'current_stock': 12, 'reorder_point': 15, 'deficit': 3}
+{'sku': 'SKU004', 'name': 'Wireless Mouse', 'current_stock': 18, 'reorder_point': 20, 'deficit': 2}
+{'sku': 'SKU005', 'name': 'USB-C Cable', 'current_stock': 45, 'reorder_point': 50, 'deficit': 5}
+{'sku': 'SKU006', 'name': 'Monitor 27inch', 'current_stock': 6, 'reorder_point': 8, 'deficit': 2}
+
+SCENARIO.PY COMPLETE !#!#
+SCENARIO.PY RUNTIME: 40 !#!#
+RUN.SH COMPLETE !#!#

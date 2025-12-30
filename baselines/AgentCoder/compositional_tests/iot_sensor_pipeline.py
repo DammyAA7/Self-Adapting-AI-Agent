@@ -1,20 +1,21 @@
 
-def aggregate_temperature(sensor_strings):
+def aggregate_temperature(readings):
     '''
-    Takes a list of raw sensor strings, parses each one to extract temperature
-    values, computes the average of valid temperatures rounded to 2 decimals.
-    Returns 0.0 if no valid temperatures.
+    Takes a list of raw sensor strings. Uses parse_sensor_reading to parse each one.
+    Collect all temperature values that are not None. 
+    Return average of all temperatures rounded to 2 decimals.
+    Return 0.0 if no valid temperatures.
     '''
-    temps = []
-    for sensor_string in sensor_strings:
-        parsed = parse_sensor_reading(sensor_string)
-        temp = parsed.get('temperature')
+    temperatures = []
+    for reading in readings:
+        data = parse_sensor_reading(reading)
+        temp = data.get('temperature')
         if temp is not None:
-            temps.append(temp)
-    if not temps:
+            temperatures.append(temp)
+    if not temperatures:
         return 0.0
-    avg = sum(temps) / len(temps)
-    return round(avg, 2)
+    avg_temp = sum(temperatures) / len(temperatures)
+    return round(avg_temp, 2)
 
 
 

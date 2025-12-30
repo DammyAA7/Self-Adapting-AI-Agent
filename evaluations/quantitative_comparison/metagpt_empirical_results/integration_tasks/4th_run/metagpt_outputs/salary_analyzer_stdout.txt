@@ -1,0 +1,20 @@
+Thought: The user wants a Python function that calculates the average salary from employee data, compatible with the provided codebase. This is a specific implementation task.
+Response Category: TASK
+English
+To fulfill the user's request, I need to generate a Python function called salary_analyzer that calculates the average salary from employee data and returns a float. The codebase already contains a SalaryAnalyzer class with a static method calculate_average_salary that does exactly this. Therefore, the function should act as a wrapper or utilize this method for consistency with the codebase.
+
+Here is the function as requested:
+
+```json
+[
+    {
+        "command_name": "RoleZero.reply_to_human",
+        "args": {
+            "content": "Here is the requested function that calculates the average salary from employee data using the existing codebase:\n\n```python\nfrom salary_analyzer.salary_analyzer_class import SalaryAnalyzer\n\ndef salary_analyzer(employees):\n    \"\"\"\n    Calculates the average salary from a list of employee records.\n    Args:\n        employees (list of dict): List of employee data, each with a 'salary' key.\n    Returns:\n        float: The average salary value.\n    \"\"\"\n    return SalaryAnalyzer.calculate_average_salary(employees)\n```\n\nThis function expects a list of employee dictionaries (each containing a 'salary' key) and returns the average salary as a float."
+        }
+    },
+    {
+        "command_name": "end"
+    }
+]
+```

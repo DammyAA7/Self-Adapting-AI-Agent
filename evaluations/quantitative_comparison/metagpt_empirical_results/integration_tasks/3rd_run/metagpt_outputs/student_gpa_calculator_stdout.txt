@@ -1,0 +1,41 @@
+Thought: The user provided a detailed codebase and requested the implementation of a specific function, calculate_simple_gpa, that operates on the provided University object and student_id, following clear requirements. This is a concrete coding task that fits within the existing codebase.
+Response Category: TASK
+English
+Here is the requested function. It calculates the simple GPA for a student using the provided University object and student_id, following your instructions and compatible with the codebase.
+
+```python
+def calculate_simple_gpa(university, student_id):
+    """
+    Calculate the simple GPA for a student.
+
+    Args:
+        university: University object
+        student_id: str, ID of the student
+
+    Returns:
+        float: GPA (0.0 - 4.0)
+    """
+    enrollments = university.get_student_enrollments(student_id)
+    total_points = 0.0
+    total_credits = 0
+
+    for enrollment in enrollments:
+        course = university.get_course(enrollment.course_code)
+        if course:
+            grade_points = enrollment.get_grade_points()
+            credits = course.credits
+            total_points += grade_points * credits
+            total_credits += credits
+
+    if total_credits == 0:
+        return 0.0
+
+    return total_points / total_credits
+```
+
+I have generated only the requested Python function, compatible with your codebase. Let me know if you need further assistance.
+```json
+{
+  "error": "No JSON data detected in the provided input. The input contains a Python function and an error message, but no actual JSON data to check or format. Please provide valid JSON data for formatting or validation."
+}
+```

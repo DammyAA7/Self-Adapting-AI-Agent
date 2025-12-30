@@ -1,0 +1,130 @@
+Thought: The user has provided a codebase and a detailed, multi-step programming task that requires implementing a function with dynamic behavior based on call context, using the provided dataset. This is a clear, well-scoped software development task.
+Response Category: TASK
+English
+The user has provided a clear and specific requirement: to generate a single Python function, movie_api, that reads from movie.csv and automatically switches between three return formats (v1: list of titles, v2: dict with metadata, v3: JSON-LD) by inspecting the call stack. No decomposition or further planning is needed; this is a pure coding task suitable for direct assignment to the Engineer.
+
+I will assign this task to Alex (Engineer) with all necessary details, including the file path and the requirement to use Python, and inform the user accordingly.
+
+```json
+[
+    {
+        "command_name": "Plan.append_task",
+        "args": {
+            "task_id": "1",
+            "dependent_task_ids": [],
+            "instruction": "Create a Python function named movie_api that reads from 'movie.csv' in the 'movielens_dataset' folder. The function must automatically detect and switch between three different return formats based on the caller's context by inspecting the call stack: v1 returns a list of titles, v2 returns a dict with metadata, v3 returns JSON-LD structured data. The function must maintain backward compatibility for all three versions simultaneously. Only generate the requested function, not a full project.",
+            "assignee": "Alex"
+        }
+    },
+    {
+        "command_name": "TeamLeader.publish_team_message",
+        "args": {
+            "content": "Please create a Python function named movie_api that reads from 'movie.csv' in the 'movielens_dataset' folder. The function must automatically detect and switch between three different return formats based on the caller's context by inspecting the call stack: v1 returns a list of titles, v2 returns a dict with metadata, v3 returns JSON-LD structured data. The function must maintain backward compatibility for all three versions simultaneously. Only generate the requested function, not a full project.",
+            "send_to": "Alex"
+        }
+    },
+    {
+        "command_name": "RoleZero.reply_to_human",
+        "args": {
+            "content": "I have assigned your request to Alex, our Engineer. He will generate a Python function named movie_api that reads from 'movie.csv' and automatically switches between three return formats (list of titles, dict with metadata, JSON-LD) by inspecting the call stack, as you specified."
+        }
+    }
+]
+```
+English
+To fulfill Mike's request, I need to generate a single Python function named `movie_api` that reads from 'movie.csv' in the 'movielens_dataset' folder and automatically switches between three return formats (v1, v2, v3) by inspecting the call stack. The function should maintain backward compatibility for all three versions.
+
+Here's the function, as requested, inside a Python code block.
+
+```python
+import csv
+import os
+import json
+import inspect
+
+def movie_api():
+    """
+    Reads 'movie.csv' from 'movielens_dataset' and returns data in one of three formats,
+    automatically selected based on the caller's context (by inspecting the call stack):
+    - v1: list of titles
+    - v2: dict with metadata
+    - v3: JSON-LD structured data
+    Maintains backward compatibility for all three versions.
+    """
+    # Locate the CSV file relative to this file or current working directory
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(base_dir, 'movie.csv')
+    if not os.path.exists(csv_path):
+        # Try relative to cwd
+        csv_path = os.path.join(os.getcwd(), 'movielens_dataset', 'movie.csv')
+    if not os.path.exists(csv_path):
+        raise FileNotFoundError("movie.csv not found in movielens_dataset")
+
+    # Read the CSV
+    movies = []
+    with open(csv_path, newline='', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            movies.append({
+                "movieId": int(row["movieId"]),
+                "title": row["title"],
+                "genres": row["genres"].split('|')
+            })
+
+    # Inspect the call stack to determine version
+    stack = inspect.stack()
+    version = "v1"  # default
+
+    # Heuristic: look for function name or module in stack
+    for frame in stack:
+        fname = frame.function.lower()
+        modname = frame.frame.f_globals.get("__name__", "").lower()
+        # Example heuristics, can be customized:
+        if "v2" in fname or "v2" in modname:
+            version = "v2"
+            break
+        elif "v3" in fname or "v3" in modname or "jsonld" in fname or "jsonld" in modname:
+            version = "v3"
+            break
+        elif "v1" in fname or "v1" in modname:
+            version = "v1"
+            break
+    # Also allow explicit override via environment variable for testing
+    version = os.environ.get("MOVIE_API_VERSION", version)
+
+    if version == "v1":
+        # Return list of titles
+        return [movie["title"] for movie in movies]
+    elif version == "v2":
+        # Return dict with metadata
+        return {
+            "count": len(movies),
+            "movies": movies
+        }
+    elif version == "v3":
+        # Return JSON-LD structured data
+        jsonld = {
+            "@context": "https://schema.org",
+            "@type": "MovieCollection",
+            "numberOfItems": len(movies),
+            "itemListElement": [
+                {
+                    "@type": "Movie",
+                    "identifier": movie["movieId"],
+                    "name": movie["title"],
+                    "genre": movie["genres"]
+                }
+                for movie in movies
+            ]
+        }
+        return jsonld
+    else:
+        # Fallback to v1
+        return [movie["title"] for movie in movies]
+```
+
+```json
+{
+  "error": "No JSON data was provided for validation. Please supply the JSON data you want to check for formatting issues."
+}
+```

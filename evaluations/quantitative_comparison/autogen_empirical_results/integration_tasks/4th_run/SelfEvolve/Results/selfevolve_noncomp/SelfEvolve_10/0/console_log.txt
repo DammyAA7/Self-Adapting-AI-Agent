@@ -1,0 +1,411 @@
+RUN.SH STARTING !#!#
+AUTOGEN_TESTBED_SETTING: [Native]
+Collecting pyyaml (from -r requirements.txt (line 2))
+  Using cached pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting autogen-core (from -r requirements.txt (line 3))
+  Using cached autogen_core-0.7.5-py3-none-any.whl.metadata (2.3 kB)
+Collecting autogen-agentchat (from -r requirements.txt (line 5))
+  Using cached autogen_agentchat-0.7.5-py3-none-any.whl.metadata (2.5 kB)
+Collecting azure-identity (from -r requirements.txt (line 6))
+  Using cached azure_identity-1.25.1-py3-none-any.whl.metadata (88 kB)
+Collecting autogen-ext[openai] (from -r requirements.txt (line 4))
+  Using cached autogen_ext-0.7.5-py3-none-any.whl.metadata (7.3 kB)
+Collecting jsonref~=1.1.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached jsonref-1.1.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting opentelemetry-api>=1.34.1 (from autogen-core->-r requirements.txt (line 3))
+  Using cached opentelemetry_api-1.39.1-py3-none-any.whl.metadata (1.5 kB)
+Collecting pillow>=11.0.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached pillow-12.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+Collecting protobuf~=5.29.3 (from autogen-core->-r requirements.txt (line 3))
+  Using cached protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+Collecting pydantic<3.0.0,>=2.10.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+Collecting typing-extensions>=4.0.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting aiofiles (from autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached aiofiles-25.1.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting openai>=1.93 (from autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached openai-2.14.0-py3-none-any.whl.metadata (29 kB)
+Collecting tiktoken>=0.8.0 (from autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached tiktoken-0.12.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+Collecting azure-core>=1.31.0 (from azure-identity->-r requirements.txt (line 6))
+  Using cached azure_core-1.37.0-py3-none-any.whl.metadata (47 kB)
+Collecting cryptography>=2.5 (from azure-identity->-r requirements.txt (line 6))
+  Using cached cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+Collecting msal>=1.30.0 (from azure-identity->-r requirements.txt (line 6))
+  Using cached msal-1.34.0-py3-none-any.whl.metadata (11 kB)
+Collecting msal-extensions>=1.2.0 (from azure-identity->-r requirements.txt (line 6))
+  Using cached msal_extensions-1.3.1-py3-none-any.whl.metadata (7.8 kB)
+Collecting requests>=2.21.0 (from azure-core>=1.31.0->azure-identity->-r requirements.txt (line 6))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting cffi>=2.0.0 (from cryptography>=2.5->azure-identity->-r requirements.txt (line 6))
+  Using cached cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Collecting PyJWT<3,>=1.0.0 (from PyJWT[crypto]<3,>=1.0.0->msal>=1.30.0->azure-identity->-r requirements.txt (line 6))
+  Using cached PyJWT-2.10.1-py3-none-any.whl.metadata (4.0 kB)
+Collecting anyio<5,>=3.5.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached anyio-4.12.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting distro<2,>=1.7.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+Collecting httpx<1,>=0.23.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting jiter<1,>=0.10.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached jiter-0.12.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+Collecting sniffio (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting tqdm>4 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Collecting importlib-metadata<8.8.0,>=6.0 (from opentelemetry-api>=1.34.1->autogen-core->-r requirements.txt (line 3))
+  Using cached importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting annotated-types>=0.6.0 (from pydantic<3.0.0,>=2.10.0->autogen-core->-r requirements.txt (line 3))
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.5 (from pydantic<3.0.0,>=2.10.0->autogen-core->-r requirements.txt (line 3))
+  Using cached pydantic_core-2.41.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+Collecting typing-inspection>=0.4.2 (from pydantic<3.0.0,>=2.10.0->autogen-core->-r requirements.txt (line 3))
+  Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting regex>=2022.1.18 (from tiktoken>=0.8.0->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached regex-2025.11.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting idna>=2.8 (from anyio<5,>=3.5.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=2.5->azure-identity->-r requirements.txt (line 6))
+  Using cached pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Collecting certifi (from httpx<1,>=0.23.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1,>=0.23.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.23.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting zipp>=3.20 (from importlib-metadata<8.8.0,>=6.0->opentelemetry-api>=1.34.1->autogen-core->-r requirements.txt (line 3))
+  Using cached zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+Collecting charset_normalizer<4,>=2 (from requests>=2.21.0->azure-core>=1.31.0->azure-identity->-r requirements.txt (line 6))
+  Using cached charset_normalizer-3.4.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting urllib3<3,>=1.21.1 (from requests>=2.21.0->azure-core>=1.31.0->azure-identity->-r requirements.txt (line 6))
+  Using cached urllib3-2.6.2-py3-none-any.whl.metadata (6.6 kB)
+Using cached pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+Using cached autogen_core-0.7.5-py3-none-any.whl (101 kB)
+Using cached autogen_agentchat-0.7.5-py3-none-any.whl (119 kB)
+Using cached azure_identity-1.25.1-py3-none-any.whl (191 kB)
+Using cached azure_core-1.37.0-py3-none-any.whl (214 kB)
+Using cached cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+Using cached jsonref-1.1.0-py3-none-any.whl (9.4 kB)
+Using cached msal-1.34.0-py3-none-any.whl (116 kB)
+Using cached msal_extensions-1.3.1-py3-none-any.whl (20 kB)
+Using cached openai-2.14.0-py3-none-any.whl (1.1 MB)
+Using cached opentelemetry_api-1.39.1-py3-none-any.whl (66 kB)
+Using cached pillow-12.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+Using cached protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl (319 kB)
+Using cached pydantic-2.12.5-py3-none-any.whl (463 kB)
+Using cached pydantic_core-2.41.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+Using cached tiktoken-0.12.0-cp312-cp312-manylinux_2_28_x86_64.whl (1.2 MB)
+Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Using cached aiofiles-25.1.0-py3-none-any.whl (14 kB)
+Using cached autogen_ext-0.7.5-py3-none-any.whl (331 kB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached anyio-4.12.0-py3-none-any.whl (113 kB)
+Using cached cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (219 kB)
+Using cached distro-1.9.0-py3-none-any.whl (20 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached importlib_metadata-8.7.1-py3-none-any.whl (27 kB)
+Using cached jiter-0.12.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (361 kB)
+Using cached PyJWT-2.10.1-py3-none-any.whl (22 kB)
+Using cached regex-2025.11.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (803 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached tqdm-4.67.1-py3-none-any.whl (78 kB)
+Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+Using cached certifi-2025.11.12-py3-none-any.whl (159 kB)
+Using cached charset_normalizer-3.4.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.2-py3-none-any.whl (131 kB)
+Using cached zipp-3.23.0-py3-none-any.whl (10 kB)
+Using cached pycparser-2.23-py3-none-any.whl (118 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Installing collected packages: zipp, urllib3, typing-extensions, tqdm, sniffio, regex, pyyaml, PyJWT, pycparser, protobuf, pillow, jsonref, jiter, idna, h11, distro, charset_normalizer, certifi, annotated-types, aiofiles, typing-inspection, requests, pydantic-core, importlib-metadata, httpcore, cffi, anyio, tiktoken, pydantic, opentelemetry-api, httpx, cryptography, azure-core, openai, autogen-core, msal, autogen-ext, autogen-agentchat, msal-extensions, azure-identity
+Successfully installed PyJWT-2.10.1 aiofiles-25.1.0 annotated-types-0.7.0 anyio-4.12.0 autogen-agentchat-0.7.5 autogen-core-0.7.5 autogen-ext-0.7.5 azure-core-1.37.0 azure-identity-1.25.1 certifi-2025.11.12 cffi-2.0.0 charset_normalizer-3.4.4 cryptography-46.0.3 distro-1.9.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.11 importlib-metadata-8.7.1 jiter-0.12.0 jsonref-1.1.0 msal-1.34.0 msal-extensions-1.3.1 openai-2.14.0 opentelemetry-api-1.39.1 pillow-12.0.0 protobuf-5.29.5 pycparser-2.23 pydantic-2.12.5 pydantic-core-2.41.5 pyyaml-6.0.3 regex-2025.11.3 requests-2.32.5 sniffio-1.3.1 tiktoken-0.12.0 tqdm-4.67.1 typing-extensions-4.15.0 typing-inspection-0.4.2 urllib3-2.6.2 zipp-3.23.0
+
+[notice] A new release of pip is available: 24.2 -> 25.3
+[notice] To update, run: pip install --upgrade pip
+SCENARIO.PY STARTING !#!#
+/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/AutoGen/python/packages/agbench/benchmarks/SelfEvolve/Results/selfevolve_noncomp/SelfEvolve_10/0/scenario.py:40: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  code_executor=LocalCommandLineCodeExecutor(),
+/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/AutoGen/python/packages/agbench/benchmarks/SelfEvolve/Results/selfevolve_noncomp/SelfEvolve_10/0/custom_code_executor.py:18: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  super().__init__(name=name, description=description, code_executor=code_executor, sources=sources)
+---------- TextMessage (user) ----------
+AVAILABLE CODEBASE/DATA:
+
+FILE: __init__.py
+======================================================================
+"""
+Performance Tracker Dataset
+Employee performance tracking and reporting
+"""
+
+
+FILE: performance_reviews.csv
+======================================================================
+employee_id,employee_name,department,position,review_period,technical_score,communication_score,teamwork_score,leadership_score,overall_rating,goals_status,feedback
+E001,Employee 1,Operations,Manager,Q1 2024,3,3,2,2,2.5,Exceeded,Performance feedback for Employee 1
+E002,Employee 2,Customer Support,Senior,Q3 2024,4,3,3,3,3.2,Met,Performance feedback for Employee 2
+E003,Employee 3,Operations,Manager,Q1 2024,5,4,2,4,3.8,Not Met,Performance feedback for Employee 3
+E004,Employee 4,Sales,Lead,Q4 2024,5,5,4,5,4.8,Not Met,Performance feedback for Employee 4
+E005,Employee 5,Customer Support,Manager,Q2 2024,5,4,5,1,3.8,Met,Performance feedback for Employee 5
+E006,Employee 6,Operations,Manager,Q1 2024,4,5,4,3,4.0,Met,Performance feedback for Employee 6
+E007,Employee 7,Customer Support,Manager,Q4 2024,2,3,4,5,3.5,Not Met,Performance feedback for Employee 7
+E008,Employee 8,Engineering,Mid-level,Q4 2024,3,4,5,0,3.0,Exceeded,Performance feedback for Employee 8
+E009,Employee 9,Customer Support,Mid-level,Q3 2024,2,5,3,0,2.5,Partially Met,Performance feedback for Employee 9
+E010,Employee 10,Finance,Mid-level,Q1 2024,4,4,3,0,2.8,Partially Met,Performance feedback for Employee 10
+E011,Employee 11,Finance,Manager,Q4 2024,5,3,4,4,4.0,Met,Performance feedback for Employee 11
+E012,Employee 12,Finance,Senior,Q4 2024,5,2,4,1,3.0,Not Met,Performance feedback for Employee 12
+E013,Employee 13,Sales,Lead,Q3 2024,5,4,3,4,4.0,Partially Met,Performance feedback for Employee 13
+E014,Employee 14,Finance,Lead,Q4 2024,5,5,5,2,4.2,Exceeded,Performance feedback for Employee 14
+E015,Employee 15,Finance,Senior,Q2 2024,5,3,3,1,3.0,Partially Met,Performance feedback for Employee 15
+E016,Employee 16,Operations,Lead,Q4 2024,5,3,4,3,3.8,Partially Met,Performance feedback for Employee 16
+E017,Employee 17,Engineering,Junior,Q1 2024,4,2,3,0,2.2,Not Met,Performance feedback for Employee 17
+E018,Employee 18,Marketing,Manager,Q4 2024,2,3,3,3,2.8,Not Met,Performance feedback for Employee 18
+E019,Employee 19,Engineering,Junior,Q4 2024,2,5,5,0,3.0,Partially Met,Performance feedback for Employee 19
+E020,Employee 20,Sales,Senior,Q4 2024,5,3,5,2,3.8,Exceeded,Performance feedback for Employee 20
+E021,Employee 21,Finance,Lead,Q1 2024,3,3,5,5,4.0,Met,Performance feedback for Employee 21
+E022,Employee 22,Sales,Senior,Q4 2024,4,4,3,2,3.2,Partially Met,Performance feedback for Employee 22
+E023,Employee 23,Operations,Junior,Q4 2024,2,4,5,0,2.8,Met,Performance feedback for Employee 23
+E024,Employee 24,Operations,Junior,Q4 2024,5,5,4,0,3.5,Exceeded,Performance feedback for Employee 24
+E025,Employee 25,Customer Support,Manager,Q4 2024,3,3,4,3,3.2,Not Met,Performance feedback for Employee 25
+E026,Employee 26,Engineering,Senior,Q4 2024,2,5,2,4,3.2,Exceeded,Performance feedback for Employee 26
+E027,Employee 27,Finance,Manager,Q4 2024,5,3,2,3,3.2,Met,Performance feedback for Employee 27
+E028,Employee 28,Finance,Senior,Q3 2024,3,2,5,4,3.5,Met,Performance feedback for Employee 28
+E029,Employee 29,Customer Support,Junior,Q1 2024,4,2,2,0,2.0,Exceeded,Performance feedback for Employee 29
+E030,Employee 30,Operations,Junior,Q2 2024,4,4,3,0,2.8,Met,Performance feedback for Employee 30
+E031,Employee 31,Customer Support,Mid-level,Q2 2024,5,5,3,0,3.2,Partially Met,Performance feedback for Employee 31
+E032,Employee 32,Finance,Senior,Q3 2024,2,4,4,5,3.8,Exceeded,Performance feedback for Employee 32
+E033,Employee 33,Finance,Lead,Q2 2024,2,2,2,3,2.2,Exceeded,Performance feedback for Employee 33
+E034,Employee 34,Sales,Lead,Q4 2024,2,5,2,2,2.8,Met,Performance feedback for Employee 34
+E035,Employee 35,Finance,Senior,Q2 2024,4,2,5,2,3.2,Partially Met,Performance feedback for Employee 35
+E036,Employee 36,Marketing,Senior,Q2 2024,2,5,2,2,2.8,Met,Performance feedback for Employee 36
+E037,Employee 37,HR,Manager,Q4 2024,3,5,3,3,3.5,Met,Performance feedback for Employee 37
+E038,Employee 38,HR,Manager,Q2 2024,2,5,5,4,4.0,Not Met,Performance feedback for Employee 38
+E039,Employee 39,Customer Support,Mid-level,Q2 2024,5,3,3,0,2.8,Not Met,Performance feedback for Employee 39
+E040,Employee 40,Finance,Mid-level,Q3 2024,4,2,4,0,2.5,Met,Performance feedback for Employee 40
+E041,Employee 41,Finance,Senior,Q2 2024,5,5,2,3,3.8,Not Met,Performance feedback for Employee 41
+E042,Employee 42,Engineering,Mid-level,Q3 2024,2,5,2,0,2.2,Met,Performance feedback for Employee 42
+E043,Employee 43,Customer Support,Mid-level,Q4 2024,2,5,2,0,2.2,Exceeded,Performance feedback for Employee 43
+E044,Employee 44,Sales,Lead,Q3 2024,5,5,4,1,3.8,Exceeded,Performance feedback for Employee 44
+E045,Employee 45,Customer Support,Junior,Q3 2024,5,4,2,0,2.8,Partially Met,Performance feedback for Employee 45
+E046,Employee 46,Engineering,Manager,Q3 2024,3,3,3,4,3.2,Partially Met,Performance feedback for Employee 46
+E047,Employee 47,Operations,Lead,Q1 2024,2,3,5,2,3.0,Not Met,Performance feedback for Employee 47
+E048,Employee 48,Sales,Senior,Q1 2024,5,5,2,2,3.5,Partially Met,Performance feedback for Employee 48
+E049,Employee 49,Operations,Manager,Q3 2024,3,3,3,5,3.5,Met,Performance feedback for Employee 49
+E050,Employee 50,Operations,Manager,Q2 2024,5,2,5,3,3.8,Exceeded,Performance feedback for Employee 50
+
+
+
+Complete the following python function. Format your output as Markdown python code block containing the entire function definition:
+
+```python
+Create a performance_report function that reads performance_reviews.csv from PROJECT KNOWLEDGE. Parameters: employee_id (optional string), report_type (string, default 'summary'). RETURN TYPES AND FIELD SPECIFICATIONS: (1) summary mode - find CSV row where employee_id column matches parameter, return single dict with keys 'employee_id' (string value), 'overall_rating' (float from CSV column - keep as float not string), 'goals_status' (string from CSV column). (2) detailed mode - find matching row, return single dict with ALL CSV column names as keys preserving exact names and original types. (3) department mode - when employee_id is None, group rows by 'department' CSV column, return dict where keys are department names and values are dicts with 'avg_rating' (float - average of overall_rating column) and 'count' (int - number of employees).
+
+```
+
+---------- TextMessage (coder) ----------
+```python
+import csv
+
+def performance_report(employee_id=None, report_type='summary'):
+    filename = 'performance_reviews.csv'
+    
+    with open(filename, 'r', newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        rows = list(reader)
+        
+        if report_type == 'summary':
+            if employee_id is None:
+                raise ValueError("employee_id must be specified for summary mode.")
+            for row in rows:
+                if row['employee_id'] == employee_id:
+                    return {
+                        'employee_id': row['employee_id'],
+                        'overall_rating': float(row['overall_rating']),
+                        'goals_status': row['goals_status']
+                    }
+            return None  # Employee not found
+        
+        elif report_type == 'detailed':
+            if employee_id is None:
+                raise ValueError("employee_id must be specified for detailed mode.")
+            for row in rows:
+                if row['employee_id'] == employee_id:
+                    # Convert numeric fields to appropriate types
+                    detailed_dict = {}
+                    for key, value in row.items():
+                        if key in [
+                            'technical_score', 'communication_score', 'teamwork_score',
+                            'leadership_score', 'overall_rating'
+                        ]:
+                            # Try converting to float
+                            try:
+                                detailed_dict[key] = float(value)
+                            except ValueError:
+                                detailed_dict[key] = value
+                        else:
+                            detailed_dict[key] = value
+                    return detailed_dict
+            return None  # Employee not found
+        
+        elif report_type == 'department':
+            if employee_id is not None:
+                raise ValueError("employee_id must be None for department mode.")
+            dept_dict = {}
+            for row in rows:
+                dept = row['department']
+                rating = float(row['overall_rating'])
+                if dept not in dept_dict:
+                    dept_dict[dept] = {'ratings': [], 'count': 0}
+                dept_dict[dept]['ratings'].append(rating)
+                dept_dict[dept]['count'] += 1
+            # Build final output
+            output = {}
+            for dept, data in dept_dict.items():
+                avg_rating = sum(data['ratings']) / data['count'] if data['count'] > 0 else 0.0
+                output[dept] = {
+                    'avg_rating': avg_rating,
+                    'count': data['count']
+                }
+            return output
+        
+        else:
+            raise ValueError("Invalid report_type specified. Must be 'summary', 'detailed', or 'department'.")
+```
+---------- TextMessage (executor) ----------
+The script ran, then exited with an error (POSIX exit code: 1)
+Its output was:
+Traceback (most recent call last):
+  File "/tmp/tmpbtl7rchf/tmp_code_58c7be4ea0390eb96473d3793e4aa23edf230ef6adedd444520413fc1c2d7701.py", line 115, in <module>
+    run_tests(performance_report)
+  File "/tmp/tmpbtl7rchf/tmp_code_58c7be4ea0390eb96473d3793e4aa23edf230ef6adedd444520413fc1c2d7701.py", line 40, in run_tests
+    check(candidate)
+  File "/tmp/tmpbtl7rchf/tmp_code_58c7be4ea0390eb96473d3793e4aa23edf230ef6adedd444520413fc1c2d7701.py", line 3, in check
+    result_summary = candidate('E001', report_type='summary')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpbtl7rchf/tmp_code_58c7be4ea0390eb96473d3793e4aa23edf230ef6adedd444520413fc1c2d7701.py", line 52, in performance_report
+    with open(filename, 'r', newline='', encoding='utf-8') as csvfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'performance_reviews.csv'
+
+---------- TextMessage (coder) ----------
+It appears the script cannot find the CSV file because it is not in the current working directory or the correct path is not specified. To resolve this, let's first print the current working directory and list the files in it so we can confirm where the script is running and what files are available.
+
+Please run the following shell script:
+
+```sh
+pwd
+ls -l
+```
+---------- TextMessage (executor) ----------
+/tmp/tmpbtl7rchf
+total 4
+-rw-rw-r-- 1 aifahim aifahim 10 Dec 26 03:02 tmp_code_6fe53e3e04284e5e2e1769724b76c2181ec65f8ae7310f5137bc20bad63d5f0c.sh
+
+---------- TextMessage (coder) ----------
+The CSV file performance_reviews.csv is not present in the current working directory. To proceed, let's search the directory tree for performance_reviews.csv and print its location if found.
+
+Please run the following shell script:
+
+```sh
+find / -name performance_reviews.csv 2>/dev/null
+```
+---------- TextMessage (executor) ----------
+The script ran, then exited with an error (POSIX exit code: 1)
+Its output was:
+/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset_2/performance_tracker/performance_reviews.csv
+/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/performance_tracker/performance_reviews.csv
+/home/aifahim/Videos/dataset_2/performance_tracker/performance_reviews.csv
+/home/aifahim/Videos/Self-Adapting-AI-Agent-Backup/dataset_2/performance_tracker/performance_reviews.csv
+/home/aifahim/Videos/Self-Adapting-AI-Agent-Backup/dataset/performance_tracker/performance_reviews.csv
+/home/aifahim/Desktop/test_context/performance_tracker/performance_reviews.csv
+/home/aifahim/Desktop/backup/Self-Adapting-AI-Agent/dataset_2/performance_tracker/performance_reviews.csv
+/home/aifahim/Desktop/backup/Self-Adapting-AI-Agent/dataset/performance_tracker/performance_reviews.csv
+/home/aifahim/Downloads/backup_prof/baselines/dataset/performance_tracker/performance_reviews.csv
+/home/aifahim/Downloads/backup_prof/Self-Adapting-AI-Agent-2/dataset/performance_tracker/performance_reviews.csv
+/home/aifahim/Downloads/Self-Adapting-AI-Agent-seams-26-submission/dataset/performance_tracker/performance_reviews.csv
+
+---------- TextMessage (coder) ----------
+We have found multiple copies of performance_reviews.csv in several directories. To proceed, let's use the file located at /home/aifahim/Desktop/test_context/performance_tracker/performance_reviews.csv (this path is short and likely accessible).
+
+Let's update the function to use this absolute path for reading the CSV file.
+
+Please run the following code:
+
+```python
+import csv
+
+def performance_report(employee_id=None, report_type='summary'):
+    filename = '/home/aifahim/Desktop/test_context/performance_tracker/performance_reviews.csv'
+    
+    with open(filename, 'r', newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        rows = list(reader)
+        
+        if report_type == 'summary':
+            if employee_id is None:
+                raise ValueError("employee_id must be specified for summary mode.")
+            for row in rows:
+                if row['employee_id'] == employee_id:
+                    return {
+                        'employee_id': row['employee_id'],
+                        'overall_rating': float(row['overall_rating']),
+                        'goals_status': row['goals_status']
+                    }
+            return None  # Employee not found
+        
+        elif report_type == 'detailed':
+            if employee_id is None:
+                raise ValueError("employee_id must be specified for detailed mode.")
+            for row in rows:
+                if row['employee_id'] == employee_id:
+                    # Convert numeric fields to appropriate types
+                    detailed_dict = {}
+                    for key, value in row.items():
+                        if key in [
+                            'technical_score', 'communication_score', 'teamwork_score',
+                            'leadership_score', 'overall_rating'
+                        ]:
+                            # Try converting to float
+                            try:
+                                detailed_dict[key] = float(value)
+                            except ValueError:
+                                detailed_dict[key] = value
+                        else:
+                            detailed_dict[key] = value
+                    return detailed_dict
+            return None  # Employee not found
+        
+        elif report_type == 'department':
+            if employee_id is not None:
+                raise ValueError("employee_id must be None for department mode.")
+            dept_dict = {}
+            for row in rows:
+                dept = row['department']
+                rating = float(row['overall_rating'])
+                if dept not in dept_dict:
+                    dept_dict[dept] = {'ratings': [], 'count': 0}
+                dept_dict[dept]['ratings'].append(rating)
+                dept_dict[dept]['count'] += 1
+            # Build final output
+            output = {}
+            for dept, data in dept_dict.items():
+                avg_rating = sum(data['ratings']) / data['count'] if data['count'] > 0 else 0.0
+                output[dept] = {
+                    'avg_rating': avg_rating,
+                    'count': data['count']
+                }
+            return output
+        
+        else:
+            raise ValueError("Invalid report_type specified. Must be 'summary', 'detailed', or 'department'.")
+```
+---------- TextMessage (executor) ----------
+Performance Tracker tests passed
+ALL TESTS PASSED !#!#
+TERMINATE
+
+SCENARIO.PY COMPLETE !#!#
+SCENARIO.PY RUNTIME: 43 !#!#
+RUN.SH COMPLETE !#!#

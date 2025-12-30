@@ -1,0 +1,39 @@
+Thought: The user is requesting the implementation of a specific function (calculate_simple_gpa) that operates on the provided codebase, requiring code generation and integration with existing classes.
+Response Category: TASK
+English
+Here is the requested function. It iterates through all enrollments for the given student, retrieves the corresponding course, multiplies the grade points by the course credits, sums up the total points and credits, and returns the GPA as total_points / total_credits (or 0.0 if no credits).
+
+```python
+def calculate_simple_gpa(university, student_id):
+    """
+    Calculate the simple GPA for a student.
+
+    Args:
+        university: University object
+        student_id: str, student ID
+
+    Returns:
+        float: GPA (0.0 - 4.0 scale)
+    """
+    enrollments = university.get_student_enrollments(student_id)
+    total_points = 0.0
+    total_credits = 0
+
+    for enrollment in enrollments:
+        course = university.get_course(enrollment.course_code)
+        if course is not None:
+            grade_points = enrollment.get_grade_points()
+            credits = course.credits
+            total_points += grade_points * credits
+            total_credits += credits
+
+    if total_credits == 0:
+        return 0.0
+    return total_points / total_credits
+```
+This function is ready to use with the provided codebase. Let me know if you need further assistance!
+```json
+{
+  "error": "No JSON data was provided. The content you shared is a Python function, not JSON. Please provide the actual JSON data you want to check or format."
+}
+```

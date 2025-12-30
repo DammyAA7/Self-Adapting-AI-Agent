@@ -1,0 +1,51 @@
+Thought: The user is requesting the implementation of a specific function (patient_risk_score) that integrates with the provided codebase and follows a detailed formula, which involves multiple steps and code generation.
+Response Category: TASK
+English
+Here is the Python function as requested. It calculates the patient risk score according to your formula and works with the provided codebase.
+
+```python
+def patient_risk_score(hospital, patient_id):
+    """
+    Calculate patient risk score based on age, conditions, severity, and recent abnormal vitals.
+    Returns a float between 0.0 and 100.0.
+    """
+    patient = hospital.get_patient(patient_id)
+    if not patient:
+        return 0.0
+
+    # Age component
+    age_score = (patient.age / 100) * 30
+
+    # Conditions count component
+    total_conditions = patient.get_total_conditions()
+    conditions_score = total_conditions * 5 * 0.25
+
+    # Average severity component
+    avg_severity = patient.get_average_severity()
+    severity_score = avg_severity * 10 * 0.25
+
+    # Recent abnormal vitals component
+    recent_records = hospital.get_recent_records(patient_id, 90)
+    abnormal_vitals = any(r.has_abnormal_vitals() for r in recent_records)
+    abnormal_vitals_score = 20 if abnormal_vitals else 0
+
+    # Total risk score
+    score = age_score + conditions_score + severity_score + abnormal_vitals_score
+
+    # Clamp to [0.0, 100.0]
+    return max(0.0, min(100.0, score))
+```
+
+```json
+[
+    {
+        "command_name": "RoleZero.reply_to_human",
+        "args": {
+            "content": "Here is the requested function. It calculates the patient risk score as specified and is compatible with your codebase.\n\n```python\ndef patient_risk_score(hospital, patient_id):\n    \"\"\"\n    Calculate patient risk score based on age, conditions, severity, and recent abnormal vitals.\n    Returns a float between 0.0 and 100.0.\n    \"\"\"\n    patient = hospital.get_patient(patient_id)\n    if not patient:\n        return 0.0\n\n    # Age component\n    age_score = (patient.age / 100) * 30\n\n    # Conditions count component\n    total_conditions = patient.get_total_conditions()\n    conditions_score = total_conditions * 5 * 0.25\n\n    # Average severity component\n    avg_severity = patient.get_average_severity()\n    severity_score = avg_severity * 10 * 0.25\n\n    # Recent abnormal vitals component\n    recent_records = hospital.get_recent_records(patient_id, 90)\n    abnormal_vitals = any(r.has_abnormal_vitals() for r in recent_records)\n    abnormal_vitals_score = 20 if abnormal_vitals else 0\n\n    # Total risk score\n    score = age_score + conditions_score + severity_score + abnormal_vitals_score\n\n    # Clamp to [0.0, 100.0]\n    return max(0.0, min(100.0, score))\n```"
+        }
+    },
+    {
+        "command_name": "end"
+    }
+]
+```

@@ -2,16 +2,34 @@
 def portfolio_risk_assessment(portfolio: dict) -> float:
     '''
     Takes a dict where keys are stock names and values have 'prices' list and 'allocation' float.
-    For each stock, calls calculate_stock_volatility(prices), multiplies by allocation, sums all weighted volatilities.
-    Returns: float representing total portfolio risk as weighted sum.
+    For each stock, call calculate_stock_volatility(prices), multiply by allocation,
+    sum all weighted volatilities. Returns: float representing total portfolio risk as weighted sum.
+    Example:
+    portfolio = {
+        'AAPL': {'prices': [100, 101, 102], 'allocation': 0.6},
+        'GOOG': {'prices': [200, 202, 201], 'allocation': 0.4},
+    }
     '''
+    import math
+
+    # Chain-of-Thought:
+    # 1. For each stock in the portfolio:
+    #    a. Extract 'prices' and 'allocation'
+    #    b. Call calculate_stock_volatility(prices)
+    #    c. Multiply volatility by allocation
+    # 2. Sum all weighted volatilities
+    # 3. Return the total
+
     total_risk = 0.0
-    for stock_data in portfolio.values():
-        prices = stock_data.get('prices', [])
-        allocation = stock_data.get('allocation', 0.0)
+    for stock, info in portfolio.items():
+        prices = info.get('prices', [])
+        allocation = info.get('allocation', 0.0)
+        # Defensive: skip if allocation <= 0 or prices invalid
+        if allocation <= 0 or not isinstance(prices, list):
+            continue
         volatility = calculate_stock_volatility(prices)
-        weighted_volatility = volatility * allocation
-        total_risk += weighted_volatility
+        total_risk += volatility * allocation
+
     return total_risk
 
 

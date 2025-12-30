@@ -1,0 +1,42 @@
+def check(candidate):
+    
+    import os
+    
+    os.environ['RECOMMENDATION_MODE'] = 'basic'
+    result_basic = candidate('U001')
+    assert isinstance(result_basic, list)
+    assert len(result_basic) <= 5
+    for suggestion in result_basic:
+        assert isinstance(suggestion, dict)
+        assert 'user_id' in suggestion
+        assert 'score' in suggestion
+        assert isinstance(suggestion['score'], (int, float))
+        assert suggestion['score'] > 0
+        assert suggestion['user_id'] != 'U001'
+    
+    # Test enhanced mode
+    os.environ['RECOMMENDATION_MODE'] = 'enhanced'
+    result_enhanced = candidate('U001')
+    assert isinstance(result_enhanced, list)
+    assert len(result_enhanced) <= 5
+    for suggestion in result_enhanced:
+        assert 'user_id' in suggestion
+        assert 'score' in suggestion
+    
+    if result_basic and result_enhanced:
+        assert result_enhanced[0]['score'] >= result_basic[0]['score'] * 0.8
+    
+    # Test advanced mode
+    os.environ['RECOMMENDATION_MODE'] = 'advanced'
+    result_advanced = candidate('U001')
+    assert isinstance(result_advanced, list)
+    assert len(result_advanced) <= 5
+    
+    # Test different user
+    os.environ['RECOMMENDATION_MODE'] = 'basic'
+    result_u002 = candidate('U002')
+    assert isinstance(result_u002, list)
+    assert len(result_u002) <= 5
+    
+    print('Friend Suggester tests passed')
+    

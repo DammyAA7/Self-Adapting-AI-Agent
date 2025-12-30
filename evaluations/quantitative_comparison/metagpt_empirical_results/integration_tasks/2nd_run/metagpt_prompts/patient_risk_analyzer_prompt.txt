@@ -1,0 +1,825 @@
+AVAILABLE CODEBASE/DATA:
+FOLDER STRUCTURE:
+Root: patient_risk_analyzer/
+  - __init__.py
+  - appointment_scheduler.py
+  - condition.py
+  - diagnosis_helper.py
+  - hospital.py
+  - insurance_processor.py
+  - lab_results.py
+  - medical_record.py
+  - medication_manager.py
+  - patient.py
+  - problem.json
+  - treatment_plan.py
+  - vital_signs_analyzer.py
+
+
+======================================================================
+FILE: __init__.py
+======================================================================
+"""
+Patient Risk Analyzer Package
+Healthcare domain codebase for self-evolution testing
+"""
+
+# Core classes
+from .condition import *
+from .patient import *
+from .medical_record import *
+from .hospital import *
+
+# Helper utilities
+from .medication_manager import *
+from .vital_signs_analyzer import *
+from .appointment_scheduler import *
+from .insurance_processor import *
+from .lab_results import *
+from .diagnosis_helper import *
+from .treatment_plan import *
+
+# Explicit exports
+__all__ = [
+    # Core classes
+    'Condition', 'Patient', 'MedicalRecord', 'Hospital', 'create_sample_hospital',
+    # Medication management
+    'Medication', 'DrugInteractionChecker', 'DosageCalculator',
+    # Vital signs
+    'VitalSignsTrends', 'HeartRateMonitor',
+    # Appointments
+    'Appointment', 'AppointmentScheduler',
+    # Insurance
+    'InsurancePlan', 'InsuranceVerifier', 'ClaimProcessor',
+    # Lab results
+    'LabTest', 'LabResultsManager',
+    # Diagnosis
+    'SymptomChecker', 'DiagnosticCriteria',
+    # Treatment
+    'TreatmentPlan', 'CareProtocol',
+]
+
+
+======================================================================
+FILE: vital_signs_analyzer.py
+======================================================================
+"""
+Vital Signs Analyzer
+Analyzes trends and patterns in patient vital signs
+"""
+from typing import List, Dict, Tuple
+from datetime import datetime, timedelta
+
+
+class VitalSignsTrends:
+    """Analyzes vital signs trends over time"""
+
+    @staticmethod
+    def calculate_bp_trend(readings: List[Tuple[int, int, str]]) -> str:
+        """
+        Calculate blood pressure trend
+        Args: List of (systolic, diastolic, date) tuples
+        Returns: 'increasing', 'decreasing', or 'stable'
+        """
+        if len(readings) < 3:
+            return 'insufficient_data'
+
+        systolic_values = [r[0] for r in readings]
+
+        # Check if trending up or down
+        increases = sum(1 for i in range(1, len(systolic_values))
+                       if systolic_values[i] > systolic_values[i-1])
+
+        if increases > len(systolic_values) * 0.6:
+            return 'increasing'
+        elif increases < len(systolic_values) * 0.4:
+            return 'decreasing'
+        return 'stable'
+
+    @staticmethod
+    def detect_anomalies(values: List[float], threshold_std: float = 2.0) -> List[int]:
+        """Detect anomalous readings using standard deviation"""
+        if len(values) < 3:
+            return []
+
+        mean = sum(values) / len(values)
+        variance = sum((x - mean) ** 2 for x in values) / len(values)
+        std = variance ** 0.5
+
+        anomalies = []
+        for i, val in enumerate(values):
+            if abs(val - mean) > threshold_std * std:
+                anomalies.append(i)
+        return anomalies
+
+
+class HeartRateMonitor:
+    """Monitors heart rate patterns"""
+
+    NORMAL_RANGE = (60, 100)
+    BRADYCARDIA_THRESHOLD = 60
+    TACHYCARDIA_THRESHOLD = 100
+
+    @staticmethod
+    def classify_heart_rate(bpm: int) -> str:
+        """Classify heart rate as normal, bradycardia, or tachycardia"""
+        if bpm < HeartRateMonitor.BRADYCARDIA_THRESHOLD:
+            return 'bradycardia'
+        elif bpm > HeartRateMonitor.TACHYCARDIA_THRESHOLD:
+            return 'tachycardia'
+        return 'normal'
+
+    @staticmethod
+    def calculate_avg_heart_rate(readings: List[int]) -> float:
+        """Calculate average heart rate from readings"""
+        if not readings:
+            return 0.0
+        return sum(readings) / len(readings)
+
+    @staticmethod
+    def check_variability(readings: List[int]) -> Dict[str, float]:
+        """Calculate heart rate variability metrics"""
+        if len(readings) < 2:
+            return {'variability': 0.0, 'range': 0}
+
+        diff_sum = sum(abs(readings[i] - readings[i-1]) for i in range(1, len(readings)))
+        avg_variability = diff_sum / (len(readings) - 1)
+
+        return {
+            'variability': avg_variability,
+            'range': max(readings) - min(readings),
+            'min': min(readings),
+            'max': max(readings)
+        }
+
+
+======================================================================
+FILE: insurance_processor.py
+======================================================================
+"""
+Insurance Processor
+Handles insurance verification and claims processing
+"""
+from typing import Dict, List, Optional
+
+
+class InsurancePlan:
+    """Represents an insurance plan"""
+    def __init__(self, plan_id: str, provider: str, plan_type: str,
+                 deductible: float, copay: float, coverage_percent: float):
+        self.plan_id = plan_id
+        self.provider = provider
+        self.plan_type = plan_type  # HMO, PPO, etc.
+        self.deductible = deductible
+        self.copay = copay
+        self.coverage_percent = coverage_percent
+
+
+class InsuranceVerifier:
+    """Verifies insurance coverage and eligibility"""
+
+    @staticmethod
+    def verify_coverage(plan: InsurancePlan, procedure_code: str) -> bool:
+        """Verify if procedure is covered"""
+        # Simplified verification
+        covered_procedures = ['EXAM', 'LAB', 'XRAY', 'CONSULT']
+        return any(code in procedure_code for code in covered_procedures)
+
+    @staticmethod
+    def calculate_patient_cost(plan: InsurancePlan, total_cost: float,
+                              deductible_met: bool = False) -> Dict[str, float]:
+        """Calculate patient's out-of-pocket cost"""
+        if not deductible_met:
+            if total_cost <= plan.deductible:
+                return {
+                    'patient_pays': total_cost,
+                    'insurance_pays': 0.0,
+                    'deductible_applied': total_cost
+                }
+            remaining = total_cost - plan.deductible
+            insurance_portion = remaining * (plan.coverage_percent / 100)
+            return {
+                'patient_pays': plan.deductible + (remaining - insurance_portion) + plan.copay,
+                'insurance_pays': insurance_portion,
+                'deductible_applied': plan.deductible
+            }
+        else:
+            insurance_portion = total_cost * (plan.coverage_percent / 100)
+            return {
+                'patient_pays': (total_cost - insurance_portion) + plan.copay,
+                'insurance_pays': insurance_portion,
+                'deductible_applied': 0.0
+            }
+
+
+class ClaimProcessor:
+    """Processes insurance claims"""
+
+    def __init__(self):
+        self.claims: List[Dict] = []
+
+    def submit_claim(self, patient_id: str, procedure_code: str,
+                    amount: float, plan: InsurancePlan) -> str:
+        """Submit an insurance claim"""
+        claim_id = f"CLM-{len(self.claims) + 1:06d}"
+        self.claims.append({
+            'claim_id': claim_id,
+            'patient_id': patient_id,
+            'procedure_code': procedure_code,
+            'amount': amount,
+            'plan_id': plan.plan_id,
+            'status': 'pending'
+        })
+        return claim_id
+
+
+======================================================================
+FILE: treatment_plan.py
+======================================================================
+"""
+Treatment Plan Manager
+Manages patient treatment plans and care protocols
+"""
+from typing import List, Dict, Optional
+from datetime import datetime
+
+
+class TreatmentPlan:
+    """Represents a treatment plan"""
+    def __init__(self, patient_id: str, diagnosis: str, plan_type: str):
+        self.patient_id = patient_id
+        self.diagnosis = diagnosis
+        self.plan_type = plan_type
+        self.medications: List[str] = []
+        self.procedures: List[str] = []
+        self.goals: List[str] = []
+        self.created_date = datetime.now()
+
+    def add_medication(self, medication: str):
+        """Add medication to treatment plan"""
+        if medication not in self.medications:
+            self.medications.append(medication)
+
+    def add_procedure(self, procedure: str):
+        """Add procedure to treatment plan"""
+        if procedure not in self.procedures:
+            self.procedures.append(procedure)
+
+    def add_goal(self, goal: str):
+        """Add treatment goal"""
+        if goal not in self.goals:
+            self.goals.append(goal)
+
+
+class CareProtocol:
+    """Standard care protocols for common conditions"""
+
+    PROTOCOLS = {
+        'Diabetes': {
+            'monitoring': ['Blood glucose daily', 'HbA1c quarterly'],
+            'medications': ['Metformin', 'Insulin'],
+            'lifestyle': ['Diet modification', 'Regular exercise'],
+            'followup_weeks': 12
+        },
+        'Hypertension': {
+            'monitoring': ['BP twice daily', 'Heart rate'],
+            'medications': ['ACE inhibitor', 'Diuretic'],
+            'lifestyle': ['Low sodium diet', 'Stress management'],
+            'followup_weeks': 8
+        },
+        'Asthma': {
+            'monitoring': ['Peak flow daily', 'Symptom diary'],
+            'medications': ['Inhaled corticosteroid', 'Rescue inhaler'],
+            'lifestyle': ['Avoid triggers', 'Environmental control'],
+            'followup_weeks': 6
+        }
+    }
+
+    @staticmethod
+    def get_protocol(condition: str) -> Optional[Dict]:
+        """Get standard care protocol for a condition"""
+        return CareProtocol.PROTOCOLS.get(condition)
+
+    @staticmethod
+    def create_treatment_plan(patient_id: str, condition: str) -> Optional[TreatmentPlan]:
+        """Create treatment plan from protocol"""
+        protocol = CareProtocol.get_protocol(condition)
+        if not protocol:
+            return None
+
+        plan = TreatmentPlan(patient_id, condition, 'standard')
+        for med in protocol['medications']:
+            plan.add_medication(med)
+        for goal in protocol['lifestyle']:
+            plan.add_goal(goal)
+        return plan
+
+
+======================================================================
+FILE: condition.py
+======================================================================
+"""
+Medical Condition Class
+Represents a medical condition with severity tracking
+"""
+
+from datetime import datetime
+
+
+class Condition:
+    """Represents a medical condition"""
+    def __init__(self, name: str, severity: int, diagnosed_date: str):
+        self.name = name
+        self.severity = severity  # 1-10 scale
+        self.diagnosed_date = datetime.strptime(diagnosed_date, "%Y-%m-%d")
+
+    def __repr__(self):
+        return f"Condition({self.name}, severity={self.severity})"
+
+
+======================================================================
+FILE: medication_manager.py
+======================================================================
+"""
+Medication Manager
+Handles drug prescriptions, interactions, and dosage calculations
+"""
+from typing import List, Dict, Optional, Tuple
+from datetime import datetime
+
+
+class Medication:
+    """Represents a medication"""
+    def __init__(self, name: str, dosage: str, frequency: str, category: str):
+        self.name = name
+        self.dosage = dosage
+        self.frequency = frequency
+        self.category = category
+
+
+class DrugInteractionChecker:
+    """Checks for potential drug interactions"""
+
+    # Known drug interactions (simplified for demo)
+    INTERACTIONS = {
+        ('Warfarin', 'Aspirin'): 'severe',
+        ('Metformin', 'Alcohol'): 'moderate',
+        ('Lisinopril', 'Potassium'): 'moderate',
+        ('Simvastatin', 'Grapefruit'): 'severe',
+    }
+
+    @staticmethod
+    def check_interaction(drug1: str, drug2: str) -> Optional[str]:
+        """Check for interaction between two drugs"""
+        key1 = (drug1, drug2)
+        key2 = (drug2, drug1)
+        return DrugInteractionChecker.INTERACTIONS.get(key1) or DrugInteractionChecker.INTERACTIONS.get(key2)
+
+    @staticmethod
+    def check_multiple(medications: List[str]) -> List[Tuple[str, str, str]]:
+        """Check interactions across multiple medications"""
+        interactions = []
+        for i in range(len(medications)):
+            for j in range(i + 1, len(medications)):
+                severity = DrugInteractionChecker.check_interaction(medications[i], medications[j])
+                if severity:
+                    interactions.append((medications[i], medications[j], severity))
+        return interactions
+
+
+class DosageCalculator:
+    """Calculates medication dosages based on patient parameters"""
+
+    @staticmethod
+    def calculate_by_weight(base_dose_mg: float, patient_weight_kg: float,
+                          max_dose_mg: float = None) -> float:
+        """Calculate dose based on patient weight"""
+        calculated_dose = base_dose_mg * patient_weight_kg
+        if max_dose_mg and calculated_dose > max_dose_mg:
+            return max_dose_mg
+        return calculated_dose
+
+    @staticmethod
+    def calculate_by_age(adult_dose_mg: float, patient_age: int) -> float:
+        """Calculate pediatric dose using Young's formula"""
+        if patient_age >= 18:
+            return adult_dose_mg
+        return (patient_age / (patient_age + 12)) * adult_dose_mg
+
+    @staticmethod
+    def adjust_for_renal_function(dose_mg: float, gfr: float) -> float:
+        """Adjust dose based on kidney function (GFR)"""
+        if gfr >= 60:
+            return dose_mg  # Normal kidney function
+        elif gfr >= 30:
+            return dose_mg * 0.75  # Mild impairment
+        elif gfr >= 15:
+            return dose_mg * 0.50  # Moderate impairment
+        else:
+            return dose_mg * 0.25  # Severe impairment
+
+
+======================================================================
+FILE: diagnosis_helper.py
+======================================================================
+"""
+Diagnosis Helper
+Assists with diagnostic decision support
+"""
+from typing import List, Dict, Set
+
+
+class SymptomChecker:
+    """Checks symptoms against known conditions"""
+
+    SYMPTOM_DATABASE = {
+        'Diabetes': {'thirst', 'frequent_urination', 'fatigue', 'blurred_vision'},
+        'Hypertension': {'headache', 'dizziness', 'chest_pain', 'shortness_of_breath'},
+        'Asthma': {'wheezing', 'coughing', 'shortness_of_breath', 'chest_tightness'},
+        'Influenza': {'fever', 'cough', 'sore_throat', 'body_aches', 'fatigue'},
+        'Migraine': {'headache', 'nausea', 'sensitivity_to_light', 'visual_disturbances'},
+    }
+
+    @staticmethod
+    def match_symptoms(symptoms: Set[str]) -> List[tuple]:
+        """Match symptoms to possible conditions with confidence scores"""
+        matches = []
+        for condition, condition_symptoms in SymptomChecker.SYMPTOM_DATABASE.items():
+            overlap = symptoms.intersection(condition_symptoms)
+            if overlap:
+                confidence = len(overlap) / len(condition_symptoms)
+                matches.append((condition, confidence, list(overlap)))
+
+        return sorted(matches, key=lambda x: x[1], reverse=True)
+
+
+class DiagnosticCriteria:
+    """Diagnostic criteria for various conditions"""
+
+    @staticmethod
+    def check_diabetes_criteria(glucose_fasting: float, hba1c: float) -> str:
+        """Check if patient meets diabetes diagnostic criteria"""
+        if glucose_fasting >= 126 or hba1c >= 6.5:
+            return 'diabetes'
+        elif glucose_fasting >= 100 or hba1c >= 5.7:
+            return 'prediabetes'
+        return 'normal'
+
+    @staticmethod
+    def check_hypertension_stage(systolic: int, diastolic: int) -> str:
+        """Determine hypertension stage"""
+        if systolic >= 180 or diastolic >= 120:
+            return 'hypertensive_crisis'
+        elif systolic >= 140 or diastolic >= 90:
+            return 'stage_2'
+        elif systolic >= 130 or diastolic >= 80:
+            return 'stage_1'
+        elif systolic >= 120:
+            return 'elevated'
+        return 'normal'
+
+    @staticmethod
+    def assess_risk_factors(age: int, bmi: float, smoker: bool,
+                           family_history: bool) -> int:
+        """Calculate cardiovascular risk score"""
+        score = 0
+        if age > 65:
+            score += 3
+        elif age > 50:
+            score += 2
+        elif age > 40:
+            score += 1
+
+        if bmi > 30:
+            score += 2
+        elif bmi > 25:
+            score += 1
+
+        if smoker:
+            score += 2
+        if family_history:
+            score += 1
+
+        return score
+
+
+======================================================================
+FILE: appointment_scheduler.py
+======================================================================
+"""
+Appointment Scheduler
+Manages patient appointments and scheduling
+"""
+from datetime import datetime, timedelta
+from typing import List, Dict, Optional
+
+
+class Appointment:
+    """Represents a medical appointment"""
+    def __init__(self, patient_id: str, doctor: str, date_time: str,
+                 duration_minutes: int, appointment_type: str):
+        self.patient_id = patient_id
+        self.doctor = doctor
+        self.date_time = datetime.strptime(date_time, "%Y-%m-%d %H:%M")
+        self.duration_minutes = duration_minutes
+        self.appointment_type = appointment_type
+        self.status = 'scheduled'
+
+    def get_end_time(self) -> datetime:
+        """Get appointment end time"""
+        return self.date_time + timedelta(minutes=self.duration_minutes)
+
+
+class AppointmentScheduler:
+    """Schedules and manages appointments"""
+
+    def __init__(self):
+        self.appointments: List[Appointment] = []
+
+    def add_appointment(self, appointment: Appointment) -> bool:
+        """Add new appointment if no conflicts"""
+        if self.has_conflict(appointment):
+            return False
+        self.appointments.append(appointment)
+        return True
+
+    def has_conflict(self, new_appt: Appointment) -> bool:
+        """Check if appointment conflicts with existing ones"""
+        for appt in self.appointments:
+            if appt.doctor != new_appt.doctor:
+                continue
+            if appt.status == 'cancelled':
+                continue
+
+            # Check time overlap
+            if (new_appt.date_time < appt.get_end_time() and
+                new_appt.get_end_time() > appt.date_time):
+                return True
+        return False
+
+    def get_patient_appointments(self, patient_id: str) -> List[Appointment]:
+        """Get all appointments for a patient"""
+        return [a for a in self.appointments if a.patient_id == patient_id]
+
+    def get_doctor_schedule(self, doctor: str, date: str) -> List[Appointment]:
+        """Get doctor's schedule for a specific date"""
+        target_date = datetime.strptime(date, "%Y-%m-%d").date()
+        return [a for a in self.appointments
+                if a.doctor == doctor and a.date_time.date() == target_date]
+
+
+======================================================================
+FILE: hospital.py
+======================================================================
+"""
+Hospital Class
+Main hospital system managing patients and records
+"""
+
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional
+from .patient import Patient
+from .medical_record import MedicalRecord
+from .condition import Condition
+
+
+class Hospital:
+    """Main hospital system managing patients and records"""
+    def __init__(self):
+        self.patients: Dict[str, Patient] = {}
+        self.records: List[MedicalRecord] = []
+
+    def add_patient(self, patient: Patient):
+        """Register a new patient"""
+        self.patients[patient.id] = patient
+
+    def add_record(self, record: MedicalRecord):
+        """Add a medical visit record"""
+        self.records.append(record)
+
+    def get_patient(self, patient_id: str) -> Optional[Patient]:
+        """Retrieve patient by ID"""
+        return self.patients.get(patient_id)
+
+    def get_records_by_patient(self, patient_id: str) -> List[MedicalRecord]:
+        """Get all medical records for a patient"""
+        return [r for r in self.records if r.patient_id == patient_id]
+
+    def get_recent_records(self, patient_id: str, days: int = 90) -> List[MedicalRecord]:
+        """Get recent medical records within specified days"""
+        cutoff = datetime.now() - timedelta(days=days)
+        return [r for r in self.records
+                if r.patient_id == patient_id and r.visit_date >= cutoff]
+
+    def get_all_patients(self) -> List[Patient]:
+        """Get all registered patients"""
+        return list(self.patients.values())
+
+    def __repr__(self):
+        return f"Hospital({len(self.patients)} patients, {len(self.records)} records)"
+
+
+# Sample data for testing
+def create_sample_hospital():
+    """Create sample hospital with test data"""
+    hospital = Hospital()
+
+    # Patient 1: High risk
+    p1 = Patient("P001", "John Doe", 65, "O+")
+    p1.add_condition(Condition("Diabetes", 7, "2020-05-15"))
+    p1.add_condition(Condition("Hypertension", 8, "2019-03-10"))
+    p1.add_condition(Condition("High Cholesterol", 6, "2021-01-20"))
+    hospital.add_patient(p1)
+
+    r1 = MedicalRecord("P001", "2025-09-01",
+                       {'bp_systolic': 145, 'bp_diastolic': 95, 'heart_rate': 88, 'temp': 98.6},
+                       ["Metformin", "Lisinopril", "Atorvastatin"])
+    hospital.add_record(r1)
+
+    # Patient 2: Medium risk
+    p2 = Patient("P002", "Jane Smith", 45, "A+")
+    p2.add_condition(Condition("Asthma", 4, "2018-07-12"))
+    hospital.add_patient(p2)
+
+    r2 = MedicalRecord("P002", "2025-09-15",
+                       {'bp_systolic': 118, 'bp_diastolic': 78, 'heart_rate': 72, 'temp': 98.2},
+                       ["Albuterol"])
+    hospital.add_record(r2)
+
+    # Patient 3: Low risk
+    p3 = Patient("P003", "Bob Johnson", 28, "B+")
+    hospital.add_patient(p3)
+
+    r3 = MedicalRecord("P003", "2025-10-01",
+                       {'bp_systolic': 115, 'bp_diastolic': 75, 'heart_rate': 68, 'temp': 98.4},
+                       [])
+    hospital.add_record(r3)
+
+    return hospital
+
+
+if __name__ == "__main__":
+    hospital = create_sample_hospital()
+    print(hospital)
+    print(f"\nPatients: {[p.name for p in hospital.get_all_patients()]}")
+    print(f"P001 conditions: {hospital.get_patient('P001').conditions}")
+    print(f"P001 avg severity: {hospital.get_patient('P001').get_average_severity()}")
+    print(f"P001 recent records: {hospital.get_recent_records('P001', 90)}")
+
+
+======================================================================
+FILE: lab_results.py
+======================================================================
+"""
+Lab Results Manager
+Handles laboratory test results and reference ranges
+"""
+from typing import Dict, List, Optional
+from datetime import datetime
+
+
+class LabTest:
+    """Represents a lab test result"""
+    def __init__(self, test_name: str, value: float, unit: str,
+                 reference_min: float, reference_max: float, date: str):
+        self.test_name = test_name
+        self.value = value
+        self.unit = unit
+        self.reference_min = reference_min
+        self.reference_max = reference_max
+        self.date = datetime.strptime(date, "%Y-%m-%d")
+
+    def is_normal(self) -> bool:
+        """Check if result is within normal range"""
+        return self.reference_min <= self.value <= self.reference_max
+
+    def get_status(self) -> str:
+        """Get status: normal, high, low, critical"""
+        if self.value < self.reference_min:
+            if self.value < self.reference_min * 0.7:
+                return 'critical_low'
+            return 'low'
+        elif self.value > self.reference_max:
+            if self.value > self.reference_max * 1.3:
+                return 'critical_high'
+            return 'high'
+        return 'normal'
+
+
+class LabResultsManager:
+    """Manages lab test results for patients"""
+
+    # Common lab test reference ranges
+    REFERENCE_RANGES = {
+        'glucose': (70, 100, 'mg/dL'),
+        'cholesterol': (0, 200, 'mg/dL'),
+        'hemoglobin': (13.5, 17.5, 'g/dL'),
+        'white_blood_cells': (4.5, 11.0, 'K/uL'),
+        'creatinine': (0.7, 1.3, 'mg/dL'),
+    }
+
+    def __init__(self):
+        self.results: Dict[str, List[LabTest]] = {}
+
+    def add_result(self, patient_id: str, test: LabTest):
+        """Add lab result for a patient"""
+        if patient_id not in self.results:
+            self.results[patient_id] = []
+        self.results[patient_id].append(test)
+
+    def get_patient_results(self, patient_id: str) -> List[LabTest]:
+        """Get all lab results for a patient"""
+        return self.results.get(patient_id, [])
+
+    def get_abnormal_results(self, patient_id: str) -> List[LabTest]:
+        """Get only abnormal results"""
+        results = self.get_patient_results(patient_id)
+        return [r for r in results if not r.is_normal()]
+
+    def get_critical_results(self, patient_id: str) -> List[LabTest]:
+        """Get critical results requiring immediate attention"""
+        results = self.get_patient_results(patient_id)
+        return [r for r in results if 'critical' in r.get_status()]
+
+
+======================================================================
+FILE: medical_record.py
+======================================================================
+"""
+Medical Record Class
+Individual medical visit records with vital signs
+"""
+
+from datetime import datetime
+from typing import Dict, List
+
+
+class MedicalRecord:
+    """Individual medical visit record"""
+    def __init__(self, patient_id: str, visit_date: str, vitals: Dict[str, float],
+                 medications: List[str]):
+        self.patient_id = patient_id
+        self.visit_date = datetime.strptime(visit_date, "%Y-%m-%d")
+        self.vitals = vitals  # {'bp_systolic': 120, 'bp_diastolic': 80, 'heart_rate': 72, 'temp': 98.6}
+        self.medications = medications
+
+    def has_abnormal_vitals(self) -> bool:
+        """Check if any vital signs are outside normal ranges"""
+        if self.vitals.get('bp_systolic', 0) > 140 or self.vitals.get('bp_systolic', 0) < 90:
+            return True
+        if self.vitals.get('heart_rate', 0) > 100 or self.vitals.get('heart_rate', 0) < 60:
+            return True
+        if self.vitals.get('temp', 0) > 100.4 or self.vitals.get('temp', 0) < 97:
+            return True
+        return False
+
+    def __repr__(self):
+        return f"MedicalRecord({self.patient_id}, {self.visit_date.date()})"
+
+
+======================================================================
+FILE: patient.py
+======================================================================
+"""
+Patient Class
+Patient information and medical history management
+"""
+
+from typing import List
+from .condition import Condition
+
+
+class Patient:
+    """Patient information and medical history"""
+    def __init__(self, id: str, name: str, age: int, blood_type: str):
+        self.id = id
+        self.name = name
+        self.age = age
+        self.blood_type = blood_type
+        self.conditions: List[Condition] = []
+
+    def add_condition(self, condition: Condition):
+        """Add a medical condition to patient record"""
+        self.conditions.append(condition)
+
+    def get_total_conditions(self) -> int:
+        """Get count of all conditions"""
+        return len(self.conditions)
+
+    def get_average_severity(self) -> float:
+        """Calculate average severity of all conditions"""
+        if not self.conditions:
+            return 0.0
+        return sum(c.severity for c in self.conditions) / len(self.conditions)
+
+    def __repr__(self):
+        return f"Patient({self.id}, {self.name}, age={self.age})"
+
+
+
+TASK:
+Create a function called patient_risk_score that takes a Hospital object and patient_id. Calculate risk score using formula: (patient.age / 100 * 30) + (patient.get_total_conditions() * 5 * 25/100) + (patient.get_average_severity() * 10 * 25/100) + (20 if recent records have abnormal vitals else 0). Use hospital.get_patient(patient_id) and hospital.get_recent_records(patient_id, 90). Returns: float between 0.0 and 100.0.
+
+IMPORTANT: Generate ONLY the requested Python function. Do not create a full project.
+The function must work with the existing codebase shown above.
+Output the code inside ```python``` blocks.

@@ -1,0 +1,130 @@
+AVAILABLE CODEBASE/DATA:
+FOLDER STRUCTURE:
+Root: book_recommender/
+  - __init__.py
+  - books.csv
+  - problem.json
+
+
+======================================================================
+FILE: __init__.py
+======================================================================
+"""
+Book Recommender Dataset
+Contains books.csv for book recommendation testing
+"""
+
+
+======================================================================
+FILE: books.csv
+======================================================================
+isbn,title,author,genre,year,rating
+978-6714714797,Book Title 1,Gabriel Garcia Marquez,Non-Fiction,2019,3.1
+978-2300828189,Book Title 2,Agatha Christie,Thriller,2013,3.5
+978-8764646976,Book Title 3,Stephen King,Non-Fiction,2012,3.0
+978-6170232416,Book Title 4,Agatha Christie,Science Fiction,1990,3.7
+978-5548158973,Book Title 5,Dan Brown,Mystery,1991,3.6
+978-1233986511,Book Title 6,Haruki Murakami,History,2022,4.7
+978-6622455898,Book Title 7,Jane Austen,Fiction,1999,3.2
+978-4361468177,Book Title 8,Ernest Hemingway,Non-Fiction,2014,3.6
+978-1125317552,Book Title 9,Gabriel Garcia Marquez,Fantasy,2006,3.9
+978-6123715780,Book Title 10,Agatha Christie,History,2007,3.1
+978-8803348243,Book Title 11,George Orwell,Non-Fiction,1994,3.9
+978-1737465394,Book Title 12,Malcolm Gladwell,Self-Help,2007,4.2
+978-9837308804,Book Title 13,Jane Austen,Fiction,2001,4.9
+978-4031590936,Book Title 14,Dan Brown,Fantasy,2001,4.8
+978-6052200270,Book Title 15,Isaac Asimov,Fiction,2017,4.3
+978-2512062307,Book Title 16,Haruki Murakami,Non-Fiction,2018,4.6
+978-5574501942,Book Title 17,Gabriel Garcia Marquez,Self-Help,2007,4.0
+978-7376056693,Book Title 18,Malcolm Gladwell,Thriller,2005,4.9
+978-4767180038,Book Title 19,Jane Austen,Romance,2013,3.8
+978-5642641809,Book Title 20,Dan Brown,Thriller,2017,4.0
+978-7122888710,Book Title 21,Isaac Asimov,Mystery,2022,4.0
+978-3232564191,Book Title 22,Yuval Harari,Thriller,2016,4.1
+978-5181824393,Book Title 23,Gabriel Garcia Marquez,Fiction,2021,3.4
+978-8907976215,Book Title 24,Malcolm Gladwell,Fantasy,2008,4.1
+978-2755179670,Book Title 25,Dan Brown,Fiction,2017,3.8
+978-4820938412,Book Title 26,Toni Morrison,Science Fiction,2013,4.1
+978-3635264447,Book Title 27,Malcolm Gladwell,History,2022,3.7
+978-4697301718,Book Title 28,Dan Brown,Biography,1998,4.4
+978-4787180071,Book Title 29,Haruki Murakami,Romance,1992,3.8
+978-2483101348,Book Title 30,Stephen King,Romance,2008,3.6
+978-2827050303,Book Title 31,Haruki Murakami,History,2021,3.3
+978-4634290418,Book Title 32,Toni Morrison,Biography,2020,4.7
+978-5589770230,Book Title 33,Isaac Asimov,Fiction,2008,4.0
+978-1444181719,Book Title 34,Isaac Asimov,Self-Help,1997,3.1
+978-6816140472,Book Title 35,Dan Brown,Fiction,1992,4.3
+978-9086828134,Book Title 36,Jane Austen,Non-Fiction,2000,3.9
+978-8400939017,Book Title 37,Ernest Hemingway,Mystery,2010,4.5
+978-6812606743,Book Title 38,Haruki Murakami,Biography,2003,4.5
+978-7205239392,Book Title 39,Toni Morrison,Thriller,1990,4.3
+978-4929364029,Book Title 40,Yuval Harari,Non-Fiction,1999,4.8
+978-9394168936,Book Title 41,J.K. Rowling,Self-Help,2014,3.7
+978-8789931747,Book Title 42,Agatha Christie,Biography,2016,3.6
+978-3471140193,Book Title 43,Stephen King,Thriller,2020,3.5
+978-6508442062,Book Title 44,Malcolm Gladwell,Science Fiction,2014,4.5
+978-6243944884,Book Title 45,George Orwell,Fantasy,2006,3.5
+978-6845754052,Book Title 46,Jane Austen,Mystery,2000,3.1
+978-7415715739,Book Title 47,Toni Morrison,Self-Help,2018,4.3
+978-4395048772,Book Title 48,Malcolm Gladwell,Fiction,2009,4.3
+978-3229698315,Book Title 49,Toni Morrison,Romance,1993,5.0
+978-9988323183,Book Title 50,Isaac Asimov,Non-Fiction,2012,3.7
+978-9457501023,Book Title 51,Jane Austen,History,2001,4.4
+978-8308576305,Book Title 52,Dan Brown,History,2017,4.9
+978-5619913980,Book Title 53,Isaac Asimov,Mystery,1997,3.1
+978-1189204217,Book Title 54,Haruki Murakami,Mystery,2015,3.2
+978-4985866842,Book Title 55,Gabriel Garcia Marquez,Non-Fiction,2022,3.2
+978-7897364364,Book Title 56,J.K. Rowling,Fantasy,2020,4.5
+978-8979395651,Book Title 57,Isaac Asimov,Non-Fiction,2012,3.9
+978-4551458469,Book Title 58,Gabriel Garcia Marquez,Self-Help,2003,4.5
+978-1347640087,Book Title 59,Dan Brown,Mystery,1990,4.8
+978-7799555148,Book Title 60,Margaret Atwood,Fantasy,2017,3.6
+978-5346517942,Book Title 61,Jane Austen,Mystery,1991,3.6
+978-4224251662,Book Title 62,Malcolm Gladwell,Thriller,2009,3.3
+978-1554879946,Book Title 63,Ernest Hemingway,Thriller,1990,4.8
+978-6806554657,Book Title 64,Isaac Asimov,Thriller,1995,4.1
+978-2834868777,Book Title 65,Isaac Asimov,Non-Fiction,2000,3.9
+978-3320868128,Book Title 66,Malcolm Gladwell,Fiction,2022,4.4
+978-4933902260,Book Title 67,Margaret Atwood,Biography,2019,3.1
+978-3239248172,Book Title 68,Toni Morrison,Thriller,2024,3.9
+978-6041454948,Book Title 69,Toni Morrison,Thriller,2019,3.0
+978-7030046153,Book Title 70,Toni Morrison,Thriller,2009,3.6
+978-5418611315,Book Title 71,Stephen King,Biography,2018,3.2
+978-2164797960,Book Title 72,Dan Brown,Mystery,1998,3.9
+978-4816055530,Book Title 73,Jane Austen,Fiction,2021,4.5
+978-8750353873,Book Title 74,Dan Brown,Romance,2020,3.4
+978-6245964071,Book Title 75,Yuval Harari,Fiction,1994,3.3
+978-5372998540,Book Title 76,Gabriel Garcia Marquez,Self-Help,1995,3.2
+978-8600525741,Book Title 77,Isaac Asimov,Fantasy,2000,4.9
+978-9883667431,Book Title 78,Isaac Asimov,Non-Fiction,1996,3.1
+978-9904620991,Book Title 79,Agatha Christie,Science Fiction,1994,3.6
+978-2962244956,Book Title 80,Toni Morrison,Self-Help,1993,3.5
+978-3995595297,Book Title 81,Isaac Asimov,Non-Fiction,2024,4.0
+978-5509069587,Book Title 82,Margaret Atwood,Mystery,2022,4.0
+978-9679076094,Book Title 83,Stephen King,Fantasy,2004,4.6
+978-7620503673,Book Title 84,J.K. Rowling,Fantasy,2022,3.7
+978-4238684120,Book Title 85,Toni Morrison,Romance,2017,3.4
+978-5652349264,Book Title 86,Jane Austen,Romance,1997,3.1
+978-3650392231,Book Title 87,Jane Austen,Romance,1996,3.6
+978-8922901899,Book Title 88,Stephen King,Thriller,2000,4.1
+978-5926240042,Book Title 89,Margaret Atwood,Fantasy,2008,3.3
+978-4713559912,Book Title 90,Isaac Asimov,Self-Help,1996,4.5
+978-7717589000,Book Title 91,Haruki Murakami,Non-Fiction,2020,3.5
+978-5886977080,Book Title 92,George Orwell,Science Fiction,2018,4.1
+978-6386663799,Book Title 93,George Orwell,Romance,2003,3.3
+978-1585821057,Book Title 94,Paulo Coelho,Romance,1999,4.5
+978-5287280656,Book Title 95,Gabriel Garcia Marquez,Mystery,1993,3.8
+978-2015513490,Book Title 96,Ernest Hemingway,Biography,2008,4.3
+978-9255951086,Book Title 97,Toni Morrison,Fiction,2009,4.2
+978-7430645830,Book Title 98,Jane Austen,History,2009,3.1
+978-5452745614,Book Title 99,Paulo Coelho,Biography,2010,3.9
+978-9306317998,Book Title 100,Dan Brown,Non-Fiction,2002,4.9
+
+
+
+TASK:
+Create a book_recommender function that filters books by genre from books.csv in PROJECT KNOWLEDGE. Parameters: genre (string). Use os.environ.get('API_VERSION', 'v1') to detect version. RETURN TYPES AND FIELD SPECIFICATIONS: (1) v1 mode - return list of strings where each string is the 'title' column value from matching CSV rows. (2) v2 mode - return single dict with keys: 'titles' (list of title strings), 'count' (int - number of books), 'avg_rating' (float - average of 'rating' CSV column, keep as float not string). (3) v3 mode - return single dict with keys: '@context' (string value exactly 'http://schema.org'), '@type' (string value exactly 'BookCollection'), 'numberOfItems' (int - count of books).
+
+IMPORTANT: Generate ONLY the requested Python function. Do not create a full project.
+The function must work with the existing codebase shown above.
+Output the code inside ```python``` blocks.

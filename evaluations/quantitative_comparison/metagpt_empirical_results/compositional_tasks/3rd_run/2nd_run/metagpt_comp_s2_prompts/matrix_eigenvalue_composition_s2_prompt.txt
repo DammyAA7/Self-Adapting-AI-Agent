@@ -1,0 +1,26 @@
+
+python
+def matrix_operations(matrix_a, matrix_b):
+
+    global computation_cache
+    # Check if matrices can be multiplied
+    if len(matrix_a[0]) != len(matrix_b):
+        raise ValueError("Number of columns in matrix_a must equal number of rows in matrix_b.")
+    # Initialize result matrix
+    result = [[0 for _ in range(len(matrix_b[0]))] for _ in range(len(matrix_a))]
+    # Perform multiplication
+    for i in range(len(matrix_a)):
+        for j in range(len(matrix_b[0])):
+            for k in range(len(matrix_b)):
+                result[i][j] += matrix_a[i][k] * matrix_b[k][j]
+    computation_cache = result
+    return result
+
+computation_cache = None
+
+
+TASK:
+Load the previous session and create a function called advanced_matrix_ops that uses the existing matrix_operations function and computation_cache to perform eigenvalue calculations.
+
+
+Generate the Python function. Output the code inside ```python``` blocks.

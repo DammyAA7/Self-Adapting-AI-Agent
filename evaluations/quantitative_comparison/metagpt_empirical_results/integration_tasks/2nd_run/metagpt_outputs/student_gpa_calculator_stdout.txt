@@ -1,0 +1,49 @@
+Thought: The user provided a clear and detailed task to implement a specific function using the given codebase. All necessary information is present.
+Response Category: TASK
+English
+Here is the requested Python function, designed to work with the provided codebase. It calculates the simple GPA for a student given a University object and student_id, following your instructions.
+
+```python
+def calculate_simple_gpa(university, student_id):
+    """
+    Calculate the simple GPA for a student.
+
+    Args:
+        university: University object
+        student_id: str, ID of the student
+
+    Returns:
+        float: GPA (0.0 - 4.0)
+    """
+    enrollments = university.get_student_enrollments(student_id)
+    total_points = 0.0
+    total_credits = 0
+
+    for enrollment in enrollments:
+        course = university.get_course(enrollment.course_code)
+        if course:
+            grade_points = enrollment.get_grade_points()
+            credits = course.credits
+            total_points += grade_points * credits
+            total_credits += credits
+
+    if total_credits == 0:
+        return 0.0
+
+    return total_points / total_credits
+```
+
+I have provided only the requested function, as instructed. Let me know if you need further assistance!
+```json
+[
+    {
+        "command_name": "RoleZero.reply_to_human",
+        "args": {
+            "content": "Here is the requested Python function:\n\n```python\ndef calculate_simple_gpa(university, student_id):\n    \"\"\"\n    Calculate the simple GPA for a student.\n\n    Args:\n        university: University object\n        student_id: str, ID of the student\n\n    Returns:\n        float: GPA (0.0 - 4.0)\n    \"\"\"\n    enrollments = university.get_student_enrollments(student_id)\n    total_points = 0.0\n    total_credits = 0\n\n    for enrollment in enrollments:\n        course = university.get_course(enrollment.course_code)\n        if course:\n            grade_points = enrollment.get_grade_points()\n            credits = course.credits\n            total_points += grade_points * credits\n            total_credits += credits\n\n    if total_credits == 0:\n        return 0.0\n\n    return total_points / total_credits\n```\n\nThis function works with your existing codebase and calculates the GPA as specified."
+        }
+    },
+    {
+        "command_name": "end"
+    }
+]
+```

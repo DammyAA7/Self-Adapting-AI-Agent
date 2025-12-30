@@ -1,0 +1,1188 @@
+RUN.SH STARTING !#!#
+AUTOGEN_TESTBED_SETTING: [Native]
+Collecting pyyaml (from -r requirements.txt (line 2))
+  Using cached pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting autogen-core (from -r requirements.txt (line 3))
+  Using cached autogen_core-0.7.5-py3-none-any.whl.metadata (2.3 kB)
+Collecting autogen-agentchat (from -r requirements.txt (line 5))
+  Using cached autogen_agentchat-0.7.5-py3-none-any.whl.metadata (2.5 kB)
+Collecting azure-identity (from -r requirements.txt (line 6))
+  Using cached azure_identity-1.25.1-py3-none-any.whl.metadata (88 kB)
+Collecting autogen-ext[openai] (from -r requirements.txt (line 4))
+  Using cached autogen_ext-0.7.5-py3-none-any.whl.metadata (7.3 kB)
+Collecting jsonref~=1.1.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached jsonref-1.1.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting opentelemetry-api>=1.34.1 (from autogen-core->-r requirements.txt (line 3))
+  Using cached opentelemetry_api-1.39.1-py3-none-any.whl.metadata (1.5 kB)
+Collecting pillow>=11.0.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached pillow-12.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+Collecting protobuf~=5.29.3 (from autogen-core->-r requirements.txt (line 3))
+  Using cached protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+Collecting pydantic<3.0.0,>=2.10.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+Collecting typing-extensions>=4.0.0 (from autogen-core->-r requirements.txt (line 3))
+  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting aiofiles (from autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached aiofiles-25.1.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting openai>=1.93 (from autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached openai-2.14.0-py3-none-any.whl.metadata (29 kB)
+Collecting tiktoken>=0.8.0 (from autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached tiktoken-0.12.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+Collecting azure-core>=1.31.0 (from azure-identity->-r requirements.txt (line 6))
+  Using cached azure_core-1.37.0-py3-none-any.whl.metadata (47 kB)
+Collecting cryptography>=2.5 (from azure-identity->-r requirements.txt (line 6))
+  Using cached cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+Collecting msal>=1.30.0 (from azure-identity->-r requirements.txt (line 6))
+  Using cached msal-1.34.0-py3-none-any.whl.metadata (11 kB)
+Collecting msal-extensions>=1.2.0 (from azure-identity->-r requirements.txt (line 6))
+  Using cached msal_extensions-1.3.1-py3-none-any.whl.metadata (7.8 kB)
+Collecting requests>=2.21.0 (from azure-core>=1.31.0->azure-identity->-r requirements.txt (line 6))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting cffi>=2.0.0 (from cryptography>=2.5->azure-identity->-r requirements.txt (line 6))
+  Using cached cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Collecting PyJWT<3,>=1.0.0 (from PyJWT[crypto]<3,>=1.0.0->msal>=1.30.0->azure-identity->-r requirements.txt (line 6))
+  Using cached PyJWT-2.10.1-py3-none-any.whl.metadata (4.0 kB)
+Collecting anyio<5,>=3.5.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached anyio-4.12.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting distro<2,>=1.7.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+Collecting httpx<1,>=0.23.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting jiter<1,>=0.10.0 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached jiter-0.12.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+Collecting sniffio (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting tqdm>4 (from openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Collecting importlib-metadata<8.8.0,>=6.0 (from opentelemetry-api>=1.34.1->autogen-core->-r requirements.txt (line 3))
+  Using cached importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting annotated-types>=0.6.0 (from pydantic<3.0.0,>=2.10.0->autogen-core->-r requirements.txt (line 3))
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.5 (from pydantic<3.0.0,>=2.10.0->autogen-core->-r requirements.txt (line 3))
+  Using cached pydantic_core-2.41.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+Collecting typing-inspection>=0.4.2 (from pydantic<3.0.0,>=2.10.0->autogen-core->-r requirements.txt (line 3))
+  Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting regex>=2022.1.18 (from tiktoken>=0.8.0->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached regex-2025.11.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting idna>=2.8 (from anyio<5,>=3.5.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=2.5->azure-identity->-r requirements.txt (line 6))
+  Using cached pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Collecting certifi (from httpx<1,>=0.23.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1,>=0.23.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.23.0->openai>=1.93->autogen-ext[openai]->-r requirements.txt (line 4))
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting zipp>=3.20 (from importlib-metadata<8.8.0,>=6.0->opentelemetry-api>=1.34.1->autogen-core->-r requirements.txt (line 3))
+  Using cached zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+Collecting charset_normalizer<4,>=2 (from requests>=2.21.0->azure-core>=1.31.0->azure-identity->-r requirements.txt (line 6))
+  Using cached charset_normalizer-3.4.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting urllib3<3,>=1.21.1 (from requests>=2.21.0->azure-core>=1.31.0->azure-identity->-r requirements.txt (line 6))
+  Using cached urllib3-2.6.2-py3-none-any.whl.metadata (6.6 kB)
+Using cached pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+Using cached autogen_core-0.7.5-py3-none-any.whl (101 kB)
+Using cached autogen_agentchat-0.7.5-py3-none-any.whl (119 kB)
+Using cached azure_identity-1.25.1-py3-none-any.whl (191 kB)
+Using cached azure_core-1.37.0-py3-none-any.whl (214 kB)
+Using cached cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+Using cached jsonref-1.1.0-py3-none-any.whl (9.4 kB)
+Using cached msal-1.34.0-py3-none-any.whl (116 kB)
+Using cached msal_extensions-1.3.1-py3-none-any.whl (20 kB)
+Using cached openai-2.14.0-py3-none-any.whl (1.1 MB)
+Using cached opentelemetry_api-1.39.1-py3-none-any.whl (66 kB)
+Using cached pillow-12.0.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+Using cached protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl (319 kB)
+Using cached pydantic-2.12.5-py3-none-any.whl (463 kB)
+Using cached pydantic_core-2.41.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+Using cached tiktoken-0.12.0-cp312-cp312-manylinux_2_28_x86_64.whl (1.2 MB)
+Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Using cached aiofiles-25.1.0-py3-none-any.whl (14 kB)
+Using cached autogen_ext-0.7.5-py3-none-any.whl (331 kB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached anyio-4.12.0-py3-none-any.whl (113 kB)
+Using cached cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (219 kB)
+Using cached distro-1.9.0-py3-none-any.whl (20 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached importlib_metadata-8.7.1-py3-none-any.whl (27 kB)
+Using cached jiter-0.12.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (361 kB)
+Using cached PyJWT-2.10.1-py3-none-any.whl (22 kB)
+Using cached regex-2025.11.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (803 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached tqdm-4.67.1-py3-none-any.whl (78 kB)
+Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+Using cached certifi-2025.11.12-py3-none-any.whl (159 kB)
+Using cached charset_normalizer-3.4.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.2-py3-none-any.whl (131 kB)
+Using cached zipp-3.23.0-py3-none-any.whl (10 kB)
+Using cached pycparser-2.23-py3-none-any.whl (118 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Installing collected packages: zipp, urllib3, typing-extensions, tqdm, sniffio, regex, pyyaml, PyJWT, pycparser, protobuf, pillow, jsonref, jiter, idna, h11, distro, charset_normalizer, certifi, annotated-types, aiofiles, typing-inspection, requests, pydantic-core, importlib-metadata, httpcore, cffi, anyio, tiktoken, pydantic, opentelemetry-api, httpx, cryptography, azure-core, openai, autogen-core, msal, autogen-ext, autogen-agentchat, msal-extensions, azure-identity
+Successfully installed PyJWT-2.10.1 aiofiles-25.1.0 annotated-types-0.7.0 anyio-4.12.0 autogen-agentchat-0.7.5 autogen-core-0.7.5 autogen-ext-0.7.5 azure-core-1.37.0 azure-identity-1.25.1 certifi-2025.11.12 cffi-2.0.0 charset_normalizer-3.4.4 cryptography-46.0.3 distro-1.9.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.11 importlib-metadata-8.7.1 jiter-0.12.0 jsonref-1.1.0 msal-1.34.0 msal-extensions-1.3.1 openai-2.14.0 opentelemetry-api-1.39.1 pillow-12.0.0 protobuf-5.29.5 pycparser-2.23 pydantic-2.12.5 pydantic-core-2.41.5 pyyaml-6.0.3 regex-2025.11.3 requests-2.32.5 sniffio-1.3.1 tiktoken-0.12.0 tqdm-4.67.1 typing-extensions-4.15.0 typing-inspection-0.4.2 urllib3-2.6.2 zipp-3.23.0
+
+[notice] A new release of pip is available: 24.2 -> 25.3
+[notice] To update, run: pip install --upgrade pip
+SCENARIO.PY STARTING !#!#
+/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/AutoGen/python/packages/agbench/benchmarks/SelfEvolve/Results/selfevolve_noncomp/SelfEvolve_3/0/scenario.py:40: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  code_executor=LocalCommandLineCodeExecutor(),
+/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/AutoGen/python/packages/agbench/benchmarks/SelfEvolve/Results/selfevolve_noncomp/SelfEvolve_3/0/custom_code_executor.py:18: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  super().__init__(name=name, description=description, code_executor=code_executor, sources=sources)
+---------- TextMessage (user) ----------
+AVAILABLE CODEBASE/DATA:
+
+FILE: __init__.py
+======================================================================
+"""
+Student GPA Calculator Package
+Education domain codebase for self-evolution testing
+"""
+
+# Export all classes and functions for easy importing
+from .course import *
+from .enrollment import *
+from .student import *
+from .department import *
+from .university import *
+from .grade_calculator import *
+from .transcript_generator import *
+from .prerequisite_checker import *
+from .scholarship_evaluator import *
+
+# Explicit exports
+__all__ = [
+    'Course', 'Enrollment', 'Student', 'Department', 'University',
+    'GradeCalculator', 'TranscriptGenerator', 'PrerequisiteChecker',
+    'ScholarshipEvaluator', 'ScholarshipType', 'create_sample_university'
+]
+
+
+FILE: university.py
+======================================================================
+"""
+University Class
+Main university system managing students, courses, and enrollments
+"""
+
+from typing import Dict, List, Optional
+from .student import Student
+from .course import Course
+from .enrollment import Enrollment
+from .department import Department
+
+
+class University:
+    """Main university system managing students, courses, and enrollments"""
+    def __init__(self):
+        self.students: Dict[str, Student] = {}
+        self.courses: Dict[str, Course] = {}
+        self.enrollments: List[Enrollment] = []
+        self.departments: Dict[str, Department] = {}
+
+    def add_student(self, student: Student):
+        """Register a new student"""
+        self.students[student.id] = student
+
+    def add_course(self, course: Course):
+        """Add a course to catalog"""
+        self.courses[course.code] = course
+
+    def add_enrollment(self, enrollment: Enrollment):
+        """Record a course enrollment"""
+        self.enrollments.append(enrollment)
+
+    def add_department(self, department: Department):
+        """Add an academic department"""
+        self.departments[department.code] = department
+
+    def get_student(self, student_id: str) -> Optional[Student]:
+        """Retrieve student by ID"""
+        return self.students.get(student_id)
+
+    def get_course(self, course_code: str) -> Optional[Course]:
+        """Retrieve course by code"""
+        return self.courses.get(course_code)
+
+    def get_student_enrollments(self, student_id: str) -> List[Enrollment]:
+        """Get all enrollments for a student"""
+        return [e for e in self.enrollments if e.student_id == student_id]
+
+    def get_completed_credits(self, student_id: str) -> int:
+        """Calculate total credits completed (grade D or better)"""
+        enrollments = self.get_student_enrollments(student_id)
+        total = 0
+        for e in enrollments:
+            if e.grade != 'F':
+                course = self.get_course(e.course_code)
+                if course:
+                    total += course.credits
+        return total
+
+    def get_all_students(self) -> List[Student]:
+        """Get all registered students"""
+        return list(self.students.values())
+
+    def __repr__(self):
+        return f"University({len(self.students)} students, {len(self.courses)} courses, {len(self.enrollments)} enrollments)"
+
+
+# Sample data for testing
+def create_sample_university():
+    """Create sample university with test data"""
+    university = University()
+
+    # Add departments
+    cs_dept = Department("CS", "Computer Science")
+    math_dept = Department("MATH", "Mathematics")
+    university.add_department(cs_dept)
+    university.add_department(math_dept)
+
+    # Add courses
+    university.add_course(Course("CS101", "Intro to Programming", 3, 100))
+    university.add_course(Course("CS201", "Data Structures", 4, 200))
+    university.add_course(Course("CS301", "Algorithms", 4, 300))
+    university.add_course(Course("CS401", "Machine Learning", 4, 400))
+    university.add_course(Course("MATH150", "Calculus I", 4, 100))
+    university.add_course(Course("MATH250", "Linear Algebra", 3, 200))
+    university.add_course(Course("MATH350", "Probability", 3, 300))
+
+    # Student 1: Good performance, mixed difficulty
+    s1 = Student("S001", "Alice Chen", "Computer Science", 2022)
+    university.add_student(s1)
+    university.add_enrollment(Enrollment("S001", "CS101", "Fall 2022", "A"))
+    university.add_enrollment(Enrollment("S001", "MATH150", "Fall 2022", "A-"))
+    university.add_enrollment(Enrollment("S001", "CS201", "Spring 2023", "B+"))
+    university.add_enrollment(Enrollment("S001", "MATH250", "Spring 2023", "A"))
+    university.add_enrollment(Enrollment("S001", "CS301", "Fall 2023", "B"))
+    university.add_enrollment(Enrollment("S001", "CS401", "Spring 2024", "A-"))
+
+    # Student 2: Average performance
+    s2 = Student("S002", "Bob Williams", "Computer Science", 2023)
+    university.add_student(s2)
+    university.add_enrollment(Enrollment("S002", "CS101", "Fall 2023", "B"))
+    university.add_enrollment(Enrollment("S002", "MATH150", "Fall 2023", "C+"))
+    university.add_enrollment(Enrollment("S002", "CS201", "Spring 2024", "B-"))
+    university.add_enrollment(Enrollment("S002", "MATH250", "Spring 2024", "C"))
+
+    # Student 3: Struggling, some failures
+    s3 = Student("S003", "Carol Martinez", "Mathematics", 2022)
+    university.add_student(s3)
+    university.add_enrollment(Enrollment("S003", "MATH150", "Fall 2022", "C"))
+    university.add_enrollment(Enrollment("S003", "MATH250", "Spring 2023", "D"))
+    university.add_enrollment(Enrollment("S003", "CS101", "Fall 2023", "B-"))
+    university.add_enrollment(Enrollment("S003", "MATH350", "Spring 2024", "F"))
+
+    return university
+
+
+if __name__ == "__main__":
+    university = create_sample_university()
+    print(university)
+    print(f"\nStudents: {[s.name for s in university.get_all_students()]}")
+    print(f"\nS001 enrollments: {university.get_student_enrollments('S001')}")
+    print(f"S001 completed credits: {university.get_completed_credits('S001')}")
+
+    # Test course retrieval
+    cs401 = university.get_course("CS401")
+    print(f"\nCS401 details: {cs401}")
+    print(f"CS401 is advanced: {cs401.is_advanced()}")
+
+
+FILE: prerequisite_checker.py
+======================================================================
+"""
+Prerequisite Checker Module
+Validates course prerequisites and enrollment eligibility
+"""
+
+from typing import List, Dict, Set, Optional
+
+
+class PrerequisiteChecker:
+    """Check course prerequisites and validate student enrollment eligibility"""
+
+    def __init__(self):
+        """Initialize prerequisite checker with course dependency rules"""
+        self.prerequisites: Dict[str, List[str]] = {}
+        self.corequisites: Dict[str, List[str]] = {}
+
+    def add_prerequisite(self, course_code: str, prerequisite_codes: List[str]) -> None:
+        """
+        Add prerequisite requirements for a course
+
+        Args:
+            course_code: Course requiring prerequisites
+            prerequisite_codes: List of required prerequisite course codes
+        """
+        self.prerequisites[course_code] = prerequisite_codes
+
+    def add_corequisite(self, course_code: str, corequisite_codes: List[str]) -> None:
+        """
+        Add corequisite requirements for a course
+
+        Args:
+            course_code: Course requiring corequisites
+            corequisite_codes: List of courses that must be taken concurrently
+        """
+        self.corequisites[course_code] = corequisite_codes
+
+    def check_prerequisites(self, course_code: str,
+                          completed_courses: Set[str]) -> Dict[str, any]:
+        """
+        Check if student has completed prerequisites for a course
+
+        Args:
+            course_code: Course to check
+            completed_courses: Set of course codes student has completed
+
+        Returns:
+            Dict with 'eligible' bool and 'missing' list of missing prerequisites
+        """
+        required = self.prerequisites.get(course_code, [])
+        missing = [req for req in required if req not in completed_courses]
+
+        return {
+            'eligible': len(missing) == 0,
+            'missing': missing,
+            'required': required
+        }
+
+    def get_available_courses(self, all_courses: List[str],
+                            completed_courses: Set[str],
+                            enrolled_courses: Set[str] = None) -> List[Dict]:
+        """
+        Get list of courses student is eligible to take
+
+        Args:
+            all_courses: All available course codes
+            completed_courses: Courses student has completed
+            enrolled_courses: Courses student is currently enrolled in
+
+        Returns:
+            List of dicts with course info and eligibility status
+        """
+        if enrolled_courses is None:
+            enrolled_courses = set()
+
+        available = []
+        for course in all_courses:
+            if course in completed_courses or course in enrolled_courses:
+                continue
+
+            prereq_check = self.check_prerequisites(course, completed_courses)
+            coreq_check = self._check_corequisites(course, enrolled_courses)
+
+            if prereq_check['eligible'] and coreq_check['eligible']:
+                available.append({
+                    'course_code': course,
+                    'status': 'available',
+                    'notes': None
+                })
+            else:
+                available.append({
+                    'course_code': course,
+                    'status': 'unavailable',
+                    'notes': f"Missing: {prereq_check['missing'] + coreq_check['missing']}"
+                })
+
+        return available
+
+    def _check_corequisites(self, course_code: str,
+                          enrolled_courses: Set[str]) -> Dict[str, any]:
+        """Check if corequisite courses are being taken concurrently"""
+        required = self.corequisites.get(course_code, [])
+        missing = [req for req in required if req not in enrolled_courses]
+
+        return {
+            'eligible': len(missing) == 0,
+            'missing': missing
+        }
+
+    def validate_enrollment(self, course_code: str,
+                          completed_courses: Set[str],
+                          current_enrollment: Set[str]) -> Dict[str, any]:
+        """
+        Comprehensive validation for course enrollment
+
+        Args:
+            course_code: Course to validate
+            completed_courses: Completed courses
+            current_enrollment: Currently enrolled courses
+
+        Returns:
+            Dict with validation result and detailed messages
+        """
+        if course_code in completed_courses:
+            return {
+                'valid': False,
+                'reason': 'Course already completed',
+                'can_override': False
+            }
+
+        prereq = self.check_prerequisites(course_code, completed_courses)
+        if not prereq['eligible']:
+            return {
+                'valid': False,
+                'reason': f"Missing prerequisites: {', '.join(prereq['missing'])}",
+                'can_override': True
+            }
+
+        coreq = self._check_corequisites(course_code, current_enrollment)
+        if not coreq['eligible']:
+            return {
+                'valid': False,
+                'reason': f"Missing corequisites: {', '.join(coreq['missing'])}",
+                'can_override': False
+            }
+
+        return {
+            'valid': True,
+            'reason': 'All requirements met',
+            'can_override': False
+        }
+
+
+FILE: department.py
+======================================================================
+"""
+Department Class
+Academic department information
+"""
+
+
+class Department:
+    """Academic department"""
+    def __init__(self, code: str, name: str):
+        self.code = code
+        self.name = name
+        self.faculty_count = 0
+
+    def __repr__(self):
+        return f"Department({self.code}, {self.name})"
+
+
+FILE: course.py
+======================================================================
+"""
+Course Class
+University course information and metadata
+"""
+
+
+class Course:
+    """University course information"""
+    def __init__(self, code: str, name: str, credits: int, difficulty: int):
+        self.code = code
+        self.name = name
+        self.credits = credits
+        self.difficulty = difficulty  # 100-400 level (100=intro, 400=advanced)
+
+    def is_advanced(self) -> bool:
+        """Check if course is advanced level (300+)"""
+        return self.difficulty >= 300
+
+    def __repr__(self):
+        return f"Course({self.code}, {self.name}, {self.credits}cr, L{self.difficulty})"
+
+
+FILE: scholarship_evaluator.py
+======================================================================
+"""
+Scholarship Evaluator Module
+Evaluates scholarship eligibility and calculates award amounts
+"""
+
+from typing import List, Dict, Optional
+from enum import Enum
+
+
+class ScholarshipType(Enum):
+    """Types of scholarships available"""
+    MERIT = "merit"
+    NEED_BASED = "need_based"
+    ATHLETIC = "athletic"
+    DEPARTMENTAL = "departmental"
+
+
+class ScholarshipEvaluator:
+    """Evaluate scholarship eligibility and calculate award amounts"""
+
+    def __init__(self):
+        """Initialize scholarship evaluator with default criteria"""
+        self.scholarships = {
+            'Presidential': {'type': ScholarshipType.MERIT, 'gpa_min': 3.9,
+                           'amount': 25000, 'renewable': True},
+            'Dean\'s': {'type': ScholarshipType.MERIT, 'gpa_min': 3.7,
+                       'amount': 15000, 'renewable': True},
+            'Academic Excellence': {'type': ScholarshipType.MERIT, 'gpa_min': 3.5,
+                                  'amount': 10000, 'renewable': True},
+            'Financial Need': {'type': ScholarshipType.NEED_BASED, 'gpa_min': 2.5,
+                             'amount': 8000, 'renewable': True},
+            'Department Honors': {'type': ScholarshipType.DEPARTMENTAL, 'gpa_min': 3.6,
+                                'amount': 5000, 'renewable': False}
+        }
+        self.minimum_credits = 12
+
+    def check_eligibility(self, student_data: Dict,
+                         scholarship_name: str) -> Dict[str, any]:
+        """
+        Check if student is eligible for a specific scholarship
+
+        Args:
+            student_data: Dict with gpa, credits, financial_need, department, etc.
+            scholarship_name: Name of scholarship to check
+
+        Returns:
+            Dict with eligibility status and details
+        """
+        if scholarship_name not in self.scholarships:
+            return {'eligible': False, 'reason': 'Scholarship not found'}
+
+        scholarship = self.scholarships[scholarship_name]
+        gpa = student_data.get('gpa', 0.0)
+        credits = student_data.get('credits', 0)
+
+        # Check basic requirements
+        if gpa < scholarship['gpa_min']:
+            return {
+                'eligible': False,
+                'reason': f"GPA {gpa:.2f} below minimum {scholarship['gpa_min']}"
+            }
+
+        if credits < self.minimum_credits:
+            return {
+                'eligible': False,
+                'reason': f"Credits {credits} below minimum {self.minimum_credits}"
+            }
+
+        # Check type-specific requirements
+        if scholarship['type'] == ScholarshipType.NEED_BASED:
+            if not student_data.get('financial_need', False):
+                return {
+                    'eligible': False,
+                    'reason': 'No demonstrated financial need'
+                }
+
+        if scholarship['type'] == ScholarshipType.DEPARTMENTAL:
+            if student_data.get('department') != scholarship_name.split()[0]:
+                return {
+                    'eligible': False,
+                    'reason': 'Not in required department'
+                }
+
+        return {
+            'eligible': True,
+            'reason': 'All requirements met',
+            'amount': scholarship['amount']
+        }
+
+    def calculate_award_amount(self, student_data: Dict,
+                              scholarship_names: List[str]) -> Dict[str, any]:
+        """
+        Calculate total scholarship award amount
+
+        Args:
+            student_data: Student information
+            scholarship_names: List of scholarships to consider
+
+        Returns:
+            Dict with total amount and breakdown
+        """
+        total = 0
+        awards = []
+
+        for name in scholarship_names:
+            result = self.check_eligibility(student_data, name)
+            if result['eligible']:
+                amount = result['amount']
+                total += amount
+                awards.append({
+                    'scholarship': name,
+                    'amount': amount,
+                    'renewable': self.scholarships[name]['renewable']
+                })
+
+        return {
+            'total_amount': total,
+            'awards': awards,
+            'count': len(awards)
+        }
+
+    def rank_applicants(self, applicants: List[Dict],
+                       scholarship_name: str) -> List[Dict]:
+        """
+        Rank scholarship applicants by eligibility and merit
+
+        Args:
+            applicants: List of applicant dicts with student data
+            scholarship_name: Scholarship to rank for
+
+        Returns:
+            Sorted list of eligible applicants with ranking
+        """
+        eligible = []
+
+        for applicant in applicants:
+            result = self.check_eligibility(applicant, scholarship_name)
+            if result['eligible']:
+                eligible.append({
+                    'student_id': applicant.get('student_id'),
+                    'name': applicant.get('name'),
+                    'gpa': applicant.get('gpa', 0.0),
+                    'credits': applicant.get('credits', 0),
+                    'score': self._calculate_merit_score(applicant)
+                })
+
+        # Sort by merit score (descending)
+        ranked = sorted(eligible, key=lambda x: x['score'], reverse=True)
+
+        # Add rank numbers
+        for i, applicant in enumerate(ranked, 1):
+            applicant['rank'] = i
+
+        return ranked
+
+    def _calculate_merit_score(self, student_data: Dict) -> float:
+        """Calculate overall merit score for ranking"""
+        gpa = student_data.get('gpa', 0.0)
+        credits = student_data.get('credits', 0)
+        leadership = student_data.get('leadership_hours', 0)
+        community_service = student_data.get('community_service_hours', 0)
+
+        # Weighted scoring formula
+        score = (gpa * 40) + (min(credits / 150, 1.0) * 30) + \
+                (min(leadership / 100, 1.0) * 15) + \
+                (min(community_service / 100, 1.0) * 15)
+
+        return round(score, 2)
+
+
+FILE: student.py
+======================================================================
+"""
+Student Class
+Student profile and information
+"""
+
+
+class Student:
+    """Student profile information"""
+    def __init__(self, id: str, name: str, major: str, admission_year: int):
+        self.id = id
+        self.name = name
+        self.major = major
+        self.admission_year = admission_year
+
+    def __repr__(self):
+        return f"Student({self.id}, {self.name}, {self.major})"
+
+
+FILE: enrollment.py
+======================================================================
+"""
+Enrollment Class
+Student course enrollment records with grade tracking
+"""
+
+
+class Enrollment:
+    """Student course enrollment record"""
+    def __init__(self, student_id: str, course_code: str, semester: str, grade: str):
+        self.student_id = student_id
+        self.course_code = course_code
+        self.semester = semester
+        self.grade = grade  # Letter grade: A, A-, B+, B, B-, C+, C, C-, D, F
+
+    def get_grade_points(self) -> float:
+        """Convert letter grade to GPA points"""
+        grade_map = {
+            'A': 4.0, 'A-': 3.7,
+            'B+': 3.3, 'B': 3.0, 'B-': 2.7,
+            'C+': 2.3, 'C': 2.0, 'C-': 1.7,
+            'D': 1.0, 'F': 0.0
+        }
+        return grade_map.get(self.grade, 0.0)
+
+    def __repr__(self):
+        return f"Enrollment({self.student_id}, {self.course_code}, {self.grade})"
+
+
+FILE: grade_calculator.py
+======================================================================
+"""
+Grade Calculator Module
+Handles weighted grades, curves, and final grade calculations
+"""
+
+from typing import Dict, List, Optional, Tuple
+
+
+class GradeCalculator:
+    """Calculate and manage student grades with various weighting and curving methods"""
+
+    def __init__(self):
+        """Initialize the grade calculator with default configurations"""
+        self.standard_scale = {
+            'A': (90, 100),
+            'B': (80, 89),
+            'C': (70, 79),
+            'D': (60, 69),
+            'F': (0, 59)
+        }
+        self.plus_minus_threshold = 3
+
+    def calculate_weighted_grade(self, components: Dict[str, Tuple[float, float]]) -> float:
+        """
+        Calculate weighted grade from multiple components
+
+        Args:
+            components: Dict mapping component name to (score, weight) tuples
+                       Example: {'midterm': (85.0, 0.30), 'final': (92.0, 0.40)}
+
+        Returns:
+            Weighted average grade as a float
+        """
+        if not components:
+            return 0.0
+
+        total_weight = sum(weight for _, weight in components.values())
+        if total_weight == 0:
+            return 0.0
+
+        weighted_sum = sum(score * weight for score, weight in components.values())
+        return weighted_sum / total_weight
+
+    def apply_curve(self, score: float, curve_type: str = 'linear',
+                   curve_amount: float = 5.0) -> float:
+        """
+        Apply grade curve to a score
+
+        Args:
+            score: Original score
+            curve_type: Type of curve ('linear', 'sqrt', 'percentile')
+            curve_amount: Amount to curve (meaning depends on curve_type)
+
+        Returns:
+            Curved score
+        """
+        if curve_type == 'linear':
+            curved = min(100.0, score + curve_amount)
+        elif curve_type == 'sqrt':
+            curved = min(100.0, 10 * (score ** 0.5))
+        elif curve_type == 'percentile':
+            # Simple percentile boost
+            curved = min(100.0, score * (1 + curve_amount / 100))
+        else:
+            curved = score
+
+        return round(curved, 2)
+
+    def calculate_final_grade(self, numeric_score: float,
+                            use_plus_minus: bool = True) -> str:
+        """
+        Convert numeric score to letter grade
+
+        Args:
+            numeric_score: Numeric grade (0-100)
+            use_plus_minus: Whether to use +/- modifiers
+
+        Returns:
+            Letter grade (e.g., 'A', 'B+', 'C-')
+        """
+        # Determine base letter grade
+        letter = 'F'
+        for grade, (low, high) in self.standard_scale.items():
+            if low <= numeric_score <= high:
+                letter = grade
+                break
+
+        if not use_plus_minus or letter in ['F', 'A']:
+            # Special handling for A+ if score is perfect
+            if letter == 'A' and numeric_score >= 97:
+                return 'A+'
+            return letter
+
+        # Add plus/minus modifiers
+        for grade, (low, high) in self.standard_scale.items():
+            if low <= numeric_score <= high:
+                range_size = high - low + 1
+                position_in_range = numeric_score - low
+
+                if position_in_range >= range_size - self.plus_minus_threshold:
+                    return f"{grade}+"
+                elif position_in_range < self.plus_minus_threshold:
+                    return f"{grade}-"
+                else:
+                    return grade
+
+        return letter
+
+
+FILE: transcript_generator.py
+======================================================================
+"""
+Transcript Generator Module
+Generates official academic transcripts with GPA and honors
+"""
+
+from typing import List, Dict, Optional
+from datetime import datetime
+
+
+class TranscriptGenerator:
+    """Generate official academic transcripts for students"""
+
+    def __init__(self, institution_name: str = "University"):
+        """Initialize transcript generator with institution information"""
+        self.institution_name = institution_name
+        self.honors_thresholds = {
+            'Summa Cum Laude': 3.9,
+            'Magna Cum Laude': 3.7,
+            'Cum Laude': 3.5
+        }
+
+    def generate_official_transcript(self, student_data: Dict,
+                                    courses: List[Dict]) -> str:
+        """
+        Generate a formatted official transcript
+
+        Args:
+            student_data: Dict with student info (name, id, major, etc.)
+            courses: List of course dicts with semester, course, grade, credits
+
+        Returns:
+            Formatted transcript as string
+        """
+        header = self._create_header(student_data)
+        course_section = self._format_courses(courses)
+        gpa_section = self._calculate_gpa_summary(courses)
+        honors = self.calculate_honors(gpa_section['cumulative_gpa'])
+
+        transcript = f"{header}\n\n{course_section}\n\n{gpa_section['summary']}"
+        if honors:
+            transcript += f"\n\nHonors: {honors}"
+
+        transcript += f"\n\nOfficial Transcript Generated: {datetime.now().strftime('%Y-%m-%d')}"
+        return transcript
+
+    def _create_header(self, student_data: Dict) -> str:
+        """Create transcript header with student information"""
+        return f"""
+{'=' * 60}
+{self.institution_name.upper()}
+OFFICIAL ACADEMIC TRANSCRIPT
+{'=' * 60}
+
+Student Name: {student_data.get('name', 'N/A')}
+Student ID: {student_data.get('id', 'N/A')}
+Major: {student_data.get('major', 'Undeclared')}
+Date of Birth: {student_data.get('dob', 'N/A')}
+"""
+
+    def _format_courses(self, courses: List[Dict]) -> str:
+        """Format course listing by semester"""
+        if not courses:
+            return "No courses completed."
+
+        formatted = "ACADEMIC RECORD\n" + "-" * 60
+        current_semester = None
+
+        for course in sorted(courses, key=lambda x: x.get('semester', '')):
+            semester = course.get('semester', 'Unknown')
+            if semester != current_semester:
+                formatted += f"\n\n{semester}:"
+                current_semester = semester
+
+            formatted += (f"\n  {course.get('code', 'N/A'):12} "
+                        f"{course.get('name', 'Unknown Course'):30} "
+                        f"{course.get('credits', 0):3} cr  "
+                        f"Grade: {course.get('grade', 'N/A')}")
+
+        return formatted
+
+    def calculate_honors(self, gpa: float) -> Optional[str]:
+        """
+        Determine honors designation based on GPA
+
+        Args:
+            gpa: Cumulative GPA
+
+        Returns:
+            Honors designation or None
+        """
+        for honor, threshold in self.honors_thresholds.items():
+            if gpa >= threshold:
+                return honor
+        return None
+
+    def _calculate_gpa_summary(self, courses: List[Dict]) -> Dict:
+        """Calculate GPA statistics for transcript"""
+        grade_points = {'A': 4.0, 'A-': 3.7, 'B+': 3.3, 'B': 3.0, 'B-': 2.7,
+                       'C+': 2.3, 'C': 2.0, 'C-': 1.7, 'D': 1.0, 'F': 0.0}
+
+        total_points = 0.0
+        total_credits = 0
+
+        for course in courses:
+            grade = course.get('grade', 'F')
+            credits = course.get('credits', 0)
+            points = grade_points.get(grade, 0.0)
+
+            total_points += points * credits
+            total_credits += credits
+
+        cumulative_gpa = total_points / total_credits if total_credits > 0 else 0.0
+
+        summary = f"""
+GPA SUMMARY
+{'-' * 60}
+Total Credits Attempted: {total_credits}
+Total Grade Points: {total_points:.2f}
+Cumulative GPA: {cumulative_gpa:.3f}
+"""
+        return {'cumulative_gpa': cumulative_gpa, 'summary': summary,
+                'total_credits': total_credits}
+
+
+
+Complete the following python function. Format your output as Markdown python code block containing the entire function definition:
+
+```python
+Create a function called calculate_simple_gpa that takes a University object and student_id. For each enrollment from university.get_student_enrollments(student_id), get the course using university.get_course(enrollment.course_code), multiply enrollment.get_grade_points() by course.credits, sum all points and credits, return total_points / total_credits as GPA (0.0-4.0).
+
+```
+
+---------- TextMessage (coder) ----------
+```python
+def calculate_simple_gpa(university, student_id):
+    """
+    Calculate a student's simple GPA (0.0-4.0 scale) based on completed enrollments.
+
+    Args:
+        university: University object
+        student_id: Student's unique ID
+
+    Returns:
+        GPA as a float (0.0 to 4.0). Returns 0.0 if no courses attempted.
+    """
+    enrollments = university.get_student_enrollments(student_id)
+    total_points = 0.0
+    total_credits = 0
+
+    for enrollment in enrollments:
+        course = university.get_course(enrollment.course_code)
+        if course:
+            grade_points = enrollment.get_grade_points()
+            credits = course.credits
+            total_points += grade_points * credits
+            total_credits += credits
+
+    if total_credits == 0:
+        return 0.0
+
+    return total_points / total_credits
+```
+---------- TextMessage (executor) ----------
+The script ran, then exited with an error (POSIX exit code: 1)
+Its output was:
+Traceback (most recent call last):
+  File "/tmp/tmp3iuluk11/tmp_code_5622988ea9a2b520d9a8d03a7feb65315bc6bd7c373f07605c8d92afd880769b.py", line 67, in <module>
+    run_tests(calculate_simple_gpa)
+  File "/tmp/tmp3iuluk11/tmp_code_5622988ea9a2b520d9a8d03a7feb65315bc6bd7c373f07605c8d92afd880769b.py", line 31, in run_tests
+    check(candidate)
+  File "/tmp/tmp3iuluk11/tmp_code_5622988ea9a2b520d9a8d03a7feb65315bc6bd7c373f07605c8d92afd880769b.py", line 3, in check
+    from dataset.student_gpa_calculator.university import University, create_sample_university
+ModuleNotFoundError: No module named 'dataset'
+
+---------- TextMessage (coder) ----------
+It appears the error is not related to the function itself, but to the test setup: the script is attempting to import from a module named `dataset.student_gpa_calculator.university`, which does not exist in your provided codebase. This is an environment or test runner problem, not an issue with the function implementation.
+
+**How to proceed:**  
+To verify the function, let's run a simple test using your provided codebase. I will suggest code that creates a sample university, calculates the GPA for student S001 (Alice Chen), and prints the result. This will help confirm the function works as intended.
+
+Please execute this code:
+
+```python
+from university import create_sample_university
+from university import University
+
+def calculate_simple_gpa(university, student_id):
+    """
+    Calculate a student's simple GPA (0.0-4.0 scale) based on completed enrollments.
+
+    Args:
+        university: University object
+        student_id: Student's unique ID
+
+    Returns:
+        GPA as a float (0.0 to 4.0). Returns 0.0 if no courses attempted.
+    """
+    enrollments = university.get_student_enrollments(student_id)
+    total_points = 0.0
+    total_credits = 0
+
+    for enrollment in enrollments:
+        course = university.get_course(enrollment.course_code)
+        if course:
+            grade_points = enrollment.get_grade_points()
+            credits = course.credits
+            total_points += grade_points * credits
+            total_credits += credits
+
+    if total_credits == 0:
+        return 0.0
+
+    return total_points / total_credits
+
+# Create sample university and calculate GPA for student S001
+university = create_sample_university()
+gpa = calculate_simple_gpa(university, "S001")
+print(f"Student S001 GPA: {gpa:.3f}")
+```
+
+---------- TextMessage (executor) ----------
+The script ran, then exited with an error (POSIX exit code: 1)
+Its output was:
+Traceback (most recent call last):
+  File "/tmp/tmp3iuluk11/tmp_code_023016a7e68b050f5aa8d8952dfff2fe9f553a1f2899b1ad802380ce84ee2605.py", line 38, in <module>
+    from university import create_sample_university
+ModuleNotFoundError: No module named 'university'
+
+---------- TextMessage (coder) ----------
+The error indicates that the import statement `from university import create_sample_university` failed because Python couldn't find the `university` module. This usually means the code is part of a package, and you need to use a relative or package-based import.
+
+**Plan:**
+1. List the current directory contents using a shell command to see if the files are in the working directory or inside a package/folder.
+2. Based on the result, I will suggest the correct import statements.
+
+Please execute this shell command to show the directory contents:
+
+```sh
+ls -l
+```
+---------- TextMessage (executor) ----------
+total 4
+-rw-rw-r-- 1 aifahim aifahim 6 Dec 26 02:23 tmp_code_e82264c1d5c17582f49e0fdc082009ce15db18bbb03a9eec291beb6e007667b3.sh
+
+---------- TextMessage (coder) ----------
+The output only shows a shell script file and does not display any of the Python code files (`university.py`, etc.) that were described earlier. This suggests that the codebase files are either in a different directory or within a package folder not shown here.
+
+**Next step:**
+Let's list all files and folders recursively to locate where the codebase files are. This will help determine the correct import path. Please run the following shell command:
+
+```sh
+find . -type f
+```
+---------- TextMessage (executor) ----------
+./tmp_code_274293074d38fe949f65cea6dc5e5b7818ad9007ec5ca03458123f739db019cc.sh
+
+---------- TextMessage (coder) ----------
+The output indicates only a shell script file is present and no Python source files (like `university.py`, etc.) are visible in the current directory or its subdirectories.
+
+**Analysis and Next Steps:**
+- The Python codebase files described in your initial prompt are not present in the runtime environment.
+- This means neither function implementation nor tests can be executed successfully until the codebase files are available.
+
+**Conclusion:**  
+The previously reported error (`ModuleNotFoundError: No module named 'university'`) is due to missing code files in the environment.  
+To proceed, please ensure that the codebase files (`university.py`, `student.py`, `course.py`, etc.) are present in the working directory or accessible package structure. Once they're available, I can provide and execute code that will correctly import and test the function.
+
+If you can make the codebase available, I will guide you to the next step. If not, I can only provide code based on the structure you described, but execution will not be possible.
+---------- TextMessage (executor) ----------
+No code blocks found in the thread. Please provide at least one markdown-encoded code block to execute (i.e., quoting code in ```python or ```sh code blocks).
+---------- TextMessage (coder) ----------
+Thank you for clarifying! Since the codebase files are missing, let's verify the function implementation in isolation by providing a self-contained Python script that defines minimal stubs for the required classes and then tests the `calculate_simple_gpa` function.
+
+Please execute the following code block:
+
+```python
+# Minimal stubs for required classes
+class Course:
+    def __init__(self, code, name, credits, difficulty):
+        self.code = code
+        self.name = name
+        self.credits = credits
+        self.difficulty = difficulty
+
+class Enrollment:
+    def __init__(self, student_id, course_code, semester, grade):
+        self.student_id = student_id
+        self.course_code = course_code
+        self.semester = semester
+        self.grade = grade
+
+    def get_grade_points(self):
+        grade_map = {
+            'A': 4.0, 'A-': 3.7,
+            'B+': 3.3, 'B': 3.0, 'B-': 2.7,
+            'C+': 2.3, 'C': 2.0, 'C-': 1.7,
+            'D': 1.0, 'F': 0.0
+        }
+        return grade_map.get(self.grade, 0.0)
+
+class University:
+    def __init__(self):
+        self.students = {}
+        self.courses = {}
+        self.enrollments = []
+
+    def add_course(self, course):
+        self.courses[course.code] = course
+
+    def add_enrollment(self, enrollment):
+        self.enrollments.append(enrollment)
+
+    def get_student_enrollments(self, student_id):
+        return [e for e in self.enrollments if e.student_id == student_id]
+
+    def get_course(self, course_code):
+        return self.courses.get(course_code)
+
+# Function to test
+def calculate_simple_gpa(university, student_id):
+    enrollments = university.get_student_enrollments(student_id)
+    total_points = 0.0
+    total_credits = 0
+
+    for enrollment in enrollments:
+        course = university.get_course(enrollment.course_code)
+        if course:
+            grade_points = enrollment.get_grade_points()
+            credits = course.credits
+            total_points += grade_points * credits
+            total_credits += credits
+
+    if total_credits == 0:
+        return 0.0
+
+    return total_points / total_credits
+
+# Create sample data and test
+university = University()
+university.add_course(Course("CS101", "Intro to Programming", 3, 100))
+university.add_course(Course("MATH150", "Calculus I", 4, 100))
+
+university.add_enrollment(Enrollment("S001", "CS101", "Fall 2022", "A"))
+university.add_enrollment(Enrollment("S001", "MATH150", "Fall 2022", "B+"))
+
+gpa = calculate_simple_gpa(university, "S001")
+print(f"Student S001 GPA: {gpa:.3f}")
+```
+---------- TextMessage (executor) ----------
+The script ran, then exited with an error (POSIX exit code: 1)
+Its output was:
+Traceback (most recent call last):
+  File "/tmp/tmp3iuluk11/tmp_code_5c63f794f3f68cde615bf186fc1b150987d8b832beffc519d30d0f364ab3d3d9.py", line 111, in <module>
+    run_tests(calculate_simple_gpa)
+  File "/tmp/tmp3iuluk11/tmp_code_5c63f794f3f68cde615bf186fc1b150987d8b832beffc519d30d0f364ab3d3d9.py", line 31, in run_tests
+    check(candidate)
+  File "/tmp/tmp3iuluk11/tmp_code_5c63f794f3f68cde615bf186fc1b150987d8b832beffc519d30d0f364ab3d3d9.py", line 3, in check
+    from dataset.student_gpa_calculator.university import University, create_sample_university
+ModuleNotFoundError: No module named 'dataset'
+Student S001 GPA: 3.600
+
+SCENARIO.PY COMPLETE !#!#
+SCENARIO.PY RUNTIME: 70 !#!#
+RUN.SH COMPLETE !#!#

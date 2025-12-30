@@ -47,7 +47,7 @@ def test_compositional_task(session1_task, session2_task):
     # Get ground-truth test (expects BOTH functions)
     test = session2_task['test']
 
-    # Test Session 2 code (tests true integration capability)
+    # Test ONLY Session 2 code (tests true integration capability)
     # If Session 2 doesn't properly integrate, it will fail
     test_code = f"""{session2_code}
 
@@ -103,7 +103,7 @@ def main():
     """Test compositional tasks with both Session 1 and Session 2 code"""
 
     logger.info("="*70)
-    logger.info("COMPOSITIONAL TASKS EVALUATION (Session 2)")
+    logger.info("COMPOSITIONAL TASKS EVALUATION (Session 2 Only)")
     logger.info("Testing if Session 2 code properly integrates Session 1")
     logger.info("="*70)
 

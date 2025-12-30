@@ -1,0 +1,31 @@
+computation_cache = {}
+
+def matrix_operations(matrix_a, matrix_b):
+    """
+    Multiplies two matrices and stores the result in the global computation_cache.
+    The cache key is a tuple of the input matrices' ids.
+    """
+    global computation_cache
+    
+    # Check if input matrices are valid for multiplication
+    if not matrix_a or not matrix_b:
+        raise ValueError("Input matrices cannot be empty.")
+    if len(matrix_a[0]) != len(matrix_b):
+        raise ValueError("Number of columns of matrix_a must equal number of rows of matrix_b.")
+    
+    cache_key = (id(matrix_a), id(matrix_b))
+    if cache_key in computation_cache:
+        return computation_cache[cache_key]
+
+    # Matrix multiplication
+    result_rows = len(matrix_a)
+    result_cols = len(matrix_b[0])
+    result = [[0 for _ in range(result_cols)] for _ in range(result_rows)]
+    
+    for i in range(result_rows):
+        for j in range(result_cols):
+            for k in range(len(matrix_b)):
+                result[i][j] += matrix_a[i][k] * matrix_b[k][j]
+    
+    computation_cache[cache_key] = result
+    return result

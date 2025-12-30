@@ -1,23 +1,37 @@
 
 import numpy as np
 
-def advanced_matrix_ops(A, B):
+def advanced_matrix_ops():
     '''
-    Multiplies A and B using matrix_operations, retrieves result from computation_cache,
-    and performs eigenvalue calculation on the result matrix.
-    Returns the product and its eigenvalues as a tuple.
+    Load the previous session and create a function called advanced_matrix_ops 
+    that uses the existing matrix_operations function and computation_cache 
+    to perform eigenvalue calculations.
     '''
-    # Multiply matrices
-    result = matrix_operations(A, B)
+    # Step 1: Call matrix_operations() to ensure cache has previous computation
+    matrix_operations()
     
-    # Retrieve multiplication result from computation_cache (optional; here recalculated for demonstration)
-    cache_key = (str(A), str(B))
-    product_matrix = computation_cache.get(cache_key, result)
+    # Step 2: Retrieve the result matrix
+    global computation_cache
+    result = computation_cache.get('result')
     
-    # Compute eigenvalues
-    eigenvalues = np.linalg.eigvals(np.array(product_matrix))
+    if result is None:
+        raise ValueError("No result found in computation_cache.")
     
-    return product_matrix, eigenvalues
+    # Step 3: Convert to numpy array for eigenvalue calculation
+    result_np = np.array(result)
+    
+    # Step 4: Check if the matrix is square (eigenvalues only for square matrices)
+    if result_np.shape[0] != result_np.shape[1]:
+        raise ValueError("Cannot compute eigenvalues: Resulting matrix is not square.")
+    
+    # Step 5: Compute eigenvalues
+    eigenvalues = np.linalg.eigvals(result_np)
+    
+    # Step 6: Store eigenvalues in computation_cache
+    computation_cache['eigenvalues'] = eigenvalues.tolist()  # Convert to list for JSON serializability if needed
+
+    # (Optional) Print or return eigenvalues
+    print("Eigenvalues of the result matrix:", eigenvalues)
 
 
 

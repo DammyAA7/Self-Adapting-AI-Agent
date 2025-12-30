@@ -1,0 +1,34 @@
+
+import os
+
+# Test v1 - list of titles
+os.environ['API_VERSION'] = 'v1'
+result_v1 = book_recommender('Fiction', file_path="/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/test_context_extended/books.csv")
+assert isinstance(result_v1, list)
+assert all(isinstance(title, str) for title in result_v1)
+assert len(result_v1) > 0  # Should find some Fiction books
+
+# Test v2 - metadata dict
+os.environ['API_VERSION'] = 'v2'
+result_v2 = book_recommender('Fiction', file_path="/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/test_context_extended/books.csv")
+assert isinstance(result_v2, dict)
+assert 'titles' in result_v2
+assert 'count' in result_v2
+assert 'avg_rating' in result_v2
+assert isinstance(result_v2['titles'], list)
+assert isinstance(result_v2['count'], int)
+assert result_v2['count'] == len(result_v2['titles'])
+assert isinstance(result_v2['avg_rating'], float)
+assert 3.0 <= result_v2['avg_rating'] <= 5.0
+
+# Test v3 - JSON-LD
+os.environ['API_VERSION'] = 'v3'
+result_v3 = book_recommender('Fiction', file_path="/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/framework_our_approach/ablation_study_humaneval_and_long_horizon_tasks/test_context_extended/books.csv")
+assert isinstance(result_v3, dict)
+assert '@context' in result_v3
+assert '@type' in result_v3
+assert result_v3['@context'] == 'http://schema.org'
+assert result_v3['@type'] == 'BookCollection'
+assert 'numberOfItems' in result_v3
+
+print('Book Recommender tests passed')

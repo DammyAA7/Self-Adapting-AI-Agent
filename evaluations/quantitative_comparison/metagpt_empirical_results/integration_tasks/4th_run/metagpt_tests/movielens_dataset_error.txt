@@ -1,0 +1,12 @@
+STDOUT:
+
+
+STDERR:
+Traceback (most recent call last):
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/movielens_dataset_test.py", line 78, in <module>
+    result_v1 = test_caller_v1()
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/movielens_dataset_test.py", line 75, in test_caller_v1
+    result = movie_api()
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/movielens_dataset_test.py", line 22, in movie_api
+    with open(csv_path, newline='', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/movie.csv'

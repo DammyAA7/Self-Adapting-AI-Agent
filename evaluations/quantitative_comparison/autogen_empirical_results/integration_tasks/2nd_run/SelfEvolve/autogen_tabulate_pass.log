@@ -1,0 +1,26 @@
+(base) aifahim@aifahim-HP-250-15-6-inch-G10-Notebook-PC:~/PycharmProjects/Self-Adapting-AI-Agent/AutoGen/python/packages/agbench/benchmarks/SelfEvolve$ agbench tabulate Results/selfevolve_noncomp
+Using default tabulation method.
+
+    Task Id        Trial 0 Success      Trial 0 Time
+--  -------------  -----------------  --------------
+ 0  SelfEvolve_2   False                          67
+ 1  SelfEvolve_3   False                          70
+ 2  SelfEvolve_4   False                          40
+ 3  SelfEvolve_8   False                          40
+ 4  SelfEvolve_9   False                          16
+ 5  SelfEvolve_10  False                          19
+ 6  SelfEvolve_11  False                         134
+ 7  SelfEvolve_1   False                          43
+
+Summary Statistics
+
+           Successes    Failures    Missing    Total    Average Success Rate    Average Time    Total Time
+-------  -----------  ----------  ---------  -------  ----------------------  --------------  ------------
+Trial 0            0           8          0        8                       0          53.625           429
+                    At Least One Success    All Successes
+----------------  ----------------------  ---------------
+Trial Aggregated                       0                0
+
+CAUTION: 'autogenbench tabulate' is in early preview and is not thoroughly tested.
+Please do not cite values from these calculations in academic work without first inspecting and verifying the results in the run logs yourself.
+

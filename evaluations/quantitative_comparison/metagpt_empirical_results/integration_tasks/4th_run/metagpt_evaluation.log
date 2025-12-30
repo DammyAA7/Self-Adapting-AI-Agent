@@ -1,0 +1,176 @@
+2025-12-27 07:48:22,774 - INFO - ======================================================================
+2025-12-27 07:48:22,774 - INFO - METAGPT EVALUATION ON SELFEVOLVE DATASET
+2025-12-27 07:48:22,774 - INFO - 8 Non-Compositional Tasks
+2025-12-27 07:48:22,774 - INFO - Context: FileAnalyzer from SelfEvolve framework
+2025-12-27 07:48:22,774 - INFO - Problems: problem.json from dataset/
+2025-12-27 07:48:22,774 - INFO - Started: 2025-12-27 07:48:22.774877
+2025-12-27 07:48:22,774 - INFO - ======================================================================
+2025-12-27 07:48:22,774 - INFO - 
+>>> Processing: patient_risk_analyzer
+2025-12-27 07:48:22,775 - INFO - Extracting context for: patient_risk_analyzer
+2025-12-27 07:48:22,784 - INFO - Context extracted: 27817 chars
+2025-12-27 07:48:22,784 - INFO - 
+======================================================================
+2025-12-27 07:48:22,784 - INFO - TASK: patient_risk_analyzer
+2025-12-27 07:48:22,784 - INFO - ======================================================================
+2025-12-27 07:48:22,784 - INFO - Prompt saved: 28469 chars
+2025-12-27 07:48:22,784 - INFO - Running MetaGPT CLI...
+2025-12-27 07:48:35,045 - INFO - MetaGPT completed (exit code: 0)
+2025-12-27 07:48:35,073 - INFO - Code extracted: 1148 chars
+2025-12-27 07:48:35,073 - INFO - Testing patient_risk_analyzer...
+2025-12-27 07:48:35,073 - INFO - Test file: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/patient_risk_analyzer_test.py
+2025-12-27 07:48:35,097 - INFO - Test: FAIL
+2025-12-27 07:48:35,097 - ERROR - Error: Traceback (most recent call last):
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/patient_risk_analyzer_test.py", line 52, in <module>
+    assert abs(score_p001 - 60.75) < 0.1
+AssertionError
+
+2025-12-27 07:48:35,098 - INFO - Progress: 0/1 passed (0.0%)
+2025-12-27 07:48:35,098 - INFO - 
+>>> Processing: salary_analyzer
+2025-12-27 07:48:35,098 - INFO - Extracting context for: salary_analyzer
+2025-12-27 07:48:35,106 - INFO - Context extracted: 23056 chars
+2025-12-27 07:48:35,106 - INFO - 
+======================================================================
+2025-12-27 07:48:35,106 - INFO - TASK: salary_analyzer
+2025-12-27 07:48:35,106 - INFO - ======================================================================
+2025-12-27 07:48:35,106 - INFO - Prompt saved: 23429 chars
+2025-12-27 07:48:35,106 - INFO - Running MetaGPT CLI...
+2025-12-27 07:48:44,712 - INFO - MetaGPT completed (exit code: 0)
+2025-12-27 07:48:44,712 - INFO - Code extracted: 389 chars
+2025-12-27 07:48:44,712 - INFO - Testing salary_analyzer...
+2025-12-27 07:48:44,712 - INFO - Test file: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/salary_analyzer_test.py
+2025-12-27 07:48:44,729 - INFO - Test: FAIL
+2025-12-27 07:48:44,729 - ERROR - Error: Traceback (most recent call last):
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/salary_analyzer_test.py", line 6, in <module>
+    from salary_analyzer.salary_analyzer_class import SalaryAnalyzer
+ModuleNotFoundError: No module named 'salary_analyzer'
+
+2025-12-27 07:48:44,729 - INFO - Progress: 0/2 passed (0.0%)
+2025-12-27 07:48:44,730 - INFO - 
+>>> Processing: student_gpa_calculator
+2025-12-27 07:48:44,730 - INFO - Extracting context for: student_gpa_calculator
+2025-12-27 07:48:44,739 - INFO - Context extracted: 28812 chars
+2025-12-27 07:48:44,739 - INFO - 
+======================================================================
+2025-12-27 07:48:44,739 - INFO - TASK: student_gpa_calculator
+2025-12-27 07:48:44,739 - INFO - ======================================================================
+2025-12-27 07:48:44,739 - INFO - Prompt saved: 29413 chars
+2025-12-27 07:48:44,739 - INFO - Running MetaGPT CLI...
+2025-12-27 07:48:55,988 - INFO - MetaGPT completed (exit code: 0)
+2025-12-27 07:48:55,989 - INFO - Code extracted: 754 chars
+2025-12-27 07:48:55,989 - INFO - Testing student_gpa_calculator...
+2025-12-27 07:48:55,989 - INFO - Test file: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/student_gpa_calculator_test.py
+2025-12-27 07:48:56,012 - INFO - Test: PASS
+2025-12-27 07:48:56,013 - INFO - Progress: 1/3 passed (33.3%)
+2025-12-27 07:48:56,013 - INFO - 
+>>> Processing: inventory_replenishment
+2025-12-27 07:48:56,013 - INFO - Extracting context for: inventory_replenishment
+2025-12-27 07:48:56,021 - INFO - Context extracted: 23175 chars
+2025-12-27 07:48:56,021 - INFO - 
+======================================================================
+2025-12-27 07:48:56,021 - INFO - TASK: inventory_replenishment
+2025-12-27 07:48:56,021 - INFO - ======================================================================
+2025-12-27 07:48:56,021 - INFO - Prompt saved: 23799 chars
+2025-12-27 07:48:56,021 - INFO - Running MetaGPT CLI...
+2025-12-27 07:49:08,314 - INFO - MetaGPT completed (exit code: 0)
+2025-12-27 07:49:08,314 - INFO - Code extracted: 800 chars
+2025-12-27 07:49:08,315 - INFO - Testing inventory_replenishment...
+2025-12-27 07:49:08,315 - INFO - Test file: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/inventory_replenishment_test.py
+2025-12-27 07:49:08,340 - INFO - Test: PASS
+2025-12-27 07:49:08,341 - INFO - Progress: 2/4 passed (50.0%)
+2025-12-27 07:49:08,341 - INFO - 
+>>> Processing: book_recommender
+2025-12-27 07:49:08,341 - INFO - Extracting context for: book_recommender
+2025-12-27 07:49:08,341 - INFO - Context extracted: 6718 chars
+2025-12-27 07:49:08,341 - INFO - 
+======================================================================
+2025-12-27 07:49:08,341 - INFO - TASK: book_recommender
+2025-12-27 07:49:08,341 - INFO - ======================================================================
+2025-12-27 07:49:08,341 - INFO - Prompt saved: 7658 chars
+2025-12-27 07:49:08,341 - INFO - Running MetaGPT CLI...
+2025-12-27 07:49:42,656 - INFO - MetaGPT completed (exit code: 0)
+2025-12-27 07:49:42,656 - INFO - Code extracted: 1766 chars
+2025-12-27 07:49:42,656 - INFO - Testing book_recommender...
+2025-12-27 07:49:42,656 - INFO - Test file: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/book_recommender_test.py
+2025-12-27 07:49:42,677 - INFO - Test: FAIL
+2025-12-27 07:49:42,677 - ERROR - Error: Traceback (most recent call last):
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/book_recommender_test.py", line 69, in <module>
+    result_v1 = book_recommender('Fiction', file_path="/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/dataset/book_recommender/books.csv")
+TypeError: book_recommender() got an unexpected keyword argument 'file_path'
+
+2025-12-27 07:49:42,677 - INFO - Progress: 2/5 passed (40.0%)
+2025-12-27 07:49:42,677 - INFO - 
+>>> Processing: friend_suggester
+2025-12-27 07:49:42,677 - INFO - Extracting context for: friend_suggester
+2025-12-27 07:49:42,677 - INFO - Context extracted: 54443 chars
+2025-12-27 07:49:42,678 - INFO - 
+======================================================================
+2025-12-27 07:49:42,678 - INFO - TASK: friend_suggester
+2025-12-27 07:49:42,678 - INFO - ======================================================================
+2025-12-27 07:49:42,678 - INFO - Prompt saved: 55170 chars
+2025-12-27 07:49:42,678 - INFO - Running MetaGPT CLI...
+2025-12-27 07:50:28,743 - INFO - MetaGPT completed (exit code: 0)
+2025-12-27 07:50:28,743 - INFO - Code extracted: 2714 chars
+2025-12-27 07:50:28,744 - INFO - Testing friend_suggester...
+2025-12-27 07:50:28,744 - INFO - Test file: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/friend_suggester_test.py
+2025-12-27 07:50:28,768 - INFO - Test: FAIL
+2025-12-27 07:50:28,768 - ERROR - Error: Traceback (most recent call last):
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/friend_suggester_test.py", line 84, in <module>
+    result_basic = friend_suggestions('U001')
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/friend_suggester_test.py", line 17, in friend_suggestions
+    with open(data_path, "r", encoding="utf-8") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/aifahim/PycharmProjects/Self-A
+2025-12-27 07:50:28,768 - INFO - Progress: 2/6 passed (33.3%)
+2025-12-27 07:50:28,768 - INFO - 
+>>> Processing: movielens_dataset
+2025-12-27 07:50:28,768 - INFO - Extracting context for: movielens_dataset
+2025-12-27 07:50:28,768 - INFO - Context extracted: 5415 chars
+2025-12-27 07:50:28,768 - INFO - 
+======================================================================
+2025-12-27 07:50:28,768 - INFO - TASK: movielens_dataset
+2025-12-27 07:50:28,768 - INFO - ======================================================================
+2025-12-27 07:50:28,768 - INFO - Prompt saved: 6054 chars
+2025-12-27 07:50:28,768 - INFO - Running MetaGPT CLI...
+2025-12-27 07:50:44,685 - INFO - MetaGPT completed (exit code: 0)
+2025-12-27 07:50:44,686 - INFO - Code extracted: 1826 chars
+2025-12-27 07:50:44,686 - INFO - Testing movielens_dataset...
+2025-12-27 07:50:44,686 - INFO - Test file: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/movielens_dataset_test.py
+2025-12-27 07:50:44,713 - INFO - Test: FAIL
+2025-12-27 07:50:44,713 - ERROR - Error: Traceback (most recent call last):
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/movielens_dataset_test.py", line 78, in <module>
+    result_v1 = test_caller_v1()
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/movielens_dataset_test.py", line 75, in test_caller_v1
+    result = movie_api()
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/movielens_dataset_test.py", line 22, in movie_api
+    
+2025-12-27 07:50:44,713 - INFO - Progress: 2/7 passed (28.6%)
+2025-12-27 07:50:44,713 - INFO - 
+>>> Processing: performance_tracker
+2025-12-27 07:50:44,714 - INFO - Extracting context for: performance_tracker
+2025-12-27 07:50:44,714 - INFO - Context extracted: 5688 chars
+2025-12-27 07:50:44,714 - INFO - 
+======================================================================
+2025-12-27 07:50:44,714 - INFO - TASK: performance_tracker
+2025-12-27 07:50:44,714 - INFO - ======================================================================
+2025-12-27 07:50:44,714 - INFO - Prompt saved: 6768 chars
+2025-12-27 07:50:44,714 - INFO - Running MetaGPT CLI...
+2025-12-27 07:51:24,744 - INFO - MetaGPT completed (exit code: 0)
+2025-12-27 07:51:24,745 - INFO - Code extracted: 2485 chars
+2025-12-27 07:51:24,745 - INFO - Testing performance_tracker...
+2025-12-27 07:51:24,745 - INFO - Test file: /home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/performance_tracker_test.py
+2025-12-27 07:51:24,763 - INFO - Test: FAIL
+2025-12-27 07:51:24,764 - ERROR - Error: Traceback (most recent call last):
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/performance_tracker_test.py", line 80, in <module>
+    result_summary = performance_report('E001', report_type='summary')
+  File "/home/aifahim/PycharmProjects/Self-Adapting-AI-Agent/MetaGPT/metagpt_tests/performance_tracker_test.py", line 21, in performance_report
+    with open(csv_path, newline='', encoding='utf-8') as csvfile:
+FileNotFoundError: [Errno 2] No such file or direc
+2025-12-27 07:51:24,764 - INFO - Progress: 2/8 passed (25.0%)
+2025-12-27 07:51:24,764 - INFO - 
+======================================================================
+2025-12-27 07:51:24,764 - INFO - FINAL RESULTS
+2025-12-27 07:51:24,764 - INFO - ======================================================================
+2025-12-27 07:51:24,764 - INFO - Passed: 2, Failed: 6
+2025-12-27 07:51:24,764 - INFO - Pass Rate: 2/8 = 25.0%
+2025-12-27 07:51:24,764 - INFO - Completed: 2025-12-27 07:51:24.764409

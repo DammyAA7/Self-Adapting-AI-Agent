@@ -16,14 +16,28 @@ Self-Adapting-AI-Agent/
 │   ├── unit_test/                 # Unit test generation
 │   ├── terminal_context/          # Session persistence for compositional tasks
 │   ├── file_analyzer/             # Codebase analysis for integration tasks
-│   └── evaluation/                # Evaluation runner and metrics
+│   └── evaluation/                # Evaluation runner and statistical analysis
+│       ├── self_evolution_test_runner.py
+│       └── wilcoxon_bonferroni_baseline_comparison.py
 │
 ├── dataset/                        # 11 self-evolution problems
-│   ├── Integration Tasks (4 problems)
-│   ├── Compositional Tasks (3 problems)
-│   └── Data Processing Tasks (4 problems)
+│   ├── Integration Tasks (4)      # patient_risk_analyzer, salary_analyzer, etc.
+│   ├── Compositional Tasks (3)    # matrix_eigenvalue_composition, etc.
+│   └── Data Processing Tasks (4)  # book_recommender, friend_suggester, etc.
 │
-└── evaluations/                    # Experimental results and logs
+├── evaluations/                    # All experimental results (165 runs)
+│   ├── ablation_study/            # TDD pipeline ablation
+│   │   ├── with_tdd/              # Full architecture (51/55 runs)
+│   │   └── without_tdd/           # Without TDD (40/55 runs)
+│   └── quantitative_comparison/   # Baseline framework comparison
+│       ├── agentcoder_empirical_results/  # 0/55 (0.0%)
+│       ├── autogen_empirical_results/     # 17/55 (30.9%)
+│       └── metagpt_empirical_results/     # 15/55 (27.3%)
+│
+└── baselines/                      # Baseline framework implementations
+    ├── AgentCoder/                # Modified for codebase integration
+    ├── AutoGen/                   # agbench benchmark created
+    └── MetaGPT/                   # Evaluation scripts created
 ```
 
 ## Installation
@@ -68,6 +82,35 @@ The evaluation dataset comprises 11 problems across three task categories as des
 | 9 | Book Recommender | Content Rec. | Data Processing | 100 records |
 | 10 | Performance Tracker | HR Analytics | Data Processing | 50 records |
 | 11 | Friend Suggester | Social Network | Data Processing | 100 users |
+
+## Quantitative Evaluation
+
+### Baseline Framework Comparison
+
+We evaluated SelfEvolve against three state-of-the-art multi-agent code generation frameworks (AgentCoder, AutoGen, MetaGPT) on all 11 tasks with 5 independent runs per task.
+
+**Results:**
+- **SelfEvolve:** 51/55 (92.7%) with statistical significance (Bonferroni-corrected Wilcoxon, p_adj < 0.012)
+- AutoGen: 17/55 (30.9%)
+- MetaGPT: 15/55 (27.3%)
+- AgentCoder: 0/55 (0.0%)
+
+**Fair Comparison:** All frameworks received identical codebase context, problem specifications, ground-truth tests, and GPT-4.1 backend. For compositional tasks, baselines were given manually-injected Session 1 code (advantage they lack - no persistence).
+
+**See:** `BASELINE_COMPARISON_README.md` for detailed methodology, fair comparison protocol, and complete results (165 runs).
+
+**Results Location:** `evaluations/quantitative_comparison/`
+
+### TDD Pipeline Ablation Study
+
+Compared SelfEvolve with TDD vs without TDD across all 11 tasks (5 runs each):
+- **With TDD:** 51/55 (92.7%), avg 2.2 iterations
+- **Without TDD:** 40/55 (72.7%), avg 4.7 iterations
+- **Statistical significance:** Wilcoxon p<0.001, r=0.98 (large effect), 20pp improvement, 2.1× faster convergence
+
+**Results Location:** `evaluations/ablation_study/`
+
+---
 
 ## Reproducing Paper Results
 

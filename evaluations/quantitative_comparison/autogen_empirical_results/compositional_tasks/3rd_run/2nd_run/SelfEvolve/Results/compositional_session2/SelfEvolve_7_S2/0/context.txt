@@ -1,0 +1,31 @@
+def parse_sensor_reading(reading_str):
+    """
+    Parses a sensor reading string like 'T:25.5|H:60|TS:1234567890' and returns a dict:
+    {
+        'temperature': float or None,
+        'humidity': float or None,
+        'timestamp': int or None
+    }
+    """
+    result = {'temperature': None, 'humidity': None, 'timestamp': None}
+    parts = reading_str.split('|')
+    for part in parts:
+        if ':' not in part:
+            continue
+        key, value = part.split(':', 1)
+        if key == 'T':
+            try:
+                result['temperature'] = float(value)
+            except (ValueError, TypeError):
+                result['temperature'] = None
+        elif key == 'H':
+            try:
+                result['humidity'] = float(value)
+            except (ValueError, TypeError):
+                result['humidity'] = None
+        elif key == 'TS':
+            try:
+                result['timestamp'] = int(value)
+            except (ValueError, TypeError):
+                result['timestamp'] = None
+    return result

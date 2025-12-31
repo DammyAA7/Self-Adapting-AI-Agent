@@ -12,21 +12,21 @@ I will also inform the user that I have assigned the task to Alex.
         "args": {
             "task_id": "1",
             "dependent_task_ids": [],
-            "instruction": "Create a function called advanced_matrix_ops that uses the existing matrix_operations function and computation_cache to perform eigenvalue calculations. Output the Python function inside ```python``` blocks.",
+            "instruction": "Create a function called advanced_matrix_ops to perform eigenvalue calculations. Output the Python function inside ```python``` blocks.",
             "assignee": "Alex"
         }
     },
     {
         "command_name": "TeamLeader.publish_team_message",
         "args": {
-            "content": "Please create a function called advanced_matrix_ops that uses the existing matrix_operations function and computation_cache to perform eigenvalue calculations. Output the Python function inside ```python``` blocks.",
+            "content": "Please create a function called advanced_matrix_ops to perform eigenvalue calculations. Output the Python function inside ```python``` blocks.",
             "send_to": "Alex"
         }
     },
     {
         "command_name": "RoleZero.reply_to_human",
         "args": {
-            "content": "I have assigned your request to Alex, our engineer. He will create the advanced_matrix_ops function that uses the existing matrix_operations function and computation_cache to perform eigenvalue calculations, and will output the code inside Python code blocks."
+            "content": "I have assigned your request to Alex, our engineer. He will create the advanced_matrix_ops function to perform eigenvalue calculations, and will output the code inside Python code blocks."
         }
     }
 ]

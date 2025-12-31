@@ -89,7 +89,7 @@ Description:
   Provides high-level eigenvalue and eigenvector computations by internally calling the existing matrix_operations function and leveraging computation_...
 2025-10-12 14:16:59,366 - INFO - Initiating function generation process...
 2025-10-12 14:16:59,366 - INFO - === STARTING FUNCTION GENERATION ===
-2025-10-12 14:16:59,366 - INFO - User Input: Load the previous session and create a function 'advanced_matrix_ops' that uses the existing 'matrix_operations' function and 'computation_cache' to perform eigenvalue calculations.
+2025-10-12 14:16:59,366 - INFO - User Input: Load the previous session and create a function 'advanced_matrix_ops' to perform eigenvalue calculations.
 2025-10-12 14:16:59,366 - INFO - Function Requirement: Function Name: advanced_matrix_ops
 Description:
   Provides high-level eigenvalue and eigenvector computations by internally calling the existing matrix_operations function and leveraging computation_cache for result reuse. When invoked, it first checks computation_cache to see if the eigen decomposition for the given matrix already exists; if so, it returns the cached result. Otherwise, it uses matrix_operations to perform the eigenvalue calculation, stores the result in computation_cache, and then returns it.

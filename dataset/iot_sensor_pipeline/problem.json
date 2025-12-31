@@ -10,7 +10,7 @@
   "session_2": {
     "entry_point": "aggregate_temperature",
     "depends_on": ["parse_sensor_reading"],
-    "prompt": "Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures."
+    "prompt": "Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures."
   },
   "context_files": [],
   "test_code": "\n# Test Session 1: parse_sensor_reading\nparsed = parse_sensor_reading('T:25.5|H:60|TS:1234567890')\nassert isinstance(parsed, dict)\nassert 'temperature' in parsed\nassert 'humidity' in parsed\nassert 'timestamp' in parsed\nassert parsed['temperature'] == 25.5\nassert parsed['humidity'] == 60.0\nassert parsed['timestamp'] == 1234567890\n\n# Test Session 2: aggregate_temperature\nreadings = ['T:22.0|H:50|TS:1000', 'T:24.0|H:55|TS:2000', 'T:26.0|H:60|TS:3000']\navg_temp = aggregate_temperature(readings)\nassert isinstance(avg_temp, float)\nassert avg_temp == 24.0  # (22+24+26)/3 = 24.0\n\n# Test with invalid readings\nreadings_with_invalid = ['T:22.0|H:50|TS:1000', 'T:invalid|H:55|TS:2000', 'T:26.0|H:60|TS:3000']\navg_temp_partial = aggregate_temperature(readings_with_invalid)\nassert avg_temp_partial == 24.0  # (22+26)/2 = 24.0\n\nprint('IoT Sensor Pipeline tests passed')\n"

@@ -167,7 +167,7 @@ def parse_sensor_reading(reading_str):
 Complete the following python function. Format your output as Markdown python code block containing the entire function definition:
 
 ```python
-Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.
+Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.
 
 ```
 

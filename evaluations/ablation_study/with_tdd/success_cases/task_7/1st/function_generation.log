@@ -89,7 +89,7 @@ result = parse_sensor_reading("T:bad|H:45|TS:xyz")
 Description: Processes a list of raw sensor data strings, uses an existing `parse_sensor_reading` function to parse each string into a reading object, collects a...
 2025-10-11 17:23:12,686 - INFO - Initiating function generation process...
 2025-10-11 17:23:12,686 - INFO - === STARTING FUNCTION GENERATION ===
-2025-10-11 17:23:12,686 - INFO - User Input: Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.
+2025-10-11 17:23:12,686 - INFO - User Input: Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.
 2025-10-11 17:23:12,686 - INFO - Function Requirement: Function Name: aggregate_temperature
 Description: Processes a list of raw sensor data strings, uses an existing `parse_sensor_reading` function to parse each string into a reading object, collects all non-null temperature values, computes their average, rounds the result to two decimal places, and returns it. If no valid temperatures are found, returns 0.0.
 Parameters:

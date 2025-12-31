@@ -12,14 +12,14 @@ Then, I will inform the user that the task has been assigned to Alex.
         "args": {
             "task_id": "1",
             "dependent_task_ids": [],
-            "instruction": "Generate a Python function called advanced_matrix_ops that uses the existing matrix_operations function and computation_cache to perform eigenvalue calculations. Output the code inside ```python``` blocks. Make sure to use the provided matrix_operations and computation_cache as required.",
+            "instruction": "Generate a Python function called advanced_matrix_ops to perform eigenvalue calculations. Output the code inside ```python``` blocks. Make sure to use the provided matrix_operations and computation_cache as required.",
             "assignee": "Alex"
         }
     },
     {
         "command_name": "TeamLeader.publish_team_message",
         "args": {
-            "content": "Please generate a Python function called advanced_matrix_ops that uses the existing matrix_operations function and computation_cache to perform eigenvalue calculations. Output the code inside ```python``` blocks. Make sure to use the provided matrix_operations and computation_cache as required.",
+            "content": "Please generate a Python function called advanced_matrix_ops to perform eigenvalue calculations. Output the code inside ```python``` blocks. Make sure to use the provided matrix_operations and computation_cache as required.",
             "send_to": "Alex"
         }
     },

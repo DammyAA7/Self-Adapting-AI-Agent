@@ -47,7 +47,7 @@ Description: Sensor format parser
 Description: Sensor temperature aggregation function
 2025-10-12 08:57:52,419 - INFO - Initiating function generation process...
 2025-10-12 08:57:52,419 - INFO - === STARTING FUNCTION GENERATION ===
-2025-10-12 08:57:52,420 - INFO - User Input: Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.
+2025-10-12 08:57:52,420 - INFO - User Input: Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.
 2025-10-12 08:57:52,420 - INFO - Function Requirement: Function Name: aggregate_temperature
 Description: Sensor temperature aggregation function
 2025-10-12 08:58:19,194 - INFO - HTTP Request: POST "HTTP/1.1 200 OK"

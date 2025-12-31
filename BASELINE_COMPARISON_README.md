@@ -126,8 +126,10 @@ For each of 5 independent runs:
     python src/test_executor_humaneval.py   # Tests combinations, selects best (5 iterations)
 
 **Pipeline Output:**
-- `dataset/gpt-4.1_python_noncomp.json` (or `_comp_s1.json`, `_comp_s2.json`)
-- Contains: `completion_list` (5 variants), `test_case_list` (5 test suites), `completion` (best selected variant)
+- `baselines/AgentCoder/dataset/gpt-4.1_0.json` through `gpt-4.1_4.json` (5 iteration outputs)
+- OR `baselines/AgentCoder/dataset/gpt-4.1_python_comp_s1.json` (compositional Session 1)
+- OR `baselines/AgentCoder/dataset/gpt-4.1_python_comp_s2.json` (compositional Session 2)
+- Contains: `completion_list` (5 code variants), `test_case_list` (5 test suites), `completion` (best selected variant)
 
 **3. Validate Against Ground Truth:**
 
@@ -181,7 +183,7 @@ This manual injection gives AgentCoder the advantage it lacks (no built-in persi
 
 **Key Files:**
 - `ground_truth_test_results/compositional_results.json`: PASS/FAIL for 3 compositional tasks
-- `default_saved_logs/gpt-4.1_python_noncomp.json`: AgentCoder raw outputs
+- `default_saved_logs/`: Contains gpt-4.1_0.json through gpt-4.1_4.json (5 iteration outputs) or gpt-4.1_python_comp_s*.json (compositional)
 - AgentCoder uses 5 iterations per task (fixed budget)
 
 **Performance:** 0/55 (0.0%) - Complete failure across all tasks and all runs

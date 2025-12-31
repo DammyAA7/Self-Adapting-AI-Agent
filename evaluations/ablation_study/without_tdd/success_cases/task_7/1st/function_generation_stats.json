@@ -49,7 +49,7 @@
     "functions": [
       {
         "function_requirement": "Function Name: aggregate_temperature\nDescription: Average temperature from sensor readings",
-        "user_input": "Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Use parse_sensor_reading to parse each one. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.",
+        "user_input": "Load previous session and create aggregate_temperature function. Takes a list of raw sensor strings. Collect all temperature values that are not None. Return average of all temperatures rounded to 2 decimals. Return 0.0 if no valid temperatures.",
         "start_time": "2025-10-11T18:14:52.419721",
         "iterations": 5,
         "successful": true,

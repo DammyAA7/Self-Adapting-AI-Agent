@@ -11,8 +11,6 @@ Method validated by established literature:
 "Longitudinal significant results were subjected to post hoc Wilcoxon
 signed-rank sum tests with Bonferroni correction."
 
-For research integrity: 100% BRUTALLY ACCURATE
-
 Author: Statistical Analysis
 Date: 2025-12-28
 """
@@ -287,7 +285,6 @@ This method follows established practices from peer-reviewed literature:
 signed-rank sum tests with Bonferroni correction."
 
 All comparisons show p < 0.001, well below Bonferroni threshold (0.0167).
-Results are statistically rigorous and publication-ready.
 """)
 
     print(f"\n✓ Results saved to: {output_file}")
